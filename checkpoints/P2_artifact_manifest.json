@@ -26,7 +26,7 @@
     },
     {
       "path": "STATUS.md",
-      "sha256": "60a313a347192c9f89b241eb012c4aa6572cb00358d5a04dbff23b57ff87e7ac"
+      "sha256": "2820f602c78f2a9f7c37e7669e5cadd40a18a35f1877d72a6a408667cc065f33"
     },
     {
       "path": "checkpoints/.gitkeep",
@@ -726,15 +726,19 @@
     },
     {
       "path": "reports/P2_delivery_index.json",
-      "sha256": "6fe9c7517a4e10240c2d335a099245a43290fda21be44b626db5321dc63c81d8"
+      "sha256": "b38fece31466e892da2a9c22e7de5e8e490d861d5ded13b2fecd2d0de8c17c6d"
     },
     {
       "path": "reports/P2_delivery_status.json",
-      "sha256": "072a982984528fa80eb9a39d42057f0896b011d777ddd30855d85e30d98ead02"
+      "sha256": "2d16f4b39228e708db06d4b12ea0956134655aa7ed4d8ee2db63ac13d7c44306"
     },
     {
       "path": "reports/P2_engineering_timing_protocol.md",
       "sha256": "4c35d778f7f8aef763dc6fe530b76af918f890eb74bbfcb3689fb9a412edb3f1"
+    },
+    {
+      "path": "reports/P2_evidence_checks.json",
+      "sha256": "9eee5b78b02517658f0300cf6571068bb46418dcab66f6cf62be61b208f4753e"
     },
     {
       "path": "reports/P2_execution_manifest.json",
@@ -743,6 +747,10 @@
     {
       "path": "reports/P2_final_audit.md",
       "sha256": "04782d2c75dfca564bc27e9fa9f99d4ee6a23c9819848e3996bbe6abfa2703a1"
+    },
+    {
+      "path": "reports/P2_git_checkpoint.json",
+      "sha256": "c20a770f426546fac227c9896e558e3ba81fe858c61949883c1927c3f8670481"
     },
     {
       "path": "reports/P2_mapping_opportunity.json",

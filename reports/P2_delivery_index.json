@@ -18,5 +18,8 @@
   "source_input_evidence_manifest": "checkpoints/P2_artifact_manifest.json",
   "prior_status_snapshot": "reports/P2_previous_STATUS.md",
   "final_enclosing_git_head_command": "git rev-parse HEAD",
-  "final_audit_report": "reports/P2_final_audit.md"
+  "final_audit_report": "reports/P2_final_audit.md",
+  "git_receipt": "reports/P2_git_checkpoint.json",
+  "evidence_checks": "reports/P2_evidence_checks.json",
+  "remote_verified_audit_checkpoint": "f890ba4562781892fca393cb59c4e1edda69bab1"
 }
