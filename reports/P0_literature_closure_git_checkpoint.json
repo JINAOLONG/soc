@@ -1,0 +1,21 @@
+{
+  "timestamp_utc": "2026-10-18T08:28:25.680984+00:00",
+  "scope": "P0 remediation documentation checkpoint; this record is added in a subsequent report-only commit",
+  "git_commit": "cb29fe7a04a6582b76268778fa071ea8d5b5eb9e",
+  "branch": "work",
+  "remote": "https://github.com/JINAOLONG/soc.git",
+  "push_command": [
+    "git",
+    "push",
+    "origin",
+    "HEAD:refs/heads/work"
+  ],
+  "push_exit_code": 0,
+  "push_stdout": "",
+  "push_stderr": "To https://github.com/JINAOLONG/soc.git\n   ebab07e..cb29fe7  HEAD -> work\n",
+  "remote_verify_exit_code": 0,
+  "remote_verify_stdout": "cb29fe7a04a6582b76268778fa071ea8d5b5eb9e\trefs/heads/work\n",
+  "remote_head_matches": true,
+  "post_commit_pre_record_worktree_status": "",
+  "github_push_status": "SUCCESS"
+}

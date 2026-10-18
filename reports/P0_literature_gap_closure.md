@@ -107,8 +107,8 @@ threshold relaxation, secondary-source replacement or reserved-partition access
 is proposed. Even a future P0 PASS requires this task to stop before P1.
 
 This report is written before its enclosing commit and cannot embed that commit's
-own hash. Task-start provenance above is literal. The actual tested documentation
-checkpoint/push audit will be recorded in P0_literature_closure_git_checkpoint.json;
+own hash. Task-start provenance above is literal. The tested documentation
+checkpoint/push audit is recorded in P0_literature_closure_git_checkpoint.json;
 the final live delivery hash is obtained with `git rev-parse HEAD` and reported
 to the user, not inferred from an older scientific/source checkpoint.
 
@@ -131,9 +131,12 @@ SEED_PARTITIONS_CHANGED=NO
 RESERVED_PARTITIONS_ACCESSED=NO
 VALIDATION_UNLOCKED=NO
 FORMAL_UNLOCKED=NO
-GIT_COMMIT=RESOLVE_WITH_git_rev-parse_HEAD
-GITHUB_PUSH_STATUS=PENDING_THIS_TASK
-WORKTREE=QUERY_LIVE_git_status_--short
+GIT_COMMIT=cb29fe7a04a6582b76268778fa071ea8d5b5eb9e
+GIT_COMMIT_SCOPE=REMOTE_VERIFIED_DOCUMENTATION_CHECKPOINT_BEFORE_REPORT_ONLY_CLOSURE
+FINAL_DELIVERY_HEAD_COMMAND=git rev-parse HEAD
+GITHUB_PUSH_STATUS=SUCCESS_FOR_RECORDED_CHECKPOINT
+WORKTREE=CLEAN_AT_RECORDED_CHECKPOINT
+FINAL_DELIVERY_WORKTREE_COMMAND=git status --short
 NEXT_SAFE_ACTION=Obtain lawful HEFT/CPOP and PEFT originals, inspect algorithm pages, rerun P0 only
 STOP=YES
 ```

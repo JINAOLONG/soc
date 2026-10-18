@@ -53,3 +53,8 @@ saved as a network draft; runtime access/publication are not inferred from that.
 
 NEXT_SAFE_ACTION=Supply lawful originals or apply the required source access,
 then inspect their algorithm pages and rerun P0; stop without starting P1.
+
+Documentation remediation checkpoint `cb29fe7a04a6582b76268778fa071ea8d5b5eb9e` was pushed normally to work;
+ls-remote matched it and the post-commit worktree was clean before recording
+that audit. See P0_literature_closure_git_checkpoint.json. Final report-only
+closure HEAD is queried live rather than substituted with this checkpoint.

@@ -24,7 +24,7 @@
     },
     {
       "path": "STATUS.md",
-      "sha256": "4d94879325e399b67f964130c15850678ee6d5d82d45a4a9df684b0e800ab7c2"
+      "sha256": "af6c128a875f417e80f19d95013a44c10f7f4581a6d042224d29edbbf7c59cd5"
     },
     {
       "path": "configs/calibration/.gitkeep",
@@ -175,12 +175,16 @@
       "sha256": "b9375314f1ab200322cb13d580ba0eebb2e4c51fd87e30943226b0bfc6ca78fd"
     },
     {
+      "path": "reports/P0_literature_closure_git_checkpoint.json",
+      "sha256": "420d14d385142d748ec2c5b84d6ec2ad5c082cf51cefdc6d88cf042cc5a23069"
+    },
+    {
       "path": "reports/P0_literature_closure_repository_audit.json",
       "sha256": "b26e3f789ac9dae0bb2d1bc5594c2d2addad2ec2a8e45636b6e57faab78da0b0"
     },
     {
       "path": "reports/P0_literature_gap_closure.md",
-      "sha256": "9999062ba8381320a45191d0b19b0b833477ddd432957264b983d5e9702a085d"
+      "sha256": "6e5eb13877560d31bb952ebeea7f9743177ba88288fb21c7b4b14cd770d67146"
     },
     {
       "path": "reports/P0_literature_network_requirements.json",
@@ -264,7 +268,7 @@
     },
     {
       "path": "reports/blocker_or_failure_report.md",
-      "sha256": "1f40c75f6bd083f93bea1e3a46b28e86dbe97d964695cd6ad557f5046c3b01fa"
+      "sha256": "5684dc2b551f6082843cfaed365c2a0dced4e5ce67af47cee7d79bcfcbd6cbbf"
     },
     {
       "path": "reports/evidence_matrix.md",
