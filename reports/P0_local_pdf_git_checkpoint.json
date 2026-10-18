@@ -1,0 +1,26 @@
+{
+  "timestamp_utc": "2026-10-18T09:05:41.680188+00:00",
+  "scope": "Audited local-original-review checkpoint; this record is added in a subsequent metadata-only commit",
+  "git_commit": "e9afe287eb9f7bd7e88d6ab421281812abf755a4",
+  "branch": "work",
+  "remote": "https://github.com/JINAOLONG/soc.git",
+  "push_command": [
+    "git",
+    "push",
+    "origin",
+    "HEAD:refs/heads/work"
+  ],
+  "push_exit_code": 0,
+  "push_stdout": "",
+  "push_stderr": "To https://github.com/JINAOLONG/soc.git\n   1b36f39..e9afe28  HEAD -> work\n",
+  "remote_verify_exit_code": 0,
+  "remote_verify_stdout": "e9afe287eb9f7bd7e88d6ab421281812abf755a4\trefs/heads/work\n",
+  "remote_head_matches": true,
+  "post_commit_pre_record_worktree_status": "",
+  "github_push_status": "SUCCESS",
+  "p0_audit_exit_code": 0,
+  "p0_status": "PASS",
+  "governance_tests": "17 PASSED",
+  "scientific_workloads_run": 0,
+  "pdfs_tracked": []
+}

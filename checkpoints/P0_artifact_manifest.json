@@ -24,7 +24,7 @@
     },
     {
       "path": "STATUS.md",
-      "sha256": "a18861fa4c0098d7cfdb389e6828d8061400452651b93622191b59ea93ee5699"
+      "sha256": "a371807f1153f793db4bbbff98e3bb2fc45e85ee8fe9b250f4a81463319712b9"
     },
     {
       "path": "configs/calibration/.gitkeep",
@@ -184,7 +184,7 @@
     },
     {
       "path": "reports/P0_literature_gap_closure.md",
-      "sha256": "14446f36f83afe72ecc57e2203a32bd970633b57915693e36f7608e6cdb66508"
+      "sha256": "ff4e145f5b6a393419adc9a4db60e7842a265caf46b9452b943c4e8819d6a526"
     },
     {
       "path": "reports/P0_literature_network_requirements.json",
@@ -200,7 +200,11 @@
     },
     {
       "path": "reports/P0_local_pdf_decision.json",
-      "sha256": "e0c345ac9c84bf0f1ed48dd6d51a7574b846042eb7fa8154f7b2b4af25bf6387"
+      "sha256": "3f778ffd8a98a4dda1da522609cde4b2210bfa997bc84520842587126c32bbdd"
+    },
+    {
+      "path": "reports/P0_local_pdf_git_checkpoint.json",
+      "sha256": "772dd936a255ff80ec0858fd272d54e67091ba5fd3020a824f6c2d6ee2f9c7e8"
     },
     {
       "path": "reports/P0_local_pdf_prior_sources_recheck.json",
@@ -300,7 +304,7 @@
     },
     {
       "path": "reports/final_report.md",
-      "sha256": "f5a1043410094f7b7e3c1d01405147d465ae84a937327d545d81e0f9a3cdfe1f"
+      "sha256": "c1470e3ae855aca4ee8277f315f262c4bd7395ba9377f4da709bab424ef29b5d"
     },
     {
       "path": "reports/history/p0_before_literature_closure_ebab07e/STATUS.md",
