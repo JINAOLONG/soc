@@ -1,0 +1,22 @@
+[
+  {
+    "id": "heft_oa",
+    "url": "https://api.openalex.org/works/https://doi.org/10.1109/71.993206",
+    "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+  },
+  {
+    "id": "peft_oa",
+    "url": "https://api.openalex.org/works/https://doi.org/10.1109/TPDS.2013.57",
+    "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+  },
+  {
+    "id": "heft_semantic",
+    "url": "https://api.semanticscholar.org/graph/v1/paper/DOI:10.1109/71.993206?fields=title,openAccessPdf",
+    "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+  },
+  {
+    "id": "peft_new_repository",
+    "url": "https://repositorium.uminho.pt/simple-search?query=List+Scheduling+Algorithm+Optimistic+Cost+Table",
+    "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+  }
+]

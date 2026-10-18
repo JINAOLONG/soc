@@ -1,0 +1,20 @@
+{
+  "timestamp_utc": "2026-10-18T07:44:41.916507+00:00",
+  "python": "3.12.14",
+  "implementation": "CPython",
+  "platform": "Linux-6.18.55-x86_64-with-glibc2.41",
+  "machine": "x86_64",
+  "host": "890871cf2295",
+  "cpu_count": 5,
+  "cpu_model": "INTEL(R) XEON(R) PLATINUM 8573C",
+  "meminfo": {
+    "MemTotal": "34906016 kB",
+    "MemAvailable": "34197556 kB"
+  },
+  "git_remote": "https://github.com/JINAOLONG/soc.git",
+  "branch": "work",
+  "initial_head": "0834f21afa07ce361970a011b4cd327f7c5ddc79",
+  "dependencies": "P0 runtime and tests: Python standard library only",
+  "request_sha256": "4c3481f0c67553eaa6d2dd6f181cc8d3f792e40fdc9586547c1c2e91fb52b461",
+  "legacy_results_used_as_new_evidence": false
+}

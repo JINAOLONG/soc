@@ -1,0 +1,31 @@
+[
+  {
+    "id": "heft_correct_doi",
+    "url": "https://doi.org/10.1109/71.993206",
+    "status": 202,
+    "final_url": "https://ieeexplore.ieee.org/document/993206/",
+    "content_type": "text/html; charset=UTF-8",
+    "bytes": 0,
+    "preview": ""
+  },
+  {
+    "id": "heft_official_pdf",
+    "url": "https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=993206",
+    "error": "HTTP Error 418: Unknown"
+  },
+  {
+    "id": "peft_official_pdf",
+    "url": "https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=6471969",
+    "error": "HTTP Error 418: Unknown"
+  },
+  {
+    "id": "peft_institution_retry",
+    "url": "https://repositorium.sdum.uminho.pt/simple-search?query=List+Scheduling+Algorithm+Optimistic+Cost+Table",
+    "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+  },
+  {
+    "id": "peft_author_retry",
+    "url": "https://www.di.uminho.pt/~jbarbosa/",
+    "error": "HTTP Error 404: Not Found"
+  }
+]

@@ -1,0 +1,49 @@
+[
+  {
+    "id": "heft_metadata",
+    "url": "https://api.crossref.org/works/10.1109/71.993206",
+    "final": "https://api.crossref.org/works/10.1109/71.993206",
+    "status": 200,
+    "type": "application/json",
+    "bytes": 5377,
+    "preview": "{\"status\":\"ok\",\"message-type\":\"work\",\"message-version\":\"1.0.0\",\"message\":{\"indexed\":{\"date-parts\":[["
+  },
+  {
+    "id": "heft_author_page",
+    "url": "https://www.cs.umd.edu/~hollings/papers.html",
+    "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+  },
+  {
+    "id": "heft_author_pdf_lead",
+    "url": "https://www.cs.umd.edu/~hollings/papers/Topcuoglu2002.pdf",
+    "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+  },
+  {
+    "id": "peft_author_page",
+    "url": "https://www.di.uminho.pt/~jbarbosa/",
+    "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+  },
+  {
+    "id": "peft_repository_search",
+    "url": "https://repositorium.sdum.uminho.pt/simple-search?query=List+Scheduling+Algorithm+Optimistic+Cost+Table",
+    "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+  },
+  {
+    "id": "ds3_pdf",
+    "url": "https://arxiv.org/pdf/2003.09016",
+    "final": "https://arxiv.org/pdf/2003.09016",
+    "status": 200,
+    "type": "application/pdf",
+    "bytes": 2232519,
+    "preview": "%PDF-1.5\n%\ufffd\n160 0 obj\n<< /Type /XObject /Subtype /Form /BBox [ 0 0 473 175 ]\n/Filter /FlateDecode /F"
+  },
+  {
+    "id": "starpu_pdf",
+    "url": "https://inria.hal.science/inria-00550877/document",
+    "final": "https://inria.hal.science/inria-00550877/document",
+    "status": 200,
+    "type": "application/pdf",
+    "bytes": 344153,
+    "preview": "%PDF-1.4\n%\ufffd\ufffd\ufffd\ufffd\n1 0 obj\n<<\n/Type /Catalog\n/Version /1.5\n/Pages 2 0 R\n/Names 3 0 R\n/OpenAction [4 0 R "
+  }
+]

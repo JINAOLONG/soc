@@ -1,0 +1,16 @@
+[
+  {
+    "id": "autoware_dag",
+    "url": "https://arxiv.org/pdf/2505.06780v2",
+    "status": 200,
+    "bytes": 610341,
+    "type": "application/pdf"
+  },
+  {
+    "id": "federated_limit",
+    "url": "https://arxiv.org/pdf/1510.07254v2",
+    "status": 200,
+    "bytes": 239840,
+    "type": "application/pdf"
+  }
+]

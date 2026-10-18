@@ -1,0 +1,34 @@
+EXPECTED_REPOSITORY=soc
+ACTUAL_REMOTE=https://github.com/JINAOLONG/soc.git
+REPOSITORY_MATCH=YES
+STOP=NO
+INITIAL_TRACKED_FILES=LICENSE
+INITIAL_UNTRACKED_FILES=NONE (observed before this writer)
+INITIAL_AGENTS_MD=ABSENT
+RECORDING_NOTE=The following recording-time snapshot includes newly created scaffolding. The clean pre-write status and original HEAD were observed in the first audit command and are recorded above.
+
+$ pwd
+/workspace/soc
+
+$ git rev-parse --show-toplevel
+/workspace/soc
+
+$ git remote -v
+origin	https://github.com/JINAOLONG/soc.git (fetch)
+origin	https://github.com/JINAOLONG/soc.git (push)
+
+$ git status --short
+?? checkpoints/
+?? configs/
+?? docs/
+?? results/
+?? src/
+
+$ git branch --show-current
+work
+
+$ git rev-parse HEAD
+0834f21afa07ce361970a011b4cd327f7c5ddc79
+
+$ git log --oneline --decorate -10
+0834f21 (HEAD -> work, origin/main) Initial commit

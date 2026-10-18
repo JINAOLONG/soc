@@ -1,0 +1,136 @@
+{
+  "purpose": "P0 primary source acquisition diagnostics, not paper review",
+  "tls_verification": "ENABLED (Python default trust)",
+  "attempts": [
+    {
+      "id": "ds3_official_readme",
+      "url": "https://raw.githubusercontent.com/segemena/DS3/master/README.md",
+      "timestamp_utc": "2026-10-18T07:51:02.367133+00:00",
+      "scientific_verification": "UNVERIFIED_SOURCE",
+      "http_status": 200,
+      "final_url": "https://raw.githubusercontent.com/segemena/DS3/master/README.md",
+      "content_type": "text/plain; charset=utf-8",
+      "bytes_read": 5966,
+      "truncated": false,
+      "response_sha256": "eb99e205b135de7d7a8aba718125786b815c91c37492f596d6fc4c8c693ce50b",
+      "outcome": "RETRIEVED_NOT_REVIEWED",
+      "observed_code_documentation": {
+        "entrypoint_DASH_Sim_v0": true,
+        "resource_compatibility_format": true,
+        "DAS_framework_section": true
+      }
+    },
+    {
+      "id": "ds3_official_scheduler",
+      "url": "https://raw.githubusercontent.com/segemena/DS3/master/scheduler.py",
+      "timestamp_utc": "2026-10-18T07:51:02.367968+00:00",
+      "scientific_verification": "UNVERIFIED_SOURCE",
+      "http_status": 200,
+      "final_url": "https://raw.githubusercontent.com/segemena/DS3/master/scheduler.py",
+      "content_type": "text/plain; charset=utf-8",
+      "bytes_read": 42150,
+      "truncated": false,
+      "response_sha256": "144bc3bf605dd04b5665ec9c8dec9eb2db2fa4b50711b6c7b9282419666c1300",
+      "outcome": "RETRIEVED_NOT_REVIEWED"
+    },
+    {
+      "id": "heft_doi_lead",
+      "url": "https://doi.org/10.1109/TPDS.2002.1000340",
+      "timestamp_utc": "2026-10-18T07:51:02.368703+00:00",
+      "scientific_verification": "UNVERIFIED_SOURCE",
+      "outcome": "ACCESS_FAILED",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "id": "peft_doi_lead",
+      "url": "https://doi.org/10.1109/TPDS.2013.57",
+      "timestamp_utc": "2026-10-18T07:51:02.369522+00:00",
+      "scientific_verification": "UNVERIFIED_SOURCE",
+      "http_status": 202,
+      "final_url": "https://ieeexplore.ieee.org/document/6471969/",
+      "content_type": "text/html; charset=UTF-8",
+      "bytes_read": 0,
+      "truncated": false,
+      "response_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "outcome": "RETRIEVED_NOT_REVIEWED"
+    },
+    {
+      "id": "heft_publisher_lead",
+      "url": "https://ieeexplore.ieee.org/document/1000340",
+      "timestamp_utc": "2026-10-18T07:51:02.651707+00:00",
+      "scientific_verification": "UNVERIFIED_SOURCE",
+      "http_status": 202,
+      "final_url": "https://ieeexplore.ieee.org/document/1000340",
+      "content_type": "text/html; charset=UTF-8",
+      "bytes_read": 0,
+      "truncated": false,
+      "response_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "outcome": "RETRIEVED_NOT_REVIEWED"
+    },
+    {
+      "id": "peft_metadata_lead",
+      "url": "https://api.crossref.org/works/10.1109/TPDS.2013.57",
+      "timestamp_utc": "2026-10-18T07:51:02.663636+00:00",
+      "scientific_verification": "UNVERIFIED_SOURCE",
+      "http_status": 200,
+      "final_url": "https://api.crossref.org/works/10.1109/TPDS.2013.57",
+      "content_type": "application/json",
+      "bytes_read": 5066,
+      "truncated": false,
+      "response_sha256": "6b304041dcff3b05b87abe73801b36506967459443006408fe0f5fa9392a70bb",
+      "outcome": "RETRIEVED_NOT_REVIEWED"
+    },
+    {
+      "id": "arxiv_discovery",
+      "url": "https://export.arxiv.org/api/query?search_query=ti:heterogeneous+AND+ti:scheduling&max_results=2",
+      "timestamp_utc": "2026-10-18T07:51:02.729045+00:00",
+      "scientific_verification": "UNVERIFIED_SOURCE",
+      "http_status": 200,
+      "final_url": "https://export.arxiv.org/api/query?search_query=ti:heterogeneous+AND+ti:scheduling&max_results=2",
+      "content_type": "application/atom+xml; charset=utf-8",
+      "bytes_read": 4792,
+      "truncated": false,
+      "response_sha256": "2237cf91d845c2701a78aab7ba2b2bef796ddb8e1945f001efcca0d1dacb59b0",
+      "outcome": "RETRIEVED_NOT_REVIEWED"
+    },
+    {
+      "id": "arxiv_site",
+      "url": "https://arxiv.org/",
+      "timestamp_utc": "2026-10-18T07:51:02.971460+00:00",
+      "scientific_verification": "UNVERIFIED_SOURCE",
+      "http_status": 200,
+      "final_url": "https://arxiv.org/",
+      "content_type": "text/html; charset=utf-8",
+      "bytes_read": 38033,
+      "truncated": false,
+      "response_sha256": "8db25a9fad0bd6ce52fd5da265904492177ebd4c670ac53d3cfc31f5f23acb59",
+      "outcome": "RETRIEVED_NOT_REVIEWED"
+    },
+    {
+      "id": "starpu_author_manuscript_lead",
+      "url": "https://inria.hal.science/inria-00550877/document",
+      "timestamp_utc": "2026-10-18T07:51:03.062087+00:00",
+      "scientific_verification": "UNVERIFIED_SOURCE",
+      "http_status": 200,
+      "final_url": "https://inria.hal.science/inria-00550877/document",
+      "content_type": "application/pdf",
+      "bytes_read": 344153,
+      "truncated": false,
+      "response_sha256": "1d1277c11847303d315ac8ff11bd5a2faaad0927c50cb32e040ac825778e55af",
+      "outcome": "RETRIEVED_NOT_REVIEWED"
+    },
+    {
+      "id": "parsec_author_site",
+      "url": "https://icl.utk.edu/parsec/",
+      "timestamp_utc": "2026-10-18T07:51:03.210541+00:00",
+      "scientific_verification": "UNVERIFIED_SOURCE",
+      "http_status": 200,
+      "final_url": "https://icl.utk.edu/parsec/",
+      "content_type": "text/html; charset=UTF-8",
+      "bytes_read": 148941,
+      "truncated": false,
+      "response_sha256": "7f8931123bdb718ff6d7ef61ce6d1c6ffca0d2c5ae9500d0bb10015b1722da68",
+      "outcome": "RETRIEVED_NOT_REVIEWED"
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "protocol_status": "DRAFT_P0_BLOCKED",
+  "master_seed_string": "vehicle-soc-dag-scheduler-cleanroom-soc-v1",
+  "resources": [
+    "CPU0",
+    "CPU1",
+    "CPU2",
+    "CPU3",
+    "GPU0",
+    "NPU0"
+  ],
+  "non_preemptive": true,
+  "main_grid": {
+    "scene": [
+      "COCKPIT",
+      "ADAS",
+      "FUSION"
+    ],
+    "load": [
+      "light",
+      "medium",
+      "near-saturation"
+    ],
+    "size": [
+      8,
+      16
+    ]
+  },
+  "main_h_loads": [
+    "medium",
+    "near-saturation"
+  ],
+  "l_reference": "B2",
+  "h_relative_benefit_min": 0.1,
+  "h_absolute_difference_ci95_low_strict_min": 0.0,
+  "mapping_difference_ci95_low_strict_min": 0.0,
+  "l_ratio_max_each_condition": 1.1,
+  "l_ratio_ci95_upper_max_each_condition": 1.1,
+  "engineering_decision_p95_ms_max": 2.0,
+  "bootstrap_replicates": 10000,
+  "analysis_random_seed": 20261018,
+  "bootstrap_unit": "paired seed cluster shared across all conditions",
+  "ci": "percentile 95%, quantile type 7",
+  "quantile_definition": "Hyndman-Fan type 7",
+  "maximum_mechanism_revisions": 1,
+  "revision_h_non_degradation_delta": 0.0,
+  "revision_h_non_degradation_ci95_upper_max": 0.0,
+  "development_split": {
+    "search_indices": [
+      0,
+      10
+    ],
+    "precheck_indices": [
+      10,
+      20
+    ]
+  },
+  "literature_required_min": 6,
+  "literature_required_ids": [
+    "heft_cpop",
+    "peft",
+    "ds3"
+  ],
+  "user_thresholds_may_be_relaxed": false,
+  "legacy_results_allowed_as_new_evidence": false,
+  "b5_progression_rule_draft": "block B5_SUPERIOR; report NO_CONFIRMED_DIFFERENCE without equivalence claim",
+  "scientific_executions": []
+}

@@ -1,0 +1,25 @@
+{
+  "runs": [
+    {
+      "identity": "first_setup_test_run",
+      "command": "bash scripts/setup_environment.sh",
+      "timestamp_utc": "NOT RECORDED",
+      "tests_executed": 16,
+      "passed": 15,
+      "failed": 1,
+      "failure": "test_p0_block_is_explicit_and_only_literature_prerequisite expected two literature errors but STATUS.md had not yet been created",
+      "diagnosis": "test improperly depended on transient repository assembly state",
+      "correction": "use an isolated empty repository fixture to test missing-file reporting; add STATUS.md",
+      "scientific_evidence": false
+    },
+    {
+      "identity": "post_correction_unit_run",
+      "command": ".venv/bin/python -m unittest discover -s tests -v",
+      "timestamp_utc": "NOT RECORDED",
+      "tests_executed": 16,
+      "passed": 16,
+      "failed": 0,
+      "scientific_evidence": false
+    }
+  ]
+}
