@@ -1,0 +1,22 @@
+{
+  "scope": "Audited DRAFT design package checkpoint; receipt committed subsequently",
+  "git_commit": "9b57bfdf893091fcb25f72f9a503347454233492",
+  "branch": "work",
+  "remote": "https://github.com/JINAOLONG/soc.git",
+  "push_command": [
+    "git",
+    "push",
+    "origin",
+    "HEAD:refs/heads/work"
+  ],
+  "push_exit_code": 0,
+  "push_stdout": "",
+  "push_stderr": "To https://github.com/JINAOLONG/soc.git\n   d016ad8..9b57bfd  HEAD -> work\n",
+  "remote_verify_exit_code": 0,
+  "remote_verify_stdout": "9b57bfdf893091fcb25f72f9a503347454233492\trefs/heads/work\n",
+  "remote_matches": true,
+  "worktree_at_checkpoint": "CLEAN",
+  "design_status": "DRAFT_UNAPPROVED",
+  "human_decision_groups": 10,
+  "scientific_workloads_run": 0
+}

@@ -21,5 +21,7 @@
   "artifact_manifest": "checkpoints/P2_design_artifact_manifest.json",
   "document_check_report": "reports/P2_design/document_checks.json",
   "final_audit": "reports/P2_design/final_audit.md",
-  "final_enclosing_git_head_command": "git rev-parse HEAD"
+  "final_enclosing_git_head_command": "git rev-parse HEAD",
+  "git_receipt": "reports/P2_design/git_checkpoint.json",
+  "audited_draft_checkpoint": "9b57bfdf893091fcb25f72f9a503347454233492"
 }

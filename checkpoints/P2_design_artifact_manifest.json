@@ -25,7 +25,7 @@
     },
     {
       "path": "STATUS.md",
-      "sha256": "d902a865381cea8877a714181712161b33b796a7d7752094559253c76ddf000b"
+      "sha256": "a0812f0c6018aaa72572f84c98131254a811958103a05934cbe39a409cd40c15"
     },
     {
       "path": "checkpoints/.gitkeep",
@@ -785,11 +785,11 @@
     },
     {
       "path": "reports/P2_design/delivery_index.json",
-      "sha256": "e65166749b198c8b652aff1ca7101c5faf1ac3760bcaa9fc90f1586f1f6f5a77"
+      "sha256": "4bd7d3b1427271ea76c089b0002503c90652e15794bae95e896befa36635f331"
     },
     {
       "path": "reports/P2_design/design_status.json",
-      "sha256": "a15f8514fceb2bcd651568f0e6f6725dd7f8ecc510faba16f0fd31a490c07b52"
+      "sha256": "0b2d160574822e53e9cffb3c2acc183e89ad107185fbd4cc5d04263da15a838a"
     },
     {
       "path": "reports/P2_design/document_checks.json",
@@ -802,6 +802,10 @@
     {
       "path": "reports/P2_design/final_audit.md",
       "sha256": "6690602a4307cc08d520733a6209aa5373b323870a8b2f3067c9fa10bf3fffd3"
+    },
+    {
+      "path": "reports/P2_design/git_checkpoint.json",
+      "sha256": "2b99c79d717b44b9c5dff12761eaad49db1f2bbdbf9feccd8027aef5212de9be"
     },
     {
       "path": "reports/P2_design/previous_STATUS.md",
