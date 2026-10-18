@@ -24,7 +24,7 @@
     },
     {
       "path": "STATUS.md",
-      "sha256": "6e3886c22601acea53e8ecb332188afd349138a3344c0c76d58c47979b3fe65b"
+      "sha256": "20a2bc236f409e6b14d56b24a4c30a991a9dea8bab7190306c2cb21f109163d4"
     },
     {
       "path": "configs/calibration/.gitkeep",
@@ -135,12 +135,24 @@
       "sha256": "b5749460c0339493305ba09c36ee7d6d381f7ec847aba99d7ead89f76469c1ca"
     },
     {
+      "path": "reports/P0_clean_clone_reproduction.json",
+      "sha256": "665b748259689eea554444bf48a944b202c6ca7d49c97e220ea29196bed53ba8"
+    },
+    {
+      "path": "reports/P0_configuration_status.json",
+      "sha256": "2ed1e0091a738f7f667fcf6389df705872757c5e52315e4a99b2d49c3ceef0e0"
+    },
+    {
       "path": "reports/P0_environment.json",
       "sha256": "86e8525b93db38b7d7c6e937dc7d1ac75b0f18174a34e576588180dcbddeba47"
     },
     {
       "path": "reports/P0_environment.md",
       "sha256": "3a42bc15ee26c592b31c9293c32b49ea291a41ede611ea6e589b348cc6ef4f07"
+    },
+    {
+      "path": "reports/P0_final_git_audit.json",
+      "sha256": "e5f2a9ffc27143cbb53a4c8c818435879f86476af2b2806d4d018237fb5196cb"
     },
     {
       "path": "reports/P0_heft_crossref.json",
@@ -153,6 +165,10 @@
     {
       "path": "reports/P0_protocol_audit.md",
       "sha256": "5f6d1f9463aa46c10eb17e04fab2010e64786e8ae439c92874daa8bdd2ff368e"
+    },
+    {
+      "path": "reports/P0_push_checkpoint.json",
+      "sha256": "8fd819c3040e20c977ef231be1afe70ffeeb0d7c31a0557c58aabc725d899f97"
     },
     {
       "path": "reports/P0_repository_audit.txt",
@@ -184,7 +200,7 @@
     },
     {
       "path": "reports/blocker_or_failure_report.md",
-      "sha256": "6dce05240934c2d10ebb8502c3f463b6b7ac5e518cc6e54723a8796f42730ecc"
+      "sha256": "288e8b307100f834de8fc1ce6c0ebabbfc4589d3fd3cb273624e0ba70fe2483c"
     },
     {
       "path": "reports/evidence_matrix.md",
@@ -196,7 +212,7 @@
     },
     {
       "path": "reports/final_report.md",
-      "sha256": "f3424503a9aa5c02c707d46522a6c9bbad7c2bef58f2b53ad74552d338984fcd"
+      "sha256": "6dba3fe8b9a776432e6dea80f15cdf9de5f79a633b11d888a8731220c407e67b"
     },
     {
       "path": "reports/limitations.md",
@@ -208,7 +224,7 @@
     },
     {
       "path": "reports/reproducibility_report.md",
-      "sha256": "51628599217d6d71233842f2860b78a960d9f5eaec8d601190e50a38328c20ea"
+      "sha256": "50f706b78f4972b19ed6037941c92e253cd513c972ebc35dbc8d216e41ad7e4a"
     },
     {
       "path": "scripts/fetch_primary_sources.py",

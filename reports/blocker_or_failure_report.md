@@ -5,8 +5,8 @@ STOP_REASON=Mandatory HEFT/CPOP and PEFT primary texts unavailable; 4 reviewed o
 AFFECTED_CLAIMS=Faithful B3/B4/B5 definitions and every downstream scientific claim
 VALID_EVIDENCE_REMAINING=Repository audit, four scoped primary reviews, seed derivation metadata, tested governance tooling and recorded access responses
 INVALIDATED_EVIDENCE=NONE; no scientific evidence has been generated
-GITHUB_COMMIT=Resolve live HEAD with git rev-parse HEAD; source checkpoint recorded after first commit
-GITHUB_PUSH_STATUS=NOT ATTEMPTED at this report's initial creation
+GITHUB_COMMIT=4d67240c827bdfeaae7831ecc3fd76a3eef36d5a (tested source checkpoint; final report-only closure HEAD resolves live)
+GITHUB_PUSH_STATUS=SUCCESS (source checkpoint pushed and remote SHA verified; see P0_push_checkpoint.json)
 NEXT_SAFE_ACTION=Obtain lawfully accessible HEFT/CPOP and PEFT original papers, review formulas with page references, complete P0 and rerun audit before P1
 
 HEFT correct DOI is 10.1109/71.993206 (confirmed through Crossref); PEFT is

@@ -1,0 +1,18 @@
+{
+  "status": "DRAFT_SAVED_AND_READ_BACK",
+  "fields_saved": [
+    "install_script",
+    "start_skill",
+    "network.allowed_domains"
+  ],
+  "custom_source_domain_count": 18,
+  "preserved_presets": [
+    "package_managers"
+  ],
+  "new_secret_requirements": 0,
+  "new_runtime_variable_requirements": 0,
+  "publication": "NOT VERIFIED",
+  "new_cloud_task_restore": "NOT VERIFIED",
+  "install_script": "#!/usr/bin/env bash\nset -euo pipefail\ncd /workspace/soc\nbash scripts/setup_environment.sh\n",
+  "activation_instruction": "User reviews and saves settings, then publishes through environment UI; no input approval requested."
+}

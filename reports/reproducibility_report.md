@@ -1,17 +1,41 @@
-# Reproducibility report — before checkpoint clone test
+# Reproducibility report
 
-P0 setup has been executed and repeated in /workspace/soc. Installation creates
-a local .venv, pins setuptools 80.9.0, installs the editable package, verifies
-four primary PDFs and runs the standard-library tests. Final tooling checks and
-stage-entry exit codes are in P0_checks_001.json. P0 returns 2 / BLOCKED; P1,
-validation and formal entry also refuse execution before any workload generation.
+**PASS FOR P0 TOOLING ONLY.** Tested GitHub source checkpoint:
+`4d67240c827bdfeaae7831ecc3fd76a3eef36d5a` on `work`. No scientific workflow or new-cloud-task
+publication is claimed. Full commands, outputs and exit statuses are in
+P0_clean_clone_reproduction.json.
 
-Seed generation is deterministic and repeatable: the second invocation verifies
-the existing file without rewriting it. Metadata SHA256 is recorded in the P0
-audit. No absolute /tmp path is used by repository code or saved setup commands.
-Reviewed sources can be fetched from their recorded URLs and must match SHA256;
-the ignored cache is a convenience, not the authority for scientific claims.
+A fresh `git clone --branch work --single-branch
+https://github.com/JINAOLONG/soc.git` was installed in a new temporary checkout.
+It had no literature cache before setup. The repository's actual setup script
+installed the package, restored all four primary PDFs from their public URLs and
+verified their recorded SHA256. The 17 governance tests completed successfully.
+P0 check-only audit returned its expected exit 2 / BLOCKED. The 68-file checkpoint
+inventory verified with missing=0 and mismatch=0. `git status --porcelain` after
+installation was empty. No simulator or scientific seed partition was executed.
 
-A clean local clone installation/reproduction check is pending the first commit.
-Remote clone reproducibility and publication into a new cloud task are NOT YET
-VERIFIED. P1 simulation reproduction is NOT APPLICABLE because no engine exists.
+P0 setup was also repeated in /workspace/soc. Seed generation verifies existing
+metadata without rewriting it. Build-generated egg-info and bytecode are excluded
+from source identity. Source/configuration digest at this checkpoint:
+`d222e1dae96743c890bba98abb28acea5321c0a5a4d504e0e8d458476d6add0d`.
+
+The raw original request is archived byte-for-byte, including CRLF line endings.
+The initial plain Git whitespace check flagged those CRLF endings; the
+CRLF-aware `git -c core.whitespace=cr-at-eol diff --check HEAD^ HEAD` passed.
+The imported request was not rewritten to satisfy a formatting check. Initial
+setup's one test failure is retained in P0_test_history.json, and later complete
+17-test outputs are in P0_checks_001.json and P0_checks_002.json.
+
+Temporary clone paths in the audit are execution provenance only. All setup,
+review notes, source identities and fetch code are tracked in soc; none uses a
+future /tmp dependency. Source-host changes/unavailability cause an explicit
+hash/access failure rather than substitution. Source PDFs remain third-party
+copyrighted works in ignored cache, reproducible by URL and SHA256.
+
+Normal GitHub push of this checkpoint succeeded, and ls-remote independently
+matched its SHA (P0_push_checkpoint.json). Evidence-closure commits only update
+reports/STATUS/manifests; their final live SHA can be read with git rev-parse HEAD.
+The current cloud configuration draft contains install_script, start_skill and
+18 explicit source-domain additions while preserving package-manager presets.
+Draft persistence is confirmed; publication and restore in a separate cloud task
+are NOT VERIFIED. The user reviews/saves the settings and publishes through the UI.

@@ -49,7 +49,13 @@ and limitations.md. No evidence-free performance plots are produced.
 Run bash scripts/setup_environment.sh, then the documented lightweight tests and
 P0 audit. The audit is supposed to report BLOCKED until original-source reviews
 are completed. Save/verify the evidence inventory with scripts/hash_artifacts.py.
-Detailed clone and push results will be added after the tested source checkpoint.
+A fresh GitHub clone at source checkpoint `4d67240c827bdfeaae7831ecc3fd76a3eef36d5a` completed setup,
+restored four primary PDFs with SHA256 verification, passed 17 tests, returned
+expected P0 exit 2, verified the 68-file checkpoint inventory and left a clean
+checkout. The checkpoint was pushed normally and its remote SHA was verified.
+See P0_clean_clone_reproduction.json and P0_push_checkpoint.json. Final report-only
+closure commits retain the same source/configuration hash. Publication into a
+new cloud task remains NOT VERIFIED.
 
 To resume the scientific mainline, obtain lawful primary HEFT/CPOP and PEFT
 papers, review formulas/pages, complete the minimum six-source matrix, and pass
@@ -58,8 +64,10 @@ reserved partitions. Environment scripts/network instructions are saved as a
 draft separately; draft persistence does not establish publication.
 
 The tracked report cannot embed its own enclosing commit hash. GIT_HEAD below
-is resolved live by `git rev-parse HEAD`; checkpoint provenance and remote
-verification are recorded separately when available.
+is the actually reproduced and remote-verified source checkpoint `4d67240c827bdfeaae7831ecc3fd76a3eef36d5a`.
+It is not claimed to be the enclosing report-only closure commit. Read the final
+live delivery SHA with `git rev-parse HEAD`; all code/config/source identities
+are recorded in the linked audit files.
 
 ```text
 PROJECT_NAME=soc
@@ -103,8 +111,10 @@ FORMAL_EVALUATION_ACCESSED=NO
 LEGACY_RESULTS_USED_AS_NEW_EVIDENCE=NO
 GITHUB_REMOTE=https://github.com/JINAOLONG/soc.git
 GITHUB_BRANCH=work
-GIT_HEAD=RESOLVE_WITH_git_rev-parse_HEAD
-GITHUB_PUSH_STATUS=NOT ATTEMPTED
-REPRODUCIBILITY_AUDIT_PASS=PENDING_CLONE_CHECK
+GIT_HEAD=4d67240c827bdfeaae7831ecc3fd76a3eef36d5a
+GIT_HEAD_SCOPE=REPRODUCED_AND_REMOTE_VERIFIED_SOURCE_CHECKPOINT
+CURRENT_DELIVERY_HEAD_COMMAND=git rev-parse HEAD
+GITHUB_PUSH_STATUS=SUCCESS_FOR_RECORDED_SOURCE_CHECKPOINT
+REPRODUCIBILITY_AUDIT_PASS=YES_FOR_P0_TOOLING_ONLY
 NEXT_SAFE_ACTION=Obtain and review HEFT/CPOP and PEFT originals; finish P0 audit before P1
 ```
