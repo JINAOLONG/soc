@@ -1,0 +1,164 @@
+docs/baseline_spec.md:27:PEFT OCT excludes availability while EFT includes partial-schedule availability.
+docs/user_request.txt:449:git push --force-with-lease
+docs/user_request.txt:1656:paired bootstrap 95% CI
+docs/user_request.txt:1712:paired seed bootstrap。
+docs/user_request.txt:2514:dirty status
+docs/user_request.txt:2543:无法解释的 dirty scheduler source。
+docs/user_request.txt:2545:如果 dirty：
+src/soc/simulator/engine.py:47:        while True:
+src/soc/validation/governance.py:38:            while True:
+src/soc/validation/governance.py:164:        dirty = subprocess.check_output(
+src/soc/validation/governance.py:167:        if dirty:
+src/soc/validation/governance.py:168:            raise ProtocolError("relevant source/configuration is dirty")
+src/soc/scheduler/kernels.py:138:            release = view.now + max(0.0, estimate-running.elapsed)
+src/soc/scheduler/kernels.py:139:            if release > view.now:
+src/soc/scheduler/kernels.py:140:                occupied = ((view.now, release),)
+src/soc/scheduler/kernels.py:171:def choose(view: Observation, method: str) -> Proposal | None:
+docs/P2_design/P2_generation_spec_v1.json:18:    "hash": "SHA-256 over exact canonical bytes; identity preimage excludes its own ID/hash and timestamps; hash raw files as raw bytes independently"
+docs/P2_design/P2_generation_spec_v1.json:38:    "exclusions": [
+docs/P2_design/P2_generation_spec_v1.json:80:    "no_warmup_exclusion": true
+docs/P2_design/P2_generation_spec_v1.json:83:    "reference": "C_est = max_root_to_sink sum_node(min_compatible estimated_duration_ms); excludes communication; DAG dynamic program, no scheduling outcome",
+docs/P2_design/P2_resource_profiles_v1.json:21:  "incompatible": "JSON null and excluded from compatible_resources; never infinity or zero duration",
+docs/P2_design/P2_decision_dependency_map.md:30:| D07 | M1/M2及其混杂/信息边界问题 | D01–D04定义机制和可用输入；D05实际比较方法；D06有效性分类 | mapping_criterion_options.md:7–24 |
+docs/P2_design/P2_mapping_opportunity_decision_table_v1.md:16:| CI | 每条件p的seed均值及宏均值的95% percentile CI | 同左 | 沿用paired-seed 10,000/type-7/分析seed20261018，不另创算法 |
+docs/P2_design/P2_mapping_opportunity_decision_table_v1.md:36:独立复算，全部M2配对完整。不得临时缩条件、删零机会seed或用剩余样本继续。
+docs/P2_design/P2_mapping_opportunity_decision_table_v1.md:56:bootstrap索引digest、M2原始配对/描述、条件与宏结果、缺失诊断、选择收据、规则及输入hash。
+docs/P2_design/P2_complete_design_proposal_v1.md:29:| 指标/统计 | `docs/metric_spec.md:3–52`、`docs/statistical_protocol.md:3–47`：seed 单位、10,000 paired bootstrap、固定分析 seed、type-7、H/L 及 P3 mapping 门槛 |
+docs/P2_design/P2_complete_design_proposal_v1.md:184:选择规则SEL-v1只按D06 B2负载/可行性，先A后B；不以M1/M2效果挑配置，选后机会失败不回退
+docs/P2_design/P2_complete_design_proposal_v1.md:232:## D07 — M1机制观察与M2描述（PROPOSED / UNRESOLVED）
+docs/P2_design/P2_complete_design_proposal_v1.md:234:原始问题：M1/M2、可观察量、对照边界、单位、条件/seed分母。
+docs/P2_design/P2_complete_design_proposal_v1.md:235:推荐M1作为局部机制证据、M2作为补充描述，两者不能作为候选算法。
+docs/P2_design/P2_complete_design_proposal_v1.md:247:busy release=now+max(0,estimate−elapsed)、真实已完成前驱的目的地就绪，串行追加每个
+docs/P2_design/P2_complete_design_proposal_v1.md:275:M2用同workload的B1/B3/B4/B5逐一配对B2；每seed/condition报告H-DMR差（比例点）、
+docs/P2_design/P2_complete_design_proposal_v1.md:278:可用既有paired-seed CI，不能按100个服务或数千view重采样。B3/B4或B2/B5同时改变
+docs/P2_design/P2_complete_design_proposal_v1.md:279:ordering/lookahead/mapping，M2**不能单独支持映射独立因果贡献**，也不替代P3 A3–A1检验。
+docs/P2_design/P2_complete_design_proposal_v1.md:280:待答：是否批准K/截断/基准/局部L约束/目标、分母及M1+M2解释边界？
+docs/P2_design/P2_complete_design_proposal_v1.md:291:还是拒绝并给另一套完整规则？批准条件覆盖/缺失/稳定性/paired-seed实现pin吗？
+docs/P2_design/P2_human_approval_checklist.md:15:| D07 | [ ] | [ ] | [ ] | [ ] | UNRECORDED | M1/M2/组合、观察量、反事实控制、单位/分母 |
+docs/P2_design/P2_human_approval_checklist.md:17:| D09 | [ ] | [ ] | [ ] | [ ] | UNRECORDED | runner/复用/恢复/retry/dirty及开始结束、中断记录 |
+docs/P2_design/P2_D01_D10_approval_checklist_v1.md:16:| D07 | [ ] | [ ] | [ ] | [ ] | 批准B2公共view、固定前4 ready、局部greedy/枚举/L约束/H均值目标、eligible分母及M2非因果解释吗？ |
+docs/P2_design/P2_D01_D10_traceability.csv:29:D07,a585c5bba0215c1ac4b2f126f5a752ae443b56b4,docs/P2_design/human_decisions.md,27–29,HUMAN_DECISION_REQUIRED,原始完整问题与编号,无法定义“观察到机会”、分母或合法反事实，D08无法完成。,D07：选M1、M2还是明确组合？请给观察量、控制/视窗、信息边界、单位/分母和seed/condition摘要；不新增正式scheduler。,ENGINEERING_SUGGESTION,NO; conflicting choices not authorized
+docs/P2_design/P2_D01_D10_traceability.csv:30:D07,a585c5bba0215c1ac4b2f126f5a752ae443b56b4,docs/user_request.txt,§32 (1115–1157);§43开头 (1431起);§100 (2730起),HUMAN_DECISION_REQUIRED,解释例非科学证据与机制假设,无法定义“观察到机会”、分母或合法反事实，D08无法完成。,D07：选M1、M2还是明确组合？请给观察量、控制/视窗、信息边界、单位/分母和seed/condition摘要；不新增正式scheduler。,ENGINEERING_SUGGESTION,NO; conflicting choices not authorized
+docs/P2_design/P2_D01_D10_traceability.csv:31:D07,a585c5bba0215c1ac4b2f126f5a752ae443b56b4,docs/model_spec.md,48–58,HUMAN_DECISION_REQUIRED,可观测边界与同输入,无法定义“观察到机会”、分母或合法反事实，D08无法完成。,D07：选M1、M2还是明确组合？请给观察量、控制/视窗、信息边界、单位/分母和seed/condition摘要；不新增正式scheduler。,ENGINEERING_SUGGESTION,NO; conflicting choices not authorized
+docs/P2_design/P2_D01_D10_traceability.csv:32:D07,a585c5bba0215c1ac4b2f126f5a752ae443b56b4,docs/P2_design/mapping_criterion_options.md,7–24,HUMAN_DECISION_REQUIRED,M1/M2原始方案与混杂风险,无法定义“观察到机会”、分母或合法反事实，D08无法完成。,D07：选M1、M2还是明确组合？请给观察量、控制/视窗、信息边界、单位/分母和seed/condition摘要；不新增正式scheduler。,ENGINEERING_SUGGESTION,NO; conflicting choices not authorized
+docs/P2_design/P2_D01_D10_traceability.csv:34:D08,a585c5bba0215c1ac4b2f126f5a752ae443b56b4,docs/statistical_protocol.md,3–16;34–47,HUMAN_DECISION_REQUIRED,paired seed、判据先登记、完整性,无法输出有可审计意义的SUPPORTED/NOT_SUPPORTED/INCONCLUSIVE，也不能判P2 PASS。,D08：批准哪种完整机会判据？请填seed/条件聚合、稳定性和不确定性、支持/明确否定/不足规则及invalid/缺失处置，保持既有统计方法和H/L门槛。,SOURCE_REQUIREMENT + LOGICAL_INFERENCE,NO; conflicting choices not authorized
+docs/P2_design/P2_D01_D10_traceability.csv:37:D09,a585c5bba0215c1ac4b2f126f5a752ae443b56b4,docs/P2_design/human_decisions.md,33–36,HUMAN_DECISION_REQUIRED,原始完整问题与编号,无科学入口、可靠恢复/重复检测或实际退出码/生命周期记录，不能执行P2。,D09：选R1还是R2？请明确复用/不完整/失败与retry政策、P2源码dirty控制，以及start/end/中断/未启动的记录与原子完成规则。,ENGINEERING_SUGGESTION,NO; conflicting choices not authorized
+docs/P2_design/P2_D01_D10_traceability.csv:38:D09,a585c5bba0215c1ac4b2f126f5a752ae443b56b4,scripts/run_pipeline.py,26–39,HUMAN_DECISION_REQUIRED,当前calibration未实现,无科学入口、可靠恢复/重复检测或实际退出码/生命周期记录，不能执行P2。,D09：选R1还是R2？请明确复用/不完整/失败与retry政策、P2源码dirty控制，以及start/end/中断/未启动的记录与原子完成规则。,ENGINEERING_SUGGESTION,NO; conflicting choices not authorized
+docs/P2_design/P2_D01_D10_traceability.csv:39:D09,a585c5bba0215c1ac4b2f126f5a752ae443b56b4,src/soc/validation/governance.py,181–208,HUMAN_DECISION_REQUIRED,阶段/partition守卫,无科学入口、可靠恢复/重复检测或实际退出码/生命周期记录，不能执行P2。,D09：选R1还是R2？请明确复用/不完整/失败与retry政策、P2源码dirty控制，以及start/end/中断/未启动的记录与原子完成规则。,ENGINEERING_SUGGESTION,NO; conflicting choices not authorized
+docs/P2_design/P2_D01_D10_traceability.csv:40:D09,a585c5bba0215c1ac4b2f126f5a752ae443b56b4,docs/user_request.txt,§§90–92 (2506起),HUMAN_DECISION_REQUIRED,run身份与完整性,无科学入口、可靠恢复/重复检测或实际退出码/生命周期记录，不能执行P2。,D09：选R1还是R2？请明确复用/不完整/失败与retry政策、P2源码dirty控制，以及start/end/中断/未启动的记录与原子完成规则。,ENGINEERING_SUGGESTION,NO; conflicting choices not authorized
+docs/P2_design/P2_D01_D10_traceability.csv:41:D09,a585c5bba0215c1ac4b2f126f5a752ae443b56b4,docs/P2_design/runner_and_schema.md,6–44,HUMAN_DECISION_REQUIRED,R1/R2、状态机与恢复提案,无科学入口、可靠恢复/重复检测或实际退出码/生命周期记录，不能执行P2。,D09：选R1还是R2？请明确复用/不完整/失败与retry政策、P2源码dirty控制，以及start/end/中断/未启动的记录与原子完成规则。,ENGINEERING_SUGGESTION,NO; conflicting choices not authorized
+docs/P2_design/P2_D01_D10_traceability.csv:42:D09,a585c5bba0215c1ac4b2f126f5a752ae443b56b4,docs/P2_design/scientific_artifacts.schema.draft.json,267–330,HUMAN_DECISION_REQUIRED,仅一个timestamp的invocation草案,无科学入口、可靠恢复/重复检测或实际退出码/生命周期记录，不能执行P2。,D09：选R1还是R2？请明确复用/不完整/失败与retry政策、P2源码dirty控制，以及start/end/中断/未启动的记录与原子完成规则。,ENGINEERING_SUGGESTION,NO; conflicting choices not authorized
+docs/P2_design/P2_scientific_parameter_registry_v1.json:12:  "count_scope": "Named scientific parameter groups, not individual numeric/categorical cells and not the 10 decision groups. All concrete proposals remain unapproved. Fixed existing thresholds/CI/seeds excluded; engineering-only runner/schema choices excluded.",
+docs/P2_design/P2_scientific_parameter_registry_v1.json:252:      "name": "M2_measurements",
+docs/P2_design/P2_runner_schema_review_v1.md:24:committed clean的是precheck/validation/formal。推荐在未来P2也拒绝相关dirty/untracked输入，
+docs/P2_design/P2_runner_schema_review_v1.md:25:允许报告输出自然变脏但不得将它们计为代码。若拒绝此建议，必须另审可完整恢复dirty字节/
+docs/P2_design/P2_runner_schema_review_v1.md:26:补丁hash的方案，本版不隐式启用dirty执行。Git hash不能代替实际文件SHA。
+docs/P2_design/P2_runner_schema_review_v1.md:36:记录process_started、exit_code、termination_kind、signal/exception、stdout/stderr与raw输出
+docs/P2_design/P2_runner_schema_review_v1.md:37:引用。spawn失败process_started=false、started_at/exit=null；中断未收集exit时也为null，
+docs/P2_design/P2_runner_schema_review_v1.md:61:workload identity及payload/input hash、source file manifest/Git/dirty policy、model/metric/
+docs/P2_design/P2_runner_schema_review_v1.md:88:| source identity | Git full hash、actual branch、dirty status、相关文件清单SHA、generator/model/scheduler/validator/analysis各实现hash、Python版本 |
+docs/P2_design/P2_runner_schema_review_v1.md:91:| invocation | exact argv数组/cwd/host，planned_at/started_at/ended_at、monotonic_elapsed_ns、process_started、exit_code、signal/exception/termination_kind |
+docs/P2_design/P2_runner_schema_review_v1.md:95:| diagnostic refs | 公共snapshot/ready digest、M1基准/assignment/局部约束/Δ/g、eligible分母/hits、M2配对ref、版本；不得把true private字段混入snapshot |
+docs/P2_design/v2/P2_D01_D10_traceability_v2.csv:35:D07,V2-F01;V2-F04,SP25;SP26;SP27;SP33;SP34;SP35;SP37,EXISTING_REQUIREMENT_OR_HISTORICAL_OPTION,docs/P2_design/mapping_criterion_options.md,7–24,2c63c2e3968eb8a365081b8ce65a7e53101a05b80865b36f4059f6361a56f388,UNAPPROVED,M1/M2原始方案与混杂风险; new numerical values not upgraded to source support
+docs/P2_design/v2/P2_D01_D10_traceability_v2.csv:38:D08,V2-F01;V2-F04;V2-F05;V2-F06,SP28;SP29;SP30;SP31;SP32;SP36;SP39,EXISTING_REQUIREMENT_OR_HISTORICAL_OPTION,docs/statistical_protocol.md,3–16;34–47,f9c0eeb6e76f68330ba3e5d8d90e58d175c3947a1948bb41b26ad50dbc041e8a,UNAPPROVED,paired seed、判据先登记、完整性; new numerical values not upgraded to source support
+docs/P2_design/v2/P2_D01_D10_approval_checklist_v2.md:13:| D07 | UNAPPROVED | M1R_PATH_V2: original2-4 ready enumeration; target<=2 pending arrivedH DAGs<=16nodes each; fixed public suffix EFT,<=36nodes/1296maps; L cap=max(baseline finish,deadline); exact snapshot scope/dedup/replay exclusion; no actual scheduler feedback. | 是否批准M1R的目标选择、固定suffix、局部L slack、边界/截断/去重和记录范围？ |
+docs/P2_design/v2/P2_D01_D10_approval_checklist_v2.md:14:| D08 | UNAPPROVED | FINE(.01,.01) vs COARSE(.05,.05),8/10 support and<=2/10 absence remain undecided; M1R hits/F,F/E; proposed positive coverage>=4/5,negative=1,all12conditions/10seeds; samepaired10000,type7,20261018; selected calibration descriptive only. | 选择FINE还是COARSE（或提出明确替代）？是否批准4/5正覆盖、1阴性覆盖、三态及条件性解释？ |
+docs/P2_design/scientific_artifacts.schema.draft.json:58:        "dirty_status",
+docs/P2_design/scientific_artifacts.schema.draft.json:69:        "dirty_status": {
+docs/P2_design/scientific_artifacts.schema.draft.json:273:        "process_started",
+docs/P2_design/scientific_artifacts.schema.draft.json:293:        "process_started": {
+docs/P2_design/runner_and_schema.md:18:source Git commit 与 dirty status 必须实记。建议进一步要求 P2 执行前 relevant source/config
+docs/P2_design/runner_and_schema.md:20:precheck/validation/formal，不能谎称当前已普遍强制 P2 洁净。若允许 calibration dirty，
+docs/P2_design/runner_and_schema.md:88:| 开始/结束/exit/失败 | invocation有process_started、exit_code、stdout/stderr/error | 只有单个timestamp，未分别规定started_at/ended_at或等价字段；spawn失败/中断时哪些字段可缺、时间先后语义未明确 | schema草案267–330；D09/D10。字段名是待审补充建议，不已注册 |
+docs/P2_design/mapping_criterion_options.md:7:| 要素 | M1：同一状态的机制诊断（提案） | M2：已登记基线差异（提案） | 必须决定 |
+docs/P2_design/mapping_criterion_options.md:15:| 不确定性 | 描述性诊断或已有 paired-seed bootstrap；不能选看起来最好的统计路径 | 若使用 CI，沿用原协议 paired-seed、既定 replicate/seed/quantile，不引入新检验 | 是否推断及具体对比/判据须观察前批准；D08 |
+docs/P2_design/mapping_criterion_options.md:19:没有任何 branch 算法在本轮获准实现。M2 易与现有可审核指标对应，但 B2 与 PEFT/HEFT
+docs/P2_design/mapping_criterion_options.md:22:**建议待审：**优先审定 M1 的完整机制定义，M2 作为交叉描述，不能单独作为映射因果或
+docs/P2_design/mapping_criterion_options.md:49:| 基线/反事实 | docs/baseline_spec.md:14–20；本文件:9–11为未批准M1/M2方案 | D05方法子集、D07控制/视窗；不产生新正式baseline |
+docs/P2_design/human_decisions.md:27:7. **D07（B3，E01/E03/E04/E07；P/U）**：采用 M1 同状态机制诊断、M2 基线配对描述，
+docs/P2_design/human_decisions.md:29:   每 seed/condition 分母/summary。M2 存在排序与映射混杂，不能单独作 mapping 因果结论。
+docs/P2_design/human_decisions.md:32:   无效/缺失处置。若用 CI，沿用既有 paired-seed 方法；不能新设 CI 方法或挪用 H/L 门槛。
+docs/P2_design/human_decisions.md:35:   停止且无自动 retry 的提案？另请明确 P2 源码 dirty 的允许/洁净控制。更严格洁净建议
+docs/P2_design/human_decisions.md:205:1. **编号与原始问题**：D07；目录原句：“选择M1机制诊断、M2基线描述或组合，确定观察量、反事实控制/视窗、信息边界和每seed/condition汇总。” 原完整问题见上方同编号清单。
+docs/P2_design/human_decisions.md:207:3. **原始需求依据**：docs/user_request.txt:§32 (1115–1157);§43开头 (1431起);§100 (2730起)（解释例非科学证据与机制假设）；docs/model_spec.md:48–58（可观测边界与同输入）；docs/P2_design/mapping_criterion_options.md:7–24（M1/M2原始方案与混杂风险）。
+docs/P2_design/human_decisions.md:210:6. **可行选项与技术含义**：M1 同公开状态机制诊断：固定同一observation，对EFT放置和合法替代作预注册诊断；M2 基线配对描述：使用现有获批方法子集、同输入和既有指标；M1+M2 组合：机制诊断加描述性交叉核对。
+docs/P2_design/human_decisions.md:216:| M2 基线配对描述 | 排序和映射同时变化，不能作mapping单因果归因 | 保存配对inputs与全结果可复查 | 复用现有方法但仍有未批trial成本 | 只能描述差异；baseline赢家不能自动证明机会 |
+docs/P2_design/human_decisions.md:217:| M1+M2 组合 | 可解释性更充分，但须避免只呈现一致结果 | 两条链和分歧处置均须事先定义 | 通常需要两套诊断证据，预算未定 | 组合不是双倍独立样本，也不能补充未注册检验 |
+docs/P2_design/human_decisions.md:219:8. **推荐及证据**：条件性建议优先审定M1，M2作描述性交叉核对；该方法偏好是设计建议，没有实验优越性证据。 依据：原假设针对mapping机制；mapping_criterion_options.md:18–24已明确M2混杂与原建议，不构成已批准判据。
+docs/P2_design/human_decisions.md:223:12. **精确待答问题**：D07：选M1、M2还是明确组合？请给观察量、控制/视窗、信息边界、单位/分母和seed/condition摘要；不新增正式scheduler。
+docs/P2_design/human_decisions.md:231:3. **原始需求依据**：docs/statistical_protocol.md:3–16;34–47（paired seed、判据先登记、完整性）；docs/metric_spec.md:13–39（固定H/L/映射贡献阈值及各自范围）；docs/P2_design/mapping_criterion_options.md:26–42（未批准三向模板）。
+docs/P2_design/human_decisions.md:232:4. **已经确定**：seed为独立重采样单位；若用CI沿用既有paired-seed bootstrap及固定设置；稳定映射判据须在诊断选择前登记。H/L与P3映射贡献不能移作P2机会判据。
+docs/P2_design/human_decisions.md:252:1. **编号与原始问题**：D09；目录原句：“选择runner架构，裁决完成产物精确复用、失败/不完整默认停止、重试登记和P2源码dirty控制。” 原完整问题见上方同编号清单。
+docs/P2_design/human_decisions.md:256:5. **尚未确定**：R1/R2、完成复用与不完整恢复、retry条件/预算、dirty控制、明确开始/结束/中断字段和COMPLETE原子语义尚未批准或验证。
+docs/P2_design/human_decisions.md:269:12. **精确待答问题**：D09：选R1还是R2？请明确复用/不完整/失败与retry政策、P2源码dirty控制，以及start/end/中断/未启动的记录与原子完成规则。
+docs/P2_design/evidence_and_traceability.md:13:| E06 | docs/statistical_protocol.md:3–16、34–47 | paired seed 为重采样单位、10,000 次、固定分析 seed、type-7 percentile；P2 判据先于诊断选择；科学完整性要求，无不利条件/seed 删减。 |
+docs/P2_design/v2/P2_mapping_opportunity_decision_table_v2.md:22:单元配对且E/F>0、所有M1R记录独立核验、无invalid/incomplete、M2配对完整，所有定义在观察前批准。
+docs/P2_design/v2/P2_mapping_opportunity_decision_table_v2.md:23:每条件对10个seed p作注册paired bootstrap，记CI端点L/U及K=#seed(p≥f)。
+docs/P2_design/v2/P2_mapping_opportunity_decision_table_v2.md:37:bootstrap仍为10000次、analysis seed20261018、paired seed、共同索引向量、percentile95%、
+docs/P2_design/decisions.draft.json:597:      "question": "选择M1机制诊断、M2基线描述或组合，确定观察量、反事实控制/视窗、信息边界和每seed/condition汇总。",
+docs/P2_design/decisions.draft.json:621:            "establishes": "M1/M2原始方案与混杂风险"
+docs/P2_design/decisions.draft.json:636:            "label": "M2 基线配对描述",
+docs/P2_design/decisions.draft.json:644:            "label": "M1+M2 组合",
+docs/P2_design/decisions.draft.json:652:        "recommendation": "条件性建议优先审定M1，M2作描述性交叉核对；该方法偏好是设计建议，没有实验优越性证据。",
+docs/P2_design/decisions.draft.json:654:        "basis": "原假设针对mapping机制；mapping_criterion_options.md:18–24已明确M2混杂与原建议，不构成已批准判据。",
+docs/P2_design/decisions.draft.json:656:        "question": "D07：选M1、M2还是明确组合？请给观察量、控制/视窗、信息边界、单位/分母和seed/condition摘要；不新增正式scheduler。",
+docs/P2_design/decisions.draft.json:659:        "original_question": "选择M1机制诊断、M2基线描述或组合，确定观察量、反事实控制/视窗、信息边界和每seed/condition汇总。",
+docs/P2_design/decisions.draft.json:710:            "establishes": "paired seed、判据先登记、完整性"
+docs/P2_design/decisions.draft.json:723:        "facts": "seed为独立重采样单位；若用CI沿用既有paired-seed bootstrap及固定设置；稳定映射判据须在诊断选择前登记。H/L与P3映射贡献不能移作P2机会判据。",
+docs/P2_design/decisions.draft.json:788:      "question": "选择runner架构，裁决完成产物精确复用、失败/不完整默认停止、重试登记和P2源码dirty控制。",
+docs/P2_design/decisions.draft.json:826:        "unknown": "R1/R2、完成复用与不完整恢复、retry条件/预算、dirty控制、明确开始/结束/中断字段和COMPLETE原子语义尚未批准或验证。",
+docs/P2_design/decisions.draft.json:849:        "question": "D09：选R1还是R2？请明确复用/不完整/失败与retry政策、P2源码dirty控制，以及start/end/中断/未启动的记录与原子完成规则。",
+docs/P2_design/decisions.draft.json:852:        "original_question": "选择runner架构，裁决完成产物精确复用、失败/不完整默认停止、重试登记和P2源码dirty控制。",
+docs/P2_design/v2/P2_generation_spec_v2.json:66:  "key_exclusions": [
+docs/P2_design/v2/P2_generation_spec_v2.json:108:    "no_warmup_exclusion": true
+docs/P2_design/v2/P2_diagnostic_spec_v2.json:26:    "visible_running": "At most6 units. release_hat=now+max(0,estimate-elapsed). If any busy unit has elapsed>=estimate, future release cannot be placed from public info: mark COVERAGE_INSUFFICIENT, do not invent epsilon or consult true completion.",
+docs/P2_design/v2/P2_diagnostic_spec_v2.json:27:    "unselected_work": "No unselected ready node, unselected H target, L successor or future arrival is projected; report exclusions and truncation. Never interpret result as global optimality."
+docs/P2_design/v2/P2_diagnostic_spec_v2.json:46:    "initial_calendar": "For each busy unit reserve forecast[now,release_hat); idle units have no forecast busy interval. Public completed outputs remain fixed at actual known finish/resource.",
+docs/P2_design/v2/P2_diagnostic_spec_v2.json:58:    "FULL": "All ready actions fit2<=K<=4; all candidate pending H services fit<=2; complete approved target DAGs; all running releases predictable from estimates; all enumeration/projection records complete.",
+docs/P2_design/v2/P2_criterion_spec_v2.json:37:    "independent_resampling_unit": "paired registered calibration seed",
+docs/P2_design/v2/P2_criterion_spec_v2.json:51:    "each of12 selected medium/near conditions has10 paired seeds",
+docs/P2_design/v2/P2_criterion_spec_v2.json:56:    "method": "unchanged10000 paired-seed percentile95%, type7(.025,.975), fixed analysis_seed20261018",
+docs/P2_design/v2/P2_criterion_spec_v2.json:60:    "aggregate": "Within each condition resample paired seed p and take seed mean. Mandatory descriptive macro: within each seed equal-weight mean of12 selected loaded conditions, then mean over seeds; reuse same bootstrap seed-index vector for every condition/method/macro. Macro never compensates for any condition failure.",
+docs/P2_design/blocker_decisions.md:50:**选项：**M1 同一可观测决策状态的机制诊断/合法备选映射；M2 现有基线的配对差异，
+docs/P2_design/blocker_decisions.md:53:M2 复用现有指标和方法但 ordering/mapping 混杂，不能单独证明 mapping 的因果作用。
+docs/P2_design/blocker_decisions.md:56:**条件性建议：**优先审查 M1 的可审计定义，M2 作为描述性交叉检查，而非把基线赢家
+docs/P2_design/blocker_decisions.md:57:当作映射机会成立。该建议未获批准，M1/M2 均未计算。
+docs/P2_design/v2/P2_complete_design_proposal_v2.md:156:M2仍为相同输入B1/B3/B4/B5相对B2的H-DMR、L-P95、资源等待等配对描述；不作为独立因果
+docs/P2_design/v2/P2_complete_design_proposal_v2.md:157:mapping证据。旧M1不进入v2门禁，不声称M1R或M2验证了候选，也没有提出online候选公式。
+docs/P2_design/v2/P2_complete_design_proposal_v2.md:167:单元均须满足相应覆盖，且无缺失无效记录。共同seed-index paired bootstrap保持10,000/
+docs/P2_design/v2/P2_typed_identity_schema_v2.json:583:        "process_started",
+docs/P2_design/v2/P2_typed_identity_schema_v2.json:595:        "process_started": {
+docs/P2_design/v2/P2_typed_identity_schema_v2.json:991:        "process_started",
+docs/P2_design/v2/P2_typed_identity_schema_v2.json:1007:        "process_started": {
+docs/P2_design/v2/P2_typed_identity_schema_v2.json:2174:                "exclusiveMinimum": 0
+docs/P2_design/v2/P2_typed_identity_schema_v2.json:2201:                "exclusiveMinimum": 0
+docs/P2_design/v2/P2_typed_identity_schema_v2.json:2239:                            "exclusiveMinimum": 0
+docs/P2_design/v2/P2_typed_identity_schema_v2.json:2243:                            "exclusiveMinimum": 0
+docs/P2_design/v2/P2_typed_identity_schema_v2.json:2899:        "dirty_policy"
+docs/P2_design/v2/P2_typed_identity_schema_v2.json:2937:        "dirty_policy": {
+docs/P2_design/v2/P2_typed_identity_schema_v2.json:3350:    "WORKLOAD ID excludes generation-attempt/timestamps/receipt hashes; a valid resolution receipt is a prerequisite for publishing it, not a semantic self-reference.",
+docs/P2_design/v2/P2_typed_identity_schema_v2.json:3351:    "RUN semantic argv excludes actual output/attempt paths. Exact actual argv is separately recorded and checked against deterministic rendering after attempt ID exists.",
+docs/P2_design/v2/P2_typed_identity_schema_v2.json:3375:    "PROCESS_RESULT": "SPAWN_FAILED/NOT_STARTED=>process_started false,started_at/exit null; unknown interrupted exit stays null; COMPLETE requires started true,actual exit0 and all raw refs.",
+docs/P2_design/v2/P2_runner_schema_review_v2.md:32:外层metadata提交hash。实际执行HEAD另实记；不得伪装dirty字节。P2相关源码洁净是新增待批工程规则。
+docs/P2_design/v2/P2_runner_schema_review_v2.md:54:   receipt，最后CAS更新完成指针；artifact inventory不含自身或未来receipt，不覆盖旧文件。
+docs/P2_design/v2/P2_runner_schema_review_v2.md:55:10. 全2520完整证据后先做B2-only资格/选择，保存全部A/B记录；之后做M1R/M2及D08分类，再写分离
+docs/P2_design/v2/P2_runner_schema_review_v2.md:73:PROCESS_RESULT明确process_started、actual exit或null、termination、signal/exception、planned/start/end
+docs/P2_design/v2/P2_runner_schema_review_v2.md:82:| 输入锁/GEN PREPARED后未启动 | owner/lease/attempt收据、process_started=false | 检查lease，显式授权才释放/归档；不自动重启过程 |
+docs/P2_design/v2/P2_runner_schema_review_v2.md:88:| 所有验证/replay已有、原子指针未发布 | 原immutable收据/hash/CAS进度 | 显式只读核验和授权的仅发布恢复可新增recovery receipt，零引擎调用，旧终态不覆盖 |
+docs/P2_design/v2/P2_resource_profiles_v2.json:21:  "incompatible": "JSON null and excluded from compatible_resources; never infinity or zero duration",
+docs/P2_design/v2/P2_public_snapshot_spec_v2.json:25:  "excluded_fields": [
+docs/P2_design/v2/P2_public_snapshot_spec_v2.json:51:  "hash": "state_sha256=SHA256(SEMANTIC_CANON_V2(snapshot body)); event metadata excluded",
+docs/P2_design/v2/P2_public_snapshot_spec_v2.json:59:  "missing": "Any expected hook/snapshot/reference/required field missing or corrupt is INCOMPLETE/INVALID evidence; cannot decide eligibility and silently exclude it. Fail closed; no zero imputation.",
+docs/P2_design/v2/P2_scientific_parameter_registry_v2.json:877:      "name": "M2_measurements",
+docs/P2_design/v2/P2_scientific_parameter_registry_v2.json:878:      "previous_name": "M2_measurements",
+docs/P2_design/v2/P2_scientific_parameter_registry_v2.json:889:        "v1_value_or_rule": "M2 B1/B3/B4/B5 vsB2 descriptive",
+docs/P2_design/v2/P2_scientific_parameter_registry_v2.json:1108:        "v2_value_or_rule": "Canonical public binary64-bit snapshot; per primary MAIN-B2 attempt scope; exclude seq/wall/private data; replay excluded.",
+docs/P2_design/v2/P2_stage_state_contract_v2.json:155:    "privacy": "Actual durations/certificates are offline validator-only, excluded from PUBLIC_SNAPSHOT, scheduler and M1R.",
+docs/P2_design/P2_trial_matrix_draft_v1.json:503:    "SEL-v1": "All 2520 listed trials are attempted unless infrastructure/validity error stops the entire plan. Valid H-infeasible or off-target configurations retained, not eligible for selection. Per condition select first eligible A then B using D06 B2-only controls/pressure/miss, never M1/M2 effects or baseline advantage. No eligible configuration in any of 18 -> BLOCKED, no relabeling or enlarged grid.",
+docs/P2_design/P2_trial_matrix_draft_v1.json:504:    "TIE-v1": "A before B only, no ranking by benefit. Baseline internal ties unchanged P1 stable service/node/resource IDs. No seed exclusion.",
+docs/P2_design/P2_trial_matrix_draft_v1.json:524:    "timing_reason": "Explicitly excluded from this P2 calibration proposal; timing protocol remains UNRESOLVED, not silently defaulted or frozen."
+docs/P2_design/P2_trial_matrix_draft_v1.json:532:    "EXCLUDED": "No B1–B5 excluded from main grid. Controls use B2 only because feasibility witness/pressure focus, not comparative claims; absence of other methods in controls cannot prove their infeasibility. Candidates, A1/A2/A3, severe-overload and reserved partitions excluded by stage scope."
+docs/P2_design/v2/P2_trial_matrix_draft_v2.json:503:    "SEL-v2": "All2520 slots retained. For each declared condition evaluate each A/B config using all10 B2 records, complete validity/control qualification and its OWN target-load predicates. Select first eligible A elseB; no eligible =>NO_ELIGIBLE_CONDITION/BLOCKED. No candidate/M1R/M2 effect enters selection; no relabel, drop, clamp or expansion. All unselected/off-target records preserved.",
+docs/P2_design/v2/P2_trial_matrix_draft_v2.json:524:    "timing_reason": "Explicitly excluded from this P2 calibration proposal; timing protocol remains UNRESOLVED, not silently defaulted or frozen."
+docs/P2_design/v2/P2_trial_matrix_draft_v2.json:532:    "EXCLUDED": "No B1–B5 excluded from main grid. Controls use B2 only because feasibility witness/pressure focus, not comparative claims; absence of other methods in controls cannot prove their infeasibility. Candidates, A1/A2/A3, severe-overload and reserved partitions excluded by stage scope."
+docs/P2_design/v2/P2_trial_matrix_draft_v2.json:584:      "M2_method_advantage"

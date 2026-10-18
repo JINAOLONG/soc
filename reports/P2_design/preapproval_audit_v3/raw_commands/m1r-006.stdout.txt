@@ -1,0 +1,9 @@
+{
+  "check_scope": "Static source premises and hand-derived scalar arithmetic only",
+  "status": "PASS",
+  "passed": 27,
+  "failed": 0,
+  "scientific_workloads_generated": 0,
+  "scientific_workloads_run": 0,
+  "scientific_interpretation": "No scientific result. Critical negative-branch inconsistency remains; check PASS means proof premises/arithmetic consistent."
+}

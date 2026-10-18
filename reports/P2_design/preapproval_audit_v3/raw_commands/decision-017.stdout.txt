@@ -1,0 +1,433 @@
+{
+  "document_kind": "BOUNDED_REMAINING_H_PATH_DIAGNOSTIC",
+  "document_version": "v2",
+  "status": "DRAFT_UNAPPROVED_NONEXECUTABLE",
+  "classification": "PROPOSED",
+  "approval": "UNAPPROVED",
+  "approved": false,
+  "frozen": false,
+  "executable": false,
+  "execution_authorized": false,
+  "read_by_pipeline": false,
+  "starting_commit": "79f9c245b23119ce25175d6dc6ff148e9e092461",
+  "diagnostic_id": "M1R_PATH_V2",
+  "historical_M1": {
+    "id": "M1_READY_PREFIX_V1",
+    "source": "docs/P2_design/P2_complete_design_proposal_v1.md#D07",
+    "source_sha256": "e378e85071d6c97fb6cd5801d9449eef176a90baddcd786181c6685eaa29feac",
+    "use": "Historical definition only, not the v2 stage observer; cannot infer absence of remaining-H-path mechanism from its negative result."
+  },
+  "observation_boundary": "Only exact PUBLIC_SNAPSHOT; no future arrivals/private durations/queue/truth; all predictions are offline and cannot change scheduler/actual B2 trace.",
+  "scope": {
+    "eligible": "At least one dependency-ready not-started node anywhere among arrived services AND at least one arrived H service with a not-started node; H running prefix with an unready H descendant qualifies.",
+    "action_nodes": "First min(4,all_dependency_ready_count) in unchanged B2 (H first, absolute deadline, service_id,node_id) order when at least2 ready nodes exist. With exactly1 ready node record COVERAGE_INSUFFICIENT/READY_COUNT_BELOW_TWO and do not enumerate, preserving the original2-4-ready oracle scope.",
+    "target_H_services": "First min(2,number of unfinished arrived H services with >=1 not-started node), ordered absolute deadline then service_id; fixed before any gain calculation.",
+    "suffix": "All still-unplaced nodes of the selected target H services, including public unready descendants; each approved graph has at most16 nodes. Completed/running/current-action target nodes treated as already fixed/forecast placed.",
+    "visible_running": "At most6 units. release_hat=now+max(0,estimate-elapsed). If any busy unit has elapsed>=estimate, future release cannot be placed from public info: mark COVERAGE_INSUFFICIENT, do not invent epsilon or consult true completion.",
+    "unselected_work": "No unselected ready node, unselected H target, L successor or future arrival is projected; report exclusions and truncation. Never interpret result as global optimality."
+  },
+  "limits": {
+    "max_action_nodes": 4,
+    "min_action_nodes": 2,
+    "max_target_H_services": 2,
+    "max_nodes_per_target": 16,
+    "max_projected_nodes": 36,
+    "max_visible_running": 6,
+    "max_assignments": 1296,
+    "max_calendar_intervals": 42,
+    "max_gap_candidates_per_resource": 43,
+    "max_resource_choices_per_node": 6,
+    "max_numeric_gap_checks_per_view": 12037248,
+    "early_stopping": false,
+    "wall_time_measured": false
+  },
+  "projection": {
+    "arithmetic": "Exact Rational values decoded from public binary64 bits. All forecast communication L+b/B and interval algebra use those rationals, not hidden truths. This surrogate need not bit-match runtime floating prediction.",
+    "initial_calendar": "For each busy unit reserve forecast[now,release_hat); idle units have no forecast busy interval. Public completed outputs remain fixed at actual known finish/resource.",
+    "current_actions": "Place K in fixed B2 order. For each assignment, earliest entire idle gap at/after now, service arrival and all completed predecessor copies, using projected running calendars. No preemption/migration/overlap. All chosen action intervals remain fixed for suffix rollout.",
+    "baseline": "Greedy minimum predicted EFT with resource-ID ties for each K action using the same placement arithmetic/calendar; not a claim to reproduce actual future B2 execution.",
+    "suffix_order": "Static Kahn placement of selected target pending nodes after treating completed/running/K as placed; among available nodes choose (service absolute deadline,service_id,node_id). Same order in baseline and every assignment; no suffix search.",
+    "suffix_mapping": "For each suffix node, choose minimum predicted EFT/resource ID among compatible units using earliest entire idle-gap insertion. Parents may have fixed known or projected finishes; projected finish is never an actual completed fact.",
+    "objective": "Minimize arithmetic mean of projected completion times of the fixed selected H services; completion=max projected/known finish over all nodes of each target service. No deadline/miss or true-duration objective substitution.",
+    "L_constraint": "For every L node in K: candidate predicted finish <= max(baseline predicted finish, its service absolute deadline). No claim about full-L-service completion or global L-P95 budget. This is a new diagnostic slack rule, not the registered1.10 threshold.",
+    "admissible": "Enumerate complete Cartesian product of compatible resources for K, <=6^4. No task-order branching, no optimization of suffix mappings, no future tasks. Baseline is included and satisfies its own L cap.",
+    "ties": "Compare H objective exactly; equal objectives choose lexicographic resource-ID tuple in K order. Suffix/greedy resource ties use fixed resource ID order.",
+    "gain": "b=baseline target-H mean finish-now>0; o=best corresponding finish-now; delta=b-o>=0 ms, g=delta/b dimensionless. Persist exact rationals, no arbitrary epsilon."
+  },
+  "coverage": {
+    "FULL": "All ready actions fit2<=K<=4; all candidate pending H services fit<=2; complete approved target DAGs; all running releases predictable from estimates; all enumeration/projection records complete.",
+    "PARTIAL": "Ready count below2 or ready/target cap truncates, or busy estimate exhausted, or bounded model cannot cover target. Record COVERAGE_INSUFFICIENT; optional bounded partial projection is descriptive only, never enter hit/rate denominator or be imputed zero.",
+    "INVALID": "Malformed/nonfinite public state, illegal predecessor/compatibility identity, missing refs, impossible ordering/calendars or independent mismatch. Stop plan; not a negative opportunity.",
+    "MISSING": "Missing required snapshot/stream/record is INCOMPLETE, not PARTIAL coverage."
+  },
+  "view_outcomes": [
+    "NOT_IN_SCOPE",
+    "COVERAGE_INSUFFICIENT",
+    "INVALID",
+    "INCOMPLETE",
+    "NO_IMPROVEMENT_IN_TESTED_SPACE",
+    "SUBTHRESHOLD_IMPROVEMENT",
+    "MATERIAL_IMPROVEMENT_IN_TESTED_SPACE"
+  ],
+  "record_fields": [
+    "namespace",
+    "schema_version",
+    "diagnostic_id",
+    "observer_spec_sha256",
+    "state_key",
+    "representative_event_seq",
+    "scope_hash",
+    "eligibility_reason",
+    "all_ready_count",
+    "all_target_count",
+    "selected_K_IDs",
+    "selected_target_IDs",
+    "truncation_flags",
+    "coverage_status",
+    "baseline_assignment",
+    "baseline_calendar",
+    "baseline_target_finishes",
+    "baseline_L_finishes",
+    "enumeration_count",
+    "feasible_count",
+    "enumeration_digest_sha256",
+    "best_assignment",
+    "best_calendar",
+    "best_target_finishes",
+    "projected_H_path_and_resource_blockers",
+    "b",
+    "o",
+    "delta_ms",
+    "g",
+    "threshold_bundle_id",
+    "view_outcome",
+    "independent_recompute_ref",
+    "independent_recompute_status"
+  ],
+  "stage_denominators": {
+    "E": "all unique IN_SCOPE states from complete primary MAIN-B2 stream, including valid partial-coverage states",
+    "F": "subset of E with VALID_FULL complete diagnostic",
+    "hits": "subset of F with g>=preapproved tau",
+    "p": "hits/F only when F>0; partial states not zero or hits",
+    "coverage": "F/E only when E>0",
+    "zero": "E=0 or F=0 => insufficient evidence; p=null, never0"
+  },
+  "negative_interpretation": "No improvement means none for this exact tested local action/suffix model. Partial coverage cannot yield negative absence evidence. Even complete tested-space negative is an operational failure to support the preregistered bounded diagnostic, not a theorem that all mappings or future workloads lack the registered mechanism.",
+  "independent_recomputation": "Use snapshot+observer spec only; verify fixed target/action/order, baseline membership, all Cartesian assignments and L caps, projection intervals, exact objective/ties/gain, coverage and representative event. No source-private true fields.",
+  "record_schema": "P2_typed_identity_schema_v2.json#/$defs/DIAGNOSTIC_RECORD",
+  "error_schema": "P2_typed_identity_schema_v2.json#/$defs/DIAGNOSTIC_ERROR_RECORD",
+  "record_semantics": "VALID_FULL requires nonnull b/o/delta/g/enumeration digest and all baseline/best projections; counts exact. Other coverage states cannot be filled with zero g: use null if uncomputed. Missing required state data produces ERROR_RECORD, not a fabricated complete diagnostic. PASS independent recomputation required before criterion use."
+}
+{
+  "document_kind": "PUBLIC_SNAPSHOT_AND_DENOMINATOR_DESIGN",
+  "document_version": "v2",
+  "status": "DRAFT_UNAPPROVED_NONEXECUTABLE",
+  "classification": "PROPOSED",
+  "approval": "UNAPPROVED",
+  "approved": false,
+  "frozen": false,
+  "executable": false,
+  "execution_authorized": false,
+  "read_by_pipeline": false,
+  "starting_commit": "79f9c245b23119ce25175d6dc6ff148e9e092461",
+  "snapshot_schema": "P2_typed_identity_schema_v2.json#/$defs/PUBLIC_SNAPSHOT",
+  "event_schema": "P2_typed_identity_schema_v2.json#/$defs/SNAPSHOT_EVENT",
+  "included_fields": [
+    "namespace",
+    "schema_version",
+    "now_bits",
+    "services",
+    "running",
+    "completed",
+    "resources",
+    "links"
+  ],
+  "excluded_fields": [
+    "decision_seq",
+    "event_seq",
+    "run/attempt/trial IDs from snapshot BODY",
+    "refresh causes",
+    "wall timestamps",
+    "host",
+    "method",
+    "workload seed",
+    "realized durations",
+    "private queue",
+    "future arrivals/bursts",
+    "unobserved completions",
+    "private perturbations"
+  ],
+  "array_orders": {
+    "services": "service_id ASCII",
+    "nodes": "node_id ASCII",
+    "estimates": "resource_id fixed CPU0..3,GPU0,NPU0 order",
+    "predecessors": "predecessor node_id ASCII",
+    "running": "(service_id,node_id,resource_id)",
+    "completed": "(service_id,node_id,resource_id)",
+    "resources": "CPU0,CPU1,CPU2,CPU3,GPU0,NPU0",
+    "links": "(source_type,destination_type) ASCII"
+  },
+  "snapshot_numeric_format": "all public binary64 numbers encoded by big-endian16 lowercase hex digits; reject NaN/inf, negative times/sizes, nonpositive estimates/bandwidth; normalize -0",
+  "hash": "state_sha256=SHA256(SEMANTIC_CANON_V2(snapshot body)); event metadata excluded",
+  "record_rule": "Preserve every actual event record, including EMPTY_DISPATCH and duplicate state references; contiguous event_seq, verified hook stream receipt.",
+  "hooks": "INITIAL; after a full D1 completion+arrival batch before dispatch; after each actual start before next call; empty-dispatch outcome; post-completion final refresh. Never expose an intermediate completion-only view before same-time arrivals.",
+  "dedup_scope": "One primary attempt of one MAIN B2 trial; denominator scope hash includes run_id, primary_attempt_id, observer_spec_sha256. No pooling across trials/seeds/methods/controls/replays.",
+  "state_key": "SHA256 canonical STATE_KEY_PREIMAGE(scope hash,state_sha256); record ID/event_seq/decision_seq are not state-equivalence keys",
+  "counting": "Globally dedup identical state_key within scope; first event_seq is representative, later events link to counted_as_event_seq. now/elapsed are included, so genuine time advance changes state; same-time start/completion/arrival changes public status/DAG and counts distinctly.",
+  "empty_calls": "Preserve empty calls; same snapshot counts once. A unique state with no ready action or no pending H target is NOT_IN_SCOPE, not a zero-opportunity eligible state.",
+  "replay": "Replay has separate stream_role=REPLAY and receipt, never contributes denominator; public-state hash sequence must reproduce primary including same-time transitions. Record IDs can differ.",
+  "missing": "Any expected hook/snapshot/reference/required field missing or corrupt is INCOMPLETE/INVALID evidence; cannot decide eligibility and silently exclude it. Fail closed; no zero imputation.",
+  "independent_check": "Reconstruct hook coverage from validated physical/decision trace and observer contract; check all refs/state hashes, earliest representative and scope membership, then recompute E/F/coverage/hits from complete primary stream.",
+  "exact_event_rule": "Exactly one SNAPSHOT_EVENT for each actual engine scheduler invocation: body is pre-call public view, dispatch_result records returned START/NONE. event_seq and decision_seq are the contiguous0-based invocation index within stream; causes are unique in listed enum order. EMPTY_DISPATCH is metadata on that event, not an extra observation. Final completion must have a final empty call/view as the existing P1 engine does; no synthetic polling calls may be inserted.",
+  "duplicate_event_rule": "Duplicate event ID in an exported stream is integrity failure, even if byte-identical; multiple genuinely executed calls with different event IDs and same state_sha are retained but state counted once.",
+  "derived_public_metadata": "template_id and size derived only from arrived service public IDs/DAG node count; do not add private fields or change scheduler DTO. Running elapsed must equal RN64(now-start) as existing engine; arrays sorted as declared."
+}
+{
+  "document_kind": "EXACT_GENERATION_PROPOSAL",
+  "document_version": "v2",
+  "status": "DRAFT_UNAPPROVED_NONEXECUTABLE",
+  "classification": "PROPOSED",
+  "approval": "UNAPPROVED",
+  "approved": false,
+  "frozen": false,
+  "executable": false,
+  "execution_authorized": false,
+  "read_by_pipeline": false,
+  "starting_commit": "79f9c245b23119ce25175d6dc6ff148e9e092461",
+  "schema_version": 2,
+  "generator_version": "soc-p2-synthetic-v2-PROPOSED",
+  "typed_schema_ref": "P2_typed_identity_schema_v2.json#/$defs/KEY",
+  "key_fill_templates": {
+    "arrival_jitter": {
+      "domain": "soc.p2.gen.v2",
+      "schema_version": 2,
+      "generator_version": "soc-p2-synthetic-v2-PROPOSED",
+      "actual_seed_decimal_string": "registered seed rendered as decimal STRING",
+      "scenario": "registered MAIN scenario",
+      "condition_id": "{scenario}-{load}-{size}",
+      "config_id": "unchanged registered A/B config ID",
+      "service_slot": "integer j in0..49",
+      "service_group": "",
+      "template_node_id": "",
+      "resource_id": "",
+      "edge_id": "",
+      "field": "arrival_jitter",
+      "counter": 0
+    },
+    "service_role_factor": {
+      "domain": "soc.p2.gen.v2",
+      "schema_version": 2,
+      "generator_version": "soc-p2-synthetic-v2-PROPOSED",
+      "actual_seed_decimal_string": "registered seed rendered as decimal STRING",
+      "scenario": "registered MAIN scenario",
+      "condition_id": "{scenario}-{load}-{size}",
+      "config_id": "unchanged registered A/B config ID",
+      "service_slot": "integer j in0..49",
+      "service_group": "H or L",
+      "template_node_id": "exact preserved local template node ID",
+      "resource_id": "",
+      "edge_id": "",
+      "field": "service_role_factor",
+      "counter": 0
+    },
+    "duration_factor": {
+      "domain": "soc.p2.gen.v2",
+      "schema_version": 2,
+      "generator_version": "soc-p2-synthetic-v2-PROPOSED",
+      "actual_seed_decimal_string": "registered seed rendered as decimal STRING",
+      "scenario": "registered MAIN scenario",
+      "condition_id": "{scenario}-{load}-{size}",
+      "config_id": "unchanged registered A/B config ID",
+      "service_slot": "integer j in0..49",
+      "service_group": "H or L",
+      "template_node_id": "exact preserved local template node ID",
+      "resource_id": "exact compatible resource ID",
+      "edge_id": "",
+      "field": "duration_factor",
+      "counter": 0
+    }
+  },
+  "key_exclusions": [
+    "method",
+    "trial_id",
+    "run_id",
+    "attempt_id",
+    "host",
+    "wall_time",
+    "scheduler_call_count",
+    "control_variant",
+    "control_arrival_time",
+    "generation_receipt_id"
+  ],
+  "parent_key_rule": "Both controls reuse resolved MAIN numeric bits and original MAIN field keys; controls never draw their own duration/jitter keys.",
+  "algorithm": {
+    "name": "SHA256",
+    "input": "SEMANTIC_CANON_V2(exact fully filled KEY object)",
+    "digest_to_U": "q=unsigned big-endian first8 bytes; U=q/2^64 exact Rational in[0,1)",
+    "service_role_factor": "9/10+U/5, independent key per MAIN slot/group/node; same factor for all compatible resources of this node",
+    "duration_factor": "9/10+U/5, separate MAIN slot/group/node/resource key; realized_exact=estimate_exact*factor",
+    "arrival_jitter": "U/10 per MAIN slot with H/L/node/resource/edge fields empty; scenario/condition/config retained",
+    "nonrandom_fields": [
+      "edge sizes fixed D03",
+      "deadline formula no draws"
+    ],
+    "conversion": "All generation arithmetic exact Rational; each estimated/realized/arrival/relative-deadline value converted ONCE with correctly rounded binary64 ties-to-even; normalize -0; reject nonfinite/nonpositive durations, do not silently repair. Save exact estimates/deadlines sidecar for G."
+  },
+  "service_identity": {
+    "service_id": "{scenario}/{load}/{size}/{config_id}/s{slot:03d}/{H|L}",
+    "node_id": "{service_id}/{preserved_template_node_id}",
+    "condition_id": "{scenario}-{load}-{size}",
+    "preserved_template_ids": "COCKPIT/ADAS/FUSION-{8|16}-v1; semantic templates remain v1 within draft document namespace v2"
+  },
+  "arrivals": {
+    "slots": 50,
+    "services_per_slot": 2,
+    "total_services": 100,
+    "H": 50,
+    "L": 50,
+    "burst_block_slots": 5,
+    "burst_compression": "1/4",
+    "formula": "for j=0..49: q=j//5,k=j%5; a_H=a_L=P*(5*q+k/4+U_j/10); P from unchanged config period_ms",
+    "arrival_window": "[0,W), W=50*P; no admission at W; full drain; observation_end=max(W,last_finish) metadata only; makespan remains last_finish",
+    "no_warmup_exclusion": true
+  },
+  "deadlines": {
+    "reference": "C_est=max_root_to_sink sum_node min_compatible E_exact(g,v,r) before binary64 conversion; no communication. Relative deadline exact multiplier*C_est is converted once; actual absolute deadline RN64(arrival+relative_deadline_bits).",
+    "H_multiplier": "5/2",
+    "L_multiplier": "4",
+    "formula": "D_g = multiplier(group) * C_est(service); positive, relative to each admitted arrival",
+    "risk": "C_est is optimistic and not a feasibility certificate; D06 independent controls mandatory"
+  },
+  "controls": {
+    "service_set_for_G": "ALL 100 services in the resolved parent MAIN input, identically for both controls; never max over only retained H",
+    "G_exact": "ceil(max over parent100 services g of [sum_v max_r(11/10 * E_exact(g,v,r)) + sum_edges max_over_all9_pairs(L_exact+b_exact/B_exact) + D_exact(g)]) +1 ms",
+    "G_inputs": "E_exact and D_exact are pre-binary64 values in parent generation sidecar with hash; edge/network proposed decimals parsed exactly. No new draws and no scheduler truth access.",
+    "G_rounding": "All operations Rational; ceil only once then+1 integer ms. Control arrival k*G is converted exactly to binary64 in the finite registered range; independently verify interval isolation, never assume feasibility from G.",
+    "H_ISOLATED": "retain parent50 H services with identical service/node IDs, complete per-resource estimate/realized bit patterns, edges and relative-deadline bits; remove L; order retained H by original integer slot; kth arrival=k*G, k=0..49",
+    "LOW_COMPETITION": "retain all100 services; order original slot then H before L; kth arrival=k*G,k=0..99; all other retained bytes identical to parent",
+    "parent_materialization_order": "Resolve parent MAIN first without executing its method; then derive/resolve controls. Engine execution order remains H_ISOLATED B2, LOW_COMPETITION B2, MAIN B1..B5.",
+    "no_overlap": "Qualification requires max finish of each control service <= next control arrival and each required group meets original deadlines; failure of this witness is not universal infeasibility or engine correctness failure.",
+    "label": "NOT_APPLICABLE_CONTROL",
+    "parent_identity": "Input descriptor for control references pre-known MAIN descriptor hash; actual derivation references independently verified MAIN resolution receipt after it exists.",
+    "actual_G": "NOT_COMPUTED_NO_REALIZATION"
+  },
+  "windows": {
+    "arrival_admission": "[0,W), W=50P for MAIN; controls[0,N*G)",
+    "last_admitted_arrival": "max actual admitted arrival, separately recorded",
+    "last_service_completion": "max node finish over all admitted services after full drain",
+    "full_drain_makespan": "last_service_completion, preserving existing metric origin t=0",
+    "observation_end": "max(arrival_window_end,last_service_completion), metadata only; never overwrite full_drain_makespan",
+    "pressure": "For each resource, exact measure of execution intervals intersect[0,W), divided by W. p_seed=max_resource; p=arithmetic mean across10 seeds. Existing full-drain utilization retains busy/full_drain_makespan."
+  },
+  "production_artifacts": "NONE. This specifies future generation only; no actual blueprint, input, receipt, source hash or scientific output instance is emitted.",
+  "identity_spec": "P2_typed_identity_schema_v2.json",
+  "scope_change": "Typed version/domain v2 will change future keyed draws relative to v1; distributions remain unchanged; no v1 realizations exist or were compared.",
+# 人工决定清单：十个决定组，均未答复/未批准
+
+类别：**S**=SOURCE_SUPPORTED；**P**=PROPOSED_REQUIRES_APPROVAL；
+**U**=UNRESOLVED_BLOCKING；**V**=IMPLEMENTATION_VALIDATION_PENDING；
+**X**=SCIENTIFIC_EXECUTION_PENDING。人工批准 P 不替代补齐 U，也不替代 V 或 X。
+来源 E 编号见 evidence_and_traceability.md；选项详情见 blocker_decisions.md。
+
+1. **D01（B1，E01/E02/E03；P/U）**：三场景采用显式角色 DAG，还是确定性 grammar？
+   请给每场景 8/16 节点的完整拓扑、角色/H-L 归属及尺寸变换定义。明确节点/边计数，
+   不得引入隐藏 dummy。推荐先审显式模板的可追踪性，不推荐任何未有来源的拓扑值。
+2. **D02（B1，E02/E03；P/U）**：兼容集合与各资源估计/实际执行成本采用可追踪 profile
+   表，还是批准的合成参数规则？请给各角色/节点集合、代价值或全部参数及来源、正值保障。
+   固定六资源与兼容类型覆盖为 S；具体值/类型频率为 U。
+3. **D03（B1，E02/E03；P/U）**：采用何种有出处的边数据表及 type-pair 网络参数表？
+   请给数据 MiB、时延 ms、带宽 MiB/ms 下全部值/来源。same-unit=0、无共享总线竞争、目的地副本与
+   remapping 语义是 S，不再投票；表值是 U。
+4. **D04（B1，E01/E02/E03/E08；P/U）**：批准哪种 keyed 扰动/到达物化方式？
+   请给 PRNG/键编码/舍入/版本、分布及参数、到达/突发过程、H-L 组成、relative deadline
+   构造、服务数或 arrival window 与停止边界。完全排空是 S；不能只批准“用随机扰动”。
+5. **D05（B2，E01/E02/E04/E08；P/U）**：校准采用完整显式 trial 列表，还是有限轴展开？
+   请给各轴全部合法值、每 trial 的 B1–B5 方法子集及理由、B2 焦点角色、顺序/预算，以及
+   十个已登记 seed 到每 config/condition/workload 的精确映射；不能把 18 条件当完整列表。
+6. **D06（B1/B2，E01/E02/E05/E06；P/U）**：H 独占还是明定低竞争对照？请给可行性、
+   pressure/miss 负载分类、最终配置选择与确定性平局规则，以及合法但不合目标、天然
+   不可行、invalid/failed/incomplete 的分类/继续/停止规则。所有结果保留是 S；不填阈值
+   或“看结果再定”不能解阻；不允许 candidate advantage 参与选择。
+7. **D07（B3，E01/E03/E04/E07；P/U）**：采用 M1 同状态机制诊断、M2 基线配对描述，
+   或明定的组合？请给机会观察量、合法比较/反事实的控制/视窗、信息边界、记录单位及
+   每 seed/condition 分母/summary。M2 存在排序与映射混杂，不能单独作 mapping 因果结论。
+8. **D08（B3，E05/E06/E07；P/U）**：机会判据如何聚合条件/seed、定义稳定性与不确定性，
+   并区分 SUPPORTED、NOT_SUPPORTED、INCONCLUSIVE？请填全部判定参数、足够证据和
+   无效/缺失处置。若用 CI，沿用既有 paired-seed 方法；不能新设 CI 方法或挪用 H/L 门槛。
+9. **D09（B4，E07/E09/E11/E14；P）**：批准唯一正式 calibration runner 扩展，还是共用
+   同一守卫的薄 launcher？是否采纳完成产物身份/hash 全匹配才复用、失败/不完整默认
+   停止且无自动 retry 的提案？另请明确 P2 源码 dirty 的允许/洁净控制。更严格洁净建议
+   不是现行普遍 P2 规则；任何 retry 必须事先登记条件/预算/attempt 链。
+10. **D10（B5，E03/E07/E10/E11；P）**：科学身份采用经可行性验证的 envelope，还是
+    新版本 scientific schema+adapter？请批准 namespace、canonicalization、workload/run/
+    attempt ID、必填字段、provenance/ref 规则与 P1 兼容测试范围。拒绝 fixture 改标签是 S；
+    当前 schema 仅为 DRAFT，JSON parse 不等于 V 通过。
+
+**V（后续实现验证，不是本轮人工文字可替代）：**生成器、有限矩阵编译、seed 隔离、
+validator/metric/replay、恢复/损坏/幂等、schema 血缘和旧 P1 回归的测试与审计。
+**X（后续科学执行）：**实际 H 可行性、负载分类、映射机会稳定性、各 trial 全部完整结果。
+这些任务均需另行授权。本轮不会因任何一项建议写下“推荐”就自动冻结、实现或执行。
+
+原有工程 timing 协议仍 NOT_FROZEN；上述 D05 若包括 runtime/timing 工作，还须提交
+inputs/warmup/repetitions/timer/aggregation 的完整登记，不能从当前草案推断默认值。
+此提醒不新增决定编号，不改变既有 2ms 目标。
+
+
+---
+# P2-B3：映射机会备选判据，未选择、未计算
+
+依据 E01、E03–E07。用户合同的机制假设是当前节点的局部 EFT 可能占用其他已到达 H
+业务依赖的稀缺单元；它不是已证实事实。当前所有数值、观察窗口、稳定性边界与判定
+参数均 UNRESOLVED。不能将原 H 10% 门槛、L 1.10 或 P3 A3-vs-A1 映射贡献直接移作 P2 判据。
+
+| 要素 | M1：同一状态的机制诊断（提案） | M2：已登记基线差异（提案） | 必须决定 |
+|---|---|---|---|
+| 观察量 | 既有基线决策中，已到达 H 的依赖/兼容稀缺性、其他 ready 节点的合法替代资源、可观测预计占用 | 现有 B2 与获批准其他基线的服务 DMR、L quantile、资源 busy、通信/等待描述 | 哪些量构成机会，而非仅相关性；D07 |
+| 比较/反事实 | 固定同一公开 observation，对局部 EFT 映射与合法备选映射做预注册诊断；后续重放/视窗/其他任务如何保持必须明定 | 原始 B1–B5 的配对同输入比较；不能暗增新 scheduler 或改变编号 | 基线子集由 D05 决定；M1 的分支构造/控制规则由 D07 决定 |
+| 信息边界 | 产生诊断时仅使用已到达 DAG/估计/可观测状态；实际完成只可用于离线合法性/事先批准的结果评估，绝不回流 scheduler | 同一物化输入对所有方法；真实未来事件不能进入调度器 | 是否需要离线结果追踪及其边界/标签，D07 |
+| 观测单位 | 决策事件/服务可作为机制记录，但不是独立统计样本；如何形成每 seed/condition 汇总待定 | 服务是运行指标单位，seed 是独立不确定性单位 | 不允许节点/决策伪重复；具体分母/summary 由 D07、D08 决定 |
+| 跨条件聚合 | 每条件/seed 原始机制计数与反事实链先保留，不预选有利事件 | 按预注册条件范围和 seed 配对；主指标的 12/18 条件规则仍照旧 | 不自动把 H 主指标范围套给新机会量；D08 |
+| 稳定性 | 事件覆盖、seed/条件一致性或机制重复性可作为候选解释，但目前无边界 | 配对差异的一致性可作交叉信息，不等于 mapping 因果 | 稳定性定义/边界 UNRESOLVED；D08 |
+| 不确定性 | 描述性诊断或已有 paired-seed bootstrap；不能选看起来最好的统计路径 | 若使用 CI，沿用原协议 paired-seed、既定 replicate/seed/quantile，不引入新检验 | 是否推断及具体对比/判据须观察前批准；D08 |
+| 无效/不可行 | 无合法备选、天然 H 不可行、损坏 trace、方法对缺失必须分开记录 | 缺失/invalid pairing 不能直接丢弃；天然不可行不是 scheduler 失败 | 各类是否排除推断、如何影响完整性须先登记；D06–D08 |
+
+M1 的优点是面向具体 mapping 机制，风险是挑选特定决策/视窗或使用未受控反事实。
+没有任何 branch 算法在本轮获准实现。M2 易与现有可审核指标对应，但 B2 与 PEFT/HEFT
+差别同时包含排序和映射；不允许把差异全归因于映射。只有描述性分歧也可能来自噪声。
+
+**建议待审：**优先审定 M1 的完整机制定义，M2 作为交叉描述，不能单独作为映射因果或
+候选成功证明。没有证据推荐任何数值阈值或基线子集。也可批准只先形成描述性诊断，
+但这样尚不能产生阶段 SUPPORTED 或关闭科学 P2 gate。
+
+## 三向判定模板（PROPOSED，不是已批准判据）
+
+将完整/有效前提记为 V，将预先批准的支持条件记为 S，将预先批准的明确缺乏机会条件
+记为 N。V 的证据是完整身份/合法 trace/配对/已批准设计，S、N 的具体定义与参数均未知。
+
+- V 不成立或规则缺失：执行/证据 BLOCKED，不冒充科学 INCONCLUSIVE。
+- V 成立且仅 S 成立：可提议 SUPPORTED；必须链接到规定的 seed/条件原始证据。
+- V 成立且仅 N 成立：可提议 NOT_SUPPORTED；需要明确的否定证据规则，不能只用“不显著”。
+- V 成立但既不能支持也不能否定：可提议 INCONCLUSIVE，保留全部观察。
+- S 与 N 同时成立：判据设计冲突，先停下来纠正审批/实现，不任择有利标签。
+
+此模板没有计算任何 V/S/N，也不赋予它们默认值。D08 必须批准互斥关系、充分证据、
+不确定区间和处置规则，不能自动采用该模板。已注册的 H/L/CI 门槛保持不变。
+
+未来输出应逐事件链接 observation/hash、候选合法性和分支控制（若批准 M1）、
+对应 run/seed/condition、每 seed 汇总、全部方法配对、有效性/缺失标记、聚合脚本身份
+及最终判据版本。原始正例、反例和无机会情况均保留；不以机会诊断选择赢家条件。
+
+## 本轮 B3 逐项依据与未定内容
+
+| 要素 | 真实来源 | 仍需批准 |
+|---|---|---|
+| 可观察量 | docs/user_request.txt §43 (1431起) 是机制假设；docs/model_spec.md:48–52 限制信息 | D07定义机会量，不得将假设当实测事实 |
+| 基线/反事实 | docs/baseline_spec.md:14–20；本文件:9–11为未批准M1/M2方案 | D05方法子集、D07控制/视窗；不产生新正式baseline |
+| 分析单位 | docs/metric_spec.md:3–11；docs/statistical_protocol.md:3–16 | D07/D08的seed内summary/分母；决策事件不是独立推断单位 |
+| 跨seed/场景聚合 | docs/statistical_protocol.md:10–16；docs/metric_spec.md:13–30 | D08机会量的具体范围/聚合，不自动借用H的12条件或L的18条件规则 |
+| 稳定性/不确定性 | docs/statistical_protocol.md:3–16,34–36；docs/user_request.txt §100 | D08稳定性、充分证据、具体参数/contrast；原CI方法保持 |
+| 无效/不可行/缺失 | docs/workload_spec.md:18–20；docs/statistical_protocol.md:38–47 | D06/D08区分天然不可行、trace错误、缺pair及有效分母，不静默删样本 |
+| 三向判定 | 本文件:26–38只为提案，原协议未定义P2数值判据 | D08的SUPPORTED/明确NOT_SUPPORTED/INCONCLUSIVE；不把“不显著”当否定 |
+| 证据/审计 | docs/user_request.txt §§90–92；docs/statistical_protocol.md:44–47 | D07/D08诊断记录字段与版本，D09/D10身份/完整性落实 |
+
+无科学观察或判据计算发生；未借此改变候选、H/L门槛、统计方法或seed分区。

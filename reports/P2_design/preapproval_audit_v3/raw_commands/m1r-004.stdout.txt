@@ -1,0 +1,5308 @@
+FILE docs/P2_design/v2/P2_workload_templates_v2.json SHA256 f282955ab09d0110f50447269b18d0389231bed9711532853d6cdbda92d9027c
+1: {
+2:   "document_kind": "DAG_TEMPLATE_PROPOSAL",
+3:   "version": "v2",
+4:   "status": "DRAFT_UNAPPROVED_NONEXECUTABLE",
+5:   "classification": "PROPOSED",
+6:   "approved": false,
+7:   "frozen": false,
+8:   "executable": false,
+9:   "execution_authorized": false,
+10:   "read_by_pipeline": false,
+11:   "source_checkpoint": "160800d9b136e953c6415cd5229ded87eae72a0f",
+12:   "templates": [
+13:     {
+14:       "template_id": "COCKPIT-8-v1",
+15:       "scene": "COCKPIT",
+16:       "size": 8,
+17:       "node_count": 8,
+18:       "edge_count": 9,
+19:       "service_groups": [
+20:         "H",
+21:         "L"
+22:       ],
+23:       "nodes": [
+24:         {
+25:           "id": "COCKPIT.n01",
+26:           "role": "audio",
+27:           "group": "INHERIT_SERVICE_GROUP",
+28:           "allowed_group_variants": [
+29:             "H",
+30:             "L"
+31:           ],
+32:           "predecessors": [],
+33:           "cost_scale": "1",
+34:           "parent_8_node": "COCKPIT.n01"
+35:         },
+36:         {
+37:           "id": "COCKPIT.n02",
+38:           "role": "speech",
+39:           "group": "INHERIT_SERVICE_GROUP",
+40:           "allowed_group_variants": [
+41:             "H",
+42:             "L"
+43:           ],
+44:           "predecessors": [
+45:             "COCKPIT.n01"
+46:           ],
+47:           "cost_scale": "1",
+48:           "parent_8_node": "COCKPIT.n02"
+49:         },
+50:         {
+51:           "id": "COCKPIT.n03",
+52:           "role": "intent",
+53:           "group": "INHERIT_SERVICE_GROUP",
+54:           "allowed_group_variants": [
+55:             "H",
+56:             "L"
+57:           ],
+58:           "predecessors": [
+59:             "COCKPIT.n02"
+60:           ],
+61:           "cost_scale": "1",
+62:           "parent_8_node": "COCKPIT.n03"
+63:         },
+64:         {
+65:           "id": "COCKPIT.n04",
+66:           "role": "display",
+67:           "group": "INHERIT_SERVICE_GROUP",
+68:           "allowed_group_variants": [
+69:             "H",
+70:             "L"
+71:           ],
+72:           "predecessors": [
+73:             "COCKPIT.n03",
+74:             "COCKPIT.n05"
+75:           ],
+76:           "cost_scale": "1",
+77:           "parent_8_node": "COCKPIT.n04"
+78:         },
+79:         {
+80:           "id": "COCKPIT.n05",
+81:           "role": "navigation",
+82:           "group": "INHERIT_SERVICE_GROUP",
+83:           "allowed_group_variants": [
+84:             "H",
+85:             "L"
+86:           ],
+87:           "predecessors": [],
+88:           "cost_scale": "1",
+89:           "parent_8_node": "COCKPIT.n05"
+90:         },
+91:         {
+92:           "id": "COCKPIT.n06",
+93:           "role": "route",
+94:           "group": "INHERIT_SERVICE_GROUP",
+95:           "allowed_group_variants": [
+96:             "H",
+97:             "L"
+98:           ],
+99:           "predecessors": [
+100:             "COCKPIT.n03",
+101:             "COCKPIT.n05"
+102:           ],
+103:           "cost_scale": "1",
+104:           "parent_8_node": "COCKPIT.n06"
+105:         },
+106:         {
+107:           "id": "COCKPIT.n07",
+108:           "role": "compose",
+109:           "group": "INHERIT_SERVICE_GROUP",
+110:           "allowed_group_variants": [
+111:             "H",
+112:             "L"
+113:           ],
+114:           "predecessors": [
+115:             "COCKPIT.n04",
+116:             "COCKPIT.n06"
+117:           ],
+118:           "cost_scale": "1",
+119:           "parent_8_node": "COCKPIT.n07"
+120:         },
+121:         {
+122:           "id": "COCKPIT.n08",
+123:           "role": "interaction",
+124:           "group": "INHERIT_SERVICE_GROUP",
+125:           "allowed_group_variants": [
+126:             "H",
+127:             "L"
+128:           ],
+129:           "predecessors": [
+130:             "COCKPIT.n07"
+131:           ],
+132:           "cost_scale": "1",
+133:           "parent_8_node": "COCKPIT.n08"
+134:         }
+135:       ],
+136:       "hidden_nodes": [],
+137:       "implicit_dummy": false
+138:     },
+139:     {
+140:       "template_id": "COCKPIT-16-v1",
+141:       "scene": "COCKPIT",
+142:       "size": 16,
+143:       "node_count": 16,
+144:       "edge_count": 17,
+145:       "service_groups": [
+146:         "H",
+147:         "L"
+148:       ],
+149:       "nodes": [
+150:         {
+151:           "id": "COCKPIT.n01.a",
+152:           "role": "audio",
+153:           "group": "INHERIT_SERVICE_GROUP",
+154:           "allowed_group_variants": [
+155:             "H",
+156:             "L"
+157:           ],
+158:           "predecessors": [],
+159:           "cost_scale": "1/2",
+160:           "parent_8_node": "COCKPIT.n01"
+161:         },
+162:         {
+163:           "id": "COCKPIT.n01.b",
+164:           "role": "audio",
+165:           "group": "INHERIT_SERVICE_GROUP",
+166:           "allowed_group_variants": [
+167:             "H",
+168:             "L"
+169:           ],
+170:           "predecessors": [
+171:             "COCKPIT.n01.a"
+172:           ],
+173:           "cost_scale": "1/2",
+174:           "parent_8_node": "COCKPIT.n01"
+175:         },
+176:         {
+177:           "id": "COCKPIT.n02.a",
+178:           "role": "speech",
+179:           "group": "INHERIT_SERVICE_GROUP",
+180:           "allowed_group_variants": [
+181:             "H",
+182:             "L"
+183:           ],
+184:           "predecessors": [
+185:             "COCKPIT.n01.b"
+186:           ],
+187:           "cost_scale": "1/2",
+188:           "parent_8_node": "COCKPIT.n02"
+189:         },
+190:         {
+191:           "id": "COCKPIT.n02.b",
+192:           "role": "speech",
+193:           "group": "INHERIT_SERVICE_GROUP",
+194:           "allowed_group_variants": [
+195:             "H",
+196:             "L"
+197:           ],
+198:           "predecessors": [
+199:             "COCKPIT.n02.a"
+200:           ],
+201:           "cost_scale": "1/2",
+202:           "parent_8_node": "COCKPIT.n02"
+203:         },
+204:         {
+205:           "id": "COCKPIT.n03.a",
+206:           "role": "intent",
+207:           "group": "INHERIT_SERVICE_GROUP",
+208:           "allowed_group_variants": [
+209:             "H",
+210:             "L"
+211:           ],
+212:           "predecessors": [
+213:             "COCKPIT.n02.b"
+214:           ],
+215:           "cost_scale": "1/2",
+216:           "parent_8_node": "COCKPIT.n03"
+217:         },
+218:         {
+219:           "id": "COCKPIT.n03.b",
+220:           "role": "intent",
+221:           "group": "INHERIT_SERVICE_GROUP",
+222:           "allowed_group_variants": [
+223:             "H",
+224:             "L"
+225:           ],
+226:           "predecessors": [
+227:             "COCKPIT.n03.a"
+228:           ],
+229:           "cost_scale": "1/2",
+230:           "parent_8_node": "COCKPIT.n03"
+231:         },
+232:         {
+233:           "id": "COCKPIT.n04.a",
+234:           "role": "display",
+235:           "group": "INHERIT_SERVICE_GROUP",
+236:           "allowed_group_variants": [
+237:             "H",
+238:             "L"
+239:           ],
+240:           "predecessors": [
+241:             "COCKPIT.n03.b",
+242:             "COCKPIT.n05.b"
+243:           ],
+244:           "cost_scale": "1/2",
+245:           "parent_8_node": "COCKPIT.n04"
+246:         },
+247:         {
+248:           "id": "COCKPIT.n04.b",
+249:           "role": "display",
+250:           "group": "INHERIT_SERVICE_GROUP",
+251:           "allowed_group_variants": [
+252:             "H",
+253:             "L"
+254:           ],
+255:           "predecessors": [
+256:             "COCKPIT.n04.a"
+257:           ],
+258:           "cost_scale": "1/2",
+259:           "parent_8_node": "COCKPIT.n04"
+260:         },
+261:         {
+262:           "id": "COCKPIT.n05.a",
+263:           "role": "navigation",
+264:           "group": "INHERIT_SERVICE_GROUP",
+265:           "allowed_group_variants": [
+266:             "H",
+267:             "L"
+268:           ],
+269:           "predecessors": [],
+270:           "cost_scale": "1/2",
+271:           "parent_8_node": "COCKPIT.n05"
+272:         },
+273:         {
+274:           "id": "COCKPIT.n05.b",
+275:           "role": "navigation",
+276:           "group": "INHERIT_SERVICE_GROUP",
+277:           "allowed_group_variants": [
+278:             "H",
+279:             "L"
+280:           ],
+281:           "predecessors": [
+282:             "COCKPIT.n05.a"
+283:           ],
+284:           "cost_scale": "1/2",
+285:           "parent_8_node": "COCKPIT.n05"
+286:         },
+287:         {
+288:           "id": "COCKPIT.n06.a",
+289:           "role": "route",
+290:           "group": "INHERIT_SERVICE_GROUP",
+291:           "allowed_group_variants": [
+292:             "H",
+293:             "L"
+294:           ],
+295:           "predecessors": [
+296:             "COCKPIT.n03.b",
+297:             "COCKPIT.n05.b"
+298:           ],
+299:           "cost_scale": "1/2",
+300:           "parent_8_node": "COCKPIT.n06"
+301:         },
+302:         {
+303:           "id": "COCKPIT.n06.b",
+304:           "role": "route",
+305:           "group": "INHERIT_SERVICE_GROUP",
+306:           "allowed_group_variants": [
+307:             "H",
+308:             "L"
+309:           ],
+310:           "predecessors": [
+311:             "COCKPIT.n06.a"
+312:           ],
+313:           "cost_scale": "1/2",
+314:           "parent_8_node": "COCKPIT.n06"
+315:         },
+316:         {
+317:           "id": "COCKPIT.n07.a",
+318:           "role": "compose",
+319:           "group": "INHERIT_SERVICE_GROUP",
+320:           "allowed_group_variants": [
+321:             "H",
+322:             "L"
+323:           ],
+324:           "predecessors": [
+325:             "COCKPIT.n04.b",
+326:             "COCKPIT.n06.b"
+327:           ],
+328:           "cost_scale": "1/2",
+329:           "parent_8_node": "COCKPIT.n07"
+330:         },
+331:         {
+332:           "id": "COCKPIT.n07.b",
+333:           "role": "compose",
+334:           "group": "INHERIT_SERVICE_GROUP",
+335:           "allowed_group_variants": [
+336:             "H",
+337:             "L"
+338:           ],
+339:           "predecessors": [
+340:             "COCKPIT.n07.a"
+341:           ],
+342:           "cost_scale": "1/2",
+343:           "parent_8_node": "COCKPIT.n07"
+344:         },
+345:         {
+346:           "id": "COCKPIT.n08.a",
+347:           "role": "interaction",
+348:           "group": "INHERIT_SERVICE_GROUP",
+349:           "allowed_group_variants": [
+350:             "H",
+351:             "L"
+352:           ],
+353:           "predecessors": [
+354:             "COCKPIT.n07.b"
+355:           ],
+356:           "cost_scale": "1/2",
+357:           "parent_8_node": "COCKPIT.n08"
+358:         },
+359:         {
+360:           "id": "COCKPIT.n08.b",
+361:           "role": "interaction",
+362:           "group": "INHERIT_SERVICE_GROUP",
+363:           "allowed_group_variants": [
+364:             "H",
+365:             "L"
+366:           ],
+367:           "predecessors": [
+368:             "COCKPIT.n08.a"
+369:           ],
+370:           "cost_scale": "1/2",
+371:           "parent_8_node": "COCKPIT.n08"
+372:         }
+373:       ],
+374:       "hidden_nodes": [],
+375:       "implicit_dummy": false
+376:     },
+377:     {
+378:       "template_id": "ADAS-8-v1",
+379:       "scene": "ADAS",
+380:       "size": 8,
+381:       "node_count": 8,
+382:       "edge_count": 9,
+383:       "service_groups": [
+384:         "H",
+385:         "L"
+386:       ],
+387:       "nodes": [
+388:         {
+389:           "id": "ADAS.n01",
+390:           "role": "preprocess",
+391:           "group": "INHERIT_SERVICE_GROUP",
+392:           "allowed_group_variants": [
+393:             "H",
+394:             "L"
+395:           ],
+396:           "predecessors": [],
+397:           "cost_scale": "1",
+398:           "parent_8_node": "ADAS.n01"
+399:         },
+400:         {
+401:           "id": "ADAS.n02",
+402:           "role": "detect",
+403:           "group": "INHERIT_SERVICE_GROUP",
+404:           "allowed_group_variants": [
+405:             "H",
+406:             "L"
+407:           ],
+408:           "predecessors": [
+409:             "ADAS.n01"
+410:           ],
+411:           "cost_scale": "1",
+412:           "parent_8_node": "ADAS.n02"
+413:         },
+414:         {
+415:           "id": "ADAS.n03",
+416:           "role": "segment",
+417:           "group": "INHERIT_SERVICE_GROUP",
+418:           "allowed_group_variants": [
+419:             "H",
+420:             "L"
+421:           ],
+422:           "predecessors": [
+423:             "ADAS.n01"
+424:           ],
+425:           "cost_scale": "1",
+426:           "parent_8_node": "ADAS.n03"
+427:         },
+428:         {
+429:           "id": "ADAS.n04",
+430:           "role": "track",
+431:           "group": "INHERIT_SERVICE_GROUP",
+432:           "allowed_group_variants": [
+433:             "H",
+434:             "L"
+435:           ],
+436:           "predecessors": [
+437:             "ADAS.n02"
+438:           ],
+439:           "cost_scale": "1",
+440:           "parent_8_node": "ADAS.n04"
+441:         },
+442:         {
+443:           "id": "ADAS.n05",
+444:           "role": "fusion",
+445:           "group": "INHERIT_SERVICE_GROUP",
+446:           "allowed_group_variants": [
+447:             "H",
+448:             "L"
+449:           ],
+450:           "predecessors": [
+451:             "ADAS.n03",
+452:             "ADAS.n04"
+453:           ],
+454:           "cost_scale": "1",
+455:           "parent_8_node": "ADAS.n05"
+456:         },
+457:         {
+458:           "id": "ADAS.n06",
+459:           "role": "plan",
+460:           "group": "INHERIT_SERVICE_GROUP",
+461:           "allowed_group_variants": [
+462:             "H",
+463:             "L"
+464:           ],
+465:           "predecessors": [
+466:             "ADAS.n05"
+467:           ],
+468:           "cost_scale": "1",
+469:           "parent_8_node": "ADAS.n06"
+470:         },
+471:         {
+472:           "id": "ADAS.n07",
+473:           "role": "render",
+474:           "group": "INHERIT_SERVICE_GROUP",
+475:           "allowed_group_variants": [
+476:             "H",
+477:             "L"
+478:           ],
+479:           "predecessors": [
+480:             "ADAS.n05"
+481:           ],
+482:           "cost_scale": "1",
+483:           "parent_8_node": "ADAS.n07"
+484:         },
+485:         {
+486:           "id": "ADAS.n08",
+487:           "role": "output",
+488:           "group": "INHERIT_SERVICE_GROUP",
+489:           "allowed_group_variants": [
+490:             "H",
+491:             "L"
+492:           ],
+493:           "predecessors": [
+494:             "ADAS.n06",
+495:             "ADAS.n07"
+496:           ],
+497:           "cost_scale": "1",
+498:           "parent_8_node": "ADAS.n08"
+499:         }
+500:       ],
+501:       "hidden_nodes": [],
+502:       "implicit_dummy": false
+503:     },
+504:     {
+505:       "template_id": "ADAS-16-v1",
+506:       "scene": "ADAS",
+507:       "size": 16,
+508:       "node_count": 16,
+509:       "edge_count": 17,
+510:       "service_groups": [
+511:         "H",
+512:         "L"
+513:       ],
+514:       "nodes": [
+515:         {
+516:           "id": "ADAS.n01.a",
+517:           "role": "preprocess",
+518:           "group": "INHERIT_SERVICE_GROUP",
+519:           "allowed_group_variants": [
+520:             "H",
+521:             "L"
+522:           ],
+523:           "predecessors": [],
+524:           "cost_scale": "1/2",
+525:           "parent_8_node": "ADAS.n01"
+526:         },
+527:         {
+528:           "id": "ADAS.n01.b",
+529:           "role": "preprocess",
+530:           "group": "INHERIT_SERVICE_GROUP",
+531:           "allowed_group_variants": [
+532:             "H",
+533:             "L"
+534:           ],
+535:           "predecessors": [
+536:             "ADAS.n01.a"
+537:           ],
+538:           "cost_scale": "1/2",
+539:           "parent_8_node": "ADAS.n01"
+540:         },
+541:         {
+542:           "id": "ADAS.n02.a",
+543:           "role": "detect",
+544:           "group": "INHERIT_SERVICE_GROUP",
+545:           "allowed_group_variants": [
+546:             "H",
+547:             "L"
+548:           ],
+549:           "predecessors": [
+550:             "ADAS.n01.b"
+551:           ],
+552:           "cost_scale": "1/2",
+553:           "parent_8_node": "ADAS.n02"
+554:         },
+555:         {
+556:           "id": "ADAS.n02.b",
+557:           "role": "detect",
+558:           "group": "INHERIT_SERVICE_GROUP",
+559:           "allowed_group_variants": [
+560:             "H",
+561:             "L"
+562:           ],
+563:           "predecessors": [
+564:             "ADAS.n02.a"
+565:           ],
+566:           "cost_scale": "1/2",
+567:           "parent_8_node": "ADAS.n02"
+568:         },
+569:         {
+570:           "id": "ADAS.n03.a",
+571:           "role": "segment",
+572:           "group": "INHERIT_SERVICE_GROUP",
+573:           "allowed_group_variants": [
+574:             "H",
+575:             "L"
+576:           ],
+577:           "predecessors": [
+578:             "ADAS.n01.b"
+579:           ],
+580:           "cost_scale": "1/2",
+581:           "parent_8_node": "ADAS.n03"
+582:         },
+583:         {
+584:           "id": "ADAS.n03.b",
+585:           "role": "segment",
+586:           "group": "INHERIT_SERVICE_GROUP",
+587:           "allowed_group_variants": [
+588:             "H",
+589:             "L"
+590:           ],
+591:           "predecessors": [
+592:             "ADAS.n03.a"
+593:           ],
+594:           "cost_scale": "1/2",
+595:           "parent_8_node": "ADAS.n03"
+596:         },
+597:         {
+598:           "id": "ADAS.n04.a",
+599:           "role": "track",
+600:           "group": "INHERIT_SERVICE_GROUP",
+601:           "allowed_group_variants": [
+602:             "H",
+603:             "L"
+604:           ],
+605:           "predecessors": [
+606:             "ADAS.n02.b"
+607:           ],
+608:           "cost_scale": "1/2",
+609:           "parent_8_node": "ADAS.n04"
+610:         },
+611:         {
+612:           "id": "ADAS.n04.b",
+613:           "role": "track",
+614:           "group": "INHERIT_SERVICE_GROUP",
+615:           "allowed_group_variants": [
+616:             "H",
+617:             "L"
+618:           ],
+619:           "predecessors": [
+620:             "ADAS.n04.a"
+621:           ],
+622:           "cost_scale": "1/2",
+623:           "parent_8_node": "ADAS.n04"
+624:         },
+625:         {
+626:           "id": "ADAS.n05.a",
+627:           "role": "fusion",
+628:           "group": "INHERIT_SERVICE_GROUP",
+629:           "allowed_group_variants": [
+630:             "H",
+631:             "L"
+632:           ],
+633:           "predecessors": [
+634:             "ADAS.n03.b",
+635:             "ADAS.n04.b"
+636:           ],
+637:           "cost_scale": "1/2",
+638:           "parent_8_node": "ADAS.n05"
+639:         },
+640:         {
+641:           "id": "ADAS.n05.b",
+642:           "role": "fusion",
+643:           "group": "INHERIT_SERVICE_GROUP",
+644:           "allowed_group_variants": [
+645:             "H",
+646:             "L"
+647:           ],
+648:           "predecessors": [
+649:             "ADAS.n05.a"
+650:           ],
+651:           "cost_scale": "1/2",
+652:           "parent_8_node": "ADAS.n05"
+653:         },
+654:         {
+655:           "id": "ADAS.n06.a",
+656:           "role": "plan",
+657:           "group": "INHERIT_SERVICE_GROUP",
+658:           "allowed_group_variants": [
+659:             "H",
+660:             "L"
+661:           ],
+662:           "predecessors": [
+663:             "ADAS.n05.b"
+664:           ],
+665:           "cost_scale": "1/2",
+666:           "parent_8_node": "ADAS.n06"
+667:         },
+668:         {
+669:           "id": "ADAS.n06.b",
+670:           "role": "plan",
+671:           "group": "INHERIT_SERVICE_GROUP",
+672:           "allowed_group_variants": [
+673:             "H",
+674:             "L"
+675:           ],
+676:           "predecessors": [
+677:             "ADAS.n06.a"
+678:           ],
+679:           "cost_scale": "1/2",
+680:           "parent_8_node": "ADAS.n06"
+681:         },
+682:         {
+683:           "id": "ADAS.n07.a",
+684:           "role": "render",
+685:           "group": "INHERIT_SERVICE_GROUP",
+686:           "allowed_group_variants": [
+687:             "H",
+688:             "L"
+689:           ],
+690:           "predecessors": [
+691:             "ADAS.n05.b"
+692:           ],
+693:           "cost_scale": "1/2",
+694:           "parent_8_node": "ADAS.n07"
+695:         },
+696:         {
+697:           "id": "ADAS.n07.b",
+698:           "role": "render",
+699:           "group": "INHERIT_SERVICE_GROUP",
+700:           "allowed_group_variants": [
+701:             "H",
+702:             "L"
+703:           ],
+704:           "predecessors": [
+705:             "ADAS.n07.a"
+706:           ],
+707:           "cost_scale": "1/2",
+708:           "parent_8_node": "ADAS.n07"
+709:         },
+710:         {
+711:           "id": "ADAS.n08.a",
+712:           "role": "output",
+713:           "group": "INHERIT_SERVICE_GROUP",
+714:           "allowed_group_variants": [
+715:             "H",
+716:             "L"
+717:           ],
+718:           "predecessors": [
+719:             "ADAS.n06.b",
+720:             "ADAS.n07.b"
+721:           ],
+722:           "cost_scale": "1/2",
+723:           "parent_8_node": "ADAS.n08"
+724:         },
+725:         {
+726:           "id": "ADAS.n08.b",
+727:           "role": "output",
+728:           "group": "INHERIT_SERVICE_GROUP",
+729:           "allowed_group_variants": [
+730:             "H",
+731:             "L"
+732:           ],
+733:           "predecessors": [
+734:             "ADAS.n08.a"
+735:           ],
+736:           "cost_scale": "1/2",
+737:           "parent_8_node": "ADAS.n08"
+738:         }
+739:       ],
+740:       "hidden_nodes": [],
+741:       "implicit_dummy": false
+742:     },
+743:     {
+744:       "template_id": "FUSION-8-v1",
+745:       "scene": "FUSION",
+746:       "size": 8,
+747:       "node_count": 8,
+748:       "edge_count": 7,
+749:       "service_groups": [
+750:         "H",
+751:         "L"
+752:       ],
+753:       "nodes": [
+754:         {
+755:           "id": "FUSION.n01",
+756:           "role": "audio",
+757:           "group": "INHERIT_SERVICE_GROUP",
+758:           "allowed_group_variants": [
+759:             "H",
+760:             "L"
+761:           ],
+762:           "predecessors": [],
+763:           "cost_scale": "1",
+764:           "parent_8_node": "FUSION.n01"
+765:         },
+766:         {
+767:           "id": "FUSION.n02",
+768:           "role": "speech",
+769:           "group": "INHERIT_SERVICE_GROUP",
+770:           "allowed_group_variants": [
+771:             "H",
+772:             "L"
+773:           ],
+774:           "predecessors": [
+775:             "FUSION.n01"
+776:           ],
+777:           "cost_scale": "1",
+778:           "parent_8_node": "FUSION.n02"
+779:         },
+780:         {
+781:           "id": "FUSION.n03",
+782:           "role": "navigation",
+783:           "group": "INHERIT_SERVICE_GROUP",
+784:           "allowed_group_variants": [
+785:             "H",
+786:             "L"
+787:           ],
+788:           "predecessors": [],
+789:           "cost_scale": "1",
+790:           "parent_8_node": "FUSION.n03"
+791:         },
+792:         {
+793:           "id": "FUSION.n04",
+794:           "role": "detect",
+795:           "group": "INHERIT_SERVICE_GROUP",
+796:           "allowed_group_variants": [
+797:             "H",
+798:             "L"
+799:           ],
+800:           "predecessors": [
+801:             "FUSION.n05"
+802:           ],
+803:           "cost_scale": "1",
+804:           "parent_8_node": "FUSION.n04"
+805:         },
+806:         {
+807:           "id": "FUSION.n05",
+808:           "role": "preprocess",
+809:           "group": "INHERIT_SERVICE_GROUP",
+810:           "allowed_group_variants": [
+811:             "H",
+812:             "L"
+813:           ],
+814:           "predecessors": [],
+815:           "cost_scale": "1",
+816:           "parent_8_node": "FUSION.n05"
+817:         },
+818:         {
+819:           "id": "FUSION.n06",
+820:           "role": "fusion",
+821:           "group": "INHERIT_SERVICE_GROUP",
+822:           "allowed_group_variants": [
+823:             "H",
+824:             "L"
+825:           ],
+826:           "predecessors": [
+827:             "FUSION.n02",
+828:             "FUSION.n04"
+829:           ],
+830:           "cost_scale": "1",
+831:           "parent_8_node": "FUSION.n06"
+832:         },
+833:         {
+834:           "id": "FUSION.n07",
+835:           "role": "compose",
+836:           "group": "INHERIT_SERVICE_GROUP",
+837:           "allowed_group_variants": [
+838:             "H",
+839:             "L"
+840:           ],
+841:           "predecessors": [
+842:             "FUSION.n03",
+843:             "FUSION.n06"
+844:           ],
+845:           "cost_scale": "1",
+846:           "parent_8_node": "FUSION.n07"
+847:         },
+848:         {
+849:           "id": "FUSION.n08",
+850:           "role": "interaction",
+851:           "group": "INHERIT_SERVICE_GROUP",
+852:           "allowed_group_variants": [
+853:             "H",
+854:             "L"
+855:           ],
+856:           "predecessors": [
+857:             "FUSION.n07"
+858:           ],
+859:           "cost_scale": "1",
+860:           "parent_8_node": "FUSION.n08"
+861:         }
+862:       ],
+863:       "hidden_nodes": [],
+864:       "implicit_dummy": false
+865:     },
+866:     {
+867:       "template_id": "FUSION-16-v1",
+868:       "scene": "FUSION",
+869:       "size": 16,
+870:       "node_count": 16,
+871:       "edge_count": 15,
+872:       "service_groups": [
+873:         "H",
+874:         "L"
+875:       ],
+876:       "nodes": [
+877:         {
+878:           "id": "FUSION.n01.a",
+879:           "role": "audio",
+880:           "group": "INHERIT_SERVICE_GROUP",
+881:           "allowed_group_variants": [
+882:             "H",
+883:             "L"
+884:           ],
+885:           "predecessors": [],
+886:           "cost_scale": "1/2",
+887:           "parent_8_node": "FUSION.n01"
+888:         },
+889:         {
+890:           "id": "FUSION.n01.b",
+891:           "role": "audio",
+892:           "group": "INHERIT_SERVICE_GROUP",
+893:           "allowed_group_variants": [
+894:             "H",
+895:             "L"
+896:           ],
+897:           "predecessors": [
+898:             "FUSION.n01.a"
+899:           ],
+900:           "cost_scale": "1/2",
+901:           "parent_8_node": "FUSION.n01"
+902:         },
+903:         {
+904:           "id": "FUSION.n02.a",
+905:           "role": "speech",
+906:           "group": "INHERIT_SERVICE_GROUP",
+907:           "allowed_group_variants": [
+908:             "H",
+909:             "L"
+910:           ],
+911:           "predecessors": [
+912:             "FUSION.n01.b"
+913:           ],
+914:           "cost_scale": "1/2",
+915:           "parent_8_node": "FUSION.n02"
+916:         },
+917:         {
+918:           "id": "FUSION.n02.b",
+919:           "role": "speech",
+920:           "group": "INHERIT_SERVICE_GROUP",
+921:           "allowed_group_variants": [
+922:             "H",
+923:             "L"
+924:           ],
+925:           "predecessors": [
+926:             "FUSION.n02.a"
+927:           ],
+928:           "cost_scale": "1/2",
+929:           "parent_8_node": "FUSION.n02"
+930:         },
+931:         {
+932:           "id": "FUSION.n03.a",
+933:           "role": "navigation",
+934:           "group": "INHERIT_SERVICE_GROUP",
+935:           "allowed_group_variants": [
+936:             "H",
+937:             "L"
+938:           ],
+939:           "predecessors": [],
+940:           "cost_scale": "1/2",
+941:           "parent_8_node": "FUSION.n03"
+942:         },
+943:         {
+944:           "id": "FUSION.n03.b",
+945:           "role": "navigation",
+946:           "group": "INHERIT_SERVICE_GROUP",
+947:           "allowed_group_variants": [
+948:             "H",
+949:             "L"
+950:           ],
+951:           "predecessors": [
+952:             "FUSION.n03.a"
+953:           ],
+954:           "cost_scale": "1/2",
+955:           "parent_8_node": "FUSION.n03"
+956:         },
+957:         {
+958:           "id": "FUSION.n04.a",
+959:           "role": "detect",
+960:           "group": "INHERIT_SERVICE_GROUP",
+961:           "allowed_group_variants": [
+962:             "H",
+963:             "L"
+964:           ],
+965:           "predecessors": [
+966:             "FUSION.n05.b"
+967:           ],
+968:           "cost_scale": "1/2",
+969:           "parent_8_node": "FUSION.n04"
+970:         },
+971:         {
+972:           "id": "FUSION.n04.b",
+973:           "role": "detect",
+974:           "group": "INHERIT_SERVICE_GROUP",
+975:           "allowed_group_variants": [
+976:             "H",
+977:             "L"
+978:           ],
+979:           "predecessors": [
+980:             "FUSION.n04.a"
+981:           ],
+982:           "cost_scale": "1/2",
+983:           "parent_8_node": "FUSION.n04"
+984:         },
+985:         {
+986:           "id": "FUSION.n05.a",
+987:           "role": "preprocess",
+988:           "group": "INHERIT_SERVICE_GROUP",
+989:           "allowed_group_variants": [
+990:             "H",
+991:             "L"
+992:           ],
+993:           "predecessors": [],
+994:           "cost_scale": "1/2",
+995:           "parent_8_node": "FUSION.n05"
+996:         },
+997:         {
+998:           "id": "FUSION.n05.b",
+999:           "role": "preprocess",
+1000:           "group": "INHERIT_SERVICE_GROUP",
+1001:           "allowed_group_variants": [
+1002:             "H",
+1003:             "L"
+1004:           ],
+1005:           "predecessors": [
+1006:             "FUSION.n05.a"
+1007:           ],
+1008:           "cost_scale": "1/2",
+1009:           "parent_8_node": "FUSION.n05"
+1010:         },
+1011:         {
+1012:           "id": "FUSION.n06.a",
+1013:           "role": "fusion",
+1014:           "group": "INHERIT_SERVICE_GROUP",
+1015:           "allowed_group_variants": [
+1016:             "H",
+1017:             "L"
+1018:           ],
+1019:           "predecessors": [
+1020:             "FUSION.n02.b",
+1021:             "FUSION.n04.b"
+1022:           ],
+1023:           "cost_scale": "1/2",
+1024:           "parent_8_node": "FUSION.n06"
+1025:         },
+1026:         {
+1027:           "id": "FUSION.n06.b",
+1028:           "role": "fusion",
+1029:           "group": "INHERIT_SERVICE_GROUP",
+1030:           "allowed_group_variants": [
+1031:             "H",
+1032:             "L"
+1033:           ],
+1034:           "predecessors": [
+1035:             "FUSION.n06.a"
+1036:           ],
+1037:           "cost_scale": "1/2",
+1038:           "parent_8_node": "FUSION.n06"
+1039:         },
+1040:         {
+1041:           "id": "FUSION.n07.a",
+1042:           "role": "compose",
+1043:           "group": "INHERIT_SERVICE_GROUP",
+1044:           "allowed_group_variants": [
+1045:             "H",
+1046:             "L"
+1047:           ],
+1048:           "predecessors": [
+1049:             "FUSION.n03.b",
+1050:             "FUSION.n06.b"
+1051:           ],
+1052:           "cost_scale": "1/2",
+1053:           "parent_8_node": "FUSION.n07"
+1054:         },
+1055:         {
+1056:           "id": "FUSION.n07.b",
+1057:           "role": "compose",
+1058:           "group": "INHERIT_SERVICE_GROUP",
+1059:           "allowed_group_variants": [
+1060:             "H",
+1061:             "L"
+1062:           ],
+1063:           "predecessors": [
+1064:             "FUSION.n07.a"
+1065:           ],
+1066:           "cost_scale": "1/2",
+1067:           "parent_8_node": "FUSION.n07"
+1068:         },
+1069:         {
+1070:           "id": "FUSION.n08.a",
+1071:           "role": "interaction",
+1072:           "group": "INHERIT_SERVICE_GROUP",
+1073:           "allowed_group_variants": [
+1074:             "H",
+1075:             "L"
+1076:           ],
+1077:           "predecessors": [
+1078:             "FUSION.n07.b"
+1079:           ],
+1080:           "cost_scale": "1/2",
+1081:           "parent_8_node": "FUSION.n08"
+1082:         },
+1083:         {
+1084:           "id": "FUSION.n08.b",
+1085:           "role": "interaction",
+1086:           "group": "INHERIT_SERVICE_GROUP",
+1087:           "allowed_group_variants": [
+1088:             "H",
+1089:             "L"
+1090:           ],
+1091:           "predecessors": [
+1092:             "FUSION.n08.a"
+1093:           ],
+1094:           "cost_scale": "1/2",
+1095:           "parent_8_node": "FUSION.n08"
+1096:         }
+1097:       ],
+1098:       "hidden_nodes": [],
+1099:       "implicit_dummy": false
+1100:     }
+1101:   ],
+1102:   "group_rule": "One service is entirely H or entirely L. Instantiate H and L variants; never mix node criticality within a service.",
+1103:   "global_node_id": "service_id + / + template_node_id",
+1104:   "expansion": "Replace each 8-node v by v.a -> v.b, each half cost; replace every u->v by u.b->v.a. Internal edge is explicit 1/16 MiB, no dummy. Group and role inherited.",
+1105:   "validation": "Kahn indegree traversal over explicit predecessor sets; missing/duplicate nodes, cycles, self-edges rejected; exact executable counts 8/16. IDs need not be topologically sorted.",
+1106:   "source_refs": [
+1107:     "docs/workload_spec.md:3–12",
+1108:     "docs/user_request.txt:§§18,33–34"
+1109:   ],
+1110:   "mechanisms": {
+1111:     "COCKPIT": "speech/interaction chain plus navigation/display branches merging at composition",
+1112:     "ADAS": "parallel detection/segmentation, fusion then planning/render join; scarce NPU/GPU",
+1113:     "FUSION": "cockpit and perception chains in each instance; all instances share the same six resources, creating cross-service competition"
+1114:   },
+1115:   "limitation": "All six topologies are new synthetic proposals, not extracted from reviewed papers or vehicles. Equal compute under split does not preserve communication or parallelism.",
+1116:   "document_version": "v2",
+1117:   "approval": "UNAPPROVED",
+1118:   "starting_commit": "79f9c245b23119ce25175d6dc6ff148e9e092461",
+1119:   "preserved_semantic_content_version": "v1",
+1120:   "parent_proposal": {
+1121:     "path": "docs/P2_design/P2_workload_templates_v1.json",
+1122:     "sha256": "97762849c9fd4d6e715d197b553fe157a091ce2a09bce8270b8e5eba7dcbff04"
+1123:   },
+1124:   "revision_note": "Document namespace only; original topology/profile/network values and template IDs retained unapproved."
+1125: }
+
+FILE docs/P2_design/v2/P2_resource_profiles_v2.json SHA256 9eea5cfd43ce50d796a00d7cac86f9a7ca8798da4a3ea0c2fd9e598d965f13ae
+1: {
+2:   "document_kind": "RESOURCE_PROFILE_PROPOSAL",
+3:   "version": "v2",
+4:   "status": "DRAFT_UNAPPROVED_NONEXECUTABLE",
+5:   "classification": "PROPOSED",
+6:   "approved": false,
+7:   "frozen": false,
+8:   "executable": false,
+9:   "execution_authorized": false,
+10:   "read_by_pipeline": false,
+11:   "source_checkpoint": "160800d9b136e953c6415cd5229ded87eae72a0f",
+12:   "resources": [
+13:     "CPU0",
+14:     "CPU1",
+15:     "CPU2",
+16:     "CPU3",
+17:     "GPU0",
+18:     "NPU0"
+19:   ],
+20:   "unit": "ms",
+21:   "incompatible": "JSON null and excluded from compatible_resources; never infinity or zero duration",
+22:   "profiles": [
+23:     {
+24:       "role": "audio",
+25:       "mechanism": "CPU-only 音频整理",
+26:       "compatible_resources": [
+27:         "CPU0",
+28:         "CPU1",
+29:         "CPU2",
+30:         "CPU3"
+31:       ],
+32:       "estimated_base_ms": {
+33:         "CPU0": 2,
+34:         "CPU1": 2,
+35:         "CPU2": 2,
+36:         "CPU3": 2,
+37:         "GPU0": null,
+38:         "NPU0": null
+39:       },
+40:       "source": "PROPOSED_SYNTHETIC_NOT_MEASURED_NOT_PAPER_VALUES",
+41:       "approval": "UNAPPROVED"
+42:     },
+43:     {
+44:       "role": "speech",
+45:       "mechanism": "NPU-oriented 语音推断",
+46:       "compatible_resources": [
+47:         "CPU0",
+48:         "CPU1",
+49:         "CPU2",
+50:         "CPU3",
+51:         "NPU0"
+52:       ],
+53:       "estimated_base_ms": {
+54:         "CPU0": 12,
+55:         "CPU1": 12,
+56:         "CPU2": 12,
+57:         "CPU3": 12,
+58:         "GPU0": null,
+59:         "NPU0": 3
+60:       },
+61:       "source": "PROPOSED_SYNTHETIC_NOT_MEASURED_NOT_PAPER_VALUES",
+62:       "approval": "UNAPPROVED"
+63:     },
+64:     {
+65:       "role": "intent",
+66:       "mechanism": "CPU-only 意图解析",
+67:       "compatible_resources": [
+68:         "CPU0",
+69:         "CPU1",
+70:         "CPU2",
+71:         "CPU3"
+72:       ],
+73:       "estimated_base_ms": {
+74:         "CPU0": 1,
+75:         "CPU1": 1,
+76:         "CPU2": 1,
+77:         "CPU3": 1,
+78:         "GPU0": null,
+79:         "NPU0": null
+80:       },
+81:       "source": "PROPOSED_SYNTHETIC_NOT_MEASURED_NOT_PAPER_VALUES",
+82:       "approval": "UNAPPROVED"
+83:     },
+84:     {
+85:       "role": "display",
+86:       "mechanism": "GPU-oriented 显示处理",
+87:       "compatible_resources": [
+88:         "CPU0",
+89:         "CPU1",
+90:         "CPU2",
+91:         "CPU3",
+92:         "GPU0"
+93:       ],
+94:       "estimated_base_ms": {
+95:         "CPU0": 8,
+96:         "CPU1": 8,
+97:         "CPU2": 8,
+98:         "CPU3": 8,
+99:         "GPU0": 2,
+100:         "NPU0": null
+101:       },
+102:       "source": "PROPOSED_SYNTHETIC_NOT_MEASURED_NOT_PAPER_VALUES",
+103:       "approval": "UNAPPROVED"
+104:     },
+105:     {
+106:       "role": "navigation",
+107:       "mechanism": "CPU-only 导航输入",
+108:       "compatible_resources": [
+109:         "CPU0",
+110:         "CPU1",
+111:         "CPU2",
+112:         "CPU3"
+113:       ],
+114:       "estimated_base_ms": {
+115:         "CPU0": 3,
+116:         "CPU1": 3,
+117:         "CPU2": 3,
+118:         "CPU3": 3,
+119:         "GPU0": null,
+120:         "NPU0": null
+121:       },
+122:       "source": "PROPOSED_SYNTHETIC_NOT_MEASURED_NOT_PAPER_VALUES",
+123:       "approval": "UNAPPROVED"
+124:     },
+125:     {
+126:       "role": "route",
+127:       "mechanism": "CPU/GPU 路线变换",
+128:       "compatible_resources": [
+129:         "CPU0",
+130:         "CPU1",
+131:         "CPU2",
+132:         "CPU3",
+133:         "GPU0"
+134:       ],
+135:       "estimated_base_ms": {
+136:         "CPU0": 8,
+137:         "CPU1": 8,
+138:         "CPU2": 8,
+139:         "CPU3": 8,
+140:         "GPU0": 3,
+141:         "NPU0": null
+142:       },
+143:       "source": "PROPOSED_SYNTHETIC_NOT_MEASURED_NOT_PAPER_VALUES",
+144:       "approval": "UNAPPROVED"
+145:     },
+146:     {
+147:       "role": "compose",
+148:       "mechanism": "multi-compatible 合成变换",
+149:       "compatible_resources": [
+150:         "CPU0",
+151:         "CPU1",
+152:         "CPU2",
+153:         "CPU3",
+154:         "GPU0",
+155:         "NPU0"
+156:       ],
+157:       "estimated_base_ms": {
+158:         "CPU0": 6,
+159:         "CPU1": 6,
+160:         "CPU2": 6,
+161:         "CPU3": 6,
+162:         "GPU0": 2,
+163:         "NPU0": 3
+164:       },
+165:       "source": "PROPOSED_SYNTHETIC_NOT_MEASURED_NOT_PAPER_VALUES",
+166:       "approval": "UNAPPROVED"
+167:     },
+168:     {
+169:       "role": "interaction",
+170:       "mechanism": "CPU-only 交互输出",
+171:       "compatible_resources": [
+172:         "CPU0",
+173:         "CPU1",
+174:         "CPU2",
+175:         "CPU3"
+176:       ],
+177:       "estimated_base_ms": {
+178:         "CPU0": 1,
+179:         "CPU1": 1,
+180:         "CPU2": 1,
+181:         "CPU3": 1,
+182:         "GPU0": null,
+183:         "NPU0": null
+184:       },
+185:       "source": "PROPOSED_SYNTHETIC_NOT_MEASURED_NOT_PAPER_VALUES",
+186:       "approval": "UNAPPROVED"
+187:     },
+188:     {
+189:       "role": "preprocess",
+190:       "mechanism": "CPU/GPU 感知预处理",
+191:       "compatible_resources": [
+192:         "CPU0",
+193:         "CPU1",
+194:         "CPU2",
+195:         "CPU3",
+196:         "GPU0"
+197:       ],
+198:       "estimated_base_ms": {
+199:         "CPU0": 6,
+200:         "CPU1": 6,
+201:         "CPU2": 6,
+202:         "CPU3": 6,
+203:         "GPU0": 2,
+204:         "NPU0": null
+205:       },
+206:       "source": "PROPOSED_SYNTHETIC_NOT_MEASURED_NOT_PAPER_VALUES",
+207:       "approval": "UNAPPROVED"
+208:     },
+209:     {
+210:       "role": "detect",
+211:       "mechanism": "limited-alternative NPU-only 检测",
+212:       "compatible_resources": [
+213:         "NPU0"
+214:       ],
+215:       "estimated_base_ms": {
+216:         "CPU0": null,
+217:         "CPU1": null,
+218:         "CPU2": null,
+219:         "CPU3": null,
+220:         "GPU0": null,
+221:         "NPU0": 4
+222:       },
+223:       "source": "PROPOSED_SYNTHETIC_NOT_MEASURED_NOT_PAPER_VALUES",
+224:       "approval": "UNAPPROVED"
+225:     },
+226:     {
+227:       "role": "segment",
+228:       "mechanism": "multi-compatible 分割",
+229:       "compatible_resources": [
+230:         "CPU0",
+231:         "CPU1",
+232:         "CPU2",
+233:         "CPU3",
+234:         "GPU0",
+235:         "NPU0"
+236:       ],
+237:       "estimated_base_ms": {
+238:         "CPU0": 16,
+239:         "CPU1": 16,
+240:         "CPU2": 16,
+241:         "CPU3": 16,
+242:         "GPU0": 4,
+243:         "NPU0": 5
+244:       },
+245:       "source": "PROPOSED_SYNTHETIC_NOT_MEASURED_NOT_PAPER_VALUES",
+246:       "approval": "UNAPPROVED"
+247:     },
+248:     {
+249:       "role": "track",
+250:       "mechanism": "CPU-only 跟踪",
+251:       "compatible_resources": [
+252:         "CPU0",
+253:         "CPU1",
+254:         "CPU2",
+255:         "CPU3"
+256:       ],
+257:       "estimated_base_ms": {
+258:         "CPU0": 3,
+259:         "CPU1": 3,
+260:         "CPU2": 3,
+261:         "CPU3": 3,
+262:         "GPU0": null,
+263:         "NPU0": null
+264:       },
+265:       "source": "PROPOSED_SYNTHETIC_NOT_MEASURED_NOT_PAPER_VALUES",
+266:       "approval": "UNAPPROVED"
+267:     },
+268:     {
+269:       "role": "fusion",
+270:       "mechanism": "NPU/CPU 感知融合",
+271:       "compatible_resources": [
+272:         "CPU0",
+273:         "CPU1",
+274:         "CPU2",
+275:         "CPU3",
+276:         "NPU0"
+277:       ],
+278:       "estimated_base_ms": {
+279:         "CPU0": 6,
+280:         "CPU1": 6,
+281:         "CPU2": 6,
+282:         "CPU3": 6,
+283:         "GPU0": null,
+284:         "NPU0": 2
+285:       },
+286:       "source": "PROPOSED_SYNTHETIC_NOT_MEASURED_NOT_PAPER_VALUES",
+287:       "approval": "UNAPPROVED"
+288:     },
+289:     {
+290:       "role": "plan",
+291:       "mechanism": "CPU-only 规划",
+292:       "compatible_resources": [
+293:         "CPU0",
+294:         "CPU1",
+295:         "CPU2",
+296:         "CPU3"
+297:       ],
+298:       "estimated_base_ms": {
+299:         "CPU0": 2,
+300:         "CPU1": 2,
+301:         "CPU2": 2,
+302:         "CPU3": 2,
+303:         "GPU0": null,
+304:         "NPU0": null
+305:       },
+306:       "source": "PROPOSED_SYNTHETIC_NOT_MEASURED_NOT_PAPER_VALUES",
+307:       "approval": "UNAPPROVED"
+308:     },
+309:     {
+310:       "role": "render",
+311:       "mechanism": "limited-alternative GPU-only 可视化",
+312:       "compatible_resources": [
+313:         "GPU0"
+314:       ],
+315:       "estimated_base_ms": {
+316:         "CPU0": null,
+317:         "CPU1": null,
+318:         "CPU2": null,
+319:         "CPU3": null,
+320:         "GPU0": 2,
+321:         "NPU0": null
+322:       },
+323:       "source": "PROPOSED_SYNTHETIC_NOT_MEASURED_NOT_PAPER_VALUES",
+324:       "approval": "UNAPPROVED"
+325:     },
+326:     {
+327:       "role": "output",
+328:       "mechanism": "CPU-only ADAS 输出",
+329:       "compatible_resources": [
+330:         "CPU0",
+331:         "CPU1",
+332:         "CPU2",
+333:         "CPU3"
+334:       ],
+335:       "estimated_base_ms": {
+336:         "CPU0": 1,
+337:         "CPU1": 1,
+338:         "CPU2": 1,
+339:         "CPU3": 1,
+340:         "GPU0": null,
+341:         "NPU0": null
+342:       },
+343:       "source": "PROPOSED_SYNTHETIC_NOT_MEASURED_NOT_PAPER_VALUES",
+344:       "approval": "UNAPPROVED"
+345:     }
+346:   ],
+347:   "node_scale": {
+348:     "8": "1",
+349:     "16.a": "1/2",
+350:     "16.b": "1/2"
+351:   },
+352:   "estimate": "base_ms * node_scale * service_role_factor",
+353:   "realized": "estimate_ms * resource_duration_factor",
+354:   "positive_guarantee": "Exact preconversion base>=1, scale>=1/2, factors>=9/10: duration>=81/200 ms. Single binary64 conversion must remain finite and strictly positive.",
+355:   "source_refs": [
+356:     "docs/model_spec.md:10–14,48–58",
+357:     "docs/literature_reviews/ds3.md:12–23",
+358:     "docs/literature_reviews/starpu.md:19–24"
+359:   ],
+360:   "risk": "synthetic speedups and hard accelerator affinity can create mapping opportunities; not automotive measurements; no source speedup borrowed",
+361:   "document_version": "v2",
+362:   "approval": "UNAPPROVED",
+363:   "starting_commit": "79f9c245b23119ce25175d6dc6ff148e9e092461",
+364:   "preserved_semantic_content_version": "v1",
+365:   "parent_proposal": {
+366:     "path": "docs/P2_design/P2_resource_profiles_v1.json",
+367:     "sha256": "5e303a5b5f0c096fbc38ce1d762bc1cbf3d8e09472d2c460160bb8b88993b0a4"
+368:   },
+369:   "revision_note": "Document namespace only; original topology/profile/network values and template IDs retained unapproved."
+370: }
+
+FILE docs/P2_design/v2/P2_generation_spec_v2.json SHA256 33e3ccf437510986ffa401eea1ef48e995a1ad08df38a834374d4a1c483a91f2
+1: {
+2:   "document_kind": "EXACT_GENERATION_PROPOSAL",
+3:   "document_version": "v2",
+4:   "status": "DRAFT_UNAPPROVED_NONEXECUTABLE",
+5:   "classification": "PROPOSED",
+6:   "approval": "UNAPPROVED",
+7:   "approved": false,
+8:   "frozen": false,
+9:   "executable": false,
+10:   "execution_authorized": false,
+11:   "read_by_pipeline": false,
+12:   "starting_commit": "79f9c245b23119ce25175d6dc6ff148e9e092461",
+13:   "schema_version": 2,
+14:   "generator_version": "soc-p2-synthetic-v2-PROPOSED",
+15:   "typed_schema_ref": "P2_typed_identity_schema_v2.json#/$defs/KEY",
+16:   "key_fill_templates": {
+17:     "arrival_jitter": {
+18:       "domain": "soc.p2.gen.v2",
+19:       "schema_version": 2,
+20:       "generator_version": "soc-p2-synthetic-v2-PROPOSED",
+21:       "actual_seed_decimal_string": "registered seed rendered as decimal STRING",
+22:       "scenario": "registered MAIN scenario",
+23:       "condition_id": "{scenario}-{load}-{size}",
+24:       "config_id": "unchanged registered A/B config ID",
+25:       "service_slot": "integer j in0..49",
+26:       "service_group": "",
+27:       "template_node_id": "",
+28:       "resource_id": "",
+29:       "edge_id": "",
+30:       "field": "arrival_jitter",
+31:       "counter": 0
+32:     },
+33:     "service_role_factor": {
+34:       "domain": "soc.p2.gen.v2",
+35:       "schema_version": 2,
+36:       "generator_version": "soc-p2-synthetic-v2-PROPOSED",
+37:       "actual_seed_decimal_string": "registered seed rendered as decimal STRING",
+38:       "scenario": "registered MAIN scenario",
+39:       "condition_id": "{scenario}-{load}-{size}",
+40:       "config_id": "unchanged registered A/B config ID",
+41:       "service_slot": "integer j in0..49",
+42:       "service_group": "H or L",
+43:       "template_node_id": "exact preserved local template node ID",
+44:       "resource_id": "",
+45:       "edge_id": "",
+46:       "field": "service_role_factor",
+47:       "counter": 0
+48:     },
+49:     "duration_factor": {
+50:       "domain": "soc.p2.gen.v2",
+51:       "schema_version": 2,
+52:       "generator_version": "soc-p2-synthetic-v2-PROPOSED",
+53:       "actual_seed_decimal_string": "registered seed rendered as decimal STRING",
+54:       "scenario": "registered MAIN scenario",
+55:       "condition_id": "{scenario}-{load}-{size}",
+56:       "config_id": "unchanged registered A/B config ID",
+57:       "service_slot": "integer j in0..49",
+58:       "service_group": "H or L",
+59:       "template_node_id": "exact preserved local template node ID",
+60:       "resource_id": "exact compatible resource ID",
+61:       "edge_id": "",
+62:       "field": "duration_factor",
+63:       "counter": 0
+64:     }
+65:   },
+66:   "key_exclusions": [
+67:     "method",
+68:     "trial_id",
+69:     "run_id",
+70:     "attempt_id",
+71:     "host",
+72:     "wall_time",
+73:     "scheduler_call_count",
+74:     "control_variant",
+75:     "control_arrival_time",
+76:     "generation_receipt_id"
+77:   ],
+78:   "parent_key_rule": "Both controls reuse resolved MAIN numeric bits and original MAIN field keys; controls never draw their own duration/jitter keys.",
+79:   "algorithm": {
+80:     "name": "SHA256",
+81:     "input": "SEMANTIC_CANON_V2(exact fully filled KEY object)",
+82:     "digest_to_U": "q=unsigned big-endian first8 bytes; U=q/2^64 exact Rational in[0,1)",
+83:     "service_role_factor": "9/10+U/5, independent key per MAIN slot/group/node; same factor for all compatible resources of this node",
+84:     "duration_factor": "9/10+U/5, separate MAIN slot/group/node/resource key; realized_exact=estimate_exact*factor",
+85:     "arrival_jitter": "U/10 per MAIN slot with H/L/node/resource/edge fields empty; scenario/condition/config retained",
+86:     "nonrandom_fields": [
+87:       "edge sizes fixed D03",
+88:       "deadline formula no draws"
+89:     ],
+90:     "conversion": "All generation arithmetic exact Rational; each estimated/realized/arrival/relative-deadline value converted ONCE with correctly rounded binary64 ties-to-even; normalize -0; reject nonfinite/nonpositive durations, do not silently repair. Save exact estimates/deadlines sidecar for G."
+91:   },
+92:   "service_identity": {
+93:     "service_id": "{scenario}/{load}/{size}/{config_id}/s{slot:03d}/{H|L}",
+94:     "node_id": "{service_id}/{preserved_template_node_id}",
+95:     "condition_id": "{scenario}-{load}-{size}",
+96:     "preserved_template_ids": "COCKPIT/ADAS/FUSION-{8|16}-v1; semantic templates remain v1 within draft document namespace v2"
+97:   },
+98:   "arrivals": {
+99:     "slots": 50,
+100:     "services_per_slot": 2,
+101:     "total_services": 100,
+102:     "H": 50,
+103:     "L": 50,
+104:     "burst_block_slots": 5,
+105:     "burst_compression": "1/4",
+106:     "formula": "for j=0..49: q=j//5,k=j%5; a_H=a_L=P*(5*q+k/4+U_j/10); P from unchanged config period_ms",
+107:     "arrival_window": "[0,W), W=50*P; no admission at W; full drain; observation_end=max(W,last_finish) metadata only; makespan remains last_finish",
+108:     "no_warmup_exclusion": true
+109:   },
+110:   "deadlines": {
+111:     "reference": "C_est=max_root_to_sink sum_node min_compatible E_exact(g,v,r) before binary64 conversion; no communication. Relative deadline exact multiplier*C_est is converted once; actual absolute deadline RN64(arrival+relative_deadline_bits).",
+112:     "H_multiplier": "5/2",
+113:     "L_multiplier": "4",
+114:     "formula": "D_g = multiplier(group) * C_est(service); positive, relative to each admitted arrival",
+115:     "risk": "C_est is optimistic and not a feasibility certificate; D06 independent controls mandatory"
+116:   },
+117:   "controls": {
+118:     "service_set_for_G": "ALL 100 services in the resolved parent MAIN input, identically for both controls; never max over only retained H",
+119:     "G_exact": "ceil(max over parent100 services g of [sum_v max_r(11/10 * E_exact(g,v,r)) + sum_edges max_over_all9_pairs(L_exact+b_exact/B_exact) + D_exact(g)]) +1 ms",
+120:     "G_inputs": "E_exact and D_exact are pre-binary64 values in parent generation sidecar with hash; edge/network proposed decimals parsed exactly. No new draws and no scheduler truth access.",
+121:     "G_rounding": "All operations Rational; ceil only once then+1 integer ms. Control arrival k*G is converted exactly to binary64 in the finite registered range; independently verify interval isolation, never assume feasibility from G.",
+122:     "H_ISOLATED": "retain parent50 H services with identical service/node IDs, complete per-resource estimate/realized bit patterns, edges and relative-deadline bits; remove L; order retained H by original integer slot; kth arrival=k*G, k=0..49",
+123:     "LOW_COMPETITION": "retain all100 services; order original slot then H before L; kth arrival=k*G,k=0..99; all other retained bytes identical to parent",
+124:     "parent_materialization_order": "Resolve parent MAIN first without executing its method; then derive/resolve controls. Engine execution order remains H_ISOLATED B2, LOW_COMPETITION B2, MAIN B1..B5.",
+125:     "no_overlap": "Qualification requires max finish of each control service <= next control arrival and each required group meets original deadlines; failure of this witness is not universal infeasibility or engine correctness failure.",
+126:     "label": "NOT_APPLICABLE_CONTROL",
+127:     "parent_identity": "Input descriptor for control references pre-known MAIN descriptor hash; actual derivation references independently verified MAIN resolution receipt after it exists.",
+128:     "actual_G": "NOT_COMPUTED_NO_REALIZATION"
+129:   },
+130:   "windows": {
+131:     "arrival_admission": "[0,W), W=50P for MAIN; controls[0,N*G)",
+132:     "last_admitted_arrival": "max actual admitted arrival, separately recorded",
+133:     "last_service_completion": "max node finish over all admitted services after full drain",
+134:     "full_drain_makespan": "last_service_completion, preserving existing metric origin t=0",
+135:     "observation_end": "max(arrival_window_end,last_service_completion), metadata only; never overwrite full_drain_makespan",
+136:     "pressure": "For each resource, exact measure of execution intervals intersect[0,W), divided by W. p_seed=max_resource; p=arithmetic mean across10 seeds. Existing full-drain utilization retains busy/full_drain_makespan."
+137:   },
+138:   "production_artifacts": "NONE. This specifies future generation only; no actual blueprint, input, receipt, source hash or scientific output instance is emitted.",
+139:   "identity_spec": "P2_typed_identity_schema_v2.json",
+140:   "scope_change": "Typed version/domain v2 will change future keyed draws relative to v1; distributions remain unchanged; no v1 realizations exist or were compared.",
+141:   "key_bindings": {
+142:     "arrival_jitter": {
+143:       "domain": {
+144:         "kind": "LITERAL",
+145:         "value": "soc.p2.gen.v2"
+146:       },
+147:       "schema_version": {
+148:         "kind": "LITERAL",
+149:         "value": 2
+150:       },
+151:       "generator_version": {
+152:         "kind": "LITERAL",
+153:         "value": "soc-p2-synthetic-v2-PROPOSED"
+154:       },
+155:       "actual_seed_decimal_string": {
+156:         "kind": "COPY",
+157:         "source": "main_descriptor.actual_seed_decimal_string"
+158:       },
+159:       "scenario": {
+160:         "kind": "COPY",
+161:         "source": "main_descriptor.scenario"
+162:       },
+163:       "condition_id": {
+164:         "kind": "COPY",
+165:         "source": "main_descriptor.condition_id"
+166:       },
+167:       "config_id": {
+168:         "kind": "COPY",
+169:         "source": "main_descriptor.config_id"
+170:       },
+171:       "service_slot": {
+172:         "kind": "COPY",
+173:         "source": "main_slot"
+174:       },
+175:       "service_group": {
+176:         "kind": "LITERAL",
+177:         "value": ""
+178:       },
+179:       "template_node_id": {
+180:         "kind": "LITERAL",
+181:         "value": ""
+182:       },
+183:       "resource_id": {
+184:         "kind": "LITERAL",
+185:         "value": ""
+186:       },
+187:       "edge_id": {
+188:         "kind": "LITERAL",
+189:         "value": ""
+190:       },
+191:       "field": {
+192:         "kind": "LITERAL",
+193:         "value": "arrival_jitter"
+194:       },
+195:       "counter": {
+196:         "kind": "LITERAL",
+197:         "value": 0
+198:       }
+199:     },
+200:     "service_role_factor": {
+201:       "domain": {
+202:         "kind": "LITERAL",
+203:         "value": "soc.p2.gen.v2"
+204:       },
+205:       "schema_version": {
+206:         "kind": "LITERAL",
+207:         "value": 2
+208:       },
+209:       "generator_version": {
+210:         "kind": "LITERAL",
+211:         "value": "soc-p2-synthetic-v2-PROPOSED"
+212:       },
+213:       "actual_seed_decimal_string": {
+214:         "kind": "COPY",
+215:         "source": "main_descriptor.actual_seed_decimal_string"
+216:       },
+217:       "scenario": {
+218:         "kind": "COPY",
+219:         "source": "main_descriptor.scenario"
+220:       },
+221:       "condition_id": {
+222:         "kind": "COPY",
+223:         "source": "main_descriptor.condition_id"
+224:       },
+225:       "config_id": {
+226:         "kind": "COPY",
+227:         "source": "main_descriptor.config_id"
+228:       },
+229:       "service_slot": {
+230:         "kind": "COPY",
+231:         "source": "main_slot"
+232:       },
+233:       "service_group": {
+234:         "kind": "COPY",
+235:         "source": "main_group"
+236:       },
+237:       "template_node_id": {
+238:         "kind": "COPY",
+239:         "source": "template_node_id"
+240:       },
+241:       "resource_id": {
+242:         "kind": "LITERAL",
+243:         "value": ""
+244:       },
+245:       "edge_id": {
+246:         "kind": "LITERAL",
+247:         "value": ""
+248:       },
+249:       "field": {
+250:         "kind": "LITERAL",
+251:         "value": "service_role_factor"
+252:       },
+253:       "counter": {
+254:         "kind": "LITERAL",
+255:         "value": 0
+256:       }
+257:     },
+258:     "duration_factor": {
+259:       "domain": {
+260:         "kind": "LITERAL",
+261:         "value": "soc.p2.gen.v2"
+262:       },
+263:       "schema_version": {
+264:         "kind": "LITERAL",
+265:         "value": 2
+266:       },
+267:       "generator_version": {
+268:         "kind": "LITERAL",
+269:         "value": "soc-p2-synthetic-v2-PROPOSED"
+270:       },
+271:       "actual_seed_decimal_string": {
+272:         "kind": "COPY",
+273:         "source": "main_descriptor.actual_seed_decimal_string"
+274:       },
+275:       "scenario": {
+276:         "kind": "COPY",
+277:         "source": "main_descriptor.scenario"
+278:       },
+279:       "condition_id": {
+280:         "kind": "COPY",
+281:         "source": "main_descriptor.condition_id"
+282:       },
+283:       "config_id": {
+284:         "kind": "COPY",
+285:         "source": "main_descriptor.config_id"
+286:       },
+287:       "service_slot": {
+288:         "kind": "COPY",
+289:         "source": "main_slot"
+290:       },
+291:       "service_group": {
+292:         "kind": "COPY",
+293:         "source": "main_group"
+294:       },
+295:       "template_node_id": {
+296:         "kind": "COPY",
+297:         "source": "template_node_id"
+298:       },
+299:       "resource_id": {
+300:         "kind": "COPY",
+301:         "source": "compatible_resource_id"
+302:       },
+303:       "edge_id": {
+304:         "kind": "LITERAL",
+305:         "value": ""
+306:       },
+307:       "field": {
+308:         "kind": "LITERAL",
+309:         "value": "duration_factor"
+310:       },
+311:       "counter": {
+312:         "kind": "LITERAL",
+313:         "value": 0
+314:       }
+315:     }
+316:   },
+317:   "binding_context_types": {
+318:     "main_descriptor.actual_seed_decimal_string": "SEED_TEXT from verified MAIN descriptor",
+319:     "main_descriptor.scenario": "registered scene enum",
+320:     "main_descriptor.condition_id": "ID matching matrix condition",
+321:     "main_descriptor.config_id": "ID matching matrix A/B config",
+322:     "main_slot": "integer0..49",
+323:     "main_group": "H or L",
+324:     "template_node_id": "exact preserved local node ID of that MAIN service",
+325:     "compatible_resource_id": "one resource in that node compatible set"
+326:   },
+327:   "key_binding_contract": "Normative key_bindings: LITERAL copies value exactly; COPY reads only the named typed parent-MAIN context source. No coercion, omission or other operations. All15 KEY fields produced exactly. key_fill_templates are explanatory glosses, not actual instances. Controls reuse original MAIN bits, never evaluate fresh control keys."
+328: }
+
+FILE docs/P2_design/v2/P2_typed_identity_schema_v2.json SHA256 9b478cf7e96776f6cc69f29426715efed6eec2309270be1efb3dd77985ebfbc9
+1: {
+2:   "document_kind": "TYPED_IDENTITY_AND_STATE_DESIGN",
+3:   "document_version": "v2",
+4:   "status": "DRAFT_UNAPPROVED_NONEXECUTABLE",
+5:   "classification": "PROPOSED",
+6:   "approval": "UNAPPROVED",
+7:   "approved": false,
+8:   "frozen": false,
+9:   "executable": false,
+10:   "execution_authorized": false,
+11:   "read_by_pipeline": false,
+12:   "starting_commit": "79f9c245b23119ce25175d6dc6ff148e9e092461",
+13:   "$schema": "https://json-schema.org/draft/2020-12/schema",
+14:   "$id": "urn:soc:design:typed-identity:v2:DRAFT",
+15:   "$defs": {
+16:     "ASCII": {
+17:       "type": "string",
+18:       "pattern": "^[\\x20-\\x7e]*$"
+19:     },
+20:     "ID": {
+21:       "type": "string",
+22:       "minLength": 1,
+23:       "pattern": "^[\\x21-\\x7e]+$"
+24:     },
+25:     "SHA256": {
+26:       "type": "string",
+27:       "pattern": "^[0-9a-f]{64}$"
+28:     },
+29:     "UINT": {
+30:       "type": "integer",
+31:       "minimum": 0
+32:     },
+33:     "UTC": {
+34:       "type": "string",
+35:       "pattern": "^\\d{4}-\\d\\d-\\d\\dT\\d\\d:\\d\\d:\\d\\d(?:\\.\\d{1,9})?Z$"
+36:     },
+37:     "F64_BITS": {
+38:       "type": "string",
+39:       "pattern": "^[0-9a-f]{16}$",
+40:       "description": "IEEE754 binary64 big-endian hex; decode finite only; timing/nonnegative fields normalized -0 to +0."
+41:     },
+42:     "SEED_TEXT": {
+43:       "type": "string",
+44:       "pattern": "^(0|[1-9][0-9]*)$",
+45:       "description": "Production must equal one of the 10 committed CALIBRATION decimal values; membership is additional semantic validation."
+46:     },
+47:     "RATIONAL": {
+48:       "type": "object",
+49:       "additionalProperties": false,
+50:       "required": [
+51:         "numerator",
+52:         "denominator"
+53:       ],
+54:       "properties": {
+55:         "numerator": {
+56:           "type": "string",
+57:           "pattern": "^-?(0|[1-9][0-9]*)$"
+58:         },
+59:         "denominator": {
+60:           "type": "string",
+61:           "pattern": "^[1-9][0-9]*$"
+62:         }
+63:       }
+64:     },
+65:     "METHOD": {
+66:       "enum": [
+67:         "B1",
+68:         "B2",
+69:         "B3",
+70:         "B4",
+71:         "B5"
+72:       ]
+73:     },
+74:     "RESOURCE": {
+75:       "enum": [
+76:         "CPU0",
+77:         "CPU1",
+78:         "CPU2",
+79:         "CPU3",
+80:         "GPU0",
+81:         "NPU0"
+82:       ]
+83:     },
+84:     "VARIANT": {
+85:       "enum": [
+86:         "MAIN",
+87:         "H_ISOLATED",
+88:         "LOW_COMPETITION"
+89:       ]
+90:     },
+91:     "ARTIFACT_REF": {
+92:       "type": "object",
+93:       "additionalProperties": false,
+94:       "required": [
+95:         "path",
+96:         "sha256",
+97:         "size_bytes",
+98:         "media_type",
+99:         "kind"
+100:       ],
+101:       "properties": {
+102:         "path": {
+103:           "$ref": "#/$defs/ID"
+104:         },
+105:         "sha256": {
+106:           "$ref": "#/$defs/SHA256"
+107:         },
+108:         "size_bytes": {
+109:           "$ref": "#/$defs/UINT"
+110:         },
+111:         "media_type": {
+112:           "$ref": "#/$defs/ID"
+113:         },
+114:         "kind": {
+115:           "$ref": "#/$defs/ID"
+116:         }
+117:       }
+118:     },
+119:     "KEY": {
+120:       "type": "object",
+121:       "additionalProperties": false,
+122:       "required": [
+123:         "domain",
+124:         "schema_version",
+125:         "generator_version",
+126:         "actual_seed_decimal_string",
+127:         "scenario",
+128:         "condition_id",
+129:         "config_id",
+130:         "service_slot",
+131:         "service_group",
+132:         "template_node_id",
+133:         "resource_id",
+134:         "edge_id",
+135:         "field",
+136:         "counter"
+137:       ],
+138:       "properties": {
+139:         "domain": {
+140:           "const": "soc.p2.gen.v2"
+141:         },
+142:         "schema_version": {
+143:           "const": 2
+144:         },
+145:         "generator_version": {
+146:           "const": "soc-p2-synthetic-v2-PROPOSED"
+147:         },
+148:         "actual_seed_decimal_string": {
+149:           "$ref": "#/$defs/SEED_TEXT"
+150:         },
+151:         "scenario": {
+152:           "enum": [
+153:             "COCKPIT",
+154:             "ADAS",
+155:             "FUSION"
+156:           ]
+157:         },
+158:         "condition_id": {
+159:           "$ref": "#/$defs/ID"
+160:         },
+161:         "config_id": {
+162:           "$ref": "#/$defs/ID"
+163:         },
+164:         "service_slot": {
+165:           "type": "integer",
+166:           "minimum": 0,
+167:           "maximum": 49
+168:         },
+169:         "service_group": {
+170:           "enum": [
+171:             "",
+172:             "H",
+173:             "L"
+174:           ]
+175:         },
+176:         "template_node_id": {
+177:           "$ref": "#/$defs/ASCII"
+178:         },
+179:         "resource_id": {
+180:           "enum": [
+181:             "",
+182:             "CPU0",
+183:             "CPU1",
+184:             "CPU2",
+185:             "CPU3",
+186:             "GPU0",
+187:             "NPU0"
+188:           ]
+189:         },
+190:         "edge_id": {
+191:           "const": ""
+192:         },
+193:         "field": {
+194:           "enum": [
+195:             "arrival_jitter",
+196:             "service_role_factor",
+197:             "duration_factor"
+198:           ]
+199:         },
+200:         "counter": {
+201:           "const": 0
+202:         }
+203:       }
+204:     },
+205:     "ANALYSIS_INDEX_KEY": {
+206:       "type": "object",
+207:       "additionalProperties": false,
+208:       "required": [
+209:         "domain",
+210:         "analysis_seed",
+211:         "replicate",
+212:         "position",
+213:         "counter"
+214:       ],
+215:       "properties": {
+216:         "domain": {
+217:           "const": "soc.p2.analysis.bootstrap.v1"
+218:         },
+219:         "analysis_seed": {
+220:           "const": 20261018
+221:         },
+222:         "replicate": {
+223:           "type": "integer",
+224:           "minimum": 0,
+225:           "maximum": 9999
+226:         },
+227:         "position": {
+228:           "type": "integer",
+229:           "minimum": 0,
+230:           "maximum": 9
+231:         },
+232:         "counter": {
+233:           "$ref": "#/$defs/UINT"
+234:         }
+235:       }
+236:     },
+237:     "BLUEPRINT_PREIMAGE": {
+238:       "type": "object",
+239:       "additionalProperties": false,
+240:       "required": [
+241:         "namespace",
+242:         "schema_version",
+243:         "generator_version",
+244:         "generator_source_sha256",
+245:         "model_contract_sha256",
+246:         "template_content_sha256",
+247:         "resource_content_sha256",
+248:         "communication_content_sha256",
+249:         "generation_rules_sha256",
+250:         "config_table_sha256",
+251:         "seed_metadata_raw_sha256",
+252:         "calibration_allowlist_semantic_sha256",
+253:         "allowed_partition"
+254:       ],
+255:       "properties": {
+256:         "namespace": {
+257:           "const": "soc.p2.blueprint.v2"
+258:         },
+259:         "schema_version": {
+260:           "const": 2
+261:         },
+262:         "generator_version": {
+263:           "const": "soc-p2-synthetic-v2-PROPOSED"
+264:         },
+265:         "generator_source_sha256": {
+266:           "$ref": "#/$defs/SHA256"
+267:         },
+268:         "model_contract_sha256": {
+269:           "$ref": "#/$defs/SHA256"
+270:         },
+271:         "template_content_sha256": {
+272:           "$ref": "#/$defs/SHA256"
+273:         },
+274:         "resource_content_sha256": {
+275:           "$ref": "#/$defs/SHA256"
+276:         },
+277:         "communication_content_sha256": {
+278:           "$ref": "#/$defs/SHA256"
+279:         },
+280:         "generation_rules_sha256": {
+281:           "$ref": "#/$defs/SHA256"
+282:         },
+283:         "config_table_sha256": {
+284:           "$ref": "#/$defs/SHA256"
+285:         },
+286:         "seed_metadata_raw_sha256": {
+287:           "$ref": "#/$defs/SHA256"
+288:         },
+289:         "calibration_allowlist_semantic_sha256": {
+290:           "$ref": "#/$defs/SHA256"
+291:         },
+292:         "allowed_partition": {
+293:           "const": "CALIBRATION"
+294:         }
+295:       }
+296:     },
+297:     "EXECUTION_PLAN_PREIMAGE": {
+298:       "type": "object",
+299:       "additionalProperties": false,
+300:       "required": [
+301:         "namespace",
+302:         "schema_version",
+303:         "blueprint_sha256",
+304:         "symbolic_trial_roster_sha256",
+305:         "method_source_bindings_sha256",
+306:         "statistical_protocol_sha256",
+307:         "metric_spec_sha256",
+308:         "observer_spec_sha256",
+309:         "stage_contract_sha256",
+310:         "definition_approval_evidence_sha256"
+311:       ],
+312:       "properties": {
+313:         "namespace": {
+314:           "const": "soc.p2.execution-plan.v2"
+315:         },
+316:         "schema_version": {
+317:           "const": 2
+318:         },
+319:         "blueprint_sha256": {
+320:           "$ref": "#/$defs/SHA256"
+321:         },
+322:         "symbolic_trial_roster_sha256": {
+323:           "$ref": "#/$defs/SHA256"
+324:         },
+325:         "method_source_bindings_sha256": {
+326:           "$ref": "#/$defs/SHA256"
+327:         },
+328:         "statistical_protocol_sha256": {
+329:           "$ref": "#/$defs/SHA256"
+330:         },
+331:         "metric_spec_sha256": {
+332:           "$ref": "#/$defs/SHA256"
+333:         },
+334:         "observer_spec_sha256": {
+335:           "$ref": "#/$defs/SHA256"
+336:         },
+337:         "stage_contract_sha256": {
+338:           "$ref": "#/$defs/SHA256"
+339:         },
+340:         "definition_approval_evidence_sha256": {
+341:           "$ref": "#/$defs/SHA256"
+342:         }
+343:       }
+344:     },
+345:     "INPUT_DESCRIPTOR_PREIMAGE": {
+346:       "type": "object",
+347:       "additionalProperties": false,
+348:       "required": [
+349:         "namespace",
+350:         "schema_version",
+351:         "blueprint_sha256",
+352:         "partition",
+353:         "actual_seed_decimal_string",
+354:         "scenario",
+355:         "condition_id",
+356:         "config_id",
+357:         "load",
+358:         "size",
+359:         "control_variant",
+360:         "parent_main_descriptor_sha256"
+361:       ],
+362:       "properties": {
+363:         "namespace": {
+364:           "const": "soc.p2.input-descriptor.v2"
+365:         },
+366:         "schema_version": {
+367:           "const": 2
+368:         },
+369:         "blueprint_sha256": {
+370:           "$ref": "#/$defs/SHA256"
+371:         },
+372:         "partition": {
+373:           "const": "CALIBRATION"
+374:         },
+375:         "actual_seed_decimal_string": {
+376:           "$ref": "#/$defs/SEED_TEXT"
+377:         },
+378:         "scenario": {
+379:           "enum": [
+380:             "COCKPIT",
+381:             "ADAS",
+382:             "FUSION"
+383:           ]
+384:         },
+385:         "condition_id": {
+386:           "$ref": "#/$defs/ID"
+387:         },
+388:         "config_id": {
+389:           "$ref": "#/$defs/ID"
+390:         },
+391:         "load": {
+392:           "enum": [
+393:             "light",
+394:             "medium",
+395:             "near-saturation"
+396:           ]
+397:         },
+398:         "size": {
+399:           "enum": [
+400:             8,
+401:             16
+402:           ]
+403:         },
+404:         "control_variant": {
+405:           "$ref": "#/$defs/VARIANT"
+406:         },
+407:         "parent_main_descriptor_sha256": {
+408:           "anyOf": [
+409:             {
+410:               "$ref": "#/$defs/SHA256"
+411:             },
+412:             {
+413:               "type": "null"
+414:             }
+415:           ]
+416:         }
+417:       }
+418:     },
+419:     "EXECUTION_AUTH_PREIMAGE": {
+420:       "type": "object",
+421:       "additionalProperties": false,
+422:       "required": [
+423:         "namespace",
+424:         "schema_version",
+425:         "blueprint_sha256",
+426:         "execution_plan_sha256",
+427:         "source_bundle_sha256",
+428:         "authorization_evidence_raw_sha256",
+429:         "authority_id",
+430:         "issued_at_utc",
+431:         "partition",
+432:         "max_materialization_attempts",
+433:         "max_primary_engine_invocations",
+434:         "max_replay_engine_invocations",
+435:         "automatic_retry_budget"
+436:       ],
+437:       "properties": {
+438:         "namespace": {
+439:           "const": "soc.p2.execution-authorization.v2"
+440:         },
+441:         "schema_version": {
+442:           "const": 2
+443:         },
+444:         "blueprint_sha256": {
+445:           "$ref": "#/$defs/SHA256"
+446:         },
+447:         "execution_plan_sha256": {
+448:           "$ref": "#/$defs/SHA256"
+449:         },
+450:         "source_bundle_sha256": {
+451:           "$ref": "#/$defs/SHA256"
+452:         },
+453:         "authorization_evidence_raw_sha256": {
+454:           "$ref": "#/$defs/SHA256"
+455:         },
+456:         "authority_id": {
+457:           "$ref": "#/$defs/ID"
+458:         },
+459:         "issued_at_utc": {
+460:           "$ref": "#/$defs/UTC"
+461:         },
+462:         "partition": {
+463:           "const": "CALIBRATION"
+464:         },
+465:         "max_materialization_attempts": {
+466:           "const": 1080
+467:         },
+468:         "max_primary_engine_invocations": {
+469:           "const": 2520
+470:         },
+471:         "max_replay_engine_invocations": {
+472:           "const": 2520
+473:         },
+474:         "automatic_retry_budget": {
+475:           "const": 0
+476:         }
+477:       }
+478:     },
+479:     "GENERATION_AUTH_PREIMAGE": {
+480:       "type": "object",
+481:       "additionalProperties": false,
+482:       "required": [
+483:         "namespace",
+484:         "schema_version",
+485:         "blueprint_sha256",
+486:         "execution_plan_sha256",
+487:         "input_descriptor_sha256",
+488:         "execution_authorization_sha256",
+489:         "authorization_evidence_raw_sha256",
+490:         "max_generation_attempts"
+491:       ],
+492:       "properties": {
+493:         "namespace": {
+494:           "const": "soc.p2.generation-authorization.v2"
+495:         },
+496:         "schema_version": {
+497:           "const": 2
+498:         },
+499:         "blueprint_sha256": {
+500:           "$ref": "#/$defs/SHA256"
+501:         },
+502:         "execution_plan_sha256": {
+503:           "$ref": "#/$defs/SHA256"
+504:         },
+505:         "input_descriptor_sha256": {
+506:           "$ref": "#/$defs/SHA256"
+507:         },
+508:         "execution_authorization_sha256": {
+509:           "$ref": "#/$defs/SHA256"
+510:         },
+511:         "authorization_evidence_raw_sha256": {
+512:           "$ref": "#/$defs/SHA256"
+513:         },
+514:         "max_generation_attempts": {
+515:           "const": 1
+516:         }
+517:       }
+518:     },
+519:     "INPUT_LOCK_PREIMAGE": {
+520:       "type": "object",
+521:       "additionalProperties": false,
+522:       "required": [
+523:         "namespace",
+524:         "schema_version",
+525:         "blueprint_sha256",
+526:         "input_descriptor_sha256",
+527:         "generation_authorization_sha256"
+528:       ],
+529:       "properties": {
+530:         "namespace": {
+531:           "const": "soc.p2.input-lock.v2"
+532:         },
+533:         "schema_version": {
+534:           "const": 2
+535:         },
+536:         "blueprint_sha256": {
+537:           "$ref": "#/$defs/SHA256"
+538:         },
+539:         "input_descriptor_sha256": {
+540:           "$ref": "#/$defs/SHA256"
+541:         },
+542:         "generation_authorization_sha256": {
+543:           "$ref": "#/$defs/SHA256"
+544:         }
+545:       }
+546:     },
+547:     "GENERATION_ATTEMPT_PREIMAGE": {
+548:       "type": "object",
+549:       "additionalProperties": false,
+550:       "required": [
+551:         "namespace",
+552:         "schema_version",
+553:         "input_descriptor_sha256",
+554:         "generation_authorization_sha256",
+555:         "input_lock_sha256",
+556:         "ordinal"
+557:       ],
+558:       "properties": {
+559:         "namespace": {
+560:           "const": "soc.p2.generation-attempt.v2"
+561:         },
+562:         "schema_version": {
+563:           "const": 2
+564:         },
+565:         "input_descriptor_sha256": {
+566:           "$ref": "#/$defs/SHA256"
+567:         },
+568:         "generation_authorization_sha256": {
+569:           "$ref": "#/$defs/SHA256"
+570:         },
+571:         "input_lock_sha256": {
+572:           "$ref": "#/$defs/SHA256"
+573:         },
+574:         "ordinal": {
+575:           "const": 1
+576:         }
+577:       }
+578:     },
+579:     "SUCCESS_PROCESS": {
+580:       "type": "object",
+581:       "additionalProperties": false,
+582:       "required": [
+583:         "process_started",
+584:         "exit_code",
+585:         "argv_actual",
+586:         "cwd",
+587:         "host_identity_sha256",
+588:         "started_at_utc",
+589:         "ended_at_utc",
+590:         "monotonic_elapsed_ns",
+591:         "stdout",
+592:         "stderr"
+593:       ],
+594:       "properties": {
+595:         "process_started": {
+596:           "const": true
+597:         },
+598:         "exit_code": {
+599:           "const": 0
+600:         },
+601:         "argv_actual": {
+602:           "type": "array",
+603:           "items": {
+604:             "$ref": "#/$defs/ASCII"
+605:           }
+606:         },
+607:         "cwd": {
+608:           "$ref": "#/$defs/ID"
+609:         },
+610:         "host_identity_sha256": {
+611:           "$ref": "#/$defs/SHA256"
+612:         },
+613:         "started_at_utc": {
+614:           "$ref": "#/$defs/UTC"
+615:         },
+616:         "ended_at_utc": {
+617:           "$ref": "#/$defs/UTC"
+618:         },
+619:         "monotonic_elapsed_ns": {
+620:           "$ref": "#/$defs/UINT"
+621:         },
+622:         "stdout": {
+623:           "$ref": "#/$defs/ARTIFACT_REF"
+624:         },
+625:         "stderr": {
+626:           "$ref": "#/$defs/ARTIFACT_REF"
+627:         }
+628:       }
+629:     },
+630:     "GENERATION_RECEIPT_PREIMAGE": {
+631:       "type": "object",
+632:       "additionalProperties": false,
+633:       "required": [
+634:         "namespace",
+635:         "schema_version",
+636:         "blueprint_sha256",
+637:         "input_descriptor_sha256",
+638:         "generation_authorization_sha256",
+639:         "generation_attempt_id",
+640:         "payload_content_sha256",
+641:         "payload_raw_sha256",
+642:         "payload_raw_ref",
+643:         "pre_round_estimates_ref",
+644:         "process"
+645:       ],
+646:       "properties": {
+647:         "namespace": {
+648:           "const": "soc.p2.generation-receipt.v2"
+649:         },
+650:         "schema_version": {
+651:           "const": 2
+652:         },
+653:         "blueprint_sha256": {
+654:           "$ref": "#/$defs/SHA256"
+655:         },
+656:         "input_descriptor_sha256": {
+657:           "$ref": "#/$defs/SHA256"
+658:         },
+659:         "generation_authorization_sha256": {
+660:           "$ref": "#/$defs/SHA256"
+661:         },
+662:         "generation_attempt_id": {
+663:           "$ref": "#/$defs/ID"
+664:         },
+665:         "payload_content_sha256": {
+666:           "$ref": "#/$defs/SHA256"
+667:         },
+668:         "payload_raw_sha256": {
+669:           "$ref": "#/$defs/SHA256"
+670:         },
+671:         "payload_raw_ref": {
+672:           "$ref": "#/$defs/ARTIFACT_REF"
+673:         },
+674:         "pre_round_estimates_ref": {
+675:           "$ref": "#/$defs/ARTIFACT_REF"
+676:         },
+677:         "process": {
+678:           "$ref": "#/$defs/SUCCESS_PROCESS"
+679:         }
+680:       }
+681:     },
+682:     "MATERIALIZED_INPUT_PREIMAGE": {
+683:       "type": "object",
+684:       "additionalProperties": false,
+685:       "required": [
+686:         "namespace",
+687:         "schema_version",
+688:         "input_descriptor_sha256",
+689:         "payload_content_sha256",
+690:         "parent_main_payload_content_sha256"
+691:       ],
+692:       "properties": {
+693:         "namespace": {
+694:           "const": "soc.p2.materialized-input.v2"
+695:         },
+696:         "schema_version": {
+697:           "const": 2
+698:         },
+699:         "input_descriptor_sha256": {
+700:           "$ref": "#/$defs/SHA256"
+701:         },
+702:         "payload_content_sha256": {
+703:           "$ref": "#/$defs/SHA256"
+704:         },
+705:         "parent_main_payload_content_sha256": {
+706:           "anyOf": [
+707:             {
+708:               "$ref": "#/$defs/SHA256"
+709:             },
+710:             {
+711:               "type": "null"
+712:             }
+713:           ]
+714:         }
+715:       }
+716:     },
+717:     "INPUT_RESOLUTION_PREIMAGE": {
+718:       "type": "object",
+719:       "additionalProperties": false,
+720:       "required": [
+721:         "namespace",
+722:         "schema_version",
+723:         "blueprint_sha256",
+724:         "input_descriptor_sha256",
+725:         "materialized_input_id",
+726:         "payload_content_sha256",
+727:         "payload_raw_sha256",
+728:         "generation_receipt_id",
+729:         "input_validation_report_sha256",
+730:         "parent_main_resolution_id",
+731:         "control_transform_report_sha256"
+732:       ],
+733:       "properties": {
+734:         "namespace": {
+735:           "const": "soc.p2.input-resolution.v2"
+736:         },
+737:         "schema_version": {
+738:           "const": 2
+739:         },
+740:         "blueprint_sha256": {
+741:           "$ref": "#/$defs/SHA256"
+742:         },
+743:         "input_descriptor_sha256": {
+744:           "$ref": "#/$defs/SHA256"
+745:         },
+746:         "materialized_input_id": {
+747:           "$ref": "#/$defs/ID"
+748:         },
+749:         "payload_content_sha256": {
+750:           "$ref": "#/$defs/SHA256"
+751:         },
+752:         "payload_raw_sha256": {
+753:           "$ref": "#/$defs/SHA256"
+754:         },
+755:         "generation_receipt_id": {
+756:           "$ref": "#/$defs/ID"
+757:         },
+758:         "input_validation_report_sha256": {
+759:           "$ref": "#/$defs/SHA256"
+760:         },
+761:         "parent_main_resolution_id": {
+762:           "anyOf": [
+763:             {
+764:               "$ref": "#/$defs/ID"
+765:             },
+766:             {
+767:               "type": "null"
+768:             }
+769:           ]
+770:         },
+771:         "control_transform_report_sha256": {
+772:           "anyOf": [
+773:             {
+774:               "$ref": "#/$defs/SHA256"
+775:             },
+776:             {
+777:               "type": "null"
+778:             }
+779:           ]
+780:         }
+781:       }
+782:     },
+783:     "WORKLOAD_PREIMAGE": {
+784:       "type": "object",
+785:       "additionalProperties": false,
+786:       "required": [
+787:         "namespace",
+788:         "schema_version",
+789:         "blueprint_sha256",
+790:         "input_descriptor_sha256",
+791:         "materialized_input_id",
+792:         "payload_content_sha256"
+793:       ],
+794:       "properties": {
+795:         "namespace": {
+796:           "const": "soc.p2.workload-identity.v2"
+797:         },
+798:         "schema_version": {
+799:           "const": 2
+800:         },
+801:         "blueprint_sha256": {
+802:           "$ref": "#/$defs/SHA256"
+803:         },
+804:         "input_descriptor_sha256": {
+805:           "$ref": "#/$defs/SHA256"
+806:         },
+807:         "materialized_input_id": {
+808:           "$ref": "#/$defs/ID"
+809:         },
+810:         "payload_content_sha256": {
+811:           "$ref": "#/$defs/SHA256"
+812:         }
+813:       }
+814:     },
+815:     "SEMANTIC_ARGV_PREIMAGE": {
+816:       "type": "object",
+817:       "additionalProperties": false,
+818:       "required": [
+819:         "namespace",
+820:         "schema_version",
+821:         "worker_protocol",
+822:         "worker_source_sha256",
+823:         "role",
+824:         "method_id",
+825:         "workload_id",
+826:         "semantic_options"
+827:       ],
+828:       "properties": {
+829:         "namespace": {
+830:           "const": "soc.p2.worker-invocation.v2"
+831:         },
+832:         "schema_version": {
+833:           "const": 2
+834:         },
+835:         "worker_protocol": {
+836:           "const": "soc.worker.v2"
+837:         },
+838:         "worker_source_sha256": {
+839:           "$ref": "#/$defs/SHA256"
+840:         },
+841:         "role": {
+842:           "enum": [
+843:             "ENGINE_PRIMARY",
+844:             "ENGINE_REPLAY"
+845:           ]
+846:         },
+847:         "method_id": {
+848:           "$ref": "#/$defs/METHOD"
+849:         },
+850:         "workload_id": {
+851:           "$ref": "#/$defs/ID"
+852:         },
+853:         "semantic_options": {
+854:           "type": "array",
+855:           "items": {
+856:             "type": "object",
+857:             "additionalProperties": false,
+858:             "required": [
+859:               "flag",
+860:               "value"
+861:             ],
+862:             "properties": {
+863:               "flag": {
+864:                 "$ref": "#/$defs/ID"
+865:               },
+866:               "value": {
+867:                 "$ref": "#/$defs/ASCII"
+868:               }
+869:             }
+870:           },
+871:           "maxItems": 0
+872:         }
+873:       }
+874:     },
+875:     "RUN_PREIMAGE": {
+876:       "type": "object",
+877:       "additionalProperties": false,
+878:       "required": [
+879:         "namespace",
+880:         "schema_version",
+881:         "execution_plan_sha256",
+882:         "trial_id",
+883:         "workload_id",
+884:         "method_id",
+885:         "source_bundle_sha256",
+886:         "environment_semantic_sha256",
+887:         "primary_semantic_argv_sha256",
+888:         "observer_spec_sha256",
+889:         "validator_identity_sha256",
+890:         "metric_spec_sha256",
+891:         "replay_protocol_sha256"
+892:       ],
+893:       "properties": {
+894:         "namespace": {
+895:           "const": "soc.p2.run-identity.v2"
+896:         },
+897:         "schema_version": {
+898:           "const": 2
+899:         },
+900:         "execution_plan_sha256": {
+901:           "$ref": "#/$defs/SHA256"
+902:         },
+903:         "trial_id": {
+904:           "$ref": "#/$defs/ID"
+905:         },
+906:         "workload_id": {
+907:           "$ref": "#/$defs/ID"
+908:         },
+909:         "method_id": {
+910:           "$ref": "#/$defs/METHOD"
+911:         },
+912:         "source_bundle_sha256": {
+913:           "$ref": "#/$defs/SHA256"
+914:         },
+915:         "environment_semantic_sha256": {
+916:           "$ref": "#/$defs/SHA256"
+917:         },
+918:         "primary_semantic_argv_sha256": {
+919:           "$ref": "#/$defs/SHA256"
+920:         },
+921:         "observer_spec_sha256": {
+922:           "$ref": "#/$defs/SHA256"
+923:         },
+924:         "validator_identity_sha256": {
+925:           "$ref": "#/$defs/SHA256"
+926:         },
+927:         "metric_spec_sha256": {
+928:           "$ref": "#/$defs/SHA256"
+929:         },
+930:         "replay_protocol_sha256": {
+931:           "$ref": "#/$defs/SHA256"
+932:         }
+933:       }
+934:     },
+935:     "ATTEMPT_PREIMAGE": {
+936:       "type": "object",
+937:       "additionalProperties": false,
+938:       "required": [
+939:         "namespace",
+940:         "schema_version",
+941:         "run_id",
+942:         "execution_authorization_sha256",
+943:         "ordinal"
+944:       ],
+945:       "properties": {
+946:         "namespace": {
+947:           "const": "soc.p2.attempt-identity.v2"
+948:         },
+949:         "schema_version": {
+950:           "const": 2
+951:         },
+952:         "run_id": {
+953:           "$ref": "#/$defs/ID"
+954:         },
+955:         "execution_authorization_sha256": {
+956:           "$ref": "#/$defs/SHA256"
+957:         },
+958:         "ordinal": {
+959:           "const": 1
+960:         }
+961:       }
+962:     },
+963:     "RUN_LOCK_PREIMAGE": {
+964:       "type": "object",
+965:       "additionalProperties": false,
+966:       "required": [
+967:         "namespace",
+968:         "schema_version",
+969:         "run_id",
+970:         "attempt_id"
+971:       ],
+972:       "properties": {
+973:         "namespace": {
+974:           "const": "soc.p2.run-lock.v2"
+975:         },
+976:         "schema_version": {
+977:           "const": 2
+978:         },
+979:         "run_id": {
+980:           "$ref": "#/$defs/ID"
+981:         },
+982:         "attempt_id": {
+983:           "$ref": "#/$defs/ID"
+984:         }
+985:       }
+986:     },
+987:     "PROCESS_RESULT": {
+988:       "type": "object",
+989:       "additionalProperties": false,
+990:       "required": [
+991:         "process_started",
+992:         "exit_code",
+993:         "termination_kind",
+994:         "signal",
+995:         "exception",
+996:         "argv_actual",
+997:         "cwd",
+998:         "host_identity_sha256",
+999:         "planned_at_utc",
+1000:         "started_at_utc",
+1001:         "ended_at_utc",
+1002:         "monotonic_elapsed_ns",
+1003:         "stdout",
+1004:         "stderr"
+1005:       ],
+1006:       "properties": {
+1007:         "process_started": {
+1008:           "type": "boolean"
+1009:         },
+1010:         "exit_code": {
+1011:           "anyOf": [
+1012:             {
+1013:               "type": "integer"
+1014:             },
+1015:             {
+1016:               "type": "null"
+1017:             }
+1018:           ]
+1019:         },
+1020:         "termination_kind": {
+1021:           "enum": [
+1022:             "NOT_STARTED",
+1023:             "EXITED",
+1024:             "SIGNALLED",
+1025:             "SPAWN_FAILED",
+1026:             "INTERRUPTED",
+1027:             "UNKNOWN"
+1028:           ]
+1029:         },
+1030:         "signal": {
+1031:           "anyOf": [
+1032:             {
+1033:               "$ref": "#/$defs/ID"
+1034:             },
+1035:             {
+1036:               "type": "null"
+1037:             }
+1038:           ]
+1039:         },
+1040:         "exception": {
+1041:           "anyOf": [
+1042:             {
+1043:               "$ref": "#/$defs/ASCII"
+1044:             },
+1045:             {
+1046:               "type": "null"
+1047:             }
+1048:           ]
+1049:         },
+1050:         "argv_actual": {
+1051:           "type": "array",
+1052:           "items": {
+1053:             "$ref": "#/$defs/ASCII"
+1054:           }
+1055:         },
+1056:         "cwd": {
+1057:           "$ref": "#/$defs/ID"
+1058:         },
+1059:         "host_identity_sha256": {
+1060:           "$ref": "#/$defs/SHA256"
+1061:         },
+1062:         "planned_at_utc": {
+1063:           "$ref": "#/$defs/UTC"
+1064:         },
+1065:         "started_at_utc": {
+1066:           "anyOf": [
+1067:             {
+1068:               "$ref": "#/$defs/UTC"
+1069:             },
+1070:             {
+1071:               "type": "null"
+1072:             }
+1073:           ]
+1074:         },
+1075:         "ended_at_utc": {
+1076:           "anyOf": [
+1077:             {
+1078:               "$ref": "#/$defs/UTC"
+1079:             },
+1080:             {
+1081:               "type": "null"
+1082:             }
+1083:           ]
+1084:         },
+1085:         "monotonic_elapsed_ns": {
+1086:           "anyOf": [
+1087:             {
+1088:               "$ref": "#/$defs/UINT"
+1089:             },
+1090:             {
+1091:               "type": "null"
+1092:             }
+1093:           ]
+1094:         },
+1095:         "stdout": {
+1096:           "anyOf": [
+1097:             {
+1098:               "$ref": "#/$defs/ARTIFACT_REF"
+1099:             },
+1100:             {
+1101:               "type": "null"
+1102:             }
+1103:           ]
+1104:         },
+1105:         "stderr": {
+1106:           "anyOf": [
+1107:             {
+1108:               "$ref": "#/$defs/ARTIFACT_REF"
+1109:             },
+1110:             {
+1111:               "type": "null"
+1112:             }
+1113:           ]
+1114:         }
+1115:       }
+1116:     },
+1117:     "PUBLIC_NODE": {
+1118:       "type": "object",
+1119:       "additionalProperties": false,
+1120:       "required": [
+1121:         "node_id",
+1122:         "estimates",
+1123:         "predecessors"
+1124:       ],
+1125:       "properties": {
+1126:         "node_id": {
+1127:           "$ref": "#/$defs/ID"
+1128:         },
+1129:         "estimates": {
+1130:           "type": "array",
+1131:           "items": {
+1132:             "type": "object",
+1133:             "additionalProperties": false,
+1134:             "required": [
+1135:               "resource_id",
+1136:               "duration_bits"
+1137:             ],
+1138:             "properties": {
+1139:               "resource_id": {
+1140:                 "$ref": "#/$defs/RESOURCE"
+1141:               },
+1142:               "duration_bits": {
+1143:                 "$ref": "#/$defs/F64_BITS"
+1144:               }
+1145:             }
+1146:           }
+1147:         },
+1148:         "predecessors": {
+1149:           "type": "array",
+1150:           "items": {
+1151:             "type": "object",
+1152:             "additionalProperties": false,
+1153:             "required": [
+1154:               "node_id",
+1155:               "size_bits"
+1156:             ],
+1157:             "properties": {
+1158:               "node_id": {
+1159:                 "$ref": "#/$defs/ID"
+1160:               },
+1161:               "size_bits": {
+1162:                 "$ref": "#/$defs/F64_BITS"
+1163:               }
+1164:             }
+1165:           }
+1166:         }
+1167:       }
+1168:     },
+1169:     "PUBLIC_SERVICE": {
+1170:       "type": "object",
+1171:       "additionalProperties": false,
+1172:       "required": [
+1173:         "service_id",
+1174:         "template_id",
+1175:         "size",
+1176:         "arrival_bits",
+1177:         "absolute_deadline_bits",
+1178:         "group",
+1179:         "nodes"
+1180:       ],
+1181:       "properties": {
+1182:         "service_id": {
+1183:           "$ref": "#/$defs/ID"
+1184:         },
+1185:         "template_id": {
+1186:           "$ref": "#/$defs/ID"
+1187:         },
+1188:         "size": {
+1189:           "enum": [
+1190:             8,
+1191:             16
+1192:           ]
+1193:         },
+1194:         "arrival_bits": {
+1195:           "$ref": "#/$defs/F64_BITS"
+1196:         },
+1197:         "absolute_deadline_bits": {
+1198:           "$ref": "#/$defs/F64_BITS"
+1199:         },
+1200:         "group": {
+1201:           "enum": [
+1202:             "H",
+1203:             "L"
+1204:           ]
+1205:         },
+1206:         "nodes": {
+1207:           "type": "array",
+1208:           "items": {
+1209:             "$ref": "#/$defs/PUBLIC_NODE"
+1210:           }
+1211:         }
+1212:       }
+1213:     },
+1214:     "PUBLIC_SNAPSHOT": {
+1215:       "type": "object",
+1216:       "additionalProperties": false,
+1217:       "required": [
+1218:         "namespace",
+1219:         "schema_version",
+1220:         "now_bits",
+1221:         "services",
+1222:         "running",
+1223:         "completed",
+1224:         "resources",
+1225:         "links"
+1226:       ],
+1227:       "properties": {
+1228:         "namespace": {
+1229:           "const": "soc.p2.public-state.v2"
+1230:         },
+1231:         "schema_version": {
+1232:           "const": 2
+1233:         },
+1234:         "now_bits": {
+1235:           "$ref": "#/$defs/F64_BITS"
+1236:         },
+1237:         "services": {
+1238:           "type": "array",
+1239:           "items": {
+1240:             "$ref": "#/$defs/PUBLIC_SERVICE"
+1241:           }
+1242:         },
+1243:         "running": {
+1244:           "type": "array",
+1245:           "items": {
+1246:             "type": "object",
+1247:             "additionalProperties": false,
+1248:             "required": [
+1249:               "service_id",
+1250:               "node_id",
+1251:               "resource_id",
+1252:               "start_bits",
+1253:               "elapsed_bits"
+1254:             ],
+1255:             "properties": {
+1256:               "service_id": {
+1257:                 "$ref": "#/$defs/ID"
+1258:               },
+1259:               "node_id": {
+1260:                 "$ref": "#/$defs/ID"
+1261:               },
+1262:               "resource_id": {
+1263:                 "$ref": "#/$defs/RESOURCE"
+1264:               },
+1265:               "start_bits": {
+1266:                 "$ref": "#/$defs/F64_BITS"
+1267:               },
+1268:               "elapsed_bits": {
+1269:                 "$ref": "#/$defs/F64_BITS"
+1270:               }
+1271:             }
+1272:           }
+1273:         },
+1274:         "completed": {
+1275:           "type": "array",
+1276:           "items": {
+1277:             "type": "object",
+1278:             "additionalProperties": false,
+1279:             "required": [
+1280:               "service_id",
+1281:               "node_id",
+1282:               "resource_id",
+1283:               "finish_bits"
+1284:             ],
+1285:             "properties": {
+1286:               "service_id": {
+1287:                 "$ref": "#/$defs/ID"
+1288:               },
+1289:               "node_id": {
+1290:                 "$ref": "#/$defs/ID"
+1291:               },
+1292:               "resource_id": {
+1293:                 "$ref": "#/$defs/RESOURCE"
+1294:               },
+1295:               "finish_bits": {
+1296:                 "$ref": "#/$defs/F64_BITS"
+1297:               }
+1298:             }
+1299:           }
+1300:         },
+1301:         "resources": {
+1302:           "type": "array",
+1303:           "items": {
+1304:             "type": "object",
+1305:             "additionalProperties": false,
+1306:             "required": [
+1307:               "resource_id",
+1308:               "resource_type"
+1309:             ],
+1310:             "properties": {
+1311:               "resource_id": {
+1312:                 "$ref": "#/$defs/RESOURCE"
+1313:               },
+1314:               "resource_type": {
+1315:                 "enum": [
+1316:                   "CPU",
+1317:                   "GPU",
+1318:                   "NPU"
+1319:                 ]
+1320:               }
+1321:             }
+1322:           }
+1323:         },
+1324:         "links": {
+1325:           "type": "array",
+1326:           "items": {
+1327:             "type": "object",
+1328:             "additionalProperties": false,
+1329:             "required": [
+1330:               "source_type",
+1331:               "destination_type",
+1332:               "latency_bits",
+1333:               "bandwidth_bits"
+1334:             ],
+1335:             "properties": {
+1336:               "source_type": {
+1337:                 "enum": [
+1338:                   "CPU",
+1339:                   "GPU",
+1340:                   "NPU"
+1341:                 ]
+1342:               },
+1343:               "destination_type": {
+1344:                 "enum": [
+1345:                   "CPU",
+1346:                   "GPU",
+1347:                   "NPU"
+1348:                 ]
+1349:               },
+1350:               "latency_bits": {
+1351:                 "$ref": "#/$defs/F64_BITS"
+1352:               },
+1353:               "bandwidth_bits": {
+1354:                 "$ref": "#/$defs/F64_BITS"
+1355:               }
+1356:             }
+1357:           }
+1358:         }
+1359:       }
+1360:     },
+1361:     "SNAPSHOT_EVENT": {
+1362:       "type": "object",
+1363:       "additionalProperties": false,
+1364:       "required": [
+1365:         "namespace",
+1366:         "schema_version",
+1367:         "run_id",
+1368:         "attempt_id",
+1369:         "trial_id",
+1370:         "stream_role",
+1371:         "event_seq",
+1372:         "decision_seq",
+1373:         "dispatch_result",
+1374:         "refresh_causes",
+1375:         "state_sha256",
+1376:         "snapshot_ref"
+1377:       ],
+1378:       "properties": {
+1379:         "namespace": {
+1380:           "const": "soc.p2.snapshot-event.v2"
+1381:         },
+1382:         "schema_version": {
+1383:           "const": 2
+1384:         },
+1385:         "run_id": {
+1386:           "$ref": "#/$defs/ID"
+1387:         },
+1388:         "attempt_id": {
+1389:           "$ref": "#/$defs/ID"
+1390:         },
+1391:         "trial_id": {
+1392:           "$ref": "#/$defs/ID"
+1393:         },
+1394:         "stream_role": {
+1395:           "enum": [
+1396:             "PRIMARY",
+1397:             "REPLAY"
+1398:           ]
+1399:         },
+1400:         "event_seq": {
+1401:           "$ref": "#/$defs/UINT"
+1402:         },
+1403:         "decision_seq": {
+1404:           "$ref": "#/$defs/UINT"
+1405:         },
+1406:         "dispatch_result": {
+1407:           "enum": [
+1408:             "START",
+1409:             "NONE"
+1410:           ]
+1411:         },
+1412:         "refresh_causes": {
+1413:           "type": "array",
+1414:           "items": {
+1415:             "enum": [
+1416:               "INITIAL",
+1417:               "TIME_ADVANCE",
+1418:               "COMPLETION_BATCH",
+1419:               "ARRIVAL_BATCH",
+1420:               "POST_START",
+1421:               "EMPTY_DISPATCH",
+1422:               "POST_COMPLETION_REFRESH"
+1423:             ]
+1424:           }
+1425:         },
+1426:         "state_sha256": {
+1427:           "$ref": "#/$defs/SHA256"
+1428:         },
+1429:         "snapshot_ref": {
+1430:           "$ref": "#/$defs/ARTIFACT_REF"
+1431:         }
+1432:       }
+1433:     },
+1434:     "DENOMINATOR_SCOPE_PREIMAGE": {
+1435:       "type": "object",
+1436:       "additionalProperties": false,
+1437:       "required": [
+1438:         "namespace",
+1439:         "schema_version",
+1440:         "run_id",
+1441:         "primary_attempt_id",
+1442:         "observer_spec_sha256"
+1443:       ],
+1444:       "properties": {
+1445:         "namespace": {
+1446:           "const": "soc.p2.denominator-scope.v2"
+1447:         },
+1448:         "schema_version": {
+1449:           "const": 2
+1450:         },
+1451:         "run_id": {
+1452:           "$ref": "#/$defs/ID"
+1453:         },
+1454:         "primary_attempt_id": {
+1455:           "$ref": "#/$defs/ID"
+1456:         },
+1457:         "observer_spec_sha256": {
+1458:           "$ref": "#/$defs/SHA256"
+1459:         }
+1460:       }
+1461:     },
+1462:     "STATE_KEY_PREIMAGE": {
+1463:       "type": "object",
+1464:       "additionalProperties": false,
+1465:       "required": [
+1466:         "namespace",
+1467:         "schema_version",
+1468:         "denominator_scope_sha256",
+1469:         "state_sha256"
+1470:       ],
+1471:       "properties": {
+1472:         "namespace": {
+1473:           "const": "soc.p2.state-key.v2"
+1474:         },
+1475:         "schema_version": {
+1476:           "const": 2
+1477:         },
+1478:         "denominator_scope_sha256": {
+1479:           "$ref": "#/$defs/SHA256"
+1480:         },
+1481:         "state_sha256": {
+1482:           "$ref": "#/$defs/SHA256"
+1483:         }
+1484:       }
+1485:     },
+1486:     "WINDOWS": {
+1487:       "type": "object",
+1488:       "additionalProperties": false,
+1489:       "required": [
+1490:         "arrival_window_start_bits",
+1491:         "arrival_window_end_bits",
+1492:         "last_admitted_arrival_bits",
+1493:         "last_service_completion_bits",
+1494:         "observation_end_bits",
+1495:         "full_drain_makespan_bits"
+1496:       ],
+1497:       "properties": {
+1498:         "arrival_window_start_bits": {
+1499:           "const": "0000000000000000"
+1500:         },
+1501:         "arrival_window_end_bits": {
+1502:           "$ref": "#/$defs/F64_BITS"
+1503:         },
+1504:         "last_admitted_arrival_bits": {
+1505:           "$ref": "#/$defs/F64_BITS"
+1506:         },
+1507:         "last_service_completion_bits": {
+1508:           "$ref": "#/$defs/F64_BITS"
+1509:         },
+1510:         "observation_end_bits": {
+1511:           "$ref": "#/$defs/F64_BITS"
+1512:         },
+1513:         "full_drain_makespan_bits": {
+1514:           "$ref": "#/$defs/F64_BITS"
+1515:         }
+1516:       }
+1517:     },
+1518:     "GROUP_METRICS": {
+1519:       "type": "object",
+1520:       "additionalProperties": false,
+1521:       "required": [
+1522:         "group",
+1523:         "status",
+1524:         "count",
+1525:         "dmr",
+1526:         "p50_bits",
+1527:         "p95_bits",
+1528:         "p99_bits",
+1529:         "max_bits",
+1530:         "reason"
+1531:       ],
+1532:       "properties": {
+1533:         "group": {
+1534:           "enum": [
+1535:             "H",
+1536:             "L"
+1537:           ]
+1538:         },
+1539:         "status": {
+1540:           "enum": [
+1541:             "APPLICABLE",
+1542:             "NOT_APPLICABLE_CONTROL",
+1543:             "INVALID"
+1544:           ]
+1545:         },
+1546:         "count": {
+1547:           "$ref": "#/$defs/UINT"
+1548:         },
+1549:         "dmr": {
+1550:           "anyOf": [
+1551:             {
+1552:               "$ref": "#/$defs/RATIONAL"
+1553:             },
+1554:             {
+1555:               "type": "null"
+1556:             }
+1557:           ]
+1558:         },
+1559:         "p50_bits": {
+1560:           "anyOf": [
+1561:             {
+1562:               "$ref": "#/$defs/F64_BITS"
+1563:             },
+1564:             {
+1565:               "type": "null"
+1566:             }
+1567:           ]
+1568:         },
+1569:         "p95_bits": {
+1570:           "anyOf": [
+1571:             {
+1572:               "$ref": "#/$defs/F64_BITS"
+1573:             },
+1574:             {
+1575:               "type": "null"
+1576:             }
+1577:           ]
+1578:         },
+1579:         "p99_bits": {
+1580:           "anyOf": [
+1581:             {
+1582:               "$ref": "#/$defs/F64_BITS"
+1583:             },
+1584:             {
+1585:               "type": "null"
+1586:             }
+1587:           ]
+1588:         },
+1589:         "max_bits": {
+1590:           "anyOf": [
+1591:             {
+1592:               "$ref": "#/$defs/F64_BITS"
+1593:             },
+1594:             {
+1595:               "type": "null"
+1596:             }
+1597:           ]
+1598:         },
+1599:         "reason": {
+1600:           "anyOf": [
+1601:             {
+1602:               "$ref": "#/$defs/ID"
+1603:             },
+1604:             {
+1605:               "type": "null"
+1606:             }
+1607:           ]
+1608:         }
+1609:       }
+1610:     },
+1611:     "GATE_STATE": {
+1612:       "type": "object",
+1613:       "additionalProperties": false,
+1614:       "required": [
+1615:         "execution_completion",
+1616:         "artifact_integrity",
+1617:         "input_seed_identity",
+1618:         "selection_status",
+1619:         "diagnostic_validity",
+1620:         "mapping_classification",
+1621:         "engineering_timing_prerequisite",
+1622:         "p2_progression_status",
+1623:         "reason_codes"
+1624:       ],
+1625:       "properties": {
+1626:         "execution_completion": {
+1627:           "enum": [
+1628:             "NOT_STARTED",
+1629:             "RUNNING",
+1630:             "COMPLETE",
+1631:             "FAILED",
+1632:             "INCOMPLETE"
+1633:           ]
+1634:         },
+1635:         "artifact_integrity": {
+1636:           "enum": [
+1637:             "NOT_CHECKED",
+1638:             "VALID",
+1639:             "MISSING",
+1640:             "CORRUPT",
+1641:             "INVALID"
+1642:           ]
+1643:         },
+1644:         "input_seed_identity": {
+1645:           "enum": [
+1646:             "NOT_CHECKED",
+1647:             "VALID",
+1648:             "INVALID"
+1649:           ]
+1650:         },
+1651:         "selection_status": {
+1652:           "enum": [
+1653:             "NOT_EVALUATED",
+1654:             "SELECTED_ALL_18",
+1655:             "NO_ELIGIBLE_CONDITION",
+1656:             "INVALID_EVIDENCE"
+1657:           ]
+1658:         },
+1659:         "diagnostic_validity": {
+1660:           "enum": [
+1661:             "NOT_RUN",
+1662:             "VALID",
+1663:             "POSITIVE_COVERAGE_ONLY",
+1664:             "INSUFFICIENT_COVERAGE",
+1665:             "INVALID",
+1666:             "INCOMPLETE"
+1667:           ]
+1668:         },
+1669:         "mapping_classification": {
+1670:           "enum": [
+1671:             "NOT_EVALUATED",
+1672:             "SUPPORTED",
+1673:             "NOT_SUPPORTED",
+1674:             "INCONCLUSIVE"
+1675:           ]
+1676:         },
+1677:         "engineering_timing_prerequisite": {
+1678:           "enum": [
+1679:             "NOT_FROZEN",
+1680:             "FROZEN_PROTOCOL_VERIFIED",
+1681:             "INVALID"
+1682:           ]
+1683:         },
+1684:         "p2_progression_status": {
+1685:           "enum": [
+1686:             "BLOCKED",
+1687:             "REQUIREMENTS_MET_PENDING_EXPLICIT_NEXT_STAGE_AUTHORIZATION"
+1688:           ]
+1689:         },
+1690:         "reason_codes": {
+1691:           "type": "array",
+1692:           "items": {
+1693:             "$ref": "#/$defs/ID"
+1694:           }
+1695:         }
+1696:       }
+1697:     },
+1698:     "PROJECTION_INTERVAL": {
+1699:       "type": "object",
+1700:       "additionalProperties": false,
+1701:       "required": [
+1702:         "service_id",
+1703:         "node_id",
+1704:         "resource_id",
+1705:         "start",
+1706:         "finish",
+1707:         "kind"
+1708:       ],
+1709:       "properties": {
+1710:         "service_id": {
+1711:           "$ref": "#/$defs/ID"
+1712:         },
+1713:         "node_id": {
+1714:           "$ref": "#/$defs/ID"
+1715:         },
+1716:         "resource_id": {
+1717:           "$ref": "#/$defs/RESOURCE"
+1718:         },
+1719:         "start": {
+1720:           "$ref": "#/$defs/RATIONAL"
+1721:         },
+1722:         "finish": {
+1723:           "$ref": "#/$defs/RATIONAL"
+1724:         },
+1725:         "kind": {
+1726:           "enum": [
+1727:             "VISIBLE_RUNNING",
+1728:             "CURRENT_ACTION",
+1729:             "TARGET_SUFFIX"
+1730:           ]
+1731:         }
+1732:       }
+1733:     },
+1734:     "ASSIGNMENT": {
+1735:       "type": "object",
+1736:       "additionalProperties": false,
+1737:       "required": [
+1738:         "node_id",
+1739:         "resource_id"
+1740:       ],
+1741:       "properties": {
+1742:         "node_id": {
+1743:           "$ref": "#/$defs/ID"
+1744:         },
+1745:         "resource_id": {
+1746:           "$ref": "#/$defs/RESOURCE"
+1747:         }
+1748:       }
+1749:     },
+1750:     "TARGET_FINISH": {
+1751:       "type": "object",
+1752:       "additionalProperties": false,
+1753:       "required": [
+1754:         "service_id",
+1755:         "finish"
+1756:       ],
+1757:       "properties": {
+1758:         "service_id": {
+1759:           "$ref": "#/$defs/ID"
+1760:         },
+1761:         "finish": {
+1762:           "$ref": "#/$defs/RATIONAL"
+1763:         }
+1764:       }
+1765:     },
+1766:     "LOCAL_L_FINISH": {
+1767:       "type": "object",
+1768:       "additionalProperties": false,
+1769:       "required": [
+1770:         "node_id",
+1771:         "baseline_finish",
+1772:         "cap",
+1773:         "candidate_finish"
+1774:       ],
+1775:       "properties": {
+1776:         "node_id": {
+1777:           "$ref": "#/$defs/ID"
+1778:         },
+1779:         "baseline_finish": {
+1780:           "$ref": "#/$defs/RATIONAL"
+1781:         },
+1782:         "cap": {
+1783:           "$ref": "#/$defs/RATIONAL"
+1784:         },
+1785:         "candidate_finish": {
+1786:           "$ref": "#/$defs/RATIONAL"
+1787:         }
+1788:       }
+1789:     },
+1790:     "DIAGNOSTIC_RECORD": {
+1791:       "type": "object",
+1792:       "additionalProperties": false,
+1793:       "required": [
+1794:         "namespace",
+1795:         "schema_version",
+1796:         "diagnostic_id",
+1797:         "observer_spec_sha256",
+1798:         "state_key",
+1799:         "representative_event_seq",
+1800:         "scope_hash",
+1801:         "eligibility_reason",
+1802:         "all_ready_count",
+1803:         "all_target_count",
+1804:         "selected_K_IDs",
+1805:         "selected_target_IDs",
+1806:         "truncation_flags",
+1807:         "coverage_status",
+1808:         "baseline_assignment",
+1809:         "baseline_calendar",
+1810:         "baseline_target_finishes",
+1811:         "baseline_L_finishes",
+1812:         "enumeration_count",
+1813:         "feasible_count",
+1814:         "enumeration_digest_sha256",
+1815:         "best_assignment",
+1816:         "best_calendar",
+1817:         "best_target_finishes",
+1818:         "projected_H_path_and_resource_blockers",
+1819:         "b",
+1820:         "o",
+1821:         "delta_ms",
+1822:         "g",
+1823:         "threshold_bundle_id",
+1824:         "view_outcome",
+1825:         "independent_recompute_ref",
+1826:         "independent_recompute_status"
+1827:       ],
+1828:       "properties": {
+1829:         "namespace": {
+1830:           "const": "soc.p2.diagnostic-record.v2"
+1831:         },
+1832:         "schema_version": {
+1833:           "const": 2
+1834:         },
+1835:         "diagnostic_id": {
+1836:           "const": "M1R_PATH_V2"
+1837:         },
+1838:         "observer_spec_sha256": {
+1839:           "$ref": "#/$defs/SHA256"
+1840:         },
+1841:         "state_key": {
+1842:           "$ref": "#/$defs/SHA256"
+1843:         },
+1844:         "representative_event_seq": {
+1845:           "$ref": "#/$defs/UINT"
+1846:         },
+1847:         "scope_hash": {
+1848:           "$ref": "#/$defs/SHA256"
+1849:         },
+1850:         "eligibility_reason": {
+1851:           "$ref": "#/$defs/ID"
+1852:         },
+1853:         "all_ready_count": {
+1854:           "$ref": "#/$defs/UINT"
+1855:         },
+1856:         "all_target_count": {
+1857:           "$ref": "#/$defs/UINT"
+1858:         },
+1859:         "selected_K_IDs": {
+1860:           "type": "array",
+1861:           "items": {
+1862:             "$ref": "#/$defs/ID"
+1863:           }
+1864:         },
+1865:         "selected_target_IDs": {
+1866:           "type": "array",
+1867:           "items": {
+1868:             "$ref": "#/$defs/ID"
+1869:           }
+1870:         },
+1871:         "truncation_flags": {
+1872:           "type": "array",
+1873:           "items": {
+1874:             "$ref": "#/$defs/ID"
+1875:           }
+1876:         },
+1877:         "coverage_status": {
+1878:           "enum": [
+1879:             "NOT_IN_SCOPE",
+1880:             "VALID_FULL",
+1881:             "COVERAGE_INSUFFICIENT",
+1882:             "INVALID",
+1883:             "INCOMPLETE"
+1884:           ]
+1885:         },
+1886:         "baseline_assignment": {
+1887:           "type": "array",
+1888:           "items": {
+1889:             "$ref": "#/$defs/ASSIGNMENT"
+1890:           }
+1891:         },
+1892:         "baseline_calendar": {
+1893:           "type": "array",
+1894:           "items": {
+1895:             "$ref": "#/$defs/PROJECTION_INTERVAL"
+1896:           }
+1897:         },
+1898:         "baseline_target_finishes": {
+1899:           "type": "array",
+1900:           "items": {
+1901:             "$ref": "#/$defs/TARGET_FINISH"
+1902:           }
+1903:         },
+1904:         "baseline_L_finishes": {
+1905:           "type": "array",
+1906:           "items": {
+1907:             "$ref": "#/$defs/LOCAL_L_FINISH"
+1908:           }
+1909:         },
+1910:         "enumeration_count": {
+1911:           "$ref": "#/$defs/UINT"
+1912:         },
+1913:         "feasible_count": {
+1914:           "$ref": "#/$defs/UINT"
+1915:         },
+1916:         "enumeration_digest_sha256": {
+1917:           "anyOf": [
+1918:             {
+1919:               "$ref": "#/$defs/SHA256"
+1920:             },
+1921:             {
+1922:               "type": "null"
+1923:             }
+1924:           ]
+1925:         },
+1926:         "best_assignment": {
+1927:           "type": "array",
+1928:           "items": {
+1929:             "$ref": "#/$defs/ASSIGNMENT"
+1930:           }
+1931:         },
+1932:         "best_calendar": {
+1933:           "type": "array",
+1934:           "items": {
+1935:             "$ref": "#/$defs/PROJECTION_INTERVAL"
+1936:           }
+1937:         },
+1938:         "best_target_finishes": {
+1939:           "type": "array",
+1940:           "items": {
+1941:             "$ref": "#/$defs/TARGET_FINISH"
+1942:           }
+1943:         },
+1944:         "projected_H_path_and_resource_blockers": {
+1945:           "type": "array",
+1946:           "items": {
+1947:             "type": "object",
+1948:             "additionalProperties": false,
+1949:             "required": [
+1950:               "target_service_id",
+1951:               "critical_node_path",
+1952:               "blocking_intervals"
+1953:             ],
+1954:             "properties": {
+1955:               "target_service_id": {
+1956:                 "$ref": "#/$defs/ID"
+1957:               },
+1958:               "critical_node_path": {
+1959:                 "type": "array",
+1960:                 "items": {
+1961:                   "$ref": "#/$defs/ID"
+1962:                 }
+1963:               },
+1964:               "blocking_intervals": {
+1965:                 "type": "array",
+1966:                 "items": {
+1967:                   "$ref": "#/$defs/PROJECTION_INTERVAL"
+1968:                 }
+1969:               }
+1970:             }
+1971:           }
+1972:         },
+1973:         "b": {
+1974:           "anyOf": [
+1975:             {
+1976:               "$ref": "#/$defs/RATIONAL"
+1977:             },
+1978:             {
+1979:               "type": "null"
+1980:             }
+1981:           ]
+1982:         },
+1983:         "o": {
+1984:           "anyOf": [
+1985:             {
+1986:               "$ref": "#/$defs/RATIONAL"
+1987:             },
+1988:             {
+1989:               "type": "null"
+1990:             }
+1991:           ]
+1992:         },
+1993:         "delta_ms": {
+1994:           "anyOf": [
+1995:             {
+1996:               "$ref": "#/$defs/RATIONAL"
+1997:             },
+1998:             {
+1999:               "type": "null"
+2000:             }
+2001:           ]
+2002:         },
+2003:         "g": {
+2004:           "anyOf": [
+2005:             {
+2006:               "$ref": "#/$defs/RATIONAL"
+2007:             },
+2008:             {
+2009:               "type": "null"
+2010:             }
+2011:           ]
+2012:         },
+2013:         "threshold_bundle_id": {
+2014:           "enum": [
+2015:             "FINE",
+2016:             "COARSE"
+2017:           ]
+2018:         },
+2019:         "view_outcome": {
+2020:           "enum": [
+2021:             "NOT_IN_SCOPE",
+2022:             "COVERAGE_INSUFFICIENT",
+2023:             "INVALID",
+2024:             "INCOMPLETE",
+2025:             "NO_IMPROVEMENT_IN_TESTED_SPACE",
+2026:             "SUBTHRESHOLD_IMPROVEMENT",
+2027:             "MATERIAL_IMPROVEMENT_IN_TESTED_SPACE"
+2028:           ]
+2029:         },
+2030:         "independent_recompute_ref": {
+2031:           "anyOf": [
+2032:             {
+2033:               "$ref": "#/$defs/ARTIFACT_REF"
+2034:             },
+2035:             {
+2036:               "type": "null"
+2037:             }
+2038:           ]
+2039:         },
+2040:         "independent_recompute_status": {
+2041:           "enum": [
+2042:             "NOT_RUN",
+2043:             "PASS",
+2044:             "FAIL"
+2045:           ]
+2046:         }
+2047:       }
+2048:     },
+2049:     "DIAGNOSTIC_ERROR_RECORD": {
+2050:       "type": "object",
+2051:       "additionalProperties": false,
+2052:       "required": [
+2053:         "namespace",
+2054:         "schema_version",
+2055:         "run_id",
+2056:         "attempt_id",
+2057:         "expected_event_seq",
+2058:         "phase",
+2059:         "reason",
+2060:         "missing_or_corrupt_ref",
+2061:         "diagnostic_validity"
+2062:       ],
+2063:       "properties": {
+2064:         "namespace": {
+2065:           "const": "soc.p2.diagnostic-error.v2"
+2066:         },
+2067:         "schema_version": {
+2068:           "const": 2
+2069:         },
+2070:         "run_id": {
+2071:           "$ref": "#/$defs/ID"
+2072:         },
+2073:         "attempt_id": {
+2074:           "$ref": "#/$defs/ID"
+2075:         },
+2076:         "expected_event_seq": {
+2077:           "anyOf": [
+2078:             {
+2079:               "$ref": "#/$defs/UINT"
+2080:             },
+2081:             {
+2082:               "type": "null"
+2083:             }
+2084:           ]
+2085:         },
+2086:         "phase": {
+2087:           "$ref": "#/$defs/ID"
+2088:         },
+2089:         "reason": {
+2090:           "$ref": "#/$defs/ID"
+2091:         },
+2092:         "missing_or_corrupt_ref": {
+2093:           "anyOf": [
+2094:             {
+2095:               "$ref": "#/$defs/ARTIFACT_REF"
+2096:             },
+2097:             {
+2098:               "type": "null"
+2099:             }
+2100:           ]
+2101:         },
+2102:         "diagnostic_validity": {
+2103:           "enum": [
+2104:             "INVALID",
+2105:             "INCOMPLETE"
+2106:           ]
+2107:         }
+2108:       }
+2109:     },
+2110:     "RUNTIME_PAYLOAD": {
+2111:       "type": "object",
+2112:       "additionalProperties": false,
+2113:       "required": [
+2114:         "resources",
+2115:         "links",
+2116:         "services"
+2117:       ],
+2118:       "properties": {
+2119:         "resources": {
+2120:           "type": "array",
+2121:           "items": {
+2122:             "type": "object",
+2123:             "additionalProperties": false,
+2124:             "required": [
+2125:               "id",
+2126:               "kind"
+2127:             ],
+2128:             "properties": {
+2129:               "id": {
+2130:                 "$ref": "#/$defs/RESOURCE"
+2131:               },
+2132:               "kind": {
+2133:                 "enum": [
+2134:                   "CPU",
+2135:                   "GPU",
+2136:                   "NPU"
+2137:                 ]
+2138:               }
+2139:             }
+2140:           }
+2141:         },
+2142:         "links": {
+2143:           "type": "array",
+2144:           "items": {
+2145:             "type": "object",
+2146:             "additionalProperties": false,
+2147:             "required": [
+2148:               "source",
+2149:               "destination",
+2150:               "latency",
+2151:               "bandwidth"
+2152:             ],
+2153:             "properties": {
+2154:               "source": {
+2155:                 "enum": [
+2156:                   "CPU",
+2157:                   "GPU",
+2158:                   "NPU"
+2159:                 ]
+2160:               },
+2161:               "destination": {
+2162:                 "enum": [
+2163:                   "CPU",
+2164:                   "GPU",
+2165:                   "NPU"
+2166:                 ]
+2167:               },
+2168:               "latency": {
+2169:                 "type": "number",
+2170:                 "minimum": 0
+2171:               },
+2172:               "bandwidth": {
+2173:                 "type": "number",
+2174:                 "exclusiveMinimum": 0
+2175:               }
+2176:             }
+2177:           }
+2178:         },
+2179:         "services": {
+2180:           "type": "array",
+2181:           "items": {
+2182:             "type": "object",
+2183:             "additionalProperties": false,
+2184:             "required": [
+2185:               "id",
+2186:               "arrival",
+2187:               "relative_deadline",
+2188:               "group",
+2189:               "nodes"
+2190:             ],
+2191:             "properties": {
+2192:               "id": {
+2193:                 "$ref": "#/$defs/ID"
+2194:               },
+2195:               "arrival": {
+2196:                 "type": "number",
+2197:                 "minimum": 0
+2198:               },
+2199:               "relative_deadline": {
+2200:                 "type": "number",
+2201:                 "exclusiveMinimum": 0
+2202:               },
+2203:               "group": {
+2204:                 "enum": [
+2205:                   "H",
+2206:                   "L"
+2207:                 ]
+2208:               },
+2209:               "nodes": {
+2210:                 "type": "array",
+2211:                 "items": {
+2212:                   "type": "object",
+2213:                   "additionalProperties": false,
+2214:                   "required": [
+2215:                     "id",
+2216:                     "durations",
+2217:                     "predecessors"
+2218:                   ],
+2219:                   "properties": {
+2220:                     "id": {
+2221:                       "$ref": "#/$defs/ID"
+2222:                     },
+2223:                     "durations": {
+2224:                       "type": "array",
+2225:                       "items": {
+2226:                         "type": "object",
+2227:                         "additionalProperties": false,
+2228:                         "required": [
+2229:                           "resource",
+2230:                           "estimate",
+2231:                           "realized"
+2232:                         ],
+2233:                         "properties": {
+2234:                           "resource": {
+2235:                             "$ref": "#/$defs/RESOURCE"
+2236:                           },
+2237:                           "estimate": {
+2238:                             "type": "number",
+2239:                             "exclusiveMinimum": 0
+2240:                           },
+2241:                           "realized": {
+2242:                             "type": "number",
+2243:                             "exclusiveMinimum": 0
+2244:                           }
+2245:                         }
+2246:                       }
+2247:                     },
+2248:                     "predecessors": {
+2249:                       "type": "array",
+2250:                       "items": {
+2251:                         "type": "object",
+2252:                         "additionalProperties": false,
+2253:                         "required": [
+2254:                           "node",
+2255:                           "size"
+2256:                         ],
+2257:                         "properties": {
+2258:                           "node": {
+2259:                             "$ref": "#/$defs/ID"
+2260:                           },
+2261:                           "size": {
+2262:                             "type": "number",
+2263:                             "minimum": 0
+2264:                           }
+2265:                         }
+2266:                       }
+2267:                     }
+2268:                   }
+2269:                 }
+2270:               }
+2271:             }
+2272:           }
+2273:         }
+2274:       }
+2275:     },
+2276:     "SCIENTIFIC_INPUT_ENVELOPE": {
+2277:       "type": "object",
+2278:       "additionalProperties": false,
+2279:       "required": [
+2280:         "namespace",
+2281:         "schema_version",
+2282:         "origin",
+2283:         "workload_id",
+2284:         "input_descriptor_sha256",
+2285:         "blueprint_sha256",
+2286:         "resolution_receipt_ref",
+2287:         "generation_receipt_ref",
+2288:         "lineage_validation_ref",
+2289:         "payload_ref",
+2290:         "control_variant",
+2291:         "actual_seed_decimal_string",
+2292:         "partition"
+2293:       ],
+2294:       "properties": {
+2295:         "namespace": {
+2296:           "const": "soc.science.p2.input"
+2297:         },
+2298:         "schema_version": {
+2299:           "const": 2
+2300:         },
+2301:         "origin": {
+2302:           "const": "SCIENTIFIC_CALIBRATION"
+2303:         },
+2304:         "workload_id": {
+2305:           "$ref": "#/$defs/ID"
+2306:         },
+2307:         "input_descriptor_sha256": {
+2308:           "$ref": "#/$defs/SHA256"
+2309:         },
+2310:         "blueprint_sha256": {
+2311:           "$ref": "#/$defs/SHA256"
+2312:         },
+2313:         "resolution_receipt_ref": {
+2314:           "$ref": "#/$defs/ARTIFACT_REF"
+2315:         },
+2316:         "generation_receipt_ref": {
+2317:           "$ref": "#/$defs/ARTIFACT_REF"
+2318:         },
+2319:         "lineage_validation_ref": {
+2320:           "$ref": "#/$defs/ARTIFACT_REF"
+2321:         },
+2322:         "payload_ref": {
+2323:           "$ref": "#/$defs/ARTIFACT_REF"
+2324:         },
+2325:         "control_variant": {
+2326:           "$ref": "#/$defs/VARIANT"
+2327:         },
+2328:         "actual_seed_decimal_string": {
+2329:           "$ref": "#/$defs/SEED_TEXT"
+2330:         },
+2331:         "partition": {
+2332:           "const": "CALIBRATION"
+2333:         }
+2334:       }
+2335:     },
+2336:     "VALIDATION_RESULT": {
+2337:       "type": "object",
+2338:       "additionalProperties": false,
+2339:       "required": [
+2340:         "status",
+2341:         "implementation_sha256",
+2342:         "report_ref"
+2343:       ],
+2344:       "properties": {
+2345:         "status": {
+2346:           "enum": [
+2347:             "NOT_RUN",
+2348:             "PASS",
+2349:             "FAIL"
+2350:           ]
+2351:         },
+2352:         "implementation_sha256": {
+2353:           "$ref": "#/$defs/SHA256"
+2354:         },
+2355:         "report_ref": {
+2356:           "anyOf": [
+2357:             {
+2358:               "$ref": "#/$defs/ARTIFACT_REF"
+2359:             },
+2360:             {
+2361:               "type": "null"
+2362:             }
+2363:           ]
+2364:         }
+2365:       }
+2366:     },
+2367:     "METRIC_DERIVATION": {
+2368:       "type": "object",
+2369:       "additionalProperties": false,
+2370:       "required": [
+2371:         "status",
+2372:         "metric_protocol_sha256",
+2373:         "runtime_metrics_ref",
+2374:         "independent_metrics_ref",
+2375:         "comparison_ref"
+2376:       ],
+2377:       "properties": {
+2378:         "status": {
+2379:           "enum": [
+2380:             "NOT_RUN",
+2381:             "MATCH",
+2382:             "MISMATCH"
+2383:           ]
+2384:         },
+2385:         "metric_protocol_sha256": {
+2386:           "$ref": "#/$defs/SHA256"
+2387:         },
+2388:         "runtime_metrics_ref": {
+2389:           "anyOf": [
+2390:             {
+2391:               "$ref": "#/$defs/ARTIFACT_REF"
+2392:             },
+2393:             {
+2394:               "type": "null"
+2395:             }
+2396:           ]
+2397:         },
+2398:         "independent_metrics_ref": {
+2399:           "anyOf": [
+2400:             {
+2401:               "$ref": "#/$defs/ARTIFACT_REF"
+2402:             },
+2403:             {
+2404:               "type": "null"
+2405:             }
+2406:           ]
+2407:         },
+2408:         "comparison_ref": {
+2409:           "anyOf": [
+2410:             {
+2411:               "$ref": "#/$defs/ARTIFACT_REF"
+2412:             },
+2413:             {
+2414:               "type": "null"
+2415:             }
+2416:           ]
+2417:         }
+2418:       }
+2419:     },
+2420:     "REPLAY_RESULT": {
+2421:       "type": "object",
+2422:       "additionalProperties": false,
+2423:       "required": [
+2424:         "status",
+2425:         "replay_protocol_sha256",
+2426:         "child_execution_id",
+2427:         "process",
+2428:         "raw_outputs",
+2429:         "comparison_ref"
+2430:       ],
+2431:       "properties": {
+2432:         "status": {
+2433:           "enum": [
+2434:             "NOT_RUN",
+2435:             "EXACT_MATCH",
+2436:             "MISMATCH",
+2437:             "FAILED",
+2438:             "INCOMPLETE"
+2439:           ]
+2440:         },
+2441:         "replay_protocol_sha256": {
+2442:           "$ref": "#/$defs/SHA256"
+2443:         },
+2444:         "child_execution_id": {
+2445:           "anyOf": [
+2446:             {
+2447:               "$ref": "#/$defs/ID"
+2448:             },
+2449:             {
+2450:               "type": "null"
+2451:             }
+2452:           ]
+2453:         },
+2454:         "process": {
+2455:           "anyOf": [
+2456:             {
+2457:               "$ref": "#/$defs/PROCESS_RESULT"
+2458:             },
+2459:             {
+2460:               "type": "null"
+2461:             }
+2462:           ]
+2463:         },
+2464:         "raw_outputs": {
+2465:           "type": "array",
+2466:           "items": {
+2467:             "$ref": "#/$defs/ARTIFACT_REF"
+2468:           }
+2469:         },
+2470:         "comparison_ref": {
+2471:           "anyOf": [
+2472:             {
+2473:               "$ref": "#/$defs/ARTIFACT_REF"
+2474:             },
+2475:             {
+2476:               "type": "null"
+2477:             }
+2478:           ]
+2479:         }
+2480:       }
+2481:     },
+2482:     "SCIENTIFIC_RUN_RECORD": {
+2483:       "type": "object",
+2484:       "additionalProperties": false,
+2485:       "required": [
+2486:         "namespace",
+2487:         "schema_version",
+2488:         "run_id",
+2489:         "attempt_id",
+2490:         "execution_plan_sha256",
+2491:         "trial_id",
+2492:         "method_id",
+2493:         "workload_id",
+2494:         "actual_seed_decimal_string",
+2495:         "partition",
+2496:         "scenario",
+2497:         "condition_id",
+2498:         "config_id",
+2499:         "control_variant",
+2500:         "source_bundle_sha256",
+2501:         "input_envelope_ref",
+2502:         "process",
+2503:         "raw_artifacts",
+2504:         "trace_validation",
+2505:         "metric_derivation",
+2506:         "replay",
+2507:         "completion_status",
+2508:         "error_records"
+2509:       ],
+2510:       "properties": {
+2511:         "namespace": {
+2512:           "const": "soc.science.p2.run-record"
+2513:         },
+2514:         "schema_version": {
+2515:           "const": 2
+2516:         },
+2517:         "run_id": {
+2518:           "$ref": "#/$defs/ID"
+2519:         },
+2520:         "attempt_id": {
+2521:           "$ref": "#/$defs/ID"
+2522:         },
+2523:         "execution_plan_sha256": {
+2524:           "$ref": "#/$defs/SHA256"
+2525:         },
+2526:         "trial_id": {
+2527:           "$ref": "#/$defs/ID"
+2528:         },
+2529:         "method_id": {
+2530:           "$ref": "#/$defs/METHOD"
+2531:         },
+2532:         "workload_id": {
+2533:           "$ref": "#/$defs/ID"
+2534:         },
+2535:         "actual_seed_decimal_string": {
+2536:           "$ref": "#/$defs/SEED_TEXT"
+2537:         },
+2538:         "partition": {
+2539:           "const": "CALIBRATION"
+2540:         },
+2541:         "scenario": {
+2542:           "enum": [
+2543:             "COCKPIT",
+2544:             "ADAS",
+2545:             "FUSION"
+2546:           ]
+2547:         },
+2548:         "condition_id": {
+2549:           "$ref": "#/$defs/ID"
+2550:         },
+2551:         "config_id": {
+2552:           "$ref": "#/$defs/ID"
+2553:         },
+2554:         "control_variant": {
+2555:           "$ref": "#/$defs/VARIANT"
+2556:         },
+2557:         "source_bundle_sha256": {
+2558:           "$ref": "#/$defs/SHA256"
+2559:         },
+2560:         "input_envelope_ref": {
+2561:           "$ref": "#/$defs/ARTIFACT_REF"
+2562:         },
+2563:         "process": {
+2564:           "$ref": "#/$defs/PROCESS_RESULT"
+2565:         },
+2566:         "raw_artifacts": {
+2567:           "type": "array",
+2568:           "items": {
+2569:             "$ref": "#/$defs/ARTIFACT_REF"
+2570:           }
+2571:         },
+2572:         "trace_validation": {
+2573:           "$ref": "#/$defs/VALIDATION_RESULT"
+2574:         },
+2575:         "metric_derivation": {
+2576:           "$ref": "#/$defs/METRIC_DERIVATION"
+2577:         },
+2578:         "replay": {
+2579:           "$ref": "#/$defs/REPLAY_RESULT"
+2580:         },
+2581:         "completion_status": {
+2582:           "enum": [
+2583:             "PREPARED",
+2584:             "RUNNING",
+2585:             "FAILED",
+2586:             "INVALID",
+2587:             "INCOMPLETE",
+2588:             "COMPLETE"
+2589:           ]
+2590:         },
+2591:         "error_records": {
+2592:           "type": "array",
+2593:           "items": {
+2594:             "$ref": "#/$defs/ARTIFACT_REF"
+2595:           }
+2596:         }
+2597:       }
+2598:     },
+2599:     "FEASIBILITY_CERTIFICATE": {
+2600:       "type": "object",
+2601:       "additionalProperties": false,
+2602:       "required": [
+2603:         "namespace",
+2604:         "schema_version",
+2605:         "payload_content_sha256",
+2606:         "implementation_sha256",
+2607:         "numeric_method",
+2608:         "arrival_bits",
+2609:         "relative_deadline_bits",
+2610:         "absolute_deadline_bits",
+2611:         "node_bounds",
+2612:         "service_bound_bits",
+2613:         "classification",
+2614:         "verification_report_ref"
+2615:       ],
+2616:       "properties": {
+2617:         "namespace": {
+2618:           "const": "soc.p2.offline-feasibility"
+2619:         },
+2620:         "schema_version": {
+2621:           "const": 2
+2622:         },
+2623:         "payload_content_sha256": {
+2624:           "$ref": "#/$defs/SHA256"
+2625:         },
+2626:         "implementation_sha256": {
+2627:           "$ref": "#/$defs/SHA256"
+2628:         },
+2629:         "numeric_method": {
+2630:           "const": "ABS_RN64_MONOTONE_LB_V2"
+2631:         },
+2632:         "arrival_bits": {
+2633:           "$ref": "#/$defs/F64_BITS"
+2634:         },
+2635:         "relative_deadline_bits": {
+2636:           "$ref": "#/$defs/F64_BITS"
+2637:         },
+2638:         "absolute_deadline_bits": {
+2639:           "$ref": "#/$defs/F64_BITS"
+2640:         },
+2641:         "node_bounds": {
+2642:           "type": "array",
+2643:           "items": {
+2644:             "type": "object",
+2645:             "additionalProperties": false,
+2646:             "required": [
+2647:               "node_id",
+2648:               "bound_bits"
+2649:             ],
+2650:             "properties": {
+2651:               "node_id": {
+2652:                 "$ref": "#/$defs/ID"
+2653:               },
+2654:               "bound_bits": {
+2655:                 "$ref": "#/$defs/F64_BITS"
+2656:               }
+2657:             }
+2658:           }
+2659:         },
+2660:         "service_bound_bits": {
+2661:           "$ref": "#/$defs/F64_BITS"
+2662:         },
+2663:         "classification": {
+2664:           "enum": [
+2665:             "CERTIFIED_NATURALLY_INFEASIBLE",
+2666:             "FEASIBILITY_NOT_ESTABLISHED",
+2667:             "CONTROL_SPECIFIC_FEASIBILITY_WITNESS",
+2668:             "INPUT_OR_TRACE_INVALID"
+2669:           ]
+2670:         },
+2671:         "verification_report_ref": {
+2672:           "$ref": "#/$defs/ARTIFACT_REF"
+2673:         }
+2674:       }
+2675:     },
+2676:     "STAGE_RECORD": {
+2677:       "type": "object",
+2678:       "additionalProperties": false,
+2679:       "required": [
+2680:         "namespace",
+2681:         "schema_version",
+2682:         "execution_plan_sha256",
+2683:         "source_bundle_sha256",
+2684:         "state",
+2685:         "expected_trial_slots",
+2686:         "attempted_trial_slots",
+2687:         "completed_trial_slots",
+2688:         "reused_trial_slots",
+2689:         "failed_trial_slots",
+2690:         "not_started_trial_slots",
+2691:         "expected_input_count",
+2692:         "selected_condition_ids",
+2693:         "integrity_report_ref",
+2694:         "selection_report_ref",
+2695:         "diagnostic_report_ref",
+2696:         "criterion_report_ref",
+2697:         "timing_freeze_receipt_ref",
+2698:         "prerequisite_evidence"
+2699:       ],
+2700:       "properties": {
+2701:         "namespace": {
+2702:           "const": "soc.science.p2.stage-record"
+2703:         },
+2704:         "schema_version": {
+2705:           "const": 2
+2706:         },
+2707:         "execution_plan_sha256": {
+2708:           "$ref": "#/$defs/SHA256"
+2709:         },
+2710:         "source_bundle_sha256": {
+2711:           "$ref": "#/$defs/SHA256"
+2712:         },
+2713:         "state": {
+2714:           "$ref": "#/$defs/GATE_STATE"
+2715:         },
+2716:         "expected_trial_slots": {
+2717:           "const": 2520
+2718:         },
+2719:         "attempted_trial_slots": {
+2720:           "$ref": "#/$defs/UINT"
+2721:         },
+2722:         "completed_trial_slots": {
+2723:           "$ref": "#/$defs/UINT"
+2724:         },
+2725:         "reused_trial_slots": {
+2726:           "$ref": "#/$defs/UINT"
+2727:         },
+2728:         "failed_trial_slots": {
+2729:           "$ref": "#/$defs/UINT"
+2730:         },
+2731:         "not_started_trial_slots": {
+2732:           "$ref": "#/$defs/UINT"
+2733:         },
+2734:         "expected_input_count": {
+2735:           "const": 1080
+2736:         },
+2737:         "selected_condition_ids": {
+2738:           "type": "array",
+2739:           "items": {
+2740:             "$ref": "#/$defs/ID"
+2741:           }
+2742:         },
+2743:         "integrity_report_ref": {
+2744:           "anyOf": [
+2745:             {
+2746:               "$ref": "#/$defs/ARTIFACT_REF"
+2747:             },
+2748:             {
+2749:               "type": "null"
+2750:             }
+2751:           ]
+2752:         },
+2753:         "selection_report_ref": {
+2754:           "anyOf": [
+2755:             {
+2756:               "$ref": "#/$defs/ARTIFACT_REF"
+2757:             },
+2758:             {
+2759:               "type": "null"
+2760:             }
+2761:           ]
+2762:         },
+2763:         "diagnostic_report_ref": {
+2764:           "anyOf": [
+2765:             {
+2766:               "$ref": "#/$defs/ARTIFACT_REF"
+2767:             },
+2768:             {
+2769:               "type": "null"
+2770:             }
+2771:           ]
+2772:         },
+2773:         "criterion_report_ref": {
+2774:           "anyOf": [
+2775:             {
+2776:               "$ref": "#/$defs/ARTIFACT_REF"
+2777:             },
+2778:             {
+2779:               "type": "null"
+2780:             }
+2781:           ]
+2782:         },
+2783:         "timing_freeze_receipt_ref": {
+2784:           "anyOf": [
+2785:             {
+2786:               "$ref": "#/$defs/ARTIFACT_REF"
+2787:             },
+2788:             {
+2789:               "type": "null"
+2790:             }
+2791:           ]
+2792:         },
+2793:         "prerequisite_evidence": {
+2794:           "type": "array",
+2795:           "items": {
+2796:             "$ref": "#/$defs/ARTIFACT_REF"
+2797:           }
+2798:         }
+2799:       }
+2800:     },
+2801:     "REPLAY_PREIMAGE": {
+2802:       "type": "object",
+2803:       "additionalProperties": false,
+2804:       "required": [
+2805:         "namespace",
+2806:         "schema_version",
+2807:         "run_id",
+2808:         "primary_attempt_id",
+2809:         "primary_trace_sha256",
+2810:         "replay_protocol_sha256",
+2811:         "ordinal"
+2812:       ],
+2813:       "properties": {
+2814:         "namespace": {
+2815:           "const": "soc.p2.replay-execution.v2"
+2816:         },
+2817:         "schema_version": {
+2818:           "const": 2
+2819:         },
+2820:         "run_id": {
+2821:           "$ref": "#/$defs/ID"
+2822:         },
+2823:         "primary_attempt_id": {
+2824:           "$ref": "#/$defs/ID"
+2825:         },
+2826:         "primary_trace_sha256": {
+2827:           "$ref": "#/$defs/SHA256"
+2828:         },
+2829:         "replay_protocol_sha256": {
+2830:           "$ref": "#/$defs/SHA256"
+2831:         },
+2832:         "ordinal": {
+2833:           "const": 1
+2834:         }
+2835:       }
+2836:     },
+2837:     "COMPLETION_PREIMAGE": {
+2838:       "type": "object",
+2839:       "additionalProperties": false,
+2840:       "required": [
+2841:         "namespace",
+2842:         "schema_version",
+2843:         "run_id",
+2844:         "attempt_id",
+2845:         "primary_process_result_raw_sha256",
+2846:         "input_resolution_receipt_sha256",
+2847:         "trace_validation_report_sha256",
+2848:         "metric_comparison_sha256",
+2849:         "replay_comparison_sha256",
+2850:         "artifact_inventory_sha256",
+2851:         "completion_status"
+2852:       ],
+2853:       "properties": {
+2854:         "namespace": {
+2855:           "const": "soc.p2.completion.v2"
+2856:         },
+2857:         "schema_version": {
+2858:           "const": 2
+2859:         },
+2860:         "run_id": {
+2861:           "$ref": "#/$defs/ID"
+2862:         },
+2863:         "attempt_id": {
+2864:           "$ref": "#/$defs/ID"
+2865:         },
+2866:         "primary_process_result_raw_sha256": {
+2867:           "$ref": "#/$defs/SHA256"
+2868:         },
+2869:         "input_resolution_receipt_sha256": {
+2870:           "$ref": "#/$defs/SHA256"
+2871:         },
+2872:         "trace_validation_report_sha256": {
+2873:           "$ref": "#/$defs/SHA256"
+2874:         },
+2875:         "metric_comparison_sha256": {
+2876:           "$ref": "#/$defs/SHA256"
+2877:         },
+2878:         "replay_comparison_sha256": {
+2879:           "$ref": "#/$defs/SHA256"
+2880:         },
+2881:         "artifact_inventory_sha256": {
+2882:           "$ref": "#/$defs/SHA256"
+2883:         },
+2884:         "completion_status": {
+2885:           "const": "COMPLETE"
+2886:         }
+2887:       }
+2888:     },
+2889:     "SOURCE_BUNDLE_PREIMAGE": {
+2890:       "type": "object",
+2891:       "additionalProperties": false,
+2892:       "required": [
+2893:         "namespace",
+2894:         "schema_version",
+2895:         "source_commit",
+2896:         "source_files",
+2897:         "dependency_manifest_sha256",
+2898:         "model_contract_sha256",
+2899:         "dirty_policy"
+2900:       ],
+2901:       "properties": {
+2902:         "namespace": {
+2903:           "const": "soc.p2.source-bundle.v2"
+2904:         },
+2905:         "schema_version": {
+2906:           "const": 2
+2907:         },
+2908:         "source_commit": {
+2909:           "type": "string",
+2910:           "pattern": "^[0-9a-f]{40}$"
+2911:         },
+2912:         "source_files": {
+2913:           "type": "array",
+2914:           "items": {
+2915:             "type": "object",
+2916:             "additionalProperties": false,
+2917:             "required": [
+2918:               "path",
+2919:               "sha256"
+2920:             ],
+2921:             "properties": {
+2922:               "path": {
+2923:                 "$ref": "#/$defs/ID"
+2924:               },
+2925:               "sha256": {
+2926:                 "$ref": "#/$defs/SHA256"
+2927:               }
+2928:             }
+2929:           }
+2930:         },
+2931:         "dependency_manifest_sha256": {
+2932:           "$ref": "#/$defs/SHA256"
+2933:         },
+2934:         "model_contract_sha256": {
+2935:           "$ref": "#/$defs/SHA256"
+2936:         },
+2937:         "dirty_policy": {
+2938:           "const": "REJECT_RELEVANT_DIRTY_OR_UNTRACKED"
+2939:         }
+2940:       }
+2941:     },
+2942:     "ENVIRONMENT_PREIMAGE": {
+2943:       "type": "object",
+2944:       "additionalProperties": false,
+2945:       "required": [
+2946:         "namespace",
+2947:         "schema_version",
+2948:         "python_implementation",
+2949:         "python_version",
+2950:         "machine",
+2951:         "platform",
+2952:         "numeric_model",
+2953:         "dependency_manifest_sha256",
+2954:         "host_identity_sha256"
+2955:       ],
+2956:       "properties": {
+2957:         "namespace": {
+2958:           "const": "soc.p2.environment.v2"
+2959:         },
+2960:         "schema_version": {
+2961:           "const": 2
+2962:         },
+2963:         "python_implementation": {
+2964:           "const": "CPython"
+2965:         },
+2966:         "python_version": {
+2967:           "$ref": "#/$defs/ID"
+2968:         },
+2969:         "machine": {
+2970:           "$ref": "#/$defs/ID"
+2971:         },
+2972:         "platform": {
+2973:           "$ref": "#/$defs/ID"
+2974:         },
+2975:         "numeric_model": {
+2976:           "const": "IEEE754_BINARY64_RN_TIES_EVEN_NO_FMA"
+2977:         },
+2978:         "dependency_manifest_sha256": {
+2979:           "$ref": "#/$defs/SHA256"
+2980:         },
+2981:         "host_identity_sha256": {
+2982:           "$ref": "#/$defs/SHA256"
+2983:         }
+2984:       }
+2985:     },
+2986:     "BINDING_LITERAL": {
+2987:       "type": "object",
+2988:       "additionalProperties": false,
+2989:       "required": [
+2990:         "kind",
+2991:         "value"
+2992:       ],
+2993:       "properties": {
+2994:         "kind": {
+2995:           "const": "LITERAL"
+2996:         },
+2997:         "value": {
+2998:           "type": [
+2999:             "string",
+3000:             "integer",
+3001:             "boolean",
+3002:             "null"
+3003:           ]
+3004:         }
+3005:       }
+3006:     },
+3007:     "BINDING_COPY": {
+3008:       "type": "object",
+3009:       "additionalProperties": false,
+3010:       "required": [
+3011:         "kind",
+3012:         "source"
+3013:       ],
+3014:       "properties": {
+3015:         "kind": {
+3016:           "const": "COPY"
+3017:         },
+3018:         "source": {
+3019:           "enum": [
+3020:             "main_descriptor.actual_seed_decimal_string",
+3021:             "main_descriptor.scenario",
+3022:             "main_descriptor.condition_id",
+3023:             "main_descriptor.config_id",
+3024:             "main_slot",
+3025:             "main_group",
+3026:             "template_node_id",
+3027:             "compatible_resource_id"
+3028:           ]
+3029:         }
+3030:       }
+3031:     },
+3032:     "KEY_BINDING": {
+3033:       "oneOf": [
+3034:         {
+3035:           "$ref": "#/$defs/BINDING_LITERAL"
+3036:         },
+3037:         {
+3038:           "$ref": "#/$defs/BINDING_COPY"
+3039:         }
+3040:       ]
+3041:     }
+3042:   },
+3043:   "preimage_registry": {
+3044:     "BLUEPRINT_PREIMAGE": {
+3045:       "schema_ref": "#/$defs/BLUEPRINT_PREIMAGE",
+3046:       "id_prefix": "urn:soc:blueprint:v2:",
+3047:       "digest": "SHA256(SEMANTIC_CANON_V2(preimage))",
+3048:       "forbidden_self_reference": [
+3049:         "own ID",
+3050:         "own digest",
+3051:         "future result fields not declared in schema"
+3052:       ],
+3053:       "additional_fields": "REJECT"
+3054:     },
+3055:     "EXECUTION_PLAN_PREIMAGE": {
+3056:       "schema_ref": "#/$defs/EXECUTION_PLAN_PREIMAGE",
+3057:       "id_prefix": "urn:soc:execution-plan:v2:",
+3058:       "digest": "SHA256(SEMANTIC_CANON_V2(preimage))",
+3059:       "forbidden_self_reference": [
+3060:         "own ID",
+3061:         "own digest",
+3062:         "future result fields not declared in schema"
+3063:       ],
+3064:       "additional_fields": "REJECT"
+3065:     },
+3066:     "INPUT_DESCRIPTOR_PREIMAGE": {
+3067:       "schema_ref": "#/$defs/INPUT_DESCRIPTOR_PREIMAGE",
+3068:       "id_prefix": "urn:soc:input-descriptor:v2:",
+3069:       "digest": "SHA256(SEMANTIC_CANON_V2(preimage))",
+3070:       "forbidden_self_reference": [
+3071:         "own ID",
+3072:         "own digest",
+3073:         "future result fields not declared in schema"
+3074:       ],
+3075:       "additional_fields": "REJECT"
+3076:     },
+3077:     "EXECUTION_AUTH_PREIMAGE": {
+3078:       "schema_ref": "#/$defs/EXECUTION_AUTH_PREIMAGE",
+3079:       "id_prefix": "urn:soc:execution-auth:v2:",
+3080:       "digest": "SHA256(SEMANTIC_CANON_V2(preimage))",
+3081:       "forbidden_self_reference": [
+3082:         "own ID",
+3083:         "own digest",
+3084:         "future result fields not declared in schema"
+3085:       ],
+3086:       "additional_fields": "REJECT"
+3087:     },
+3088:     "GENERATION_AUTH_PREIMAGE": {
+3089:       "schema_ref": "#/$defs/GENERATION_AUTH_PREIMAGE",
+3090:       "id_prefix": "urn:soc:generation-auth:v2:",
+3091:       "digest": "SHA256(SEMANTIC_CANON_V2(preimage))",
+3092:       "forbidden_self_reference": [
+3093:         "own ID",
+3094:         "own digest",
+3095:         "future result fields not declared in schema"
+3096:       ],
+3097:       "additional_fields": "REJECT"
+3098:     },
+3099:     "INPUT_LOCK_PREIMAGE": {
+3100:       "schema_ref": "#/$defs/INPUT_LOCK_PREIMAGE",
+3101:       "id_prefix": "urn:soc:input-lock:v2:",
+3102:       "digest": "SHA256(SEMANTIC_CANON_V2(preimage))",
+3103:       "forbidden_self_reference": [
+3104:         "own ID",
+3105:         "own digest",
+3106:         "future result fields not declared in schema"
+3107:       ],
+3108:       "additional_fields": "REJECT"
+3109:     },
+3110:     "GENERATION_ATTEMPT_PREIMAGE": {
+3111:       "schema_ref": "#/$defs/GENERATION_ATTEMPT_PREIMAGE",
+3112:       "id_prefix": "urn:soc:generation-attempt:v2:",
+3113:       "digest": "SHA256(SEMANTIC_CANON_V2(preimage))",
+3114:       "forbidden_self_reference": [
+3115:         "own ID",
+3116:         "own digest",
+3117:         "future result fields not declared in schema"
+3118:       ],
+3119:       "additional_fields": "REJECT"
+3120:     },
+3121:     "GENERATION_RECEIPT_PREIMAGE": {
+3122:       "schema_ref": "#/$defs/GENERATION_RECEIPT_PREIMAGE",
+3123:       "id_prefix": "urn:soc:generation-receipt:v2:",
+3124:       "digest": "SHA256(SEMANTIC_CANON_V2(preimage))",
+3125:       "forbidden_self_reference": [
+3126:         "own ID",
+3127:         "own digest",
+3128:         "future result fields not declared in schema"
+3129:       ],
+3130:       "additional_fields": "REJECT"
+3131:     },
+3132:     "MATERIALIZED_INPUT_PREIMAGE": {
+3133:       "schema_ref": "#/$defs/MATERIALIZED_INPUT_PREIMAGE",
+3134:       "id_prefix": "urn:soc:materialized-input:v2:",
+3135:       "digest": "SHA256(SEMANTIC_CANON_V2(preimage))",
+3136:       "forbidden_self_reference": [
+3137:         "own ID",
+3138:         "own digest",
+3139:         "future result fields not declared in schema"
+3140:       ],
+3141:       "additional_fields": "REJECT"
+3142:     },
+3143:     "INPUT_RESOLUTION_PREIMAGE": {
+3144:       "schema_ref": "#/$defs/INPUT_RESOLUTION_PREIMAGE",
+3145:       "id_prefix": "urn:soc:input-resolution:v2:",
+3146:       "digest": "SHA256(SEMANTIC_CANON_V2(preimage))",
+3147:       "forbidden_self_reference": [
+3148:         "own ID",
+3149:         "own digest",
+3150:         "future result fields not declared in schema"
+3151:       ],
+3152:       "additional_fields": "REJECT"
+3153:     },
+3154:     "WORKLOAD_PREIMAGE": {
+3155:       "schema_ref": "#/$defs/WORKLOAD_PREIMAGE",
+3156:       "id_prefix": "urn:soc:workload:v2:",
+3157:       "digest": "SHA256(SEMANTIC_CANON_V2(preimage))",
+3158:       "forbidden_self_reference": [
+3159:         "own ID",
+3160:         "own digest",
+3161:         "future result fields not declared in schema"
+3162:       ],
+3163:       "additional_fields": "REJECT"
+3164:     },
+3165:     "SEMANTIC_ARGV_PREIMAGE": {
+3166:       "schema_ref": "#/$defs/SEMANTIC_ARGV_PREIMAGE",
+3167:       "id_prefix": "urn:soc:semantic-argv:v2:",
+3168:       "digest": "SHA256(SEMANTIC_CANON_V2(preimage))",
+3169:       "forbidden_self_reference": [
+3170:         "own ID",
+3171:         "own digest",
+3172:         "future result fields not declared in schema"
+3173:       ],
+3174:       "additional_fields": "REJECT"
+3175:     },
+3176:     "RUN_PREIMAGE": {
+3177:       "schema_ref": "#/$defs/RUN_PREIMAGE",
+3178:       "id_prefix": "urn:soc:run:v2:",
+3179:       "digest": "SHA256(SEMANTIC_CANON_V2(preimage))",
+3180:       "forbidden_self_reference": [
+3181:         "own ID",
+3182:         "own digest",
+3183:         "future result fields not declared in schema"
+3184:       ],
+3185:       "additional_fields": "REJECT"
+3186:     },
+3187:     "ATTEMPT_PREIMAGE": {
+3188:       "schema_ref": "#/$defs/ATTEMPT_PREIMAGE",
+3189:       "id_prefix": "urn:soc:attempt:v2:",
+3190:       "digest": "SHA256(SEMANTIC_CANON_V2(preimage))",
+3191:       "forbidden_self_reference": [
+3192:         "own ID",
+3193:         "own digest",
+3194:         "future result fields not declared in schema"
+3195:       ],
+3196:       "additional_fields": "REJECT"
+3197:     },
+3198:     "RUN_LOCK_PREIMAGE": {
+3199:       "schema_ref": "#/$defs/RUN_LOCK_PREIMAGE",
+3200:       "id_prefix": "urn:soc:run-lock:v2:",
+3201:       "digest": "SHA256(SEMANTIC_CANON_V2(preimage))",
+3202:       "forbidden_self_reference": [
+3203:         "own ID",
+3204:         "own digest",
+3205:         "future result fields not declared in schema"
+3206:       ],
+3207:       "additional_fields": "REJECT"
+3208:     },
+3209:     "DENOMINATOR_SCOPE_PREIMAGE": {
+3210:       "schema_ref": "#/$defs/DENOMINATOR_SCOPE_PREIMAGE",
+3211:       "id_prefix": "urn:soc:denominator-scope:v2:",
+3212:       "digest": "SHA256(SEMANTIC_CANON_V2(preimage))",
+3213:       "forbidden_self_reference": [
+3214:         "own ID",
+3215:         "own digest",
+3216:         "future result fields not declared in schema"
+3217:       ],
+3218:       "additional_fields": "REJECT"
+3219:     },
+3220:     "STATE_KEY_PREIMAGE": {
+3221:       "schema_ref": "#/$defs/STATE_KEY_PREIMAGE",
+3222:       "id_prefix": "urn:soc:state-key:v2:",
+3223:       "digest": "SHA256(SEMANTIC_CANON_V2(preimage))",
+3224:       "forbidden_self_reference": [
+3225:         "own ID",
+3226:         "own digest",
+3227:         "future result fields not declared in schema"
+3228:       ],
+3229:       "additional_fields": "REJECT"
+3230:     },
+3231:     "REPLAY_PREIMAGE": {
+3232:       "schema_ref": "#/$defs/REPLAY_PREIMAGE",
+3233:       "id_prefix": "urn:soc:replay:v2:",
+3234:       "digest": "SHA256(SEMANTIC_CANON_V2(preimage))",
+3235:       "forbidden_self_reference": [
+3236:         "own ID",
+3237:         "own digest",
+3238:         "future result fields not declared in schema"
+3239:       ],
+3240:       "additional_fields": "REJECT"
+3241:     },
+3242:     "COMPLETION_PREIMAGE": {
+3243:       "schema_ref": "#/$defs/COMPLETION_PREIMAGE",
+3244:       "id_prefix": "urn:soc:completion:v2:",
+3245:       "digest": "SHA256(SEMANTIC_CANON_V2(preimage))",
+3246:       "forbidden_self_reference": [
+3247:         "own ID",
+3248:         "own digest",
+3249:         "future result fields not declared in schema"
+3250:       ],
+3251:       "additional_fields": "REJECT"
+3252:     },
+3253:     "SOURCE_BUNDLE_PREIMAGE": {
+3254:       "schema_ref": "#/$defs/SOURCE_BUNDLE_PREIMAGE",
+3255:       "id_prefix": "urn:soc:source-bundle:v2:",
+3256:       "digest": "SHA256(SEMANTIC_CANON_V2(preimage))",
+3257:       "forbidden_self_reference": [
+3258:         "own ID",
+3259:         "own digest",
+3260:         "future result fields not declared in schema"
+3261:       ],
+3262:       "additional_fields": "REJECT"
+3263:     },
+3264:     "ENVIRONMENT_PREIMAGE": {
+3265:       "schema_ref": "#/$defs/ENVIRONMENT_PREIMAGE",
+3266:       "id_prefix": "urn:soc:environment:v2:",
+3267:       "digest": "SHA256(SEMANTIC_CANON_V2(preimage))",
+3268:       "forbidden_self_reference": [
+3269:         "own ID",
+3270:         "own digest",
+3271:         "future result fields not declared in schema"
+3272:       ],
+3273:       "additional_fields": "REJECT"
+3274:     }
+3275:   },
+3276:   "canonicalization": {
+3277:     "id": "SEMANTIC_CANON_V2",
+3278:     "allowed_values": [
+3279:       "null",
+3280:       "boolean",
+3281:       "ASCII string",
+3282:       "exact integer",
+3283:       "array",
+3284:       "closed object"
+3285:     ],
+3286:     "encoding": "UTF-8, ASCII keys/IDs/identity strings only; no Unicode normalization; reject any codepoint>127 or control character unless represented as JSON string escape within an explicitly ASCII textual field",
+3287:     "object_order": "ASCII lexicographic keys, no duplicate keys",
+3288:     "separators": "comma and colon, no spaces; json ensure_ascii=true, sort_keys=true, allow_nan=false; exactly one LF",
+3289:     "integers": "base10 without plus/leading zeros; no booleans in integer fields; exact arbitrary-precision parsing; integer-valued fields stay integers",
+3290:     "rational": "object {numerator:canonical signed decimal STRING,denominator:canonical positive decimal STRING}; gcd=1, denominator>0; zero only {numerator:\"0\",denominator:\"1\"}; never -0",
+3291:     "decimals": "parse proposed table decimal lexemes exactly with Decimal then reduced Rational in semantic numeric fields, never via binary64",
+3292:     "arrays": "use per-kind ordering in generation/snapshot specs; never sort chronological event arrays",
+3293:     "raw_hash": "SHA256 exact file bytes, independent of semantic preimage digest",
+3294:     "runtime_payload": "separate RUNTIME_CANON_PY312_F64_V2, Python3.12 json shortest binary64 repr, sort_keys/compact/allow_nan=false/one LF; no header self-ID; normalize -0; only future scientific adapter can emit this family"
+3295:   },
+3296:   "worker_invocation_contract": {
+3297:     "entrypoint_proposed": "python -m soc.execution_worker_v2",
+3298:     "currently_implemented": false,
+3299:     "semantic_options": "Exactly empty array in v2; no extra ignored flags",
+3300:     "engine_argv_template": [
+3301:       "{verified_python}",
+3302:       "-m",
+3303:       "soc.execution_worker_v2",
+3304:       "--role",
+3305:       "{ENGINE_PRIMARY|ENGINE_REPLAY}",
+3306:       "--input-envelope",
+3307:       "{resolved_envelope_path}",
+3308:       "--method",
+3309:       "{method_id}",
+3310:       "--workload-id",
+3311:       "{workload_id}",
+3312:       "--run-id",
+3313:       "{run_id}",
+3314:       "--attempt-id",
+3315:       "{attempt_id}",
+3316:       "--output-dir",
+3317:       "{attempt_dir}"
+3318:     ],
+3319:     "replay_extra": [
+3320:       "--replay-id",
+3321:       "{replay_id}"
+3322:     ],
+3323:     "path_rule": "All paths deterministic within approved CALIBRATION root from already-known IDs, resolved against actual cwd; forbid path traversal/symlinks; all flags exact, reject extras. Actual argv retained independently of semantic hash.",
+3324:     "generation_argv_template": [
+3325:       "{verified_python}",
+3326:       "-m",
+3327:       "soc.execution_worker_v2",
+3328:       "--role",
+3329:       "{GENERATE_MAIN|DERIVE_CONTROL}",
+3330:       "--blueprint",
+3331:       "{approved_blueprint_path}",
+3332:       "--descriptor",
+3333:       "{descriptor_path}",
+3334:       "--authorization",
+3335:       "{generation_authorization_path}",
+3336:       "--generation-attempt-id",
+3337:       "{generation_attempt_id}",
+3338:       "--output-dir",
+3339:       "{generation_attempt_dir}"
+3340:     ],
+3341:     "control_extra": [
+3342:       "--parent-main-resolution",
+3343:       "{verified_parent_main_resolution_path}"
+3344:     ],
+3345:     "guard": "Private worker must apply the same source/approval/seed/descriptor guard even if called directly; absent/invalid authorization rejects before generating/invoking. No bypass CLI. Templates are proposed protocol, module currently absent."
+3346:   },
+3347:   "preimage_scope_notes": [
+3348:     "BLUEPRINT and EXECUTION_PLAN never include actual payload/workload/run/attempt IDs or resolution receipts.",
+3349:     "Generation receipt includes actual invocation/logs/timestamps AFTER materialization.",
+3350:     "WORKLOAD ID excludes generation-attempt/timestamps/receipt hashes; a valid resolution receipt is a prerequisite for publishing it, not a semantic self-reference.",
+3351:     "RUN semantic argv excludes actual output/attempt paths. Exact actual argv is separately recorded and checked against deterministic rendering after attempt ID exists.",
+3352:     "Current schema is an unapproved document, not installed into any pipeline."
+3353:   ],
+3354:   "canonical_array_orders": {
+3355:     "source_files": "ASCII path, unique",
+3356:     "semantic_options": "exactly empty array for v2",
+3357:     "argv_actual": "original argv order, never sort",
+3358:     "runtime_resources": "CPU0..3,GPU0,NPU0",
+3359:     "runtime_services": "service_id ASCII",
+3360:     "runtime_nodes": "node_id ASCII",
+3361:     "runtime_durations": "resource fixed order",
+3362:     "runtime_predecessors": "node_id ASCII",
+3363:     "runtime_links": "(source_type,destination_type) ASCII",
+3364:     "assignments": "K order, never sort by effect",
+3365:     "projection_calendars": "(start exact rational,finish exact rational,resource_id,node_id)",
+3366:     "target_finishes": "fixed selected target order",
+3367:     "raw_artifacts_and_prerequisite_refs": "(kind,path) ASCII unique",
+3368:     "selected_condition_ids": "registered scene COCKPIT/ADAS/FUSION, load light/medium/near-saturation, size8/16 order",
+3369:     "reason_codes": "ASCII unique",
+3370:     "refresh_causes": "declared enum order unique",
+3371:     "event_records": "actual contiguous event_seq order, never sort by state digest"
+3372:   },
+3373:   "conditional_semantics": {
+3374:     "GROUP_METRICS": "Only H_ISOLATED L may be NOT_APPLICABLE_CONTROL/count0/all numeric fields null; applicable groups require prescribed exact counts and nonnull finite values. Wrong absence invalid.",
+3375:     "PROCESS_RESULT": "SPAWN_FAILED/NOT_STARTED=>process_started false,started_at/exit null; unknown interrupted exit stays null; COMPLETE requires started true,actual exit0 and all raw refs.",
+3376:     "DIAGNOSTIC_RECORD": "VALID_FULL=>positive nonnull b,nonnull o/delta/g and enumeration digest, best feasible set includes baseline; eligible incomplete fields use ERROR_RECORD. Partial not computed g=null, never a zero negative.",
+3377:     "SCIENTIFIC_INPUT_ENVELOPE": "Lineage must prove real approved generator/parent MAIN derivation; merely changing origin/seed/fixture_derivation is rejected.",
+3378:     "SCIENTIFIC_RUN_RECORD": "COMPLETE iff all stage contract per_trial_complete conditions proven; false/missing/unknown cannot satisfy.",
+3379:     "STAGE_RECORD": "No COMPLETE or exit0 shortcut to progression; all explicit conjunction fields checked; NOT_FROZEN always blocks."
+3380:   }
+3381: }
+
+FILE docs/P1_implementation_spec.md SHA256 92e9c4d0472f7893f54fc54d302d38bd224092285d78cc85ec7cdb67fef4e972
+1: # P1 implementation scope and decisions
+2: 
+3: Status: FROZEN for P1 following the user's explicit approval of D1 and D2–D5
+4: in this task's clarification replies. Those replies approved the concrete
+5: suggested options below as a complete set; no alternative was selected.
+6: P0 passed at input checkpoint
+7: 27d90bb5cccd990f2b65d7ea48abe98c2af7218c. The P1 request is preserved verbatim
+8: in P1_authorization_request.txt. No scientific workloads or seed realizations
+9: are permitted. Units and mandatory model/metric rules remain those in model_spec.md
+10: and metric_spec.md. This document does not override scientific thresholds.
+11: 
+12: ## Specification differences and recorded user decisions
+13: 
+14: The current model explicitly says **Proposed** event ordering. The P1 request
+15: §3.3 forbids silently freezing that proposal. Baseline_spec explicitly leaves
+16: online dispatch and compatibility details open. These are semantic choices,
+17: not implementation names. The user resolved all five by approving the suggested
+18: options below before event-engine or full-baseline implementation began.
+19: 
+20: | ID | Missing rule and effect | USER_APPROVED rule | Rejected alternative / affected scope |
+21: |---|---|---|---|
+22: | D1 | Same-time arrival/completion/dispatch can alter winners | All completions at t, all arrivals at t, immutable view, feasible dispatch until no further start, stable (service,node,resource) tie; then advance to next completion/arrival/data wakeup | Arrival/dispatch interleaving gives different schedules. Blocks event loop and full replay. |
+23: | D2 | Source methods have full execution matrices, soc has incompatible units | HEFT mean execution over each task's compatible units; OCT child minimization over compatible child units, rows/rank average over the current task's compatible units; explicit destination-dependent same-unit zero | Full six-unit averages with invented incompatible costs, or another normalization; changes priorities. Blocks B3/B4/B5. |
+24: | D3 | Source average communication does not define soc type/pair weights | For each edge average latency and bandwidth separately over ordered compatible endpoint unit pairs with different IDs, then Lbar+size/Bbar; if no such pair exists, zero | Mean of per-pair delays is generally different. Weight by resource type rather than unit is also different. Blocks B3/B4/B5. |
+25: | D4 | Overrun makes estimated remaining busy duration ambiguous | Predicted release now+max(0,estimate-on-running-unit-elapsed), never actual event timestamp; no extra forecast padding | Another observable predictor requires explicit definition. Blocks busy-resource mapping for all B1–B5. |
+26: | D5 | A future best mapping may intentionally leave an idle compatible unit unused | Order dependency-ready tasks; score all compatible units, including estimated busy/data-delayed starts; mapping proposals are revocable. Start only if selected unit is currently feasible; inspect lower-priority tasks when a higher one waits. Recompute after each start; no reservation of idle units | Restrict scoring to currently feasible units (work conserving) or stop scanning at first waiting task; changes schedules and fairness. Blocks all full B1–B5 dispatch. |
+27: 
+28: For either dispatch option all methods must share eligibility, information,
+29: compatibility, transfers and tie conventions. Static gap insertion remains a
+30: source-derived kernel; unstarted online proposals cannot reserve future slots.
+31: Original HEFT random ties become project deterministic ties under approved D1.
+32: No CPOP baseline is added: its source was reviewed, the formal methods remain B1–B5.
+33: 
+34: ## Components independent of D1–D5
+35: 
+36: Implement immutable validated offline model records, finite positive durations,
+37: fixed six resources, DAG checks, destination communication readiness, an explicit
+38: public observation DTO that contains no realized duration/future services/event
+39: queue, isolated source-formula kernels with caller-supplied mean edge costs and
+40: complete matrices, B1/B2 public priority keys, interval gap search, fixture-only
+41: metrics, and a separate trace validator. The validator receives complete offline
+42: input but never calls engine legality functions or runtime metric functions.
+43: 
+44: Fixture input schema v1 uses hand-authored services/nodes/resource tables and
+45: explicit edges (MiB), estimate/realized duration maps (ms), type-pair network
+46: parameters (MiB/ms, ms). Trace schema v1 uses arrival/start/complete records and
+47: full contiguous execution intervals. All identifiers are stable strings. No
+48: seed, partition or random generator is used in these fixtures.
+49: 
+50: Empty workload is allowed as an empty-system input; an empty service DAG is
+51: rejected because its completion is undefined. Single-node DAGs are supported.
+52: No time epsilon is introduced; touching interval endpoints and deadline equality
+53: are legal. Nonfinite numeric values and bool-as-number inputs are invalid.
+54: 
+55: Hand-authored trace checks are validator unit tests, not engine execution or
+56: engine-versus-validator agreement. Source-derived arithmetic examples are not
+57: complete B3/B4 validation. Every unimplemented mandatory requirement is reported
+58: as BLOCKED, never silently skipped or counted as a passing baseline.
+59: 
+60: ## Required completion under the approved decisions
+61: 
+62: An event engine must maintain a private queue, immutable observable snapshots,
+63: revocable proposals, independent actual durations, deterministic event batches,
+64: full drain and deadlock detection. Every implemented B1–B5 must run the same
+65: stored synthetic input. Required evidence includes engine event/decision traces,
+66: repeat identity, validator positive/negative results, independent recomputation,
+67: manual DAG and boundary cases, and manifests binding fixture/config/test/code/trace
+68: identities. P1_correctness.json must remain BLOCKED while any mandatory part is
+69: missing, even if all available component tests pass. P2 and all science stay closed.
+70: 
+71: ## P1 implementation conventions within the approved rules
+72: 
+73: No future planned reservations are made. The source insertion kernel finds the
+74: first whole gap in an explicitly supplied occupied-interval list. Online EFT
+75: uses the same kernel with only the observable predicted remainder of the running
+76: task; absent future reservations, there are no invented scheduled intervals to
+77: insert around. Data-delay wakeups are not reservations and can be superseded
+78: by a new arrival. Tables are recomputed from each immutable view using complete
+79: public arrived DAGs and their fixed estimates; completed tasks do not expose
+80: true future costs or change those suffix labels.
+81: 
+82: Runtime output records every arrival/start/complete, contiguous execution, and
+83: decision observation/proposal (including no-dispatch decisions). Offline true
+84: finishes appear in full traces for validation, never in scheduler arguments.
+85: Metrics include service responses/misses, group type-7 quantiles, full-drain
+86: makespan, per-unit busy/utilization, per-edge destination copies, cross-unit data
+87: total, dependency wait, communication wait and ready-to-start wait. The latter
+88: combines scheduling/resource waiting; it does not claim an unavailable causal
+89: decomposition. Absent groups and zero-horizon utilization are null/undefined.
+90: 
+91: No implementation complexity or host latency bound is inferred from the papers.
+92: The straightforward compatible-pair OCT implementation can inspect a quadratic
+93: number of processor pairs per edge; original complexity claims remain literature
+94: statements only. No energy model, scientific aggregate or timing experiment is run.
+

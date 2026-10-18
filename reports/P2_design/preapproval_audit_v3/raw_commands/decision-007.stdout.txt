@@ -1,0 +1,715 @@
+
+共享总线仅作为 sensitivity extension。
+
+============================================================
+23. 在线信息边界
+============================================================
+
+scheduler 可看到：
+
+- 已到达业务；
+- 已公开 DAG；
+- deadline；
+- execution estimates；
+- H/L；
+- completed nodes；
+- running nodes；
+- observable resource state；
+- data-ready state。
+
+scheduler 不得看到：
+
+- future arrivals；
+- future burst；
+- event queue future event；
+- future true duration；
+- future random disturbance。
+
+通过：
+
+read-only scheduler state
+
+统一提供。
+
+============================================================
+24. 随机性
+============================================================
+
+不同方法必须共享：
+
+完全相同 workload realization。
+
+随机扰动不得依赖 scheduler 调用 RNG 次数。
+
+推荐由：
+
+seed
+service_instance_id
+node_id
+resource_id
+
+确定。
+
+相同：
+
+code
+config
+seed
+
+应确定性重现。
+
+============================================================
+25. 排空
+============================================================
+
+停止 arrival 后：
+
+继续 simulation，
+
+直到所有已到达 service 完成。
+
+不得因 deadline miss：
+
+删除 workload。
+
+============================================================
+26. Deadline metric
+============================================================
+
+业务完成：
+
+F_g
+
+response：
+
+L_g = F_g - a_g
+
+deadline miss：
+
+F_g > d_g
+
+如果：
+
+F_g == d_g
+
+不算 miss。
+
+统计单位：
+
+service instance
+
+不是 node。
+
+============================================================
+27. 文献研究 P0
+============================================================
+
+至少核验 6–8 篇原始研究。
+
+优先：
+
+原论文
+
+6–8 node DAG。
+
+覆盖：
+
+predecessor
+communication
+incompatible resource
+resource conflict
+simultaneous events
+non-preemption
+deadline equality
+drain semantics。
+
+============================================================
+32. Mapping diagnostic example
+============================================================
+
+构建：
+
+H service：
+
+CPU predecessor = 2
+
+后续 NPU node = 4
+
+deadline = 9
+
+同时：
+
+L service：
+
+NPU execution = 6
+
+或者：
+
+idle CPU = 6.5
+
+deadline = 12
+
+communication = 0。
+
+比较：
+
+L→NPU
+
+与：
+
+L→CPU
+
+的合法 timeline。
+
+仅用于：
+
+correctness / explanation。
+
+不得成为 main scientific evidence。
+
+============================================================
+33. Scene templates
+============================================================
+
+COCKPIT：
+
+speech
+display
+navigation
+interaction
+
+ADAS：
+
+preprocessing
+perception
+fusion
+output
+
+FUSION：
+
+cockpit
++
+ADAS
+
+形成 cross-service competition。
+
+============================================================
+34. DAG size
+============================================================
+
+主实验两档：
+
+8-node
+
+16-node
+
+必须写明 generator
+如何定义 size。
+
+============================================================
+35. Load
+============================================================
+
+主实验：
+
+light
+medium
+near-saturation
+
+额外：
+
+severe-overload
+
+仅 sensitivity。
+
+load 不得仅按 arrival rate 命名。
+
+应参考：
+
+CPU
+GPU
+NPU
+
+瓶颈压力。
+
+============================================================
+36. P2 calibration
+============================================================
+
+Calibration：
+
+只用 baseline，
+重点 B2。
+
+不得使用 candidate advantage
+调整 workload。
+
+允许调整：
+
+arrival intensity
+deadline tightness
+burst
+number services
+simulation window。
+
+目标：
+
+light：
+
+接近低 miss。
+
+medium / near-saturation：
+
+存在：
+
+deadline miss
+contention
+mapping opportunity
+
+但不能：
+
+几乎全部 100% miss。
+
+============================================================
+37. H 基础可行性
+============================================================
+
+重要业务 deadline：
+
+先在独占资源或低竞争条件下
+确认基本可行。
+
+否则：
+
+不要把天然不可完成 workload
+当 scheduler failure。
+
+============================================================
+38. Clean-room seed partitions
+============================================================
+
+本次不得复用旧项目 seed。
+
+P0 生成全新的：
+
+configs/seed_partitions.json
+
+采用确定性 SHA256 derivation。
+
+master string：
+
+vehicle-soc-dag-scheduler-cleanroom-soc-v1
+
+对于：
+
+partition_name
+index
+
+计算：
+
+SHA256(
+master_string + "|" + partition_name + "|" + index
+)
+
+生成整数后映射：
+
+[0, 2^52 - 1]
+
+如果 collision：
+
+使用 deterministic nonce。
+
+固定：
+
+CALIBRATION = 10 seeds
+
+DEVELOPMENT = 20 seeds
+
+INDEPENDENT_VALIDATION = 10 seeds
+
+FORMAL_EVALUATION = 30 seeds
+
+总计：
+
+70 seeds。
+
+生成后：
+
+commit。
+
+之后不得重新抽。
+
+============================================================
+39. Seed partition guard
+============================================================
+
+runner 必须在代码层实现：
+
+partition access guard。
+
+P0–P2：
+
+只允许 CALIBRATION。
+
+P3：
+
+允许 DEVELOPMENT。
+
+Independent validation：
+
+必须有：
+
+checkpoints/VALIDATION_UNLOCKED
+
+Formal：
+
+必须有：
+
+checkpoints/FORMAL_UNLOCKED
+
+否则：
+
+runner 拒绝执行。
+
+即使开发者知道 seed：
+
+也不能绕过 guard。
+
+============================================================
+40. Development seed 子划分
+============================================================
+
+20 个 DEVELOPMENT seeds：
+
+固定为：
+
+前 10：
+parameter development
+
+后 10：
+development precheck
+
+或者使用其它确定性划分，
+
+但必须在看结果前冻结。
+
+============================================================
+41. Workload identity
+============================================================
+
+每个 workload identity：
+
+scene
+load
+size
+seed
+generator version
+config hash
+
+生成：
+
+workload SHA256。
+
+所有 methods
+必须运行同一个 workload artifact。
+
+============================================================
+42. 主网格
+============================================================
+
+3 scenes
+×
+3 loads
+×
+2 sizes
+
+=
+
+18 conditions。
+
+Independent validation：
+
+18 × 10
+=
+180 workloads。
+
+Formal：
+
+18 × 30
+=
+540 workloads。
+
+============================================================
+43. Candidate hypothesis
+============================================================
+
+候选假设：
+
+当前 node 的 EFT 最优 resource，
+
+可能具有较高 cross-service opportunity cost。
+
+特别当：
+
+其他 H node
+resource alternatives 少
+
+或：
+
+alternative execution penalty 高
+
+时，
+
+抢占稀缺 resource
+可能增加 H end-to-end miss。
+
+candidate 尝试利用：
+
+deadline
+remaining path
+resource alternatives
+contention
+L waiting
+
+联合排序与 mapping。
+
+============================================================
+44. P2 mapping opportunity diagnosis
+============================================================
+
+只用 CALIBRATION。
+
+记录：
+
+H critical-path blocking
+CPU wait
+GPU wait
+NPU wait
+resource alternatives
+substitution cost
+mapping decision reason。
+
+允许少量：
+
+2–4 ready task
+
+局部 enumerated assignment
+
+作为 diagnostic oracle。
+
+不得作为 online method performance。
+
+如果没有稳定 mapping opportunity：
+
+MAPPING_HYPOTHESIS_SUPPORTED=NO
+
+停止这一科学主线。
+
+============================================================
+45. Candidate method
+============================================================
+
+P2 完成后才正式定义公式。
+
+候选至少考虑：
+
+1. service urgency；
+2. remaining DAG path；
+3. compatible resource finish prediction；
+4. communication；
+5. alternative resource penalty；
+6. cross-H-service contention；
+7. L waiting penalty；
+8. joint task-resource selection。
+
+要求：
+
+轻量
+可解释
+在线
+不使用未来信息。
+
+============================================================
+46. Method spec
+============================================================
+
+写：
+
+docs/method_spec.md
+
+必须包含：
+
+symbols
+vs
+
+host computation time。
+
+计入 scheduler：
+
+preprocessing
+path update
+urgency
+candidate creation
+sorting
+resource scoring
+mapping
+selection。
+
+不能只计最后函数。
+
+============================================================
+59. 2 ms engineering target
+============================================================
+
+初始工程目标：
+
+decision P95 <= 2 ms
+
+这是：
+
+普通开发电脑上的 host engineering target。
+
+不是实际 automotive hardware latency claim。
+
+P2 在 candidate timing 前：
+
+冻结 engineering timing protocol。
+
+至少记录：
+
+exact inputs
+warm-up
+repetitions
+timer
+aggregation
+P95 definition
+host environment。
+
+============================================================
+60. Development success criteria
+============================================================
+
+进入 independent validation 前至少检查：
+
+CORRECTNESS_PASS
+
+H_MAIN_BENEFIT_PASS
+
+MAPPING_CONTRIBUTION_PASS
+
+L_MAIN_CONDITIONS_PASS
+
+B5_COMPARISON_STATUS
+
+ENGINEERING_TARGET_PASS
+
+所有门槛在开发比较前冻结。
+
+============================================================
+61. P3 candidate v1
+============================================================
+
+实现 candidate + A1/A2/A3。
+
+只用 DEVELOPMENT。
+
+生成：
+
+reports/P3_development.md
+reports/P3_ablation.md
+reports/P3_gate.md
+
+保存全部尝试。
+
+============================================================
+62. 最多一次机制修订
+============================================================
+
+如果第一次 candidate 不通过：
+
+允许：
+
+最多一次
+
+建议：
+
+P1: implement simulator baselines and trace validator
+
+commit + push。
+
+============================================================
+80. P2 输出
+============================================================
+
+只用 calibration seeds。
+
+输出：
+
+reports/P2_calibration.md
+reports/P2_mapping_opportunity.md
+reports/P2_runtime_budget.md
+reports/P2_engineering_timing_protocol.md
+
+冻结 workload config。
+
+============================================================
+81. P2 Git checkpoint
+============================================================
+
+建议：
+
+P2: freeze calibrated workloads and diagnostics
+
+commit + push。
+
+99. Stop rule：P1
+============================================================
+
+正确性失败：
+
+先修 simulator / validator。
+
+不得运行 science。
+
+============================================================
+100. Stop rule：P2
+============================================================
+
+如果在合理 pressure 下
+没有稳定 mapping opportunity：
+
+停止 mapping scientific hypothesis。
+
+保留负面结果。
+
+============================================================
+101. Stop rule：P3
+============================================================
+
+candidate v1 fail：
+
+最多一次 evidence-driven revision。
+
+revision 仍 fail：
+
+STOP scientific mainline。
+
+============================================================
+102. Stop rule：Validation
+============================================================
+
+关键 validation gate fail：
+
+不得进入 formal。
+
+============================================================
+103. Stop rule：Formal
+============================================================
+
+formal fail：
+
+保留 FAIL。
+
+不得救结果。
+
+============================================================

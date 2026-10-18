@@ -1,0 +1,231 @@
+{
+  "namespace": "challenge",
+  "scope": "Actual substantive subprocess calls; discovery wrappers may be recorded separately",
+  "commands": [
+    {
+      "id": "challenge-001",
+      "argv": [
+        "rg",
+        "-n",
+        "NOT_SUPPORTED|coverage|F/E|M2|lock|dirty|commit|HEAD|concurr|stale|atomic|event|choose|ready",
+        "docs/P2_design/v2",
+        "docs/model_spec.md",
+        "docs/P1_implementation_spec.md",
+        "STATUS.md"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_REVIEW",
+      "started_at_utc": "2026-10-18T13:47:01.634272+00:00",
+      "ended_at_utc": "2026-10-18T13:47:01.642541+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/challenge-001.stdout.txt",
+        "sha256": "78f0ec37501dfb0113ef6c5b728ef6371f4e94c1314a8820d976db48746fd6f4",
+        "size_bytes": 27750
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/challenge-001.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "challenge-002",
+      "argv": [
+        "python",
+        "-c",
+        "from pathlib import Path\nps=['STATUS.md','docs/model_spec.md','docs/P2_design/v2/P2_diagnostic_spec_v2.json','docs/P2_design/v2/P2_public_snapshot_spec_v2.json','docs/P2_design/v2/P2_criterion_spec_v2.json','docs/P2_design/v2/P2_runner_schema_review_v2.md','docs/P2_design/v2/P2_generation_spec_v2.json','docs/P2_design/v2/P2_stage_state_contract_v2.json']\nfor p in ps:\n print('FILE '+p)\n for i,l in enumerate(Path(p).read_text().splitlines(),1): print(str(i)+': '+l)"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_REVIEW",
+      "started_at_utc": "2026-10-18T13:47:10.196602+00:00",
+      "ended_at_utc": "2026-10-18T13:47:10.225775+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/challenge-002.stdout.txt",
+        "sha256": "75634f036448189ba1e97d53b6013dfc9c0f147002ac68830fadb235346c476c",
+        "size_bytes": 63368
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/challenge-002.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "challenge-003",
+      "argv": [
+        "python",
+        "-c",
+        "from pathlib import Path\nfor p in ['docs/P2_design/v2/P2_runner_schema_review_v2.md','docs/P2_design/v2/P2_criterion_spec_v2.json','docs/P2_design/v2/P2_generation_spec_v2.json']:\n print('FILE '+p)\n for i,l in enumerate(Path(p).read_text().splitlines(),1):\n  if p.endswith('generation_spec_v2.json') and not 75<=i<=140: continue\n  print(str(i)+': '+l)"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_REVIEW",
+      "started_at_utc": "2026-10-18T13:47:16.041170+00:00",
+      "ended_at_utc": "2026-10-18T13:47:16.076021+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/challenge-003.stdout.txt",
+        "sha256": "8708098744819d2fd63256ab9c971dbfa8cc0377b1ff2938d9115b8b4ecdc37e",
+        "size_bytes": 21651
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/challenge-003.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "challenge-004",
+      "argv": [
+        "python",
+        "-c",
+        "import json\nfrom pathlib import Path\np=Path('docs/P2_design/v2/P2_workload_templates_v2.json');d=json.loads(p.read_text()); print(d.keys()); print(json.dumps(d,indent=2)[:8500]);\np=Path('docs/P2_design/v2/P2_typed_identity_schema_v2.json');d=json.loads(p.read_text());print('DEFINITION_KEYS',list(d['$defs']));\nfor k,v in d['$defs'].items():\n if any(s in k for s in ['LOCK','PROCESS','RECORD','SOURCE_BUNDLE','STAGE','ENVIRONMENT']):print(k,json.dumps(v,indent=2))"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_REVIEW",
+      "started_at_utc": "2026-10-18T13:47:22.594945+00:00",
+      "ended_at_utc": "2026-10-18T13:47:22.628576+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/challenge-004.stdout.txt",
+        "sha256": "d346d364043060d1bb04b4d4a3c5cb2df2b1eecbb84b7b32f86eb083fc7794ca",
+        "size_bytes": 27087
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/challenge-004.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "challenge-005",
+      "argv": [
+        "rg",
+        "-n",
+        "def choose|class B2|scheduler.choose|while True|process_started|execution_head|actual.*HEAD|dirty|lease|fenc|exclu|CAS|M2|paired",
+        "src",
+        "docs/P2_design",
+        "reports/P2_design/design_revision_v2/identity_dependency_graph.json",
+        "docs/baseline_spec.md",
+        "docs/user_request.txt"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_REVIEW",
+      "started_at_utc": "2026-10-18T13:47:31.838597+00:00",
+      "ended_at_utc": "2026-10-18T13:47:31.853663+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/challenge-005.stdout.txt",
+        "sha256": "98706752f315ad9a761a2d4f7cf3e12b0eac194d9ffd3d4d551fc45d0d6cf900",
+        "size_bytes": 32575
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/challenge-005.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "challenge-006",
+      "argv": [
+        "python",
+        "-c",
+        "import json\nfrom pathlib import Path\nfor f,a,b in [('src/soc/simulator/engine.py',1,190),('src/soc/scheduler/kernels.py',160,208),('docs/baseline_spec.md',1,35),('docs/P2_design/scientific_artifacts.schema.draft.json',40,83),('docs/user_request.txt',2498,2565)]:\n print('FILE '+f)\n for i,l in enumerate(Path(f).read_text().splitlines(),1):\n  if a<=i<=b:print(str(i)+': '+l)\nt=json.loads(Path('docs/P2_design/v2/P2_workload_templates_v2.json').read_text())\nfor v in t['templates']:\n if v['scene']=='ADAS': print('ADAS_TEMPLATE',v['template_id'],'roots',[n['id'] for n in v['nodes'] if not n['predecessors']],'positive_cost_scales',sorted(set(n['cost_scale'] for n in v['nodes'])),'nonroot_count',sum(bool(n['predecessors'])for n in v['nodes']))\n"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_REVIEW",
+      "started_at_utc": "2026-10-18T13:48:03.625969+00:00",
+      "ended_at_utc": "2026-10-18T13:48:03.653774+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/challenge-006.stdout.txt",
+        "sha256": "d6f3e4ae03fb6f1f12011befef5345c3cae20a31b8b1d84fa30764f51fda4e68",
+        "size_bytes": 12440
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/challenge-006.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "challenge-007",
+      "argv": [
+        "python",
+        "-c",
+        "import json\nfrom pathlib import Path\nps=['docs/P2_design/v2/P2_workload_templates_v2.json','docs/P2_design/v2/P2_resource_profiles_v2.json','docs/P2_design/v2/P2_trial_matrix_draft_v2.json','docs/P2_design/v2/P2_typed_identity_schema_v2.json']\nfor s in ps:\n d=json.loads(Path(s).read_text()); print('FILE',s)\n if 'templates' in d:\n  for i,t in enumerate(d['templates']):\n   if t['scene']=='ADAS':print('JSON_POINTER','/templates/'+str(i),'size',t['size'],'root_nodes',[(j,n) for j,n in enumerate(t['nodes']) if not n['predecessors']])\n elif 'profiles' in d: print(json.dumps(d['profiles'],indent=2))\n elif 'trial_matrix' in s:\n  print('keys',list(d)); print('configurations',d.get('configurations'))\n else:\n  for k in ['RUN_PREIMAGE','SOURCE_BUNDLE_PREIMAGE','SCIENTIFIC_RUN_RECORD','PROCESS_RESULT','STAGE_RECORD','ARTIFACT_REF']:\n   v=d['$defs'][k];print(k,'required=',v['required'],'closed=',v.get('additionalProperties'))\n  print('conditional_semantic_rules',d.get('conditional_semantic_rules'))\n"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_REVIEW",
+      "started_at_utc": "2026-10-18T13:48:29.632588+00:00",
+      "ended_at_utc": "2026-10-18T13:48:29.693712+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/challenge-007.stdout.txt",
+        "sha256": "c6bddface50a17a7683768dccbec52278614ee8ced37cc4e861b1e5cb880c1e2",
+        "size_bytes": 9683
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/challenge-007.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "challenge-008",
+      "argv": [
+        "python",
+        "-c",
+        "import json\nfrom pathlib import Path\nm=json.loads(Path('docs/P2_design/v2/P2_trial_matrix_draft_v2.json').read_text());print('registered_main_conditions',m['registered_main_conditions']); print('ADAS_loaded_configs',[(c['config_id'],c)for c in m['configs']if c.get('scene')=='ADAS' or c.get('scenario')=='ADAS']);\ns=json.loads(Path('docs/P2_design/v2/P2_typed_identity_schema_v2.json').read_text());print('schema_tail_keys',list(s)[-8:]);\nfor k in list(s)[-8:]:\n if k not in ['$defs','preimage_registry']:print(k,s[k])\n"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_REVIEW",
+      "started_at_utc": "2026-10-18T13:48:42.371401+00:00",
+      "ended_at_utc": "2026-10-18T13:48:42.427023+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/challenge-008.stdout.txt",
+        "sha256": "8523ae158a151d573a35bf6b160f4832804ebc40539390df11c35e112ee71929",
+        "size_bytes": 9731
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/challenge-008.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "challenge-009",
+      "argv": [
+        "python",
+        "-c",
+        "import json\nfrom pathlib import Path\nd=json.loads(Path('docs/P2_design/v2/P2_communication_profiles_v2.json').read_text());print('KEYS',list(d));print(json.dumps(d,indent=2)[:12500]);print(Path('reports/P2_design/preapproval_audit_v3/M1R_adversarial_cases.md').read_text().split('## Case 7')[1].split('## Case 8')[0])"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_REVIEW",
+      "started_at_utc": "2026-10-18T13:52:40.803776+00:00",
+      "ended_at_utc": "2026-10-18T13:52:40.832395+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/challenge-009.stdout.txt",
+        "sha256": "41fa3c52895a0bb4d02d190efad38c381391aa0a3cefe35520bcd88811eb738e",
+        "size_bytes": 17482
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/challenge-009.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    }
+  ]
+}

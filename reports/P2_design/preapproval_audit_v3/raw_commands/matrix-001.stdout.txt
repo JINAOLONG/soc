@@ -1,0 +1,4136 @@
+SOURCE: STATUS.md
+PROJECT_NAME=soc
+P0_STATUS=PASS
+P1_STATUS=PASS
+P2_PREFLIGHT_STATUS=BLOCKED
+P2_DESIGN_PACKAGE_STATUS=DRAFT
+P2_B1_STATUS=UNRESOLVED
+P2_B2_STATUS=UNRESOLVED
+P2_B3_STATUS=UNRESOLVED
+P2_B4_STATUS=DESIGNED
+P2_B5_STATUS=DESIGNED
+HUMAN_DECISIONS_REQUIRED=10
+SCIENTIFIC_WORKLOADS_RUN=0
+NEW_SEEDS_GENERATED=NO
+NON_CALIBRATION_PARTITIONS_ACCESSED=NO
+P2_ENTRYPOINT_EXECUTED=NO
+SIMULATOR_SOURCE_CHANGED=NO
+SCHEDULER_SOURCE_CHANGED=NO
+WORKLOAD_GENERATOR_SOURCE_CHANGED=NO
+SCIENTIFIC_THRESHOLDS_CHANGED=NO
+CI_METHOD_CHANGED=NO
+SEED_PARTITIONS_CHANGED=NO
+VALIDATION_UNLOCKED=NO
+FORMAL_UNLOCKED=NO
+GIT_COMMIT=c7e94e438674bcfbb16ed1281ce0437cb6df3072 (audited proposal checkpoint; enclosing HEAD resolved live)
+GITHUB_PUSH_STATUS=SUCCESS_FOR_RECORDED_PROPOSAL_CHECKPOINT
+WORKTREE=RESOLVE_WITH_git-status_--short
+NEXT_SAFE_ACTION=Human review and approval of concrete P2 design
+STOP=YES
+D01_D10_INVENTORY=10
+DECISIONS_RESOLVED=0
+DECISIONS_BLOCKED=0
+GIT_COMMIT_SCOPE=AUDITED_REMOTE_VERIFIED_UNAPPROVED_CONCRETE_PROPOSAL_CHECKPOINT
+FINAL_ENCLOSING_HEAD_COMMAND=git rev-parse HEAD
+FINAL_ENCLOSING_WORKTREE_COMMAND=git status --short
+D01_D10_PROPOSAL_COMPLETE=YES
+DRAFT_FILES_EXECUTABLE=NO
+UNRESOLVED_SCIENTIFIC_PARAMETERS=32
+UNRESOLVED_SCIENTIFIC_PARAMETERS_SCOPE=Named unapproved scientific parameter groups; see registry, not scalar cells
+CURRENT_STAGE=P2_CONCRETE_DESIGN_PROPOSAL_AWAITING_HUMAN_APPROVAL
+CURRENT_GIT_HEAD=RESOLVE_WITH_git-rev-parse_HEAD
+CURRENT_BRANCH=work
+TASK_START_HEAD=160800d9b136e953c6415cd5229ded87eae72a0f
+P0_AUDIT_EXIT_CODE=0
+P1_AUDIT_EXIT_CODE=0
+DESIGN_APPROVED=NO
+DESIGN_FROZEN=NO
+CALIBRATION_SEED_IDENTITIES_USED_OR_GENERATED=0
+RESULT_PATHS=docs/P2_design/P2_complete_design_proposal_v1.md;reports/P2_design/delivery_index.json
+P2_PLANNED_TRIAL_SLOTS=2520
+P2_SCIENTIFIC_REALIZATIONS_GENERATED=0
+
+Proposal v1 is concrete but entirely unapproved. 32 named scientific parameter groups remain UNRESOLVED.
+P0/P1 actual read-only audits exit 0; P2 never executed. See reports/P2_design/proposal_v1.
+Previous STATUS preserved byte-for-byte in that directory. No implementation or reserved partition changes.
+PROPOSAL_CHECKS_PASSED=94
+PROPOSAL_GIT_RECEIPT=reports/P2_design/proposal_v1/git_checkpoint.json
+
+SOURCE: docs/user_request.txt
+# ============================================================
+# 车载异构 SoC 多业务 DAG 在线调度研究
+# Codex Cloud + GitHub clean-room 完整主提示词
+#
+# GitHub repository: soc
+# Repository root == Project root
+#
+# 目标：
+# 从零建立完整、可复现、可审计的硕士论文级研究工程。
+# ============================================================
+
+你正在 Codex Cloud 中执行一个全新的研究项目。
+
+用户已经在 Codex Cloud 环境中选择 GitHub repository：
+
+soc
+
+这是本研究项目唯一的权威代码仓库和长期保存位置。
+
+请完整阅读本提示词以后再开始执行。
+
+不要只输出计划。
+
+在符合研究协议和停止规则的前提下实际执行工作。
+
+============================================================
+0. 最重要的总原则
+============================================================
+
+本项目是一项科学研究，不是“把实验做成 PASS”的任务。
+
+你必须：
+
+提出可证伪假设
+→ 建立正确模型
+→ 实现真实基线
+→ 校准问题
+→ 开发候选方法
+→ 冻结协议
+→ 严格验证
+→ 得到真实 PASS / FAIL / INCONCLUSIVE
+→ 完整保存证据。
+
+严禁：
+
+- 为得到成功结果修改验收门槛；
+- 根据正式结果重新调参；
+- 删除不利 seed；
+- 删除慢 timing run；
+- 删除异常但合法的结果；
+- 选择性展示有利 condition；
+- 将开发结果称为独立验证；
+- 将工程 profiling 称为科学验证；
+- 将后续实现优化追溯解释为原冻结实验成功；
+- 编造论文内容；
+- 编造算法公式；
+- 编造实验数字；
+- 编造测试结果；
+- 编造 commit/hash；
+- 编造 profiler 数据；
+- 编造 seed provenance。
+
+无法确认时使用：
+
+UNKNOWN
+UNVERIFIED
+NOT AVAILABLE
+NOT RUN
+NOT APPLICABLE
+
+而不是推测。
+
+============================================================
+1. GitHub / Codex Cloud 是项目基础设施
+============================================================
+
+当前任务运行于：
+
+Codex Cloud
+
+用户选择的 GitHub repository：
+
+soc
+
+当前 repository 即：
+
+项目根目录。
+
+不要再创建：
+
+vehicle-soc-dag-scheduler/
+
+作为第二层项目仓库。
+
+尤其禁止创建：
+
+soc/vehicle-soc-dag-scheduler/.git
+
+这样的嵌套 Git repository。
+
+不要执行：
+
+git init
+
+除非：
+
+git rev-parse --show-toplevel
+
+明确失败，并且已经确认 Codex Cloud 没有正确载入用户选择的 soc repository。
+
+这种情况下先报告环境问题，不要自行建立与 GitHub 脱离的新仓库。
+
+============================================================
+2. 第一个动作：GitHub repository 审计
+============================================================
+
+在写代码之前首先执行并保存：
+
+pwd
+git rev-parse --show-toplevel
+git remote -v
+git status --short
+git branch --show-current
+git rev-parse HEAD 2>/dev/null || true
+git log --oneline --decorate -10 2>/dev/null || true
+
+确认：
+
+EXPECTED_REPOSITORY=soc
+
+检查：
+
+1. 当前工作目录是否属于 soc repository；
+2. remote 是否是用户选择的 soc repository；
+3. 当前 branch 是什么；
+4. repository 是否为空；
+5. 是否存在用户已有文件；
+6. 是否有 AGENTS.md；
+7. 是否存在 README / LICENSE / workflow 等初始化文件。
+
+如果 remote 明显不是 soc：
+
+STOP。
+
+不得向其他 repository push。
+
+输出：
+
+EXPECTED_REPOSITORY=soc
+ACTUAL_REMOTE=<actual>
+REPOSITORY_MATCH=NO
+STOP=YES
+
+============================================================
+3. 不破坏已有内容
+============================================================
+
+如果 soc repository 中已经存在少量 GitHub 初始化文件，例如：
+
+README.md
+LICENSE
+.gitignore
+
+保留并合理更新。
+
+如果存在明显属于其他项目的重要源码：
+
+不要覆盖。
+
+STOP 并报告。
+
+禁止：
+
+git reset --hard
+git clean -fd
+git clean -fdx
+git checkout -- .
+git restore .
+git filter-repo
+git filter-branch
+force push
+
+未经用户明确授权不得执行 destructive Git operation。
+
+============================================================
+4. Clean-room 研究规则
+============================================================
+
+虽然用户此前可能做过同主题研究，但本项目要求：
+
+从零重新执行。
+
+如果环境、文件系统、Library 或 GitHub 中发现以前版本：
+
+N2
+N3
+N4
+N4-E1
+N4-E2
+旧 P3
+旧 Gate III
+旧 candidate
+旧 seed result
+
+不得把这些历史实验结果复制成本次新证据。
+
+特别不得直接复用以前已经得到的：
+
+- H-DMR 数字；
+- L-P95 数字；
+- decision P95；
+- profiling 数字；
+- ready-key 热点；
+- 已调 candidate 参数；
+- validation/formal outcome。
+
+旧项目只能作为：
+
+历史背景或研究治理经验。
+
+本次所有科学结论必须来自：
+
+当前 soc repository
++
+本次 clean-room actual run。
+
+最终必须保证：
+
+LEGACY_RESULTS_USED_AS_NEW_EVIDENCE=NO
+
+============================================================
+5. GitHub repository 目录结构
+============================================================
+
+直接在 soc repository root 建立：
+
+README.md
+STATUS.md
+AGENTS.md
+.gitignore
+pyproject.toml
+
+src/
+    model/
+    simulator/
+    scheduler/
+    workload/
+    metrics/
+    validation/
+    analysis/
+
+configs/
+    model/
+    workload/
+    calibration/
+    development/
+    validation/
+    formal/
+    engineering/
+
+scripts/
+    run_single.py
+    run_batch.py
+    validate_trace.py
+    aggregate.py
+    analyze.py
+    plot.py
+    hash_artifacts.py
+    run_pipeline.py
+
+tests/
+
+docs/
+    research_contract.md
+    model_spec.md
+    literature_matrix.md
+    baseline_spec.md
+    metric_spec.md
+    workload_spec.md
+    method_spec.md
+    statistical_protocol.md
+    development_search_protocol.md
+    preregistration.json
+
+reports/
+
+results/
+    calibration/
+    development/
+    validation/
+    formal/
+    engineering/
+
+checkpoints/
+
+.github/
+    workflows/
+
+允许根据合理的软件工程需要微调子目录，
+
+但必须保持：
+
+simulation engine
+scheduler
+workload generator
+metrics
+independent validator
+analysis
+
+相互解耦。
+
+============================================================
+6. 必须创建 AGENTS.md
+============================================================
+
+在 repository root 创建：
+
+AGENTS.md
+
+它将作为后续 Codex Cloud task 的仓库级规则。
+
+至少包含：
+
+1. 项目研究问题；
+2. simulator / scheduler 信息边界；
+3. H/L 业务定义；
+4. GitHub repository = soc；
+5. 禁止 destructive Git；
+6. 科学结果必须来自真实运行；
+7. seed partition isolation；
+8. validation/formal 未解锁前不得访问；
+9. 不得修改冻结门槛；
+10. 不得删除失败证据；
+11. profiling 与科学实验分离；
+12. semantics-preserving optimization 必须 exact regression；
+13. STATUS.md 必须同步更新；
+14. commit 前必须运行相应测试；
+15. 所有科学 run 必须记录 code/config/workload hash；
+16. 大型 artifact 管理规则；
+17. 不得把旧项目结果作为本次新证据。
+
+以后每个 Codex task：
+
+先读 AGENTS.md。
+
+============================================================
+7. .gitignore
+============================================================
+
+合理忽略：
+
+__pycache__/
+*.pyc
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+.env
+build/
+dist/
+*.egg-info/
+*.prof
+临时 profiler 文件
+临时 cache
+OS metadata
+IDE metadata
+
+不要忽略：
+
+src/
+tests/
+scripts/
+configs/
+docs/
+reports/
+STATUS.md
+AGENTS.md
+小型 manifest
+小型 CSV/JSON summaries
+可合理版本控制的 scientific metadata。
+
+============================================================
+8. Git commit 原则
+============================================================
+
+本项目允许并要求阶段性 commit。
+
+不要整个项目跑完才第一次 commit。
+
+推荐 checkpoint：
+
+P0:
+P0: freeze research protocol and seed partitions
+
+P1:
+P1: implement simulator baselines and trace validator
+
+P2:
+P2: freeze calibrated workloads and diagnostics
+
+P3:
+P3: freeze development candidate and evidence
+
+如果 P3 失败：
+
+P3: preserve failed development evidence
+
+如果进入 independent validation：
+
+P4: freeze independent validation configuration
+
+如果进入 formal：
+
+P5: freeze formal evaluation configuration
+
+工程优化：
+
+ENG: optimize scheduler without semantic changes
+
+commit message 必须准确。
+
+不得用：
+
+success
+validated
+formal pass
+gate pass
+
+除非实际证据确实支持。
+
+============================================================
+9. Git push 原则
+============================================================
+
+每个重要阶段 commit 后：
+
+检查：
+
+git remote -v
+
+如果 Codex Cloud 当前有 push 权限：
+
+push 到当前研究 branch。
+
+禁止：
+
+git push --force
+git push --force-with-lease
+
+如果 push 失败：
+
+保留本地 commit。
+
+记录：
+
+GITHUB_PUSH_STATUS=FAILED
+
+以及失败原因。
+
+不得声称已经保存到 GitHub。
+
+============================================================
+10. Branch 策略
+============================================================
+
+首先读取实际 branch。
+
+不要假定一定是 main。
+
+如果 Codex Cloud 自动创建任务 branch：
+
+使用该 branch。
+
+如果 repository 为空且当前直接处于 main：
+
+可在 main 上工作，前提是环境允许。
+
+如果需要显式长期研究 branch：
+
+推荐：
+
+research/vehicle-soc-dag-scheduler
+
+但不要无故频繁创建分支。
+
+记录：
+
+RESEARCH_BRANCH=<actual>
+
+============================================================
+11. GitHub Actions
+============================================================
+
+创建轻量：
+
+.github/workflows/tests.yml
+
+CI 只执行：
+
+- dependency install；
+- unit tests；
+- deterministic tests；
+- validator tests；
+- lightweight static checks，如已有。
+
+CI 不得自动执行：
+
+- calibration batch；
+- development science batch；
+- independent validation；
+- formal evaluation；
+- 大型 benchmark。
+
+避免一次普通 push
+意外访问保留 seed。
+
+============================================================
+12. 大型结果数据规则
+============================================================
+
+用户要求所有代码保存在 GitHub soc 中。
+
+因此：
+
+所有源码、配置、测试、协议、分析脚本、报告和 manifest
+必须进入 repository。
+
+实验 raw artifacts：
+
+如果规模合理，也进入 Git。
+
+如果规模非常大：
+
+不要把数 GB 文件直接塞入普通 Git history。
+
+优先：
+
+- compressed CSV；
+- compressed JSONL；
+- compact binary；
+- summary；
+- SHA256；
+- workload identity；
+- regeneration command。
+
+如果 Git LFS 已经配置：
+
+可按照现有规则使用。
+
+如果未配置：
+
+不要未经确认擅自建立复杂大文件基础设施。
+
+必须确保 GitHub repository 中至少保存：
+
+能够确定性重新生成大型 artifact 的：
+
+code
+config
+seed
+hash
+command
+manifest。
+
+============================================================
+13. Secrets
+============================================================
+
+禁止将：
+
+GitHub token
+API key
+password
+secret
+
+写入：
+
+代码
+config
+report
+README
+Git history。
+
+使用 Codex Cloud / GitHub secret mechanism。
+
+============================================================
+14. 研究目标
+============================================================
+
+研究核心问题：
+
+在多业务 DAG 持续在线到达、
+CPU–GPU–NPU 异构资源共享、
+资源紧张、
+节点不可抢占的情况下，
+
+如何联合决定：
+
+1. 哪个就绪任务先运行；
+2. 运行到哪个兼容处理单元；
+
+以：
+
+降低重要业务 H 的端到端 deadline miss rate，
+
+同时：
+
+将普通业务 L 的 P95 端到端响应时间
+相对固定基线 B2
+的增幅限制在 10% 以内。
+
+============================================================
+15. 研究主线
+============================================================
+
+研究主线：
+
+Deadline-aware
++
+Cross-service contention-aware
++
+Heterogeneous DAG task scheduling
+
+候选核心思想：
+
+仅基于当前节点自己的 EFT 做 mapping，
+可能占用其他已到达 H 业务高度依赖的稀缺资源。
+
+如果同时考虑：
+
+- 业务 deadline；
+- remaining DAG path；
+- resource compatibility；
+- alternative resource penalty；
+- cross-service contention；
+- L waiting；
+
+可能改善 H 业务端到端表现。
+
+这是待验证 hypothesis。
+
+不能预设其成立。
+
+============================================================
+16. 不属于当前主线的内容
+============================================================
+
+不要将研究重新定义成：
+
+- energy-budget scheduler；
+- ASIL scheduler；
+- functional safety certification；
+- hardware deployment proof；
+- WCET formal verification。
+
+能耗可以是次级模型估计指标，
+
+但不是当前主要优化问题。
+
+============================================================
+17. 业务模型
+============================================================
+
+每个业务实例 g：
+
+arrival time:
+a_g
+
+relative deadline:
+D_g
+
+absolute deadline:
+d_g = a_g + D_g
+
+criticality/group:
+H or L
+
+DAG:
+G_g
+
+H：
+
+重要业务。
+
+L：
+
+普通业务。
+
+H/L 是本研究业务重要性。
+
+不得自动解释为 ASIL。
+
+============================================================
+18. DAG node
+============================================================
+
+每个节点 i：
+
+- predecessor set；
+- successor set；
+- compatible resource set A_i；
+- execution-time estimate；
+- actual execution time；
+- output data size；
+- service identity。
+
+节点重要性继承所属业务。
+
+============================================================
+19. 初始异构资源
+============================================================
+
+使用：
+
+CPU0
+CPU1
+CPU2
+CPU3
+GPU0
+NPU0
+
+即：
+
+4 × CPU core
+1 × GPU unit
+1 × NPU unit
+
+每个抽象 unit
+一次只执行一个 node。
+
+GPU/NPU 内部并行：
+
+通过 execution-time abstraction
+体现。
+
+============================================================
+20. 兼容资源
+============================================================
+
+每个 node：
+
+只能运行于自己的 compatible set A_i。
+
+必须存在：
+
+CPU-only
+GPU-oriented
+NPU-oriented
+multi-compatible
+limited-alternative
+
+类型。
+
+不得把所有任务都设计成：
+
+CPU/GPU/NPU 均可运行。
+
+============================================================
+21. 非抢占语义
+============================================================
+
+任务：
+
+NON-PREEMPTIVE。
+
+任务启动后禁止：
+
+抢占
+迁移
+复制
+重规划 execution interval。
+
+尚未启动：
+
+允许重新排序和重新评估 mapping。
+
+必须区分：
+
+dependency_ready
+data_ready
+planned
+resource_ready
+started
+running
+completed
+
+planned != started。
+
+============================================================
+22. 通信模型
+============================================================
+
+跨资源依赖使用：
+
+parameterized transfer delay。
+
+P0 必须明确：
+
+- 同资源通信；
+- 跨资源通信；
+- transfer start；
+- transfer overlap；
+- remapping 后 data validity；
+- data-ready time。
+
+必须保证：
+
+actual_start
+>=
+predecessor completion
+>=/and data ready
+and resource availability
+
+避免违反因果关系。
+
+第一版：
+
+不实现复杂共享总线竞争。
+
+共享总线仅作为 sensitivity extension。
+
+============================================================
+23. 在线信息边界
+============================================================
+
+scheduler 可看到：
+
+- 已到达业务；
+- 已公开 DAG；
+- deadline；
+- execution estimates；
+- H/L；
+- completed nodes；
+- running nodes；
+- observable resource state；
+- data-ready state。
+
+scheduler 不得看到：
+
+- future arrivals；
+- future burst；
+- event queue future event；
+- future true duration；
+- future random disturbance。
+
+通过：
+
+read-only scheduler state
+
+统一提供。
+
+============================================================
+24. 随机性
+============================================================
+
+不同方法必须共享：
+
+完全相同 workload realization。
+
+随机扰动不得依赖 scheduler 调用 RNG 次数。
+
+推荐由：
+
+seed
+service_instance_id
+node_id
+resource_id
+
+确定。
+
+相同：
+
+code
+config
+seed
+
+应确定性重现。
+
+============================================================
+25. 排空
+============================================================
+
+停止 arrival 后：
+
+继续 simulation，
+
+直到所有已到达 service 完成。
+
+不得因 deadline miss：
+
+删除 workload。
+
+============================================================
+26. Deadline metric
+============================================================
+
+业务完成：
+
+F_g
+
+response：
+
+L_g = F_g - a_g
+
+deadline miss：
+
+F_g > d_g
+
+如果：
+
+F_g == d_g
+
+不算 miss。
+
+统计单位：
+
+service instance
+
+不是 node。
+
+============================================================
+27. 文献研究 P0
+============================================================
+
+至少核验 6–8 篇原始研究。
+
+优先：
+
+原论文
+作者稿
+官方代码。
+
+起始文献至少包括：
+
+HEFT/CPOP：
+Performance-Effective and Low-Complexity Task Scheduling for Heterogeneous Computing
+
+PEFT：
+List Scheduling Algorithm for Heterogeneous Systems by an Optimistic Cost Table
+
+DS3：
+A System-Level Domain-Specific System-on-Chip Simulation Framework
+
+另外检索：
+
+online DAG scheduling
+multi-DAG scheduling
+heterogeneous scheduling
+deadline-aware DAG scheduling
+CPU GPU NPU task scheduling
+criticality-aware scheduling
+
+生成：
+
+docs/literature_matrix.md
+
+至少包含：
+
+Paper
+Model
+Static/online
+Single/multi DAG
+Deadline
+Priority
+Heterogeneity
+Mapping
+Communication
+Contention
+Objective
+Complexity
+Code
+Difference
+
+无法获得原文：
+
+UNVERIFIED_SOURCE。
+
+不得根据标题虚构细节。
+
+============================================================
+28. 基线 B1–B5
+============================================================
+
+实现：
+
+B1
+EDF + EFT
+
+就绪 node：
+
+所属 service absolute deadline 排序。
+
+mapping：
+
+compatible resources 中 EFT 最小。
+
+------------------------------------------------------------
+
+B2
+H-priority + EDF + EFT
+
+先：
+
+H before L
+
+组内：
+
+EDF
+
+mapping：
+
+EFT
+
+B2 是：
+
+L 10% budget reference。
+
+------------------------------------------------------------
+
+B3
+Online-HEFT
+
+按照原论文核对：
+
+upward rank
+processor selection
+
+再做 online adaptation。
+
+------------------------------------------------------------
+
+B4
+Online-PEFT
+
+核对：
+
+OCT
+rank
+processor selection
+
+再做 online adaptation。
+
+------------------------------------------------------------
+
+B5
+H-priority Online-PEFT
+
+作为强基线。
+
+============================================================
+29. Online adaptation 必须记录
+============================================================
+
+对 B3/B4/B5 明确：
+
+visible DAG set
+ready filtering
+busy resource handling
+compatibility
+rank/OCT refresh
+deterministic tie break。
+
+不得把自定义 online adaptation
+直接称为原始 HEFT/PEFT。
+
+============================================================
+30. Independent trace validator
+============================================================
+
+实现独立 validator。
+
+必须检查：
+
+- predecessor；
+- data ready；
+- compatibility；
+- resource overlap；
+- duration；
+- non-preemption；
+- unique execution；
+- duplicate node；
+- assignment；
+- DAG completion；
+- deadline；
+- all arrivals counted。
+
+validator 不得简单调用 simulator
+自身的合法性函数。
+
+必须专门构造非法 trace：
+
+验证 validator 可以拒绝。
+
+============================================================
+31. P1 手工正确性 DAG
+============================================================
+
+建立至少一个：
+
+6–8 node DAG。
+
+覆盖：
+
+predecessor
+communication
+incompatible resource
+resource conflict
+simultaneous events
+non-preemption
+deadline equality
+drain semantics。
+
+============================================================
+32. Mapping diagnostic example
+============================================================
+
+构建：
+
+H service：
+
+CPU predecessor = 2
+
+后续 NPU node = 4
+
+deadline = 9
+
+同时：
+
+L service：
+
+NPU execution = 6
+
+或者：
+
+idle CPU = 6.5
+
+deadline = 12
+
+communication = 0。
+
+比较：
+
+L→NPU
+
+与：
+
+L→CPU
+
+的合法 timeline。
+
+仅用于：
+
+correctness / explanation。
+
+不得成为 main scientific evidence。
+
+============================================================
+33. Scene templates
+============================================================
+
+COCKPIT：
+
+speech
+display
+navigation
+interaction
+
+ADAS：
+
+preprocessing
+perception
+fusion
+output
+
+FUSION：
+
+cockpit
++
+ADAS
+
+形成 cross-service competition。
+
+============================================================
+34. DAG size
+============================================================
+
+主实验两档：
+
+8-node
+
+16-node
+
+必须写明 generator
+如何定义 size。
+
+============================================================
+35. Load
+============================================================
+
+主实验：
+
+light
+medium
+near-saturation
+
+额外：
+
+severe-overload
+
+仅 sensitivity。
+
+load 不得仅按 arrival rate 命名。
+
+应参考：
+
+CPU
+GPU
+NPU
+
+瓶颈压力。
+
+============================================================
+36. P2 calibration
+============================================================
+
+Calibration：
+
+只用 baseline，
+重点 B2。
+
+不得使用 candidate advantage
+调整 workload。
+
+允许调整：
+
+arrival intensity
+deadline tightness
+burst
+number services
+simulation window。
+
+目标：
+
+light：
+
+接近低 miss。
+
+medium / near-saturation：
+
+存在：
+
+deadline miss
+contention
+mapping opportunity
+
+但不能：
+
+几乎全部 100% miss。
+
+============================================================
+37. H 基础可行性
+============================================================
+
+重要业务 deadline：
+
+先在独占资源或低竞争条件下
+确认基本可行。
+
+否则：
+
+不要把天然不可完成 workload
+当 scheduler failure。
+
+============================================================
+38. Clean-room seed partitions
+============================================================
+
+本次不得复用旧项目 seed。
+
+P0 生成全新的：
+
+configs/seed_partitions.json
+
+采用确定性 SHA256 derivation。
+
+master string：
+
+vehicle-soc-dag-scheduler-cleanroom-soc-v1
+
+对于：
+
+partition_name
+index
+
+计算：
+
+SHA256(
+master_string + "|" + partition_name + "|" + index
+)
+
+生成整数后映射：
+
+[0, 2^52 - 1]
+
+如果 collision：
+
+使用 deterministic nonce。
+
+固定：
+
+CALIBRATION = 10 seeds
+
+DEVELOPMENT = 20 seeds
+
+INDEPENDENT_VALIDATION = 10 seeds
+
+FORMAL_EVALUATION = 30 seeds
+
+总计：
+
+70 seeds。
+
+生成后：
+
+commit。
+
+之后不得重新抽。
+
+============================================================
+39. Seed partition guard
+============================================================
+
+runner 必须在代码层实现：
+
+partition access guard。
+
+P0–P2：
+
+只允许 CALIBRATION。
+
+P3：
+
+允许 DEVELOPMENT。
+
+Independent validation：
+
+必须有：
+
+checkpoints/VALIDATION_UNLOCKED
+
+Formal：
+
+必须有：
+
+checkpoints/FORMAL_UNLOCKED
+
+否则：
+
+runner 拒绝执行。
+
+即使开发者知道 seed：
+
+也不能绕过 guard。
+
+============================================================
+40. Development seed 子划分
+============================================================
+
+20 个 DEVELOPMENT seeds：
+
+固定为：
+
+前 10：
+parameter development
+
+后 10：
+development precheck
+
+或者使用其它确定性划分，
+
+但必须在看结果前冻结。
+
+============================================================
+41. Workload identity
+============================================================
+
+每个 workload identity：
+
+scene
+load
+size
+seed
+generator version
+config hash
+
+生成：
+
+workload SHA256。
+
+所有 methods
+必须运行同一个 workload artifact。
+
+============================================================
+42. 主网格
+============================================================
+
+3 scenes
+×
+3 loads
+×
+2 sizes
+
+=
+
+18 conditions。
+
+Independent validation：
+
+18 × 10
+=
+180 workloads。
+
+Formal：
+
+18 × 30
+=
+540 workloads。
+
+============================================================
+43. Candidate hypothesis
+============================================================
+
+候选假设：
+
+当前 node 的 EFT 最优 resource，
+
+可能具有较高 cross-service opportunity cost。
+
+特别当：
+
+其他 H node
+resource alternatives 少
+
+或：
+
+alternative execution penalty 高
+
+时，
+
+抢占稀缺 resource
+可能增加 H end-to-end miss。
+
+candidate 尝试利用：
+
+deadline
+remaining path
+resource alternatives
+contention
+L waiting
+
+联合排序与 mapping。
+
+============================================================
+44. P2 mapping opportunity diagnosis
+============================================================
+
+只用 CALIBRATION。
+
+记录：
+
+H critical-path blocking
+CPU wait
+GPU wait
+NPU wait
+resource alternatives
+substitution cost
+mapping decision reason。
+
+允许少量：
+
+2–4 ready task
+
+局部 enumerated assignment
+
+作为 diagnostic oracle。
+
+不得作为 online method performance。
+
+如果没有稳定 mapping opportunity：
+
+MAPPING_HYPOTHESIS_SUPPORTED=NO
+
+停止这一科学主线。
+
+============================================================
+45. Candidate method
+============================================================
+
+P2 完成后才正式定义公式。
+
+候选至少考虑：
+
+1. service urgency；
+2. remaining DAG path；
+3. compatible resource finish prediction；
+4. communication；
+5. alternative resource penalty；
+6. cross-H-service contention；
+7. L waiting penalty；
+8. joint task-resource selection。
+
+要求：
+
+轻量
+可解释
+在线
+不使用未来信息。
+
+============================================================
+46. Method spec
+============================================================
+
+写：
+
+docs/method_spec.md
+
+必须包含：
+
+symbols
+formula
+normalization
+candidate set
+resource score
+waiting rule
+update events
+cache semantics
+tie breaking
+complexity
+parameters
+boundary behavior。
+
+============================================================
+47. Ablation
+============================================================
+
+至少：
+
+A1：
+new urgency
++
+EFT
+
+A2：
+B2 ordering
++
+new mapping
+
+A3：
+full
+
+即：
+
+new urgency
++
+new mapping。
+
+============================================================
+48. Mapping contribution
+============================================================
+
+mapping contribution：
+
+A3 vs A1。
+
+如果 full
+没有优于 A1：
+
+不得称：
+
+mapping mechanism supported。
+
+============================================================
+49. Parameter search
+============================================================
+
+使用 DEVELOPMENT 前：
+
+写：
+
+docs/development_search_protocol.md
+
+预先登记：
+
+parameters
+candidate values
+maximum trials
+selection metric
+tie rule。
+
+不得看到结果后扩大搜索空间。
+
+所有失败 configuration：
+
+也保存。
+
+============================================================
+50. H 主指标
+============================================================
+
+每个 run：
+
+业务级 H DMR。
+
+主要收益范围：
+
+medium
++
+near-saturation。
+
+先：
+
+condition 内 seed mean。
+
+再：
+
+condition equal-weight macro mean。
+
+不要用业务数量加权
+替代主指标。
+
+============================================================
+51. H 收益定义
+============================================================
+
+M_B2
+=
+B2 H-DMR macro
+
+M_F
+=
+Full H-DMR macro
+
+G =
+(M_B2 - M_F) / M_B2
+
+目标：
+
+G >= 10%
+
+同时：
+
+Δ_B2 =
+M_B2 - M_F
+
+paired bootstrap 95% CI
+支持正值。
+
+============================================================
+52. Bootstrap
+============================================================
+
+统计单位：
+
+seed。
+
+保持：
+
+method pairing
+workload pairing。
+
+默认：
+
+10,000 resamples。
+
+固定 analysis random seed：
+
+20261018
+
+不得以 node/task
+作为独立统计单位
+制造 pseudo-replication。
+
+============================================================
+53. L P95 budget
+============================================================
+
+每个 condition c
+和 seed s：
+
+Q(c,s)
+=
+该 run 全部 L service response time 的 P95。
+
+定义：
+
+R_c =
+mean_s Q_F(c,s)
+/
+mean_s Q_B2(c,s)
+
+固定要求：
+
+R_c <= 1.10
+
+逐 condition 检查。
+
+============================================================
+54. L budget CI
+============================================================
+
+paired seed bootstrap。
+
+如果：
+
+CI upper <= 1.10
+
+则：
+
+SUPPORTED。
+
+如果：
+
+point >1.10
+
+则：
+
+FAIL。
+
+如果：
+
+point <=1.10
+but CI crosses 1.10
+
+则：
+
+INCONCLUSIVE。
+
+============================================================
+55. 强基线 B5
+============================================================
+
+定义：
+
+Δ_B5 =
+DMR(B5)
+-
+DMR(Full)
+
+报告：
+
+point
+95% CI
+conditions。
+
+分类：
+
+SUPPORTED_SUPERIOR
+
+NO_CONFIRMED_DIFFERENCE
+
+B5_SUPERIOR
+
+不能仅凭优于 B2
+声称超过强基线。
+
+============================================================
+56. 次级指标
+============================================================
+
+报告：
+
+H DMR
+L DMR
+L P50
+L P95
+L P99
+L max
+mean response
+resource utilization
+communication
+estimated energy
+scheduler overhead。
+
+============================================================
+57. 能耗
+============================================================
+
+采用：
+
+activity power
+idle power
+execution duration
+
+模型。
+
+必须明确：
+
+model-estimated energy
+
+不是实际硬件测量。
+
+如果 energy 没改善：
+
+如实报告。
+
+============================================================
+58. Scheduler overhead
+============================================================
+
+必须区分：
+
+virtual simulation time
+
+vs
+
+host computation time。
+
+计入 scheduler：
+
+preprocessing
+path update
+urgency
+candidate creation
+sorting
+resource scoring
+mapping
+selection。
+
+不能只计最后函数。
+
+============================================================
+59. 2 ms engineering target
+============================================================
+
+初始工程目标：
+
+decision P95 <= 2 ms
+
+这是：
+
+普通开发电脑上的 host engineering target。
+
+不是实际 automotive hardware latency claim。
+
+P2 在 candidate timing 前：
+
+冻结 engineering timing protocol。
+
+至少记录：
+
+exact inputs
+warm-up
+repetitions
+timer
+aggregation
+P95 definition
+host environment。
+
+============================================================
+60. Development success criteria
+============================================================
+
+进入 independent validation 前至少检查：
+
+CORRECTNESS_PASS
+
+H_MAIN_BENEFIT_PASS
+
+MAPPING_CONTRIBUTION_PASS
+
+L_MAIN_CONDITIONS_PASS
+
+B5_COMPARISON_STATUS
+
+ENGINEERING_TARGET_PASS
+
+所有门槛在开发比较前冻结。
+
+============================================================
+61. P3 candidate v1
+============================================================
+
+实现 candidate + A1/A2/A3。
+
+只用 DEVELOPMENT。
+
+生成：
+
+reports/P3_development.md
+reports/P3_ablation.md
+reports/P3_gate.md
+
+保存全部尝试。
+
+============================================================
+62. 最多一次机制修订
+============================================================
+
+如果第一次 candidate 不通过：
+
+允许：
+
+最多一次
+
+evidence-driven limited revision。
+
+修订前写：
+
+docs/mechanism_revision_preregistration.md
+
+记录：
+
+failure
+diagnosis
+exact change
+unchanged metrics
+unchanged thresholds
+unchanged partitions。
+
+第二次仍不通过：
+
+STOP SCIENTIFIC MAINLINE。
+
+============================================================
+63. H non-degradation
+============================================================
+
+如果 revision
+主要用于 L/engineering cost，
+
+而旧 candidate 已有 H gain，
+
+注册：
+
+Δ_H =
+M_revision - M_previous
+
+lower better。
+
+δ_H = 0。
+
+要求：
+
+point <=0
+
+且：
+
+95% CI upper <=0。
+
+如果 CI 跨 0：
+
+不能说显著恶化，
+
+但严格 non-degradation gate：
+
+FAIL。
+
+============================================================
+64. Engineering profiling track
+============================================================
+
+如果 decision P95 太高：
+
+不要立刻重写算法。
+
+建立独立：
+
+engineering profiling track。
+
+只使用：
+
+CALIBRATION
+或
+DEVELOPMENT
+
+不得使用：
+
+validation
+formal。
+
+优先：
+
+cProfile
+pstats
+call counters
+必要的 instrumentation。
+
+============================================================
+65. Profiling 不属于科学实验
+============================================================
+
+profiling results：
+
+只能用于：
+
+implementation hotspot analysis。
+
+不得增加：
+
+scientific sample size。
+
+不得称：
+
+independent evidence。
+
+============================================================
+66. Semantics-preserving implementation optimization
+============================================================
+
+只有 profiler 支持时才能优化：
+
+例如：
+
+duplicate computation
+repeated scan
+sorting overhead
+temporary allocation
+safe local cache。
+
+禁止借优化改变：
+
+score formula
+priority
+mapping rule
+candidate set
+threshold
+tie breaking
+float expression semantics
+random use
+scheduler state transition。
+
+============================================================
+67. Exact equivalence
+============================================================
+
+任何实现优化后：
+
+old vs new
+
+必须：
+
+decision exact match。
+
+至少：
+
+decision index
+node
+resource
+action
+tie identity
+digest。
+
+目标：
+
+mismatch=0。
+
+同时：
+
+physical trace
+deterministic event
+
+必须一致。
+
+任何 mismatch：
+
+该修改不是 semantics-preserving。
+
+STOP engineering optimization。
+
+============================================================
+68. Development freeze
+============================================================
+
+只有 Development Gate
+满足进入条件时：
+
+创建：
+
+docs/preregistration.json
+
+和：
+
+checkpoints/development_freeze_manifest.json
+
+冻结：
+
+Git commit
+source hash
+config
+method
+params
+baselines
+ablations
+metrics
+bootstrap
+seed partitions
+thresholds
+timing protocol
+analysis。
+
+然后：
+
+commit。
+
+push。
+
+============================================================
+69. Validation 解锁
+============================================================
+
+Development Gate PASS 后：
+
+创建：
+
+checkpoints/VALIDATION_UNLOCKED
+
+才允许运行：
+
+10 independent validation seeds。
+
+============================================================
+70. Independent validation
+============================================================
+
+使用：
+
+3 scenes
+×
+3 loads
+×
+2 sizes
+×
+10 seeds
+
+=
+
+180 workloads。
+
+不得：
+
+调参
+改算法
+换 baseline
+改 threshold
+删 seed
+修改统计。
+
+每个 run：
+
+独立 trace validation。
+
+============================================================
+71. Validation 状态
+============================================================
+
+输出：
+
+PASS
+FAIL
+INCONCLUSIVE
+
+如果关键 gate FAIL：
+
+STOP scientific progression。
+
+不得运行 formal。
+
+============================================================
+72. Formal 解锁
+============================================================
+
+只有 validation
+按预注册规则允许进入 formal：
+
+创建：
+
+checkpoints/FORMAL_UNLOCKED
+
+然后冻结新的 formal manifest。
+
+============================================================
+73. Formal evaluation
+============================================================
+
+使用：
+
+30 formal seeds。
+
+主网格：
+
+18 × 30
+=
+540 workloads。
+
+所有算法/参数：
+
+完全冻结。
+
+不得：
+
+再优化 candidate
+调参
+添加 baseline
+修改 workload
+修改 metric。
+
+============================================================
+74. Formal bug handling
+============================================================
+
+如果 formal 发现真实实现 bug：
+
+必须：
+
+1. 保留原始结果；
+2. 写 defect report；
+3. 记录何时发现；
+4. 记录已经看过哪些结果；
+5. 修复明确 bug；
+6. 不改变 method specification；
+7. 重跑全部受影响 comparison。
+
+若修复实际改变算法：
+
+原 confirmatory formal 身份失效。
+
+需要新的研究版本。
+
+============================================================
+75. Formal failure
+============================================================
+
+如果 formal：
+
+FAIL
+
+或者：
+
+INCONCLUSIVE
+
+保留。
+
+不得：
+
+调整 threshold
+删 seed
+重新调参
+修改统计
+通过后续 engineering optimization
+追溯改为 PASS。
+
+============================================================
+76. P0 输出
+============================================================
+
+生成：
+
+docs/research_contract.md
+docs/model_spec.md
+docs/literature_matrix.md
+docs/baseline_spec.md
+docs/metric_spec.md
+docs/statistical_protocol.md
+configs/seed_partitions.json
+
+reports/P0_environment.md
+reports/P0_protocol_audit.md
+
+STATUS.md 更新。
+
+运行 P0 audit。
+
+============================================================
+77. P0 Git checkpoint
+============================================================
+
+P0 通过后：
+
+git status
+tests/audit
+git add relevant files
+git commit
+
+建议 message：
+
+P0: freeze research protocol and seed partitions
+
+如果 push 权限允许：
+
+git push
+
+记录：
+
+GITHUB_PUSH_STATUS
+BRANCH
+COMMIT
+
+============================================================
+78. P1 输出
+============================================================
+
+实现：
+
+engine
+workload model
+state view
+B1–B5
+validator
+tests。
+
+输出：
+
+reports/P1_correctness.md
+reports/P1_baseline_validation.md
+reports/P1_trace_validator.md
+
+所有关键 correctness pass
+才进入 P2。
+
+============================================================
+79. P1 Git checkpoint
+============================================================
+
+建议：
+
+P1: implement simulator baselines and trace validator
+
+commit + push。
+
+============================================================
+80. P2 输出
+============================================================
+
+只用 calibration seeds。
+
+输出：
+
+reports/P2_calibration.md
+reports/P2_mapping_opportunity.md
+reports/P2_runtime_budget.md
+reports/P2_engineering_timing_protocol.md
+
+冻结 workload config。
+
+============================================================
+81. P2 Git checkpoint
+============================================================
+
+建议：
+
+P2: freeze calibrated workloads and diagnostics
+
+commit + push。
+
+============================================================
+82. P3 输出
+============================================================
+
+输出：
+
+docs/method_spec.md
+docs/development_search_protocol.md
+
+reports/P3_development.md
+reports/P3_ablation.md
+reports/P3_gate.md
+
+以及所有 development raw results。
+
+============================================================
+83. P3 Git checkpoint
+============================================================
+
+若 pass：
+
+P3: freeze development candidate and evidence
+
+若 fail：
+
+P3: preserve failed development evidence
+
+commit + push。
+
+失败 commit
+不得通过历史重写删除。
+
+============================================================
+84. Validation 输出
+============================================================
+
+reports/P4_independent_validation.md
+reports/P4_validation_gate.md
+
+results/validation/
+
+commit + push。
+
+============================================================
+85. Formal 输出
+============================================================
+
+reports/P5_formal_evaluation.md
+reports/P5_formal_gate.md
+
+results/formal/
+
+commit + push。
+
+============================================================
+86. 最终证据整理
+============================================================
+
+最后生成：
+
+reports/final_report.md
+reports/evidence_matrix.md
+reports/reproducibility_report.md
+reports/limitations.md
+reports/failure_analysis.md
+如适用
+
+reports/paper_materials.md
+
+============================================================
+87. Evidence matrix
+============================================================
+
+每个论文 claim 必须映射：
+
+Claim
+
+Evidence stage
+
+Method comparison
+
+Config
+
+Seed partition
+
+Raw data
+
+Summary
+
+Statistic
+
+95% CI
+
+Status
+
+Limitation
+
+禁止：
+
+结论没有数据出处。
+
+============================================================
+88. 图表
+============================================================
+
+至少生成：
+
+H-DMR comparison
+condition H result
+L P95 ratio
+L P99
+mapping ablation
+B5 comparison
+resource utilization
+resource timeline
+decision latency
+benefit-cost
+sensitivity
+worst-case。
+
+所有图：
+
+由脚本从真实结果生成。
+
+============================================================
+89. STATUS.md
+============================================================
+
+持续维护：
+
+CURRENT_STAGE=
+CURRENT_GIT_HEAD=
+CURRENT_BRANCH=
+
+COMPLETED=
+FAILED=
+BLOCKERS=
+
+CALIBRATION_ACCESSED=
+DEVELOPMENT_ACCESSED=
+INDEPENDENT_VALIDATION_ACCESSED=
+FORMAL_EVALUATION_ACCESSED=
+
+LAST_COMMAND=
+RESULT_PATHS=
+NEXT_ALLOWED_ACTION=
+
+不得长期过时。
+
+============================================================
+90. 每次 scientific run manifest
+============================================================
+
+每个 run 至少记录：
+
+run id
+timestamp
+Git commit
+dirty status
+source SHA256
+config SHA256
+workload SHA256
+partition
+seed
+scene
+load
+size
+method
+host
+command
+result
+validity。
+
+============================================================
+91. 科学 run 与 Git
+============================================================
+
+development precheck
+validation
+formal
+
+必须运行在：
+
+已经 commit 的 source state。
+
+正式冻结阶段禁止：
+
+无法解释的 dirty scheduler source。
+
+如果 dirty：
+
+STOP。
+
+先确认变化。
+
+============================================================
+92. 数据完整性
+============================================================
+
+阶段结束：
+
+生成 SHA256 manifest。
+
+核验：
+
+missing=0
+mismatch=0
+duplicate identity=0
+unexpected seed=0
+unexpected method=0
+missing expected condition=0
+
+否则：
+
+阶段不能标记 COMPLETE。
+
+============================================================
+93. Decision trace
+============================================================
+
+至少在：
+
+correctness
+diagnostics
+engineering equivalence
+selected scientific audit
+
+保存 decision trace。
+
+包括：
+
+time
+decision id
+ready set digest
+candidate count
+node
+resource
+key components
+score
+reason
+state digest。
+
+============================================================
+94. Resume
+============================================================
+
+支持断点续跑。
+
+结果复用前核验：
+
+code hash
+config hash
+workload hash
+method identity。
+
+如果受修改影响：
+
+重跑。
+
+禁止新旧结果静默混合。
+
+============================================================
+95. 一键运行入口
+============================================================
+
+实现类似：
+
+python scripts/run_pipeline.py --stage p0
+python scripts/run_pipeline.py --stage p1
+python scripts/run_pipeline.py --stage calibration
+python scripts/run_pipeline.py --stage development
+python scripts/run_pipeline.py --stage validation
+python scripts/run_pipeline.py --stage formal
+python scripts/run_pipeline.py --stage report
+
+具体命令可按工程设计调整。
+
+============================================================
+96. README
+============================================================
+
+最终 README 必须包括：
+
+Project overview
+
+Research question
+
+System model
+
+Repository structure
+
+Installation
+
+Quick tests
+
+Single simulation
+
+Calibration
+
+Development
+
+Validation unlock
+
+Formal unlock
+
+Reproduction
+
+Current scientific status
+
+Executed stages
+
+Unexecuted stages
+
+Limitations。
+
+============================================================
+97. GitHub repository 必须是可恢复项目
+============================================================
+
+最终从新的：
+
+git clone <soc repository>
+
+开始，
+
+应能够：
+
+安装依赖
+运行 tests
+运行单例
+运行允许阶段
+重新生成报告。
+
+不得依赖 Codex Cloud
+某个未来会消失的临时目录。
+
+============================================================
+98. 不混入其它项目
+============================================================
+
+如果发现以前的：
+
+energy budget
+HC/MC/LC
+DRT-BPCS
+或其它论文材料，
+
+不得自动合并。
+
+当前主线是：
+
+H/L service importance
+
+online multi-service DAG
+
+CPU/GPU/NPU
+
+deadline pressure
+
+cross-service contention
+
+joint task ordering + resource mapping。
+
+============================================================
+99. Stop rule：P1
+============================================================
+
+正确性失败：
+
+先修 simulator / validator。
+
+不得运行 science。
+
+============================================================
+100. Stop rule：P2
+============================================================
+
+如果在合理 pressure 下
+没有稳定 mapping opportunity：
+
+停止 mapping scientific hypothesis。
+
+保留负面结果。
+
+============================================================
+101. Stop rule：P3
+============================================================
+
+candidate v1 fail：
+
+最多一次 evidence-driven revision。
+
+revision 仍 fail：
+
+STOP scientific mainline。
+
+============================================================
+102. Stop rule：Validation
+============================================================
+
+关键 validation gate fail：
+
+不得进入 formal。
+
+============================================================
+103. Stop rule：Formal
+============================================================
+
+formal fail：
+
+保留 FAIL。
+
+不得救结果。
+
+============================================================
+104. Stop rule：Engineering
+============================================================
+
+semantics-preserving optimization：
+
+如果 decision mismatch >0：
+
+STOP。
+
+============================================================
+105. Stop rule：Provenance
+============================================================
+
+如果 seed/input provenance
+无法确认：
+
+STOP。
+
+============================================================
+106. Stop rule：GitHub
+============================================================
+
+如果实际 Git remote
+不是 soc：
+
+STOP。
+
+如果必须覆盖用户已有重要代码：
+
+STOP。
+
+如果 push 失败：
+
+不一定停止 science，
+
+但必须：
+
+保留 local commit
+并记录 push blocker。
+
+============================================================
+107. Failure report
+============================================================
+
+任何 stage 停止：
+
+生成：
+
+reports/blocker_or_failure_report.md
+
+包含：
+
+STOP_STAGE=
+STOP_REASON=
+AFFECTED_CLAIMS=
+VALID_EVIDENCE_REMAINING=
+INVALIDATED_EVIDENCE=
+GITHUB_COMMIT=
+GITHUB_PUSH_STATUS=
+NEXT_SAFE_ACTION=
+
+============================================================
+108. 主验收矩阵
+============================================================
+
+最终至少报告：
+
+CORRECTNESS_PASS=
+
+H_MAIN_BENEFIT_POINT=
+
+H_MAIN_BENEFIT_CI95_LOW=
+H_MAIN_BENEFIT_CI95_HIGH=
+
+H_MAIN_BENEFIT_PASS=
+
+MAPPING_CONTRIBUTION_POINT=
+
+MAPPING_CONTRIBUTION_CI95_LOW=
+MAPPING_CONTRIBUTION_CI95_HIGH=
+
+MAPPING_CONTRIBUTION_PASS=
+
+B5_COMPARISON_STATUS=
+
+L_ALL_MAIN_CONDITIONS_PASS=
+
+L_WORST_RATIO=
+
+L_WORST_CONDITION=
+
+DECISION_P95_MS=
+
+ENGINEERING_TARGET_PASS=
+
+INVALID_RUNS=
+
+============================================================
+109. Partition 状态
+============================================================
+
+最终至少报告：
+
+CALIBRATION_SEEDS_COUNT=10
+
+DEVELOPMENT_SEEDS_COUNT=20
+
+INDEPENDENT_VALIDATION_SEEDS_COUNT=10
+
+FORMAL_EVALUATION_SEEDS_COUNT=30
+
+CALIBRATION_ACCESSED=
+
+DEVELOPMENT_ACCESSED=
+
+INDEPENDENT_VALIDATION_ACCESSED=
+
+FORMAL_EVALUATION_ACCESSED=
+
+============================================================
+110. 科学结论状态
+============================================================
+
+最终 scientific status 只能使用：
+
+SUPPORTED
+
+PARTIALLY_SUPPORTED
+
+NOT_SUPPORTED
+
+INCONCLUSIVE
+
+BLOCKED
+
+不得默认 SUCCESS。
+
+============================================================
+111. 论文写作原则
+============================================================
+
+final report 顺序：
+
+1. conclusion；
+2. gate table；
+3. scientific evidence；
+4. engineering evidence；
+5. negative results；
+6. limitations；
+7. reproducibility。
+
+严格区分：
+
+planning
+manual example
+calibration
+development
+independent validation
+formal
+engineering profiling。
+
+============================================================
+112. 论文结构
+============================================================
+
+硕士论文材料组织：
+
+Chapter 1
+Introduction
+
+Chapter 2
+System Model and Problem Definition
+
+Chapter 3
+Scheduling Method
+
+Chapter 4
+Experimental Methodology
+
+Chapter 5
+Results and Analysis
+
+Chapter 6
+Discussion and Limitations
+
+Chapter 7
+Conclusion
+
+小论文：
+
+Problem
+Research gap
+Method
+Protocol
+Results
+Ablation
+Cost
+Limitation。
+
+创新点：
+
+根据实际证据最后确定。
+
+============================================================
+113. 不频繁向用户提问
+============================================================
+
+普通工程细节：
+
+自行作合理决定并记录。
+
+只有以下情况需要停下来：
+
+- 会破坏用户文件；
+- GitHub remote 不正确；
+- 研究目标发生根本冲突；
+- 必须修改冻结门槛；
+- 必须提前访问保留 partition；
+- provenance 不可确认；
+- 缺少关键材料无法科学执行。
+
+不要因为普通目录名或变量名
+频繁要求用户裁决。
+
+============================================================
+114. 不假装完成
+============================================================
+
+没有运行：
+
+NOT RUN。
+
+没有测试：
+
+NOT TESTED。
+
+没有 formal：
+
+FORMAL_EVALUATION_RUN=NO。
+
+没有 push：
+
+GITHUB_PUSH_STATUS=FAILED
+或
+NOT ATTEMPTED。
+
+不能填写不存在的 PASS。
+
+============================================================
+115. 最终 GitHub 交付
+============================================================
+
+最终 soc repository 至少应包含：
+
+README.md
+STATUS.md
+AGENTS.md
+.gitignore
+pyproject.toml
+
+src/
+tests/
+scripts/
+configs/
+docs/
+reports/
+checkpoints/
+
+以及合理大小的：
+
+results/
+summaries/
+manifests/
+selected traces/
+plots/
+hashes。
+
+============================================================
+116. Final GitHub audit
+============================================================
+
+最终检查：
+
+git status --short
+git rev-parse HEAD
+git remote -v
+git log --oneline --decorate -20
+
+确认：
+
+- 当前 HEAD；
+- current branch；
+- 所有关键源码已经 tracked；
+- 所有关键协议已经 tracked；
+- reports 已保存；
+- manifests 已保存；
+- 未误提交 secrets；
+- GitHub push 状态准确。
+
+============================================================
+117. 最终 machine-readable block
+============================================================
+
+reports/final_report.md 末尾必须包含：
+
+PROJECT_NAME=soc
+
+PROJECT_STATUS=
+
+CURRENT_STAGE=
+
+SCIENTIFIC_MAINLINE_STATUS=
+
+CORRECTNESS_PASS=
+
+MAPPING_OPPORTUNITY_SUPPORTED=
+
+DEVELOPMENT_GATE_PASS=
+
+MECHANISM_REVISION_COUNT=
+
+INDEPENDENT_VALIDATION_RUN=
+
+INDEPENDENT_VALIDATION_STATUS=
+
+FORMAL_EVALUATION_RUN=
+
+FORMAL_EVALUATION_STATUS=
+
+H_MAIN_BENEFIT_PASS=
+
+MAPPING_CONTRIBUTION_PASS=
+
+B5_COMPARISON_STATUS=
+
+L_ALL_MAIN_CONDITIONS_PASS=
+
+L_WORST_RATIO=
+
+L_WORST_CONDITION=
+
+DECISION_P95_MS=
+
+ENGINEERING_TARGET_PASS=
+
+SEMANTICS_PRESERVING_OPTIMIZATION_USED=
+
+SEMANTIC_EQUIVALENCE_PASS=
+
+INVALID_SCIENTIFIC_RUNS=
+
+CALIBRATION_ACCESSED=
+
+DEVELOPMENT_ACCESSED=
+
+INDEPENDENT_VALIDATION_ACCESSED=
+
+FORMAL_EVALUATION_ACCESSED=
+
+LEGACY_RESULTS_USED_AS_NEW_EVIDENCE=NO
+
+GITHUB_REMOTE=
+
+GITHUB_BRANCH=
+
+GIT_HEAD=
+
+GITHUB_PUSH_STATUS=
+
+REPRODUCIBILITY_AUDIT_PASS=
+
+NEXT_SAFE_ACTION=
+
+============================================================
+118. 最终原则
+============================================================
+
+本项目允许最终得到：
+
+成功结果；
+
+部分成功结果；
+
+负面结果；
+
+证据不足；
+
+或者被 blocker 阻断。
+
+这些都是合法研究结果。
+
+最重要的是：
+
+模型正确；
+
+算法公平；
+
+基线真实；
+
+seed 独立；
+
+指标预先冻结；
+
+失败保留；
+
+工程与科学证据分离；
+
+GitHub provenance 完整；
+
+结论不超过证据。
+
+============================================================
+119. 现在开始执行
+============================================================
+
+现在从零开始。
+
+不要只给执行计划。
+
+首先实际执行：
+
+STEP 1
+GitHub repository audit
+
+确认：
+
+repository = soc
+
+STEP 2
+读取已有 AGENTS.md
+如果不存在则创建
+
+STEP 3
+检查 repository 是否可安全使用
+
+STEP 4
+创建基础目录
+
+STEP 5
+创建：
+
+README.md
+STATUS.md
+AGENTS.md
+.gitignore
+pyproject.toml
+
+STEP 6
+记录：
+
+Python
+OS
+CPU
+memory
+dependencies
+Git remote
+branch
+HEAD
+
+STEP 7
+执行 P0：
+
+research contract
+model specification
+literature verification
+metrics
+baseline definitions
+statistical protocol
+
+STEP 8
+生成全新的 clean-room seed partitions
+
+STEP 9
+运行 P0 audit
+
+STEP 10
+运行必要轻量测试
+
+STEP 11
+commit：
+
+P0: freeze research protocol and seed partitions
+
+STEP 12
+如果有权限：
+
+push 到 soc GitHub repository
+
+STEP 13
+验证 push / commit 状态
+
+STEP 14
+自动进入 P1。
+
+之后按：
+
+P0
+→
+P1
+→
+P2
+→
+P3
+→
+Development Gate
+
+只有 Development Gate 允许时：
+
+→ Independent Validation
+
+只有 Validation Gate 允许时：
+
+→ Formal Evaluation
+
+最后：
+
+→ Evidence Closure
+
+如果任何 STOP rule 触发：
+
+停止不允许的后续科学实验，
+
+但仍完成：
+
+报告
+STATUS
+hash audit
+Git commit
+如果允许则 push
+failure/blocker report。
+
+现在开始。
+SOURCE: docs/research_contract.md
+# Research contract — P0 DRAFT, not scientifically unlocked
+
+P1 handoff annotation: the historical P0 literature failure described below was
+closed at e9afe287 and delivered at 27d90bb5 (P0 audit exit 0). The original
+paragraph is retained to explain this draft's provenance. The P1 task separately
+authorizes correctness implementation, with D1–D5 explicitly approved by the
+user; see P1_implementation_spec.md. No scientific protocol freeze or permission
+to start P2 is inferred. Scientific executions remain zero. The unchanged
+research_protocol.json status string is also a historical draft declaration.
+
+The authoritative request is [user_request.txt](user_request.txt). Repository:
+`https://github.com/JINAOLONG/soc`; root = project root. This is a clean-room
+project. No legacy artifacts, results, candidate parameters or seeds have been
+used as new evidence. Existing Apache-2.0 LICENSE is preserved.
+
+Question: with continuously arriving service DAGs, non-preemptive compatible
+CPU/GPU/NPU execution and contention, can joint ready-node ordering and resource
+mapping reduce important-service H end-to-end deadline misses while keeping
+ordinary-service L P95 within 10% of B2 in every main condition?
+
+Falsifiable mechanism hypothesis: local EFT can occupy a scarce resource needed
+by another arrived H service; an online opportunity-cost rule may improve H DMR.
+This is a hypothesis, not an established result. H/L denotes service importance,
+not ASIL. No energy-budget, WCET-proof or deployment/certification claim is made.
+
+P0 requires 6–8 reviewed original studies (HEFT/CPOP, PEFT and DS3 mandatory),
+model/metric/baseline/statistical specifications, committed seed metadata and
+passing protocol audit. P0 currently fails the primary-literature prerequisite.
+Documents are drafts. User-prescribed thresholds and seed derivation cannot be
+relaxed even while the protocol is a draft. Do not call this a P0 freeze.
+
+Progression is P0 → P1 correctness → P2 baseline-only calibration → P3 development
+and ablations → Development Gate → independent validation → Validation Gate →
+formal → evidence closure. Every stage preserves negative/invalid evidence.
+P1 correctness failure blocks science. Lack of stable P2 mapping opportunity
+stops the mapping mainline. P3 allows at most one preregistered, evidence-driven
+mechanism revision. Failed validation blocks formal. Failed/inconclusive formal
+remains failed/inconclusive. Unknown input provenance stops execution.
+
+P0–P2 execution is CALIBRATION only; unit tests must use synthetic fixtures.
+P3 DEVELOPMENT has a fixed 10/10 search/precheck split. Metadata generation and
+hashing all 70 prescribed seeds is explicitly distinct from workload access.
+No reserved workload realization is generated or inspected before its gate.
+
+Future candidate search space, workload calibration choices and timing protocol
+must be registered before their dependent observations. A method formula must
+not be invented before P2 diagnostics. Later missing evidence cannot be filled
+with guesses or a passing smoke test. Current scientific status: BLOCKED.
+
+SOURCE: docs/workload_spec.md
+# Workloads — design constraints, not a frozen generator
+
+No workload generator or scientific workload has been executed. Main conditions
+are 3 scenes × 3 loads × 2 sizes. Size means exactly 8 or 16 executable nodes per
+service instance, excluding neither sources nor sinks. No hidden dummy task may
+change these counts.
+
+COCKPIT templates must cover speech, display, navigation and interaction;
+ADAS covers preprocessing, perception, fusion and output. FUSION mixes the two
+families under shared accelerators to expose cross-service competition. Concrete
+durations, compatible sets, edge sizes, arrival laws and deadlines await source
+review and a baseline-only calibration protocol. They are NOT AVAILABLE yet.
+
+Calibrate with 10 CALIBRATION seeds, B2 as the focal reference. Label loads by
+measured CPU/GPU/NPU bottleneck pressure, not arrival rate alone. Light should
+have low misses; medium/near-saturation should expose contention, nontrivial
+misses and mapping alternatives without nearly universal miss. Severe-overload
+is sensitivity only. Verify H feasibility in isolation or low competition first.
+Save every tried calibration configuration and its diagnosis; do not select
+workloads by candidate advantage. Freeze generator/config after P2.
+
+Identity = scene, load, size, seed, generator version, config SHA256 and the
+canonical artifact SHA256. Every method consumes the same stored realization.
+Execution disturbances use keyed hashes/PRNG independent of scheduler calls.
+Do not materialize validation/formal realizations during calibration or unit tests.
+
+SOURCE: docs/baseline_spec.md
+# Baselines — original sources reviewed; P1 online adaptation implemented
+
+All methods share one immutable observation boundary, workload, compatibility,
+communication semantics and deterministic tie rule. Root/ready eligibility never
+uses future arrivals or unfinished predecessor truth. Estimated finish prediction
+on a busy unit must use observable elapsed execution and estimates. A processor
+selection proposal is revocable until the task starts; dispatch must recheck
+actual feasibility and may not reserve an idle unit indefinitely by accident.
+The user approved the precise online adaptation rules D1–D5 during the P1 task.
+Their authoritative definition and acceptance dependencies are in
+[P1_implementation_spec.md](P1_implementation_spec.md). They must be tested
+before P1 is marked complete.
+
+| ID | Ready-node ordering | Mapping | Status |
+|---|---|---|---|
+| B1 | ascending service absolute deadline | minimum estimated finish among compatible units | implemented; P1 report provides actual correctness evidence |
+| B2 | H before L, then ascending service absolute deadline | same EFT rule as B1 | fixed L-budget reference; implemented |
+| B3 | Online-HEFT adaptation; original upward rank source-verified | insertion/EFT with approved D1–D5 online dispatch | implemented; original static method distinguished |
+| B4 | Online-PEFT adaptation; original OCT/rank source-verified | insertion/OEFT with approved D1–D5 online dispatch | implemented; original static method distinguished |
+| B5 | H-priority Online-PEFT adaptation | same mapping requirement as B4 | implemented; source and adaptation kept separate |
+
+The actual user-provided originals are now reviewed in
+[heft_cpop.md](literature_reviews/heft_cpop.md) and
+[peft.md](literature_reviews/peft.md), with equations, figures, page numbers and
+version/provenance limits. This is an evidence-status update, not a change to any
+baseline requirement or an implementation. Original HEFT rank ties are random;
+PEFT OCT excludes availability while EFT includes partial-schedule availability.
+Online adaptation still must explicitly specify visible DAG set, ready filtering,
+compatibility, busy-resource handling, rank/OCT refresh, idle/wait behavior, ties
+and boundary cases before P1 can be complete. The previous local-PDF task did
+not authorize implementation; the separate P1 task and explicit D1–D5 replies
+now authorize the documented adaptation. Online adaptations must never be presented
+as the original static algorithms.
+
+Required P1 evidence: distinguish B1/B2 by hand fixture; verify ranks/OCT against
+source-derived worked examples; exercise incompatible/busy resources and ties;
+deterministic replay; and have an independent validator reject invalid traces.
+No custom candidate may replace a missing baseline or serve as its own control.
+
+SOURCE: configs/seed_partitions.json
+{
+  "schema_version": 1,
+  "master": "vehicle-soc-dag-scheduler-cleanroom-soc-v1",
+  "index_origin": 0,
+  "integer_mapping": "unsigned big-endian SHA256 integer modulo 2**52",
+  "collision_rule": "append |nonce=N for N=1,2,... only after collision",
+  "collision_nonces": {},
+  "partitions": {
+    "CALIBRATION": [
+      1677814459331049,
+      328864591381281,
+      336367723740484,
+      3743487258850314,
+      2011277673915613,
+      4276916424184236,
+      265049119938611,
+      2453465547245351,
+      2784239167199445,
+      3512531139176427
+    ],
+    "DEVELOPMENT": [
+      1684216792523,
+      3236453260404730,
+      1917159493902342,
+      25185643162577,
+      1050433296120171,
+      85546100172721,
+      883857012958433,
+      4362527030865643,
+      203025064144011,
+      2499833363495643,
+      2111122949748056,
+      2733589575666552,
+      748479243625629,
+      1939649114317511,
+      3083524924313913,
+      4360164159466754,
+      963727708188844,
+      1298709282470643,
+      3681461349844808,
+      3695005723060603
+    ],
+    "INDEPENDENT_VALIDATION": [
+      2158946964608146,
+      1450717341280455,
+      2432303322476293,
+      47962241166287,
+      652059003735759,
+      1939972799173423,
+      2739932678850093,
+      3540278116379683,
+      1034737199904757,
+      3302083443988289
+    ],
+    "FORMAL_EVALUATION": [
+      4452190950829080,
+      1033894656814393,
+      2736720203705092,
+      1273043746337370,
+      2991171994584512,
+      725475928077874,
+      3734851039000985,
+      1174268854360963,
+      3228444839704409,
+      2941587271299633,
+      2573166348591596,
+      2629503243878633,
+      571365463442048,
+      3651690584800243,
+      3449173746226517,
+      2526053138506867,
+      3263457777392918,
+      1663470076813819,
+      2363820400979408,
+      2217817566067346,
+      1989379937095770,
+      4356064226674361,
+      1278409605772126,
+      1219450005785753,
+      17361271326268,
+      4164696668282729,
+      3440615539495590,
+      1726710565156038,
+      1328676391821195,
+      2674980622375874
+    ]
+  },
+  "development_split": {
+    "parameter_development": [
+      0,
+      10
+    ],
+    "development_precheck": [
+      10,
+      20
+    ]
+  }
+}
+
+SOURCE: docs/P2_design/P2_complete_design_proposal_v1.md
+# P2 Complete Experimental Design Proposal v1
+
+状态：**DRAFT / UNAPPROVED / NONEXECUTABLE**。这是人工审批对象，非生效规格或实验结果。
+依据提交 `160800d9b136e953c6415cd5229ded87eae72a0f`；本轮授权原文归档于
+`reports/P2_design/proposal_v1/authorization_request.txt`。全部 D01–D10 仍需人工决定。
+
+## 证据与声明类型
+
+| 标记 | 本提案中的含义 |
+|---|---|
+| SOURCE_SUPPORTED | 已有文件明确支持，后附具体定位；文献只支持所审查的概念范围 |
+| DERIVED | 从已登记约束严格推导，例如 18 个主条件、预算乘积和无环性 |
+| PROPOSED | 新的拓扑、合成数值、分布、选择和工程政策，全部未批准 |
+| UNRESOLVED | 人工未裁决，含已有具体推荐但未获批的参数；不设隐式默认 |
+| IMPLEMENTATION_VALIDATION_PENDING | 生成器、科学 adapter、runner、诊断、schema、恢复行为均未实现验证 |
+| SCIENTIFIC_EXECUTION_PENDING | 可行性、负载分类、机会频率、置信区间、成本均未计算 |
+
+JSON 中 `classification=PROPOSED` 覆盖未另行标记的新增值。每份 JSON 均标明 DRAFT、
+approved/frozen/executable/execution_authorized/read_by_pipeline=false。它们位于文档目录，
+没有任何现行 pipeline 的读取接线，也不具备现行 Workload 所要求的 fixture origin。
+批准提案仍不授权执行：还须单独授权实现、验证、冻结和科学运行。
+
+| 依据 | 实际定位及支持范围 |
+|---|---|
+| 原始需求 | `docs/user_request.txt` §§17–25、32–37、41–44、80、90–93、100；§32 数字仅为手工正确性例子，禁止作为科学 profile |
+| 工作负载 | `docs/workload_spec.md:3–25`：三场景、8/16 实节点、负载诊断、B2/10 CALIBRATION、同输入和排空 |
+| 模型 | `docs/model_spec.md:3–58`：单位、六资源、兼容性、非抢占、副本通信、已批准事件序和信息边界 |
+| 基线 | `docs/baseline_spec.md:3–20`，`docs/P1_implementation_spec.md` D1–D5：B1–B5 既有语义不改 |
+| 指标/统计 | `docs/metric_spec.md:3–52`、`docs/statistical_protocol.md:3–47`：seed 单位、10,000 paired bootstrap、固定分析 seed、type-7、H/L 及 P3 mapping 门槛 |
+| 合同/配置 | `docs/research_contract.md:3–9,32–48`；`configs/research_protocol.json` 的 main_grid、resources、bootstrap_*、scientific_executions：历史 DRAFT_P0_BLOCKED 字串不代表当前 gate 失败，保留原件 |
+| 原始决策 | `docs/P2_design/decisions.draft.json` 各 id/question；`human_decisions.md` 原始前49行及十二字段审查；原编号/问题不改 |
+| 原文证据 | `docs/literature_matrix.md` Original technical models、Identity/version；`docs/literature_evidence.json` 各 source/review_notes；`docs/literature_reviews/heft_cpop.md:35–49`（印刷262/264/266页）、`peft.md:33–46`（683/684/687/688页）、`ds3.md:12–29`（PDF3–6）、`starpu.md:12–24`（PDF4–7） |
+| 其余已审查文献 | `literature_reviews/autoware_dag.md` §IV/§V、PDF2–4；`federated_limit.md` §2、PDF3–5：汽车 DAG 和比较器限制，均未提供本提案的六资源数值 |
+| 实际门禁 | `reports/P2_design/proposal_v1/repository_audit.json`：当前 P0/P1 check-only exit=0，P1 122文件 missing/mismatch=0；`reports/P1_correctness.json` 保留既有64测试、45合法/20非法 trace 证据 |
+| P2 阻断 | `reports/P2_mapping_opportunity.json` status=BLOCKED / NOT_RUN；`scripts/run_pipeline.py:26–39` 科学入口未实现（本轮未调用） |
+
+文献仅支持异构代价表、DAG、EFT/OCT 和 profile 建模的概念。本轮没有重新开展原文审查，
+没有将任何新数值归给作者。六篇审查范围及出处限制沿用原证据；DS3/StarPU 的数据不能
+直接代替本项目 profile，HEFT/PEFT 的静态假设也不是本项目在线规则的来源。
+
+## D01 — 显式六模板（PROPOSED / UNRESOLVED）
+
+原始问题沿用目录 D01：显式角色 DAG 或 grammar，以及三场景完整8/16节点、角色/H-L/尺寸规则。
+推荐显式模板，见 `P2_workload_templates_v1.json#/templates`；每个节点逐一列出唯一局部 ID、
+角色、完整前驱、代价比例和 H/L 继承。服务实例必须整体 H 或整体 L，两个变体均存在；
+实际节点 ID=`service_id/template_node_id`，故跨实例不冲突。没有节点被隐去或免计数。
+
+| 场景 | 8节点/边 | 16节点/边 | 拟表达的机制 |
+|---|---|---|---|
+| COCKPIT | 8 / 9 | 16 / 17 | 语音意图链和导航分支，显示/路线并行后合成、交互输出 |
+| ADAS | 8 / 9 | 16 / 17 | 检测/分割分叉、跟踪融合、规划/显示汇合；稀缺加速器 |
+| FUSION | 8 / 7 | 16 / 15 | 语音和感知融合并与导航合成；多实例共享 CPU/GPU/NPU |
+
+尺寸规则：每个 v 明确拆为同角色 v.a→v.b，各承担基代价的一半，原 u→v 改为 u.b→v.a，
+内部边为1/16 MiB。增加8个真实执行节点和8条真实边（DERIVED），不增加 dummy。
+Kahn 遍历核对全部节点被取出，拒绝缺前驱、自环、重复 ID/边；FUSION 中 n04 的前驱 n05
+说明 ID 不是拓扑次序，禁止用 ID 大小替代无环验证。
+
+理由：显式模板便于审计，成本较低；grammar 是原清单的可行替代，但当前没有批准其规则。
+本方案范围有限、不是车辆任务分布；16节点维持基计算总量但增加通信/流水级，不能把尺寸
+差异解释为纯计算规模效应。该偏差须在未来报告披露，不按效果换拓扑。
+待答：是否批准六个显式模板、全部节点继承服务 H/L 和二分尺寸规则？
+
+## D02 — 六资源合成 profile（PROPOSED / UNRESOLVED）
+
+原始问题：选择可追踪 profile 或批准合成规则并给兼容集、估计/实际代价、全部来源。
+推荐明确合成模型，不冒充没有取得的硬件数据；`P2_resource_profiles_v1.json` 给出16角色的
+**六列完整资源表**，CPU0–CPU3同值，GPU0/NPU0分别列值。null 唯一表示不兼容；对应资源
+不进入 compatible_resources，禁止把0或 infinity 当可执行时长。
+
+| 角色 | CPU0/1/2/3 各自 ms | GPU0 ms | NPU0 ms |
+|---|---:|---:|---:|
+| audio | 2 | — | — |
+| speech | 12 | — | 3 |
+| intent | 1 | — | — |
+| display | 8 | 2 | — |
+| navigation | 3 | — | — |
+| route | 8 | 3 | — |
+| compose | 6 | 2 | 3 |
+| interaction | 1 | — | — |
+| preprocess | 6 | 2 | — |
+| detect | — | — | 4 |
+| segment | 16 | 4 | 5 |
+| track | 3 | — | — |
+| fusion | 6 | — | 2 |
+| plan | 2 | — | — |
+| render | — | 2 | — |
+| output | 1 | — | — |
+
+这些数值全部是工程合成提议：CPU基代价1–16ms给出可手算的时标；加速器优势与专属角色
+用于覆盖合同要求的 CPU-only、GPU/NPU-oriented、multi-compatible、limited-alternative。
+不是测量、文献原值或已验证现实比例。对称 CPU 避免人为核优势，但省略缓存和频率差异。
+GPU/NPU优势及专属任务可能人为增加机会，外部有效性有限；不另加未预算的敏感性扫描。
+
+estimated=base×节点比例×[0.9,1.1) keyed因子；realized=estimated×独立资源[0.9,1.1)因子。
+最小实际代价≥0.405ms（DERIVED）。全部兼容资源的私有真值在未来生成时固化，只有 estimates
+进入 scheduler。角色表、版本、原始字节/hash及生成代码身份均进入血缘（D04/D10）。
+替代：取得经授权 profile 后形成另一完整提案，不能无版本替换本表。
+待答：是否批准合成模型、全部16×6单元、CPU对称性和估计/实际关系？
+
+## D03 — 完整边表和九类通信（PROPOSED / UNRESOLVED）
+
+原始问题：边MiB和type-pair latency/bandwidth完整表，保留现行通信语义。
+`P2_communication_profiles_v1.json` 逐一列出六模板 **74条边** 的 ID/源/目的/数据MiB；
+8节点外部边取源角色输出量，16节点保留外部边，新增内部边1/16MiB，无未指定边。
+每个角色的输出量不同是新合成提案；多后继各自传相同量而非自动分摊。
+
+| 源→目的类型 | latency ms | bandwidth MiB/ms |
+|---|---:|---:|
+| CPU→CPU | .01 | 16 |
+| CPU→GPU | .05 | 8 |
+| CPU→NPU | .05 | 4 |
+| GPU→CPU | .05 | 8 |
+| GPU→GPU | .01 | 16 |
+| GPU→NPU | .08 | 4 |
+| NPU→CPU | .05 | 4 |
+| NPU→GPU | .08 | 4 |
+| NPU→NPU | .01 | 16 |
+
+不同单元：delay=L+b/B，MiB/(MiB/ms)=ms；同一单元覆盖为0（SOURCE_SUPPORTED）。
+例：CPU0→GPU0传4MiB：.05+4/8=.55ms；CPU0→CPU1传1MiB：.01+1/16=.0725ms；
+NPU0→NPU0即使1MiB仍为0。类型对角不等于相同单元，不能把 CPU 跨核通信清零。
+
+目的地副本从前驱实际完成才可传输并保留；pending remap重新计算目的地就绪，不复用别处
+副本，不修改已开始节点。无共享总线竞争，传输彼此及与计算重叠（model_spec:20–31）。
+大边/低带宽强化局部性、加速器互传较慢可能抑制卸载，这些是敏感性风险而非已见结果。
+二进制友好的尺寸/带宽便于复核，不代表SoC实测。待答：是否批准完整74边及九对参数？
+
+## D04 — keyed 物化规范（PROPOSED / UNRESOLVED）
+
+原始问题：key/PRNG/版本、扰动、到达、H-L、deadline、服务数/窗口和停止边界全部确定。
+完整提议在 `P2_generation_spec_v1.json`。本轮只写规范，**没有实现生成器或取任何科学随机样本**。
+
+使用 domain-separated SHA-256，字段固定且无歧义 canonical JSON，包含已登记 actual seed、
+scenario、condition、config、slot/group/node/resource/edge/field/counter/version；不用字段为空串。
+seed以十进制字符串编码；标识ASCII；UTF-8，键排序、紧凑分隔、尾单LF、无NaN/重复键。
+digest前8字节大端 q，U=q/2^64。没有顺序PRNG状态，method/attempt/调度次数不进入key。
+不同字段分别取hash。节点估计因子对资源共用；实际因子按资源独立；控制变体沿用父输入key。
+所有生成计算先用精确有理数，最终一次round-to-nearest ties-to-even转binary64；正值/有限检查。
+身份参数用整数或规范分数，不用浮点序列化决定参数身份；运行payload沿用模型的独立字节hash。
+提案JSON为便于阅读写出的decimal数值必须先按十进制词法精确解析（如parse_float=Decimal），
+转换最简有理数再形成身份preimage，禁止先转binary64再反推参数。.05对应1/20，.01对应1/100；
+原提案/配置文件本身另存raw-byte SHA，不把“规范语义hash”与“文件原始hash”混称。
+
+| 新参数组 | 具体候选值/规则 | 理由与影响（均未批准） |
+|---|---|---|
+| 估计/实际扰动 | 两级独立[.9,1.1)均匀，具体key见JSON | 有界且严格正；不是误差实测，分布/相关性会影响鲁棒性 |
+| 到达扰动 | 每slot共享U/10 | 保持H/L配对，避免方法相关RNG；同步到达可能夸大竞争 |
+| 组成/样本量 | 50 slots，每slot H+L各1，共100服务 | H/L均有50个；不当作100独立seed，L尾分位仍噪声大 |
+| 突发 | 5 slots为块，压缩系数1/4 | a=P*(5*(j//5)+(j%5)/4+U_j/10)，轻量周期突发而非泊松；限制外推 |
+| 周期 | light 80/64ms；medium 24/20；near 12/10；两尺寸相同 | 两个有限候选，不保证实际压力或miss符合标签，D06可拒绝全部 |
+| deadline | C_est为min-compatible估计路径下界；H=2.5 C_est，L=4 C_est | 方法无关且正；忽略通信不构成可行性证明，须先控验 |
+| 窗口 | W=50P，半开[0,W)，全量排空 | 没有warmup剔除；未来运行结束=max(W,last_finish)，利用率分母需区分 |
+| 边扰动 | 无，边值固定D03 | 避免额外自由度；不覆盖数据尺寸随机性 |
+
+H/L deadline差异也属于PROPOSED，不是重要性定义自带。alternative为另行提供有出处到达/
+profile规则，或修改上述具体候选后重出完整版本；本轮不悄然使用。未来workload ID由参数/
+generator/seed/条件/variant/内容hash决定，独立method；矩阵中的wlref只是未物化计划引用，
+其hash仍null。替换wlref必须保存解析收据，不能将符号字符串冒充实际内容SHA256。
+待答：是否批准JSON所有编码、字段、数值、分布、构造及窗口？
+
+## D05 — 有限矩阵、方法职责与预算（PROPOSED / UNRESOLVED）
+
+原始问题：完整轴/值、方法集合/理由、顺序/预算、seed到trial映射。
+推荐 `P2_trial_matrix_draft_v1.json`，**2520条显式trial**，每条含实际CALIBRATION seed、
+scene/condition/config/method/variant/workload计划ID、角色、顺序、预算和选择/平局/失败规则引用。
+每条command/hash=null，因为没有执行命令或科学输入；这些不是缺失的已运行证据。
+
+注册3×3×2只定义18个最终主条件（SOURCE_SUPPORTED）。本提案每条件有A/B两个arrival候选，
+共36配置；每个10seed做5方法主运行+2个B2控制。故
+36×10×(5+1+1)=2520 trial slots（DERIVED），主1800、H独占360、低竞争360；
+输入1080份，主360份、控制720份；最终选择18条件×10=180主输入，所有尝试保留。
+每trial需1次严格重放且不增加样本数，最大全引擎调用5040。暂停/失败后的未启动格保持
+NOT_STARTED，2520是完整成功执行时的计划数/上界，不是已花成本或达到时间预算。
+
+B1是重要性排序对照；B2为全部配置/控制的焦点参考、负载选型及固定L预算参照；B3为
+rank/EFT；B4为OCT前瞻；B5为H-priority OCT强基线。主网格全纳入，避免预期胜负筛选。
+控制仅B2用于获得可行性见证和基准诊断，B2失败不能证明其他方法皆失败。无候选、消融
+A1–A3、severe-overload、保留分区实验。基线比较仍有排序/映射混杂，D07另界定。
+
+执行顺序：COCKPIT→ADAS→FUSION；light→medium→near；8→16；A→B；seed索引0..9；
+H_ISOLATED B2→LOW_COMPETITION B2→MAIN B1..B5。trial记录execution_order唯一连续。
+主方法顺序固定便于审计；主仿真无host timing结论，因此不将顺序当timing随机化。
+选择规则SEL-v1只按D06 B2负载/可行性，先A后B；不以M1/M2效果挑配置，选后机会失败不回退
+另一个配置救结论。保留全部seed/失败。若某条件无合格配置，P2 BLOCKED，不扩轴。
+
+有限预算替代SMALL=2160（去B1，会损失重要性排序对照），不推荐；WIDE=3780是再加一候选
+的预算说明，第三周期数值UNRESOLVED，未列为本版trial，不授权扩大。推荐全基线2520，
+属于工程/研究设计建议，无文献能证明其最优或计算时间可承受。实际运行时长未知。
+
+**工程timing不纳入本版矩阵**，预算0，inputs/warmup/repetitions/timer/aggregation全部
+UNRESOLVED，不取默认，也不冻结为“不测”。固定P95≤2ms目标保留。需未来另行审批的
+timing登记并在candidate timing前冻结；不影响当前明确不做timing的校准提案完整性。
+待答：是否批准36配置/2520 slots/5040最大调用、全B1–B5、两个控制和固定顺序/选择？
+
+## D06 — 可行性、负载和失败分类（PROPOSED / UNRESOLVED）
+
+原始问题：H基础可行性、负载标签、试验选择/平局/失败继续停止规则。
+推荐同时做H_ISOLATED与LOW_COMPETITION。控制从父主输入派生，保留原service/node/key/
+duration/deadline，只有删L或改到达；不得复用不同内容hash。G在generation JSON中用
+保守串行上界计算，各服务完全隔离；两个控制分别50/100服务、每份仍为单一trial，
+不隐藏额外独占运行。H-only不要求有L，L指标为NOT_APPLICABLE_CONTROL，不能进入主统计。
+
+| 类别 | 预先规定的证据/判定 | 继续、停止与保留 |
+|---|---|---|
+| H基础可行见证 | 合法H_ISOLATED控制内每个H完成≤自身原deadline，无服务重叠 | 这是注册deadline的直接比较，无新增容忍阈值；保留逐服务见证 |
+| 天然不可行的充分证据 | 每个H的乐观路径LB：min兼容真实代价 + max前驱(LB+边最小合法通信)；若任一个LB>D | 即使允许不一致最优资源仍超期，是下界证据；保留，不归为调度器正确性失败；配置不准入 |
+| 未证明可行/不可行 | B2独占miss但LB≤D，或无独占有效见证 | 不宣称天然不可行，不调deadline补救；不准入，可继续既定负面诊断 |
+| 低竞争对照 | 全100服务串行隔离、来源有效，记录每个H/L deadline结果 | 不以低竞争标签自动断言可行；B2 miss单列，主配置不准入 |
+| 合法但未达负载目标 | trace合法、完整，但以下压力/miss bands不符 | 保留并继续剩余既定trial；不可换标签或删seed |
+| invalid | 输入/trace/血缘/配对不合法，或独立复算不一致 | 全计划停止，保留原件和诊断，缺格阻断完整性 |
+| failed | 进程启动失败、非零、引擎deadlock或未完成命令 | 全计划停止；spawn未开始exit=null，不填0 |
+| incomplete | 中断、缺文件/校验/重放、终结标记缺失 | 全计划停止；不续写、不自动重试，不与合法负结果混合 |
+
+上述LB是真值的离线控制审计，不能传给scheduler。LB≤D不证明可行；独占B2 miss也不证明
+全算法不可行（DERIVED）。这种区分遵循user_request §37和federated review的比较器限制。
+
+以下是**新的待批准负载分箱数值，绝不是现行H可行性阈值或科学收益门槛**：对B2主运行，
+逐seed计算p_s=max_r(busy_r∩[0,W])/W，再对10seed取均值p；不使用full-drain利用率来冒充
+到达窗口压力，同时保留每资源、每seed、队列/就绪等待和窗口末backlog。Hmiss也先逐seed
+再均值。light要求0≤p<.50且H/L平均DMR均≤.01；medium要求.50≤p<.80；near要求.80≤p≤1；
+后两类H平均DMR在[.01,.80]且每seed至少存在一次ready-node资源等待。全部10seed控制必须
+有效且H/低竞争见证满足deadline才可准入。未定数值均须批准；.80 miss上界用于排除接近
+全miss，本提案没有把它变成H收益或mapping阈值。样本少时分箱可能拒绝全部配置，这是
+预先允许的BLOCKED结局。额外severe-overload仅敏感性，未纳入本版trial。
+
+按每条件A优先、B次之选第一个合格配置，不按miss最低或映射收益最高。一个条件无合格即
+全P2 BLOCKED；不重新解释自然不可行/有效负结果、不静默增加试验。合法但不可行试验
+可以按已列清单完成用于诊断，但绝不可选作“合理压力且基本可行”的正式条件。
+待答：是否批准两个控制、充分/未证明区分、候选负载分箱和A/B选择/停止政策？
+
+## D07 — M1机制观察与M2描述（PROPOSED / UNRESOLVED）
+
+原始问题：M1/M2、可观察量、对照边界、单位、条件/seed分母。
+推荐M1作为局部机制证据、M2作为补充描述，两者不能作为候选算法。
+SOURCE_SUPPORTED：原始需求§44允许2–4 ready任务的局部枚举diagnostic oracle；
+原需求§23禁止未来信息。下述具体目标/截断/记录点都是新增提案。
+
+M1在B2主运行每次公共view刷新、派发调用前记录（包括一次派发后的新view），以
+(run_id,decision_seq,public_view_digest)标识，纯重复无状态改变的view只记一次；记录全部
+已到达公共图、ready集合、估计、可见running elapsed、已完成数据及闲忙状态。
+用既有B2 ready次序前min(4,ready_count)个组成K；K≥2且至少含一个H即eligible，
+不因没有替代资源删掉此状态。分母N_cs是该条件/seed主B2的全部eligible独特view数，
+另记总view数、截断次数、K分布；N=0是缺乏观察而非机会率0。
+
+固定K和顺序，只枚举兼容mapping（最多6^4=1296），不排列任务顺序。以同一公共估计
+busy release=now+max(0,estimate−elapsed)、真实已完成前驱的目的地就绪，串行追加每个
+resource上K任务的预计占用，允许预测等待但不执行/不保留资源。基准是同固定序的局部
+greedy EFT追加；枚举集合包含此基准。反事实只允许每个L局部预计finish≤基准相应finish，
+目标为最小K内H预计finish均值，平局按resource ID元组。不存在未来到达、未ready节点或
+后继运行；不会反馈到实际B2调度。这是离线局部比较，非新online policy或真实反事实轨迹。
+
+记b=基准H预计finish均值−now>0，o=可行枚举最优对应值，Δ=b−o≥0（ms），g=Δ/b（无量纲）。
+比较使用binary64输入值对应的精确有理数，不加未注册epsilon；枚举的具体传输/预计排队
+也用这些公共有理数进行，保持内部基准与反事实完全同一算术。不能声称与浮点runtime
+局部预测逐bit相同，未来须报告差异；无真实收益担保。记录最优assignment/基准/约束/
+成本/截断，审计者可独立复算。M1只证明当前K/估计/约束下有局部映射余量；看不到尚未
+ready的稀缺H需求，估计误差和选择B2轨迹都限制解释。
+
+辅助离线trace描述：逐服务以最长实际依赖/通信路径标识H critical path（同长按node ID），
+逐节点记录CPU/GPU/NPU等待、完成前驱后data-ready等待、实际资源/兼容数、替代预计代价，
+单位ms/计数，参考trace与公共view。完成后的关键路径不能喂给scheduler或用于调选trial。
+具体定义为：dep=max(arrival,各前驱finish)，data=max(arrival,各前驱finish+实际目的地delay)，
+data_wait=data−dep，post_wait=start−data；assigned_busy_wait为[data,start)内已分配单元
+被其他节点占用的区间测度，policy_idle_wait=post_wait−assigned_busy_wait，均ms且不重叠。
+post_wait包含策略选择的空闲等待，不能全称为物理资源阻塞。CPU/GPU/NPU等待分项按实际
+目的单元类型累加assigned_busy_wait，逐服务分母为1、跨服务分母为该组50，注明node-ms求和
+可能在并行分支上重叠。关键路径采用node权重duration+post_wait、edge权重实际delay，根从
+arrival起，最长路径长度应等于服务response；同长按完整node-ID路径字典序。H critical-path
+blocking为这条事后路径的assigned_busy_wait之和(ms)，另报policy_idle_wait/compute/transfer，
+不得与全图节点wait和混为同一个端到端分解。每次实际start同时引用最近公共view，记录
+compatible数以及每个替代资源的预测EFT−实际所选资源在同view的预测EFT（ms，可为负；无
+替代记NONE），不拿私有真值比较替代资源。以上恒等式/区间测度需未来独立复算验证。
+
+M2用同workload的B1/B3/B4/B5逐一配对B2；每seed/condition报告H-DMR差（比例点）、
+L-P95差(ms)、每服务资源等待均值差(ms)、M1机会率及eligible数（只B2）和兼容性分布。
+主服务分母每类50；控制不混入；实际trace等待分解须先验证恒等式，零/缺失不可编0。
+可用既有paired-seed CI，不能按100个服务或数千view重采样。B3/B4或B2/B5同时改变
+ordering/lookahead/mapping，M2**不能单独支持映射独立因果贡献**，也不替代P3 A3–A1检验。
+待答：是否批准K/截断/基准/局部L约束/目标、分母及M1+M2解释边界？
+
+## D08 — 三态判据（PROPOSED / UNRESOLVED）
+
+原始问题：可观察量聚合、稳定性、不确定性、三态条件、无效/缺失处理。
+完整三态表、两套有限候选和精确边界在 `P2_mapping_opportunity_decision_table_v1.md`。
+推荐讨论FINE方案，理由为不要求5%局部估计收益才能观察弱机会；这不是来源证明，也不能
+保证稳健。COARSE更保守；两者必须**在看结果前二选一**，不能逐结果挑最容易通过者。
+tau/frequency/stability及bootstrap实现pin全部UNRESOLVED，32组参数登记中单列。
+所有既有H/L、P3 mapping阈值和CI算法保持原件不变；不把统计门槛从它们挪来。
+任何方案通过只能支持所定义局部机会，不等于H收益/L合规/候选成功。待答：选FINE、COARSE，
+还是拒绝并给另一套完整规则？批准条件覆盖/缺失/稳定性/paired-seed实现pin吗？
+
+## D09 — 唯一runner与恢复（PROPOSED / UNRESOLVED）
+
+原始问题：唯一入口或同守卫薄launcher，身份/源码/恢复/重试/退出等。
+推荐扩展现有 `scripts/run_pipeline.py --stage calibration` 为未来唯一正式入口；
+完整比较、复用等值条件、状态机、attempt链和洁净策略在 `P2_runner_schema_review_v1.md`。
+此命令仅为未来接口定位，本轮没调用。R2可作为无独立权力的薄launcher，当前不需要。
+自动重试预算0；不完整不续写、重新执行必须新的审批和新attempt而不能救统计结果。
+P2相关源码/配置已提交且洁净是新增工程推荐，**不是现行已批准P2规则**；现合同明确强制
+洁净的是precheck/validation/formal。待答：是否批准R1、精确复用、零自动重试和P2洁净政策？
+
+## D10 — 科学schema/adapter（PROPOSED / UNRESOLVED）
+
+原始问题：envelope或新版本schema+adapter，以及血缘、COMPLETE、P1兼容。
+推荐S2新scientific v1+显式adapter，理由为现代码硬编码fixture origin，外包envelope本身
+无法证明科学来源。S1保留为经未来兼容性证据支持的备选。本版给完整规范字段表和不变量，
+不修改现有schema草案/模型、engine或validator。见 `P2_runner_schema_review_v1.md` D10。
+static字段/规范检查不等于运行时hash/血缘/恢复已验证；科学输入原始字节、generator出生
+证明和P1负例回归都需未来实现验证。待答：是否批准S2、ID/canonicalization/引用规范及
+COMPLETE必须同时成立的条件？
+
+## 跨决策一致性、已知风险与停止
+
+| 核对项 | 结论/仍待验证 |
+|---|---|
+| D01↔D02身份 | 六模板角色均存在profile；所有节点兼容集非空；两尺寸比例明确，未来实例ID须唯一 |
+| D01↔D03 | 六模板前驱与74边一一对应；9类型对完整；单位同引擎，未生成网络实例 |
+| D04↔D10 hash | 参数精确有理身份与运行binary64 payload分开hash；控制变体不同hash但扰动key保留；无自引用hash |
+| D05 seeds/budget | 只引用既有10 CALIBRATION值；36配置/18条件/2520条/1080输入；5040含重放；无新seed |
+| D06公平性 | B2和独占见证决定选型；不按候选/机会结果挑选；独占miss不冒充不可行证明 |
+| D07↔D08 | per-seed机会率、共同重采样索引；非节点/view独立CI，全部12 loaded条件检查 |
+| D09↔D10复用 | 全语义身份及raw refs/hash/validator/metrics/replay/COMPLETE核对；receipt不增样本 |
+| P1隔离 | 旧origin拒绝当前科学输入；S2未实现；P1字节/测试/审计不改，不能改标签充样本 |
+| 封存 | 不创建unlock、不生成非calibration realization/outcome；元数据校验不是访问结果 |
+| 设计≠证据 | B1–B3仍UNRESOLVED；B4/B5仍DESIGNED_UNAPPROVED，代码/行为与科学检验均待做 |
+
+明确保留的冲突/不足：旧draft矩阵与schema只是历史选项；本v1是它们的**具体提案层**，
+未取代生效文件。旧schema缺开始/结束与COMPLETE行为，本版补设计，未修实现。现P1
+硬编码origin与科学读取不兼容，须先S2及P1回归，不能直接运行。source代码/配置哈希为
+P1已验证身份；任何未来adapter会改变它，必须重新验证，不继承当前PASS作为新代码保证。
+timing不在本矩阵，不能宣称P2所有未来输出均已可冻结。多条件CI为pointwise，三态表没有
+同时置信覆盖保证。FUSION/硬兼容/合成speedup和固定突发都可能人为塑造机会。
+
+`P2_scientific_parameter_registry_v1.json` 枚举**32个未批准科学参数组**（不是32个标量或
+10个决定）；全部有明确提案或有限选项，批准值仍null。工程runner/schema另由D09/D10
+审批，不混计科学参数。D01–D10提案覆盖完整不等于已解决：resolved=0、human=10。
+人工应在v1 checklist逐项选择并记录版本/文件hash/批准值或修改意见，不能仅回答“同意P2”。
+随后只能启动另行授权的实现验证任务；P2保持BLOCKED，当前science=0，STOP=YES。
+
+SOURCE: docs/P2_design/v2/P2_complete_design_proposal_v2.md
+# P2 design proposal v2 — DRAFT / UNAPPROVED / NONEXECUTABLE
+
+本包是对提交`79f9c245b23119ce25175d6dc6ff148e9e092461`中v1及独立审计的**拟议修订**，
+不是已批准替换。v1、原审计及其失败完整保留；D01–D10全部UNAPPROVED。没有实现生成器、
+runner、adapter、诊断或validator，没有物化输入或执行P2。JSON是设计文档，不接入现行pipeline。
+
+本轮授权原文：`reports/P2_design/design_revision_v2/authorization_request.txt`。
+历史问题：`reports/P2_design/independent_review_v2/findings.json` V2-F01–F07；F08仍待未来实现验证。
+审计实际建议D05 ACCEPT AS PROPOSED，任务摘要把它并入REVISE；本版保留原记录，仍修订D05
+身份引用/物化顺序以协调F02，不改变其轴、数值、方法、预算和引擎顺序。
+
+## 依据与陈述身份
+
+SOURCE_SUPPORTED：`docs/user_request.txt` §§17–25、32–37、41–44、80、90–95、100；
+`docs/model_spec.md:3–58`；`docs/workload_spec.md:3–25`；`docs/baseline_spec.md:3–20`；
+`docs/metric_spec.md:3–52`；`docs/statistical_protocol.md:3–47`；`AGENTS.md`规则3、6–14。
+历史原文审查保持`docs/literature_matrix.md`及reviews的既有范围，未把任何合成数值归给文献。
+
+DERIVED：预算乘积、无环身份顺序、非负模型的下界归纳、枚举含基准则最优不劣于基准。
+PROPOSED：所有保留的合成参数与新增观察器、覆盖、锁/身份/数值操作规则，仍需人工批准。
+IMPLEMENTATION_VALIDATION_PENDING：全部科学生成/adapter/runner/独立诊断与血缘检查。
+SCIENTIFIC_EXECUTION_PENDING：可行性、实际负载、机会、成本与统计支持，全部未知。
+
+规范优先关系：本主文解释设计；各命名JSON给出精确字段/值。typed identity schema定义字段，
+generation定义填值，snapshot定义事件/状态，diagnostic定义观察量，criterion定义判据，stage
+定义资格/出口。不能从示例或说明推导另一套默认值。若冲突，报告并闭锁，不自行择一。
+
+## D01 — 保留六模板，未批准
+
+`P2_workload_templates_v2.json`保留v1全部节点/前驱/角色/H-L继承/尺寸规则和template ID。
+COCKPIT：8节点9边、16节点17边；ADAS同为8/9、16/17；FUSION为8/7、16/15。
+v→v.a→v.b，各半基代价；原u→v改u.b→v.a，内部边1/16MiB；无dummy，所有节点真实计数。
+局部template ID仍带v1，表示语义模板未变，不是文档版本错误。实例ID精确规则见generation。
+一个服务整体H或L，节点继承，不新添ASIL语义。仍是有限合成模型，不代表实车分布。
+
+## D02 — 保留六资源/16角色数值，未批准
+
+`P2_resource_profiles_v2.json`保留96个资源单元格及兼容集合。CPU0–3同值，null是不兼容，
+不作为可执行0代价；CPU-only、GPU/NPU-oriented、多兼容和专属加速器角色均存在。
+估计因子与实际因子仍为[.9,1.1)；16节点每半节点基代价1/2；精确转换前下界81/200ms。
+只有公共估计可给scheduler和M1R，真实代价仅引擎/离线验证。未增加硬件或功耗实测声明。
+
+## D03 — 保留74边与九类通信数值，未批准
+
+`P2_communication_profiles_v2.json`全部边与link表保持原值。单位ms、MiB、MiB/ms不变。
+同单元0；不同单元L+b/B；CPU跨核非零；副本属于目的地，pending remap重算数据就绪。
+不改非抢占、传输起点、重叠或无总线竞争假设。合成通信与固定边尺寸限制外部有效性。
+
+## D04 — typed keyed生成、身份和控制
+
+精确对象见`P2_typed_identity_schema_v2.json`的closed `$defs`，字段不得增删或省略为默认。
+根schema_version=2，generator_version=`soc-p2-synthetic-v2-PROPOSED`，key domain=`soc.p2.gen.v2`。
+不再有含义不明的version字段。`P2_generation_spec_v2.json#/key_bindings`以LITERAL/COPY逐字段给出三种key，context路径与类型固定；gloss不是运行实例。
+
+每种key都保留actual seed十进制字符串、scenario、condition、config、整数slot、schema/gen版本。
+arrival_jitter仅将group/node/resource/edge置空；估计因子保留group/node，resource/edge为空；
+实际因子再保留resource。counter固定0。方法、run/attempt、控制到达、host、wall time、调用次数
+不入扰动key。边和deadline没有随机draw，禁用未登记随机源。
+
+SHA256规范key字节的前8字节大端q，U=q/2^64为精确有理数；因子.9+U/5，jitter=U/10。
+所有计算先精确有理数，每个最终数值只一次RN64 ties-to-even；私有exact estimate/deadline
+sidecar只供生成/控制核验，不进入公共视图。v2域/键绑定改变未来draw身份；没有v1 realization
+可比较，也不声称v1/v2将产生同一样本。数值分布本身未变。
+
+MAIN仍50slot，每slot一个H和L，共100服务；5slot块内压缩1/4；W=50P；全量排空，无warmup剔除。
+H relative deadline=2.5*C_est、L=4*C_est，C_est从转换前E_exact取min-compatible路径，忽略通信。
+它不证明可行。绝对deadline按原模型RN64(arrival+relative_deadline)计算。
+
+服务ID：`{scenario}/{load}/{size}/{config_id}/s{slot:03d}/{H|L}`。
+节点ID：`{service_id}/{preserved_template_node_id}`。condition=`{scenario}-{load}-{size}`。
+
+控制始终从**已解析MAIN父输入**派生，保留所有被保留节点的估计/真实代价、相对deadline及
+边的binary64位，不重新draw。G对父MAIN全部100服务计算，两个控制使用同一个G；精确公式
+和一次ceil+1ms规则在generation JSON。H-only按原slot保留50H，LOW按slot、H在L前保留100服务。
+都改为k*G到达，故与MAIN有不同descriptor/content identity，绝不复用MAIN内容hash。
+先物化/解析MAIN，再派生控制；这不执行MAIN方法，也不改变D05的引擎执行顺序。
+
+canonical语义对象只接受ASCII字符串、精确整数、bool/null、array/object；不接受浮点。
+Rational为最简`{numerator:十进制字符串,denominator:正十进制字符串}`，0只用0/1，禁-0。
+表中的decimal词法先精确Decimal转分数，不经binary64。键ASCII排序、紧凑JSON、UTF-8、单LF，
+拒绝重复键和非ASCII身份。raw SHA计算实际文件原字节；语义SHA另算。运行payload单独使用
+Python3.12 binary64 JSON规范，不能与语义参数hash混称。golden fixtures不是生产输入。
+
+## D05 — 保留完整有限矩阵
+
+`P2_trial_matrix_draft_v2.json`逐条列出2520条trial，保留：
+
+- 18主条件×A/B=36配置，10个既有CALIBRATION seed；没有新seed。
+- 周期：light80/64、medium24/20、near12/10ms，两尺寸不变。
+- MAIN B1–B5共1800；H_ISOLATED B2和LOW_COMPETITION B2各360。
+- 1080计划输入，主360+控制720；最终条件选择后主输入180。
+- 每trial最多1个primary+1个注册replay，最大5040引擎调用；自动retry0。
+
+trial ID/wlref改为v2引用，config ID/seed/method/排序不变。workload内容hash与实际command仍null，
+这是未执行的符号计划，不是伪造的已完成证据。物化顺序MAIN→控制，与引擎控制→MAIN顺序分离。
+所有A/B都保存、运行资格检查，不因为最终只选一个就删另一组。B2仍为焦点参考，五基线职责不变。
+诊断只是离线分析：每完整view最多1296映射，每映射最多36节点，最多42日历区间；不额外调用引擎。
+这些是组合上界，不是已测成本或可承受性证明。工程timing预算0、NOT_FROZEN，不隐式移除其前提。
+
+## D06 — 总分类、选择与可行性
+
+`P2_stage_state_contract_v2.json#/load_classification`为精确谓词来源：
+REGISTERED→完整运行集→输入/trace/metric/replay有效→控制资格→本身declared target-load匹配→
+ELIGIBLE或INELIGIBLE→先A后B→SELECTED_ALL_18或NO_ELIGIBLE_CONDITION。
+一个候选符合另一档压力不等于符合自身目标，禁止换标签、clamp或删seed。
+
+压力p_seed先取每资源[0,W)busy区间精确测度/W的最大值，再对10seed平均。H/L DMR各先逐run
+按组计数再对seed平均。light p∈[0,.5)、H/L均值≤.01；medium p∈[.5,.8)；near p∈[.8,1]，
+后两H均值∈[.01,.80]且每seed至少一个节点在data-ready之后有正的实际资源busy等待。
+不把policy idle wait全部当资源忙。压力三段对有效p互斥穷尽；其他谓词可拒绝全部，保留OFF_TARGET。
+
+所有10seed的H-only与LOW控制分别无服务重叠且所需组按原deadline完成才有资格。合法控制miss
+或无隔离见证是有效负面、配置INELIGIBLE，继续既定trial；控制变换不合法、缺组、非法trace、
+缺失/非有限统计、hash/重放不符是INVALID/INCOMPLETE，停止整个计划，不当作零机会。
+
+天然不可行证书使用**离线私有真实代价**，不能进scheduler或M1R。数学实数下界与实际计算分开：
+先取compatible实际duration最小值m、合法资源对通信最小值c。计算版使用与现引擎相同分组的
+binary64 RN64：根从真实arrival开始；R_v=max(arrival,max_pred RN64(B_pred+c_min))；
+B_v=RN64(R_v+m_v)。与RN64(arrival+relative_deadline)比较，只有严格大于才CERTIFIED_NATURALLY_INFEASIBLE。
+等号不证不可行；B≤deadline不证可行；B2控制miss不证所有调度皆不可行。有限非负RN64单调，
+同分组归纳得B_v≤合法执行finish；溢出/NaN直接拒绝，不用任意epsilon或相对时间减法补救。
+控制成功只证明改到达控制的见证，不证明MAIN或原H-only流的可调度性。
+
+选型后的CI是同校准seed、同选中配置下的条件性描述；不创造独立确认数据，也不更换CI算法。
+
+## D07 — M1历史范围与M1R_PATH_V2
+
+旧`M1_READY_PREFIX_V1`保持原定义/源hash，只是历史诊断。它的阴性不能否定remaining-H-path
+稀缺资源机制。本版拟议stage观察器为`M1R_PATH_V2`，精确规范见`P2_diagnostic_spec_v2.json`。
+
+E的在域状态：至少一个dependency-ready未开始节点，且至少一个已到达H服务有未开始节点。
+先按原B2顺序选最多4 ready任务；保留原§44的2–4 ready oracle范围：只有1 ready时记覆盖不足，
+不把它当零机会或执行单任务oracle。K不必含ready H，目标H可以是正在运行前驱之后的公开后继。
+目标最多两个H服务，事先按deadline/service ID选定；各完整公开DAG最多16节点。
+
+初始日历只固定可见running任务的估计释放，不查看真实finish。若任何busy任务elapsed≥estimate，
+不能为已知仍busy的单元编造now释放；记覆盖不足，不加epsilon或看队列。
+K固定顺序，枚举兼容映射≤6^4。基准用同有理算术的greedy EFT。K间及可见running日历都固定。
+随后对选中H服务的全部未放置节点作固定Kahn顺序、deadline/service/node ties和EFT gap插入，
+只投影已到达公开图。后继只作为预测，不冒充actual completed，不做suffix组合优化。
+两个target+K总计≤36个投影节点，当前running上下文≤6；没有未来到达、真值或反馈到实际B2。
+
+局部L约束改为K内每个L节点finish≤max(基准该节点finish,该服务absolute deadline)。这是新增
+诊断slack规则，不是全局L-P95 1.10预算，也不证明L整个DAG结束不劣化。目标是选中H服务
+投影完成时刻均值最小，同分按K资源向量字典序。最优枚举包含基准；b为基准H均值finish-now，
+o为最优对应值；Δ=b-o≥0ms，g=Δ/b。全部来自公共binary64值的精确有理运算，区别于runtime浮点。
+
+FULL：ready全部落在2..4内、所有pending H服务≤2、DAG/日历/枚举完整、running释放可预测。
+截断、单ready或估计过期：COVERAGE_INSUFFICIENT；可存有限子空间描述，但不计hit或率，不补零。
+真正g=0只表示该完整测试空间无改善；0<g<tau为低于实质cutoff，不与零混称。
+缺snapshot/非法/独立复算不符是INCOMPLETE/INVALID证据并闭锁，不是合法覆盖不足。
+
+非科学§32解释例：K含H前驱2与L可选NPU6/CPU6.5；固定suffix含H的NPU4，故投影完成10对6，
+而新局部L cap=max(6,12)=12容纳6.5。只是检查机制定义能覆盖已登记解释，不是科学结果或CI。
+
+M2仍为相同输入B1/B3/B4/B5相对B2的H-DMR、L-P95、资源等待等配对描述；不作为独立因果
+mapping证据。旧M1不进入v2门禁，不声称M1R或M2验证了候选，也没有提出online候选公式。
+
+## D08 — 同单位的覆盖与三态
+
+`P2_criterion_spec_v2.json`及配套decision table为唯一判据提案。FINE(tau=.01,f=.01)、
+COARSE(.05,.05)，稳定8/10、阴性≤2/10均保留候选数值，未选择、无默认，目标观测量已改变。
+新增拟议覆盖要求：每seed/condition支持至少4/5，阴性必须1。它们不来自文献或H/L门槛。
+
+E=完整primary MAIN-B2 stream中唯一在域状态数；F=FULL状态数；p=hits/F，coverage=F/E。
+E或F=0则p未定义，不能写0；部分覆盖从p排除但在E保留，不悄悄消失。120个seed/loaded-condition
+单元均须满足相应覆盖，且无缺失无效记录。共同seed-index paired bootstrap保持10,000/
+20261018/type7不变；只分析seed p，不按view/node/100服务当独立样本；选中校准CI仍为描述。
+
+支持：全部12条件CI下端≥f且各有≥8seed p≥f，全部coverage≥4/5。
+不支持：全部coverage=1且全部12条件CI上端<f、各≤2seed p≥f。
+其余INCONCLUSIVE；missing/invalid/incomplete不能当阴性。没有执行时仍NOT_EVALUATED。
+阴性只是不支持此注册有界公共预测观察器下的稳定机会，按协议停止推进；不证明所有策略、
+所有未观察未来或无限时域都没有mapping机制。固定suffix/局部L/截断可能损失覆盖，必须披露。
+
+## D09 — 无环首物化、恢复与出口
+
+R1仍推荐：未来唯一正式calibration入口。现行入口仍未实现，本轮未调用。
+完整顺序、21种preimage及恢复表见runner/schema文档和报告identity_dependency_graph。
+
+先审批不可变blueprint、符号execution plan及显式生成/执行授权；以已知descriptor/authorization
+hash取得input lock，才能物化。MAIN先生成并验证解析，控制再派生；resolution receipt不改蓝图。
+然后发布稳定内容workload ID，计算semantic argv、run/attempt ID、run锁，再pre-invocation守卫。
+实际执行后保存原始输出，独立trace/metrics及注册replay，最后原子COMPLETE。
+预调用守卫才要求resolved输入；首个生成守卫只要求已批蓝图/源/seed/授权，不能提前索要未来payload。
+
+任何中断保留append-only证据；完整输出精确核验才复用，失败/不完整不自动续写或重试。
+新attempt/重跑预算需另行明确登记，当前自动retry0；replay是原计划的一次验证，不是救结果重试。
+P2相关源码洁净并已提交仍为待批工程要求，不冒充既有合同已经强制。
+
+execution COMPLETE、integrity、identity、selection、diagnostic、mapping、timing和progression
+分别记录。有效阴性可执行完整但不能推进；任一未知/缺失/未冻结闭锁。未来拟议orchestrator
+code0也只表示其全部前提满足，绝不提供下一阶段授权；子进程实际code另存，不伪造0。
+当前timing为NOT_FROZEN，故即使未来这份calibration-only清单完整且观察器支持，仍不得以此
+宣称完整P2工程协议完成。原2ms目标保留，未测量。
+
+## D10 — typed科学家族与P1隔离
+
+S2仍推荐但未批准：未来新scientific输入/trace/receipt家族与显式adapter。精确字段在typed
+schema中，实际实例尚未创建。原P1 schema_version1和HAND_AUTHORED_CORRECTNESS_FIXTURE
+字节/样本身份保持；不改名包装为科学样本。合法科学出生要求批准generator真实过程、
+descriptor、MAIN/control父关系、raw/semantic hashes和独立解析验证，origin字符串不足。
+
+控制唯一N/A token=`NOT_APPLICABLE_CONTROL`。MAIN精确100/50H50L，H-only50H，LOW100/50H50L。
+仅H-only的L组可N/A且数值null；主输入缺组是INVALID。makespan=max实际finish，与observation_end
+分别命名，不替换既有指标。future source/adapter变更后须重跑原64测试、45正trace/20负trace
+及信息边界/失败关闭测试；静态schema成功不证明这些行为，也不能继承旧P1哈希。
+
+## 审批、参数与停止
+
+`P2_scientific_parameter_registry_v2.json`保持SP01–SP32映射，新增拆出的SP33–SP40，共40组。
+没有删除或合并。每组记录v1规则、v2规则、原因、finding与审批状态；这是参数/规则组，非40个标量。
+D01–D10全部UNAPPROVED。新增科学假设和工程接口均未激活。v2只成为最新待审草案索引，不成为
+现行批准合同。静态设计检查不能证明科学有效、runtime正确、硬件真实性或统计支持。
+本轮完成文档交付即停止；下一安全动作只有人工审阅v2具体选项/值/风险并明确记录决定。
+

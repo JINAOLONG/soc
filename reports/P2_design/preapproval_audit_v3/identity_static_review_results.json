@@ -1,0 +1,850 @@
+{
+  "review_kind": "FRESH_ADVERSARIAL_REPORT_ONLY_SAME_ASSISTANT",
+  "scientific_workloads_generated": 0,
+  "scientific_workloads_run": 0,
+  "new_seeds_generated": false,
+  "locks_or_runners_implemented": false,
+  "runtime_tests_executed": false,
+  "observation_assertions_passed": 47,
+  "observation_assertions_failed": 0,
+  "acceptance_note": "Observation checks include confirmed unresolved defects; zero assertion failures is not design acceptance.",
+  "checks": [
+    {
+      "id": "ID-GRAPH-ACYCLIC",
+      "observation_assertion": "PASS",
+      "detail": {
+        "nodes": 35,
+        "edges": 40,
+        "topological_order": [
+          "frozen_source",
+          "approved_blueprint",
+          "approved_symbolic_execution_plan",
+          "main_descriptor",
+          "explicit_generation_execution_authorization",
+          "control_descriptor",
+          "main_input_lock",
+          "control_input_lock",
+          "main_generation_attempt",
+          "control_generation_attempt",
+          "main_materialization",
+          "main_generation_receipt",
+          "main_materialized_content_ID",
+          "main_independent_input_validation",
+          "main_resolution_receipt",
+          "control_derivation",
+          "control_generation_receipt",
+          "control_materialized_content_ID",
+          "control_independent_input_validation",
+          "control_resolution_receipt",
+          "resolved_workload_ID",
+          "semantic_worker_argv",
+          "run_ID",
+          "attempt_ID",
+          "run_lock",
+          "pre_invocation_guard",
+          "actual_primary_execution",
+          "raw_output_preservation",
+          "independent_trace_validation",
+          "independent_metrics",
+          "registered_replay",
+          "atomic_trial_COMPLETE",
+          "B2_only_selection_all18",
+          "diagnostic_classification",
+          "P2_gate_status"
+        ]
+      }
+    },
+    {
+      "id": "ID-GRAPH-UNIQUE",
+      "observation_assertion": "PASS",
+      "detail": "No duplicate graph nodes or edges"
+    },
+    {
+      "id": "ID-VARIANT-UNION",
+      "observation_assertion": "PASS",
+      "detail": "For MAIN use main_resolution_receipt branch; controls additionally require resolved MAIN before derivation. Diagram union DAG does not mean MAIN depends on control resolution."
+    },
+    {
+      "id": "ID-REGISTRY-EXACT21",
+      "observation_assertion": "PASS",
+      "detail": [
+        "BLUEPRINT_PREIMAGE",
+        "EXECUTION_PLAN_PREIMAGE",
+        "INPUT_DESCRIPTOR_PREIMAGE",
+        "EXECUTION_AUTH_PREIMAGE",
+        "GENERATION_AUTH_PREIMAGE",
+        "INPUT_LOCK_PREIMAGE",
+        "GENERATION_ATTEMPT_PREIMAGE",
+        "GENERATION_RECEIPT_PREIMAGE",
+        "MATERIALIZED_INPUT_PREIMAGE",
+        "INPUT_RESOLUTION_PREIMAGE",
+        "WORKLOAD_PREIMAGE",
+        "SEMANTIC_ARGV_PREIMAGE",
+        "RUN_PREIMAGE",
+        "ATTEMPT_PREIMAGE",
+        "RUN_LOCK_PREIMAGE",
+        "DENOMINATOR_SCOPE_PREIMAGE",
+        "STATE_KEY_PREIMAGE",
+        "REPLAY_PREIMAGE",
+        "COMPLETION_PREIMAGE",
+        "SOURCE_BUNDLE_PREIMAGE",
+        "ENVIRONMENT_PREIMAGE"
+      ]
+    },
+    {
+      "id": "ID-INDEPENDENT-TYPE-DAG",
+      "observation_assertion": "PASS",
+      "detail": {
+        "order": [
+          "SOURCE_BUNDLE_PREIMAGE",
+          "ENVIRONMENT_PREIMAGE",
+          "BLUEPRINT_PREIMAGE",
+          "EXECUTION_PLAN_PREIMAGE",
+          "INPUT_DESCRIPTOR_PREIMAGE",
+          "EXECUTION_AUTH_PREIMAGE",
+          "MATERIALIZED_INPUT_PREIMAGE",
+          "GENERATION_AUTH_PREIMAGE",
+          "WORKLOAD_PREIMAGE",
+          "INPUT_LOCK_PREIMAGE",
+          "SEMANTIC_ARGV_PREIMAGE",
+          "GENERATION_ATTEMPT_PREIMAGE",
+          "RUN_PREIMAGE",
+          "GENERATION_RECEIPT_PREIMAGE",
+          "ATTEMPT_PREIMAGE",
+          "INPUT_RESOLUTION_PREIMAGE",
+          "RUN_LOCK_PREIMAGE",
+          "DENOMINATOR_SCOPE_PREIMAGE",
+          "REPLAY_PREIMAGE",
+          "COMPLETION_PREIMAGE",
+          "STATE_KEY_PREIMAGE"
+        ],
+        "scope": "Type-level hash dependencies; parent MAIN/control edges and real byte availability reviewed separately"
+      }
+    },
+    {
+      "id": "ID-CLOSED-BLUEPRINT_PREIMAGE",
+      "observation_assertion": "PASS",
+      "detail": {
+        "fields": [
+          "namespace",
+          "schema_version",
+          "generator_version",
+          "generator_source_sha256",
+          "model_contract_sha256",
+          "template_content_sha256",
+          "resource_content_sha256",
+          "communication_content_sha256",
+          "generation_rules_sha256",
+          "config_table_sha256",
+          "seed_metadata_raw_sha256",
+          "calibration_allowlist_semantic_sha256",
+          "allowed_partition"
+        ],
+        "registry_ref": "#/$defs/BLUEPRINT_PREIMAGE"
+      }
+    },
+    {
+      "id": "ID-CLOSED-EXECUTION_PLAN_PREIMAGE",
+      "observation_assertion": "PASS",
+      "detail": {
+        "fields": [
+          "namespace",
+          "schema_version",
+          "blueprint_sha256",
+          "symbolic_trial_roster_sha256",
+          "method_source_bindings_sha256",
+          "statistical_protocol_sha256",
+          "metric_spec_sha256",
+          "observer_spec_sha256",
+          "stage_contract_sha256",
+          "definition_approval_evidence_sha256"
+        ],
+        "registry_ref": "#/$defs/EXECUTION_PLAN_PREIMAGE"
+      }
+    },
+    {
+      "id": "ID-CLOSED-INPUT_DESCRIPTOR_PREIMAGE",
+      "observation_assertion": "PASS",
+      "detail": {
+        "fields": [
+          "namespace",
+          "schema_version",
+          "blueprint_sha256",
+          "partition",
+          "actual_seed_decimal_string",
+          "scenario",
+          "condition_id",
+          "config_id",
+          "load",
+          "size",
+          "control_variant",
+          "parent_main_descriptor_sha256"
+        ],
+        "registry_ref": "#/$defs/INPUT_DESCRIPTOR_PREIMAGE"
+      }
+    },
+    {
+      "id": "ID-CLOSED-EXECUTION_AUTH_PREIMAGE",
+      "observation_assertion": "PASS",
+      "detail": {
+        "fields": [
+          "namespace",
+          "schema_version",
+          "blueprint_sha256",
+          "execution_plan_sha256",
+          "source_bundle_sha256",
+          "authorization_evidence_raw_sha256",
+          "authority_id",
+          "issued_at_utc",
+          "partition",
+          "max_materialization_attempts",
+          "max_primary_engine_invocations",
+          "max_replay_engine_invocations",
+          "automatic_retry_budget"
+        ],
+        "registry_ref": "#/$defs/EXECUTION_AUTH_PREIMAGE"
+      }
+    },
+    {
+      "id": "ID-CLOSED-GENERATION_AUTH_PREIMAGE",
+      "observation_assertion": "PASS",
+      "detail": {
+        "fields": [
+          "namespace",
+          "schema_version",
+          "blueprint_sha256",
+          "execution_plan_sha256",
+          "input_descriptor_sha256",
+          "execution_authorization_sha256",
+          "authorization_evidence_raw_sha256",
+          "max_generation_attempts"
+        ],
+        "registry_ref": "#/$defs/GENERATION_AUTH_PREIMAGE"
+      }
+    },
+    {
+      "id": "ID-CLOSED-INPUT_LOCK_PREIMAGE",
+      "observation_assertion": "PASS",
+      "detail": {
+        "fields": [
+          "namespace",
+          "schema_version",
+          "blueprint_sha256",
+          "input_descriptor_sha256",
+          "generation_authorization_sha256"
+        ],
+        "registry_ref": "#/$defs/INPUT_LOCK_PREIMAGE"
+      }
+    },
+    {
+      "id": "ID-CLOSED-GENERATION_ATTEMPT_PREIMAGE",
+      "observation_assertion": "PASS",
+      "detail": {
+        "fields": [
+          "namespace",
+          "schema_version",
+          "input_descriptor_sha256",
+          "generation_authorization_sha256",
+          "input_lock_sha256",
+          "ordinal"
+        ],
+        "registry_ref": "#/$defs/GENERATION_ATTEMPT_PREIMAGE"
+      }
+    },
+    {
+      "id": "ID-CLOSED-GENERATION_RECEIPT_PREIMAGE",
+      "observation_assertion": "PASS",
+      "detail": {
+        "fields": [
+          "namespace",
+          "schema_version",
+          "blueprint_sha256",
+          "input_descriptor_sha256",
+          "generation_authorization_sha256",
+          "generation_attempt_id",
+          "payload_content_sha256",
+          "payload_raw_sha256",
+          "payload_raw_ref",
+          "pre_round_estimates_ref",
+          "process"
+        ],
+        "registry_ref": "#/$defs/GENERATION_RECEIPT_PREIMAGE"
+      }
+    },
+    {
+      "id": "ID-CLOSED-MATERIALIZED_INPUT_PREIMAGE",
+      "observation_assertion": "PASS",
+      "detail": {
+        "fields": [
+          "namespace",
+          "schema_version",
+          "input_descriptor_sha256",
+          "payload_content_sha256",
+          "parent_main_payload_content_sha256"
+        ],
+        "registry_ref": "#/$defs/MATERIALIZED_INPUT_PREIMAGE"
+      }
+    },
+    {
+      "id": "ID-CLOSED-INPUT_RESOLUTION_PREIMAGE",
+      "observation_assertion": "PASS",
+      "detail": {
+        "fields": [
+          "namespace",
+          "schema_version",
+          "blueprint_sha256",
+          "input_descriptor_sha256",
+          "materialized_input_id",
+          "payload_content_sha256",
+          "payload_raw_sha256",
+          "generation_receipt_id",
+          "input_validation_report_sha256",
+          "parent_main_resolution_id",
+          "control_transform_report_sha256"
+        ],
+        "registry_ref": "#/$defs/INPUT_RESOLUTION_PREIMAGE"
+      }
+    },
+    {
+      "id": "ID-CLOSED-WORKLOAD_PREIMAGE",
+      "observation_assertion": "PASS",
+      "detail": {
+        "fields": [
+          "namespace",
+          "schema_version",
+          "blueprint_sha256",
+          "input_descriptor_sha256",
+          "materialized_input_id",
+          "payload_content_sha256"
+        ],
+        "registry_ref": "#/$defs/WORKLOAD_PREIMAGE"
+      }
+    },
+    {
+      "id": "ID-CLOSED-SEMANTIC_ARGV_PREIMAGE",
+      "observation_assertion": "PASS",
+      "detail": {
+        "fields": [
+          "namespace",
+          "schema_version",
+          "worker_protocol",
+          "worker_source_sha256",
+          "role",
+          "method_id",
+          "workload_id",
+          "semantic_options"
+        ],
+        "registry_ref": "#/$defs/SEMANTIC_ARGV_PREIMAGE"
+      }
+    },
+    {
+      "id": "ID-CLOSED-RUN_PREIMAGE",
+      "observation_assertion": "PASS",
+      "detail": {
+        "fields": [
+          "namespace",
+          "schema_version",
+          "execution_plan_sha256",
+          "trial_id",
+          "workload_id",
+          "method_id",
+          "source_bundle_sha256",
+          "environment_semantic_sha256",
+          "primary_semantic_argv_sha256",
+          "observer_spec_sha256",
+          "validator_identity_sha256",
+          "metric_spec_sha256",
+          "replay_protocol_sha256"
+        ],
+        "registry_ref": "#/$defs/RUN_PREIMAGE"
+      }
+    },
+    {
+      "id": "ID-CLOSED-ATTEMPT_PREIMAGE",
+      "observation_assertion": "PASS",
+      "detail": {
+        "fields": [
+          "namespace",
+          "schema_version",
+          "run_id",
+          "execution_authorization_sha256",
+          "ordinal"
+        ],
+        "registry_ref": "#/$defs/ATTEMPT_PREIMAGE"
+      }
+    },
+    {
+      "id": "ID-CLOSED-RUN_LOCK_PREIMAGE",
+      "observation_assertion": "PASS",
+      "detail": {
+        "fields": [
+          "namespace",
+          "schema_version",
+          "run_id",
+          "attempt_id"
+        ],
+        "registry_ref": "#/$defs/RUN_LOCK_PREIMAGE"
+      }
+    },
+    {
+      "id": "ID-CLOSED-DENOMINATOR_SCOPE_PREIMAGE",
+      "observation_assertion": "PASS",
+      "detail": {
+        "fields": [
+          "namespace",
+          "schema_version",
+          "run_id",
+          "primary_attempt_id",
+          "observer_spec_sha256"
+        ],
+        "registry_ref": "#/$defs/DENOMINATOR_SCOPE_PREIMAGE"
+      }
+    },
+    {
+      "id": "ID-CLOSED-STATE_KEY_PREIMAGE",
+      "observation_assertion": "PASS",
+      "detail": {
+        "fields": [
+          "namespace",
+          "schema_version",
+          "denominator_scope_sha256",
+          "state_sha256"
+        ],
+        "registry_ref": "#/$defs/STATE_KEY_PREIMAGE"
+      }
+    },
+    {
+      "id": "ID-CLOSED-REPLAY_PREIMAGE",
+      "observation_assertion": "PASS",
+      "detail": {
+        "fields": [
+          "namespace",
+          "schema_version",
+          "run_id",
+          "primary_attempt_id",
+          "primary_trace_sha256",
+          "replay_protocol_sha256",
+          "ordinal"
+        ],
+        "registry_ref": "#/$defs/REPLAY_PREIMAGE"
+      }
+    },
+    {
+      "id": "ID-CLOSED-COMPLETION_PREIMAGE",
+      "observation_assertion": "PASS",
+      "detail": {
+        "fields": [
+          "namespace",
+          "schema_version",
+          "run_id",
+          "attempt_id",
+          "primary_process_result_raw_sha256",
+          "input_resolution_receipt_sha256",
+          "trace_validation_report_sha256",
+          "metric_comparison_sha256",
+          "replay_comparison_sha256",
+          "artifact_inventory_sha256",
+          "completion_status"
+        ],
+        "registry_ref": "#/$defs/COMPLETION_PREIMAGE"
+      }
+    },
+    {
+      "id": "ID-CLOSED-SOURCE_BUNDLE_PREIMAGE",
+      "observation_assertion": "PASS",
+      "detail": {
+        "fields": [
+          "namespace",
+          "schema_version",
+          "source_commit",
+          "source_files",
+          "dependency_manifest_sha256",
+          "model_contract_sha256",
+          "dirty_policy"
+        ],
+        "registry_ref": "#/$defs/SOURCE_BUNDLE_PREIMAGE"
+      }
+    },
+    {
+      "id": "ID-CLOSED-ENVIRONMENT_PREIMAGE",
+      "observation_assertion": "PASS",
+      "detail": {
+        "fields": [
+          "namespace",
+          "schema_version",
+          "python_implementation",
+          "python_version",
+          "machine",
+          "platform",
+          "numeric_model",
+          "dependency_manifest_sha256",
+          "host_identity_sha256"
+        ],
+        "registry_ref": "#/$defs/ENVIRONMENT_PREIMAGE"
+      }
+    },
+    {
+      "id": "ID-REFS-RESOLVE",
+      "observation_assertion": "PASS",
+      "detail": {
+        "definitions": 61,
+        "references": 300
+      }
+    },
+    {
+      "id": "ID-INPUT-LOCK-PRECONTENT",
+      "observation_assertion": "PASS",
+      "detail": [
+        "namespace",
+        "schema_version",
+        "blueprint_sha256",
+        "input_descriptor_sha256",
+        "generation_authorization_sha256"
+      ]
+    },
+    {
+      "id": "ID-WORKLOAD-NO-SELF-FUTURE",
+      "observation_assertion": "PASS",
+      "detail": [
+        "namespace",
+        "schema_version",
+        "blueprint_sha256",
+        "input_descriptor_sha256",
+        "materialized_input_id",
+        "payload_content_sha256"
+      ]
+    },
+    {
+      "id": "ID-RUN-NO-ATTEMPT-ARGV",
+      "observation_assertion": "PASS",
+      "detail": [
+        "namespace",
+        "schema_version",
+        "execution_plan_sha256",
+        "trial_id",
+        "workload_id",
+        "method_id",
+        "source_bundle_sha256",
+        "environment_semantic_sha256",
+        "primary_semantic_argv_sha256",
+        "observer_spec_sha256",
+        "validator_identity_sha256",
+        "metric_spec_sha256",
+        "replay_protocol_sha256"
+      ]
+    },
+    {
+      "id": "ID-NO-HIDDEN-CLI-OPTIONS",
+      "observation_assertion": "PASS",
+      "detail": {
+        "entrypoint_proposed": "python -m soc.execution_worker_v2",
+        "currently_implemented": false,
+        "semantic_options": "Exactly empty array in v2; no extra ignored flags",
+        "engine_argv_template": [
+          "{verified_python}",
+          "-m",
+          "soc.execution_worker_v2",
+          "--role",
+          "{ENGINE_PRIMARY|ENGINE_REPLAY}",
+          "--input-envelope",
+          "{resolved_envelope_path}",
+          "--method",
+          "{method_id}",
+          "--workload-id",
+          "{workload_id}",
+          "--run-id",
+          "{run_id}",
+          "--attempt-id",
+          "{attempt_id}",
+          "--output-dir",
+          "{attempt_dir}"
+        ],
+        "replay_extra": [
+          "--replay-id",
+          "{replay_id}"
+        ],
+        "path_rule": "All paths deterministic within approved CALIBRATION root from already-known IDs, resolved against actual cwd; forbid path traversal/symlinks; all flags exact, reject extras. Actual argv retained independently of semantic hash.",
+        "generation_argv_template": [
+          "{verified_python}",
+          "-m",
+          "soc.execution_worker_v2",
+          "--role",
+          "{GENERATE_MAIN|DERIVE_CONTROL}",
+          "--blueprint",
+          "{approved_blueprint_path}",
+          "--descriptor",
+          "{descriptor_path}",
+          "--authorization",
+          "{generation_authorization_path}",
+          "--generation-attempt-id",
+          "{generation_attempt_id}",
+          "--output-dir",
+          "{generation_attempt_dir}"
+        ],
+        "control_extra": [
+          "--parent-main-resolution",
+          "{verified_parent_main_resolution_path}"
+        ],
+        "guard": "Private worker must apply the same source/approval/seed/descriptor guard even if called directly; absent/invalid authorization rejects before generating/invoking. No bypass CLI. Templates are proposed protocol, module currently absent."
+      }
+    },
+    {
+      "id": "ID-KEY-FIELDS-arrival_jitter",
+      "observation_assertion": "PASS",
+      "detail": {
+        "actual_field_count": 14,
+        "fields": [
+          "actual_seed_decimal_string",
+          "condition_id",
+          "config_id",
+          "counter",
+          "domain",
+          "edge_id",
+          "field",
+          "generator_version",
+          "resource_id",
+          "scenario",
+          "schema_version",
+          "service_group",
+          "service_slot",
+          "template_node_id"
+        ]
+      }
+    },
+    {
+      "id": "ID-KEY-BINDING-KINDS-arrival_jitter",
+      "observation_assertion": "PASS",
+      "detail": "Binding inspection only; no production key constructed or evaluated"
+    },
+    {
+      "id": "ID-KEY-CONTEXT-arrival_jitter",
+      "observation_assertion": "PASS",
+      "detail": "Every COPY source declared; no draw generated"
+    },
+    {
+      "id": "ID-KEY-FIELDS-service_role_factor",
+      "observation_assertion": "PASS",
+      "detail": {
+        "actual_field_count": 14,
+        "fields": [
+          "actual_seed_decimal_string",
+          "condition_id",
+          "config_id",
+          "counter",
+          "domain",
+          "edge_id",
+          "field",
+          "generator_version",
+          "resource_id",
+          "scenario",
+          "schema_version",
+          "service_group",
+          "service_slot",
+          "template_node_id"
+        ]
+      }
+    },
+    {
+      "id": "ID-KEY-BINDING-KINDS-service_role_factor",
+      "observation_assertion": "PASS",
+      "detail": "Binding inspection only; no production key constructed or evaluated"
+    },
+    {
+      "id": "ID-KEY-CONTEXT-service_role_factor",
+      "observation_assertion": "PASS",
+      "detail": "Every COPY source declared; no draw generated"
+    },
+    {
+      "id": "ID-KEY-FIELDS-duration_factor",
+      "observation_assertion": "PASS",
+      "detail": {
+        "actual_field_count": 14,
+        "fields": [
+          "actual_seed_decimal_string",
+          "condition_id",
+          "config_id",
+          "counter",
+          "domain",
+          "edge_id",
+          "field",
+          "generator_version",
+          "resource_id",
+          "scenario",
+          "schema_version",
+          "service_group",
+          "service_slot",
+          "template_node_id"
+        ]
+      }
+    },
+    {
+      "id": "ID-KEY-BINDING-KINDS-duration_factor",
+      "observation_assertion": "PASS",
+      "detail": "Binding inspection only; no production key constructed or evaluated"
+    },
+    {
+      "id": "ID-KEY-CONTEXT-duration_factor",
+      "observation_assertion": "PASS",
+      "detail": "Every COPY source declared; no draw generated"
+    },
+    {
+      "id": "ID-KEY-COUNT-DISCREPANCY-OBSERVED",
+      "observation_assertion": "PASS",
+      "detail": "LOW design documentation defect observed: actual 14 closed fields versus All15 prose; assertion PASS is NOT acceptance of defect"
+    },
+    {
+      "id": "ID-KEY-NO-METHOD-CONTROL",
+      "observation_assertion": "PASS",
+      "detail": "Method, scheduling and control identity excluded from generation key"
+    },
+    {
+      "id": "ID-CONTROL-INHERITANCE",
+      "observation_assertion": "PASS",
+      "detail": {
+        "service_set_for_G": "ALL 100 services in the resolved parent MAIN input, identically for both controls; never max over only retained H",
+        "G_exact": "ceil(max over parent100 services g of [sum_v max_r(11/10 * E_exact(g,v,r)) + sum_edges max_over_all9_pairs(L_exact+b_exact/B_exact) + D_exact(g)]) +1 ms",
+        "G_inputs": "E_exact and D_exact are pre-binary64 values in parent generation sidecar with hash; edge/network proposed decimals parsed exactly. No new draws and no scheduler truth access.",
+        "G_rounding": "All operations Rational; ceil only once then+1 integer ms. Control arrival k*G is converted exactly to binary64 in the finite registered range; independently verify interval isolation, never assume feasibility from G.",
+        "H_ISOLATED": "retain parent50 H services with identical service/node IDs, complete per-resource estimate/realized bit patterns, edges and relative-deadline bits; remove L; order retained H by original integer slot; kth arrival=k*G, k=0..49",
+        "LOW_COMPETITION": "retain all100 services; order original slot then H before L; kth arrival=k*G,k=0..99; all other retained bytes identical to parent",
+        "parent_materialization_order": "Resolve parent MAIN first without executing its method; then derive/resolve controls. Engine execution order remains H_ISOLATED B2, LOW_COMPETITION B2, MAIN B1..B5.",
+        "no_overlap": "Qualification requires max finish of each control service <= next control arrival and each required group meets original deadlines; failure of this witness is not universal infeasibility or engine correctness failure.",
+        "label": "NOT_APPLICABLE_CONTROL",
+        "parent_identity": "Input descriptor for control references pre-known MAIN descriptor hash; actual derivation references independently verified MAIN resolution receipt after it exists.",
+        "actual_G": "NOT_COMPUTED_NO_REALIZATION"
+      }
+    },
+    {
+      "id": "ID-G-EXACT-SIDECAR",
+      "observation_assertion": "PASS",
+      "detail": "G definition inspected, not evaluated"
+    },
+    {
+      "id": "ID-PRIMARY-REPLAY-RETRY-BUDGET",
+      "observation_assertion": "PASS",
+      "detail": "Declared metadata budget inspected; actual engine calls zero"
+    },
+    {
+      "id": "ID-AUTH-LOCK-SEPARATION-OBSERVED",
+      "observation_assertion": "PASS",
+      "detail": {
+        "classification": "HAND_AUTHORED_NON_SCIENTIFIC_METADATA_ONLY",
+        "authorization_scope": "NONE; fake digests and deliberately nonproduction labels",
+        "input_lock_preimages": [
+          {
+            "namespace": "soc.p2.input-lock.v2",
+            "schema_version": 2,
+            "blueprint_sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+            "input_descriptor_sha256": "2222222222222222222222222222222222222222222222222222222222222222",
+            "generation_authorization_sha256": "3333333333333333333333333333333333333333333333333333333333333333"
+          },
+          {
+            "namespace": "soc.p2.input-lock.v2",
+            "schema_version": 2,
+            "blueprint_sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+            "input_descriptor_sha256": "2222222222222222222222222222222222222222222222222222222222222222",
+            "generation_authorization_sha256": "4444444444444444444444444444444444444444444444444444444444444444"
+          }
+        ],
+        "input_lock_digests": [
+          "304df0dbda94ce2eeb3c04df5fad4e071fe4d6fb6df69e8cb3442e199a87ebd1",
+          "04c2463c48cadf0278df9707546cfb494c691ea8c6a81ea30d8f70fcf37ab682"
+        ],
+        "attempt_preimages": [
+          {
+            "namespace": "soc.p2.attempt-identity.v2",
+            "schema_version": 2,
+            "run_id": "NONSCIENTIFIC-AUDIT-EXAMPLE-RUN",
+            "execution_authorization_sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+            "ordinal": 1
+          },
+          {
+            "namespace": "soc.p2.attempt-identity.v2",
+            "schema_version": 2,
+            "run_id": "NONSCIENTIFIC-AUDIT-EXAMPLE-RUN",
+            "execution_authorization_sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+            "ordinal": 1
+          }
+        ],
+        "run_lock_preimages": [
+          {
+            "namespace": "soc.p2.run-lock.v2",
+            "schema_version": 2,
+            "run_id": "NONSCIENTIFIC-AUDIT-EXAMPLE-RUN",
+            "attempt_id": "NONSCIENTIFIC-ATTEMPT:f864254d4ee615a5aa3328099806fc24f1dbdfba383ad056a24eb9a53ba09aa7"
+          },
+          {
+            "namespace": "soc.p2.run-lock.v2",
+            "schema_version": 2,
+            "run_id": "NONSCIENTIFIC-AUDIT-EXAMPLE-RUN",
+            "attempt_id": "NONSCIENTIFIC-ATTEMPT:89ee099d8e64fb84db4a3c5e58a124f4ef84538408b5297ab01af456971ec90c"
+          }
+        ],
+        "run_lock_digests": [
+          "ccb7b172d7ed65df9473b92b72d18215d989d4b0f33361ef989048007b1dbded",
+          "4c4ef9f8a04ebe600ba555222e9c28dc507a8df284b35e5d358bd83db4d24292"
+        ],
+        "proven": "Distinct authorization references distinguish lock identities despite same semantic descriptor/run",
+        "not_proven": "No actual lock acquisition or execution attempted; schema does not state that lock digest is storage exclusion key"
+      }
+    },
+    {
+      "id": "ID-ACTUAL-GIT-FIELD-GAP-OBSERVED",
+      "observation_assertion": "PASS",
+      "detail": {
+        "known_fields": [
+          "actual_seed_decimal_string",
+          "argv_actual",
+          "attempt_id",
+          "completion_status",
+          "condition_id",
+          "config_id",
+          "control_variant",
+          "cwd",
+          "dependency_manifest_sha256",
+          "dirty_policy",
+          "ended_at_utc",
+          "error_records",
+          "exception",
+          "execution_plan_sha256",
+          "exit_code",
+          "host_identity_sha256",
+          "input_envelope_ref",
+          "method_id",
+          "metric_derivation",
+          "model_contract_sha256",
+          "monotonic_elapsed_ns",
+          "namespace",
+          "partition",
+          "planned_at_utc",
+          "process",
+          "process_started",
+          "raw_artifacts",
+          "replay",
+          "run_id",
+          "scenario",
+          "schema_version",
+          "signal",
+          "source_bundle_sha256",
+          "source_commit",
+          "source_files",
+          "started_at_utc",
+          "stderr",
+          "stdout",
+          "termination_kind",
+          "trace_validation",
+          "trial_id",
+          "workload_id"
+        ],
+        "frozen_source_commit_present": true,
+        "raw_artifacts_items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ARTIFACT_REF"
+          }
+        },
+        "limitation": "Prose requires actual execution HEAD; no exact required field or mandatory typed raw-artifact kind binds it"
+      }
+    }
+  ]
+}

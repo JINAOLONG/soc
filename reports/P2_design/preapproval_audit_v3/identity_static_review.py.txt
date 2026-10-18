@@ -1,0 +1,199 @@
+"""Report-only identity design inspection; no soc imports, seeds, generation or execution.
+
+Synthetic hash examples below contain only arbitrary metadata digests and explicitly
+non-scientific run labels. They are NOT production identities or authorized inputs.
+"""
+from pathlib import Path
+import collections
+import hashlib
+import json
+import re
+
+R = Path('/workspace/soc')
+O = R / 'reports/P2_design/preapproval_audit_v3'
+P = 'docs/P2_design/v2/'
+sources = [
+    'AGENTS.md', 'STATUS.md', 'docs/user_request.txt', 'docs/research_contract.md',
+    'docs/model_spec.md', 'docs/workload_spec.md',
+    'docs/P2_design/P2_complete_design_proposal_v1.md',
+    'docs/P2_design/P2_generation_spec_v1.json',
+    'docs/P2_design/P2_runner_schema_review_v1.md',
+    P + 'P2_complete_design_proposal_v2.md',
+    P + 'P2_generation_spec_v2.json', P + 'P2_typed_identity_schema_v2.json',
+    P + 'P2_runner_schema_review_v2.md', P + 'P2_stage_state_contract_v2.json',
+    'reports/P2_design/design_revision_v2/identity_dependency_graph.json',
+    'reports/P2_design/design_revision_v2/human_decision_packet.md',
+    'reports/P2_design/independent_review_v2/findings.json',
+    'reports/P2_design/independent_review_v2/required_changes.md',
+    'reports/P2_design/independent_review_v2/executive_decision.md',
+]
+
+def digest(b):
+    return hashlib.sha256(b).hexdigest()
+
+def reject_duplicate_pairs(pairs):
+    d = {}
+    for k, v in pairs:
+        if k in d:
+            raise ValueError('duplicate JSON key: ' + k)
+        d[k] = v
+    return d
+
+texts = {}
+reads = []
+for p in sources:
+    b = (R / p).read_bytes()
+    texts[p] = b.decode('utf-8')
+    if p.endswith('.json'):
+        json.loads(texts[p], object_pairs_hook=reject_duplicate_pairs)
+    reads.append(dict(path=p, sha256=digest(b), size_bytes=len(b),
+                      line_count=len(texts[p].splitlines()),
+                      json_fully_parsed=p.endswith('.json'),
+                      read_scope='ALL_BYTES_READ_AND_HASHED; identity-focused substantive review; all JSON sources fully parsed'))
+
+def parse(p):
+    return json.loads(texts[p], object_pairs_hook=reject_duplicate_pairs)
+
+s = parse(P + 'P2_typed_identity_schema_v2.json')
+g = parse(P + 'P2_generation_spec_v2.json')
+t = parse(P + 'P2_stage_state_contract_v2.json')
+d = s['$defs']
+graph = parse('reports/P2_design/design_revision_v2/identity_dependency_graph.json')
+checks = []
+
+def check(name, condition, detail):
+    checks.append(dict(id=name, observation_assertion='PASS' if condition else 'FAIL', detail=detail))
+
+def topo(nodes, edges):
+    outgoing = {n: [] for n in nodes}
+    indegree = {n: 0 for n in nodes}
+    for a, b in edges:
+        outgoing[a].append(b)
+        indegree[b] += 1
+    q = collections.deque(n for n in nodes if indegree[n] == 0)
+    order = []
+    while q:
+        a = q.popleft()
+        order.append(a)
+        for b in outgoing[a]:
+            indegree[b] -= 1
+            if not indegree[b]: q.append(b)
+    return order
+
+edges = [(e['before'], e['after']) for e in graph['edges']]
+order = topo(graph['nodes'], edges)
+check('ID-GRAPH-ACYCLIC', len(order) == len(graph['nodes']),
+      dict(nodes=len(graph['nodes']), edges=len(edges), topological_order=order))
+check('ID-GRAPH-UNIQUE', len(set(graph['nodes'])) == len(graph['nodes']) and len(set(edges)) == len(edges),
+      'No duplicate graph nodes or edges')
+check('ID-VARIANT-UNION', 'MAIN' in graph['variant_branch'] and 'does not mean MAIN depends on control resolution' in graph['variant_branch'],
+      graph['variant_branch'])
+
+# Independent identity dependency inventory derived from the actual field lists.
+# External already-known definitions, source files and original raw outputs are leaves.
+deps = {
+ 'SOURCE_BUNDLE_PREIMAGE': [], 'ENVIRONMENT_PREIMAGE': [], 'BLUEPRINT_PREIMAGE': [],
+ 'EXECUTION_PLAN_PREIMAGE': ['BLUEPRINT_PREIMAGE'],
+ 'INPUT_DESCRIPTOR_PREIMAGE': ['BLUEPRINT_PREIMAGE'],
+ 'EXECUTION_AUTH_PREIMAGE': ['BLUEPRINT_PREIMAGE','EXECUTION_PLAN_PREIMAGE','SOURCE_BUNDLE_PREIMAGE'],
+ 'GENERATION_AUTH_PREIMAGE': ['BLUEPRINT_PREIMAGE','EXECUTION_PLAN_PREIMAGE','INPUT_DESCRIPTOR_PREIMAGE','EXECUTION_AUTH_PREIMAGE'],
+ 'INPUT_LOCK_PREIMAGE': ['BLUEPRINT_PREIMAGE','INPUT_DESCRIPTOR_PREIMAGE','GENERATION_AUTH_PREIMAGE'],
+ 'GENERATION_ATTEMPT_PREIMAGE': ['INPUT_DESCRIPTOR_PREIMAGE','GENERATION_AUTH_PREIMAGE','INPUT_LOCK_PREIMAGE'],
+ 'GENERATION_RECEIPT_PREIMAGE': ['BLUEPRINT_PREIMAGE','INPUT_DESCRIPTOR_PREIMAGE','GENERATION_AUTH_PREIMAGE','GENERATION_ATTEMPT_PREIMAGE'],
+ 'MATERIALIZED_INPUT_PREIMAGE': ['INPUT_DESCRIPTOR_PREIMAGE'],
+ 'INPUT_RESOLUTION_PREIMAGE': ['BLUEPRINT_PREIMAGE','INPUT_DESCRIPTOR_PREIMAGE','MATERIALIZED_INPUT_PREIMAGE','GENERATION_RECEIPT_PREIMAGE'],
+ 'WORKLOAD_PREIMAGE': ['BLUEPRINT_PREIMAGE','INPUT_DESCRIPTOR_PREIMAGE','MATERIALIZED_INPUT_PREIMAGE'],
+ 'SEMANTIC_ARGV_PREIMAGE': ['WORKLOAD_PREIMAGE'],
+ 'RUN_PREIMAGE': ['EXECUTION_PLAN_PREIMAGE','WORKLOAD_PREIMAGE','SOURCE_BUNDLE_PREIMAGE','ENVIRONMENT_PREIMAGE','SEMANTIC_ARGV_PREIMAGE'],
+ 'ATTEMPT_PREIMAGE': ['RUN_PREIMAGE','EXECUTION_AUTH_PREIMAGE'],
+ 'RUN_LOCK_PREIMAGE': ['RUN_PREIMAGE','ATTEMPT_PREIMAGE'],
+ 'DENOMINATOR_SCOPE_PREIMAGE': ['RUN_PREIMAGE','ATTEMPT_PREIMAGE'],
+ 'STATE_KEY_PREIMAGE': ['DENOMINATOR_SCOPE_PREIMAGE'],
+ 'REPLAY_PREIMAGE': ['RUN_PREIMAGE','ATTEMPT_PREIMAGE'],
+ 'COMPLETION_PREIMAGE': ['RUN_PREIMAGE','ATTEMPT_PREIMAGE','INPUT_RESOLUTION_PREIMAGE'],
+}
+registered = s['preimage_registry']
+check('ID-REGISTRY-EXACT21', len(registered) == 21 and set(deps) == set(registered), list(registered))
+dependency_order = topo(list(deps), [(v,k) for k,vs in deps.items() for v in vs])
+check('ID-INDEPENDENT-TYPE-DAG', len(dependency_order) == len(deps),
+      dict(order=dependency_order, scope='Type-level hash dependencies; parent MAIN/control edges and real byte availability reviewed separately'))
+for name in registered:
+    obj = d[name]
+    check('ID-CLOSED-' + name, obj.get('additionalProperties') is False and set(obj['required']) == set(obj['properties']),
+          dict(fields=list(obj['properties']), registry_ref=registered[name]['schema_ref']))
+
+refs = []
+def walk(v):
+    if isinstance(v, dict):
+        if '$ref' in v: refs.append(v['$ref'])
+        for x in v.values(): walk(x)
+    elif isinstance(v, list):
+        for x in v: walk(x)
+walk(s)
+check('ID-REFS-RESOLVE', all(x.startswith('#/$defs/') and x.split('/')[-1] in d for x in refs),
+      dict(definitions=len(d), references=len(refs)))
+check('ID-INPUT-LOCK-PRECONTENT', not any(x in d['INPUT_LOCK_PREIMAGE']['properties'] for x in ['payload_content_sha256','workload_id','run_id','attempt_id']),
+      list(d['INPUT_LOCK_PREIMAGE']['properties']))
+check('ID-WORKLOAD-NO-SELF-FUTURE', not any(x in d['WORKLOAD_PREIMAGE']['properties'] for x in ['workload_id','run_id','attempt_id','generation_receipt_id','resolution_receipt_id']),
+      list(d['WORKLOAD_PREIMAGE']['properties']))
+check('ID-RUN-NO-ATTEMPT-ARGV', not any(x in d['RUN_PREIMAGE']['properties'] for x in ['attempt_id','argv_actual','output_dir','completion_id']),
+      list(d['RUN_PREIMAGE']['properties']))
+check('ID-NO-HIDDEN-CLI-OPTIONS', d['SEMANTIC_ARGV_PREIMAGE']['properties']['semantic_options']['maxItems'] == 0,
+      s['worker_invocation_contract'])
+keyfields = set(d['KEY']['required'])
+for field, binding in g['key_bindings'].items():
+    check('ID-KEY-FIELDS-' + field, set(binding) == keyfields,
+          dict(actual_field_count=len(binding), fields=sorted(binding)))
+    check('ID-KEY-BINDING-KINDS-' + field, all(v['kind'] in ['LITERAL','COPY'] for v in binding.values()),
+          'Binding inspection only; no production key constructed or evaluated')
+    check('ID-KEY-CONTEXT-' + field, all(v.get('source') in g['binding_context_types'] for v in binding.values() if v['kind']=='COPY'),
+          'Every COPY source declared; no draw generated')
+check('ID-KEY-COUNT-DISCREPANCY-OBSERVED', len(keyfields) == 14 and 'All15' in g['key_binding_contract'],
+      'LOW design documentation defect observed: actual 14 closed fields versus All15 prose; assertion PASS is NOT acceptance of defect')
+check('ID-KEY-NO-METHOD-CONTROL', not {'method','run_id','attempt_id','control_variant','wall_time'} & keyfields,
+      'Method, scheduling and control identity excluded from generation key')
+check('ID-CONTROL-INHERITANCE', 'ALL 100' in g['controls']['service_set_for_G'] and 'identical' in g['controls']['H_ISOLATED'] and 'all other retained bytes identical' in g['controls']['LOW_COMPETITION'],
+      g['controls'])
+check('ID-G-EXACT-SIDECAR', 'pre-binary64' in g['controls']['G_inputs'] and 'Rational' in g['controls']['G_rounding'],
+      'G definition inspected, not evaluated')
+check('ID-PRIMARY-REPLAY-RETRY-BUDGET', d['EXECUTION_AUTH_PREIMAGE']['properties']['max_primary_engine_invocations']['const']==2520 and d['EXECUTION_AUTH_PREIMAGE']['properties']['max_replay_engine_invocations']['const']==2520 and d['EXECUTION_AUTH_PREIMAGE']['properties']['automatic_retry_budget']['const']==0,
+      'Declared metadata budget inspected; actual engine calls zero')
+
+def canonical_metadata(x):
+    return (json.dumps(x,sort_keys=True,separators=(',',':'),ensure_ascii=True,allow_nan=False)+'\n').encode('ascii')
+
+# Non-scientific metadata illustration ONLY: do not construct any scientific seed,
+# descriptor, workload, payload, trace, authorization record or executable sample.
+a = dict(namespace='soc.p2.input-lock.v2',schema_version=2,blueprint_sha256='1'*64,
+         input_descriptor_sha256='2'*64,generation_authorization_sha256='3'*64)
+b = dict(a, generation_authorization_sha256='4'*64)
+attempt_a = dict(namespace='soc.p2.attempt-identity.v2',schema_version=2,run_id='NONSCIENTIFIC-AUDIT-EXAMPLE-RUN',execution_authorization_sha256='5'*64,ordinal=1)
+attempt_b = dict(attempt_a,execution_authorization_sha256='6'*64)
+la = dict(namespace='soc.p2.run-lock.v2',schema_version=2,run_id=attempt_a['run_id'],attempt_id='NONSCIENTIFIC-ATTEMPT:'+digest(canonical_metadata(attempt_a)))
+lb = dict(la,attempt_id='NONSCIENTIFIC-ATTEMPT:'+digest(canonical_metadata(attempt_b)))
+metadata_example = dict(classification='HAND_AUTHORED_NON_SCIENTIFIC_METADATA_ONLY',
+                       authorization_scope='NONE; fake digests and deliberately nonproduction labels',
+                       input_lock_preimages=[a,b], input_lock_digests=[digest(canonical_metadata(x)) for x in [a,b]],
+                       attempt_preimages=[attempt_a,attempt_b],run_lock_preimages=[la,lb],
+                       run_lock_digests=[digest(canonical_metadata(x)) for x in [la,lb]],
+                       proven='Distinct authorization references distinguish lock identities despite same semantic descriptor/run',
+                       not_proven='No actual lock acquisition or execution attempted; schema does not state that lock digest is storage exclusion key')
+check('ID-AUTH-LOCK-SEPARATION-OBSERVED', metadata_example['input_lock_digests'][0] != metadata_example['input_lock_digests'][1] and metadata_example['run_lock_digests'][0] != metadata_example['run_lock_digests'][1],
+      metadata_example)
+provenance_fields = set(d['SCIENTIFIC_RUN_RECORD']['properties']) | set(d['PROCESS_RESULT']['properties']) | set(d['SOURCE_BUNDLE_PREIMAGE']['properties'])
+check('ID-ACTUAL-GIT-FIELD-GAP-OBSERVED', not {'actual_git_head','actual_execution_head','git_commit','dirty_status','actual_branch'} & provenance_fields,
+      dict(known_fields=sorted(provenance_fields),frozen_source_commit_present='source_commit' in provenance_fields,
+           raw_artifacts_items=d['SCIENTIFIC_RUN_RECORD']['properties']['raw_artifacts'],
+           limitation='Prose requires actual execution HEAD; no exact required field or mandatory typed raw-artifact kind binds it'))
+
+result = dict(review_kind='FRESH_ADVERSARIAL_REPORT_ONLY_SAME_ASSISTANT',
+              scientific_workloads_generated=0,scientific_workloads_run=0,new_seeds_generated=False,
+              locks_or_runners_implemented=False,runtime_tests_executed=False,
+              observation_assertions_passed=sum(x['observation_assertion']=='PASS' for x in checks),
+              observation_assertions_failed=sum(x['observation_assertion']=='FAIL' for x in checks),
+              acceptance_note='Observation checks include confirmed unresolved defects; zero assertion failures is not design acceptance.',
+              checks=checks)
+(O/'identity_static_review_results.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n')
+(O/'identity_source_reads.json').write_text(json.dumps(dict(sources=reads,coverage_note='All listed bytes read and hashed; original request reviewed at identity/provenance sections, coordinated main review covers whole task; no reserved realization accessed'),ensure_ascii=False,indent=2)+'\n')
+print(json.dumps({k:v for k,v in result.items() if k!='checks'},ensure_ascii=False,indent=2))
+raise SystemExit(1 if result['observation_assertions_failed'] else 0)

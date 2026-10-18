@@ -1,0 +1,340 @@
+FILE docs/P2_design/v2/P2_workload_templates_v2.json
+JSON_POINTER /templates/2 size 8 root_nodes [(0, {'id': 'ADAS.n01', 'role': 'preprocess', 'group': 'INHERIT_SERVICE_GROUP', 'allowed_group_variants': ['H', 'L'], 'predecessors': [], 'cost_scale': '1', 'parent_8_node': 'ADAS.n01'})]
+JSON_POINTER /templates/3 size 16 root_nodes [(0, {'id': 'ADAS.n01.a', 'role': 'preprocess', 'group': 'INHERIT_SERVICE_GROUP', 'allowed_group_variants': ['H', 'L'], 'predecessors': [], 'cost_scale': '1/2', 'parent_8_node': 'ADAS.n01'})]
+FILE docs/P2_design/v2/P2_resource_profiles_v2.json
+[
+  {
+    "role": "audio",
+    "mechanism": "CPU-only \u97f3\u9891\u6574\u7406",
+    "compatible_resources": [
+      "CPU0",
+      "CPU1",
+      "CPU2",
+      "CPU3"
+    ],
+    "estimated_base_ms": {
+      "CPU0": 2,
+      "CPU1": 2,
+      "CPU2": 2,
+      "CPU3": 2,
+      "GPU0": null,
+      "NPU0": null
+    },
+    "source": "PROPOSED_SYNTHETIC_NOT_MEASURED_NOT_PAPER_VALUES",
+    "approval": "UNAPPROVED"
+  },
+  {
+    "role": "speech",
+    "mechanism": "NPU-oriented \u8bed\u97f3\u63a8\u65ad",
+    "compatible_resources": [
+      "CPU0",
+      "CPU1",
+      "CPU2",
+      "CPU3",
+      "NPU0"
+    ],
+    "estimated_base_ms": {
+      "CPU0": 12,
+      "CPU1": 12,
+      "CPU2": 12,
+      "CPU3": 12,
+      "GPU0": null,
+      "NPU0": 3
+    },
+    "source": "PROPOSED_SYNTHETIC_NOT_MEASURED_NOT_PAPER_VALUES",
+    "approval": "UNAPPROVED"
+  },
+  {
+    "role": "intent",
+    "mechanism": "CPU-only \u610f\u56fe\u89e3\u6790",
+    "compatible_resources": [
+      "CPU0",
+      "CPU1",
+      "CPU2",
+      "CPU3"
+    ],
+    "estimated_base_ms": {
+      "CPU0": 1,
+      "CPU1": 1,
+      "CPU2": 1,
+      "CPU3": 1,
+      "GPU0": null,
+      "NPU0": null
+    },
+    "source": "PROPOSED_SYNTHETIC_NOT_MEASURED_NOT_PAPER_VALUES",
+    "approval": "UNAPPROVED"
+  },
+  {
+    "role": "display",
+    "mechanism": "GPU-oriented \u663e\u793a\u5904\u7406",
+    "compatible_resources": [
+      "CPU0",
+      "CPU1",
+      "CPU2",
+      "CPU3",
+      "GPU0"
+    ],
+    "estimated_base_ms": {
+      "CPU0": 8,
+      "CPU1": 8,
+      "CPU2": 8,
+      "CPU3": 8,
+      "GPU0": 2,
+      "NPU0": null
+    },
+    "source": "PROPOSED_SYNTHETIC_NOT_MEASURED_NOT_PAPER_VALUES",
+    "approval": "UNAPPROVED"
+  },
+  {
+    "role": "navigation",
+    "mechanism": "CPU-only \u5bfc\u822a\u8f93\u5165",
+    "compatible_resources": [
+      "CPU0",
+      "CPU1",
+      "CPU2",
+      "CPU3"
+    ],
+    "estimated_base_ms": {
+      "CPU0": 3,
+      "CPU1": 3,
+      "CPU2": 3,
+      "CPU3": 3,
+      "GPU0": null,
+      "NPU0": null
+    },
+    "source": "PROPOSED_SYNTHETIC_NOT_MEASURED_NOT_PAPER_VALUES",
+    "approval": "UNAPPROVED"
+  },
+  {
+    "role": "route",
+    "mechanism": "CPU/GPU \u8def\u7ebf\u53d8\u6362",
+    "compatible_resources": [
+      "CPU0",
+      "CPU1",
+      "CPU2",
+      "CPU3",
+      "GPU0"
+    ],
+    "estimated_base_ms": {
+      "CPU0": 8,
+      "CPU1": 8,
+      "CPU2": 8,
+      "CPU3": 8,
+      "GPU0": 3,
+      "NPU0": null
+    },
+    "source": "PROPOSED_SYNTHETIC_NOT_MEASURED_NOT_PAPER_VALUES",
+    "approval": "UNAPPROVED"
+  },
+  {
+    "role": "compose",
+    "mechanism": "multi-compatible \u5408\u6210\u53d8\u6362",
+    "compatible_resources": [
+      "CPU0",
+      "CPU1",
+      "CPU2",
+      "CPU3",
+      "GPU0",
+      "NPU0"
+    ],
+    "estimated_base_ms": {
+      "CPU0": 6,
+      "CPU1": 6,
+      "CPU2": 6,
+      "CPU3": 6,
+      "GPU0": 2,
+      "NPU0": 3
+    },
+    "source": "PROPOSED_SYNTHETIC_NOT_MEASURED_NOT_PAPER_VALUES",
+    "approval": "UNAPPROVED"
+  },
+  {
+    "role": "interaction",
+    "mechanism": "CPU-only \u4ea4\u4e92\u8f93\u51fa",
+    "compatible_resources": [
+      "CPU0",
+      "CPU1",
+      "CPU2",
+      "CPU3"
+    ],
+    "estimated_base_ms": {
+      "CPU0": 1,
+      "CPU1": 1,
+      "CPU2": 1,
+      "CPU3": 1,
+      "GPU0": null,
+      "NPU0": null
+    },
+    "source": "PROPOSED_SYNTHETIC_NOT_MEASURED_NOT_PAPER_VALUES",
+    "approval": "UNAPPROVED"
+  },
+  {
+    "role": "preprocess",
+    "mechanism": "CPU/GPU \u611f\u77e5\u9884\u5904\u7406",
+    "compatible_resources": [
+      "CPU0",
+      "CPU1",
+      "CPU2",
+      "CPU3",
+      "GPU0"
+    ],
+    "estimated_base_ms": {
+      "CPU0": 6,
+      "CPU1": 6,
+      "CPU2": 6,
+      "CPU3": 6,
+      "GPU0": 2,
+      "NPU0": null
+    },
+    "source": "PROPOSED_SYNTHETIC_NOT_MEASURED_NOT_PAPER_VALUES",
+    "approval": "UNAPPROVED"
+  },
+  {
+    "role": "detect",
+    "mechanism": "limited-alternative NPU-only \u68c0\u6d4b",
+    "compatible_resources": [
+      "NPU0"
+    ],
+    "estimated_base_ms": {
+      "CPU0": null,
+      "CPU1": null,
+      "CPU2": null,
+      "CPU3": null,
+      "GPU0": null,
+      "NPU0": 4
+    },
+    "source": "PROPOSED_SYNTHETIC_NOT_MEASURED_NOT_PAPER_VALUES",
+    "approval": "UNAPPROVED"
+  },
+  {
+    "role": "segment",
+    "mechanism": "multi-compatible \u5206\u5272",
+    "compatible_resources": [
+      "CPU0",
+      "CPU1",
+      "CPU2",
+      "CPU3",
+      "GPU0",
+      "NPU0"
+    ],
+    "estimated_base_ms": {
+      "CPU0": 16,
+      "CPU1": 16,
+      "CPU2": 16,
+      "CPU3": 16,
+      "GPU0": 4,
+      "NPU0": 5
+    },
+    "source": "PROPOSED_SYNTHETIC_NOT_MEASURED_NOT_PAPER_VALUES",
+    "approval": "UNAPPROVED"
+  },
+  {
+    "role": "track",
+    "mechanism": "CPU-only \u8ddf\u8e2a",
+    "compatible_resources": [
+      "CPU0",
+      "CPU1",
+      "CPU2",
+      "CPU3"
+    ],
+    "estimated_base_ms": {
+      "CPU0": 3,
+      "CPU1": 3,
+      "CPU2": 3,
+      "CPU3": 3,
+      "GPU0": null,
+      "NPU0": null
+    },
+    "source": "PROPOSED_SYNTHETIC_NOT_MEASURED_NOT_PAPER_VALUES",
+    "approval": "UNAPPROVED"
+  },
+  {
+    "role": "fusion",
+    "mechanism": "NPU/CPU \u611f\u77e5\u878d\u5408",
+    "compatible_resources": [
+      "CPU0",
+      "CPU1",
+      "CPU2",
+      "CPU3",
+      "NPU0"
+    ],
+    "estimated_base_ms": {
+      "CPU0": 6,
+      "CPU1": 6,
+      "CPU2": 6,
+      "CPU3": 6,
+      "GPU0": null,
+      "NPU0": 2
+    },
+    "source": "PROPOSED_SYNTHETIC_NOT_MEASURED_NOT_PAPER_VALUES",
+    "approval": "UNAPPROVED"
+  },
+  {
+    "role": "plan",
+    "mechanism": "CPU-only \u89c4\u5212",
+    "compatible_resources": [
+      "CPU0",
+      "CPU1",
+      "CPU2",
+      "CPU3"
+    ],
+    "estimated_base_ms": {
+      "CPU0": 2,
+      "CPU1": 2,
+      "CPU2": 2,
+      "CPU3": 2,
+      "GPU0": null,
+      "NPU0": null
+    },
+    "source": "PROPOSED_SYNTHETIC_NOT_MEASURED_NOT_PAPER_VALUES",
+    "approval": "UNAPPROVED"
+  },
+  {
+    "role": "render",
+    "mechanism": "limited-alternative GPU-only \u53ef\u89c6\u5316",
+    "compatible_resources": [
+      "GPU0"
+    ],
+    "estimated_base_ms": {
+      "CPU0": null,
+      "CPU1": null,
+      "CPU2": null,
+      "CPU3": null,
+      "GPU0": 2,
+      "NPU0": null
+    },
+    "source": "PROPOSED_SYNTHETIC_NOT_MEASURED_NOT_PAPER_VALUES",
+    "approval": "UNAPPROVED"
+  },
+  {
+    "role": "output",
+    "mechanism": "CPU-only ADAS \u8f93\u51fa",
+    "compatible_resources": [
+      "CPU0",
+      "CPU1",
+      "CPU2",
+      "CPU3"
+    ],
+    "estimated_base_ms": {
+      "CPU0": 1,
+      "CPU1": 1,
+      "CPU2": 1,
+      "CPU3": 1,
+      "GPU0": null,
+      "NPU0": null
+    },
+    "source": "PROPOSED_SYNTHETIC_NOT_MEASURED_NOT_PAPER_VALUES",
+    "approval": "UNAPPROVED"
+  }
+]
+FILE docs/P2_design/v2/P2_trial_matrix_draft_v2.json
+keys ['document_kind', 'version', 'status', 'classification', 'approved', 'frozen', 'executable', 'execution_authorized', 'read_by_pipeline', 'source_checkpoint', 'registered_main_conditions', 'registered_seeds', 'configs', 'methods', 'rules', 'budget', 'method_justification', 'alternative_budgets', 'document_version', 'approval', 'starting_commit', 'parent_matrix_sha256', 'materialization_order', 'diagnostic_spec_ref', 'criterion_spec_ref', 'stage_contract_ref', 'diagnostic_budget', 'selection_policy', 'trials']
+configurations None
+FILE docs/P2_design/v2/P2_typed_identity_schema_v2.json
+RUN_PREIMAGE required= ['namespace', 'schema_version', 'execution_plan_sha256', 'trial_id', 'workload_id', 'method_id', 'source_bundle_sha256', 'environment_semantic_sha256', 'primary_semantic_argv_sha256', 'observer_spec_sha256', 'validator_identity_sha256', 'metric_spec_sha256', 'replay_protocol_sha256'] closed= False
+SOURCE_BUNDLE_PREIMAGE required= ['namespace', 'schema_version', 'source_commit', 'source_files', 'dependency_manifest_sha256', 'model_contract_sha256', 'dirty_policy'] closed= False
+SCIENTIFIC_RUN_RECORD required= ['namespace', 'schema_version', 'run_id', 'attempt_id', 'execution_plan_sha256', 'trial_id', 'method_id', 'workload_id', 'actual_seed_decimal_string', 'partition', 'scenario', 'condition_id', 'config_id', 'control_variant', 'source_bundle_sha256', 'input_envelope_ref', 'process', 'raw_artifacts', 'trace_validation', 'metric_derivation', 'replay', 'completion_status', 'error_records'] closed= False
+PROCESS_RESULT required= ['process_started', 'exit_code', 'termination_kind', 'signal', 'exception', 'argv_actual', 'cwd', 'host_identity_sha256', 'planned_at_utc', 'started_at_utc', 'ended_at_utc', 'monotonic_elapsed_ns', 'stdout', 'stderr'] closed= False
+STAGE_RECORD required= ['namespace', 'schema_version', 'execution_plan_sha256', 'source_bundle_sha256', 'state', 'expected_trial_slots', 'attempted_trial_slots', 'completed_trial_slots', 'reused_trial_slots', 'failed_trial_slots', 'not_started_trial_slots', 'expected_input_count', 'selected_condition_ids', 'integrity_report_ref', 'selection_report_ref', 'diagnostic_report_ref', 'criterion_report_ref', 'timing_freeze_receipt_ref', 'prerequisite_evidence'] closed= False
+ARTIFACT_REF required= ['path', 'sha256', 'size_bytes', 'media_type', 'kind'] closed= False
+conditional_semantic_rules None

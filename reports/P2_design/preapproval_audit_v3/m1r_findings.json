@@ -1,0 +1,183 @@
+{
+  "review_scope": "Fresh same-assistant coordinated adversarial report-only review",
+  "recommendation": "DESIGN_REVIEW_REVISE_REQUIRED",
+  "scientific_workloads_generated": 0,
+  "scientific_workloads_run": 0,
+  "cases": 9,
+  "findings": [
+    {
+      "local_id": "M1R-F01",
+      "severity": "CRITICAL",
+      "classification": "BLOCKING_DESIGN_CONSISTENCY",
+      "decisions": [
+        "D07",
+        "D08"
+      ],
+      "parameters": [
+        "SP01",
+        "SP14",
+        "SP15",
+        "SP25",
+        "SP31",
+        "SP36",
+        "SP37"
+      ],
+      "title": "Mandatory single-ready ADAS snapshot makes global negative coverage=1 unreachable",
+      "evidence": [
+        {
+          "source_id": "S10",
+          "path": "docs/P2_design/v2/P2_workload_templates_v2.json",
+          "lines": "378-500,505-727",
+          "sha256": "f282955ab09d0110f50447269b18d0389231bed9711532853d6cdbda92d9027c"
+        },
+        {
+          "source_id": "S11",
+          "path": "docs/P2_design/v2/P2_generation_spec_v2.json",
+          "lines": "79-90,98-108",
+          "sha256": "33e3ccf437510986ffa401eea1ef48e995a1ad08df38a834374d4a1c483a91f2"
+        },
+        {
+          "source_id": "S18",
+          "path": "docs/P1_implementation_spec.md",
+          "lines": "22-26",
+          "sha256": "92e9c4d0472f7893f54fc54d302d38bd224092285d78cc85ec7cdb67fef4e972"
+        },
+        {
+          "source_id": "S19",
+          "path": "src/soc/simulator/engine.py",
+          "lines": "47-77",
+          "sha256": "977d01f3603f516e68e922542322976b813c01aad8d2dd177a5c0ac314399551"
+        },
+        {
+          "source_id": "S3",
+          "path": "docs/P2_design/v2/P2_diagnostic_spec_v2.json",
+          "lines": "22-26,58-61,107-115",
+          "sha256": "9bec37d044f4c7742d931149c195c2c3ec1540d41dc3f0a899a2b29f8c7e3e90"
+        },
+        {
+          "source_id": "S4",
+          "path": "docs/P2_design/v2/P2_public_snapshot_spec_v2.json",
+          "lines": "53-63",
+          "sha256": "fa4ce177c2d4a49a5f8f5b30bfa44e2b0d529f1e735ddfa259ae1811edc2f1af"
+        },
+        {
+          "source_id": "S5",
+          "path": "docs/P2_design/v2/P2_criterion_spec_v2.json",
+          "lines": "76-82",
+          "sha256": "98a578944e7910db933f5b3b02aee4bb03de8005853024b38cc3b02630b04e38"
+        }
+      ],
+      "proof": "First MAIN H/L arrival has two sole-root ADAS services; first start leaves exactly one ready root and pending H; next invocation snapshot mandatory; that distinct state is E but not F. Therefore E-F>=1 and F/E<1 whenever F>0, for every ADAS seed/config. All12 loaded negative rule requires each coverage1, so NOT_SUPPORTED unreachable. No actual seed/workload/outcome needed.",
+      "required_action": "Separate documentation-only revision of observation-domain/negative-evidence policy with exact implications and future approval; do not silently relax coverage or drop the state.",
+      "approval": "UNAPPROVED",
+      "science_executed": false
+    },
+    {
+      "local_id": "M1R-L02",
+      "severity": "INFO",
+      "classification": "NONBLOCKING_DISCLOSED_LIMITATION_WITH_NEW_COUNTEREXAMPLE",
+      "decisions": [
+        "D07",
+        "D08"
+      ],
+      "parameters": [
+        "SP26",
+        "SP34",
+        "SP35",
+        "SP39"
+      ],
+      "title": "FULL fixed-suffix negative can miss public suffix remapping improvement",
+      "evidence": [
+        {
+          "source_id": "S3",
+          "path": "docs/P2_design/v2/P2_diagnostic_spec_v2.json",
+          "lines": "45-55,58,115",
+          "sha256": "9bec37d044f4c7742d931149c195c2c3ec1540d41dc3f0a899a2b29f8c7e3e90"
+        },
+        {
+          "source_id": "S10",
+          "path": "docs/P2_design/v2/P2_workload_templates_v2.json",
+          "lines": "17-138",
+          "sha256": "f282955ab09d0110f50447269b18d0389231bed9711532853d6cdbda92d9027c"
+        },
+        {
+          "source_id": "S12",
+          "path": "docs/P2_design/v2/P2_resource_profiles_v2.json",
+          "lines": "64-187",
+          "sha256": "9eea5cfd43ce50d796a00d7cac86f9a7ca8798da4a3ea0c2fd9e598d965f13ae"
+        },
+        {
+          "source_id": "S13",
+          "path": "docs/P2_design/v2/P2_communication_profiles_v2.json",
+          "lines": "18-95,639-702",
+          "sha256": "74f7dde644b11d0b459fb68e9f250d9799e34f09652609b63122e0de5bf6e3b8"
+        },
+        {
+          "source_id": "S22",
+          "path": "docs/P2_design/v2/P2_complete_design_proposal_v2.md",
+          "lines": "173-174",
+          "sha256": "7f929b85554193ef1256deb3f7cc184e47c362f91e93950896a80450c9eb5fe8"
+        }
+      ],
+      "proof": "Case7 hand-authored COCKPIT public state: every current two-L CPU mapping yields fixedsuffix g0; moving only H_A compose fromGPU toNPU yields exact positive mean improvement111/256ms, gain>1/20. No production snapshot, B2 reachability or scientific frequency claimed.",
+      "required_action": "Human decision must explicitly accept proxy/false-negative limits or request a new unapproved observer proposal; no global mechanism-absence interpretation.",
+      "approval": "UNAPPROVED",
+      "science_executed": false,
+      "challenge": "Confirmed by coordinated challenge_review agent from public sources and hand arithmetic; same assistant environment, not third-party independence."
+    },
+    {
+      "local_id": "M1R-L03",
+      "severity": "INFO",
+      "classification": "HUMAN_SCIENTIFIC_CHOICE_NO_NUMERIC_SOURCE",
+      "decisions": [
+        "D08"
+      ],
+      "parameters": [
+        "SP28",
+        "SP29",
+        "SP30",
+        "SP31",
+        "SP36",
+        "SP39"
+      ],
+      "title": "FINE/COARSE, stability and coverage values lack uniquely supporting source evidence",
+      "evidence": [
+        {
+          "source_id": "S5",
+          "path": "docs/P2_design/v2/P2_criterion_spec_v2.json",
+          "lines": "15-35,55-90",
+          "sha256": "98a578944e7910db933f5b3b02aee4bb03de8005853024b38cc3b02630b04e38"
+        },
+        {
+          "source_id": "S6",
+          "path": "docs/P2_design/v2/P2_mapping_opportunity_decision_table_v2.md",
+          "lines": "7-46",
+          "sha256": "594863a579ac32fdd980454fe6e0f0d24d165729a60f1c6f6526c8688fd296f4"
+        },
+        {
+          "source_id": "S9",
+          "path": "docs/P2_design/P2_mapping_opportunity_decision_table_v1.md",
+          "lines": "9-22,39-53",
+          "sha256": "4c981f2f2303e1b1535168dd320e3c11151ea86ad35a502513893370a5906ea2"
+        },
+        {
+          "source_id": "S14",
+          "path": "docs/statistical_protocol.md",
+          "lines": "3-16,34-47",
+          "sha256": "f9c0eeb6e76f68330ba3e5d8d90e58d175c3947a1948bb41b26ad50dbc041e8a"
+        }
+      ],
+      "proof": "Original sources prescribe stable opportunity, paired-seed CI and stop rules but no tau/f/8/2/4/5 values. Qualitative positive/negative coverage asymmetry has a logical rationale; numerical sufficiency and operational power remain unverified. Existing design admits this; absence of empirical justification alone is not a hidden contradiction.",
+      "required_action": "Obtain exact prior human choice after structural revision; no outcome-driven threshold selection or new CI/seeds.",
+      "approval": "UNAPPROVED",
+      "science_executed": false
+    }
+  ],
+  "static_check_result": {
+    "command": "m1r-006",
+    "exit_code": 0,
+    "passed": 27,
+    "failed": 0,
+    "scope": "source premises and hand scalar formulas; no runtime/science validation"
+  }
+}

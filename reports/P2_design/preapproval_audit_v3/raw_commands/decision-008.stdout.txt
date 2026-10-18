@@ -1,0 +1,299 @@
+{
+  "document_kind": "SCIENTIFIC_PARAMETER_GROUP_REGISTRY",
+  "document_version": "v2",
+  "status": "DRAFT_UNAPPROVED_NONEXECUTABLE",
+  "classification": "PROPOSED",
+  "approval": "UNAPPROVED",
+  "approved": false,
+  "frozen": false,
+  "executable": false,
+  "execution_authorized": false,
+  "read_by_pipeline": false,
+  "starting_commit": "79f9c245b23119ce25175d6dc6ff148e9e092461",
+  "count_scope": "Named scientific parameter/rule groups, not scalar values. SP01-SP32 traced, 8 split-out explicit groups SP33-SP40 added; none deleted/merged. All40 unresolved/unapproved; engineering-only identity/lock details not counted as scientific scalar parameters.",
+  "previous_group_count": 32,
+  "current_group_count": 40,
+  "unresolved_scientific_parameters": 40,
+  "additions": [
+    "SP33",
+    "SP34",
+    "SP35",
+    "SP36",
+    "SP37",
+    "SP38",
+    "SP39",
+    "SP40"
+  ],
+  "deletions": [],
+  "merges": [],
+  "v1_to_v2_group_map": [
+    {
+      "v1_id": "SP01",
+      "primary_v2_id": "SP01",
+      "split_out_new_ids": [],
+      "deleted": false,
+      "merged_with": [],
+      "change_type": "UNCHANGED_PROPOSED_VALUE"
+    },
+    {
+      "v1_id": "SP02",
+      "primary_v2_id": "SP02",
+      "split_out_new_ids": [],
+      "deleted": false,
+      "merged_with": [],
+      "change_type": "UNCHANGED_PROPOSED_VALUE"
+    },
+    {
+      "v1_id": "SP03",
+      "primary_v2_id": "SP03",
+      "split_out_new_ids": [],
+      "deleted": false,
+      "merged_with": [],
+      "change_type": "UNCHANGED_PROPOSED_VALUE"
+    },
+    {
+      "v1_id": "SP04",
+      "primary_v2_id": "SP04",
+      "split_out_new_ids": [],
+      "deleted": false,
+      "merged_with": [],
+      "change_type": "UNCHANGED_PROPOSED_VALUE"
+    },
+    {
+      "v1_id": "SP05",
+      "primary_v2_id": "SP05",
+      "split_out_new_ids": [],
+      "deleted": false,
+      "merged_with": [],
+      "change_type": "UNCHANGED_PROPOSED_VALUE"
+    },
+    {
+      "v1_id": "SP06",
+      "primary_v2_id": "SP06",
+      "split_out_new_ids": [],
+      "deleted": false,
+      "merged_with": [],
+      "change_type": "UNCHANGED_PROPOSED_VALUE"
+    },
+    {
+      "v1_id": "SP07",
+      "primary_v2_id": "SP07",
+      "split_out_new_ids": [],
+      "deleted": false,
+      "merged_with": [],
+      "change_type": "UNCHANGED_PROPOSED_VALUE"
+    },
+    {
+      "v1_id": "SP08",
+      "primary_v2_id": "SP08",
+      "split_out_new_ids": [],
+      "deleted": false,
+      "merged_with": [],
+      "change_type": "UNCHANGED_PROPOSED_VALUE"
+    },
+    {
+      "v1_id": "SP09",
+      "primary_v2_id": "SP09",
+      "split_out_new_ids": [],
+      "deleted": false,
+      "merged_with": [],
+      "change_type": "UNCHANGED_PROPOSED_VALUE"
+    },
+    {
+      "v1_id": "SP10",
+      "primary_v2_id": "SP10",
+      "split_out_new_ids": [],
+      "deleted": false,
+      "merged_with": [],
+      "change_type": "CHANGED_TYPED_KEY_AND_VERSION"
+    },
+    {
+      "v1_id": "SP11",
+      "primary_v2_id": "SP11",
+      "split_out_new_ids": [],
+      "deleted": false,
+      "merged_with": [],
+      "change_type": "UNCHANGED_DISTRIBUTION_CHANGED_KEY_BINDING"
+    },
+    {
+      "v1_id": "SP12",
+      "primary_v2_id": "SP12",
+      "split_out_new_ids": [],
+      "deleted": false,
+      "merged_with": [],
+      "change_type": "UNCHANGED_DISTRIBUTION_CHANGED_KEY_BINDING"
+    },
+    {
+      "v1_id": "SP13",
+      "primary_v2_id": "SP13",
+      "split_out_new_ids": [],
+      "deleted": false,
+      "merged_with": [],
+      "change_type": "UNCHANGED_DISTRIBUTION_CHANGED_KEY_BINDING"
+    },
+    {
+      "v1_id": "SP14",
+      "primary_v2_id": "SP14",
+      "split_out_new_ids": [],
+      "deleted": false,
+      "merged_with": [],
+      "change_type": "UNCHANGED_PROPOSED_VALUE"
+    },
+    {
+      "v1_id": "SP15",
+      "primary_v2_id": "SP15",
+      "split_out_new_ids": [],
+      "deleted": false,
+      "merged_with": [],
+      "change_type": "UNCHANGED_PROPOSED_VALUE"
+    },
+    {
+      "v1_id": "SP16",
+      "primary_v2_id": "SP16",
+      "split_out_new_ids": [],
+      "deleted": false,
+      "merged_with": [],
+      "change_type": "CLARIFIED_WITHOUT_NUMERIC_CHANGE"
+    },
+    {
+      "v1_id": "SP17",
+      "primary_v2_id": "SP17",
+      "split_out_new_ids": [],
+      "deleted": false,
+      "merged_with": [],
+      "change_type": "CLARIFIED_SPLIT_WINDOW_SEMANTICS"
+    },
+    {
+      "v1_id": "SP18",
+      "primary_v2_id": "SP18",
+      "split_out_new_ids": [],
+      "deleted": false,
+      "merged_with": [],
+      "change_type": "UNCHANGED_PROPOSED_VALUE"
+    },
+    {
+      "v1_id": "SP19",
+      "primary_v2_id": "SP19",
+      "split_out_new_ids": [],
+      "deleted": false,
+      "merged_with": [],
+      "change_type": "UNCHANGED_PROPOSED_VALUE"
+    },
+    {
+      "v1_id": "SP20",
+      "primary_v2_id": "SP20",
+      "split_out_new_ids": [],
+      "deleted": false,
+      "merged_with": [],
+      "change_type": "UNCHANGED_BUDGET_VERSIONED_IDENTITIES"
+    },
+    {
+      "v1_id": "SP21",
+      "primary_v2_id": "SP21",
+      "split_out_new_ids": [
+        "SP38",
+        "SP40"
+      ],
+      "deleted": false,
+      "merged_with": [],
+      "change_type": "CLARIFIED_CONTROL_DOMAIN_AND_QUALIFICATION"
+    },
+    {
+      "v1_id": "SP22",
+      "primary_v2_id": "SP22",
+      "split_out_new_ids": [],
+      "deleted": false,
+      "merged_with": [],
+      "change_type": "UNCHANGED_PROPOSED_VALUE"
+    },
+    {
+      "v1_id": "SP23",
+      "primary_v2_id": "SP23",
+      "split_out_new_ids": [],
+      "deleted": false,
+      "merged_with": [],
+      "change_type": "UNCHANGED_PROPOSED_VALUE"
+    },
+    {
+      "v1_id": "SP24",
+      "primary_v2_id": "SP24",
+      "split_out_new_ids": [],
+      "deleted": false,
+      "merged_with": [],
+      "change_type": "CLARIFIED_TOTAL_PREDICATES"
+    },
+    {
+      "v1_id": "SP25",
+      "primary_v2_id": "SP25",
+      "split_out_new_ids": [
+        "SP33",
+        "SP37"
+      ],
+      "deleted": false,
+      "merged_with": [],
+      "change_type": "SPLIT_AND_CHANGED"
+    },
+    {
+      "v1_id": "SP26",
+      "primary_v2_id": "SP26",
+      "split_out_new_ids": [
+        "SP34",
+        "SP35"
+      ],
+      "deleted": false,
+      "merged_with": [],
+      "change_type": "SPLIT_AND_CHANGED"
+    },
+    {
+      "v1_id": "SP27",
+      "primary_v2_id": "SP27",
+      "split_out_new_ids": [],
+      "deleted": false,
+      "merged_with": [],
+      "change_type": "UNCHANGED_MEASURES_CHANGED_DIAGNOSTIC_REFERENCE"
+    },
+    {
+      "v1_id": "SP28",
+      "primary_v2_id": "SP28",
+      "split_out_new_ids": [],
+      "deleted": false,
+      "merged_with": [],
+      "change_type": "UNCHANGED_NUMBERS_CHANGED_OBSERVABLE"
+    },
+    {
+      "v1_id": "SP29",
+      "primary_v2_id": "SP29",
+      "split_out_new_ids": [],
+      "deleted": false,
+      "merged_with": [],
+      "change_type": "UNCHANGED_NUMBERS_CHANGED_DENOMINATOR"
+    },
+    {
+      "v1_id": "SP30",
+      "primary_v2_id": "SP30",
+      "split_out_new_ids": [],
+      "deleted": false,
+      "merged_with": [],
+      "change_type": "UNCHANGED_NUMBERS_CHANGED_OBSERVABLE"
+    },
+    {
+      "v1_id": "SP31",
+      "primary_v2_id": "SP31",
+      "split_out_new_ids": [
+        "SP36",
+        "SP39"
+      ],
+      "deleted": false,
+      "merged_with": [],
+      "change_type": "SPLIT_AND_CLARIFIED"
+    },
+    {
+      "v1_id": "SP32",
+      "primary_v2_id": "SP32",
+      "split_out_new_ids": [],
+      "deleted": false,
+      "merged_with": [],
+      "change_type": "CLARIFIED_WITHOUT_CI_CHANGE"
+    }
+  ]
+}

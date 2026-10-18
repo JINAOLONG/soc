@@ -1,0 +1,805 @@
+SOURCE: docs/research_contract.md
+# Research contract — P0 DRAFT, not scientifically unlocked
+
+P1 handoff annotation: the historical P0 literature failure described below was
+closed at e9afe287 and delivered at 27d90bb5 (P0 audit exit 0). The original
+paragraph is retained to explain this draft's provenance. The P1 task separately
+authorizes correctness implementation, with D1–D5 explicitly approved by the
+user; see P1_implementation_spec.md. No scientific protocol freeze or permission
+to start P2 is inferred. Scientific executions remain zero. The unchanged
+research_protocol.json status string is also a historical draft declaration.
+
+The authoritative request is [user_request.txt](user_request.txt). Repository:
+`https://github.com/JINAOLONG/soc`; root = project root. This is a clean-room
+project. No legacy artifacts, results, candidate parameters or seeds have been
+used as new evidence. Existing Apache-2.0 LICENSE is preserved.
+
+Question: with continuously arriving service DAGs, non-preemptive compatible
+CPU/GPU/NPU execution and contention, can joint ready-node ordering and resource
+mapping reduce important-service H end-to-end deadline misses while keeping
+ordinary-service L P95 within 10% of B2 in every main condition?
+
+Falsifiable mechanism hypothesis: local EFT can occupy a scarce resource needed
+by another arrived H service; an online opportunity-cost rule may improve H DMR.
+This is a hypothesis, not an established result. H/L denotes service importance,
+not ASIL. No energy-budget, WCET-proof or deployment/certification claim is made.
+
+P0 requires 6–8 reviewed original studies (HEFT/CPOP, PEFT and DS3 mandatory),
+model/metric/baseline/statistical specifications, committed seed metadata and
+passing protocol audit. P0 currently fails the primary-literature prerequisite.
+Documents are drafts. User-prescribed thresholds and seed derivation cannot be
+relaxed even while the protocol is a draft. Do not call this a P0 freeze.
+
+Progression is P0 → P1 correctness → P2 baseline-only calibration → P3 development
+and ablations → Development Gate → independent validation → Validation Gate →
+formal → evidence closure. Every stage preserves negative/invalid evidence.
+P1 correctness failure blocks science. Lack of stable P2 mapping opportunity
+stops the mapping mainline. P3 allows at most one preregistered, evidence-driven
+mechanism revision. Failed validation blocks formal. Failed/inconclusive formal
+remains failed/inconclusive. Unknown input provenance stops execution.
+
+P0–P2 execution is CALIBRATION only; unit tests must use synthetic fixtures.
+P3 DEVELOPMENT has a fixed 10/10 search/precheck split. Metadata generation and
+hashing all 70 prescribed seeds is explicitly distinct from workload access.
+No reserved workload realization is generated or inspected before its gate.
+
+Future candidate search space, workload calibration choices and timing protocol
+must be registered before their dependent observations. A method formula must
+not be invented before P2 diagnostics. Later missing evidence cannot be filled
+with guesses or a passing smoke test. Current scientific status: BLOCKED.
+
+SOURCE: docs/workload_spec.md
+# Workloads — design constraints, not a frozen generator
+
+No workload generator or scientific workload has been executed. Main conditions
+are 3 scenes × 3 loads × 2 sizes. Size means exactly 8 or 16 executable nodes per
+service instance, excluding neither sources nor sinks. No hidden dummy task may
+change these counts.
+
+COCKPIT templates must cover speech, display, navigation and interaction;
+ADAS covers preprocessing, perception, fusion and output. FUSION mixes the two
+families under shared accelerators to expose cross-service competition. Concrete
+durations, compatible sets, edge sizes, arrival laws and deadlines await source
+review and a baseline-only calibration protocol. They are NOT AVAILABLE yet.
+
+Calibrate with 10 CALIBRATION seeds, B2 as the focal reference. Label loads by
+measured CPU/GPU/NPU bottleneck pressure, not arrival rate alone. Light should
+have low misses; medium/near-saturation should expose contention, nontrivial
+misses and mapping alternatives without nearly universal miss. Severe-overload
+is sensitivity only. Verify H feasibility in isolation or low competition first.
+Save every tried calibration configuration and its diagnosis; do not select
+workloads by candidate advantage. Freeze generator/config after P2.
+
+Identity = scene, load, size, seed, generator version, config SHA256 and the
+canonical artifact SHA256. Every method consumes the same stored realization.
+Execution disturbances use keyed hashes/PRNG independent of scheduler calls.
+Do not materialize validation/formal realizations during calibration or unit tests.
+
+SOURCE: docs/baseline_spec.md
+# Baselines — original sources reviewed; P1 online adaptation implemented
+
+All methods share one immutable observation boundary, workload, compatibility,
+communication semantics and deterministic tie rule. Root/ready eligibility never
+uses future arrivals or unfinished predecessor truth. Estimated finish prediction
+on a busy unit must use observable elapsed execution and estimates. A processor
+selection proposal is revocable until the task starts; dispatch must recheck
+actual feasibility and may not reserve an idle unit indefinitely by accident.
+The user approved the precise online adaptation rules D1–D5 during the P1 task.
+Their authoritative definition and acceptance dependencies are in
+[P1_implementation_spec.md](P1_implementation_spec.md). They must be tested
+before P1 is marked complete.
+
+| ID | Ready-node ordering | Mapping | Status |
+|---|---|---|---|
+| B1 | ascending service absolute deadline | minimum estimated finish among compatible units | implemented; P1 report provides actual correctness evidence |
+| B2 | H before L, then ascending service absolute deadline | same EFT rule as B1 | fixed L-budget reference; implemented |
+| B3 | Online-HEFT adaptation; original upward rank source-verified | insertion/EFT with approved D1–D5 online dispatch | implemented; original static method distinguished |
+| B4 | Online-PEFT adaptation; original OCT/rank source-verified | insertion/OEFT with approved D1–D5 online dispatch | implemented; original static method distinguished |
+| B5 | H-priority Online-PEFT adaptation | same mapping requirement as B4 | implemented; source and adaptation kept separate |
+
+The actual user-provided originals are now reviewed in
+[heft_cpop.md](literature_reviews/heft_cpop.md) and
+[peft.md](literature_reviews/peft.md), with equations, figures, page numbers and
+version/provenance limits. This is an evidence-status update, not a change to any
+baseline requirement or an implementation. Original HEFT rank ties are random;
+PEFT OCT excludes availability while EFT includes partial-schedule availability.
+Online adaptation still must explicitly specify visible DAG set, ready filtering,
+compatibility, busy-resource handling, rank/OCT refresh, idle/wait behavior, ties
+and boundary cases before P1 can be complete. The previous local-PDF task did
+not authorize implementation; the separate P1 task and explicit D1–D5 replies
+now authorize the documented adaptation. Online adaptations must never be presented
+as the original static algorithms.
+
+Required P1 evidence: distinguish B1/B2 by hand fixture; verify ranks/OCT against
+source-derived worked examples; exercise incompatible/busy resources and ties;
+deterministic replay; and have an independent validator reject invalid traces.
+No custom candidate may replace a missing baseline or serve as its own control.
+
+SOURCE: configs/seed_partitions.json
+{
+  "schema_version": 1,
+  "master": "vehicle-soc-dag-scheduler-cleanroom-soc-v1",
+  "index_origin": 0,
+  "integer_mapping": "unsigned big-endian SHA256 integer modulo 2**52",
+  "collision_rule": "append |nonce=N for N=1,2,... only after collision",
+  "collision_nonces": {},
+  "partitions": {
+    "CALIBRATION": [
+      1677814459331049,
+      328864591381281,
+      336367723740484,
+      3743487258850314,
+      2011277673915613,
+      4276916424184236,
+      265049119938611,
+      2453465547245351,
+      2784239167199445,
+      3512531139176427
+    ],
+    "DEVELOPMENT": [
+      1684216792523,
+      3236453260404730,
+      1917159493902342,
+      25185643162577,
+      1050433296120171,
+      85546100172721,
+      883857012958433,
+      4362527030865643,
+      203025064144011,
+      2499833363495643,
+      2111122949748056,
+      2733589575666552,
+      748479243625629,
+      1939649114317511,
+      3083524924313913,
+      4360164159466754,
+      963727708188844,
+      1298709282470643,
+      3681461349844808,
+      3695005723060603
+    ],
+    "INDEPENDENT_VALIDATION": [
+      2158946964608146,
+      1450717341280455,
+      2432303322476293,
+      47962241166287,
+      652059003735759,
+      1939972799173423,
+      2739932678850093,
+      3540278116379683,
+      1034737199904757,
+      3302083443988289
+    ],
+    "FORMAL_EVALUATION": [
+      4452190950829080,
+      1033894656814393,
+      2736720203705092,
+      1273043746337370,
+      2991171994584512,
+      725475928077874,
+      3734851039000985,
+      1174268854360963,
+      3228444839704409,
+      2941587271299633,
+      2573166348591596,
+      2629503243878633,
+      571365463442048,
+      3651690584800243,
+      3449173746226517,
+      2526053138506867,
+      3263457777392918,
+      1663470076813819,
+      2363820400979408,
+      2217817566067346,
+      1989379937095770,
+      4356064226674361,
+      1278409605772126,
+      1219450005785753,
+      17361271326268,
+      4164696668282729,
+      3440615539495590,
+      1726710565156038,
+      1328676391821195,
+      2674980622375874
+    ]
+  },
+  "development_split": {
+    "parameter_development": [
+      0,
+      10
+    ],
+    "development_precheck": [
+      10,
+      20
+    ]
+  }
+}
+
+MATRIX_SIZE 1327918
+document_kind "FINITE_TRIAL_MATRIX_PROPOSAL"
+version "v2"
+status "DRAFT_UNAPPROVED_NONEXECUTABLE"
+classification "PROPOSED"
+approved false
+frozen false
+executable false
+execution_authorized false
+read_by_pipeline false
+source_checkpoint "160800d9b136e953c6415cd5229ded87eae72a0f"
+registered_main_conditions 18
+registered_seeds [
+  1677814459331049,
+  328864591381281,
+  336367723740484,
+  3743487258850314,
+  2011277673915613,
+  4276916424184236,
+  265049119938611,
+  2453465547245351,
+  2784239167199445,
+  3512531139176427
+]
+configs [
+  {
+    "config_id": "COCKPIT-light-8-A",
+    "scenario": "COCKPIT",
+    "condition_id": "COCKPIT-light-8",
+    "load": "light",
+    "size": 8,
+    "arrival_candidate": "A",
+    "period_ms": 80,
+    "template_id": "COCKPIT-8-v1",
+    "source": "PROPOSED",
+    "other_parameters_ref": "P2_generation_spec_v2.json",
+    "selection_priority": 1
+  },
+  {
+    "config_id": "COCKPIT-light-8-B",
+    "scenario": "COCKPIT",
+    "condition_id": "COCKPIT-light-8",
+    "load": "light",
+    "size": 8,
+    "arrival_candidate": "B",
+    "period_ms": 64,
+    "template_id": "COCKPIT-8-v1",
+    "source": "PROPOSED",
+    "other_parameters_ref": "P2_generation_spec_v2.json",
+    "selection_priority": 2
+  },
+  {
+    "config_id": "COCKPIT-light-16-A",
+    "scenario": "COCKPIT",
+    "condition_id": "COCKPIT-light-16",
+    "load": "light",
+    "size": 16,
+    "arrival_candidate": "A",
+    "period_ms": 80,
+    "template_id": "COCKPIT-16-v1",
+    "source": "PROPOSED",
+    "other_parameters_ref": "P2_generation_spec_v2.json",
+    "selection_priority": 1
+  },
+  {
+    "config_id": "COCKPIT-light-16-B",
+    "scenario": "COCKPIT",
+    "condition_id": "COCKPIT-light-16",
+    "load": "light",
+    "size": 16,
+    "arrival_candidate": "B",
+    "period_ms": 64,
+    "template_id": "COCKPIT-16-v1",
+    "source": "PROPOSED",
+    "other_parameters_ref": "P2_generation_spec_v2.json",
+    "selection_priority": 2
+  },
+  {
+    "config_id": "COCKPIT-medium-8-A",
+    "scenario": "COCKPIT",
+    "condition_id": "COCKPIT-medium-8",
+    "load": "medium",
+    "size": 8,
+    "arrival_candidate": "A",
+    "period_ms": 24,
+    "template_id": "COCKPIT-8-v1",
+    "source": "PROPOSED",
+    "other_parameters_ref": "P2_generation_spec_v2.json",
+    "selection_priority": 1
+  },
+  {
+    "config_id": "COCKPIT-medium-8-B",
+    "scenario": "COCKPIT",
+    "condition_id": "COCKPIT-medium-8",
+    "load": "medium",
+    "size": 8,
+    "arrival_candidate": "B",
+    "period_ms": 20,
+    "template_id": "COCKPIT-8-v1",
+    "source": "PROPOSED",
+    "other_parameters_ref": "P2_generation_spec_v2.json",
+    "selection_priority": 2
+  },
+  {
+    "config_id": "COCKPIT-medium-16-A",
+    "scenario": "COCKPIT",
+    "condition_id": "COCKPIT-medium-16",
+    "load": "medium",
+    "size": 16,
+    "arrival_candidate": "A",
+    "period_ms": 24,
+    "template_id": "COCKPIT-16-v1",
+    "source": "PROPOSED",
+    "other_parameters_ref": "P2_generation_spec_v2.json",
+    "selection_priority": 1
+  },
+  {
+    "config_id": "COCKPIT-medium-16-B",
+    "scenario": "COCKPIT",
+    "condition_id": "COCKPIT-medium-16",
+    "load": "medium",
+    "size": 16,
+    "arrival_candidate": "B",
+    "period_ms": 20,
+    "template_id": "COCKPIT-16-v1",
+    "source": "PROPOSED",
+    "other_parameters_ref": "P2_generation_spec_v2.json",
+    "selection_priority": 2
+  },
+  {
+    "config_id": "COCKPIT-near-saturation-8-A",
+    "scenario": "COCKPIT",
+    "condition_id": "COCKPIT-near-saturation-8",
+    "load": "near-saturation",
+    "size": 8,
+    "arrival_candidate": "A",
+    "period_ms": 12,
+    "template_id": "COCKPIT-8-v1",
+    "source": "PROPOSED",
+    "other_parameters_ref": "P2_generation_spec_v2.json",
+    "selection_priority": 1
+  },
+  {
+    "config_id": "COCKPIT-near-saturation-8-B",
+    "scenario": "COCKPIT",
+    "condition_id": "COCKPIT-near-saturation-8",
+    "load": "near-saturation",
+    "size": 8,
+    "arrival_candidate": "B",
+    "period_ms": 10,
+    "template_id": "COCKPIT-8-v1",
+    "source": "PROPOSED",
+    "other_parameters_ref": "P2_generation_spec_v2.json",
+    "selection_priority": 2
+  },
+  {
+    "config_id": "COCKPIT-near-saturation-16-A",
+    "scenario": "COCKPIT",
+    "condition_id": "COCKPIT-near-saturation-16",
+    "load": "near-saturation",
+    "size": 16,
+    "arrival_candidate": "A",
+    "period_ms": 12,
+    "template_id": "COCKPIT-16-v1",
+    "source": "PROPOSED",
+    "other_parameters_ref": "P2_generation_spec_v2.json",
+    "selection_priority": 1
+  },
+  {
+    "config_id": "COCKPIT-near-saturation-16-B",
+    "scenario": "COCKPIT",
+    "condition_id": "COCKPIT-near-saturation-16",
+    "load": "near-saturation",
+    "size": 16,
+    "arrival_candidate": "B",
+    "period_ms": 10,
+    "template_id": "COCKPIT-16-v1",
+    "source": "PROPOSED",
+    "other_parameters_ref": "P2_generation_spec_v2.json",
+    "selection_priority": 2
+  },
+  {
+    "config_id": "ADAS-light-8-A",
+    "scenario": "ADAS",
+    "condition_id": "ADAS-light-8",
+    "load": "light",
+    "size": 8,
+    "arrival_candidate": "A",
+    "period_ms": 80,
+    "template_id": "ADAS-8-v1",
+    "source": "PROPOSED",
+    "other_parameters_ref": "P2_generation_spec_v2.json",
+    "selection_priority": 1
+  },
+  {
+    "config_id": "ADAS-light-8-B",
+    "scenario": "ADAS",
+    "condition_id": "ADAS-light-8",
+    "load": "light",
+    "size": 8,
+    "arrival_candidate": "B",
+    "period_ms": 64,
+    "template_id": "ADAS-8-v1",
+    "source": "PROPOSED",
+    "other_parameters_ref": "P2_generation_spec_v2.json",
+    "selection_priority": 2
+  },
+  {
+    "config_id": "ADAS-light-16-A",
+    "scenario": "ADAS",
+    "condition_id": "ADAS-light-16",
+    "load": "light",
+    "size": 16,
+    "arrival_candidate": "A",
+    "period_ms": 80,
+    "template_id": "ADAS-16-v1",
+    "source": "PROPOSED",
+    "other_parameters_ref": "P2_generation_spec_v2.json",
+    "selection_priority": 1
+  },
+  {
+    "config_id": "ADAS-light-16-B",
+    "scenario": "ADAS",
+    "condition_id": "ADAS-light-16",
+    "load": "light",
+    "size": 16,
+    "arrival_candidate": "B",
+    "period_ms": 64,
+    "template_id": "ADAS-16-v1",
+    "source": "PROPOSED",
+    "other_parameters_ref": "P2_generation_spec_v2.json",
+    "selection_priority": 2
+  },
+  {
+    "config_id": "ADAS-medium-8-A",
+    "scenario": "ADAS",
+    "condition_id": "ADAS-medium-8",
+    "load": "medium",
+    "size": 8,
+    "arrival_candidate": "A",
+    "period_ms": 24,
+    "template_id": "ADAS-8-v1",
+    "source": "PROPOSED",
+    "other_parameters_ref": "P2_generation_spec_v2.json",
+    "selection_priority": 1
+  },
+  {
+    "config_id": "ADAS-medium-8-B",
+    "scenario": "ADAS",
+    "condition_id": "ADAS-medium-8",
+    "load": "medium",
+    "size": 8,
+    "arrival_candidate": "B",
+    "period_ms": 20,
+    "template_id": "ADAS-8-v1",
+    "source": "PROPOSED",
+    "other_parameters_ref": "P2_generation_spec_v2.json",
+    "selection_priority": 2
+  },
+  {
+    "config_id": "ADAS-medium-16-A",
+    "scenario": "ADAS",
+    "condition_id": "ADAS-medium-16",
+    "load": "medium",
+    "size": 16,
+    "arrival_candidate": "A",
+    "period_ms": 24,
+    "template_id": "ADAS-16-v1",
+    "source": "PROPOSED",
+    "other_parameters_ref": "P2_generation_spec_v2.json",
+    "selection_priority": 1
+  },
+  {
+    "config_id": "ADAS-medium-16-B",
+    "scenario": "ADAS",
+    "condition_id": "ADAS-medium-16",
+    "load": "medium",
+    "size": 16,
+    "arrival_candidate": "B",
+    "period_ms": 20,
+    "template_id": "ADAS-16-v1",
+    "source": "PROPOSED",
+    "other_parameters_ref": "P2_generation_spec_v2.json",
+    "selection_priority": 2
+  },
+  {
+    "config_id": "ADAS-near-saturation-8-A",
+    "scenario": "ADAS",
+    "condition_id": "ADAS-near-saturation-8",
+    "load": "near-saturation",
+    "size": 8,
+    "arrival_candidate": "A",
+    "period_ms": 12,
+    "template_id": "ADAS-8-v1",
+    "source": "PROPOSED",
+    "other_parameters_ref": "P2_generation_spec_v2.json",
+    "selection_priority": 1
+  },
+  {
+    "config_id": "ADAS-near-saturation-8-B",
+    "scenario": "ADAS",
+    "condition_id": "ADAS-near-saturation-8",
+    "load": "near-saturation",
+    "size": 8,
+    "arrival_candidate": "B",
+    "period_ms": 10,
+    "template_id": "ADAS-8-v1",
+    "source": "PROPOSED",
+    "other_parameters_ref": "P2_generation_spec_v2.json",
+    "selection_priority": 2
+  },
+  {
+    "config_id": "ADAS-near-saturation-16-A",
+    "scenario": "ADAS",
+    "condition_id": "ADAS-near-saturation-16",
+    "load": "near-saturation",
+    "size": 16,
+    "arrival_candidate": "A",
+    "period_ms": 12,
+    "template_id": "ADAS-16-v1",
+    "source": "PROPOSED",
+    "other_parameters_ref": "P2_generation_spec_v2.json",
+    "selection_priority": 1
+  },
+  {
+    "config_id": "ADAS-near-saturation-16-B",
+    "scenario": "ADAS",
+    "condition_id": "ADAS-near-saturation-16",
+    "load": "near-saturation",
+    "size": 16,
+    "arrival_candidate": "B",
+    "period_ms": 10,
+    "template_id": "ADAS-16-v1",
+    "source": "PROPOSED",
+    "other_parameters_ref": "P2_generation_spec_v2.json",
+    "selection_priority": 2
+  },
+  {
+    "config_id": "FUSION-light-8-A",
+    "scenario": "FUSION",
+    "condition_id": "FUSION-light-8",
+    "load": "light",
+    "size": 8,
+    "arrival_candidate": "A",
+    "period_ms": 80,
+    "template_id": "FUSION-8-v1",
+    "source": "PROPOSED",
+    "other_parameters_ref": "P2_generation_spec_v2.json",
+    "selection_priority": 1
+  },
+  {
+    "config_id": "FUSION-light-8-B",
+    "scenario": "FUSION",
+    "condition_id": "FUSION-light-8",
+    "load": "light",
+    "size": 8,
+    "arrival_candidate": "B",
+    "period_ms": 64,
+    "template_id": "FUSION-8-v1",
+    "source": "PROPOSED",
+    "other_parameters_ref": "P2_generation_spec_v2.json",
+    "selection_priority": 2
+  },
+  {
+    "config_id": "FUSION-light-16-A",
+    "scenario": "FUSION",
+    "condition_id": "FUSION-light-16",
+    "load": "light",
+    "size": 16,
+    "arrival_candidate": "A",
+    "period_ms": 80,
+    "template_id": "FUSION-16-v1",
+    "source": "PROPOSED",
+    "other_parameters_ref": "P2_generation_spec_v2.json",
+    "selection_priority": 1
+  },
+  {
+    "config_id": "FUSION-light-16-B",
+    "scenario": "FUSION",
+    "condition_id": "FUSION-light-16",
+    "load": "light",
+    "size": 16,
+    "arrival_candidate": "B",
+    "period_ms": 64,
+    "template_id": "FUSION-16-v1",
+    "source": "PROPOSED",
+    "other_parameters_ref": "P2_generation_spec_v2.json",
+    "selection_priority": 2
+  },
+  {
+    "config_id": "FUSION-medium-8-A",
+    "scenario": "FUSION",
+    "condition_id": "FUSION-medium-8",
+    "load": "medium",
+    "size": 8,
+    "arrival_candidate": "A",
+    "period_ms": 24,
+    "template_id": "FUSION-8-v1",
+    "source": "PROPOSED",
+    "other_parameters_ref": "P2_generation_spec_v2.json",
+    "selection_priority": 1
+  },
+  {
+    "config_id": "FUSION-medium-8-B",
+    "scenario": "FUSION",
+    "condition_id": "FUSION-medium-8",
+    "load": "medium",
+    "size": 8,
+    "arrival_candidate": "B",
+    "period_ms": 20,
+    "template_id": "FUSION-8-v1",
+    "source": "PROPOSED",
+    "other_parameters_ref": "P2_generation_spec_v2.json",
+    "selection_priority": 2
+  },
+  {
+    "config_id": "FUSION-medium-16-A",
+    "scenario": "FUSION",
+    "condition_id": "FUSION-medium-16",
+    "load": "medium",
+    "size": 16,
+    "arrival_candidate": "A",
+    "period_ms": 24,
+    "template_id": "FUSION-16-v1",
+    "source": "PROPOSED",
+    "other_parameters_ref": "P2_generation_spec_v2.json",
+    "selection_priority": 1
+  },
+  {
+    "config_id": "FUSION-medium-16-B",
+    "scenario": "FUSION",
+    "condition_id": "FUSION-medium-16",
+    "load": "medium",
+    "size": 16,
+    "arrival_candidate": "B",
+    "period_ms": 20,
+    "template_id": "FUSION-16-v1",
+    "source": "PROPOSED",
+    "other_parameters_ref": "P2_generation_spec_v2.json",
+    "selection_priority": 2
+  },
+  {
+    "config_id": "FUSION-near-saturation-8-A",
+    "scenario": "FUSION",
+    "condition_id": "FUSION-near-saturation-8",
+    "load": "near-saturation",
+    "size": 8,
+    "arrival_candidate": "A",
+    "period_ms": 12,
+    "template_id": "FUSION-8-v1",
+    "source": "PROPOSED",
+    "other_parameters_ref": "P2_generation_spec_v2.json",
+    "selection_priority": 1
+  },
+  {
+    "config_id": "FUSION-near-saturation-8-B",
+    "scenario": "FUSION",
+    "condition_id": "FUSION-near-saturation-8",
+    "load": "near-saturation",
+    "size": 8,
+    "arrival_candidate": "B",
+    "period_ms": 10,
+    "template_id": "FUSION-8-v1",
+    "source": "PROPOSED",
+    "other_parameters_ref": "P2_generation_spec_v2.json",
+    "selection_priority": 2
+  },
+  {
+    "config_id": "FUSION-near-saturation-16-A",
+    "scenario": "FUSION",
+    "condition_id": "FUSION-near-saturation-16",
+    "load": "near-saturation",
+    "size": 16,
+    "arrival_candidate": "A",
+    "period_ms": 12,
+    "template_id": "FUSION-16-v1",
+    "source": "PROPOSED",
+    "other_parameters_ref": "P2_generation_spec_v2.json",
+    "selection_priority": 1
+  },
+  {
+    "config_id": "FUSION-near-saturation-16-B",
+    "scenario": "FUSION",
+    "condition_id": "FUSION-near-saturation-16",
+    "load": "near-saturation",
+    "size": 16,
+    "arrival_candidate": "B",
+    "period_ms": 10,
+    "template_id": "FUSION-16-v1",
+    "source": "PROPOSED",
+    "other_parameters_ref": "P2_generation_spec_v2.json",
+    "selection_priority": 2
+  }
+]
+methods [
+  "B1",
+  "B2",
+  "B3",
+  "B4",
+  "B5"
+]
+rules {
+  "SEL-v2": "All2520 slots retained. For each declared condition evaluate each A/B config using all10 B2 records, complete validity/control qualification and its OWN target-load predicates. Select first eligible A elseB; no eligible =>NO_ELIGIBLE_CONDITION/BLOCKED. No candidate/M1R/M2 effect enters selection; no relabel, drop, clamp or expansion. All unselected/off-target records preserved.",
+  "TIE-v2": "A before B only; internal baseline service/node/resource ties unchanged. No effect-size ranking.",
+  "FAIL-v2": "invalid/failed/incomplete/provenance conflict =>preserve and halt entire plan; remaining NOT_STARTED. Natural infeasible, no-control-witness or valid-off-target are preserved scientific negatives; continue fixed slots, never select them. No automatic retry; exactly one registered replay after valid primary."
+}
+budget {
+  "configurations": 36,
+  "seeds": 10,
+  "main_methods": 5,
+  "main_runs": 1800,
+  "H_isolated_runs": 360,
+  "low_competition_runs": 360,
+  "total_trial_slots": 2520,
+  "workload_artifacts_if_all_materialized": 1080,
+  "main_workload_artifacts": 360,
+  "selected_main_workloads_after_calibration": 180,
+  "reuse_calls_add_samples": 0,
+  "automatic_retries": 0,
+  "replay_per_trial": 1,
+  "physical_engine_invocations_including_replay_max": 5040,
+  "analysis_only_M1_engine_invocations": 0,
+  "engineering_timing_runs": 0,
+  "timing_reason": "Explicitly excluded from this P2 calibration proposal; timing protocol remains UNRESOLVED, not silently defaulted or frozen."
+}
+method_justification {
+  "B1": "include: ordering importance control vs B2; same EFT. Not selected for predicted success.",
+  "B2": "include all configs/seeds and both controls: focal classification/selection/reference, fixed L budget role retained.",
+  "B3": "include: rank/EFT online source-derived adaptation, distinguishes task ordering from H priority.",
+  "B4": "include: OCT look-ahead reference, comparison with B3 not pure mapping causal identification.",
+  "B5": "include: H-priority OCT strong baseline; no pruning for expected performance.",
+  "EXCLUDED": "No B1–B5 excluded from main grid. Controls use B2 only because feasibility witness/pressure focus, not comparative claims; absence of other methods in controls cannot prove their infeasibility. Candidates, A1/A2/A3, severe-overload and reserved partitions excluded by stage scope."
+}
+alternative_budgets [
+  {
+    "id": "SMALL",
+    "main_methods": [
+      "B2",
+      "B3",
+      "B4",
+      "B5"
+    ],
+    "total_trial_slots": 2160,
+    "tradeoff": "Drops B1 importance control; would require separately approved replacement matrix, not implicit subset selection"
+  },
+  {
+    "id": "WIDE",
+    "period_candidates_per_condition": 3,
+    "total_trial_slots": 3780,
+    "tradeoff": "50% higher budget; added periods remain UNRESOLVED, no WIDE trials authorized or enumerated"
+  }
+]
+document_version "v2"
+approval "UNAPPROVED"
+starting_commit "79f9c245b23119ce25175d6dc6ff148e9e092461"
+parent_matrix_sha256 "a68ef6b61f0e604dfebf1500b9a36fd7db1097938ae5abf321b1bf39aac23f2f"
+materialization_order "Per config/seed MAIN generation+resolution first, then both derived controls; independent of unchanged engine trial ordering."
+diagnostic_spec_ref "P2_diagnostic_spec_v2.json"
+criterion_spec_ref "P2_criterion_spec_v2.json"
+stage_contract_ref "P2_stage_state_contract_v2.json"
+diagnostic_budget {
+  "max_action_assignments_per_covered_view": 1296,
+  "max_projected_nodes_per_assignment": 36,
+  "independent_of_engine_invocation_budget": true,
+  "actual_views": "UNKNOWN_NOT_RUN",
+  "wall_cost": "UNKNOWN_NOT_MEASURED",
+  "early_exit": "No result-dependent early stopping; interrupted analysis INCOMPLETE"
+}
+selection_policy {
+  "candidate_order": [
+    "A",
+    "B"
+  ],
+  "reference_method": "B2",
+  "selection_unit": "ONE_CONFIG_PER_DECLARED_CONDITION_USING_ALL10_SEEDS",
+  "qualification": "ALL_VALID_CONTROLS_AND_OWN_DECLARED_TARGET_LOAD",
+  "retain_all_candidate_records": true,
+  "allow_load_relabelling": false,
+  "allow_seed_deletion": false,
+  "forbidden_selection_inputs": [
+    "candidate_advantage",
+    "M1R_gain",
+    "mapping_classification",
+    "M2_method_advantage"
+  ],
+  "no_eligible_action": "NO_ELIGIBLE_CONDITION_AND_BLOCKED"
+}
+trials LEN 2520 FIRST [{'trial_id': 'proposal-v2-t0001', 'scenario': 'COCKPIT', 'condition_id': 'COCKPIT-light-8', 'config_id': 'COCKPIT-light-8-A', 'load': 'light', 'size': 8, 'variant': 'H_ISOLATED', 'method': 'B2', 'calibration_seed': 1677814459331049, 'seed_index': 0, 'partition': 'CALIBRATION', 'workload_id': 'wlref:v2:COCKPIT-light-8-A:s00:H_ISOLATED', 'workload_sha256': None, 'comparison_role': 'H_ISOLATED_FEASIBILITY_CONTROL', 'execution_order': 1, 'budget_count': 1, 'selection_rule': 'SEL-v2', 'tie_rule': 'TIE-v2', 'failure_rule': 'FAIL-v2', 'command': None}, {'trial_id': 'proposal-v2-t0002', 'scenario': 'COCKPIT', 'condition_id': 'COCKPIT-light-8', 'config_id': 'COCKPIT-light-8-A', 'load': 'light', 'size': 8, 'variant': 'LOW_COMPETITION', 'method': 'B2', 'calibration_seed': 1677814459331049, 'seed_index': 0, 'partition': 'CALIBRATION', 'workload_id': 'wlref:v2:COCKPIT-light-8-A:s00:LOW_COMPETITION', 'workload_sha256': None, 'comparison_role': 'LOW_COMPETITION_FEASIBILITY_CONTROL', 'execution_order': 2, 'budget_count': 1, 'selection_rule': 'SEL-v2', 'tie_rule': 'TIE-v2', 'failure_rule': 'FAIL-v2', 'command': None}, {'trial_id': 'proposal-v2-t0003', 'scenario': 'COCKPIT', 'condition_id': 'COCKPIT-light-8', 'config_id': 'COCKPIT-light-8-A', 'load': 'light', 'size': 8, 'variant': 'MAIN', 'method': 'B1', 'calibration_seed': 1677814459331049, 'seed_index': 0, 'partition': 'CALIBRATION', 'workload_id': 'wlref:v2:COCKPIT-light-8-A:s00:MAIN', 'workload_sha256': None, 'comparison_role': 'IMPORTANCE_ORDER_CONTROL', 'execution_order': 3, 'budget_count': 1, 'selection_rule': 'SEL-v2', 'tie_rule': 'TIE-v2', 'failure_rule': 'FAIL-v2', 'command': None}] LAST [{'trial_id': 'proposal-v2-t2518', 'scenario': 'FUSION', 'condition_id': 'FUSION-near-saturation-16', 'config_id': 'FUSION-near-saturation-16-B', 'load': 'near-saturation', 'size': 16, 'variant': 'MAIN', 'method': 'B3', 'calibration_seed': 3512531139176427, 'seed_index': 9, 'partition': 'CALIBRATION', 'workload_id': 'wlref:v2:FUSION-near-saturation-16-B:s09:MAIN', 'workload_sha256': None, 'comparison_role': 'ONLINE_RANK_EFT_CONTROL', 'execution_order': 2518, 'budget_count': 1, 'selection_rule': 'SEL-v2', 'tie_rule': 'TIE-v2', 'failure_rule': 'FAIL-v2', 'command': None}, {'trial_id': 'proposal-v2-t2519', 'scenario': 'FUSION', 'condition_id': 'FUSION-near-saturation-16', 'config_id': 'FUSION-near-saturation-16-B', 'load': 'near-saturation', 'size': 16, 'variant': 'MAIN', 'method': 'B4', 'calibration_seed': 3512531139176427, 'seed_index': 9, 'partition': 'CALIBRATION', 'workload_id': 'wlref:v2:FUSION-near-saturation-16-B:s09:MAIN', 'workload_sha256': None, 'comparison_role': 'ONLINE_OCT_MAPPING_CONTROL', 'execution_order': 2519, 'budget_count': 1, 'selection_rule': 'SEL-v2', 'tie_rule': 'TIE-v2', 'failure_rule': 'FAIL-v2', 'command': None}, {'trial_id': 'proposal-v2-t2520', 'scenario': 'FUSION', 'condition_id': 'FUSION-near-saturation-16', 'config_id': 'FUSION-near-saturation-16-B', 'load': 'near-saturation', 'size': 16, 'variant': 'MAIN', 'method': 'B5', 'calibration_seed': 3512531139176427, 'seed_index': 9, 'partition': 'CALIBRATION', 'workload_id': 'wlref:v2:FUSION-near-saturation-16-B:s09:MAIN', 'workload_sha256': None, 'comparison_role': 'STRONG_H_PRIORITY_OCT_CONTROL', 'execution_order': 2520, 'budget_count': 1, 'selection_rule': 'SEL-v2', 'tie_rule': 'TIE-v2', 'failure_rule': 'FAIL-v2', 'command': None}]

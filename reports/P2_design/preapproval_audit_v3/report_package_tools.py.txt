@@ -1,0 +1,22 @@
+from pathlib import Path
+import hashlib,json,shutil,collections
+R=Path('/workspace/soc');O=R/'reports/P2_design/preapproval_audit_v3'
+def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+def write(name,x):(O/name).write_text(json.dumps(x,ensure_ascii=False,indent=2)+'\n')
+def combine():
+ names=['main','history','matrix','identity','m1r','decision','challenge','final']
+ records=[];sources=[]
+ for n in names:
+  p=O/(n+'_commands.json')
+  if p.exists():
+   x=json.loads(p.read_text());records.extend(x['commands']);sources.append(dict(path=p.relative_to(R).as_posix(),sha256=sha(p)))
+ records.sort(key=lambda r:(r['started_at_utc'],r['id']))
+ write('actual_commands_and_exit_codes.json',dict(scope='Actual substantive subprocess commands recorded by review components, plus final package checks. Tool discovery, report-authoring helpers and incidental report reads are not an exhaustive shell transcript. Git publication receipts are separately referenced when present.',command_count=len(records),actual_exit_code_counts=dict(collections.Counter(str(x['exit_code']) for x in records)),commands=records,source_ledgers=sources,nonzero_commands=[dict(id=x['id'],exit_code=x['exit_code'],expected_exit_code=x['expected_exit_code']) for x in records if x['exit_code']!=0],additional_discovery_events=[dict(action='Initial broad rg search over /tmp',exit_code=2,reason='Permission denied for /tmp/codex-daemon-1000; no bypass; repository remained readable',raw_output_scope='Tool transcript only; noted in environment_and_discovery_notes.md'),dict(action='Incidental cat of identity_recovery_review.md before asynchronous report creation finished',exit_code=1,reason='New report did not yet exist; later read succeeded; not audited source failure',raw_output_scope='Tool transcript only')],reviewer_corrections=[dict(id='decision-010',reason='Missing bracket in read-only inline Python; corrected decision-011 exit0; original stderr retained'),dict(action='Final citation review',reason='Corrected new decision_findings STATUS locator from lines1–66 to actual1–56, then rebuilt aggregate. No existing source changed; preliminary scan identified the bounds mismatch without nonzero process exit.')],publication_receipt='first_publication_receipt.json' if (O/'first_publication_receipt.json').exists() else 'Final Git publication occurs after report evidence closes; enclosing commit resolved live; no fabricated self hash',scientific_commands_executed=0))
+ p=O/'actual_commands_and_exit_codes.json';x=json.loads(p.read_text());x['reviewer_corrections'].extend([dict(id='final-001',exit_code=1,reason='SP27 new-report _json field contained plain text; converted it to JSON with verbatim v2 and historical v1 source excerpts. No original specification changed. final-002 report reference verification exit0.'),dict(id='final-003',exit_code=1,reason='final-002 appended the final command ledger after aggregate generation, producing a stale aggregate-ledger hash. Regenerated aggregate before recheck; final-004 all21 integrity checks PASS, expected design-review exit2. Original failure stdout preserved.')]);write('actual_commands_and_exit_codes.json',x)
+def manifest():
+ files=[]
+ for p in sorted(O.rglob('*')):
+  if p.is_file() and p.name!='review_evidence_manifest.json':files.append(dict(path=p.relative_to(R).as_posix(),sha256=sha(p),size_bytes=p.stat().st_size))
+ write('review_evidence_manifest.json',dict(schema_version='soc-preapproval-v3-report-evidence-1',audited_source_commit='a3680acf45c5578fc090cf53cc186f28a8e9b88a',review_verdict='DESIGN_REVIEW_REVISE_REQUIRED',scope='Only new report files; all preexisting462 files protected by protected_baseline.json',self_exclusion='This manifest is excluded to avoid self-hash recursion; enclosing Git commit binds it. Final publication receipt external to commit resolves live final SHA.',artifact_count=len(files),files=files,scientific_artifacts_created=0))
+if __name__=='__main__':
+ combine();manifest(); print(json.dumps(dict(command_ledger='actual_commands_and_exit_codes.json',manifest='review_evidence_manifest.json')))

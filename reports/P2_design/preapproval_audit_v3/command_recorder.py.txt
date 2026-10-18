@@ -1,0 +1,11 @@
+from pathlib import Path
+import subprocess,json,hashlib,datetime
+R=Path('/workspace/soc'); O=R/'reports/P2_design/preapproval_audit_v3'
+def sha(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
+def command(namespace,argv,expected=0,kind='READ_ONLY_STATIC_REVIEW'):
+ log=O/(namespace+'_commands.json');a=json.loads(log.read_text()) if log.exists() else dict(namespace=namespace,scope='Actual substantive subprocess calls; discovery wrappers may be recorded separately',commands=[])
+ cid=namespace+'-'+str(len(a['commands'])+1).zfill(3);t=datetime.datetime.now(datetime.timezone.utc).isoformat();p=subprocess.run(argv,cwd=R,text=True,capture_output=True)
+ raw=O/'raw_commands';raw.mkdir(exist_ok=True);refs={}
+ for name,value in [('stdout',p.stdout),('stderr',p.stderr)]:
+  f=raw/(cid+'.'+name+'.txt');f.write_text(value);refs[name+'_ref']=dict(path=f.relative_to(R).as_posix(),sha256=sha(f),size_bytes=f.stat().st_size)
+ row=dict(id=cid,argv=argv,cwd=str(R),kind=kind,started_at_utc=t,ended_at_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),exit_code=p.returncode,expected_exit_code=expected,**refs);a['commands'].append(row);log.write_text(json.dumps(a,ensure_ascii=False,indent=2)+'\n');return row,p

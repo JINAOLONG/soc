@@ -1,0 +1,13 @@
+{
+  "scope": "Matrix-specific findings only, not a global design verdict",
+  "critical_inconsistencies": [],
+  "failed_checks": [],
+  "limitations": [
+    "Unapproved proposed finite budget is arithmetically complete, not scientifically validated or a timing feasibility proof.",
+    "Symbolic wlref values are not resolved content-addressed workload IDs and cannot pass the future invocation guard.",
+    "Matrix source_checkpoint is inherited v1 provenance; starting_commit is v2 authoring baseline, neither is current HEAD.",
+    "Original protocol registers 18 main conditions; A/B candidates and chosen periods are new unapproved design choices.",
+    "Only B2 controls are planned; B2 control failure is not evidence every baseline or schedule is infeasible.",
+    "Timing budget zero in this calibration roster leaves timing prerequisite unresolved; it is not approval to omit timing."
+  ]
+}

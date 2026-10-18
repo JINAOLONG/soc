@@ -1,0 +1,1126 @@
+FILE STATUS.md
+1: PROJECT_NAME=soc
+2: P0_STATUS=PASS
+3: P1_STATUS=PASS
+4: P2_PREFLIGHT_STATUS=BLOCKED
+5: P2_DESIGN_PACKAGE_STATUS=DRAFT
+6: P2_B1_STATUS=UNRESOLVED
+7: P2_B2_STATUS=UNRESOLVED
+8: P2_B3_STATUS=UNRESOLVED
+9: P2_B4_STATUS=DESIGNED
+10: P2_B5_STATUS=DESIGNED
+11: HUMAN_DECISIONS_REQUIRED=10
+12: SCIENTIFIC_WORKLOADS_RUN=0
+13: NEW_SEEDS_GENERATED=NO
+14: NON_CALIBRATION_PARTITIONS_ACCESSED=NO
+15: P2_ENTRYPOINT_EXECUTED=NO
+16: SIMULATOR_SOURCE_CHANGED=NO
+17: SCHEDULER_SOURCE_CHANGED=NO
+18: WORKLOAD_GENERATOR_SOURCE_CHANGED=NO
+19: SCIENTIFIC_THRESHOLDS_CHANGED=NO
+20: CI_METHOD_CHANGED=NO
+21: SEED_PARTITIONS_CHANGED=NO
+22: VALIDATION_UNLOCKED=NO
+23: FORMAL_UNLOCKED=NO
+24: GIT_COMMIT=c7e94e438674bcfbb16ed1281ce0437cb6df3072 (audited proposal checkpoint; enclosing HEAD resolved live)
+25: GITHUB_PUSH_STATUS=SUCCESS_FOR_RECORDED_PROPOSAL_CHECKPOINT
+26: WORKTREE=RESOLVE_WITH_git-status_--short
+27: NEXT_SAFE_ACTION=Human review and approval of concrete P2 design
+28: STOP=YES
+29: D01_D10_INVENTORY=10
+30: DECISIONS_RESOLVED=0
+31: DECISIONS_BLOCKED=0
+32: GIT_COMMIT_SCOPE=AUDITED_REMOTE_VERIFIED_UNAPPROVED_CONCRETE_PROPOSAL_CHECKPOINT
+33: FINAL_ENCLOSING_HEAD_COMMAND=git rev-parse HEAD
+34: FINAL_ENCLOSING_WORKTREE_COMMAND=git status --short
+35: D01_D10_PROPOSAL_COMPLETE=YES
+36: DRAFT_FILES_EXECUTABLE=NO
+37: UNRESOLVED_SCIENTIFIC_PARAMETERS=32
+38: UNRESOLVED_SCIENTIFIC_PARAMETERS_SCOPE=Named unapproved scientific parameter groups; see registry, not scalar cells
+39: CURRENT_STAGE=P2_CONCRETE_DESIGN_PROPOSAL_AWAITING_HUMAN_APPROVAL
+40: CURRENT_GIT_HEAD=RESOLVE_WITH_git-rev-parse_HEAD
+41: CURRENT_BRANCH=work
+42: TASK_START_HEAD=160800d9b136e953c6415cd5229ded87eae72a0f
+43: P0_AUDIT_EXIT_CODE=0
+44: P1_AUDIT_EXIT_CODE=0
+45: DESIGN_APPROVED=NO
+46: DESIGN_FROZEN=NO
+47: CALIBRATION_SEED_IDENTITIES_USED_OR_GENERATED=0
+48: RESULT_PATHS=docs/P2_design/P2_complete_design_proposal_v1.md;reports/P2_design/delivery_index.json
+49: P2_PLANNED_TRIAL_SLOTS=2520
+50: P2_SCIENTIFIC_REALIZATIONS_GENERATED=0
+51: 
+52: Proposal v1 is concrete but entirely unapproved. 32 named scientific parameter groups remain UNRESOLVED.
+53: P0/P1 actual read-only audits exit 0; P2 never executed. See reports/P2_design/proposal_v1.
+54: Previous STATUS preserved byte-for-byte in that directory. No implementation or reserved partition changes.
+55: PROPOSAL_CHECKS_PASSED=94
+56: PROPOSAL_GIT_RECEIPT=reports/P2_design/proposal_v1/git_checkpoint.json
+FILE docs/model_spec.md
+1: # System model — P0 definitions with user-approved P1 event order
+2: 
+3: Virtual time uses milliseconds, data sizes MiB, bandwidth MiB/ms and power W.
+4: Service g has arrival a_g >= 0, relative deadline D_g > 0, absolute deadline
+5: d_g = a_g + D_g, importance H or L and a finite acyclic task graph. Completion
+6: F_g is the last node completion. Nodes inherit service importance. Instance,
+7: node and resource IDs are unique stable strings. Reject cycles, empty compatible
+8: sets, nonfinite/negative timing inputs and missing predecessor identities.
+9: 
+10: Resources are CPU0, CPU1, CPU2, CPU3, GPU0, NPU0. Each unit executes at most one
+11: node. GPU/NPU internal parallelism is abstracted by execution time. Compatible
+12: sets must include CPU-only, GPU-oriented, NPU-oriented, multi-compatible and
+13: limited-alternative types; universal compatibility is not an acceptable workload.
+14: Every resource-specific node has positive estimated and realized durations.
+15: 
+16: Execution is non-preemptive: a started node keeps its resource and contiguous
+17: execution interval until completion. No migration, replication or replanning of
+18: that interval is allowed. Pending nodes may be reordered/remapped.
+19: 
+20: Communication version 1 has no shared-bus contention. For edge u→v with size b,
+21: transfer to destination r can start at u's completion C_u. Same unit: delay 0.
+22: Different units: latency(type(u),type(r)) + b / bandwidth(type(u),type(r)); all
+23: parameters nonnegative with strictly positive bandwidth. Independent transfers
+24: overlap with each other and with compute. Data readiness on r is
+25: max over predecessors of C_u + delay(u,r); a root is ready at service arrival.
+26: These logical copies are destination-specific and retained after transfer.
+27: Remapping a pending node recomputes readiness for the new destination; it cannot
+28: reuse a copy at another unit or backdate transfer before predecessor completion.
+29: The implementation may calculate copy readiness lazily from immutable completed
+30: outputs; this is not a reservation or a started execution. No future predecessor
+31: completion is treated as an actual completed output.
+32: 
+33: States are distinct: dependency_ready (all predecessors completed), data_ready
+34: (copies arrived on a specified destination), planned (nonbinding proposal),
+35: resource_ready (destination idle), started, running, completed. A proposal may
+36: wait or be replaced. Actual start >= arrival, all predecessor completions,
+37: destination-specific data readiness and resource availability.
+38: 
+39: Deterministic event ordering approved by the user in the P1 task (D1): at virtual time t,
+40: process all completions, expose all arrivals at t, then refresh the immutable
+41: scheduler view and dispatch only feasible starts; repeat zero-time dispatch
+42: until no start is chosen. Ties use stable (service_id,node_id,resource_id).
+43: No positive-length execution interval overlaps another on the same unit; touching
+44: endpoints are legal. When no start is possible, advance to the next true event
+45: or feasible data-readiness wakeup. Detect a deadlock rather than silently dropping
+46: jobs. After stopping arrivals, drain all admitted work, even after deadline miss.
+47: 
+48: Scheduler boundary: only arrived public DAGs, estimates, deadlines, H/L, completed
+49: outputs, running task start/elapsed observations, idle/busy state and observable
+50: data readiness. Never disclose the private event queue, future arrivals, true
+51: remaining running durations or future disturbances. Busy-unit release prediction
+52: must use estimates and elapsed time, never actual queued completion timestamps.
+53: 
+54: Execution disturbances must be scheduler-independent deterministic functions of
+55: (workload seed, service ID, node ID, resource ID, disturbance version). The
+56: generator materializes the same workload artifact for every compared method.
+57: No RNG call sequence may depend on scheduler decisions. Exact event, trace and
+58: metric reproducibility is required for identical code/config/workload identities.
+59: 
+60: P1 must independently validate legal traces and reject crafted violations of
+61: precedence, data readiness, compatibility, overlaps, duration, unique execution,
+62: non-preemption, assignment, completion and full arrival accounting. It must include
+63: a 6–8-node hand-checkable DAG, simultaneous events, equality at deadline and drain.
+64: Implementation and test evidence are tracked in P1_implementation_spec.md and
+65: reports/P1_correctness.json; this model does not itself assert correctness PASS.
+FILE docs/P2_design/v2/P2_diagnostic_spec_v2.json
+1: {
+2:   "document_kind": "BOUNDED_REMAINING_H_PATH_DIAGNOSTIC",
+3:   "document_version": "v2",
+4:   "status": "DRAFT_UNAPPROVED_NONEXECUTABLE",
+5:   "classification": "PROPOSED",
+6:   "approval": "UNAPPROVED",
+7:   "approved": false,
+8:   "frozen": false,
+9:   "executable": false,
+10:   "execution_authorized": false,
+11:   "read_by_pipeline": false,
+12:   "starting_commit": "79f9c245b23119ce25175d6dc6ff148e9e092461",
+13:   "diagnostic_id": "M1R_PATH_V2",
+14:   "historical_M1": {
+15:     "id": "M1_READY_PREFIX_V1",
+16:     "source": "docs/P2_design/P2_complete_design_proposal_v1.md#D07",
+17:     "source_sha256": "e378e85071d6c97fb6cd5801d9449eef176a90baddcd786181c6685eaa29feac",
+18:     "use": "Historical definition only, not the v2 stage observer; cannot infer absence of remaining-H-path mechanism from its negative result."
+19:   },
+20:   "observation_boundary": "Only exact PUBLIC_SNAPSHOT; no future arrivals/private durations/queue/truth; all predictions are offline and cannot change scheduler/actual B2 trace.",
+21:   "scope": {
+22:     "eligible": "At least one dependency-ready not-started node anywhere among arrived services AND at least one arrived H service with a not-started node; H running prefix with an unready H descendant qualifies.",
+23:     "action_nodes": "First min(4,all_dependency_ready_count) in unchanged B2 (H first, absolute deadline, service_id,node_id) order when at least2 ready nodes exist. With exactly1 ready node record COVERAGE_INSUFFICIENT/READY_COUNT_BELOW_TWO and do not enumerate, preserving the original2-4-ready oracle scope.",
+24:     "target_H_services": "First min(2,number of unfinished arrived H services with >=1 not-started node), ordered absolute deadline then service_id; fixed before any gain calculation.",
+25:     "suffix": "All still-unplaced nodes of the selected target H services, including public unready descendants; each approved graph has at most16 nodes. Completed/running/current-action target nodes treated as already fixed/forecast placed.",
+26:     "visible_running": "At most6 units. release_hat=now+max(0,estimate-elapsed). If any busy unit has elapsed>=estimate, future release cannot be placed from public info: mark COVERAGE_INSUFFICIENT, do not invent epsilon or consult true completion.",
+27:     "unselected_work": "No unselected ready node, unselected H target, L successor or future arrival is projected; report exclusions and truncation. Never interpret result as global optimality."
+28:   },
+29:   "limits": {
+30:     "max_action_nodes": 4,
+31:     "min_action_nodes": 2,
+32:     "max_target_H_services": 2,
+33:     "max_nodes_per_target": 16,
+34:     "max_projected_nodes": 36,
+35:     "max_visible_running": 6,
+36:     "max_assignments": 1296,
+37:     "max_calendar_intervals": 42,
+38:     "max_gap_candidates_per_resource": 43,
+39:     "max_resource_choices_per_node": 6,
+40:     "max_numeric_gap_checks_per_view": 12037248,
+41:     "early_stopping": false,
+42:     "wall_time_measured": false
+43:   },
+44:   "projection": {
+45:     "arithmetic": "Exact Rational values decoded from public binary64 bits. All forecast communication L+b/B and interval algebra use those rationals, not hidden truths. This surrogate need not bit-match runtime floating prediction.",
+46:     "initial_calendar": "For each busy unit reserve forecast[now,release_hat); idle units have no forecast busy interval. Public completed outputs remain fixed at actual known finish/resource.",
+47:     "current_actions": "Place K in fixed B2 order. For each assignment, earliest entire idle gap at/after now, service arrival and all completed predecessor copies, using projected running calendars. No preemption/migration/overlap. All chosen action intervals remain fixed for suffix rollout.",
+48:     "baseline": "Greedy minimum predicted EFT with resource-ID ties for each K action using the same placement arithmetic/calendar; not a claim to reproduce actual future B2 execution.",
+49:     "suffix_order": "Static Kahn placement of selected target pending nodes after treating completed/running/K as placed; among available nodes choose (service absolute deadline,service_id,node_id). Same order in baseline and every assignment; no suffix search.",
+50:     "suffix_mapping": "For each suffix node, choose minimum predicted EFT/resource ID among compatible units using earliest entire idle-gap insertion. Parents may have fixed known or projected finishes; projected finish is never an actual completed fact.",
+51:     "objective": "Minimize arithmetic mean of projected completion times of the fixed selected H services; completion=max projected/known finish over all nodes of each target service. No deadline/miss or true-duration objective substitution.",
+52:     "L_constraint": "For every L node in K: candidate predicted finish <= max(baseline predicted finish, its service absolute deadline). No claim about full-L-service completion or global L-P95 budget. This is a new diagnostic slack rule, not the registered1.10 threshold.",
+53:     "admissible": "Enumerate complete Cartesian product of compatible resources for K, <=6^4. No task-order branching, no optimization of suffix mappings, no future tasks. Baseline is included and satisfies its own L cap.",
+54:     "ties": "Compare H objective exactly; equal objectives choose lexicographic resource-ID tuple in K order. Suffix/greedy resource ties use fixed resource ID order.",
+55:     "gain": "b=baseline target-H mean finish-now>0; o=best corresponding finish-now; delta=b-o>=0 ms, g=delta/b dimensionless. Persist exact rationals, no arbitrary epsilon."
+56:   },
+57:   "coverage": {
+58:     "FULL": "All ready actions fit2<=K<=4; all candidate pending H services fit<=2; complete approved target DAGs; all running releases predictable from estimates; all enumeration/projection records complete.",
+59:     "PARTIAL": "Ready count below2 or ready/target cap truncates, or busy estimate exhausted, or bounded model cannot cover target. Record COVERAGE_INSUFFICIENT; optional bounded partial projection is descriptive only, never enter hit/rate denominator or be imputed zero.",
+60:     "INVALID": "Malformed/nonfinite public state, illegal predecessor/compatibility identity, missing refs, impossible ordering/calendars or independent mismatch. Stop plan; not a negative opportunity.",
+61:     "MISSING": "Missing required snapshot/stream/record is INCOMPLETE, not PARTIAL coverage."
+62:   },
+63:   "view_outcomes": [
+64:     "NOT_IN_SCOPE",
+65:     "COVERAGE_INSUFFICIENT",
+66:     "INVALID",
+67:     "INCOMPLETE",
+68:     "NO_IMPROVEMENT_IN_TESTED_SPACE",
+69:     "SUBTHRESHOLD_IMPROVEMENT",
+70:     "MATERIAL_IMPROVEMENT_IN_TESTED_SPACE"
+71:   ],
+72:   "record_fields": [
+73:     "namespace",
+74:     "schema_version",
+75:     "diagnostic_id",
+76:     "observer_spec_sha256",
+77:     "state_key",
+78:     "representative_event_seq",
+79:     "scope_hash",
+80:     "eligibility_reason",
+81:     "all_ready_count",
+82:     "all_target_count",
+83:     "selected_K_IDs",
+84:     "selected_target_IDs",
+85:     "truncation_flags",
+86:     "coverage_status",
+87:     "baseline_assignment",
+88:     "baseline_calendar",
+89:     "baseline_target_finishes",
+90:     "baseline_L_finishes",
+91:     "enumeration_count",
+92:     "feasible_count",
+93:     "enumeration_digest_sha256",
+94:     "best_assignment",
+95:     "best_calendar",
+96:     "best_target_finishes",
+97:     "projected_H_path_and_resource_blockers",
+98:     "b",
+99:     "o",
+100:     "delta_ms",
+101:     "g",
+102:     "threshold_bundle_id",
+103:     "view_outcome",
+104:     "independent_recompute_ref",
+105:     "independent_recompute_status"
+106:   ],
+107:   "stage_denominators": {
+108:     "E": "all unique IN_SCOPE states from complete primary MAIN-B2 stream, including valid partial-coverage states",
+109:     "F": "subset of E with VALID_FULL complete diagnostic",
+110:     "hits": "subset of F with g>=preapproved tau",
+111:     "p": "hits/F only when F>0; partial states not zero or hits",
+112:     "coverage": "F/E only when E>0",
+113:     "zero": "E=0 or F=0 => insufficient evidence; p=null, never0"
+114:   },
+115:   "negative_interpretation": "No improvement means none for this exact tested local action/suffix model. Partial coverage cannot yield negative absence evidence. Even complete tested-space negative is an operational failure to support the preregistered bounded diagnostic, not a theorem that all mappings or future workloads lack the registered mechanism.",
+116:   "independent_recomputation": "Use snapshot+observer spec only; verify fixed target/action/order, baseline membership, all Cartesian assignments and L caps, projection intervals, exact objective/ties/gain, coverage and representative event. No source-private true fields.",
+117:   "record_schema": "P2_typed_identity_schema_v2.json#/$defs/DIAGNOSTIC_RECORD",
+118:   "error_schema": "P2_typed_identity_schema_v2.json#/$defs/DIAGNOSTIC_ERROR_RECORD",
+119:   "record_semantics": "VALID_FULL requires nonnull b/o/delta/g/enumeration digest and all baseline/best projections; counts exact. Other coverage states cannot be filled with zero g: use null if uncomputed. Missing required state data produces ERROR_RECORD, not a fabricated complete diagnostic. PASS independent recomputation required before criterion use."
+120: }
+FILE docs/P2_design/v2/P2_public_snapshot_spec_v2.json
+1: {
+2:   "document_kind": "PUBLIC_SNAPSHOT_AND_DENOMINATOR_DESIGN",
+3:   "document_version": "v2",
+4:   "status": "DRAFT_UNAPPROVED_NONEXECUTABLE",
+5:   "classification": "PROPOSED",
+6:   "approval": "UNAPPROVED",
+7:   "approved": false,
+8:   "frozen": false,
+9:   "executable": false,
+10:   "execution_authorized": false,
+11:   "read_by_pipeline": false,
+12:   "starting_commit": "79f9c245b23119ce25175d6dc6ff148e9e092461",
+13:   "snapshot_schema": "P2_typed_identity_schema_v2.json#/$defs/PUBLIC_SNAPSHOT",
+14:   "event_schema": "P2_typed_identity_schema_v2.json#/$defs/SNAPSHOT_EVENT",
+15:   "included_fields": [
+16:     "namespace",
+17:     "schema_version",
+18:     "now_bits",
+19:     "services",
+20:     "running",
+21:     "completed",
+22:     "resources",
+23:     "links"
+24:   ],
+25:   "excluded_fields": [
+26:     "decision_seq",
+27:     "event_seq",
+28:     "run/attempt/trial IDs from snapshot BODY",
+29:     "refresh causes",
+30:     "wall timestamps",
+31:     "host",
+32:     "method",
+33:     "workload seed",
+34:     "realized durations",
+35:     "private queue",
+36:     "future arrivals/bursts",
+37:     "unobserved completions",
+38:     "private perturbations"
+39:   ],
+40:   "array_orders": {
+41:     "services": "service_id ASCII",
+42:     "nodes": "node_id ASCII",
+43:     "estimates": "resource_id fixed CPU0..3,GPU0,NPU0 order",
+44:     "predecessors": "predecessor node_id ASCII",
+45:     "running": "(service_id,node_id,resource_id)",
+46:     "completed": "(service_id,node_id,resource_id)",
+47:     "resources": "CPU0,CPU1,CPU2,CPU3,GPU0,NPU0",
+48:     "links": "(source_type,destination_type) ASCII"
+49:   },
+50:   "snapshot_numeric_format": "all public binary64 numbers encoded by big-endian16 lowercase hex digits; reject NaN/inf, negative times/sizes, nonpositive estimates/bandwidth; normalize -0",
+51:   "hash": "state_sha256=SHA256(SEMANTIC_CANON_V2(snapshot body)); event metadata excluded",
+52:   "record_rule": "Preserve every actual event record, including EMPTY_DISPATCH and duplicate state references; contiguous event_seq, verified hook stream receipt.",
+53:   "hooks": "INITIAL; after a full D1 completion+arrival batch before dispatch; after each actual start before next call; empty-dispatch outcome; post-completion final refresh. Never expose an intermediate completion-only view before same-time arrivals.",
+54:   "dedup_scope": "One primary attempt of one MAIN B2 trial; denominator scope hash includes run_id, primary_attempt_id, observer_spec_sha256. No pooling across trials/seeds/methods/controls/replays.",
+55:   "state_key": "SHA256 canonical STATE_KEY_PREIMAGE(scope hash,state_sha256); record ID/event_seq/decision_seq are not state-equivalence keys",
+56:   "counting": "Globally dedup identical state_key within scope; first event_seq is representative, later events link to counted_as_event_seq. now/elapsed are included, so genuine time advance changes state; same-time start/completion/arrival changes public status/DAG and counts distinctly.",
+57:   "empty_calls": "Preserve empty calls; same snapshot counts once. A unique state with no ready action or no pending H target is NOT_IN_SCOPE, not a zero-opportunity eligible state.",
+58:   "replay": "Replay has separate stream_role=REPLAY and receipt, never contributes denominator; public-state hash sequence must reproduce primary including same-time transitions. Record IDs can differ.",
+59:   "missing": "Any expected hook/snapshot/reference/required field missing or corrupt is INCOMPLETE/INVALID evidence; cannot decide eligibility and silently exclude it. Fail closed; no zero imputation.",
+60:   "independent_check": "Reconstruct hook coverage from validated physical/decision trace and observer contract; check all refs/state hashes, earliest representative and scope membership, then recompute E/F/coverage/hits from complete primary stream.",
+61:   "exact_event_rule": "Exactly one SNAPSHOT_EVENT for each actual engine scheduler invocation: body is pre-call public view, dispatch_result records returned START/NONE. event_seq and decision_seq are the contiguous0-based invocation index within stream; causes are unique in listed enum order. EMPTY_DISPATCH is metadata on that event, not an extra observation. Final completion must have a final empty call/view as the existing P1 engine does; no synthetic polling calls may be inserted.",
+62:   "duplicate_event_rule": "Duplicate event ID in an exported stream is integrity failure, even if byte-identical; multiple genuinely executed calls with different event IDs and same state_sha are retained but state counted once.",
+63:   "derived_public_metadata": "template_id and size derived only from arrived service public IDs/DAG node count; do not add private fields or change scheduler DTO. Running elapsed must equal RN64(now-start) as existing engine; arrays sorted as declared."
+64: }
+FILE docs/P2_design/v2/P2_criterion_spec_v2.json
+1: {
+2:   "document_kind": "MAPPING_OPPORTUNITY_CRITERION",
+3:   "document_version": "v2",
+4:   "status": "DRAFT_UNAPPROVED_NONEXECUTABLE",
+5:   "classification": "PROPOSED",
+6:   "approval": "UNAPPROVED",
+7:   "approved": false,
+8:   "frozen": false,
+9:   "executable": false,
+10:   "execution_authorized": false,
+11:   "read_by_pipeline": false,
+12:   "starting_commit": "79f9c245b23119ce25175d6dc6ff148e9e092461",
+13:   "observer_id": "M1R_PATH_V2",
+14:   "threshold_bundle_selection": "UNAPPROVED_NO_DEFAULT",
+15:   "bundles": [
+16:     {
+17:       "id": "FINE",
+18:       "tau": "1/100",
+19:       "frequency": "1/100",
+20:       "support_seed_count": 8,
+21:       "absence_seed_count_max": 2
+22:     },
+23:     {
+24:       "id": "COARSE",
+25:       "tau": "1/20",
+26:       "frequency": "1/20",
+27:       "support_seed_count": 8,
+28:       "absence_seed_count_max": 2
+29:     }
+30:   ],
+31:   "coverage_thresholds": {
+32:     "support_min_each_seed_condition": "4/5",
+33:     "negative_required_each_seed_condition": "1",
+34:     "approval": "UNAPPROVED"
+35:   },
+36:   "units": {
+37:     "independent_resampling_unit": "paired registered calibration seed",
+38:     "observation_unit": "deduplicated fully covered primary MAIN-B2 public state",
+39:     "eligible_count": "E",
+40:     "covered_count": "F",
+41:     "hit_count": "hits",
+42:     "opportunity_rate": "hits/F",
+43:     "coverage": "F/E",
+44:     "partial_not_zero": true
+45:   },
+46:   "preconditions": [
+47:     "definition/criterion explicitly approved before data",
+48:     "all2520 primary/replay/validation/artifact sets complete valid",
+49:     "all18 conditions selected by fixed B2 qualification before diagnostic inspection",
+50:     "all expected primary B2 snapshot streams complete and independently checked",
+51:     "each of12 selected medium/near conditions has10 paired seeds",
+52:     "each seed/condition E>0 and F>0",
+53:     "zero INVALID/INCOMPLETE diagnostic record"
+54:   ],
+55:   "bootstrap": {
+56:     "method": "unchanged10000 paired-seed percentile95%, type7(.025,.975), fixed analysis_seed20261018",
+57:     "key_schema": "P2_typed_identity_schema_v2.json#/$defs/ANALYSIS_INDEX_KEY",
+58:     "index": "SHA256 SEMANTIC_CANON_V2(key); q first64 big-endian; limit=18446744073709551610; if q>=limit increment counter else index=q%10; each replicate10 indices, same vector across all methods/conditions",
+59:     "indices_generated_this_task": false,
+60:     "aggregate": "Within each condition resample paired seed p and take seed mean. Mandatory descriptive macro: within each seed equal-weight mean of12 selected loaded conditions, then mean over seeds; reuse same bootstrap seed-index vector for every condition/method/macro. Macro never compensates for any condition failure.",
+61:     "interpretation": "Pointwise descriptive intervals conditional on selected calibration configs and VALID_FULL coverage; not independent confirmatory evidence or simultaneous-coverage claim."
+62:   },
+63:   "decision_order": [
+64:     {
+65:       "priority": 0,
+66:       "when": "No scientific evaluation executed",
+67:       "classification": "NOT_EVALUATED"
+68:     },
+69:     {
+70:       "priority": 1,
+71:       "when": "Evaluation attempted but any precondition or support coverage fails",
+72:       "classification": "INCONCLUSIVE"
+73:     },
+74:     {
+75:       "priority": 2,
+76:       "when": "All preconditions; every seed/condition coverage>=4/5; each of12 conditions CI_low>=f and count_seed(p>=f)>=8",
+77:       "classification": "SUPPORTED"
+78:     },
+79:     {
+80:       "priority": 3,
+81:       "when": "All preconditions; every seed/condition coverage=1; each of12 conditions CI_high<f and count_seed(p>=f)<=2",
+82:       "classification": "NOT_SUPPORTED"
+83:     },
+84:     {
+85:       "priority": 4,
+86:       "when": "All remaining cases, including partial coverage preventing negative interpretation",
+87:       "classification": "INCONCLUSIVE"
+88:     }
+89:   ],
+90:   "scope": "SUPPORTED concerns projected remaining-H-path opportunity in this bounded public model only; not actual H benefit/L compliance or independent causal mapping success. NOT_SUPPORTED stops this operational mainline under the registered criterion but is not universal absence proof. INCONCLUSIVE cannot PASS.",
+91:   "parameters_ref": {
+92:     "file": "P2_scientific_parameter_registry_v2.json",
+93:     "ids": [
+94:       "SP28",
+95:       "SP29",
+96:       "SP30",
+97:       "SP31",
+98:       "SP32",
+99:       "SP36",
+100:       "SP39"
+101:     ]
+102:   }
+103: }
+FILE docs/P2_design/v2/P2_runner_schema_review_v2.md
+1: # D09/D10 v2 — proposed lifecycle, recovery and typed artifacts
+2: 
+3: DRAFT / UNAPPROVED / IMPLEMENTATION_VALIDATION_PENDING。仅设计，不创建任何科学实例或执行入口。
+4: R1唯一正式runner、S2新scientific family仍是建议，R2薄launcher/S1 envelope是未选替代。
+5: 现行P1身份和代码不改。真实字段定义、closed对象与21个preimage在`P2_typed_identity_schema_v2.json`。
+6: 
+7: ## Hash与字段作用域
+8: 
+9: 每个`*_PREIMAGE`的精确字段、类型、required、nullability与namespace是typed schema中的对象；
+10: 不得自行加own_id、hash、未来结果或省略字段。ID prefix以preimage_registry为准。
+11: SEMANTIC_CANON_V2处理无float的身份/参数；RUNTIME_CANON_PY312_F64_V2处理运行数值payload。
+12: 原始文件另存raw SHA/size；raw与semantic值可以相等但字段和验证责任不能混称。
+13: 
+14: | 记录 | 在何时已有全部preimage字段 | 禁止依赖 |
+15: |---|---|---|
+16: | Blueprint | 源码实现经另行验证冻结、科学参数明确批准之后，生成之前 | payload、receipt、run/attempt、结果 |
+17: | Symbolic execution plan | Blueprint及批准的完整符号trial/method/observer/statistical定义已知 | resolved输入与任何结果 |
+18: | Execution authorization | 独立明确授权与blueprint/plan/source已知 | 不以文档生成本身充当授权 |
+19: | Input descriptor | blueprint/config/seed/variant已知；control只引用已知MAIN descriptor | parent真实payload或未来run |
+20: | Generation authorization / input lock / generation attempt | 上述descriptor及明确生成授权已知 | 内容hash、workload ID、run锁 |
+21: | Generation receipt | 真实生成过程完成，payload/logs/exact sidecar已有hash | 未来resolution/workload/completion ID |
+22: | Materialized content identity | descriptor+canonical payload及control父content已知 | 自身ID或最终科学envelope |
+23: | Input-resolution receipt | generation receipt、独立输入验证、control父resolution已知 | 未来workload/run ID |
+24: | Workload identity | descriptor+blueprint+materialized content已知，且resolution已核验 | generation时间/attempt/未来run |
+25: | Semantic argv / Run ID | workload ID、plan、source/environment/observer等已知 | attempt ID、输出路径、wall time |
+26: | Attempt ID / run锁 | run ID、明确execution authorization和ordinal1已知 | 实际退出、trace/未来completion |
+27: | Replay ID | primary trace、run/attempt及注册replay协议已知 | 未来replay比较结果 |
+28: | Completion receipt | 全部raw、验证、指标、重放与不含自身的artifact inventory已有hash | 自身receipt/hash或未来stage结论 |
+29: 
+30: Blueprint的generation/config语义内容不含method/criterion结果，运行计划单独绑定方法与观察器。
+31: source bundle只含已冻结源码/依赖/原模型协议及其source commit，不含blueprint实例/结果/本身的
+32: 外层metadata提交hash。实际执行HEAD另实记；不得伪装dirty字节。P2相关源码洁净是新增待批工程规则。
+33: 
+34: 输入验证分两层：resolution前检查raw payload、descriptor、generator receipt、父MAIN和变换，
+35: 其报告不得引用未来workload/envelope；resolution后才发布workload ID和scientific envelope，
+36: pre-invocation再次验证完整血缘。这样不通过“先要科学envelope才能验证输入”制造新循环。
+37: 
+38: Workload语义ID不含generation时间/receipt attempt，重建相同语义内容不因此改变内容身份。
+39: 但不能用新birth receipt覆盖旧run所引用的原始raw refs；复用必须核验原complete bundle。
+40: 旧refs丢失/不同不能因新内容相似就修补成COMPLETE，须保留冲突并闭锁。
+41: 
+42: ## 确切操作顺序与先决条件
+43: 
+44: 1. 拒绝DRAFT、未批准决定、未知source、非CALIBRATION seed或未授权生成。此时允许合法的符号wlref，
+45:    不要求未来payload hash。当前文件就是DRAFT，因此不具备通过该守卫的资格。
+46: 2. 用已知blueprint/descriptor/generation authorization取得input锁和generation attempt1。
+47: 3. 每config/seed先物化MAIN并保存真实过程/精确sidecar；独立验证，形成MAIN resolution。
+48: 4. 从该MAIN派生两个control，同位保留数值/身份，不重新draw；分别保存和核验独立resolution。
+49: 5. 发布resolved workload ID及科学envelope；形成semantic argv、run ID、attempt1、run锁。
+50: 6. pre-invocation要求所有resolved hash、source/approval/seed/plan/variant/lineage符合，拒绝未解析wlref。
+51: 7. 实际引擎顺序仍按矩阵：H-only B2、LOW B2、MAIN B1..B5。物化MAIN不等于先执行MAIN。
+52: 8. 保存raw process/code/logs/trace，独立trace验证与指标复算，执行一次注册replay并逐项比较。
+53: 9. 所有COMPLETE合取满足才原子发布trial completion。先close/fsync数据及父目录，再发布immutable
+54:    receipt，最后CAS更新完成指针；artifact inventory不含自身或未来receipt，不覆盖旧文件。
+55: 10. 全2520完整证据后先做B2-only资格/选择，保存全部A/B记录；之后做M1R/M2及D08分类，再写分离
+56:     stage状态和P2 gate出口。任何结果不能反向改input、选择或判据。
+57: 
+58: hash依赖和授权/可用性依赖分开标记：resolution必须先核验才能发布workload ID，但workload
+59: 语义preimage无需包含带时间的receipt hash。报告DAG展示两条variant分支的合并；MAIN不需要
+60: control resolution。所有instance源hash/命令/日志未来才产生，未实现值在本版没有伪造实例。
+61: 
+62: ## Invocation与attempt
+63: 
+64: 未来拟议worker接口`python -m soc.execution_worker_v2`尚不存在，不能调用。本设计仅登记角色、
+65: method、workload、source和semantic options；actual input/output paths按已知ID在批准CALIBRATION
+66: 根内确定性渲染。RUN只hash semantic argv；actual argv包含已算出的attempt路径并逐字保存，
+67: pre-invocation验证渲染完全符合模板。不得把任意flag列入“忽略字段”，不能把actual argv反向放进run ID。
+68: 
+69: attempt ID由run_id、execution_authorization_sha、ordinal1得到；run锁含run/attempt均已知。
+70: replay是同trial的注册子执行，单独ID/过程/日志，不产生第二科学样本，也不是失败重试。
+71: 当前无ordinal>1或额外retry授权。source/参数变了必须另审plan与身份，禁止静默混样本。
+72: 
+73: PROCESS_RESULT明确process_started、actual exit或null、termination、signal/exception、planned/start/end
+74: UTC与monotonic elapsed、actual argv/cwd/host及raw stdout/stderr。spawn失败start/exit=null；
+75: 进程开始但中断未收集exit也为null，不能补0。墙钟异常单独记录，不改变虚拟时间。
+76: 
+77: ## 中断与幂等恢复
+78: 
+79: | 中断点 | 必须保留 | 允许的幂等动作 / 禁止动作 |
+80: |---|---|---|
+81: | Blueprint/authorization未通过 | 拒绝原因与所见hash | 只读复查；不得生成、取得运行身份或伪造批准 |
+82: | 输入锁/GEN PREPARED后未启动 | owner/lease/attempt收据、process_started=false | 检查lease，显式授权才释放/归档；不自动重启过程 |
+83: | 生成中或payload缺receipt | 部分payload/log/实际退出 | INCOMPLETE/FAILED停；不覆盖、删残件或追加draw |
+84: | payload/GEN receipt完整，resolution未成 | 完整immutable bytes、原验证进度 | 可核验已有材料；不得假造验证PASS。若需恢复验证/发布，先明确授权、仅新增收据、不增加过程次数 |
+85: | resolution完整、run未启动 | 已解析输入与出生链 | 只复用原输入；若旧execution attempt已标INCOMPLETE，不把它改回PREPARED |
+86: | primary执行中或退出非零 | 原始日志/trace/exit/attempt | 停整个计划，不自动retry；新过程需要另审触发条件/次数/plan |
+87: | primary完成但验证/重放未完整 | 全部原始输出/已有检查 | 未满足合取不能COMPLETE；缺replay不得写exact-match；恢复步骤需显式批准且不重复已完成过程 |
+88: | 所有验证/replay已有、原子指针未发布 | 原immutable收据/hash/CAS进度 | 显式只读核验和授权的仅发布恢复可新增recovery receipt，零引擎调用，旧终态不覆盖 |
+89: | COMPLETE已发布 | 原完整bundle和指针 | 全身份/原始refs再次精确核验才复用，另写reuse receipt，零新增样本/引擎调用 |
+90: | 相同ID不同字节、锁冲突或旧refs丢失 | 冲突双方与诊断 | fail closed；不取最新，不改ID隐匿冲突，不以重建相似数据补旧证据 |
+91: 
+92: 所有状态变化为append-only新phase receipt，不原地重写终态。当前自动重试0；上述恢复是规则
+93: 设计，不等于当前授权恢复，更不允许扩大2520/5040预算。任何新增实际调用都须另行事前登记。
+94: 
+95: ## COMPLETE、科学分类、gate与退出
+96: 
+97: typed GATE_STATE强制分离execution、integrity、identity、selection、diagnostic、mapping、timing、
+98: progression。stage JSON给出每字段enum及合法转移、所需证据和退出表；错误不能靠改标签变VALID。
+99: 有效阴性可以执行COMPLETE，但NOT_SUPPORTED/INCONCLUSIVE/NO_ELIGIBLE/TIMING_NOT_FROZEN均闭锁。
+100: 子进程原exit与orchestrator出口分开：拟议0仅全前提满足，2拒绝、3过程失败、4非法、5不完整、
+101: 6完整但科学/冻结前提阻断；这些不是现行入口的实测code。当前没有调用入口。
+102: mapping支持不是H/L或候选通过；即使未来全前提满足，也仅“待明确下一阶段授权”，不创建unlock。
+103: 
+104: ## S2 schema、数值与P1隔离
+105: 
+106: 输入body仅resources/links/services，避免自指ID；科学envelope另含descriptor/workload/receipt refs。
+107: body单独的SCIENTIFIC标签不构成来源证明。闭合字段表包含全部run/attempt/source/seed/config/
+108: process/raw refs、独立trace/metrics/replay、error/completion及stage记录。每ref为允许repo-relative
+109: path+SHA+实际size+kind/media type；禁止目录穿越/越权symlink、重复身份及未注册seed/method。
+110: 
+111: MAIN必须100服务/50H50L；H-only50H，LOW100/50H50L。只有H-only的L组status可以
+112: NOT_APPLICABLE_CONTROL，count=0、指标null；主输入缺组、错误N/A或NaN均INVALID，不填0。
+113: 各窗口/makespan语义和绝对RN64可行性证书见generation/stage，不用observation_end改原利用率。
+114: 
+115: S2未来测试必须保留旧P1原始身份/serialization，拒绝fixture改名/改seed/换origin/伪造generator
+116: receipt、缺父链和错误payload哈希；仅fixture_derivation=false不够。adapter必须逐项守恒图、
+117: duration、兼容和通信，并保持D1–D5与只读公共信息边界。新source必须重新验证原64测试、45正
+118: trace/20负trace及新血缘/故障/原子发布/恢复负例，不能继承当前P1 PASS。全部仍待未来授权实现。
+FILE docs/P2_design/v2/P2_generation_spec_v2.json
+1: {
+2:   "document_kind": "EXACT_GENERATION_PROPOSAL",
+3:   "document_version": "v2",
+4:   "status": "DRAFT_UNAPPROVED_NONEXECUTABLE",
+5:   "classification": "PROPOSED",
+6:   "approval": "UNAPPROVED",
+7:   "approved": false,
+8:   "frozen": false,
+9:   "executable": false,
+10:   "execution_authorized": false,
+11:   "read_by_pipeline": false,
+12:   "starting_commit": "79f9c245b23119ce25175d6dc6ff148e9e092461",
+13:   "schema_version": 2,
+14:   "generator_version": "soc-p2-synthetic-v2-PROPOSED",
+15:   "typed_schema_ref": "P2_typed_identity_schema_v2.json#/$defs/KEY",
+16:   "key_fill_templates": {
+17:     "arrival_jitter": {
+18:       "domain": "soc.p2.gen.v2",
+19:       "schema_version": 2,
+20:       "generator_version": "soc-p2-synthetic-v2-PROPOSED",
+21:       "actual_seed_decimal_string": "registered seed rendered as decimal STRING",
+22:       "scenario": "registered MAIN scenario",
+23:       "condition_id": "{scenario}-{load}-{size}",
+24:       "config_id": "unchanged registered A/B config ID",
+25:       "service_slot": "integer j in0..49",
+26:       "service_group": "",
+27:       "template_node_id": "",
+28:       "resource_id": "",
+29:       "edge_id": "",
+30:       "field": "arrival_jitter",
+31:       "counter": 0
+32:     },
+33:     "service_role_factor": {
+34:       "domain": "soc.p2.gen.v2",
+35:       "schema_version": 2,
+36:       "generator_version": "soc-p2-synthetic-v2-PROPOSED",
+37:       "actual_seed_decimal_string": "registered seed rendered as decimal STRING",
+38:       "scenario": "registered MAIN scenario",
+39:       "condition_id": "{scenario}-{load}-{size}",
+40:       "config_id": "unchanged registered A/B config ID",
+41:       "service_slot": "integer j in0..49",
+42:       "service_group": "H or L",
+43:       "template_node_id": "exact preserved local template node ID",
+44:       "resource_id": "",
+45:       "edge_id": "",
+46:       "field": "service_role_factor",
+47:       "counter": 0
+48:     },
+49:     "duration_factor": {
+50:       "domain": "soc.p2.gen.v2",
+51:       "schema_version": 2,
+52:       "generator_version": "soc-p2-synthetic-v2-PROPOSED",
+53:       "actual_seed_decimal_string": "registered seed rendered as decimal STRING",
+54:       "scenario": "registered MAIN scenario",
+55:       "condition_id": "{scenario}-{load}-{size}",
+56:       "config_id": "unchanged registered A/B config ID",
+57:       "service_slot": "integer j in0..49",
+58:       "service_group": "H or L",
+59:       "template_node_id": "exact preserved local template node ID",
+60:       "resource_id": "exact compatible resource ID",
+61:       "edge_id": "",
+62:       "field": "duration_factor",
+63:       "counter": 0
+64:     }
+65:   },
+66:   "key_exclusions": [
+67:     "method",
+68:     "trial_id",
+69:     "run_id",
+70:     "attempt_id",
+71:     "host",
+72:     "wall_time",
+73:     "scheduler_call_count",
+74:     "control_variant",
+75:     "control_arrival_time",
+76:     "generation_receipt_id"
+77:   ],
+78:   "parent_key_rule": "Both controls reuse resolved MAIN numeric bits and original MAIN field keys; controls never draw their own duration/jitter keys.",
+79:   "algorithm": {
+80:     "name": "SHA256",
+81:     "input": "SEMANTIC_CANON_V2(exact fully filled KEY object)",
+82:     "digest_to_U": "q=unsigned big-endian first8 bytes; U=q/2^64 exact Rational in[0,1)",
+83:     "service_role_factor": "9/10+U/5, independent key per MAIN slot/group/node; same factor for all compatible resources of this node",
+84:     "duration_factor": "9/10+U/5, separate MAIN slot/group/node/resource key; realized_exact=estimate_exact*factor",
+85:     "arrival_jitter": "U/10 per MAIN slot with H/L/node/resource/edge fields empty; scenario/condition/config retained",
+86:     "nonrandom_fields": [
+87:       "edge sizes fixed D03",
+88:       "deadline formula no draws"
+89:     ],
+90:     "conversion": "All generation arithmetic exact Rational; each estimated/realized/arrival/relative-deadline value converted ONCE with correctly rounded binary64 ties-to-even; normalize -0; reject nonfinite/nonpositive durations, do not silently repair. Save exact estimates/deadlines sidecar for G."
+91:   },
+92:   "service_identity": {
+93:     "service_id": "{scenario}/{load}/{size}/{config_id}/s{slot:03d}/{H|L}",
+94:     "node_id": "{service_id}/{preserved_template_node_id}",
+95:     "condition_id": "{scenario}-{load}-{size}",
+96:     "preserved_template_ids": "COCKPIT/ADAS/FUSION-{8|16}-v1; semantic templates remain v1 within draft document namespace v2"
+97:   },
+98:   "arrivals": {
+99:     "slots": 50,
+100:     "services_per_slot": 2,
+101:     "total_services": 100,
+102:     "H": 50,
+103:     "L": 50,
+104:     "burst_block_slots": 5,
+105:     "burst_compression": "1/4",
+106:     "formula": "for j=0..49: q=j//5,k=j%5; a_H=a_L=P*(5*q+k/4+U_j/10); P from unchanged config period_ms",
+107:     "arrival_window": "[0,W), W=50*P; no admission at W; full drain; observation_end=max(W,last_finish) metadata only; makespan remains last_finish",
+108:     "no_warmup_exclusion": true
+109:   },
+110:   "deadlines": {
+111:     "reference": "C_est=max_root_to_sink sum_node min_compatible E_exact(g,v,r) before binary64 conversion; no communication. Relative deadline exact multiplier*C_est is converted once; actual absolute deadline RN64(arrival+relative_deadline_bits).",
+112:     "H_multiplier": "5/2",
+113:     "L_multiplier": "4",
+114:     "formula": "D_g = multiplier(group) * C_est(service); positive, relative to each admitted arrival",
+115:     "risk": "C_est is optimistic and not a feasibility certificate; D06 independent controls mandatory"
+116:   },
+117:   "controls": {
+118:     "service_set_for_G": "ALL 100 services in the resolved parent MAIN input, identically for both controls; never max over only retained H",
+119:     "G_exact": "ceil(max over parent100 services g of [sum_v max_r(11/10 * E_exact(g,v,r)) + sum_edges max_over_all9_pairs(L_exact+b_exact/B_exact) + D_exact(g)]) +1 ms",
+120:     "G_inputs": "E_exact and D_exact are pre-binary64 values in parent generation sidecar with hash; edge/network proposed decimals parsed exactly. No new draws and no scheduler truth access.",
+121:     "G_rounding": "All operations Rational; ceil only once then+1 integer ms. Control arrival k*G is converted exactly to binary64 in the finite registered range; independently verify interval isolation, never assume feasibility from G.",
+122:     "H_ISOLATED": "retain parent50 H services with identical service/node IDs, complete per-resource estimate/realized bit patterns, edges and relative-deadline bits; remove L; order retained H by original integer slot; kth arrival=k*G, k=0..49",
+123:     "LOW_COMPETITION": "retain all100 services; order original slot then H before L; kth arrival=k*G,k=0..99; all other retained bytes identical to parent",
+124:     "parent_materialization_order": "Resolve parent MAIN first without executing its method; then derive/resolve controls. Engine execution order remains H_ISOLATED B2, LOW_COMPETITION B2, MAIN B1..B5.",
+125:     "no_overlap": "Qualification requires max finish of each control service <= next control arrival and each required group meets original deadlines; failure of this witness is not universal infeasibility or engine correctness failure.",
+126:     "label": "NOT_APPLICABLE_CONTROL",
+127:     "parent_identity": "Input descriptor for control references pre-known MAIN descriptor hash; actual derivation references independently verified MAIN resolution receipt after it exists.",
+128:     "actual_G": "NOT_COMPUTED_NO_REALIZATION"
+129:   },
+130:   "windows": {
+131:     "arrival_admission": "[0,W), W=50P for MAIN; controls[0,N*G)",
+132:     "last_admitted_arrival": "max actual admitted arrival, separately recorded",
+133:     "last_service_completion": "max node finish over all admitted services after full drain",
+134:     "full_drain_makespan": "last_service_completion, preserving existing metric origin t=0",
+135:     "observation_end": "max(arrival_window_end,last_service_completion), metadata only; never overwrite full_drain_makespan",
+136:     "pressure": "For each resource, exact measure of execution intervals intersect[0,W), divided by W. p_seed=max_resource; p=arithmetic mean across10 seeds. Existing full-drain utilization retains busy/full_drain_makespan."
+137:   },
+138:   "production_artifacts": "NONE. This specifies future generation only; no actual blueprint, input, receipt, source hash or scientific output instance is emitted.",
+139:   "identity_spec": "P2_typed_identity_schema_v2.json",
+140:   "scope_change": "Typed version/domain v2 will change future keyed draws relative to v1; distributions remain unchanged; no v1 realizations exist or were compared.",
+141:   "key_bindings": {
+142:     "arrival_jitter": {
+143:       "domain": {
+144:         "kind": "LITERAL",
+145:         "value": "soc.p2.gen.v2"
+146:       },
+147:       "schema_version": {
+148:         "kind": "LITERAL",
+149:         "value": 2
+150:       },
+151:       "generator_version": {
+152:         "kind": "LITERAL",
+153:         "value": "soc-p2-synthetic-v2-PROPOSED"
+154:       },
+155:       "actual_seed_decimal_string": {
+156:         "kind": "COPY",
+157:         "source": "main_descriptor.actual_seed_decimal_string"
+158:       },
+159:       "scenario": {
+160:         "kind": "COPY",
+161:         "source": "main_descriptor.scenario"
+162:       },
+163:       "condition_id": {
+164:         "kind": "COPY",
+165:         "source": "main_descriptor.condition_id"
+166:       },
+167:       "config_id": {
+168:         "kind": "COPY",
+169:         "source": "main_descriptor.config_id"
+170:       },
+171:       "service_slot": {
+172:         "kind": "COPY",
+173:         "source": "main_slot"
+174:       },
+175:       "service_group": {
+176:         "kind": "LITERAL",
+177:         "value": ""
+178:       },
+179:       "template_node_id": {
+180:         "kind": "LITERAL",
+181:         "value": ""
+182:       },
+183:       "resource_id": {
+184:         "kind": "LITERAL",
+185:         "value": ""
+186:       },
+187:       "edge_id": {
+188:         "kind": "LITERAL",
+189:         "value": ""
+190:       },
+191:       "field": {
+192:         "kind": "LITERAL",
+193:         "value": "arrival_jitter"
+194:       },
+195:       "counter": {
+196:         "kind": "LITERAL",
+197:         "value": 0
+198:       }
+199:     },
+200:     "service_role_factor": {
+201:       "domain": {
+202:         "kind": "LITERAL",
+203:         "value": "soc.p2.gen.v2"
+204:       },
+205:       "schema_version": {
+206:         "kind": "LITERAL",
+207:         "value": 2
+208:       },
+209:       "generator_version": {
+210:         "kind": "LITERAL",
+211:         "value": "soc-p2-synthetic-v2-PROPOSED"
+212:       },
+213:       "actual_seed_decimal_string": {
+214:         "kind": "COPY",
+215:         "source": "main_descriptor.actual_seed_decimal_string"
+216:       },
+217:       "scenario": {
+218:         "kind": "COPY",
+219:         "source": "main_descriptor.scenario"
+220:       },
+221:       "condition_id": {
+222:         "kind": "COPY",
+223:         "source": "main_descriptor.condition_id"
+224:       },
+225:       "config_id": {
+226:         "kind": "COPY",
+227:         "source": "main_descriptor.config_id"
+228:       },
+229:       "service_slot": {
+230:         "kind": "COPY",
+231:         "source": "main_slot"
+232:       },
+233:       "service_group": {
+234:         "kind": "COPY",
+235:         "source": "main_group"
+236:       },
+237:       "template_node_id": {
+238:         "kind": "COPY",
+239:         "source": "template_node_id"
+240:       },
+241:       "resource_id": {
+242:         "kind": "LITERAL",
+243:         "value": ""
+244:       },
+245:       "edge_id": {
+246:         "kind": "LITERAL",
+247:         "value": ""
+248:       },
+249:       "field": {
+250:         "kind": "LITERAL",
+251:         "value": "service_role_factor"
+252:       },
+253:       "counter": {
+254:         "kind": "LITERAL",
+255:         "value": 0
+256:       }
+257:     },
+258:     "duration_factor": {
+259:       "domain": {
+260:         "kind": "LITERAL",
+261:         "value": "soc.p2.gen.v2"
+262:       },
+263:       "schema_version": {
+264:         "kind": "LITERAL",
+265:         "value": 2
+266:       },
+267:       "generator_version": {
+268:         "kind": "LITERAL",
+269:         "value": "soc-p2-synthetic-v2-PROPOSED"
+270:       },
+271:       "actual_seed_decimal_string": {
+272:         "kind": "COPY",
+273:         "source": "main_descriptor.actual_seed_decimal_string"
+274:       },
+275:       "scenario": {
+276:         "kind": "COPY",
+277:         "source": "main_descriptor.scenario"
+278:       },
+279:       "condition_id": {
+280:         "kind": "COPY",
+281:         "source": "main_descriptor.condition_id"
+282:       },
+283:       "config_id": {
+284:         "kind": "COPY",
+285:         "source": "main_descriptor.config_id"
+286:       },
+287:       "service_slot": {
+288:         "kind": "COPY",
+289:         "source": "main_slot"
+290:       },
+291:       "service_group": {
+292:         "kind": "COPY",
+293:         "source": "main_group"
+294:       },
+295:       "template_node_id": {
+296:         "kind": "COPY",
+297:         "source": "template_node_id"
+298:       },
+299:       "resource_id": {
+300:         "kind": "COPY",
+301:         "source": "compatible_resource_id"
+302:       },
+303:       "edge_id": {
+304:         "kind": "LITERAL",
+305:         "value": ""
+306:       },
+307:       "field": {
+308:         "kind": "LITERAL",
+309:         "value": "duration_factor"
+310:       },
+311:       "counter": {
+312:         "kind": "LITERAL",
+313:         "value": 0
+314:       }
+315:     }
+316:   },
+317:   "binding_context_types": {
+318:     "main_descriptor.actual_seed_decimal_string": "SEED_TEXT from verified MAIN descriptor",
+319:     "main_descriptor.scenario": "registered scene enum",
+320:     "main_descriptor.condition_id": "ID matching matrix condition",
+321:     "main_descriptor.config_id": "ID matching matrix A/B config",
+322:     "main_slot": "integer0..49",
+323:     "main_group": "H or L",
+324:     "template_node_id": "exact preserved local node ID of that MAIN service",
+325:     "compatible_resource_id": "one resource in that node compatible set"
+326:   },
+327:   "key_binding_contract": "Normative key_bindings: LITERAL copies value exactly; COPY reads only the named typed parent-MAIN context source. No coercion, omission or other operations. All15 KEY fields produced exactly. key_fill_templates are explanatory glosses, not actual instances. Controls reuse original MAIN bits, never evaluate fresh control keys."
+328: }
+FILE docs/P2_design/v2/P2_stage_state_contract_v2.json
+1: {
+2:   "document_kind": "EXECUTION_SELECTION_AND_PROGRESSION_CONTRACT",
+3:   "document_version": "v2",
+4:   "status": "DRAFT_UNAPPROVED_NONEXECUTABLE",
+5:   "classification": "PROPOSED",
+6:   "approval": "UNAPPROVED",
+7:   "approved": false,
+8:   "frozen": false,
+9:   "executable": false,
+10:   "execution_authorized": false,
+11:   "read_by_pipeline": false,
+12:   "starting_commit": "79f9c245b23119ce25175d6dc6ff148e9e092461",
+13:   "state_schema": "P2_typed_identity_schema_v2.json#/$defs/GATE_STATE",
+14:   "state_fields": {
+15:     "execution_completion": {
+16:       "enum": [
+17:         "NOT_STARTED",
+18:         "RUNNING",
+19:         "COMPLETE",
+20:         "FAILED",
+21:         "INCOMPLETE"
+22:       ]
+23:     },
+24:     "artifact_integrity": {
+25:       "enum": [
+26:         "NOT_CHECKED",
+27:         "VALID",
+28:         "MISSING",
+29:         "CORRUPT",
+30:         "INVALID"
+31:       ]
+32:     },
+33:     "input_seed_identity": {
+34:       "enum": [
+35:         "NOT_CHECKED",
+36:         "VALID",
+37:         "INVALID"
+38:       ]
+39:     },
+40:     "selection_status": {
+41:       "enum": [
+42:         "NOT_EVALUATED",
+43:         "SELECTED_ALL_18",
+44:         "NO_ELIGIBLE_CONDITION",
+45:         "INVALID_EVIDENCE"
+46:       ]
+47:     },
+48:     "diagnostic_validity": {
+49:       "enum": [
+50:         "NOT_RUN",
+51:         "VALID",
+52:         "POSITIVE_COVERAGE_ONLY",
+53:         "INSUFFICIENT_COVERAGE",
+54:         "INVALID",
+55:         "INCOMPLETE"
+56:       ]
+57:     },
+58:     "mapping_classification": {
+59:       "enum": [
+60:         "NOT_EVALUATED",
+61:         "SUPPORTED",
+62:         "NOT_SUPPORTED",
+63:         "INCONCLUSIVE"
+64:       ]
+65:     },
+66:     "engineering_timing_prerequisite": {
+67:       "enum": [
+68:         "NOT_FROZEN",
+69:         "FROZEN_PROTOCOL_VERIFIED",
+70:         "INVALID"
+71:       ]
+72:     },
+73:     "p2_progression_status": {
+74:       "enum": [
+75:         "BLOCKED",
+76:         "REQUIREMENTS_MET_PENDING_EXPLICIT_NEXT_STAGE_AUTHORIZATION"
+77:       ]
+78:     },
+79:     "reason_codes": {
+80:       "type": "array",
+81:       "items": {
+82:         "$ref": "#/$defs/ID"
+83:       }
+84:     }
+85:   },
+86:   "current_design_values": {
+87:     "execution_completion": "NOT_STARTED",
+88:     "artifact_integrity": "NOT_CHECKED",
+89:     "input_seed_identity": "NOT_CHECKED",
+90:     "selection_status": "NOT_EVALUATED",
+91:     "diagnostic_validity": "NOT_RUN",
+92:     "mapping_classification": "NOT_EVALUATED",
+93:     "engineering_timing_prerequisite": "NOT_FROZEN",
+94:     "p2_progression_status": "BLOCKED",
+95:     "reason_codes": [
+96:       "DESIGN_UNAPPROVED",
+97:       "IMPLEMENTATION_NOT_VALIDATED",
+98:       "EXECUTION_NOT_AUTHORIZED",
+99:       "TIMING_PROTOCOL_NOT_FROZEN"
+100:     ]
+101:   },
+102:   "load_classification": {
+103:     "order": [
+104:       "REGISTERED",
+105:       "EXECUTED_SET_COMPLETE_OR_FAIL_CLOSED",
+106:       "VALID_INPUT_AND_TRACE_AND_REPLAY",
+107:       "CONTROL_QUALIFICATION",
+108:       "DECLARED_TARGET_LOAD_MATCH",
+109:       "ELIGIBLE_OR_INELIGIBLE",
+110:       "SELECT_FIRST_A_ELSE_B",
+111:       "SELECTED_OR_NO_ELIGIBLE"
+112:     ],
+113:     "pressure": "p_seed=max_r exact_measure(busy intervals intersect[0,W))/W; p=mean over10 seeds; finite[0,1] required, no clamp",
+114:     "bands": [
+115:       {
+116:         "load": "light",
+117:         "pressure_low": "0",
+118:         "low_inclusive": true,
+119:         "pressure_high": "1/2",
+120:         "high_inclusive": false,
+121:         "H_DMR_mean_max": "1/100",
+122:         "L_DMR_mean_max": "1/100"
+123:       },
+124:       {
+125:         "load": "medium",
+126:         "pressure_low": "1/2",
+127:         "low_inclusive": true,
+128:         "pressure_high": "4/5",
+129:         "high_inclusive": false,
+130:         "H_DMR_mean_min": "1/100",
+131:         "H_DMR_mean_max": "4/5",
+132:         "each_seed_busy_wait_required": true
+133:       },
+134:       {
+135:         "load": "near-saturation",
+136:         "pressure_low": "4/5",
+137:         "low_inclusive": true,
+138:         "pressure_high": "1",
+139:         "high_inclusive": true,
+140:         "H_DMR_mean_min": "1/100",
+141:         "H_DMR_mean_max": "4/5",
+142:         "each_seed_busy_wait_required": true
+143:       }
+144:     ],
+145:     "waiting": "At least one strictly positive assigned-resource busy interval after dependency/data readiness on some node per MAIN-B2 seed; exact interval measure from validated trace, not all policy idle waiting.",
+146:     "controls": "All10 H_ISOLATED no-service-overlap and all H on-time; all10 LOW_COMPETITION no-service-overlap and all H/L on-time. Miss/no isolation =>NO_CONTROL_WITNESS and config ineligible, not universal infeasibility.",
+147:     "invalid": "Missing/nonfinite required stats, wrong counts, malformed transform/input/seed, illegal trace, metric/replay mismatch =>INVALID_EVIDENCE, stop entire plan; no relabel/retry.",
+148:     "valid_off_target": "A valid complete set failing control/target predicates remains valid scientific evidence but INELIGIBLE; no other load label is substituted.",
+149:     "selection": "First eligible A else B across all10 seeds; selected18 conditions required. Same selected-calibration data not an independent confirmatory dataset."
+150:   },
+151:   "feasibility": {
+152:     "mathematical": "Exact-real m_v=min compatible actual duration; e_uv=min legal compatible transfer; ell_v=m_v+max_pred(ell_u+e_uv), empty max0; LB=max nodes. Sufficient infeasible if LB>D, not converse.",
+153:     "computational": "Offline absolute binary64 lower bound: compute each c_min using SAME per-operation RN64(latency+RN64(size/bandwidth)) or same-unit0 over legal compatible pairs. m_v=min actual binary64 durations. R_v=max(arrival, max_pred RN64(B_pred+c_min)); B_v=RN64(R_v+m_v). B_service=max_v B_v; absolute deadline=RN64(arrival+relative_deadline). CERTIFIED_NATURALLY_INFEASIBLE iff B_service>absolute_deadline. Equality is NOT certified; no subtraction to a relative bound, no epsilon.",
+154:     "proof": "Finite nonnegative RN64 operations are monotone. Inductively B_pred<=actual pred finish, c_min<=chosen delay and m_v<=chosen duration; same grouping then implies B_v<=actual finish. Reject nonfinite/overflow rather than certify.",
+155:     "privacy": "Actual durations/certificates are offline validator-only, excluded from PUBLIC_SNAPSHOT, scheduler and M1R.",
+156:     "statuses": [
+157:       "CERTIFIED_NATURALLY_INFEASIBLE",
+158:       "FEASIBILITY_NOT_ESTABLISHED",
+159:       "CONTROL_SPECIFIC_FEASIBILITY_WITNESS",
+160:       "INPUT_OR_TRACE_INVALID"
+161:     ],
+162:     "witness_scope": "Control-specific only, never a claim about MAIN admission stream; correctness failure separate."
+163:   },
+164:   "group_counts": {
+165:     "MAIN": {
+166:       "total": 100,
+167:       "H": 50,
+168:       "L": 50
+169:     },
+170:     "H_ISOLATED": {
+171:       "total": 50,
+172:       "H": 50,
+173:       "L": 0
+174:     },
+175:     "LOW_COMPETITION": {
+176:       "total": 100,
+177:       "H": 50,
+178:       "L": 50
+179:     }
+180:   },
+181:   "control_na_token": "NOT_APPLICABLE_CONTROL",
+182:   "window_semantics": "P2_generation_spec_v2.json#/windows",
+183:   "per_trial_complete": [
+184:     "actual primary process started+exit0",
+185:     "valid source/approval/seed/descriptor/resolved input lineage",
+186:     "all required input/trace/log/snapshot refs match raw SHA and sizes",
+187:     "independent physical trace PASS",
+188:     "independent metric recomputation exact",
+189:     "one registered deterministic replay exact",
+190:     "no errors",
+191:     "atomic completion receipt published"
+192:   ],
+193:   "stage_execution_complete": "All2520 trial identities COMPLETE or exact-match reused; missing/mismatch/duplicates/unexpected seed/method/condition=0. Both A/B retained. This does not imply selected18, diagnostic support or timing frozen.",
+194:   "progression_conjunction": [
+195:     "all decisions explicitly approved and actual implementation/lineage validated",
+196:     "separate execution authorization valid",
+197:     "P0/P1 actual gates PASS for exact source",
+198:     "execution_completion COMPLETE",
+199:     "artifact_integrity VALID",
+200:     "input_seed_identity VALID",
+201:     "selection_status SELECTED_ALL_18",
+202:     "diagnostic_validity VALID or POSITIVE_COVERAGE_ONLY with registered positive coverage",
+203:     "mapping_classification SUPPORTED",
+204:     "engineering_timing_prerequisite FROZEN_PROTOCOL_VERIFIED",
+205:     "all required workload/config/generator/criterion/engineering protocol freeze receipts verified"
+206:   ],
+207:   "progression_false": "Any false/unknown prerequisite ->BLOCKED. REQUIREMENTS_MET_PENDING_EXPLICIT_NEXT_STAGE_AUTHORIZATION is future conditional status, never an unlock or permission; existing gate files/code unchanged.",
+208:   "timing": {
+209:     "current": "NOT_FROZEN",
+210:     "matrix_runs": 0,
+211:     "decision_P95_target_ms": 2,
+212:     "measurement_status": "NOT_MEASURED",
+213:     "required_before_progression": "Separately approve/freeze exact timing inputs/warmup/repetitions/timer/aggregation and verify protocol identity; do not invent measurements or drop requirement.",
+214:     "H_L_targets": "Unchanged research-contract H/L targets belong to later candidate evaluation; mapping support does not mean they pass."
+215:   },
+216:   "proposed_orchestrator_exits": [
+217:     {
+218:       "code": 0,
+219:       "meaning": "Future all progression requirements met; still no automatic next-stage authorization"
+220:     },
+221:     {
+222:       "code": 2,
+223:       "meaning": "Precondition/identity/approval rejection before prohibited operation"
+224:     },
+225:     {
+226:       "code": 3,
+227:       "meaning": "Actual engine/generation failure, raw child code separately recorded"
+228:     },
+229:     {
+230:       "code": 4,
+231:       "meaning": "Invalid/corrupt/verification mismatch"
+232:     },
+233:     {
+234:       "code": 5,
+235:       "meaning": "Interrupted/incomplete"
+236:     },
+237:     {
+238:       "code": 6,
+239:       "meaning": "Valid completed calibration but no eligible selection, NOT_SUPPORTED/INCONCLUSIVE or timing NOT_FROZEN; progression blocked"
+240:     }
+241:   ],
+242:   "exit_semantics": "Actual child exit always saved verbatim/null if not started/unknown. Child0, report-writer0 or COMPLETE alone never authorizes progression. These are proposed future interface codes, not executed current pipeline returns.",
+243:   "legal_transitions": {
+244:     "execution_completion": [
+245:       "NOT_STARTED->RUNNING",
+246:       "RUNNING->COMPLETE",
+247:       "RUNNING->FAILED",
+248:       "RUNNING->INCOMPLETE"
+249:     ],
+250:     "integrity": [
+251:       "NOT_CHECKED->VALID",
+252:       "NOT_CHECKED->MISSING",
+253:       "NOT_CHECKED->CORRUPT",
+254:       "NOT_CHECKED->INVALID"
+255:     ],
+256:     "classification": [
+257:       "NOT_EVALUATED->SUPPORTED",
+258:       "NOT_EVALUATED->NOT_SUPPORTED",
+259:       "NOT_EVALUATED->INCONCLUSIVE"
+260:     ],
+261:     "terminal_rule": "Terminal evidence immutable. No BLOCKED->eligible unless every registered conjunction is independently proven under newly explicit authorization; missing/failed cannot become valid by relabel."
+262:   },
+263:   "binding_to_existing_gate": "Proposed stage report must carry every GATE_STATE field and immutable refs. Future gate consumer must verify conjunction, not exit0/COMPLETE. No existing P2_mapping_opportunity.json or governance code is modified."
+264: }

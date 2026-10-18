@@ -1,0 +1,1967 @@
+FILE docs/P2_design/v2/P2_complete_design_proposal_v2.md SHA256 7f929b85554193ef1256deb3f7cc184e47c362f91e93950896a80450c9eb5fe8
+1: # P2 design proposal v2 — DRAFT / UNAPPROVED / NONEXECUTABLE
+2: 
+3: 本包是对提交`79f9c245b23119ce25175d6dc6ff148e9e092461`中v1及独立审计的**拟议修订**，
+4: 不是已批准替换。v1、原审计及其失败完整保留；D01–D10全部UNAPPROVED。没有实现生成器、
+5: runner、adapter、诊断或validator，没有物化输入或执行P2。JSON是设计文档，不接入现行pipeline。
+6: 
+7: 本轮授权原文：`reports/P2_design/design_revision_v2/authorization_request.txt`。
+8: 历史问题：`reports/P2_design/independent_review_v2/findings.json` V2-F01–F07；F08仍待未来实现验证。
+9: 审计实际建议D05 ACCEPT AS PROPOSED，任务摘要把它并入REVISE；本版保留原记录，仍修订D05
+10: 身份引用/物化顺序以协调F02，不改变其轴、数值、方法、预算和引擎顺序。
+11: 
+12: ## 依据与陈述身份
+13: 
+14: SOURCE_SUPPORTED：`docs/user_request.txt` §§17–25、32–37、41–44、80、90–95、100；
+15: `docs/model_spec.md:3–58`；`docs/workload_spec.md:3–25`；`docs/baseline_spec.md:3–20`；
+16: `docs/metric_spec.md:3–52`；`docs/statistical_protocol.md:3–47`；`AGENTS.md`规则3、6–14。
+17: 历史原文审查保持`docs/literature_matrix.md`及reviews的既有范围，未把任何合成数值归给文献。
+18: 
+19: DERIVED：预算乘积、无环身份顺序、非负模型的下界归纳、枚举含基准则最优不劣于基准。
+20: PROPOSED：所有保留的合成参数与新增观察器、覆盖、锁/身份/数值操作规则，仍需人工批准。
+21: IMPLEMENTATION_VALIDATION_PENDING：全部科学生成/adapter/runner/独立诊断与血缘检查。
+22: SCIENTIFIC_EXECUTION_PENDING：可行性、实际负载、机会、成本与统计支持，全部未知。
+23: 
+24: 规范优先关系：本主文解释设计；各命名JSON给出精确字段/值。typed identity schema定义字段，
+25: generation定义填值，snapshot定义事件/状态，diagnostic定义观察量，criterion定义判据，stage
+26: 定义资格/出口。不能从示例或说明推导另一套默认值。若冲突，报告并闭锁，不自行择一。
+27: 
+28: ## D01 — 保留六模板，未批准
+29: 
+30: `P2_workload_templates_v2.json`保留v1全部节点/前驱/角色/H-L继承/尺寸规则和template ID。
+31: COCKPIT：8节点9边、16节点17边；ADAS同为8/9、16/17；FUSION为8/7、16/15。
+32: v→v.a→v.b，各半基代价；原u→v改u.b→v.a，内部边1/16MiB；无dummy，所有节点真实计数。
+33: 局部template ID仍带v1，表示语义模板未变，不是文档版本错误。实例ID精确规则见generation。
+34: 一个服务整体H或L，节点继承，不新添ASIL语义。仍是有限合成模型，不代表实车分布。
+35: 
+36: ## D02 — 保留六资源/16角色数值，未批准
+37: 
+38: `P2_resource_profiles_v2.json`保留96个资源单元格及兼容集合。CPU0–3同值，null是不兼容，
+39: 不作为可执行0代价；CPU-only、GPU/NPU-oriented、多兼容和专属加速器角色均存在。
+40: 估计因子与实际因子仍为[.9,1.1)；16节点每半节点基代价1/2；精确转换前下界81/200ms。
+41: 只有公共估计可给scheduler和M1R，真实代价仅引擎/离线验证。未增加硬件或功耗实测声明。
+42: 
+43: ## D03 — 保留74边与九类通信数值，未批准
+44: 
+45: `P2_communication_profiles_v2.json`全部边与link表保持原值。单位ms、MiB、MiB/ms不变。
+46: 同单元0；不同单元L+b/B；CPU跨核非零；副本属于目的地，pending remap重算数据就绪。
+47: 不改非抢占、传输起点、重叠或无总线竞争假设。合成通信与固定边尺寸限制外部有效性。
+48: 
+49: ## D04 — typed keyed生成、身份和控制
+50: 
+51: 精确对象见`P2_typed_identity_schema_v2.json`的closed `$defs`，字段不得增删或省略为默认。
+52: 根schema_version=2，generator_version=`soc-p2-synthetic-v2-PROPOSED`，key domain=`soc.p2.gen.v2`。
+53: 不再有含义不明的version字段。`P2_generation_spec_v2.json#/key_bindings`以LITERAL/COPY逐字段给出三种key，context路径与类型固定；gloss不是运行实例。
+54: 
+55: 每种key都保留actual seed十进制字符串、scenario、condition、config、整数slot、schema/gen版本。
+56: arrival_jitter仅将group/node/resource/edge置空；估计因子保留group/node，resource/edge为空；
+57: 实际因子再保留resource。counter固定0。方法、run/attempt、控制到达、host、wall time、调用次数
+58: 不入扰动key。边和deadline没有随机draw，禁用未登记随机源。
+59: 
+60: SHA256规范key字节的前8字节大端q，U=q/2^64为精确有理数；因子.9+U/5，jitter=U/10。
+61: 所有计算先精确有理数，每个最终数值只一次RN64 ties-to-even；私有exact estimate/deadline
+62: sidecar只供生成/控制核验，不进入公共视图。v2域/键绑定改变未来draw身份；没有v1 realization
+63: 可比较，也不声称v1/v2将产生同一样本。数值分布本身未变。
+64: 
+65: MAIN仍50slot，每slot一个H和L，共100服务；5slot块内压缩1/4；W=50P；全量排空，无warmup剔除。
+66: H relative deadline=2.5*C_est、L=4*C_est，C_est从转换前E_exact取min-compatible路径，忽略通信。
+67: 它不证明可行。绝对deadline按原模型RN64(arrival+relative_deadline)计算。
+68: 
+69: 服务ID：`{scenario}/{load}/{size}/{config_id}/s{slot:03d}/{H|L}`。
+70: 节点ID：`{service_id}/{preserved_template_node_id}`。condition=`{scenario}-{load}-{size}`。
+71: 
+72: 控制始终从**已解析MAIN父输入**派生，保留所有被保留节点的估计/真实代价、相对deadline及
+73: 边的binary64位，不重新draw。G对父MAIN全部100服务计算，两个控制使用同一个G；精确公式
+74: 和一次ceil+1ms规则在generation JSON。H-only按原slot保留50H，LOW按slot、H在L前保留100服务。
+75: 都改为k*G到达，故与MAIN有不同descriptor/content identity，绝不复用MAIN内容hash。
+76: 先物化/解析MAIN，再派生控制；这不执行MAIN方法，也不改变D05的引擎执行顺序。
+77: 
+78: canonical语义对象只接受ASCII字符串、精确整数、bool/null、array/object；不接受浮点。
+79: Rational为最简`{numerator:十进制字符串,denominator:正十进制字符串}`，0只用0/1，禁-0。
+80: 表中的decimal词法先精确Decimal转分数，不经binary64。键ASCII排序、紧凑JSON、UTF-8、单LF，
+81: 拒绝重复键和非ASCII身份。raw SHA计算实际文件原字节；语义SHA另算。运行payload单独使用
+82: Python3.12 binary64 JSON规范，不能与语义参数hash混称。golden fixtures不是生产输入。
+83: 
+84: ## D05 — 保留完整有限矩阵
+85: 
+86: `P2_trial_matrix_draft_v2.json`逐条列出2520条trial，保留：
+87: 
+88: - 18主条件×A/B=36配置，10个既有CALIBRATION seed；没有新seed。
+89: - 周期：light80/64、medium24/20、near12/10ms，两尺寸不变。
+90: - MAIN B1–B5共1800；H_ISOLATED B2和LOW_COMPETITION B2各360。
+91: - 1080计划输入，主360+控制720；最终条件选择后主输入180。
+92: - 每trial最多1个primary+1个注册replay，最大5040引擎调用；自动retry0。
+93: 
+94: trial ID/wlref改为v2引用，config ID/seed/method/排序不变。workload内容hash与实际command仍null，
+95: 这是未执行的符号计划，不是伪造的已完成证据。物化顺序MAIN→控制，与引擎控制→MAIN顺序分离。
+96: 所有A/B都保存、运行资格检查，不因为最终只选一个就删另一组。B2仍为焦点参考，五基线职责不变。
+97: 诊断只是离线分析：每完整view最多1296映射，每映射最多36节点，最多42日历区间；不额外调用引擎。
+98: 这些是组合上界，不是已测成本或可承受性证明。工程timing预算0、NOT_FROZEN，不隐式移除其前提。
+99: 
+100: ## D06 — 总分类、选择与可行性
+101: 
+102: `P2_stage_state_contract_v2.json#/load_classification`为精确谓词来源：
+103: REGISTERED→完整运行集→输入/trace/metric/replay有效→控制资格→本身declared target-load匹配→
+104: ELIGIBLE或INELIGIBLE→先A后B→SELECTED_ALL_18或NO_ELIGIBLE_CONDITION。
+105: 一个候选符合另一档压力不等于符合自身目标，禁止换标签、clamp或删seed。
+106: 
+107: 压力p_seed先取每资源[0,W)busy区间精确测度/W的最大值，再对10seed平均。H/L DMR各先逐run
+108: 按组计数再对seed平均。light p∈[0,.5)、H/L均值≤.01；medium p∈[.5,.8)；near p∈[.8,1]，
+109: 后两H均值∈[.01,.80]且每seed至少一个节点在data-ready之后有正的实际资源busy等待。
+110: 不把policy idle wait全部当资源忙。压力三段对有效p互斥穷尽；其他谓词可拒绝全部，保留OFF_TARGET。
+111: 
+112: 所有10seed的H-only与LOW控制分别无服务重叠且所需组按原deadline完成才有资格。合法控制miss
+113: 或无隔离见证是有效负面、配置INELIGIBLE，继续既定trial；控制变换不合法、缺组、非法trace、
+114: 缺失/非有限统计、hash/重放不符是INVALID/INCOMPLETE，停止整个计划，不当作零机会。
+115: 
+116: 天然不可行证书使用**离线私有真实代价**，不能进scheduler或M1R。数学实数下界与实际计算分开：
+117: 先取compatible实际duration最小值m、合法资源对通信最小值c。计算版使用与现引擎相同分组的
+118: binary64 RN64：根从真实arrival开始；R_v=max(arrival,max_pred RN64(B_pred+c_min))；
+119: B_v=RN64(R_v+m_v)。与RN64(arrival+relative_deadline)比较，只有严格大于才CERTIFIED_NATURALLY_INFEASIBLE。
+120: 等号不证不可行；B≤deadline不证可行；B2控制miss不证所有调度皆不可行。有限非负RN64单调，
+121: 同分组归纳得B_v≤合法执行finish；溢出/NaN直接拒绝，不用任意epsilon或相对时间减法补救。
+122: 控制成功只证明改到达控制的见证，不证明MAIN或原H-only流的可调度性。
+123: 
+124: 选型后的CI是同校准seed、同选中配置下的条件性描述；不创造独立确认数据，也不更换CI算法。
+125: 
+126: ## D07 — M1历史范围与M1R_PATH_V2
+127: 
+128: 旧`M1_READY_PREFIX_V1`保持原定义/源hash，只是历史诊断。它的阴性不能否定remaining-H-path
+129: 稀缺资源机制。本版拟议stage观察器为`M1R_PATH_V2`，精确规范见`P2_diagnostic_spec_v2.json`。
+130: 
+131: E的在域状态：至少一个dependency-ready未开始节点，且至少一个已到达H服务有未开始节点。
+132: 先按原B2顺序选最多4 ready任务；保留原§44的2–4 ready oracle范围：只有1 ready时记覆盖不足，
+133: 不把它当零机会或执行单任务oracle。K不必含ready H，目标H可以是正在运行前驱之后的公开后继。
+134: 目标最多两个H服务，事先按deadline/service ID选定；各完整公开DAG最多16节点。
+135: 
+136: 初始日历只固定可见running任务的估计释放，不查看真实finish。若任何busy任务elapsed≥estimate，
+137: 不能为已知仍busy的单元编造now释放；记覆盖不足，不加epsilon或看队列。
+138: K固定顺序，枚举兼容映射≤6^4。基准用同有理算术的greedy EFT。K间及可见running日历都固定。
+139: 随后对选中H服务的全部未放置节点作固定Kahn顺序、deadline/service/node ties和EFT gap插入，
+140: 只投影已到达公开图。后继只作为预测，不冒充actual completed，不做suffix组合优化。
+141: 两个target+K总计≤36个投影节点，当前running上下文≤6；没有未来到达、真值或反馈到实际B2。
+142: 
+143: 局部L约束改为K内每个L节点finish≤max(基准该节点finish,该服务absolute deadline)。这是新增
+144: 诊断slack规则，不是全局L-P95 1.10预算，也不证明L整个DAG结束不劣化。目标是选中H服务
+145: 投影完成时刻均值最小，同分按K资源向量字典序。最优枚举包含基准；b为基准H均值finish-now，
+146: o为最优对应值；Δ=b-o≥0ms，g=Δ/b。全部来自公共binary64值的精确有理运算，区别于runtime浮点。
+147: 
+148: FULL：ready全部落在2..4内、所有pending H服务≤2、DAG/日历/枚举完整、running释放可预测。
+149: 截断、单ready或估计过期：COVERAGE_INSUFFICIENT；可存有限子空间描述，但不计hit或率，不补零。
+150: 真正g=0只表示该完整测试空间无改善；0<g<tau为低于实质cutoff，不与零混称。
+151: 缺snapshot/非法/独立复算不符是INCOMPLETE/INVALID证据并闭锁，不是合法覆盖不足。
+152: 
+153: 非科学§32解释例：K含H前驱2与L可选NPU6/CPU6.5；固定suffix含H的NPU4，故投影完成10对6，
+154: 而新局部L cap=max(6,12)=12容纳6.5。只是检查机制定义能覆盖已登记解释，不是科学结果或CI。
+155: 
+156: M2仍为相同输入B1/B3/B4/B5相对B2的H-DMR、L-P95、资源等待等配对描述；不作为独立因果
+157: mapping证据。旧M1不进入v2门禁，不声称M1R或M2验证了候选，也没有提出online候选公式。
+158: 
+159: ## D08 — 同单位的覆盖与三态
+160: 
+161: `P2_criterion_spec_v2.json`及配套decision table为唯一判据提案。FINE(tau=.01,f=.01)、
+162: COARSE(.05,.05)，稳定8/10、阴性≤2/10均保留候选数值，未选择、无默认，目标观测量已改变。
+163: 新增拟议覆盖要求：每seed/condition支持至少4/5，阴性必须1。它们不来自文献或H/L门槛。
+164: 
+165: E=完整primary MAIN-B2 stream中唯一在域状态数；F=FULL状态数；p=hits/F，coverage=F/E。
+166: E或F=0则p未定义，不能写0；部分覆盖从p排除但在E保留，不悄悄消失。120个seed/loaded-condition
+167: 单元均须满足相应覆盖，且无缺失无效记录。共同seed-index paired bootstrap保持10,000/
+168: 20261018/type7不变；只分析seed p，不按view/node/100服务当独立样本；选中校准CI仍为描述。
+169: 
+170: 支持：全部12条件CI下端≥f且各有≥8seed p≥f，全部coverage≥4/5。
+171: 不支持：全部coverage=1且全部12条件CI上端<f、各≤2seed p≥f。
+172: 其余INCONCLUSIVE；missing/invalid/incomplete不能当阴性。没有执行时仍NOT_EVALUATED。
+173: 阴性只是不支持此注册有界公共预测观察器下的稳定机会，按协议停止推进；不证明所有策略、
+174: 所有未观察未来或无限时域都没有mapping机制。固定suffix/局部L/截断可能损失覆盖，必须披露。
+175: 
+176: ## D09 — 无环首物化、恢复与出口
+177: 
+178: R1仍推荐：未来唯一正式calibration入口。现行入口仍未实现，本轮未调用。
+179: 完整顺序、21种preimage及恢复表见runner/schema文档和报告identity_dependency_graph。
+180: 
+181: 先审批不可变blueprint、符号execution plan及显式生成/执行授权；以已知descriptor/authorization
+182: hash取得input lock，才能物化。MAIN先生成并验证解析，控制再派生；resolution receipt不改蓝图。
+183: 然后发布稳定内容workload ID，计算semantic argv、run/attempt ID、run锁，再pre-invocation守卫。
+184: 实际执行后保存原始输出，独立trace/metrics及注册replay，最后原子COMPLETE。
+185: 预调用守卫才要求resolved输入；首个生成守卫只要求已批蓝图/源/seed/授权，不能提前索要未来payload。
+186: 
+187: 任何中断保留append-only证据；完整输出精确核验才复用，失败/不完整不自动续写或重试。
+188: 新attempt/重跑预算需另行明确登记，当前自动retry0；replay是原计划的一次验证，不是救结果重试。
+189: P2相关源码洁净并已提交仍为待批工程要求，不冒充既有合同已经强制。
+190: 
+191: execution COMPLETE、integrity、identity、selection、diagnostic、mapping、timing和progression
+192: 分别记录。有效阴性可执行完整但不能推进；任一未知/缺失/未冻结闭锁。未来拟议orchestrator
+193: code0也只表示其全部前提满足，绝不提供下一阶段授权；子进程实际code另存，不伪造0。
+194: 当前timing为NOT_FROZEN，故即使未来这份calibration-only清单完整且观察器支持，仍不得以此
+195: 宣称完整P2工程协议完成。原2ms目标保留，未测量。
+196: 
+197: ## D10 — typed科学家族与P1隔离
+198: 
+199: S2仍推荐但未批准：未来新scientific输入/trace/receipt家族与显式adapter。精确字段在typed
+200: schema中，实际实例尚未创建。原P1 schema_version1和HAND_AUTHORED_CORRECTNESS_FIXTURE
+201: 字节/样本身份保持；不改名包装为科学样本。合法科学出生要求批准generator真实过程、
+202: descriptor、MAIN/control父关系、raw/semantic hashes和独立解析验证，origin字符串不足。
+203: 
+204: 控制唯一N/A token=`NOT_APPLICABLE_CONTROL`。MAIN精确100/50H50L，H-only50H，LOW100/50H50L。
+205: 仅H-only的L组可N/A且数值null；主输入缺组是INVALID。makespan=max实际finish，与observation_end
+206: 分别命名，不替换既有指标。future source/adapter变更后须重跑原64测试、45正trace/20负trace
+207: 及信息边界/失败关闭测试；静态schema成功不证明这些行为，也不能继承旧P1哈希。
+208: 
+209: ## 审批、参数与停止
+210: 
+211: `P2_scientific_parameter_registry_v2.json`保持SP01–SP32映射，新增拆出的SP33–SP40，共40组。
+212: 没有删除或合并。每组记录v1规则、v2规则、原因、finding与审批状态；这是参数/规则组，非40个标量。
+213: D01–D10全部UNAPPROVED。新增科学假设和工程接口均未激活。v2只成为最新待审草案索引，不成为
+214: 现行批准合同。静态设计检查不能证明科学有效、runtime正确、硬件真实性或统计支持。
+215: 本轮完成文档交付即停止；下一安全动作只有人工审阅v2具体选项/值/风险并明确记录决定。
+
+FILE docs/P2_design/v2/P2_scientific_parameter_registry_v2.json SHA256 15ee54e75f658d5f66edb00534003d3aed642f86736b2932ae61f0692e4559c2
+1: {
+2:   "document_kind": "SCIENTIFIC_PARAMETER_GROUP_REGISTRY",
+3:   "document_version": "v2",
+4:   "status": "DRAFT_UNAPPROVED_NONEXECUTABLE",
+5:   "classification": "PROPOSED",
+6:   "approval": "UNAPPROVED",
+7:   "approved": false,
+8:   "frozen": false,
+9:   "executable": false,
+10:   "execution_authorized": false,
+11:   "read_by_pipeline": false,
+12:   "starting_commit": "79f9c245b23119ce25175d6dc6ff148e9e092461",
+13:   "count_scope": "Named scientific parameter/rule groups, not scalar values. SP01-SP32 traced, 8 split-out explicit groups SP33-SP40 added; none deleted/merged. All40 unresolved/unapproved; engineering-only identity/lock details not counted as scientific scalar parameters.",
+14:   "previous_group_count": 32,
+15:   "current_group_count": 40,
+16:   "unresolved_scientific_parameters": 40,
+17:   "additions": [
+18:     "SP33",
+19:     "SP34",
+20:     "SP35",
+21:     "SP36",
+22:     "SP37",
+23:     "SP38",
+24:     "SP39",
+25:     "SP40"
+26:   ],
+27:   "deletions": [],
+28:   "merges": [],
+29:   "v1_to_v2_group_map": [
+30:     {
+31:       "v1_id": "SP01",
+32:       "primary_v2_id": "SP01",
+33:       "split_out_new_ids": [],
+34:       "deleted": false,
+35:       "merged_with": [],
+36:       "change_type": "UNCHANGED_PROPOSED_VALUE"
+37:     },
+38:     {
+39:       "v1_id": "SP02",
+40:       "primary_v2_id": "SP02",
+41:       "split_out_new_ids": [],
+42:       "deleted": false,
+43:       "merged_with": [],
+44:       "change_type": "UNCHANGED_PROPOSED_VALUE"
+45:     },
+46:     {
+47:       "v1_id": "SP03",
+48:       "primary_v2_id": "SP03",
+49:       "split_out_new_ids": [],
+50:       "deleted": false,
+51:       "merged_with": [],
+52:       "change_type": "UNCHANGED_PROPOSED_VALUE"
+53:     },
+54:     {
+55:       "v1_id": "SP04",
+56:       "primary_v2_id": "SP04",
+57:       "split_out_new_ids": [],
+58:       "deleted": false,
+59:       "merged_with": [],
+60:       "change_type": "UNCHANGED_PROPOSED_VALUE"
+61:     },
+62:     {
+63:       "v1_id": "SP05",
+64:       "primary_v2_id": "SP05",
+65:       "split_out_new_ids": [],
+66:       "deleted": false,
+67:       "merged_with": [],
+68:       "change_type": "UNCHANGED_PROPOSED_VALUE"
+69:     },
+70:     {
+71:       "v1_id": "SP06",
+72:       "primary_v2_id": "SP06",
+73:       "split_out_new_ids": [],
+74:       "deleted": false,
+75:       "merged_with": [],
+76:       "change_type": "UNCHANGED_PROPOSED_VALUE"
+77:     },
+78:     {
+79:       "v1_id": "SP07",
+80:       "primary_v2_id": "SP07",
+81:       "split_out_new_ids": [],
+82:       "deleted": false,
+83:       "merged_with": [],
+84:       "change_type": "UNCHANGED_PROPOSED_VALUE"
+85:     },
+86:     {
+87:       "v1_id": "SP08",
+88:       "primary_v2_id": "SP08",
+89:       "split_out_new_ids": [],
+90:       "deleted": false,
+91:       "merged_with": [],
+92:       "change_type": "UNCHANGED_PROPOSED_VALUE"
+93:     },
+94:     {
+95:       "v1_id": "SP09",
+96:       "primary_v2_id": "SP09",
+97:       "split_out_new_ids": [],
+98:       "deleted": false,
+99:       "merged_with": [],
+100:       "change_type": "UNCHANGED_PROPOSED_VALUE"
+101:     },
+102:     {
+103:       "v1_id": "SP10",
+104:       "primary_v2_id": "SP10",
+105:       "split_out_new_ids": [],
+106:       "deleted": false,
+107:       "merged_with": [],
+108:       "change_type": "CHANGED_TYPED_KEY_AND_VERSION"
+109:     },
+110:     {
+111:       "v1_id": "SP11",
+112:       "primary_v2_id": "SP11",
+113:       "split_out_new_ids": [],
+114:       "deleted": false,
+115:       "merged_with": [],
+116:       "change_type": "UNCHANGED_DISTRIBUTION_CHANGED_KEY_BINDING"
+117:     },
+118:     {
+119:       "v1_id": "SP12",
+120:       "primary_v2_id": "SP12",
+121:       "split_out_new_ids": [],
+122:       "deleted": false,
+123:       "merged_with": [],
+124:       "change_type": "UNCHANGED_DISTRIBUTION_CHANGED_KEY_BINDING"
+125:     },
+126:     {
+127:       "v1_id": "SP13",
+128:       "primary_v2_id": "SP13",
+129:       "split_out_new_ids": [],
+130:       "deleted": false,
+131:       "merged_with": [],
+132:       "change_type": "UNCHANGED_DISTRIBUTION_CHANGED_KEY_BINDING"
+133:     },
+134:     {
+135:       "v1_id": "SP14",
+136:       "primary_v2_id": "SP14",
+137:       "split_out_new_ids": [],
+138:       "deleted": false,
+139:       "merged_with": [],
+140:       "change_type": "UNCHANGED_PROPOSED_VALUE"
+141:     },
+142:     {
+143:       "v1_id": "SP15",
+144:       "primary_v2_id": "SP15",
+145:       "split_out_new_ids": [],
+146:       "deleted": false,
+147:       "merged_with": [],
+148:       "change_type": "UNCHANGED_PROPOSED_VALUE"
+149:     },
+150:     {
+151:       "v1_id": "SP16",
+152:       "primary_v2_id": "SP16",
+153:       "split_out_new_ids": [],
+154:       "deleted": false,
+155:       "merged_with": [],
+156:       "change_type": "CLARIFIED_WITHOUT_NUMERIC_CHANGE"
+157:     },
+158:     {
+159:       "v1_id": "SP17",
+160:       "primary_v2_id": "SP17",
+161:       "split_out_new_ids": [],
+162:       "deleted": false,
+163:       "merged_with": [],
+164:       "change_type": "CLARIFIED_SPLIT_WINDOW_SEMANTICS"
+165:     },
+166:     {
+167:       "v1_id": "SP18",
+168:       "primary_v2_id": "SP18",
+169:       "split_out_new_ids": [],
+170:       "deleted": false,
+171:       "merged_with": [],
+172:       "change_type": "UNCHANGED_PROPOSED_VALUE"
+173:     },
+174:     {
+175:       "v1_id": "SP19",
+176:       "primary_v2_id": "SP19",
+177:       "split_out_new_ids": [],
+178:       "deleted": false,
+179:       "merged_with": [],
+180:       "change_type": "UNCHANGED_PROPOSED_VALUE"
+181:     },
+182:     {
+183:       "v1_id": "SP20",
+184:       "primary_v2_id": "SP20",
+185:       "split_out_new_ids": [],
+186:       "deleted": false,
+187:       "merged_with": [],
+188:       "change_type": "UNCHANGED_BUDGET_VERSIONED_IDENTITIES"
+189:     },
+190:     {
+191:       "v1_id": "SP21",
+192:       "primary_v2_id": "SP21",
+193:       "split_out_new_ids": [
+194:         "SP38",
+195:         "SP40"
+196:       ],
+197:       "deleted": false,
+198:       "merged_with": [],
+199:       "change_type": "CLARIFIED_CONTROL_DOMAIN_AND_QUALIFICATION"
+200:     },
+201:     {
+202:       "v1_id": "SP22",
+203:       "primary_v2_id": "SP22",
+204:       "split_out_new_ids": [],
+205:       "deleted": false,
+206:       "merged_with": [],
+207:       "change_type": "UNCHANGED_PROPOSED_VALUE"
+208:     },
+209:     {
+210:       "v1_id": "SP23",
+211:       "primary_v2_id": "SP23",
+212:       "split_out_new_ids": [],
+213:       "deleted": false,
+214:       "merged_with": [],
+215:       "change_type": "UNCHANGED_PROPOSED_VALUE"
+216:     },
+217:     {
+218:       "v1_id": "SP24",
+219:       "primary_v2_id": "SP24",
+220:       "split_out_new_ids": [],
+221:       "deleted": false,
+222:       "merged_with": [],
+223:       "change_type": "CLARIFIED_TOTAL_PREDICATES"
+224:     },
+225:     {
+226:       "v1_id": "SP25",
+227:       "primary_v2_id": "SP25",
+228:       "split_out_new_ids": [
+229:         "SP33",
+230:         "SP37"
+231:       ],
+232:       "deleted": false,
+233:       "merged_with": [],
+234:       "change_type": "SPLIT_AND_CHANGED"
+235:     },
+236:     {
+237:       "v1_id": "SP26",
+238:       "primary_v2_id": "SP26",
+239:       "split_out_new_ids": [
+240:         "SP34",
+241:         "SP35"
+242:       ],
+243:       "deleted": false,
+244:       "merged_with": [],
+245:       "change_type": "SPLIT_AND_CHANGED"
+246:     },
+247:     {
+248:       "v1_id": "SP27",
+249:       "primary_v2_id": "SP27",
+250:       "split_out_new_ids": [],
+251:       "deleted": false,
+252:       "merged_with": [],
+253:       "change_type": "UNCHANGED_MEASURES_CHANGED_DIAGNOSTIC_REFERENCE"
+254:     },
+255:     {
+256:       "v1_id": "SP28",
+257:       "primary_v2_id": "SP28",
+258:       "split_out_new_ids": [],
+259:       "deleted": false,
+260:       "merged_with": [],
+261:       "change_type": "UNCHANGED_NUMBERS_CHANGED_OBSERVABLE"
+262:     },
+263:     {
+264:       "v1_id": "SP29",
+265:       "primary_v2_id": "SP29",
+266:       "split_out_new_ids": [],
+267:       "deleted": false,
+268:       "merged_with": [],
+269:       "change_type": "UNCHANGED_NUMBERS_CHANGED_DENOMINATOR"
+270:     },
+271:     {
+272:       "v1_id": "SP30",
+273:       "primary_v2_id": "SP30",
+274:       "split_out_new_ids": [],
+275:       "deleted": false,
+276:       "merged_with": [],
+277:       "change_type": "UNCHANGED_NUMBERS_CHANGED_OBSERVABLE"
+278:     },
+279:     {
+280:       "v1_id": "SP31",
+281:       "primary_v2_id": "SP31",
+282:       "split_out_new_ids": [
+283:         "SP36",
+284:         "SP39"
+285:       ],
+286:       "deleted": false,
+287:       "merged_with": [],
+288:       "change_type": "SPLIT_AND_CLARIFIED"
+289:     },
+290:     {
+291:       "v1_id": "SP32",
+292:       "primary_v2_id": "SP32",
+293:       "split_out_new_ids": [],
+294:       "deleted": false,
+295:       "merged_with": [],
+296:       "change_type": "CLARIFIED_WITHOUT_CI_CHANGE"
+297:     }
+298:   ],
+299:   "parameters": [
+300:     {
+301:       "id": "SP01",
+302:       "decision_id": "D01",
+303:       "name": "six_topologies",
+304:       "previous_name": "six_topologies",
+305:       "status": "UNRESOLVED",
+306:       "approval": "UNAPPROVED",
+307:       "proposal_classification": "PROPOSED",
+308:       "proposal_ref": "P2_workload_templates_v2.json#/templates",
+309:       "lineage": {
+310:         "v1_id": "SP01",
+311:         "v1_file": "docs/P2_design/P2_scientific_parameter_registry_v1.json",
+312:         "v1_registry_sha256": "67c6f074504646e12e370dbe89c93941346707856ba327ab10e25731cc53b1a9",
+313:         "v1_value_ref": "P2_workload_templates_v1.json#/templates",
+314:         "change_type": "UNCHANGED_PROPOSED_VALUE",
+315:         "v1_value_or_rule": "Exact v1 value in P2_workload_templates_v1.json#/templates",
+316:         "v2_value_or_rule": "Exact same semantic proposed value; versioned document namespace only.",
+317:         "findings": [
+318:           "NONE"
+319:         ]
+320:       }
+321:     },
+322:     {
+323:       "id": "SP02",
+324:       "decision_id": "D01",
+325:       "name": "importance_assignment",
+326:       "previous_name": "importance_assignment",
+327:       "status": "UNRESOLVED",
+328:       "approval": "UNAPPROVED",
+329:       "proposal_classification": "PROPOSED",
+330:       "proposal_ref": "P2_workload_templates_v2.json#/group_rule",
+331:       "lineage": {
+332:         "v1_id": "SP02",
+333:         "v1_file": "docs/P2_design/P2_scientific_parameter_registry_v1.json",
+334:         "v1_registry_sha256": "67c6f074504646e12e370dbe89c93941346707856ba327ab10e25731cc53b1a9",
+335:         "v1_value_ref": "P2_workload_templates_v1.json#/group_rule",
+336:         "change_type": "UNCHANGED_PROPOSED_VALUE",
+337:         "v1_value_or_rule": "Exact v1 value in P2_workload_templates_v1.json#/group_rule",
+338:         "v2_value_or_rule": "Exact same semantic proposed value; versioned document namespace only.",
+339:         "findings": [
+340:           "NONE"
+341:         ]
+342:       }
+343:     },
+344:     {
+345:       "id": "SP03",
+346:       "decision_id": "D01",
+347:       "name": "size_expansion",
+348:       "previous_name": "size_expansion",
+349:       "status": "UNRESOLVED",
+350:       "approval": "UNAPPROVED",
+351:       "proposal_classification": "PROPOSED",
+352:       "proposal_ref": "P2_workload_templates_v2.json#/expansion",
+353:       "lineage": {
+354:         "v1_id": "SP03",
+355:         "v1_file": "docs/P2_design/P2_scientific_parameter_registry_v1.json",
+356:         "v1_registry_sha256": "67c6f074504646e12e370dbe89c93941346707856ba327ab10e25731cc53b1a9",
+357:         "v1_value_ref": "P2_workload_templates_v1.json#/expansion",
+358:         "change_type": "UNCHANGED_PROPOSED_VALUE",
+359:         "v1_value_or_rule": "Exact v1 value in P2_workload_templates_v1.json#/expansion",
+360:         "v2_value_or_rule": "Exact same semantic proposed value; versioned document namespace only.",
+361:         "findings": [
+362:           "NONE"
+363:         ]
+364:       }
+365:     },
+366:     {
+367:       "id": "SP04",
+368:       "decision_id": "D02",
+369:       "name": "role_compatibility",
+370:       "previous_name": "role_compatibility",
+371:       "status": "UNRESOLVED",
+372:       "approval": "UNAPPROVED",
+373:       "proposal_classification": "PROPOSED",
+374:       "proposal_ref": "P2_resource_profiles_v2.json#/profiles",
+375:       "lineage": {
+376:         "v1_id": "SP04",
+377:         "v1_file": "docs/P2_design/P2_scientific_parameter_registry_v1.json",
+378:         "v1_registry_sha256": "67c6f074504646e12e370dbe89c93941346707856ba327ab10e25731cc53b1a9",
+379:         "v1_value_ref": "P2_resource_profiles_v1.json#/profiles",
+380:         "change_type": "UNCHANGED_PROPOSED_VALUE",
+381:         "v1_value_or_rule": "Exact v1 value in P2_resource_profiles_v1.json#/profiles",
+382:         "v2_value_or_rule": "Exact same semantic proposed value; versioned document namespace only.",
+383:         "findings": [
+384:           "NONE"
+385:         ]
+386:       }
+387:     },
+388:     {
+389:       "id": "SP05",
+390:       "decision_id": "D02",
+391:       "name": "role_execution_costs",
+392:       "previous_name": "role_execution_costs",
+393:       "status": "UNRESOLVED",
+394:       "approval": "UNAPPROVED",
+395:       "proposal_classification": "PROPOSED",
+396:       "proposal_ref": "P2_resource_profiles_v2.json#/profiles",
+397:       "lineage": {
+398:         "v1_id": "SP05",
+399:         "v1_file": "docs/P2_design/P2_scientific_parameter_registry_v1.json",
+400:         "v1_registry_sha256": "67c6f074504646e12e370dbe89c93941346707856ba327ab10e25731cc53b1a9",
+401:         "v1_value_ref": "P2_resource_profiles_v1.json#/profiles",
+402:         "change_type": "UNCHANGED_PROPOSED_VALUE",
+403:         "v1_value_or_rule": "Exact v1 value in P2_resource_profiles_v1.json#/profiles",
+404:         "v2_value_or_rule": "Exact same semantic proposed value; versioned document namespace only.",
+405:         "findings": [
+406:           "NONE"
+407:         ]
+408:       }
+409:     },
+410:     {
+411:       "id": "SP06",
+412:       "decision_id": "D02",
+413:       "name": "cpu_symmetry",
+414:       "previous_name": "cpu_symmetry",
+415:       "status": "UNRESOLVED",
+416:       "approval": "UNAPPROVED",
+417:       "proposal_classification": "PROPOSED",
+418:       "proposal_ref": "P2_resource_profiles_v2.json#/profiles",
+419:       "lineage": {
+420:         "v1_id": "SP06",
+421:         "v1_file": "docs/P2_design/P2_scientific_parameter_registry_v1.json",
+422:         "v1_registry_sha256": "67c6f074504646e12e370dbe89c93941346707856ba327ab10e25731cc53b1a9",
+423:         "v1_value_ref": "P2_resource_profiles_v1.json#/profiles",
+424:         "change_type": "UNCHANGED_PROPOSED_VALUE",
+425:         "v1_value_or_rule": "Exact v1 value in P2_resource_profiles_v1.json#/profiles",
+426:         "v2_value_or_rule": "Exact same semantic proposed value; versioned document namespace only.",
+427:         "findings": [
+428:           "NONE"
+429:         ]
+430:       }
+431:     },
+432:     {
+433:       "id": "SP07",
+434:       "decision_id": "D03",
+435:       "name": "edge_sizes",
+436:       "previous_name": "edge_sizes",
+437:       "status": "UNRESOLVED",
+438:       "approval": "UNAPPROVED",
+439:       "proposal_classification": "PROPOSED",
+440:       "proposal_ref": "P2_communication_profiles_v2.json#/edge_tables",
+441:       "lineage": {
+442:         "v1_id": "SP07",
+443:         "v1_file": "docs/P2_design/P2_scientific_parameter_registry_v1.json",
+444:         "v1_registry_sha256": "67c6f074504646e12e370dbe89c93941346707856ba327ab10e25731cc53b1a9",
+445:         "v1_value_ref": "P2_communication_profiles_v1.json#/edge_tables",
+446:         "change_type": "UNCHANGED_PROPOSED_VALUE",
+447:         "v1_value_or_rule": "Exact v1 value in P2_communication_profiles_v1.json#/edge_tables",
+448:         "v2_value_or_rule": "Exact same semantic proposed value; versioned document namespace only.",
+449:         "findings": [
+450:           "NONE"
+451:         ]
+452:       }
+453:     },
+454:     {
+455:       "id": "SP08",
+456:       "decision_id": "D03",
+457:       "name": "link_latencies",
+458:       "previous_name": "link_latencies",
+459:       "status": "UNRESOLVED",
+460:       "approval": "UNAPPROVED",
+461:       "proposal_classification": "PROPOSED",
+462:       "proposal_ref": "P2_communication_profiles_v2.json#/links",
+463:       "lineage": {
+464:         "v1_id": "SP08",
+465:         "v1_file": "docs/P2_design/P2_scientific_parameter_registry_v1.json",
+466:         "v1_registry_sha256": "67c6f074504646e12e370dbe89c93941346707856ba327ab10e25731cc53b1a9",
+467:         "v1_value_ref": "P2_communication_profiles_v1.json#/links",
+468:         "change_type": "UNCHANGED_PROPOSED_VALUE",
+469:         "v1_value_or_rule": "Exact v1 value in P2_communication_profiles_v1.json#/links",
+470:         "v2_value_or_rule": "Exact same semantic proposed value; versioned document namespace only.",
+471:         "findings": [
+472:           "NONE"
+473:         ]
+474:       }
+475:     },
+476:     {
+477:       "id": "SP09",
+478:       "decision_id": "D03",
+479:       "name": "link_bandwidths",
+480:       "previous_name": "link_bandwidths",
+481:       "status": "UNRESOLVED",
+482:       "approval": "UNAPPROVED",
+483:       "proposal_classification": "PROPOSED",
+484:       "proposal_ref": "P2_communication_profiles_v2.json#/links",
+485:       "lineage": {
+486:         "v1_id": "SP09",
+487:         "v1_file": "docs/P2_design/P2_scientific_parameter_registry_v1.json",
+488:         "v1_registry_sha256": "67c6f074504646e12e370dbe89c93941346707856ba327ab10e25731cc53b1a9",
+489:         "v1_value_ref": "P2_communication_profiles_v1.json#/links",
+490:         "change_type": "UNCHANGED_PROPOSED_VALUE",
+491:         "v1_value_or_rule": "Exact v1 value in P2_communication_profiles_v1.json#/links",
+492:         "v2_value_or_rule": "Exact same semantic proposed value; versioned document namespace only.",
+493:         "findings": [
+494:           "NONE"
+495:         ]
+496:       }
+497:     },
+498:     {
+499:       "id": "SP10",
+500:       "decision_id": "D04",
+501:       "name": "key_encoding_hash_mapping",
+502:       "previous_name": "key_encoding_hash_mapping",
+503:       "status": "UNRESOLVED",
+504:       "approval": "UNAPPROVED",
+505:       "proposal_classification": "PROPOSED",
+506:       "proposal_ref": "P2_generation_spec_v2.json#/key_bindings",
+507:       "lineage": {
+508:         "v1_id": "SP10",
+509:         "v1_file": "docs/P2_design/P2_scientific_parameter_registry_v1.json",
+510:         "v1_registry_sha256": "67c6f074504646e12e370dbe89c93941346707856ba327ab10e25731cc53b1a9",
+511:         "v1_value_ref": "P2_generation_spec_v1.json#/key",
+512:         "change_type": "CHANGED_TYPED_KEY_AND_VERSION",
+513:         "v1_value_or_rule": "v1 conceptual version/empty-field list",
+514:         "v2_value_or_rule": "Explicit schema_version2 + generator_version v2; all3 fields retain scenario/condition/config, only prescribed fields empty; exact typed KEY.",
+515:         "findings": [
+516:           "V2-F03"
+517:         ]
+518:       }
+519:     },
+520:     {
+521:       "id": "SP11",
+522:       "decision_id": "D04",
+523:       "name": "estimate_distribution",
+524:       "previous_name": "estimate_distribution",
+525:       "status": "UNRESOLVED",
+526:       "approval": "UNAPPROVED",
+527:       "proposal_classification": "PROPOSED",
+528:       "proposal_ref": "P2_generation_spec_v2.json#/algorithm/service_role_factor",
+529:       "lineage": {
+530:         "v1_id": "SP11",
+531:         "v1_file": "docs/P2_design/P2_scientific_parameter_registry_v1.json",
+532:         "v1_registry_sha256": "67c6f074504646e12e370dbe89c93941346707856ba327ab10e25731cc53b1a9",
+533:         "v1_value_ref": "P2_generation_spec_v1.json#/rules/service_role_factor",
+534:         "change_type": "UNCHANGED_DISTRIBUTION_CHANGED_KEY_BINDING",
+535:         "v1_value_or_rule": "[.9,1.1) keyed node factor",
+536:         "v2_value_or_rule": "Same distribution; explicit v2 field keys change future draw identity, no realization compared.",
+537:         "findings": [
+538:           "V2-F03"
+539:         ]
+540:       }
+541:     },
+542:     {
+543:       "id": "SP12",
+544:       "decision_id": "D04",
+545:       "name": "realized_distribution",
+546:       "previous_name": "realized_distribution",
+547:       "status": "UNRESOLVED",
+548:       "approval": "UNAPPROVED",
+549:       "proposal_classification": "PROPOSED",
+550:       "proposal_ref": "P2_generation_spec_v2.json#/algorithm/duration_factor",
+551:       "lineage": {
+552:         "v1_id": "SP12",
+553:         "v1_file": "docs/P2_design/P2_scientific_parameter_registry_v1.json",
+554:         "v1_registry_sha256": "67c6f074504646e12e370dbe89c93941346707856ba327ab10e25731cc53b1a9",
+555:         "v1_value_ref": "P2_generation_spec_v1.json#/rules/duration_factor",
+556:         "change_type": "UNCHANGED_DISTRIBUTION_CHANGED_KEY_BINDING",
+557:         "v1_value_or_rule": "[.9,1.1) keyed resource factor",
+558:         "v2_value_or_rule": "Same distribution/private boundary; exact v2 key and conversion.",
+559:         "findings": [
+560:           "V2-F03"
+561:         ]
+562:       }
+563:     },
+564:     {
+565:       "id": "SP13",
+566:       "decision_id": "D04",
+567:       "name": "arrival_jitter",
+568:       "previous_name": "arrival_jitter",
+569:       "status": "UNRESOLVED",
+570:       "approval": "UNAPPROVED",
+571:       "proposal_classification": "PROPOSED",
+572:       "proposal_ref": "P2_generation_spec_v2.json#/algorithm/arrival_jitter",
+573:       "lineage": {
+574:         "v1_id": "SP13",
+575:         "v1_file": "docs/P2_design/P2_scientific_parameter_registry_v1.json",
+576:         "v1_registry_sha256": "67c6f074504646e12e370dbe89c93941346707856ba327ab10e25731cc53b1a9",
+577:         "v1_value_ref": "P2_generation_spec_v1.json#/rules/arrival_jitter",
+578:         "change_type": "UNCHANGED_DISTRIBUTION_CHANGED_KEY_BINDING",
+579:         "v1_value_or_rule": "slot U/10 with other IDs ambiguous",
+580:         "v2_value_or_rule": "Same U/10; scenario/condition/config retained, H/L/node/resource/edge empty exactly.",
+581:         "findings": [
+582:           "V2-F03"
+583:         ]
+584:       }
+585:     },
+586:     {
+587:       "id": "SP14",
+588:       "decision_id": "D04",
+589:       "name": "arrival_burst",
+590:       "previous_name": "arrival_burst",
+591:       "status": "UNRESOLVED",
+592:       "approval": "UNAPPROVED",
+593:       "proposal_classification": "PROPOSED",
+594:       "proposal_ref": "P2_generation_spec_v2.json#/arrivals",
+595:       "lineage": {
+596:         "v1_id": "SP14",
+597:         "v1_file": "docs/P2_design/P2_scientific_parameter_registry_v1.json",
+598:         "v1_registry_sha256": "67c6f074504646e12e370dbe89c93941346707856ba327ab10e25731cc53b1a9",
+599:         "v1_value_ref": "P2_generation_spec_v1.json#/arrivals",
+600:         "change_type": "UNCHANGED_PROPOSED_VALUE",
+601:         "v1_value_or_rule": "Exact v1 value in P2_generation_spec_v1.json#/arrivals",
+602:         "v2_value_or_rule": "Exact same semantic proposed value; versioned document namespace only.",
+603:         "findings": [
+604:           "NONE"
+605:         ]
+606:       }
+607:     },
+608:     {
+609:       "id": "SP15",
+610:       "decision_id": "D04",
+611:       "name": "service_count_and_group_mix",
+612:       "previous_name": "service_count_and_group_mix",
+613:       "status": "UNRESOLVED",
+614:       "approval": "UNAPPROVED",
+615:       "proposal_classification": "PROPOSED",
+616:       "proposal_ref": "P2_generation_spec_v2.json#/arrivals",
+617:       "lineage": {
+618:         "v1_id": "SP15",
+619:         "v1_file": "docs/P2_design/P2_scientific_parameter_registry_v1.json",
+620:         "v1_registry_sha256": "67c6f074504646e12e370dbe89c93941346707856ba327ab10e25731cc53b1a9",
+621:         "v1_value_ref": "P2_generation_spec_v1.json#/arrivals",
+622:         "change_type": "UNCHANGED_PROPOSED_VALUE",
+623:         "v1_value_or_rule": "Exact v1 value in P2_generation_spec_v1.json#/arrivals",
+624:         "v2_value_or_rule": "Exact same semantic proposed value; versioned document namespace only.",
+625:         "findings": [
+626:           "NONE"
+627:         ]
+628:       }
+629:     },
+630:     {
+631:       "id": "SP16",
+632:       "decision_id": "D04",
+633:       "name": "deadline_multipliers",
+634:       "previous_name": "deadline_multipliers",
+635:       "status": "UNRESOLVED",
+636:       "approval": "UNAPPROVED",
+637:       "proposal_classification": "PROPOSED",
+638:       "proposal_ref": "P2_generation_spec_v2.json#/deadlines",
+639:       "lineage": {
+640:         "v1_id": "SP16",
+641:         "v1_file": "docs/P2_design/P2_scientific_parameter_registry_v1.json",
+642:         "v1_registry_sha256": "67c6f074504646e12e370dbe89c93941346707856ba327ab10e25731cc53b1a9",
+643:         "v1_value_ref": "P2_generation_spec_v1.json#/deadlines",
+644:         "change_type": "CLARIFIED_WITHOUT_NUMERIC_CHANGE",
+645:         "v1_value_or_rule": "H2.5*C_est,L4*C_est; exactness implicit",
+646:         "v2_value_or_rule": "Same multipliers, explicit pre-round E_exact reference and final binary64 absolute deadline.",
+647:         "findings": [
+648:           "V2-F07"
+649:         ]
+650:       }
+651:     },
+652:     {
+653:       "id": "SP17",
+654:       "decision_id": "D04",
+655:       "name": "arrival_window",
+656:       "previous_name": "arrival_window",
+657:       "status": "UNRESOLVED",
+658:       "approval": "UNAPPROVED",
+659:       "proposal_classification": "PROPOSED",
+660:       "proposal_ref": "P2_generation_spec_v2.json#/windows",
+661:       "lineage": {
+662:         "v1_id": "SP17",
+663:         "v1_file": "docs/P2_design/P2_scientific_parameter_registry_v1.json",
+664:         "v1_registry_sha256": "67c6f074504646e12e370dbe89c93941346707856ba327ab10e25731cc53b1a9",
+665:         "v1_value_ref": "P2_generation_spec_v1.json#/arrivals/arrival_window",
+666:         "change_type": "CLARIFIED_SPLIT_WINDOW_SEMANTICS",
+667:         "v1_value_or_rule": "W=50P and run_end=max(W,lastfinish)",
+668:         "v2_value_or_rule": "W unchanged; distinct arrival_end/lastarrival/lastfinish/makespan/observation_end; full-drain metric preserved.",
+669:         "findings": [
+670:           "V2-F07"
+671:         ]
+672:       }
+673:     },
+674:     {
+675:       "id": "SP18",
+676:       "decision_id": "D05",
+677:       "name": "period_axis",
+678:       "previous_name": "period_axis",
+679:       "status": "UNRESOLVED",
+680:       "approval": "UNAPPROVED",
+681:       "proposal_classification": "PROPOSED",
+682:       "proposal_ref": "P2_trial_matrix_draft_v2.json#/configs",
+683:       "lineage": {
+684:         "v1_id": "SP18",
+685:         "v1_file": "docs/P2_design/P2_scientific_parameter_registry_v1.json",
+686:         "v1_registry_sha256": "67c6f074504646e12e370dbe89c93941346707856ba327ab10e25731cc53b1a9",
+687:         "v1_value_ref": "P2_trial_matrix_draft_v1.json#/configs",
+688:         "change_type": "UNCHANGED_PROPOSED_VALUE",
+689:         "v1_value_or_rule": "Exact v1 value in P2_trial_matrix_draft_v1.json#/configs",
+690:         "v2_value_or_rule": "Exact same semantic proposed value; versioned document namespace only.",
+691:         "findings": [
+692:           "NONE"
+693:         ]
+694:       }
+695:     },
+696:     {
+697:       "id": "SP19",
+698:       "decision_id": "D05",
+699:       "name": "main_method_set",
+700:       "previous_name": "main_method_set",
+701:       "status": "UNRESOLVED",
+702:       "approval": "UNAPPROVED",
+703:       "proposal_classification": "PROPOSED",
+704:       "proposal_ref": "P2_trial_matrix_draft_v2.json#/methods",
+705:       "lineage": {
+706:         "v1_id": "SP19",
+707:         "v1_file": "docs/P2_design/P2_scientific_parameter_registry_v1.json",
+708:         "v1_registry_sha256": "67c6f074504646e12e370dbe89c93941346707856ba327ab10e25731cc53b1a9",
+709:         "v1_value_ref": "P2_trial_matrix_draft_v1.json#/methods",
+710:         "change_type": "UNCHANGED_PROPOSED_VALUE",
+711:         "v1_value_or_rule": "Exact v1 value in P2_trial_matrix_draft_v1.json#/methods",
+712:         "v2_value_or_rule": "Exact same semantic proposed value; versioned document namespace only.",
+713:         "findings": [
+714:           "NONE"
+715:         ]
+716:       }
+717:     },
+718:     {
+719:       "id": "SP20",
+720:       "decision_id": "D05",
+721:       "name": "finite_order_budget",
+722:       "previous_name": "finite_order_budget",
+723:       "status": "UNRESOLVED",
+724:       "approval": "UNAPPROVED",
+725:       "proposal_classification": "PROPOSED",
+726:       "proposal_ref": "P2_trial_matrix_draft_v2.json#/budget",
+727:       "lineage": {
+728:         "v1_id": "SP20",
+729:         "v1_file": "docs/P2_design/P2_scientific_parameter_registry_v1.json",
+730:         "v1_registry_sha256": "67c6f074504646e12e370dbe89c93941346707856ba327ab10e25731cc53b1a9",
+731:         "v1_value_ref": "P2_trial_matrix_draft_v1.json#/budget",
+732:         "change_type": "UNCHANGED_BUDGET_VERSIONED_IDENTITIES",
+733:         "v1_value_or_rule": "36*10*7=2520;5040 with replay",
+734:         "v2_value_or_rule": "Budget/order unchanged; proposal-v2 and wlref:v2 refs, MAIN materialization before controls but engine order unchanged.",
+735:         "findings": [
+736:           "V2-F02"
+737:         ]
+738:       }
+739:     },
+740:     {
+741:       "id": "SP21",
+742:       "decision_id": "D06",
+743:       "name": "control_input_transform",
+744:       "previous_name": "control_input_transform",
+745:       "status": "UNRESOLVED",
+746:       "approval": "UNAPPROVED",
+747:       "proposal_classification": "PROPOSED",
+748:       "proposal_ref": "P2_generation_spec_v2.json#/controls",
+749:       "lineage": {
+750:         "v1_id": "SP21",
+751:         "v1_file": "docs/P2_design/P2_scientific_parameter_registry_v1.json",
+752:         "v1_registry_sha256": "67c6f074504646e12e370dbe89c93941346707856ba327ab10e25731cc53b1a9",
+753:         "v1_value_ref": "P2_generation_spec_v1.json#/controls",
+754:         "change_type": "CLARIFIED_CONTROL_DOMAIN_AND_QUALIFICATION",
+755:         "v1_value_or_rule": "G max_service domain ambiguous; controls retain parent values",
+756:         "v2_value_or_rule": "G always ALL100 parent MAIN services and exact pre-round sidecar; no new draw; distinct control witness/overlap qualification.",
+757:         "findings": [
+758:           "V2-F03",
+759:           "V2-F07"
+760:         ]
+761:       }
+762:     },
+763:     {
+764:       "id": "SP22",
+765:       "decision_id": "D06",
+766:       "name": "load_pressure_bands",
+767:       "previous_name": "load_pressure_bands",
+768:       "status": "UNRESOLVED",
+769:       "approval": "UNAPPROVED",
+770:       "proposal_classification": "PROPOSED",
+771:       "proposal_ref": "P2_stage_state_contract_v2.json#/load_classification/bands",
+772:       "lineage": {
+773:         "v1_id": "SP22",
+774:         "v1_file": "docs/P2_design/P2_scientific_parameter_registry_v1.json",
+775:         "v1_registry_sha256": "67c6f074504646e12e370dbe89c93941346707856ba327ab10e25731cc53b1a9",
+776:         "v1_value_ref": "P2_complete_design_proposal_v1.md#D06",
+777:         "change_type": "UNCHANGED_PROPOSED_VALUE",
+778:         "v1_value_or_rule": "Exact v1 value in P2_complete_design_proposal_v1.md#D06",
+779:         "v2_value_or_rule": "Exact same semantic proposed value; versioned document namespace only.",
+780:         "findings": [
+781:           "NONE"
+782:         ]
+783:       }
+784:     },
+785:     {
+786:       "id": "SP23",
+787:       "decision_id": "D06",
+788:       "name": "load_miss_bands",
+789:       "previous_name": "load_miss_bands",
+790:       "status": "UNRESOLVED",
+791:       "approval": "UNAPPROVED",
+792:       "proposal_classification": "PROPOSED",
+793:       "proposal_ref": "P2_stage_state_contract_v2.json#/load_classification/bands",
+794:       "lineage": {
+795:         "v1_id": "SP23",
+796:         "v1_file": "docs/P2_design/P2_scientific_parameter_registry_v1.json",
+797:         "v1_registry_sha256": "67c6f074504646e12e370dbe89c93941346707856ba327ab10e25731cc53b1a9",
+798:         "v1_value_ref": "P2_complete_design_proposal_v1.md#D06",
+799:         "change_type": "UNCHANGED_PROPOSED_VALUE",
+800:         "v1_value_or_rule": "Exact v1 value in P2_complete_design_proposal_v1.md#D06",
+801:         "v2_value_or_rule": "Exact same semantic proposed value; versioned document namespace only.",
+802:         "findings": [
+803:           "NONE"
+804:         ]
+805:       }
+806:     },
+807:     {
+808:       "id": "SP24",
+809:       "decision_id": "D06",
+810:       "name": "configuration_selection",
+811:       "previous_name": "configuration_selection",
+812:       "status": "UNRESOLVED",
+813:       "approval": "UNAPPROVED",
+814:       "proposal_classification": "PROPOSED",
+815:       "proposal_ref": "P2_trial_matrix_draft_v2.json#/rules/SEL-v2",
+816:       "lineage": {
+817:         "v1_id": "SP24",
+818:         "v1_file": "docs/P2_design/P2_scientific_parameter_registry_v1.json",
+819:         "v1_registry_sha256": "67c6f074504646e12e370dbe89c93941346707856ba327ab10e25731cc53b1a9",
+820:         "v1_value_ref": "P2_trial_matrix_draft_v1.json#/rules/SEL-v1",
+821:         "change_type": "CLARIFIED_TOTAL_PREDICATES",
+822:         "v1_value_or_rule": "A-before-B based on B2 eligibility",
+823:         "v2_value_or_rule": "Same deterministic policy; validity/control/OWN target bin explicit; all off-target/unselected preserved.",
+824:         "findings": [
+825:           "V2-F06"
+826:         ]
+827:       }
+828:     },
+829:     {
+830:       "id": "SP25",
+831:       "decision_id": "D07",
+832:       "name": "M1_snapshot_subset",
+833:       "previous_name": "M1_snapshot_subset",
+834:       "status": "UNRESOLVED",
+835:       "approval": "UNAPPROVED",
+836:       "proposal_classification": "PROPOSED",
+837:       "proposal_ref": "P2_diagnostic_spec_v2.json#/scope/action_nodes",
+838:       "lineage": {
+839:         "v1_id": "SP25",
+840:         "v1_file": "docs/P2_design/P2_scientific_parameter_registry_v1.json",
+841:         "v1_registry_sha256": "67c6f074504646e12e370dbe89c93941346707856ba327ab10e25731cc53b1a9",
+842:         "v1_value_ref": "P2_complete_design_proposal_v1.md#D07",
+843:         "change_type": "SPLIT_AND_CHANGED",
+844:         "v1_value_or_rule": "Historical M1: K2..4 containing H, ready-prefix only",
+845:         "v2_value_or_rule": "M1R: K2..4 (single-ready states explicitly coverage-insufficient) and pending arrived H targets; target scope/dedup separately registered SP33/SP37.",
+846:         "findings": [
+847:           "V2-F01",
+848:           "V2-F04"
+849:         ]
+850:       }
+851:     },
+852:     {
+853:       "id": "SP26",
+854:       "decision_id": "D07",
+855:       "name": "M1_counterfactual_objective",
+856:       "previous_name": "M1_counterfactual_objective",
+857:       "status": "UNRESOLVED",
+858:       "approval": "UNAPPROVED",
+859:       "proposal_classification": "PROPOSED",
+860:       "proposal_ref": "P2_diagnostic_spec_v2.json#/projection/objective",
+861:       "lineage": {
+862:         "v1_id": "SP26",
+863:         "v1_file": "docs/P2_design/P2_scientific_parameter_registry_v1.json",
+864:         "v1_registry_sha256": "67c6f074504646e12e370dbe89c93941346707856ba327ab10e25731cc53b1a9",
+865:         "v1_value_ref": "P2_complete_design_proposal_v1.md#D07",
+866:         "change_type": "SPLIT_AND_CHANGED",
+867:         "v1_value_or_rule": "Mean ready-prefix H finish, strict localL nondegradation",
+868:         "v2_value_or_rule": "Mean projected completion of selected remaining-H DAGs; fixed suffix and new L slack separately SP34/SP35.",
+869:         "findings": [
+870:           "V2-F01"
+871:         ]
+872:       }
+873:     },
+874:     {
+875:       "id": "SP27",
+876:       "decision_id": "D07",
+877:       "name": "M2_measurements",
+878:       "previous_name": "M2_measurements",
+879:       "status": "UNRESOLVED",
+880:       "approval": "UNAPPROVED",
+881:       "proposal_classification": "PROPOSED",
+882:       "proposal_ref": "P2_complete_design_proposal_v2.md#D07",
+883:       "lineage": {
+884:         "v1_id": "SP27",
+885:         "v1_file": "docs/P2_design/P2_scientific_parameter_registry_v1.json",
+886:         "v1_registry_sha256": "67c6f074504646e12e370dbe89c93941346707856ba327ab10e25731cc53b1a9",
+887:         "v1_value_ref": "P2_complete_design_proposal_v1.md#D07",
+888:         "change_type": "UNCHANGED_MEASURES_CHANGED_DIAGNOSTIC_REFERENCE",
+889:         "v1_value_or_rule": "M2 B1/B3/B4/B5 vsB2 descriptive",
+890:         "v2_value_or_rule": "Same contrasts/noncausal interpretation; M1R onlyB2 diagnostic references; historical M1 not gate.",
+891:         "findings": [
+892:           "V2-F01"
+893:         ]
+894:       }
+895:     },
+896:     {
+897:       "id": "SP28",
+898:       "decision_id": "D08",
+899:       "name": "material_gain_cutoff",
+900:       "previous_name": "material_gain_cutoff",
+901:       "status": "UNRESOLVED",
+902:       "approval": "UNAPPROVED",
+903:       "proposal_classification": "PROPOSED",
+904:       "proposal_ref": "P2_criterion_spec_v2.json#/bundles",
+905:       "lineage": {
+906:         "v1_id": "SP28",
+907:         "v1_file": "docs/P2_design/P2_scientific_parameter_registry_v1.json",
+908:         "v1_registry_sha256": "67c6f074504646e12e370dbe89c93941346707856ba327ab10e25731cc53b1a9",
+909:         "v1_value_ref": "P2_mapping_opportunity_decision_table_v1.md#参数",
+910:         "change_type": "UNCHANGED_NUMBERS_CHANGED_OBSERVABLE",
+911:         "v1_value_or_rule": "FINE tau.01/COARSE.05 on v1 local gain",
+912:         "v2_value_or_rule": "Same candidate tau values, applied only to FULL M1R remaining-H projected gain; no selection made.",
+913:         "findings": [
+914:           "V2-F01"
+915:         ]
+916:       }
+917:     },
+918:     {
+919:       "id": "SP29",
+920:       "decision_id": "D08",
+921:       "name": "frequency_cutoff",
+922:       "previous_name": "frequency_cutoff",
+923:       "status": "UNRESOLVED",
+924:       "approval": "UNAPPROVED",
+925:       "proposal_classification": "PROPOSED",
+926:       "proposal_ref": "P2_criterion_spec_v2.json#/bundles",
+927:       "lineage": {
+928:         "v1_id": "SP29",
+929:         "v1_file": "docs/P2_design/P2_scientific_parameter_registry_v1.json",
+930:         "v1_registry_sha256": "67c6f074504646e12e370dbe89c93941346707856ba327ab10e25731cc53b1a9",
+931:         "v1_value_ref": "P2_mapping_opportunity_decision_table_v1.md#参数",
+932:         "change_type": "UNCHANGED_NUMBERS_CHANGED_DENOMINATOR",
+933:         "v1_value_or_rule": "FINE frequency.01/COARSE.05 over v1 eligible views",
+934:         "v2_value_or_rule": "Same candidate frequency values; hits/F over FULL covered unique states, coverage separately F/E.",
+935:         "findings": [
+936:           "V2-F01",
+937:           "V2-F04"
+938:         ]
+939:       }
+940:     },
+941:     {
+942:       "id": "SP30",
+943:       "decision_id": "D08",
+944:       "name": "stability_requirement",
+945:       "previous_name": "stability_requirement",
+946:       "status": "UNRESOLVED",
+947:       "approval": "UNAPPROVED",
+948:       "proposal_classification": "PROPOSED",
+949:       "proposal_ref": "P2_criterion_spec_v2.json#/bundles",
+950:       "lineage": {
+951:         "v1_id": "SP30",
+952:         "v1_file": "docs/P2_design/P2_scientific_parameter_registry_v1.json",
+953:         "v1_registry_sha256": "67c6f074504646e12e370dbe89c93941346707856ba327ab10e25731cc53b1a9",
+954:         "v1_value_ref": "P2_mapping_opportunity_decision_table_v1.md#参数",
+955:         "change_type": "UNCHANGED_NUMBERS_CHANGED_OBSERVABLE",
+956:         "v1_value_or_rule": "Support8/10,absence<=2/10",
+957:         "v2_value_or_rule": "Same numeric stability on new per-seed FULL-coverage frequency, no new independent unit.",
+958:         "findings": [
+959:           "V2-F01"
+960:         ]
+961:       }
+962:     },
+963:     {
+964:       "id": "SP31",
+965:       "decision_id": "D08",
+966:       "name": "condition_aggregation",
+967:       "previous_name": "condition_aggregation",
+968:       "status": "UNRESOLVED",
+969:       "approval": "UNAPPROVED",
+970:       "proposal_classification": "PROPOSED",
+971:       "proposal_ref": "P2_criterion_spec_v2.json#/decision_order",
+972:       "lineage": {
+973:         "v1_id": "SP31",
+974:         "v1_file": "docs/P2_design/P2_scientific_parameter_registry_v1.json",
+975:         "v1_registry_sha256": "67c6f074504646e12e370dbe89c93941346707856ba327ab10e25731cc53b1a9",
+976:         "v1_value_ref": "P2_mapping_opportunity_decision_table_v1.md#决策表",
+977:         "change_type": "SPLIT_AND_CLARIFIED",
+978:         "v1_value_or_rule": "All12 selected loaded conditions; missing->inconclusive",
+979:         "v2_value_or_rule": "Same condition/macro units; coverage and selected-calibration interpretation separately SP36/SP39.",
+980:         "findings": [
+981:           "V2-F05",
+982:           "V2-F06"
+983:         ]
+984:       }
+985:     },
+986:     {
+987:       "id": "SP32",
+988:       "decision_id": "D08",
+989:       "name": "bootstrap_implementation_pin",
+990:       "previous_name": "bootstrap_implementation_pin",
+991:       "status": "UNRESOLVED",
+992:       "approval": "UNAPPROVED",
+993:       "proposal_classification": "PROPOSED",
+994:       "proposal_ref": "P2_criterion_spec_v2.json#/bootstrap",
+995:       "lineage": {
+996:         "v1_id": "SP32",
+997:         "v1_file": "docs/P2_design/P2_scientific_parameter_registry_v1.json",
+998:         "v1_registry_sha256": "67c6f074504646e12e370dbe89c93941346707856ba327ab10e25731cc53b1a9",
+999:         "v1_value_ref": "P2_mapping_opportunity_decision_table_v1.md#参数",
+1000:         "change_type": "CLARIFIED_WITHOUT_CI_CHANGE",
+1001:         "v1_value_or_rule": "SHA256 rejection index,10000,type7,20261018",
+1002:         "v2_value_or_rule": "Same algorithm/constants; exact five-field ANALYSIS_INDEX_KEY; no bootstrap indices generated.",
+1003:         "findings": [
+1004:           "V2-F03"
+1005:         ]
+1006:       }
+1007:     },
+1008:     {
+1009:       "id": "SP33",
+1010:       "decision_id": "D07",
+1011:       "name": "target_H_selection",
+1012:       "status": "UNRESOLVED",
+1013:       "approval": "UNAPPROVED",
+1014:       "proposal_classification": "PROPOSED",
+1015:       "proposal_ref": "P2_diagnostic_spec_v2.json#/scope/target_H_services",
+1016:       "lineage": {
+1017:         "v1_id": null,
+1018:         "derived_from_v1_groups": [
+1019:           "SP25"
+1020:         ],
+1021:         "change_type": "ADDED_SPLIT_OUT_EXPLICIT_RULE",
+1022:         "v1_value_or_rule": "Previously embedded/unspecified scope in SP25",
+1023:         "v2_value_or_rule": "First2 unfinished arrived H with pending nodes by deadline/service ID; truncation is coverage insufficiency.",
+1024:         "findings": [
+1025:           "V2-F01"
+1026:         ]
+1027:       }
+1028:     },
+1029:     {
+1030:       "id": "SP34",
+1031:       "decision_id": "D07",
+1032:       "name": "bounded_public_suffix_rollout",
+1033:       "status": "UNRESOLVED",
+1034:       "approval": "UNAPPROVED",
+1035:       "proposal_classification": "PROPOSED",
+1036:       "proposal_ref": "P2_diagnostic_spec_v2.json#/projection/suffix_order",
+1037:       "lineage": {
+1038:         "v1_id": null,
+1039:         "derived_from_v1_groups": [
+1040:           "SP26"
+1041:         ],
+1042:         "change_type": "ADDED_SPLIT_OUT_EXPLICIT_RULE",
+1043:         "v1_value_or_rule": "Previously embedded/unspecified scope in SP26",
+1044:         "v2_value_or_rule": "All public remaining nodes of<=2 targetH DAGs,<=16 each; fixed Kahn+B2/EFT suffix, <=36 projected nodes, <=1296 action mappings; no candidate/policy feedback.",
+1045:         "findings": [
+1046:           "V2-F01"
+1047:         ]
+1048:       }
+1049:     },
+1050:     {
+1051:       "id": "SP35",
+1052:       "decision_id": "D07",
+1053:       "name": "local_L_slack_admissibility",
+1054:       "status": "UNRESOLVED",
+1055:       "approval": "UNAPPROVED",
+1056:       "proposal_classification": "PROPOSED",
+1057:       "proposal_ref": "P2_diagnostic_spec_v2.json#/projection/L_constraint",
+1058:       "lineage": {
+1059:         "v1_id": null,
+1060:         "derived_from_v1_groups": [
+1061:           "SP26"
+1062:         ],
+1063:         "change_type": "ADDED_SPLIT_OUT_EXPLICIT_RULE",
+1064:         "v1_value_or_rule": "Previously embedded/unspecified scope in SP26",
+1065:         "v2_value_or_rule": "L action node finish <=max(baseline L finish, service deadline); no globalL budget implication, no1.10 borrowing.",
+1066:         "findings": [
+1067:           "V2-F01"
+1068:         ]
+1069:       }
+1070:     },
+1071:     {
+1072:       "id": "SP36",
+1073:       "decision_id": "D08",
+1074:       "name": "coverage_and_missing_evidence",
+1075:       "status": "UNRESOLVED",
+1076:       "approval": "UNAPPROVED",
+1077:       "proposal_classification": "PROPOSED",
+1078:       "proposal_ref": "P2_criterion_spec_v2.json#/coverage_thresholds",
+1079:       "lineage": {
+1080:         "v1_id": null,
+1081:         "derived_from_v1_groups": [
+1082:           "SP31"
+1083:         ],
+1084:         "change_type": "ADDED_SPLIT_OUT_EXPLICIT_RULE",
+1085:         "v1_value_or_rule": "Previously embedded/unspecified scope in SP31",
+1086:         "v2_value_or_rule": "Propose support coverage>=4/5 per seed/condition; negative requires1; E/F>0, partial neverzero, invalid/missing fail closed.",
+1087:         "findings": [
+1088:           "V2-F01",
+1089:           "V2-F04"
+1090:         ]
+1091:       }
+1092:     },
+1093:     {
+1094:       "id": "SP37",
+1095:       "decision_id": "D07",
+1096:       "name": "state_equivalence_denominator",
+1097:       "status": "UNRESOLVED",
+1098:       "approval": "UNAPPROVED",
+1099:       "proposal_classification": "PROPOSED",
+1100:       "proposal_ref": "P2_public_snapshot_spec_v2.json#/dedup_scope",
+1101:       "lineage": {
+1102:         "v1_id": null,
+1103:         "derived_from_v1_groups": [
+1104:           "SP25"
+1105:         ],
+1106:         "change_type": "ADDED_SPLIT_OUT_EXPLICIT_RULE",
+1107:         "v1_value_or_rule": "Previously embedded/unspecified scope in SP25",
+1108:         "v2_value_or_rule": "Canonical public binary64-bit snapshot; per primary MAIN-B2 attempt scope; exclude seq/wall/private data; replay excluded.",
+1109:         "findings": [
+1110:           "V2-F04"
+1111:         ]
+1112:       }
+1113:     },
+1114:     {
+1115:       "id": "SP38",
+1116:       "decision_id": "D06",
+1117:       "name": "absolute_conservative_feasibility_arithmetic",
+1118:       "status": "UNRESOLVED",
+1119:       "approval": "UNAPPROVED",
+1120:       "proposal_classification": "PROPOSED",
+1121:       "proposal_ref": "P2_stage_state_contract_v2.json#/feasibility",
+1122:       "lineage": {
+1123:         "v1_id": null,
+1124:         "derived_from_v1_groups": [
+1125:           "SP21"
+1126:         ],
+1127:         "change_type": "ADDED_SPLIT_OUT_EXPLICIT_RULE",
+1128:         "v1_value_or_rule": "Previously embedded/unspecified scope in SP21",
+1129:         "v2_value_or_rule": "Absolute RN64 monotone lower bound, actual compatible mincost/delay offline; strict B_abs>d_abs only, equality not certified, no epsilon.",
+1130:         "findings": [
+1131:           "V2-F07"
+1132:         ]
+1133:       }
+1134:     },
+1135:     {
+1136:       "id": "SP39",
+1137:       "decision_id": "D08",
+1138:       "name": "selected_calibration_interpretation",
+1139:       "status": "UNRESOLVED",
+1140:       "approval": "UNAPPROVED",
+1141:       "proposal_classification": "DERIVED_LIMITATION_WITH_PROPOSED_REPORTING_RULE",
+1142:       "proposal_ref": "P2_criterion_spec_v2.json#/bootstrap/interpretation",
+1143:       "lineage": {
+1144:         "v1_id": null,
+1145:         "derived_from_v1_groups": [
+1146:           "SP31"
+1147:         ],
+1148:         "change_type": "ADDED_SPLIT_OUT_EXPLICIT_RULE",
+1149:         "v1_value_or_rule": "Previously embedded/unspecified scope in SP31",
+1150:         "v2_value_or_rule": "Selected calibration pointwise intervals conditional/descriptive; not independent confirmation. This is an explicit logical limitation, not changed CI methodology.",
+1151:         "findings": [
+1152:           "V2-F06"
+1153:         ]
+1154:       }
+1155:     },
+1156:     {
+1157:       "id": "SP40",
+1158:       "decision_id": "D06",
+1159:       "name": "control_NA_and_window_semantics",
+1160:       "status": "UNRESOLVED",
+1161:       "approval": "UNAPPROVED",
+1162:       "proposal_classification": "PROPOSED",
+1163:       "proposal_ref": "P2_stage_state_contract_v2.json#/group_counts",
+1164:       "lineage": {
+1165:         "v1_id": null,
+1166:         "derived_from_v1_groups": [
+1167:           "SP21"
+1168:         ],
+1169:         "change_type": "ADDED_SPLIT_OUT_EXPLICIT_RULE",
+1170:         "v1_value_or_rule": "Previously embedded/unspecified scope in SP21",
+1171:         "v2_value_or_rule": "MAIN100/50H50L; H-only50H; LOW100; one NOT_APPLICABLE_CONTROL enum; makespan remains lastfinish, observation_end separate.",
+1172:         "findings": [
+1173:           "V2-F07"
+1174:         ]
+1175:       }
+1176:     }
+1177:   ]
+1178: }
+
+FILE reports/P2_design/design_revision_v2/diagnostic_semantics_review.md SHA256 3619ae7416eabf962dbd7b06e469bf132cc1c37c07c0dc5afd00c12cdc8e8191
+1: # M1 → M1R semantics review (not implementation or science)
+2: 
+3: HistoricalM1 remains byte-exact in v1. Its one-ready-H prefix objective cannot observe the later-H
+4: scarce-resource blocking example. M1R preserves the original2–4-ready local enumeration, but projects
+5: the full known remaining DAG of at most2 already-arrived H services using a fixed suffix policy.
+6: No future arrivals, private execution durations or hidden queue enter the PUBLIC_SNAPSHOT contract.
+7: 
+8: The only optimized decisions are currentK mappings (<=1296), not suffix ordering/mapping, not an
+9: unrestricted optimal scheduler and not a new online candidate. Target/order fixed before effects.
+10: Suffix and current calendars use exact public-value rationals, so do not claim runtimefloat equivalence.
+11: The baseline belongs to the feasible assignment set and satisfies its own max(baseline,deadline)L caps.
+12: 
+13: Non-scientific section32 arithmetic: H prefix2,suffix4; L NPU6 or idleCPU6.5; target H projected10
+14: versus6 and L capmax(6,12)=12. This checks the declared mechanism scope, not scientific effectiveness.
+15: No Workload/Service object, schedule/trace, PRNG index or production diagnostic was created to test it.
+16: 
+17: E counts all unique in-scope states, including single-ready/truncated/unknown-release legitimate
+18: coverage limitations. F counts only2..4-ready fully covered states with all pending targetH<=2.
+19: Partial does not become0 and is not a hit. Missing expected records are invalid/incomplete, not partial.
+20: Support coverage>=4/5 and negativecoverage1 are explicit new assumptions; no source uniquely selects
+21: them. Original FINE/COARSE numbers unchanged but refer to a different, now declared observable.
+22: 
+23: A negative remains about this bounded action/fixed-suffix model; no global absence proof. L cap only
+24: limits currentL tasks, not L DAG/P95. M2 remains descriptive, not independent causal attribution.
+25: Selected-calibration paired-seed intervals are conditional pointwise descriptions, no new CI method.
+26: No claim of power, affordability, real-hardware relevance or scientific support follows from these
+27: static semantics. All choices and actual implementation validation remain pending human authorization.
+
+FILE reports/P2_design/independent_review_v2/feasibility_and_mechanism_analysis.md SHA256 6b485d5eb4f4f05cadf9c3db732b9d582bb1cec45821eef84b534ed1eb59879f
+1: # Feasibility, load and mechanism reasoning (design only)
+2: 
+3: This report supplies explicit rationale, not executed scientific results. All v1 values remain intact.
+4: Source scope: complete proposal v1 D06–D08; model_spec.md:20–31,39–58; user_request.txt §§32–37,43–44.
+5: 
+6: ## Lower-bound validity and limits
+7: 
+8: For a service with compatible set A_v and actual resource-dependent duration d(v,r), define
+9: m_v=min_{r∈A_v} d(v,r). For edge u→v define e_uv as the minimum legal transfer delay over compatible
+10: source/destination assignments (zero if the same unit is legal; otherwise the minimum nonnegative
+11: L+b/B). Define ℓ_v=m_v+max_u(ℓ_u+e_uv), empty predecessor maximum0, and service LB=max_sink ℓ_v.
+12: These are offline quantities: no true d(v,r), LB or private assignment alternatives go to the scheduler.
+13: 
+14: In the exact nonnegative time model this is a valid lower bound: each chosen duration≥m_v and chosen
+15: edge delay≥e_uv; any legal start follows each predecessor completion plus its actual transfer. Induction
+16: over the DAG gives completion(v)−arrival≥ℓ_v. Independently minimizing adjacent choices may be
+17: inconsistent as a real assignment, but makes the bound more optimistic, never less optimistic.
+18: Thus LB>D is sufficient for impossibility in that model, while LB≤D is not a feasibility proof.
+19: B2 missing an isolated deadline also cannot establish impossibility of every other schedule.
+20: 
+21: IMPLEMENTATION NOT VERIFIED: v1 gives the recurrence in prose and does not implement it. Its final
+22: payload and existing engine use binary64 additions; exact-real induction alone does not certify a
+23: particular rounded relative-LB implementation. Before a future implementation, pin conservative
+24: arithmetic and absolute-arrival/deadline comparison semantics, including equality, without adding an
+25: arbitrary epsilon or changing thresholds. One possible route to review is a monotone absolute-time
+26: recurrence using the same operation grouping as the approved engine, but this audit does not choose
+27: or implement it. Future tests must include rounding boundaries. This qualification is part of the
+28: D06/D10 numerical/metric contract gaps (V2-F07), not proof that a current scientific classification failed.
+29: 
+30: ## Controls and pressure classification
+31: 
+32: H_ISOLATED changes arrival times and removes L. LOW_COMPETITION changes arrival times of all services.
+33: Even with identical private keyed durations/deadlines, they are different workload artifacts with
+34: different hashes from MAIN. A successful control is only a witness for its modified admissions, not
+35: a proof that the original H-only arrival stream or mixed MAIN stream is schedulable.
+36: 
+37: The proposed G uses a conservative serial compute/communication sum plus deadline and1ms. A serial
+38: topological schedule fits this bound in the exact model; the actual chosen B2 control must still be
+39: checked for inter-service nonoverlap and deadlines. G's max-service domain (parent versus retained
+40: services), floating conversion and overlap failure classification require the D04/D06 pinning in
+41: V2-F03/V2-F07. The original registered §37 permits exclusive or low-competition checks; no extra
+42: miss tolerance is supplied by that permission.
+43: 
+44: For valid physical intervals, clipped busy measure on each resource lies in[0,W], hence each p_s
+45: and its mean p lie in[0,1]. Pressure intervals[0,.5),[.5,.8),[.8,1] are pairwise disjoint and cover
+46: this valid domain. Miss/control/wait predicates can reject every bin; the correct residual is a
+47: preserved valid-but-off-target/ineligible configuration. NaN, missing statistics or impossible p
+48: must not be made eligible by clamping. META checks evaluate scalar boundaries, not observed loads.
+49: 
+50: Every declared target-load candidate must satisfy its own bin, not another label's bin. Both A/B
+51: remain fully counted, with first eligible A then B across the same ten seeds. No mapping or candidate
+52: effect is used to choose. Nevertheless, opportunity intervals on the selected B2 calibration records
+53: remain conditional calibration descriptions, not new independent confirmation (V2-F06).
+54: 
+55: ## M1 baseline membership and single-H structural limit
+56: 
+57: Under a fully pinned local append model, the greedy baseline maps every task compatibly, and its
+58: L completion equals its own L constraints. It is therefore feasible in the enumeration; optimum≤baseline,
+59: so Δ≥0 and b>0 follow from positive H estimates. This is a mathematical design property, NOT execution
+60: of the unimplemented observer. Tie order, exact busy/data estimates and denominator contract still need
+61: specification/behavioral tests. No actual M1 ratio or project outcome is computed here.
+62: 
+63: All H tasks precede L in fixed B2 order. If K contains exactly one H, that H is first. Its greedy EFT
+64: already minimizes its own finish against the fixed public snapshot; later L assignments cannot alter
+65: the first H's predicted finish in the append model. Therefore the constrained H optimum equals that
+66: baseline in every such state. This is a structural statement, independent of trial results.
+67: 
+68: The original §32 correctness/explanation example exposes a different mechanism: H's CPU prefix2ms
+69: unlocks an NPU suffix4ms; L occupies NPU6ms or idle CPU6.5ms. The ready-H prefix objective is2ms either
+70: way, while the hand-calculated later H completion is10ms versus6ms against deadline9ms. L6.5ms also
+71: violates the strict local L-nondegradation6ms although its point ratio13/12 is below1.10. That point
+72: arithmetic is not a statistical L-budget pass, nor scientific evidence. No services, Workload object,
+73: realization, scheduler or simulator was instantiated to obtain it.
+74: 
+75: Thus M1 can coherently measure a narrow local multi-ready-H mapping opportunity, but its absence
+76: cannot establish absence of the broad registered remaining-H-path/ordinary-L resource blocking
+77: mechanism. D08's negative mainline-stop interpretation needs revised observation coverage before
+78: approval (V2-F01). M2 still cannot establish mapping's independent causal contribution.
+79: 
+80: ## Three-state logic versus scientific interpretation
+81: 
+82: Given f>0 and valid ordered intervals, L_c≥f and U_c<f cannot both hold. K_c≥8 and K_c≤2 are likewise
+83: disjoint. With preconditions prioritized, the written SUPPORTED/NOT_SUPPORTED/INCONCLUSIVE branches
+84: are mutually exclusive and exhaustive; META checks include abstract boundary cases. Missing/invalid/
+85: incomplete evidence or zero eligible views go to INCONCLUSIVE/BLOCKED, never zero opportunity.
+86: 
+87: This logical consistency does not validate what the observed quantity represents. No choice between
+88: FINE and COARSE repairs V2-F01. Shared paired-seed indexing and pointwise percentile intervals follow
+89: the registered method in intent; their concrete implementation and diagnostic coverage remain pending.
+
+FILE reports/P2_design/independent_review_v2/findings.json SHA256 a56925d56f431714fbdd334bee5303a3fb58234caf26c12fa98375ce0219933b
+1: {
+2:   "audited_commit": "892ce2b71fd0c89f1b241c950b597eafab894e23",
+3:   "review_result": "DESIGN_REVIEW_REVISE_REQUIRED",
+4:   "findings": [
+5:     {
+6:       "id": "V2-F01",
+7:       "severity": "CRITICAL",
+8:       "classification": "BLOCKING",
+9:       "decisions": [
+10:         "D07",
+11:         "D08"
+12:       ],
+13:       "title": "当前ready-H局部目标的阴性结果不能覆盖原登记的后继H稀缺资源机制",
+14:       "evidence": [
+15:         "docs/P2_design/P2_complete_design_proposal_v1.md:239–263",
+16:         "docs/P2_design/P2_mapping_opportunity_decision_table_v1.md:34–49",
+17:         "docs/user_request.txt:§§32,43–44",
+18:         "docs/baseline_spec.md:16–20"
+19:       ],
+20:       "check": "CMD-073 / adversarial_checks.json: ADV-01；7个辅助证明检查；单ready-H先于所有L的固定B2顺序归纳。",
+21:       "rationale": "K中若只有一个H，它被固定B2次序首先安排；greedy EFT已最小化其局部finish。后续L的mapping不影响这个H前缀目标，所以g=0，与L是否阻塞尚未ready的H后继无关。v1又排除未ready后继并要求每个局部L finish不劣化。原§32解释例的H前驱2、后继4、L占NPU6或CPU6.5，正好落在这两个盲区：局部H目标均为2，而手算完整H完成10或6。该例只作解释，不是科学样本或运行。",
+22:       "consequence": "NOT_SUPPORTED只能说明该受限当前ready目标的机会不足，不能据此声称没有原研究机制。直接绑定停止主线有结构性假阴性风险；FINE/COARSE换阈值不能修复观测对象。当前并未计算任何项目结果。",
+23:       "disposition": "REVISE BEFORE APPROVAL",
+24:       "change": "保留M1为窄局部诊断；在同一已到达公共DAG/估计边界内，先提出有限、可复算、能观察已登记remaining-H-path阻塞的诊断定义，并用非科学§32解释例及反例验证覆盖。明确严格局部L约束与全局L-P95预算的不同作用。D08必须只对其实际覆盖的机制下结论；不得更改既有H/L/CI门槛，不在本审计中实现或批准新观察器。",
+25:       "closure": "修订D07/D08文本、参数登记及适用/不适用案例，人工重新裁决；未来另行实现验证。"
+26:     },
+27:     {
+28:       "id": "V2-F02",
+29:       "severity": "CRITICAL",
+30:       "classification": "BLOCKING",
+31:       "decisions": [
+32:         "D04",
+33:         "D05",
+34:         "D09",
+35:         "D10"
+36:       ],
+37:       "title": "首次物化的输入守卫、run锁和内容身份形成先决循环",
+38:       "evidence": [
+39:         "docs/P2_design/P2_generation_spec_v1.json:96–110",
+40:         "docs/P2_design/P2_runner_schema_review_v1.md:18–21,30–32,59–65,82–84",
+41:         "docs/P2_design/P2_complete_design_proposal_v1.md:158–159,165–167"
+42:       ],
+43:       "check": "CMD-073 / ADV-02：按v1先决关系建立设计依赖图，Kahn消除后仍有循环节点；不生成任何payload。",
+44:       "rationale": "实际workload identity需要canonical payload hash；run identity需要workload/input hash。runner先拒绝未解析wlref/null必填并申请run identity锁，再物化输入。首次生成时却还没有这些内容hash，因此按当前步骤无法取得run锁/通过守卫。复用已有完整输入不能解决首次物化路径。",
+45:       "consequence": "实现者必须自行改变阶段顺序、放松守卫或预先生成输入；这会引入未批准实现选择，甚至绕过生成授权。v1所谓无自引用hash并没有解决这个执行先决循环。当前入口仍未实现，未实际绕过。",
+46:       "disposition": "REVISE BEFORE APPROVAL",
+47:       "change": "明确两层身份/守卫：批准的不可变blueprint与生成授权在前，以blueprint/config/seed/variant取得临时输入锁；授权后物化并保存generation receipt；再解析wlref形成独立不可变input-resolution receipt、实际workload/run ID与运行锁，最后做pre-invocation守卫。蓝图hash不得包含未来resolved payload/run ID，已批蓝图不回填改hash。精确argv的身份部分不得反向包含自身run ID；此为待审修订建议而非已批准流程。",
+48:       "closure": "D04/D05/D09/D10共同给出无环身份图、首次/复用/中断三条顺序、明确字段与hash范围，另行人工批准。"
+49:     },
+50:     {
+51:       "id": "V2-F03",
+52:       "severity": "MAJOR",
+53:       "classification": "BLOCKING",
+54:       "decisions": [
+55:         "D04",
+56:         "D09",
+57:         "D10"
+58:       ],
+59:       "title": "key填值与identity preimage未达到跨实现逐字节唯一",
+60:       "evidence": [
+61:         "docs/P2_design/P2_generation_spec_v1.json:12–18,20–64,90–110",
+62:         "docs/P2_design/P2_runner_schema_review_v1.md:59–65,79–90,101–107"
+63:       ],
+64:       "check": "CMD-010/CMD-070完整key文本；CMD-073仅演示不同字段类型得到不同canonical bytes，不对calibration key求随机值。",
+65:       "rationale": "key有version字段，而文档同时有version=v1和generator_version=soc-p2-synthetic-v1-PROPOSED，未规定version具体绑定。arrival_jitter说other IDs empty但没有逐字段说明scenario/condition/config是否保留。identity preimage仍是概念字段列表，未给精确键名、类型和参数hash范围；H-only的G=max_service也未明确遍历父输入还是保留后的服务集。序列化算法固定不足以唯一决定被序列化对象。",
+66:       "consequence": "独立实现可以在不改变列出的分布/seed的情况下产生不同扰动、到达、控制窗口或run/workload ID，无法保证重放或精确复用。尚未证明任何现有实际hash错误，因为没有科学输入。",
+67:       "disposition": "REVISE BEFORE APPROVAL",
+68:       "change": "增加逐随机字段的完整typed-key填值表，逐一固定version绑定和空字段；固定control父身份及G的集合范围、整型/分数字段规范；列出workload/run preimage精确对象、raw/semantic/plan/argv hash范围及数组顺序。使用无真实科学seed的静态golden byte vectors检验规范，后续实现再验证；不生成新seed。",
+69:       "closure": "同一批准规格下两种独立编码实现必须输出相同golden bytes；审批明确涵盖会改变key的选择。"
+70:     },
+71:     {
+72:       "id": "V2-F04",
+73:       "severity": "MEDIUM",
+74:       "classification": "NOT_VERIFIED",
+75:       "decisions": [
+76:         "D07",
+77:         "D08",
+78:         "D10"
+79:       ],
+80:       "title": "M1记录身份不等于分母去重契约，snapshot与重放范围仍需定型",
+81:       "evidence": [
+82:         "docs/P2_design/P2_complete_design_proposal_v1.md:239–245,254–263",
+83:         "docs/P2_design/P2_runner_schema_review_v1.md:94–95,101–103"
+84:       ],
+85:       "check": "CMD-073 / ADV-03最终为NOT_VERIFIED；相同digest、不同decision_seq的两个通用ID计数2，而state-equivalence计数1。初版误列FAIL的记录完整保留，见review_method_notes.md。",
+86:       "rationale": "v1已明确要求纯重复无状态变化的view只计一次，这点不能忽略。但同时给出的三元record ID含decision_seq，不能直接当dedup key；没有完整public_view_digest字段/规范、去重作用域、是否排除重放收据或每次空派发采样的精确契约。",
+87:       "consequence": "不同观察hook或重放日志合并可能改变N和hit频率；这是待实现前需要写全的接口，不是已经观测到的计数bug。",
+88:       "disposition": "REVISE BEFORE APPROVAL",
+89:       "change": "分开record_id和state_key；规定B2主attempt的何种view计数、失败/空派发、连续重复/非连续相同状态、now/elapsed参与规则、replay不进入分母。给出相同状态重复计1与同刻真实start后状态改变计2的静态验收例。",
+90:       "closure": "D07/D08与schema共同固定state bytes、scope和expected denominator；未来独立复算测试。"
+91:     },
+92:     {
+93:       "id": "V2-F05",
+94:       "severity": "MAJOR",
+95:       "classification": "BLOCKING",
+96:       "decisions": [
+97:         "D08",
+98:         "D09",
+99:         "D10"
+100:       ],
+101:       "title": "执行完整性出口尚未精确绑定选择、诊断、冻结与P2门禁输出",
+102:       "evidence": [
+103:         "docs/P2_design/P2_mapping_opportunity_decision_table_v1.md:34–49",
+104:         "docs/P2_design/P2_runner_schema_review_v1.md:30–32,53–55,99,109–114",
+105:         "scripts/run_pipeline.py:26–39",
+106:         "src/soc/validation/governance.py:181–208",
+107:         "docs/user_request.txt:§80"
+108:       ],
+109:       "check": "设计逐阶段对照：生命周期到trace/metrics/replay/COMPLETE，但未给typed stage/gate字段、写入顺序、退出含义与现有P2 gate接口的完整映射；未运行P2。",
+110:       "rationale": "v1正确区分COMPLETE与SUPPORTED，也明确不自动进P3；但runner exit0仅表示计划完整，D08又要求选定18条件、完整M1/M2、批准判据等。两者之间缺少明确的选择/分析/判据/冻结出口及fail-closed机器字段。timing协议仍未冻结，是原P2输出的未关闭事项。",
+111:       "consequence": "不能把2520合法完成、进程exit0或COMPLETE当作P2 PASS。若未来实现只接完成标记，会有错误推进风险；当前不存在可执行新gate，因此本审计没有证明发生了false PASS。",
+112:       "disposition": "REVISE BEFORE APPROVAL",
+113:       "change": "提供字段级出口真值表：execution_completion、input_integrity、selection_status、diagnostic_validity、mapping_status、freeze/timing prerequisite与p2_progression_status分别记录。明确有效阴性可COMPLETE但不准推进，缺失一律闭锁；现有P2 gate消费接口与不同退出码语义需在实现任务前登记。timing留为未关闭前提，不能靠预算0宣称已完成原P2输出；不在本任务编写gate。",
+114:       "closure": "D08/D09/D10联合审查完整的stage出口规范，任何COMPLETE→PASS快捷路径均应有负例拒绝。"
+115:     },
+116:     {
+117:       "id": "V2-F06",
+118:       "severity": "MEDIUM",
+119:       "classification": "PROPOSAL_ONLY",
+120:       "decisions": [
+121:         "D06",
+122:         "D08"
+123:       ],
+124:       "title": "B2选型后的机会CI需限定为校准选中样本的条件性描述",
+125:       "evidence": [
+126:         "docs/P2_design/P2_complete_design_proposal_v1.md:184–185,218–229",
+127:         "docs/P2_design/P2_mapping_opportunity_decision_table_v1.md:14–17,34–40,57–58",
+128:         "docs/statistical_protocol.md:3–16,34–47"
+129:       ],
+130:       "check": "选择依赖同10seed的B2 pressure/miss，机会观察也来自同B2轨迹；这是设计依赖分析，不是观察到的偏差大小。META检查已验证A/B完整、顺序确定且无candidate/M1选型。",
+131:       "rationale": "A-before-B只按事前规定的B2资格，符合不按候选或机会效果挑配置的要求。它仍是同校准数据的选择；不得把对选定配置的pointwise bootstrap解释为未经选型的独立确认性coverage。miss/压力/机会可能相关，但没有数据可估计偏差。压力三段对有效p∈[0,1]互斥且穷尽；加入miss/控制/等待过滤后必须保留VALID_OFF_TARGET/INELIGIBLE，而非强贴某个load标签。",
+132:       "consequence": "若省略适用范围会夸大P2证据的独立性；若实现将任意满足另一档的候选重贴标签，则破坏已注册condition。当前矩阵/文字禁止relabel，未发现实际删seed或删候选。",
+133:       "disposition": "REVISE BEFORE APPROVAL",
+134:       "change": "补充明确的总分类谓词：先validity、control witness、declared target-load匹配，再A/B选择；NaN/越域/控制重叠/缺组的出口须定型，不能clamp。明确P2区间仅为选中校准配置的描述，全部A/B资格和原始统计保留，不声称调整选择后的确认性覆盖。不更换CI方法、不加seed、不按结果改阈值。",
+135:       "closure": "审定分类伪代码/边界表及报告措辞，保持已提出数值和原研究契约未变或另行显式审批修订。"
+136:     },
+137:     {
+138:       "id": "V2-F07",
+139:       "severity": "MEDIUM",
+140:       "classification": "NOT_VERIFIED",
+141:       "decisions": [
+142:         "D04",
+143:         "D06",
+144:         "D10"
+145:       ],
+146:       "title": "控制缺组状态与窗口/排空指标需统一typed语义",
+147:       "evidence": [
+148:         "docs/P2_design/P2_generation_spec_v1.json:78–94",
+149:         "docs/P2_design/P2_complete_design_proposal_v1.md:201–202,219–223",
+150:         "docs/P2_design/P2_runner_schema_review_v1.md:93,111",
+151:         "docs/metric_spec.md:3–10,41–46",
+152:         "src/soc/metrics/fixture.py:36–44"
+153:       ],
+154:       "check": "逐字对照NOT_APPLICABLE_CONTROL与CONTROL_NA两个标签；source指标makespan=max finish，与拟议observation end=max(W,last finish)是不同量。无运行时指标验证。",
+155:       "rationale": "v1允许H-only缺L且主输入必须含H/L，方向正确。JSON/proposal用NOT_APPLICABLE_CONTROL，runner文档用CONTROL_NA，尚无统一enum/null/validity字段；arrival-window、last completion和observation end也需要独立字段，不能靠一个run_end解释全部利用率。",
+156:       "consequence": "未来adapter可能拒绝合法控制或接受缺L主输入；若用max(W,last finish)覆盖既有makespan，可能悄然改变已批准指标。当前P1代码/证据仍正确且未改，未发生这种覆盖。",
+157:       "disposition": "REVISE BEFORE APPROVAL",
+158:       "change": "统一一个待批控制N/A枚举及其适用kind，main强制精确100/50/50计数、control分别50H或100H/L；给出absence/nonfinite/invalid矩阵。分别命名arrival_window_end、drain_completion、observation_end、busy_window_pressure与既有full-drain makespan/utilization，不改变原公式；定义G域与control overlap失败类型。",
+159:       "closure": "字段类型/enum/必填-null条件及独立指标验收例在D04/D06/D10一致，未来实现回归。"
+160:     },
+161:     {
+162:       "id": "V2-F08",
+163:       "severity": "INFO",
+164:       "classification": "NOT_VERIFIED",
+165:       "decisions": [
+166:         "D09",
+167:         "D10"
+168:       ],
+169:       "title": "S2来源隔离与P1兼容仍需未来行为证明，不能用声明替代",
+170:       "evidence": [
+171:         "docs/P2_design/P2_runner_schema_review_v1.md:68–75,116–128",
+172:         "src/soc/model/schema.py:175–189",
+173:         "src/soc/simulator/engine.py:100–102",
+174:         "src/soc/validation/trace.py:75–79",
+175:         "reports/P1_correctness.json"
+176:       ],
+177:       "check": "当前P0/P1 check-only及122项P1清单真实返回0，见CMD-064..066；只证明现行P1，不证明未来S2。",
+178:       "rationale": "S2选择方向合理，当前硬编码fixture origin确实存在；v1已承认adapter和行为验证未实现。这是预期未完成工作，单独不构成新增实现缺陷。",
+179:       "consequence": "仅origin/fixture_derivation=false或schema parse成功不足以证明科学出生；未来代码变化后不能继承当前P1 PASS。",
+180:       "disposition": "KEEP_PENDING_FOR_SEPARATELY_AUTHORIZED_IMPLEMENTATION",
+181:       "change": "先登记本审计required_changes中的P1兼容、错误来源拒绝、public-view隔离、故障/恢复/完整性测试，再另行授权实现。当前不写adapter、不改fixture、不解锁。",
+182:       "closure": "真实未来测试/独立validator/原始生成日志与完整hash血缘；无这些证据继续闭锁。"
+183:     }
+184:   ]
+185: }
+
+FILE reports/P2_design/design_revision_v2/human_decision_packet.md SHA256 7c54a0f17c11036e1cb7f34b82734792746c946b20f5cf021c1ced298cc04367
+1: # Human decision packet — P2 design revision v2
+2: 
+3: All approvals remain **UNAPPROVED**. This is a new proposed revision, not the active approved contract. v1 and the independent audit remain byte-exact. No science/implementation authorized.
+4: 
+5: 40 named scientific parameter/rule groups remain unresolved: originalSP01–SP32 traced; eight split-out groupsSP33–SP40 added; none deleted/merged. Identity/lock API engineering details are reviewed underD09/D10, not counted as extra scientific scalar parameters.
+6: 
+7: ## D01
+8: 
+9: Original question: 选择显式角色 DAG 还是确定性 grammar，并提供三场景的完整8/16节点拓扑、角色/H-L归属及尺寸规则。
+10: 
+11: Exact v2 proposed values/rules: Exact v1 six templates/IDs/roles/predecessors/group inheritance retained; counts COCKPIT8/9,16/17; ADAS8/9,16/17; FUSION8/7,16/15; explicit two-half expansion/internal1/16MiB.
+12: 
+13: Scientific groups: SP01,SP02,SP03. Findings: No physical-value revision; original acceptance not approval.
+14: 
+15: Affected artifacts/version/hash:
+16: 
+17: - `docs/P2_design/v2/P2_workload_templates_v2.json` / v2 / SHA256 `f282955ab09d0110f50447269b18d0389231bed9711532853d6cdbda92d9027c`.
+18: 
+19: Remaining limitations: All values synthetic/proposed, no implementation or scientific validity verified. Coverage/truncation, fixed suffix, local L cap and same-calibration selection limit interpretation; timingNOT_FROZEN blocks progression.
+20: 
+21: Precise question: 是否批准完整六模板及v1保持的尺寸/角色/H-L规则？
+22: 
+23: Approval: **UNAPPROVED**
+24: 
+25: Selected option=null; approved values=null; reviewer=null; timestamp=null; approval evidence=null.
+26: 
+27: ## D02
+28: 
+29: Original question: 选择有来源的profile表或批准的合成规则，提供兼容集合、各资源估计/实际代价及全部参数/来源。
+30: 
+31: Exact v2 proposed values/rules: Exact16x6 compatibility/cost table and CPU symmetry retained; null incompatible; base*scale*uniform[.9,1.1) estimate, separate resource factor same range for actual.
+32: 
+33: Scientific groups: SP04,SP05,SP06. Findings: No physical-value revision; original acceptance not approval.
+34: 
+35: Affected artifacts/version/hash:
+36: 
+37: - `docs/P2_design/v2/P2_resource_profiles_v2.json` / v2 / SHA256 `9eea5cfd43ce50d796a00d7cac86f9a7ca8798da4a3ea0c2fd9e598d965f13ae`.
+38: 
+39: Remaining limitations: All values synthetic/proposed, no implementation or scientific validity verified. Coverage/truncation, fixed suffix, local L cap and same-calibration selection limit interpretation; timingNOT_FROZEN blocks progression.
+40: 
+41: Precise question: 是否批准原合成96单元格/兼容/CPU对称/扰动分布，并接受非硬件数据的限制？
+42: 
+43: Approval: **UNAPPROVED**
+44: 
+45: Selected option=null; approved values=null; reviewer=null; timestamp=null; approval evidence=null.
+46: 
+47: ## D03
+48: 
+49: Original question: 提供边MiB与type-pair latency/bandwidth的完整表或有来源规则，保留既有通信语义。
+50: 
+51: Exact v2 proposed values/rules: Exact74 edge sizes and9 latency/bandwidth pairs retained; same-unit0 elseL+b/B; unitsms/MiB/MiB-ms; no bus contention or physical value changes.
+52: 
+53: Scientific groups: SP07,SP08,SP09. Findings: No physical-value revision; original acceptance not approval.
+54: 
+55: Affected artifacts/version/hash:
+56: 
+57: - `docs/P2_design/v2/P2_communication_profiles_v2.json` / v2 / SHA256 `74f7dde644b11d0b459fb68e9f250d9799e34f09652609b63122e0de5bf6e3b8`.
+58: 
+59: Remaining limitations: All values synthetic/proposed, no implementation or scientific validity verified. Coverage/truncation, fixed suffix, local L cap and same-calibration selection limit interpretation; timingNOT_FROZEN blocks progression.
+60: 
+61: Precise question: 是否批准原74条边及9对通信参数和既有物理语义？
+62: 
+63: Approval: **UNAPPROVED**
+64: 
+65: Selected option=null; approved values=null; reviewer=null; timestamp=null; approval evidence=null.
+66: 
+67: ## D04
+68: 
+69: Original question: 确定keyed扰动/PRNG/版本、到达/突发、H-L组成、deadline、服务数或窗口及停止边界的完整定义/值。
+70: 
+71: Exact v2 proposed values/rules: Typed version2+generator_v2+domain_v2; three exact KEY fills, original10 seeds; U=q/2^64; same100-service/50slot/H2.5-L4 deadlines; parent100 exactG; bit-preserving controls; separate semantic/raw/runtime hashes and21 preimages.
+72: 
+73: Scientific groups: SP10,SP11,SP12,SP13,SP14,SP15,SP16,SP17. Findings: V2-F02,V2-F03,V2-F07.
+74: 
+75: Affected artifacts/version/hash:
+76: 
+77: - `docs/P2_design/v2/P2_generation_spec_v2.json` / v2 / SHA256 `33e3ccf437510986ffa401eea1ef48e995a1ad08df38a834374d4a1c483a91f2`.
+78: - `docs/P2_design/v2/P2_typed_identity_schema_v2.json` / v2 / SHA256 `9b478cf7e96776f6cc69f29426715efed6eec2309270be1efb3dd77985ebfbc9`.
+79: - `docs/P2_design/v2/P2_canonical_golden_vectors_v2.json` / v2 / SHA256 `c74cd5a06f0683e28857d07fee2791bbe6c3cf384bbe863f63bcaa6e176b3160`.
+80: 
+81: Remaining limitations: All values synthetic/proposed, no implementation or scientific validity verified. Coverage/truncation, fixed suffix, local L cap and same-calibration selection limit interpretation; timingNOT_FROZEN blocks progression.
+82: 
+83: Precise question: 是否批准v2逐字段key、编码/preimage、精确转换和parent100控制G定义？
+84: 
+85: Approval: **UNAPPROVED**
+86: 
+87: Selected option=null; approved values=null; reviewer=null; timestamp=null; approval evidence=null.
+88: 
+89: ## D05
+90: 
+91: Original question: 确定枚举或有限轴展开，提供所有值/方法子集及理由/顺序/预算/seed到trial-condition-workload的精确映射。
+92: 
+93: Exact v2 proposed values/rules: 36 configs,10 seeds,2520 rows=1800MAIN+360H-only+360LOW,1080inputs,5040 maxengine withreplay,0retry/timing; sameA/B periods80/64,24/20,12/10; MAIN generation first, control execution first.
+94: 
+95: Scientific groups: SP18,SP19,SP20. Findings: V2-F02.
+96: 
+97: Affected artifacts/version/hash:
+98: 
+99: - `docs/P2_design/v2/P2_trial_matrix_draft_v2.json` / v2 / SHA256 `b58fe4c2eead01fc9b92966d557ed0bb052e7387794fc0d9b58029ffdb90af0e`.
+100: 
+101: Remaining limitations: All values synthetic/proposed, no implementation or scientific validity verified. Coverage/truncation, fixed suffix, local L cap and same-calibration selection limit interpretation; timingNOT_FROZEN blocks progression.
+102: 
+103: Precise question: 是否批准不变的完整矩阵/预算及物化MAIN先于controls、执行顺序保持的区分？
+104: 
+105: Approval: **UNAPPROVED**
+106: 
+107: Selected option=null; approved values=null; reviewer=null; timestamp=null; approval evidence=null.
+108: 
+109: ## D06
+110: 
+111: Original question: 确定H可行性对照、压力/负载分类、配置选择/平局以及不达标、不可行、无效、失败、不完整的处置规则。
+112: 
+113: Exact v2 proposed values/rules: Original target bands[0,.5),[.5,.8),[.8,1], lightH/L<=.01,loadedH[.01,.8] retained; typed validity/control/target/A-before-B total order; absolute RN64 lowerbound with strict>deadline, noepsilon, control witness only.
+114: 
+115: Scientific groups: SP21,SP22,SP23,SP24,SP38,SP40. Findings: V2-F06,V2-F07.
+116: 
+117: Affected artifacts/version/hash:
+118: 
+119: - `docs/P2_design/v2/P2_stage_state_contract_v2.json` / v2 / SHA256 `c64803a93c74ee9dba6a7bc61de2d2e550264f2c5d4a920e1248665fa7e86b93`.
+120: 
+121: Remaining limitations: All values synthetic/proposed, no implementation or scientific validity verified. Coverage/truncation, fixed suffix, local L cap and same-calibration selection limit interpretation; timingNOT_FROZEN blocks progression.
+122: 
+123: Precise question: 是否批准总分类、控制见证范围、绝对RN64下界和不变的A-before-B资格规则？
+124: 
+125: Approval: **UNAPPROVED**
+126: 
+127: Selected option=null; approved values=null; reviewer=null; timestamp=null; approval evidence=null.
+128: 
+129: ## D07
+130: 
+131: Original question: 选择M1机制诊断、M2基线描述或组合，确定观察量、反事实控制/视窗、信息边界和每seed/condition汇总。
+132: 
+133: Exact v2 proposed values/rules: M1R_PATH_V2: original2-4 ready enumeration; target<=2 pending arrivedH DAGs<=16nodes each; fixed public suffix EFT,<=36nodes/1296maps; L cap=max(baseline finish,deadline); exact snapshot scope/dedup/replay exclusion; no actual scheduler feedback.
+134: 
+135: Scientific groups: SP25,SP26,SP27,SP33,SP34,SP35,SP37. Findings: V2-F01,V2-F04.
+136: 
+137: Affected artifacts/version/hash:
+138: 
+139: - `docs/P2_design/v2/P2_diagnostic_spec_v2.json` / v2 / SHA256 `9bec37d044f4c7742d931149c195c2c3ec1540d41dc3f0a899a2b29f8c7e3e90`.
+140: - `docs/P2_design/v2/P2_public_snapshot_spec_v2.json` / v2 / SHA256 `fa4ce177c2d4a49a5f8f5b30bfa44e2b0d529f1e735ddfa259ae1811edc2f1af`.
+141: 
+142: Remaining limitations: All values synthetic/proposed, no implementation or scientific validity verified. Coverage/truncation, fixed suffix, local L cap and same-calibration selection limit interpretation; timingNOT_FROZEN blocks progression.
+143: 
+144: Precise question: 是否批准M1R的目标选择、固定suffix、局部L slack、边界/截断/去重和记录范围？
+145: 
+146: Approval: **UNAPPROVED**
+147: 
+148: Selected option=null; approved values=null; reviewer=null; timestamp=null; approval evidence=null.
+149: 
+150: ## D08
+151: 
+152: Original question: 确定跨seed/条件聚合、稳定性、不确定性和三向结论的全部条件/参数及缺失无效处置，保持既有CI方法。
+153: 
+154: Exact v2 proposed values/rules: FINE(.01,.01) vs COARSE(.05,.05),8/10 support and<=2/10 absence remain undecided; M1R hits/F,F/E; proposed positive coverage>=4/5,negative=1,all12conditions/10seeds; samepaired10000,type7,20261018; selected calibration descriptive only.
+155: 
+156: Scientific groups: SP28,SP29,SP30,SP31,SP32,SP36,SP39. Findings: V2-F01,V2-F04,V2-F05,V2-F06.
+157: 
+158: Affected artifacts/version/hash:
+159: 
+160: - `docs/P2_design/v2/P2_criterion_spec_v2.json` / v2 / SHA256 `98a578944e7910db933f5b3b02aee4bb03de8005853024b38cc3b02630b04e38`.
+161: - `docs/P2_design/v2/P2_mapping_opportunity_decision_table_v2.md` / v2 / SHA256 `594863a579ac32fdd980454fe6e0f0d24d165729a60f1c6f6526c8688fd296f4`.
+162: 
+163: Remaining limitations: All values synthetic/proposed, no implementation or scientific validity verified. Coverage/truncation, fixed suffix, local L cap and same-calibration selection limit interpretation; timingNOT_FROZEN blocks progression.
+164: 
+165: Precise question: 选择FINE还是COARSE（或提出明确替代）？是否批准4/5正覆盖、1阴性覆盖、三态及条件性解释？
+166: 
+167: Approval: **UNAPPROVED**
+168: 
+169: Selected option=null; approved values=null; reviewer=null; timestamp=null; approval evidence=null.
+170: 
+171: ## D09
+172: 
+173: Original question: 选择runner架构，裁决完成产物精确复用、失败/不完整默认停止、重试登记和P2源码dirty控制。
+174: 
+175: Exact v2 proposed values/rules: RecommendR1 formalrunner vsR2thinlauncher; blueprint/auth/inputlock/generate/resolve/workload/run/attempt/runlock/preinvoke withoutcycle; exactreuse,0automaticretry,append-only recovery; P2clean policy newunapproved; explicit stages/exits, timingNOT_FROZEN blocks.
+176: 
+177: Scientific groups: . Findings: V2-F02,V2-F03,V2-F05.
+178: 
+179: Affected artifacts/version/hash:
+180: 
+181: - `docs/P2_design/v2/P2_runner_schema_review_v2.md` / v2 / SHA256 `fd1a59638bf1754af0a6423b57873a6691af8c3559a1c1d62ceeeffda2da5099`.
+182: - `docs/P2_design/v2/P2_stage_state_contract_v2.json` / v2 / SHA256 `c64803a93c74ee9dba6a7bc61de2d2e550264f2c5d4a920e1248665fa7e86b93`.
+183: 
+184: Remaining limitations: All values synthetic/proposed, no implementation or scientific validity verified. Coverage/truncation, fixed suffix, local L cap and same-calibration selection limit interpretation; timingNOT_FROZEN blocks progression.
+185: 
+186: Precise question: 是否批准R1、精确复用、零自动retry、恢复表、新增P2洁净和分离状态/出口契约？
+187: 
+188: Approval: **UNAPPROVED**
+189: 
+190: Selected option=null; approved values=null; reviewer=null; timestamp=null; approval evidence=null.
+191: 
+192: ## D10
+193: 
+194: Original question: 选择可验证的科学envelope或新schema+adapter，批准namespace、规范化、ID、provenance、引用与旧P1兼容验证范围。
+195: 
+196: Exact v2 proposed values/rules: RecommendS2typedscientificfamily+adapter vsS1envelope;21exactpreimages and closed typed records, worker argv templates currentlyunimplemented, main/control counts+singleN/A token, immutablebirthrefs, fullCOMPLETEconjunction; oldP1identity preserved and future regression required.
+197: 
+198: Scientific groups: . Findings: V2-F02,V2-F03,V2-F04,V2-F05,V2-F07.
+199: 
+200: Affected artifacts/version/hash:
+201: 
+202: - `docs/P2_design/v2/P2_typed_identity_schema_v2.json` / v2 / SHA256 `9b478cf7e96776f6cc69f29426715efed6eec2309270be1efb3dd77985ebfbc9`.
+203: - `docs/P2_design/v2/P2_runner_schema_review_v2.md` / v2 / SHA256 `fd1a59638bf1754af0a6423b57873a6691af8c3559a1c1d62ceeeffda2da5099`.
+204: 
+205: Remaining limitations: All values synthetic/proposed, no implementation or scientific validity verified. Coverage/truncation, fixed suffix, local L cap and same-calibration selection limit interpretation; timingNOT_FROZEN blocks progression.
+206: 
+207: Precise question: 是否批准S2、typed科学家族及身份/argv/COMPLETE规范和未来血缘/P1回归范围？
+208: 
+209: Approval: **UNAPPROVED**
+210: 
+211: Selected option=null; approved values=null; reviewer=null; timestamp=null; approval evidence=null.
+212: 
+213: ## Exact retained value references and additions
+214: 
+215: D01–D03 objects are identical to their v1 scientific content; all nodes/predecessors/96 profile cells/74 edges/9 links are explicit in the cited hashed JSONs. They are not literature or hardware measurements.
+216: 
+217: | Group | Name | v1 lineage | v2 rule/value | approval |
+218: |---|---|---|---|---|
+219: | SP01 | six_topologies | SP01 | Exact same semantic proposed value; versioned document namespace only. | UNAPPROVED |
+220: | SP02 | importance_assignment | SP02 | Exact same semantic proposed value; versioned document namespace only. | UNAPPROVED |
+221: | SP03 | size_expansion | SP03 | Exact same semantic proposed value; versioned document namespace only. | UNAPPROVED |
+222: | SP04 | role_compatibility | SP04 | Exact same semantic proposed value; versioned document namespace only. | UNAPPROVED |
+223: | SP05 | role_execution_costs | SP05 | Exact same semantic proposed value; versioned document namespace only. | UNAPPROVED |
+224: | SP06 | cpu_symmetry | SP06 | Exact same semantic proposed value; versioned document namespace only. | UNAPPROVED |
+225: | SP07 | edge_sizes | SP07 | Exact same semantic proposed value; versioned document namespace only. | UNAPPROVED |
+226: | SP08 | link_latencies | SP08 | Exact same semantic proposed value; versioned document namespace only. | UNAPPROVED |
+227: | SP09 | link_bandwidths | SP09 | Exact same semantic proposed value; versioned document namespace only. | UNAPPROVED |
+228: | SP10 | key_encoding_hash_mapping | SP10 | Explicit schema_version2 + generator_version v2; all3 fields retain scenario/condition/config, only prescribed fields empty; exact typed KEY. | UNAPPROVED |
+229: | SP11 | estimate_distribution | SP11 | Same distribution; explicit v2 field keys change future draw identity, no realization compared. | UNAPPROVED |
+230: | SP12 | realized_distribution | SP12 | Same distribution/private boundary; exact v2 key and conversion. | UNAPPROVED |
+231: | SP13 | arrival_jitter | SP13 | Same U/10; scenario/condition/config retained, H/L/node/resource/edge empty exactly. | UNAPPROVED |
+232: | SP14 | arrival_burst | SP14 | Exact same semantic proposed value; versioned document namespace only. | UNAPPROVED |
+233: | SP15 | service_count_and_group_mix | SP15 | Exact same semantic proposed value; versioned document namespace only. | UNAPPROVED |
+234: | SP16 | deadline_multipliers | SP16 | Same multipliers, explicit pre-round E_exact reference and final binary64 absolute deadline. | UNAPPROVED |
+235: | SP17 | arrival_window | SP17 | W unchanged; distinct arrival_end/lastarrival/lastfinish/makespan/observation_end; full-drain metric preserved. | UNAPPROVED |
+236: | SP18 | period_axis | SP18 | Exact same semantic proposed value; versioned document namespace only. | UNAPPROVED |
+237: | SP19 | main_method_set | SP19 | Exact same semantic proposed value; versioned document namespace only. | UNAPPROVED |
+238: | SP20 | finite_order_budget | SP20 | Budget/order unchanged; proposal-v2 and wlref:v2 refs, MAIN materialization before controls but engine order unchanged. | UNAPPROVED |
+239: | SP21 | control_input_transform | SP21 | G always ALL100 parent MAIN services and exact pre-round sidecar; no new draw; distinct control witness/overlap qualification. | UNAPPROVED |
+240: | SP22 | load_pressure_bands | SP22 | Exact same semantic proposed value; versioned document namespace only. | UNAPPROVED |
+241: | SP23 | load_miss_bands | SP23 | Exact same semantic proposed value; versioned document namespace only. | UNAPPROVED |
+242: | SP24 | configuration_selection | SP24 | Same deterministic policy; validity/control/OWN target bin explicit; all off-target/unselected preserved. | UNAPPROVED |
+243: | SP25 | M1_snapshot_subset | SP25 | M1R: K2..4 (single-ready states explicitly coverage-insufficient) and pending arrived H targets; target scope/dedup separately registered SP33/SP37. | UNAPPROVED |
+244: | SP26 | M1_counterfactual_objective | SP26 | Mean projected completion of selected remaining-H DAGs; fixed suffix and new L slack separately SP34/SP35. | UNAPPROVED |
+245: | SP27 | M2_measurements | SP27 | Same contrasts/noncausal interpretation; M1R onlyB2 diagnostic references; historical M1 not gate. | UNAPPROVED |
+246: | SP28 | material_gain_cutoff | SP28 | Same candidate tau values, applied only to FULL M1R remaining-H projected gain; no selection made. | UNAPPROVED |
+247: | SP29 | frequency_cutoff | SP29 | Same candidate frequency values; hits/F over FULL covered unique states, coverage separately F/E. | UNAPPROVED |
+248: | SP30 | stability_requirement | SP30 | Same numeric stability on new per-seed FULL-coverage frequency, no new independent unit. | UNAPPROVED |
+249: | SP31 | condition_aggregation | SP31 | Same condition/macro units; coverage and selected-calibration interpretation separately SP36/SP39. | UNAPPROVED |
+250: | SP32 | bootstrap_implementation_pin | SP32 | Same algorithm/constants; exact five-field ANALYSIS_INDEX_KEY; no bootstrap indices generated. | UNAPPROVED |
+251: | SP33 | target_H_selection | SP25 | First2 unfinished arrived H with pending nodes by deadline/service ID; truncation is coverage insufficiency. | UNAPPROVED |
+252: | SP34 | bounded_public_suffix_rollout | SP26 | All public remaining nodes of<=2 targetH DAGs,<=16 each; fixed Kahn+B2/EFT suffix, <=36 projected nodes, <=1296 action mappings; no candidate/policy feedback. | UNAPPROVED |
+253: | SP35 | local_L_slack_admissibility | SP26 | L action node finish <=max(baseline L finish, service deadline); no globalL budget implication, no1.10 borrowing. | UNAPPROVED |
+254: | SP36 | coverage_and_missing_evidence | SP31 | Propose support coverage>=4/5 per seed/condition; negative requires1; E/F>0, partial neverzero, invalid/missing fail closed. | UNAPPROVED |
+255: | SP37 | state_equivalence_denominator | SP25 | Canonical public binary64-bit snapshot; per primary MAIN-B2 attempt scope; exclude seq/wall/private data; replay excluded. | UNAPPROVED |
+256: | SP38 | absolute_conservative_feasibility_arithmetic | SP21 | Absolute RN64 monotone lower bound, actual compatible mincost/delay offline; strict B_abs>d_abs only, equality not certified, no epsilon. | UNAPPROVED |
+257: | SP39 | selected_calibration_interpretation | SP31 | Selected calibration pointwise intervals conditional/descriptive; not independent confirmation. This is an explicit logical limitation, not changed CI methodology. | UNAPPROVED |
+258: | SP40 | control_NA_and_window_semantics | SP21 | MAIN100/50H50L; H-only50H; LOW100; one NOT_APPLICABLE_CONTROL enum; makespan remains lastfinish, observation_end separate. | UNAPPROVED |
+259: 
+260: New assumptions SP33–SP40 must be explicitly accepted or revised; no observed data supports choosing them. Computational checks do not confer human approval.
+261: Single next safe action after static review: human review the concrete v2 choices and record decisions; do not implement or runP2.
+

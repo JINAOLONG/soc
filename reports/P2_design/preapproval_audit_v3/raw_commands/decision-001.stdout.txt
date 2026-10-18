@@ -1,0 +1,557 @@
+# soc research rules
+
+Read this file and STATUS.md at the beginning of every task. The complete user
+contract is preserved in docs/user_request.txt. It takes precedence over summaries.
+
+1. The only project repository is JINAOLONG/soc; its root is the project root.
+   Use the existing isolated checkout; do not create nested repositories or
+   worktrees unless explicitly requested. Check the remote before every push.
+2. Research question: online, non-preemptive, multi-service DAG scheduling on
+   four CPU cores, one GPU unit and one NPU unit. Joint ordering and mapping
+   should reduce important-service H deadline misses while keeping every main
+   condition's ordinary-service L P95 ratio to B2 at or below 1.10. H/L are
+   service importance labels, not ASIL or safety certification.
+3. Keep engine, scheduler, workload generator, metrics, independent validator,
+   and analysis separate. A scheduler receives immutable observations of arrived
+   services only; never reveal future arrivals, true future durations, random
+   disturbances, or the private event queue. Planned is not started.
+4. Preserve LICENSE and user work. No destructive Git operations, history
+   rewriting, broad restore/clean/reset, or force push. Commit relevant tested
+   changes at stage boundaries. Attempt a normal push on the actual task branch
+   and record the precise result; a local commit is not a GitHub backup.
+5. All scientific numbers and claims must come from actual clean-room runs.
+   Do not reuse legacy results, candidate parameters or profiling conclusions.
+   Use UNKNOWN, UNVERIFIED, NOT RUN or NOT APPLICABLE where appropriate.
+6. Seeds in configs/seed_partitions.json use the user-prescribed deterministic
+   derivation and cannot be redrawn. P0–P2 allow only CALIBRATION execution;
+   P3 uses DEVELOPMENT, first 10 for search, last 10 for precheck. Metadata
+   generation/auditing is not workload execution. Do not inspect reserved
+   workload realizations or outcomes before unlock.
+7. Independent validation requires Development Gate PASS, committed freeze
+   manifest and checkpoints/VALIDATION_UNLOCKED. Formal requires the corresponding
+   validation gate, committed freeze and checkpoints/FORMAL_UNLOCKED. Never
+   create tokens to bypass missing evidence. An unknown stage fails closed.
+8. Never change user thresholds, remove losing seeds/configurations, discard
+   slow timing runs, select favorable conditions, or relabel development as
+   independent evidence. Retain all valid failures and invalid-run diagnoses.
+   No candidate formula before P2. At most one preregistered mechanism revision.
+9. P0 cannot pass without reviewing 6–8 original studies, including HEFT/CPOP,
+   PEFT and DS3. Retrieval of code or a title alone is not paper verification.
+   B3/B4/B5 are explicitly online adaptations, not the original static methods.
+10. Stop scientific progression on any unmet stage prerequisite. Correctness
+    failure must be fixed before science; absent stable P2 mapping opportunity
+    stops that hypothesis; failed validation blocks formal; provenance uncertainty
+    blocks execution. Preserve reports and commits even when blocked.
+11. Every scientific run needs run ID, timestamp, Git commit and dirty status,
+    source/config/workload SHA256, partition/seed/scene/load/size/method, host,
+    exact command, result path and independently determined validity. Resume
+    only after matching all identities. Precheck/validation/formal require
+    committed, clean relevant source/configuration.
+12. Keep profiling separate from scientific sample counts. Any purported
+    semantics-preserving optimization needs profiler evidence and exact old/new
+    decision, physical trace and event regression with zero mismatches. A mismatch
+    stops that optimization; it cannot retroactively rescue frozen results.
+13. Update STATUS.md after meaningful changes. Record executed and unexecuted
+    stages separately. CURRENT_GIT_HEAD is resolved at read time if a static
+    file cannot contain its own enclosing commit hash; record tested source
+    commits explicitly in manifests. Never invent a hash.
+14. Run applicable tests and audits before committing. CI is lightweight only:
+    never launch calibration, development, validation, formal or large benchmarks.
+15. Track code, protocols, configs, scripts, reports, small summaries/manifests.
+    Keep large raw data compressed with identity, hash and regeneration commands;
+    do not introduce LFS infrastructure without need/authorization. No secrets
+    in files, outputs, commits or setup instructions.
+PROJECT_NAME=soc
+P0_STATUS=PASS
+P1_STATUS=PASS
+P2_PREFLIGHT_STATUS=BLOCKED
+P2_DESIGN_PACKAGE_STATUS=DRAFT
+P2_B1_STATUS=UNRESOLVED
+P2_B2_STATUS=UNRESOLVED
+P2_B3_STATUS=UNRESOLVED
+P2_B4_STATUS=DESIGNED
+P2_B5_STATUS=DESIGNED
+HUMAN_DECISIONS_REQUIRED=10
+SCIENTIFIC_WORKLOADS_RUN=0
+NEW_SEEDS_GENERATED=NO
+NON_CALIBRATION_PARTITIONS_ACCESSED=NO
+P2_ENTRYPOINT_EXECUTED=NO
+SIMULATOR_SOURCE_CHANGED=NO
+SCHEDULER_SOURCE_CHANGED=NO
+WORKLOAD_GENERATOR_SOURCE_CHANGED=NO
+SCIENTIFIC_THRESHOLDS_CHANGED=NO
+CI_METHOD_CHANGED=NO
+SEED_PARTITIONS_CHANGED=NO
+VALIDATION_UNLOCKED=NO
+FORMAL_UNLOCKED=NO
+GIT_COMMIT=c7e94e438674bcfbb16ed1281ce0437cb6df3072 (audited proposal checkpoint; enclosing HEAD resolved live)
+GITHUB_PUSH_STATUS=SUCCESS_FOR_RECORDED_PROPOSAL_CHECKPOINT
+WORKTREE=RESOLVE_WITH_git-status_--short
+NEXT_SAFE_ACTION=Human review and approval of concrete P2 design
+STOP=YES
+D01_D10_INVENTORY=10
+DECISIONS_RESOLVED=0
+DECISIONS_BLOCKED=0
+GIT_COMMIT_SCOPE=AUDITED_REMOTE_VERIFIED_UNAPPROVED_CONCRETE_PROPOSAL_CHECKPOINT
+FINAL_ENCLOSING_HEAD_COMMAND=git rev-parse HEAD
+FINAL_ENCLOSING_WORKTREE_COMMAND=git status --short
+D01_D10_PROPOSAL_COMPLETE=YES
+DRAFT_FILES_EXECUTABLE=NO
+UNRESOLVED_SCIENTIFIC_PARAMETERS=32
+UNRESOLVED_SCIENTIFIC_PARAMETERS_SCOPE=Named unapproved scientific parameter groups; see registry, not scalar cells
+CURRENT_STAGE=P2_CONCRETE_DESIGN_PROPOSAL_AWAITING_HUMAN_APPROVAL
+CURRENT_GIT_HEAD=RESOLVE_WITH_git-rev-parse_HEAD
+CURRENT_BRANCH=work
+TASK_START_HEAD=160800d9b136e953c6415cd5229ded87eae72a0f
+P0_AUDIT_EXIT_CODE=0
+P1_AUDIT_EXIT_CODE=0
+DESIGN_APPROVED=NO
+DESIGN_FROZEN=NO
+CALIBRATION_SEED_IDENTITIES_USED_OR_GENERATED=0
+RESULT_PATHS=docs/P2_design/P2_complete_design_proposal_v1.md;reports/P2_design/delivery_index.json
+P2_PLANNED_TRIAL_SLOTS=2520
+P2_SCIENTIFIC_REALIZATIONS_GENERATED=0
+
+Proposal v1 is concrete but entirely unapproved. 32 named scientific parameter groups remain UNRESOLVED.
+P0/P1 actual read-only audits exit 0; P2 never executed. See reports/P2_design/proposal_v1.
+Previous STATUS preserved byte-for-byte in that directory. No implementation or reserved partition changes.
+PROPOSAL_CHECKS_PASSED=94
+PROPOSAL_GIT_RECEIPT=reports/P2_design/proposal_v1/git_checkpoint.json
+# SOC P2 Pre-Approval Adversarial Design Audit — Report-Only
+
+## 1. Repository and authority
+
+Repository: https://github.com/JINAOLONG/soc.git  
+Expected branch: `work`  
+Reported starting HEAD: `a3680acf45c5578fc090cf53cc186f28a8e9b88a`
+
+Before proceeding, verify the actual repository root, branch, HEAD, origin, remote `work` SHA and worktree state. Read `AGENTS.md`, `STATUS.md`, `docs/user_request.txt`, `docs/research_contract.md`, `docs/statistical_protocol.md`, `docs/model_spec.md`, `docs/workload_spec.md`, `docs/baseline_spec.md`, `docs/metric_spec.md`, the full v1 proposal, the v1 decision table, all v2 specifications, the v2 human decision packet and the independent review history.
+
+Do not infer missing definitions from D01–D10 labels or from this prompt. Original repository rules take precedence over summaries.
+
+## 2. Scope
+
+Perform a fresh, adversarial, report-only review of the current P2 v2 proposal before human approval.
+
+The purpose is to determine whether the existing v2 documents are internally complete enough for informed human decisions. This task does not approve, freeze, implement or execute P2.
+
+Only new report artifacts may be created under:
+
+`reports/P2_design/preapproval_audit_v3/`
+
+Do not modify any existing v1/v2 document, `STATUS.md`, research protocol, gate, source code, tests, configuration, seed metadata, or previous audit evidence.
+
+## 3. Absolute prohibitions
+
+Do NOT:
+
+- Execute P2, calibration, workload generation, scheduler runs, candidate runs or scientific comparisons.
+- Materialize or inspect any scientific realization or outcome.
+- Generate new seeds.
+- Access non-CALIBRATION realization/outcome data.
+- Implement or modify the simulator, scheduler, generator, adapter, runner, diagnostic or validator.
+- Create validation/formal unlocks.
+- Approve or freeze any D01–D10 decision or SP01–SP40 group.
+- Change scientific thresholds, CI methods, candidates or seed partitions.
+- Change any existing design or historical audit file.
+- Treat static PASS, a clean manifest, or an exit code of zero as scientific or runtime validation.
+
+Static parsing and hand-authored non-scientific fixtures are permitted only for design verification. Do not turn them into workload samples.
+
+## 4. Required adversarial review
+
+### A. M1R_PATH_V2 and scientific interpretation
+
+Read the exact original research question, historical M1, v2 M1R diagnostic, public snapshot contract, criterion table and parameter registry.
+
+Audit the following cases using hand calculations or non-scientific fixtures only:
+
+1. Exactly one ready node while an arrived H service has an unready remaining path.
+2. Two to four ready nodes with no ready H node but a pending H successor.
+3. More than four ready nodes and truncation.
+4. More than two unfinished arrived H targets.
+5. A visible running task with `elapsed >= estimate`.
+6. A missing/corrupt snapshot versus a legitimate coverage-insufficient snapshot.
+7. A fixed-suffix case where an alternative suffix mapping could change the result.
+8. A case where local L slack allows predicted L degradation but does not imply full-service L-P95 compliance.
+9. Boundary cases for zero gain, `gain == tau`, and deterministic assignment ties.
+
+For each case, determine the expected state, denominator treatment and allowed scientific interpretation from the current specification.
+
+State precisely which original mechanism the diagnostic can support, what its negative result cannot establish, and whether the current `NOT_SUPPORTED` operational stop is justified by the narrow observation space.
+
+Do not propose a new candidate algorithm. Any proposed diagnostic change must be labelled UNAPPROVED and must not be silently written into v2.
+
+### B. Coverage and FINE/COARSE decision support
+
+Recheck the complete D08 decision table and all SP groups.
+
+Explain the scientific meaning and potential bias of:
+
+- FINE: `tau=1/100`, `frequency=1/100`.
+- COARSE: `tau=1/20`, `frequency=1/20`.
+- Support coverage `F/E >= 4/5`.
+- Negative coverage `F/E == 1`.
+- At least 8 of 10 seeds meeting the support frequency.
+- At most 2 of 10 seeds meeting the frequency for a negative classification.
+
+Determine whether the asymmetry has an explicit rationale and whether any available source supports the numeric choices. Do not select thresholds from experimental outcomes; no such outcomes may be inspected.
+
+Explain the difference between a calibration-stage operational decision and an independent confirmatory statistical claim. Preserve the existing paired-seed bootstrap, replicate count, analysis seed and type-7 interval definitions.
+
+### C. Exact trial-matrix audit
+
+Read the actual `P2_trial_matrix_draft_v2.json` bytes from the Codex Cloud repository, not merely its summary or declared file hash.
+
+Verify every row, key, reference, seed assignment, method, trial role, control variant, ordering and duplicate constraint.
+
+Reconstruct and check:
+
+- 36 configurations.
+- 10 registered CALIBRATION seeds.
+- 2,520 trial slots.
+- 1,800 MAIN trial slots.
+- 360 H_ISOLATED slots.
+- 360 LOW_COMPETITION slots.
+- 1,080 unique input identities.
+- At most 5,040 engine calls including the registered replay.
+- Zero automatic retries.
+
+Verify that all A/B candidates remain represented and that the selection policy does not depend on candidate advantage or M1R/M2 results.
+
+If the matrix cannot be read completely, report BLOCKED. Do not infer successful row-level verification from counts or manifest presence.
+
+### D. Identity, generation and recovery
+
+Check the typed schema, generation spec, identity preimage registry, lifecycle graph, runner contract and stage-state contract together.
+
+Verify:
+
+- All identity dependencies are acyclic.
+- Each identity is computable before its first required use.
+- Input locks use only pre-materialization identity.
+- The workload ID does not depend on its own hash or future run ID.
+- MAIN/control parent identity and numeric inheritance are unambiguous.
+- Generation receipts and original raw references are immutable.
+- Interrupted, failed and incomplete artifacts cannot be reused as COMPLETE.
+- Concurrent requests, stale locks, partial writes and interrupted atomic publication have explicit fail-closed behavior.
+- Zero automatic retries is consistent with the stop and recovery rules.
+- Replay is not counted as a new scientific sample or recovery retry.
+
+Do not implement locks, recovery, runners or fault-injection code. List the exact runtime tests that must be included in a future separately authorized implementation task.
+
+### E. Stage-state, timing and status reconciliation
+
+Verify the distinctions among execution completion, artifact integrity, identity validity, configuration selection, diagnostic validity, mapping classification, timing prerequisite and overall P2 progression.
+
+Reconcile the v2 proposal against the current `STATUS.md` without editing either file.
+
+The report must explicitly identify stale or contradictory state representations and state which claims are authoritative for the current proposal versus historical status.
+
+Determine where the timing protocol must be frozen relative to implementation, any candidate timing measurement and overall P2 progression. Preserve the 2 ms target. Do not invent warmups, repetition counts, timers or aggregation rules.
+
+### F. D01–D10 and SP01–SP40 decision readiness
+
+For every decision, list:
+
+- Exact source document and version/hash.
+- Source-supported facts.
+- Derived facts.
+- New scientific assumptions.
+- Engineering conventions.
+- Missing evidence.
+- Exact human question.
+- What remains blocked until the decision is resolved.
+
+Confirm that the previous ACCEPT recommendations are not recorded as approvals. All ten decisions and all forty parameter/rule groups must remain UNAPPROVED.
+
+## 5. Required reports
+
+Create only new files under `reports/P2_design/preapproval_audit_v3/`:
+
+- `executive_decision.md`
+- `D01_D10_decision_readiness.csv`
+- `SP01_SP40_traceability.csv`
+- `M1R_adversarial_cases.md`
+- `coverage_threshold_review.md`
+- `trial_matrix_row_audit.json`
+- `identity_recovery_review.md`
+- `stage_state_timing_review.md`
+- `cross_document_findings.json`
+- `actual_commands_and_exit_codes.json`
+- `review_evidence_manifest.json`
+- `human_decision_packet.md`
+
+The human decision packet must provide exact unresolved questions and proposed options. All approval fields remain UNAPPROVED.
+
+## 6. Verification and reporting
+
+Use only static parsing, Git metadata, original source documents and hand-authored non-scientific examples.
+
+Record actual commands, outputs, exit codes, repository identity, file hashes and exact source paths.
+
+Do not claim external independent-review status if the work is performed by the same assistant or Codex environment. Label it a fresh adversarial review, not a third-party audit.
+
+If any critical inconsistency remains, report `DESIGN_REVIEW_REVISE_REQUIRED` or `DESIGN_REVIEW_BLOCKED`. Do not alter the design to manufacture a PASS.
+
+The trial matrix must be fully readable and independently reconstructed. A hash match or row-count match alone is insufficient.
+
+## 7. Git and stop condition
+
+No source changes. No modifications to existing design or historical evidence.
+
+If authorized by the task environment, commit and push only the new report files with a normal non-destructive Git operation. Verify the actual remote SHA. If publication cannot be verified, report NOT_VERIFIED.
+
+Final status must be exactly one of:
+
+- `DESIGN_REVIEW_READY_FOR_HUMAN_DECISION`
+- `DESIGN_REVIEW_REVISE_REQUIRED`
+- `DESIGN_REVIEW_BLOCKED`
+
+Stop after the report package. Do not approve D01–D10, freeze parameters, implement algorithms, generate workloads, execute P2 or create validation/formal unlocks.docs/P0_literature_closure_request.txt
+docs/P1_acceptance_matrix.md
+docs/P1_authorization_request.txt
+docs/P1_decisions.json
+docs/P1_implementation_spec.md
+docs/P2_authorization_request.txt
+docs/P2_design/P2_D01_D10_approval_checklist_v1.md
+docs/P2_design/P2_D01_D10_traceability.csv
+docs/P2_design/P2_communication_profiles_v1.json
+docs/P2_design/P2_complete_design_proposal_v1.md
+docs/P2_design/P2_decision_dependency_map.md
+docs/P2_design/P2_generation_spec_v1.json
+docs/P2_design/P2_human_approval_checklist.md
+docs/P2_design/P2_mapping_opportunity_decision_table_v1.md
+docs/P2_design/P2_resource_profiles_v1.json
+docs/P2_design/P2_runner_schema_review_v1.md
+docs/P2_design/P2_scientific_parameter_registry_v1.json
+docs/P2_design/P2_trial_matrix_draft_v1.json
+docs/P2_design/P2_workload_templates_v1.json
+docs/P2_design/README.md
+docs/P2_design/authorization_request.txt
+docs/P2_design/blocker_decisions.md
+docs/P2_design/calibration_matrix.draft.json
+docs/P2_design/calibration_options.md
+docs/P2_design/decisions.draft.json
+docs/P2_design/evidence_and_traceability.md
+docs/P2_design/human_decisions.md
+docs/P2_design/mapping_criterion_options.md
+docs/P2_design/runner_and_schema.md
+docs/P2_design/scientific_artifacts.schema.draft.json
+docs/P2_design/v2/P2_D01_D10_approval_checklist_v2.md
+docs/P2_design/v2/P2_D01_D10_traceability_v2.csv
+docs/P2_design/v2/P2_canonical_golden_vectors_v2.json
+docs/P2_design/v2/P2_communication_profiles_v2.json
+docs/P2_design/v2/P2_complete_design_proposal_v2.md
+docs/P2_design/v2/P2_criterion_spec_v2.json
+docs/P2_design/v2/P2_diagnostic_spec_v2.json
+docs/P2_design/v2/P2_generation_spec_v2.json
+docs/P2_design/v2/P2_mapping_opportunity_decision_table_v2.md
+docs/P2_design/v2/P2_public_snapshot_spec_v2.json
+docs/P2_design/v2/P2_resource_profiles_v2.json
+docs/P2_design/v2/P2_runner_schema_review_v2.md
+docs/P2_design/v2/P2_scientific_parameter_registry_v2.json
+docs/P2_design/v2/P2_stage_state_contract_v2.json
+docs/P2_design/v2/P2_trial_matrix_draft_v2.json
+docs/P2_design/v2/P2_typed_identity_schema_v2.json
+docs/P2_design/v2/P2_workload_templates_v2.json
+docs/P2_design/v2/README.md
+docs/P2_design/workload_gaps.md
+docs/baseline_spec.md
+docs/development_search_protocol.md
+docs/literature_evidence.json
+docs/literature_matrix.md
+docs/literature_reviews/autoware_dag.md
+docs/literature_reviews/ds3.md
+docs/literature_reviews/federated_limit.md
+docs/literature_reviews/heft_cpop.md
+docs/literature_reviews/peft.md
+docs/literature_reviews/starpu.md
+docs/method_spec.md
+docs/metric_spec.md
+docs/model_spec.md
+docs/research_contract.md
+docs/statistical_protocol.md
+docs/user_request.txt
+docs/workload_spec.md
+reports/P2_design/delivery_index.json
+reports/P2_design/design_revision_v2/V2_F01_F07_resolution_matrix.csv
+reports/P2_design/design_revision_v2/actual_commands_and_exit_codes.json
+reports/P2_design/design_revision_v2/authoring_error_history.md
+reports/P2_design/design_revision_v2/authorization_request.txt
+reports/P2_design/design_revision_v2/cross_document_consistency.json
+reports/P2_design/design_revision_v2/delivery_consistency_checks.json
+reports/P2_design/design_revision_v2/delivery_consistency_checks_initial.json
+reports/P2_design/design_revision_v2/delivery_consistency_review.py.txt
+reports/P2_design/design_revision_v2/delivery_consistency_review_after_path_fix.py.txt
+reports/P2_design/design_revision_v2/delivery_consistency_review_initial.py.txt
+reports/P2_design/design_revision_v2/diagnostic_semantics_review.md
+reports/P2_design/design_revision_v2/executive_decision.md
+reports/P2_design/design_revision_v2/external_golden_vector_review.py.txt
+reports/P2_design/design_revision_v2/external_golden_vector_verification.json
+reports/P2_design/design_revision_v2/first_publication_receipt.json
+reports/P2_design/design_revision_v2/fresh_static_review.py.txt
+reports/P2_design/design_revision_v2/fresh_static_review_initial.py.txt
+reports/P2_design/design_revision_v2/human_decision_packet.md
+reports/P2_design/design_revision_v2/identity_dependency_graph.json
+reports/P2_design/design_revision_v2/protected_baseline.json
+reports/P2_design/design_revision_v2/raw_commands/CMD-001.stderr.txt
+reports/P2_design/design_revision_v2/raw_commands/CMD-001.stdout.txt
+reports/P2_design/design_revision_v2/raw_commands/CMD-002.stderr.txt
+reports/P2_design/design_revision_v2/raw_commands/CMD-002.stdout.txt
+reports/P2_design/design_revision_v2/raw_commands/CMD-003.stderr.txt
+reports/P2_design/design_revision_v2/raw_commands/CMD-003.stdout.txt
+reports/P2_design/design_revision_v2/raw_commands/CMD-004.stderr.txt
+reports/P2_design/design_revision_v2/raw_commands/CMD-004.stdout.txt
+reports/P2_design/design_revision_v2/raw_commands/CMD-005.stderr.txt
+reports/P2_design/design_revision_v2/raw_commands/CMD-005.stdout.txt
+reports/P2_design/design_revision_v2/raw_commands/CMD-006.stderr.txt
+reports/P2_design/design_revision_v2/raw_commands/CMD-006.stdout.txt
+reports/P2_design/design_revision_v2/raw_commands/CMD-007.stderr.txt
+reports/P2_design/design_revision_v2/raw_commands/CMD-007.stdout.txt
+reports/P2_design/design_revision_v2/raw_commands/CMD-008.stderr.txt
+reports/P2_design/design_revision_v2/raw_commands/CMD-008.stdout.txt
+reports/P2_design/design_revision_v2/raw_commands/CMD-009.stderr.txt
+reports/P2_design/design_revision_v2/raw_commands/CMD-009.stdout.txt
+reports/P2_design/design_revision_v2/raw_commands/CMD-010.stderr.txt
+reports/P2_design/design_revision_v2/raw_commands/CMD-010.stdout.txt
+reports/P2_design/design_revision_v2/raw_commands/CMD-011.stderr.txt
+reports/P2_design/design_revision_v2/raw_commands/CMD-011.stdout.txt
+reports/P2_design/design_revision_v2/raw_commands/CMD-012.stderr.txt
+reports/P2_design/design_revision_v2/raw_commands/CMD-012.stdout.txt
+reports/P2_design/design_revision_v2/raw_commands/CMD-013.stderr.txt
+reports/P2_design/design_revision_v2/raw_commands/CMD-013.stdout.txt
+reports/P2_design/design_revision_v2/raw_commands/CMD-014.stderr.txt
+reports/P2_design/design_revision_v2/raw_commands/CMD-014.stdout.txt
+reports/P2_design/design_revision_v2/raw_commands/CMD-015.stderr.txt
+reports/P2_design/design_revision_v2/raw_commands/CMD-015.stdout.txt
+reports/P2_design/design_revision_v2/raw_commands/CMD-016.stderr.txt
+reports/P2_design/design_revision_v2/raw_commands/CMD-016.stdout.txt
+reports/P2_design/design_revision_v2/raw_commands/CMD-017.stderr.txt
+reports/P2_design/design_revision_v2/raw_commands/CMD-017.stdout.txt
+reports/P2_design/design_revision_v2/raw_commands/CMD-018.stderr.txt
+reports/P2_design/design_revision_v2/raw_commands/CMD-018.stdout.txt
+reports/P2_design/design_revision_v2/raw_commands/CMD-019.stderr.txt
+reports/P2_design/design_revision_v2/raw_commands/CMD-019.stdout.txt
+reports/P2_design/design_revision_v2/raw_commands/CMD-020.stderr.txt
+reports/P2_design/design_revision_v2/raw_commands/CMD-020.stdout.txt
+reports/P2_design/design_revision_v2/raw_commands/CMD-021.stderr.txt
+reports/P2_design/design_revision_v2/raw_commands/CMD-021.stdout.txt
+reports/P2_design/design_revision_v2/raw_commands/CMD-022.stderr.txt
+reports/P2_design/design_revision_v2/raw_commands/CMD-022.stdout.txt
+reports/P2_design/design_revision_v2/raw_commands/CMD-023.stderr.txt
+reports/P2_design/design_revision_v2/raw_commands/CMD-023.stdout.txt
+reports/P2_design/design_revision_v2/raw_commands/CMD-024.stderr.txt
+reports/P2_design/design_revision_v2/raw_commands/CMD-024.stdout.txt
+reports/P2_design/design_revision_v2/raw_commands/CMD-025.stderr.txt
+reports/P2_design/design_revision_v2/raw_commands/CMD-025.stdout.txt
+reports/P2_design/design_revision_v2/raw_commands/CMD-026.stderr.txt
+reports/P2_design/design_revision_v2/raw_commands/CMD-026.stdout.txt
+reports/P2_design/design_revision_v2/raw_commands/CMD-027.stderr.txt
+reports/P2_design/design_revision_v2/raw_commands/CMD-027.stdout.txt
+reports/P2_design/design_revision_v2/raw_commands/CMD-028.stderr.txt
+reports/P2_design/design_revision_v2/raw_commands/CMD-028.stdout.txt
+reports/P2_design/design_revision_v2/raw_commands/CMD-029.stderr.txt
+reports/P2_design/design_revision_v2/raw_commands/CMD-029.stdout.txt
+reports/P2_design/design_revision_v2/raw_commands/CMD-030.stderr.txt
+reports/P2_design/design_revision_v2/raw_commands/CMD-030.stdout.txt
+reports/P2_design/design_revision_v2/raw_commands/CMD-031.stderr.txt
+reports/P2_design/design_revision_v2/raw_commands/CMD-031.stdout.txt
+reports/P2_design/design_revision_v2/raw_commands/CMD-032.stderr.txt
+reports/P2_design/design_revision_v2/raw_commands/CMD-032.stdout.txt
+reports/P2_design/design_revision_v2/raw_commands/CMD-033.stderr.txt
+reports/P2_design/design_revision_v2/raw_commands/CMD-033.stdout.txt
+reports/P2_design/design_revision_v2/raw_commands/CMD-034.stderr.txt
+reports/P2_design/design_revision_v2/raw_commands/CMD-034.stdout.txt
+reports/P2_design/design_revision_v2/raw_commands/CMD-035.stderr.txt
+reports/P2_design/design_revision_v2/raw_commands/CMD-035.stdout.txt
+reports/P2_design/design_revision_v2/raw_commands/CMD-036.stderr.txt
+reports/P2_design/design_revision_v2/raw_commands/CMD-036.stdout.txt
+reports/P2_design/design_revision_v2/raw_commands/CMD-037.stderr.txt
+reports/P2_design/design_revision_v2/raw_commands/CMD-037.stdout.txt
+reports/P2_design/design_revision_v2/raw_commands/CMD-038.stderr.txt
+reports/P2_design/design_revision_v2/raw_commands/CMD-038.stdout.txt
+reports/P2_design/design_revision_v2/rebuild_review_manifest.py.txt
+reports/P2_design/design_revision_v2/review_evidence_manifest.json
+reports/P2_design/design_revision_v2/reviewed_sources.json
+reports/P2_design/design_revision_v2/spec_builder_initial.py.txt
+reports/P2_design/design_revision_v2/static_review_checks.json
+reports/P2_design/design_revision_v2/static_review_checks_initial.json
+reports/P2_design/design_revision_v2/v1_v2_change_log.md
+reports/P2_design/design_status.json
+reports/P2_design/document_checks.json
+reports/P2_design/evidence_recovery/soc-p2-final-delivery.json
+reports/P2_design/final_audit.md
+reports/P2_design/git_checkpoint.json
+reports/P2_design/independent_review_v2/D01_D10_review_matrix.csv
+reports/P2_design/independent_review_v2/actual_commands_and_exit_codes.json
+reports/P2_design/independent_review_v2/adversarial_checks.json
+reports/P2_design/independent_review_v2/adversarial_checks.py.txt
+reports/P2_design/independent_review_v2/adversarial_checks_initial.json
+reports/P2_design/independent_review_v2/adversarial_checks_initial.py.txt
+reports/P2_design/independent_review_v2/audit_command_summary.json
+reports/P2_design/independent_review_v2/authorization_request.txt
+reports/P2_design/independent_review_v2/critical_findings.md
+reports/P2_design/independent_review_v2/cross_decision_consistency.json
+reports/P2_design/independent_review_v2/delivery_checkpoint.json
+reports/P2_design/independent_review_v2/executive_decision.md
+reports/P2_design/independent_review_v2/feasibility_and_mechanism_analysis.md
+reports/P2_design/independent_review_v2/findings.json
+reports/P2_design/independent_review_v2/human_decision_packet.md
+reports/P2_design/independent_review_v2/metadata_checks.json
+reports/P2_design/independent_review_v2/metadata_checks.py.txt
+reports/P2_design/independent_review_v2/protected_baseline.json
+reports/P2_design/independent_review_v2/report_package_checks.json
+reports/P2_design/independent_review_v2/report_package_checks.py.txt
+reports/P2_design/independent_review_v2/required_changes.md
+reports/P2_design/independent_review_v2/review_evidence_manifest.json
+reports/P2_design/independent_review_v2/review_method_notes.md
+reports/P2_design/independent_review_v2/reviewed_sources.json
+reports/P2_design/independent_review_v2/scope_preservation.json
+reports/P2_design/preapproval_audit_v3/authorization_request.txt
+reports/P2_design/preapproval_audit_v3/environment_and_discovery_notes.md
+reports/P2_design/preapproval_audit_v3/m1r_commands.json
+reports/P2_design/preapproval_audit_v3/main_commands.json
+reports/P2_design/preapproval_audit_v3/matrix_commands.json
+reports/P2_design/preapproval_audit_v3/protected_baseline.json
+reports/P2_design/preapproval_audit_v3/raw_commands/m1r-001.stderr.txt
+reports/P2_design/preapproval_audit_v3/raw_commands/m1r-001.stdout.txt
+reports/P2_design/preapproval_audit_v3/raw_commands/m1r-002.stderr.txt
+reports/P2_design/preapproval_audit_v3/raw_commands/m1r-002.stdout.txt
+reports/P2_design/preapproval_audit_v3/raw_commands/m1r-003.stderr.txt
+reports/P2_design/preapproval_audit_v3/raw_commands/m1r-003.stdout.txt
+reports/P2_design/preapproval_audit_v3/raw_commands/m1r-004.stderr.txt
+reports/P2_design/preapproval_audit_v3/raw_commands/m1r-004.stdout.txt
+reports/P2_design/preapproval_audit_v3/raw_commands/main-001.stderr.txt
+reports/P2_design/preapproval_audit_v3/raw_commands/main-001.stdout.txt
+reports/P2_design/preapproval_audit_v3/raw_commands/main-002.stderr.txt
+reports/P2_design/preapproval_audit_v3/raw_commands/main-002.stdout.txt
+reports/P2_design/preapproval_audit_v3/raw_commands/main-003.stderr.txt
+reports/P2_design/preapproval_audit_v3/raw_commands/main-003.stdout.txt
+reports/P2_design/preapproval_audit_v3/raw_commands/main-004.stderr.txt
+reports/P2_design/preapproval_audit_v3/raw_commands/main-004.stdout.txt
+reports/P2_design/preapproval_audit_v3/raw_commands/main-005.stderr.txt
+reports/P2_design/preapproval_audit_v3/raw_commands/main-005.stdout.txt
+reports/P2_design/preapproval_audit_v3/raw_commands/main-006.stderr.txt
+reports/P2_design/preapproval_audit_v3/raw_commands/main-006.stdout.txt
+reports/P2_design/preapproval_audit_v3/raw_commands/matrix-001.stderr.txt
+reports/P2_design/preapproval_audit_v3/raw_commands/matrix-001.stdout.txt
+reports/P2_design/preapproval_audit_v3/raw_commands/matrix-002.stderr.txt
+reports/P2_design/preapproval_audit_v3/raw_commands/matrix-002.stdout.txt
+reports/P2_design/previous_STATUS.md
+reports/P2_design/proposal_v1/authorization_request.txt
+reports/P2_design/proposal_v1/diff_review.json
+reports/P2_design/proposal_v1/git_checkpoint.json
+reports/P2_design/proposal_v1/previous_STATUS.md
+reports/P2_design/proposal_v1/previous_design_status.json
+reports/P2_design/proposal_v1/previous_traceability.csv
+reports/P2_design/proposal_v1/repository_audit.json
+reports/P2_design/proposal_v1/static_check.py.txt
+reports/P2_design/proposal_v1/static_checks.json
+reports/P2_design/repository_audit.json
+reports/P2_design/review/document_checks.json
+reports/P2_design/review/git_checkpoint.json
+reports/P2_design/review/original_decision_catalog.json
+reports/P2_design/review/original_human_decisions.md
+reports/P2_design/review/previous_STATUS.md
+reports/P2_design/review/repository_audit.json

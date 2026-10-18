@@ -1,0 +1,133 @@
+{
+  "read_scope": "Full file bytes, metadata-only; source text reviewed and line pointers in matrix_method.md",
+  "sources": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "5435e5e690a64e0e7f432bae22b8f459f646e12233d99a7a4b1a70266d8c9a22",
+      "size_bytes": 4586,
+      "full_bytes_read": true,
+      "line_count": 63,
+      "scope": "Existing source/design/seed METADATA only; no realizations"
+    },
+    {
+      "path": "STATUS.md",
+      "sha256": "5f4c9fc321d22010400f260e8ed82a714b4a19453ae7b3102e04db93211f5222",
+      "size_bytes": 2207,
+      "full_bytes_read": true,
+      "line_count": 56,
+      "scope": "Existing source/design/seed METADATA only; no realizations"
+    },
+    {
+      "path": "docs/user_request.txt",
+      "sha256": "4c3481f0c67553eaa6d2dd6f181cc8d3f792e40fdc9586547c1c2e91fb52b461",
+      "size_bytes": 57544,
+      "full_bytes_read": true,
+      "line_count": 3302,
+      "scope": "Existing source/design/seed METADATA only; no realizations"
+    },
+    {
+      "path": "docs/research_contract.md",
+      "sha256": "8ccd2f6fce470013af89c653eb3ff84a0b66809c56d321993cd973ebc18031e4",
+      "size_bytes": 3119,
+      "full_bytes_read": true,
+      "line_count": 48,
+      "scope": "Existing source/design/seed METADATA only; no realizations"
+    },
+    {
+      "path": "docs/workload_spec.md",
+      "sha256": "a098008f3abe47f4cfb830685009b19bf4d3555a8e370ad242a2fce1debea606",
+      "size_bytes": 1574,
+      "full_bytes_read": true,
+      "line_count": 25,
+      "scope": "Existing source/design/seed METADATA only; no realizations"
+    },
+    {
+      "path": "docs/baseline_spec.md",
+      "sha256": "54a1cdb86d0235671a7d1ece31e489289c026bf083f33388580b6f3fdbb42e12",
+      "size_bytes": 2826,
+      "full_bytes_read": true,
+      "line_count": 38,
+      "scope": "Existing source/design/seed METADATA only; no realizations"
+    },
+    {
+      "path": "docs/P2_design/P2_complete_design_proposal_v1.md",
+      "sha256": "e378e85071d6c97fb6cd5801d9449eef176a90baddcd786181c6685eaa29feac",
+      "size_bytes": 28397,
+      "full_bytes_read": true,
+      "line_count": 339,
+      "scope": "Existing source/design/seed METADATA only; no realizations"
+    },
+    {
+      "path": "docs/P2_design/v2/P2_complete_design_proposal_v2.md",
+      "sha256": "7f929b85554193ef1256deb3f7cc184e47c362f91e93950896a80450c9eb5fe8",
+      "size_bytes": 17076,
+      "full_bytes_read": true,
+      "line_count": 215,
+      "scope": "Existing source/design/seed METADATA only; no realizations"
+    },
+    {
+      "path": "docs/P2_design/v2/P2_runner_schema_review_v2.md",
+      "sha256": "fd1a59638bf1754af0a6423b57873a6691af8c3559a1c1d62ceeeffda2da5099",
+      "size_bytes": 10655,
+      "full_bytes_read": true,
+      "line_count": 118,
+      "scope": "Existing source/design/seed METADATA only; no realizations"
+    },
+    {
+      "path": "docs/P2_design/v2/P2_trial_matrix_draft_v2.json",
+      "sha256": "b58fe4c2eead01fc9b92966d557ed0bb052e7387794fc0d9b58029ffdb90af0e",
+      "size_bytes": 1327918,
+      "full_bytes_read": true,
+      "line_count": 3110,
+      "scope": "Existing source/design/seed METADATA only; no realizations"
+    },
+    {
+      "path": "docs/P2_design/P2_trial_matrix_draft_v1.json",
+      "sha256": "a68ef6b61f0e604dfebf1500b9a36fd7db1097938ae5abf321b1bf39aac23f2f",
+      "size_bytes": 1326497,
+      "full_bytes_read": true,
+      "line_count": 3075,
+      "scope": "Existing source/design/seed METADATA only; no realizations"
+    },
+    {
+      "path": "configs/seed_partitions.json",
+      "sha256": "e5ded56e2fbe1ba2ed992a3026f3c5780d90afb50aaab4d1d8b75b8c014f4f31",
+      "size_bytes": 2224,
+      "full_bytes_read": true,
+      "line_count": 98,
+      "scope": "Existing source/design/seed METADATA only; no realizations"
+    },
+    {
+      "path": "docs/P2_design/v2/P2_workload_templates_v2.json",
+      "sha256": "f282955ab09d0110f50447269b18d0389231bed9711532853d6cdbda92d9027c",
+      "size_bytes": 28557,
+      "full_bytes_read": true,
+      "line_count": 1125,
+      "scope": "Existing source/design/seed METADATA only; no realizations"
+    },
+    {
+      "path": "docs/P2_design/v2/P2_generation_spec_v2.json",
+      "sha256": "33e3ccf437510986ffa401eea1ef48e995a1ad08df38a834374d4a1c483a91f2",
+      "size_bytes": 13039,
+      "full_bytes_read": true,
+      "line_count": 328,
+      "scope": "Existing source/design/seed METADATA only; no realizations"
+    },
+    {
+      "path": "docs/P2_design/v2/P2_stage_state_contract_v2.json",
+      "sha256": "c64803a93c74ee9dba6a7bc61de2d2e550264f2c5d4a920e1248665fa7e86b93",
+      "size_bytes": 10336,
+      "full_bytes_read": true,
+      "line_count": 264,
+      "scope": "Existing source/design/seed METADATA only; no realizations"
+    },
+    {
+      "path": "docs/P2_design/v2/P2_typed_identity_schema_v2.json",
+      "sha256": "9b478cf7e96776f6cc69f29426715efed6eec2309270be1efb3dd77985ebfbc9",
+      "size_bytes": 85745,
+      "full_bytes_read": true,
+      "line_count": 3381,
+      "scope": "Existing source/design/seed METADATA only; no realizations"
+    }
+  ]
+}

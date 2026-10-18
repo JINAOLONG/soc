@@ -1,0 +1,175 @@
+{
+  "review": "Fresh adversarial counter-review within same assistant team; not third-party",
+  "source_count": 28,
+  "source_read_scope": "Hashing full bytes does not imply semantic review of every line; precise scopes below",
+  "sources": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "5435e5e690a64e0e7f432bae22b8f459f646e12233d99a7a4b1a70266d8c9a22",
+      "size_bytes": 4586,
+      "review_scope": "FULL_TEXT_READ"
+    },
+    {
+      "path": "STATUS.md",
+      "sha256": "5f4c9fc321d22010400f260e8ed82a714b4a19453ae7b3102e04db93211f5222",
+      "size_bytes": 2207,
+      "review_scope": "FULL_TEXT_READ"
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/authorization_request.txt",
+      "sha256": "d48ca84abf36ffcecd9e7ae13e5fb95a0c32016de0ecb3d05ad85781209a7394",
+      "size_bytes": 9934,
+      "review_scope": "FULL_TEXT_READ"
+    },
+    {
+      "path": "docs/model_spec.md",
+      "sha256": "3f74116fa6cb85e4f2db1c96d246ac830a282be28847a0af21184fde2e17197b",
+      "size_bytes": 4381,
+      "review_scope": "FULL_TEXT_READ"
+    },
+    {
+      "path": "docs/baseline_spec.md",
+      "sha256": "54a1cdb86d0235671a7d1ece31e489289c026bf083f33388580b6f3fdbb42e12",
+      "size_bytes": 2826,
+      "review_scope": "LINES_1_35_AND_TARGETED_SEARCH"
+    },
+    {
+      "path": "docs/P1_implementation_spec.md",
+      "sha256": "92e9c4d0472f7893f54fc54d302d38bd224092285d78cc85ec7cdb67fef4e972",
+      "size_bytes": 7473,
+      "review_scope": "TARGETED_SEARCH_EVENT_RULES"
+    },
+    {
+      "path": "docs/user_request.txt",
+      "sha256": "4c3481f0c67553eaa6d2dd6f181cc8d3f792e40fdc9586547c1c2e91fb52b461",
+      "size_bytes": 57544,
+      "review_scope": "LINES_2498_2565_AND_TARGETED_SEARCH"
+    },
+    {
+      "path": "docs/P2_design/scientific_artifacts.schema.draft.json",
+      "sha256": "1f8f3a4bd29f67082fafdd6bf6bd1d27b71438ddad3e9c48ec4827950b1010ad",
+      "size_bytes": 16071,
+      "review_scope": "LINES_40_83_AND_TARGETED_SEARCH"
+    },
+    {
+      "path": "docs/P2_design/P2_runner_schema_review_v1.md",
+      "sha256": "21c4ccb2fbb608131ff28903fc90a60feb70111c9888d444e43165dbf3241f04",
+      "size_bytes": 12029,
+      "review_scope": "TARGETED_SEARCH_PROVENANCE_AND_M2"
+    },
+    {
+      "path": "docs/P2_design/P2_complete_design_proposal_v1.md",
+      "sha256": "e378e85071d6c97fb6cd5801d9449eef176a90baddcd786181c6685eaa29feac",
+      "size_bytes": 28397,
+      "review_scope": "TARGETED_SEARCH_M2"
+    },
+    {
+      "path": "docs/P2_design/P2_mapping_opportunity_decision_table_v1.md",
+      "sha256": "4c981f2f2303e1b1535168dd320e3c11151ea86ad35a502513893370a5906ea2",
+      "size_bytes": 4533,
+      "review_scope": "TARGETED_SEARCH_M2"
+    },
+    {
+      "path": "docs/P2_design/runner_and_schema.md",
+      "sha256": "9c5512667fd81038531e44e8771f5f245f03b10f8d86ba74bd4f2224296ce8e2",
+      "size_bytes": 9202,
+      "review_scope": "TARGETED_SEARCH_PROVENANCE"
+    },
+    {
+      "path": "docs/P2_design/v2/P2_diagnostic_spec_v2.json",
+      "sha256": "9bec37d044f4c7742d931149c195c2c3ec1540d41dc3f0a899a2b29f8c7e3e90",
+      "size_bytes": 8809,
+      "review_scope": "FULL_TEXT_READ"
+    },
+    {
+      "path": "docs/P2_design/v2/P2_public_snapshot_spec_v2.json",
+      "sha256": "fa4ce177c2d4a49a5f8f5b30bfa44e2b0d529f1e735ddfa259ae1811edc2f1af",
+      "size_bytes": 4613,
+      "review_scope": "FULL_TEXT_READ_FROM_COMMAND_002_AND_TARGETED_SEARCH"
+    },
+    {
+      "path": "docs/P2_design/v2/P2_generation_spec_v2.json",
+      "sha256": "33e3ccf437510986ffa401eea1ef48e995a1ad08df38a834374d4a1c483a91f2",
+      "size_bytes": 13039,
+      "review_scope": "FULL_TEXT_COMMAND_RECORDED_TARGETED_SEMANTIC_REVIEW"
+    },
+    {
+      "path": "docs/P2_design/v2/P2_criterion_spec_v2.json",
+      "sha256": "98a578944e7910db933f5b3b02aee4bb03de8005853024b38cc3b02630b04e38",
+      "size_bytes": 4139,
+      "review_scope": "FULL_TEXT_READ"
+    },
+    {
+      "path": "docs/P2_design/v2/P2_runner_schema_review_v2.md",
+      "sha256": "fd1a59638bf1754af0a6423b57873a6691af8c3559a1c1d62ceeeffda2da5099",
+      "size_bytes": 10655,
+      "review_scope": "FULL_TEXT_READ"
+    },
+    {
+      "path": "docs/P2_design/v2/P2_stage_state_contract_v2.json",
+      "sha256": "c64803a93c74ee9dba6a7bc61de2d2e550264f2c5d4a920e1248665fa7e86b93",
+      "size_bytes": 10336,
+      "review_scope": "FULL_TEXT_READ"
+    },
+    {
+      "path": "docs/P2_design/v2/P2_typed_identity_schema_v2.json",
+      "sha256": "9b478cf7e96776f6cc69f29426715efed6eec2309270be1efb3dd77985ebfbc9",
+      "size_bytes": 85745,
+      "review_scope": "FULL_JSON_PARSED_SELECTED_DEFINITIONS_AND_TAIL_REVIEWED"
+    },
+    {
+      "path": "docs/P2_design/v2/P2_workload_templates_v2.json",
+      "sha256": "f282955ab09d0110f50447269b18d0389231bed9711532853d6cdbda92d9027c",
+      "size_bytes": 28557,
+      "review_scope": "FULL_JSON_PARSED_ADAS_ROOTS_AND_DAG_PROPERTIES_REVIEWED"
+    },
+    {
+      "path": "docs/P2_design/v2/P2_resource_profiles_v2.json",
+      "sha256": "9eea5cfd43ce50d796a00d7cac86f9a7ca8798da4a3ea0c2fd9e598d965f13ae",
+      "size_bytes": 8858,
+      "review_scope": "FULL_JSON_PARSED_PROFILES_READ"
+    },
+    {
+      "path": "docs/P2_design/v2/P2_trial_matrix_draft_v2.json",
+      "sha256": "b58fe4c2eead01fc9b92966d557ed0bb052e7387794fc0d9b58029ffdb90af0e",
+      "size_bytes": 1327918,
+      "review_scope": "FULL_JSON_PARSED_CONFIG_SUBSET_REVIEWED_NOT_THIS_SUBREVIEW_FULL_ROW_AUDIT"
+    },
+    {
+      "path": "docs/P2_design/v2/P2_mapping_opportunity_decision_table_v2.md",
+      "sha256": "594863a579ac32fdd980454fe6e0f0d24d165729a60f1c6f6526c8688fd296f4",
+      "size_bytes": 3542,
+      "review_scope": "TARGETED_SEARCH_COMPLETENESS_AND_CLASSIFICATION"
+    },
+    {
+      "path": "docs/P2_design/v2/P2_complete_design_proposal_v2.md",
+      "sha256": "7f929b85554193ef1256deb3f7cc184e47c362f91e93950896a80450c9eb5fe8",
+      "size_bytes": 17076,
+      "review_scope": "TARGETED_SEARCH_M1R_M2_AND_CRITERION"
+    },
+    {
+      "path": "docs/P2_design/v2/P2_scientific_parameter_registry_v2.json",
+      "sha256": "15ee54e75f658d5f66edb00534003d3aed642f86736b2932ae61f0692e4559c2",
+      "size_bytes": 43099,
+      "review_scope": "TARGETED_SEARCH_PARAMETER_RULES"
+    },
+    {
+      "path": "src/soc/simulator/engine.py",
+      "sha256": "977d01f3603f516e68e922542322976b813c01aad8d2dd177a5c0ac314399551",
+      "size_bytes": 5398,
+      "review_scope": "FULL_TEXT_READ_NO_IMPORT_OR_EXECUTION"
+    },
+    {
+      "path": "src/soc/scheduler/kernels.py",
+      "sha256": "122264d53f840f2f680150ec1fa0af62710114f4cf51be422f77b07268bb86cb",
+      "size_bytes": 8415,
+      "review_scope": "LINES_160_178_READ_NO_IMPORT_OR_EXECUTION"
+    },
+    {
+      "path": "docs/P2_design/v2/P2_communication_profiles_v2.json",
+      "sha256": "74f7dde644b11d0b459fb68e9f250d9799e34f09652609b63122e0de5bf6e3b8",
+      "size_bytes": 22387,
+      "review_scope": "FULL_JSON_PARSED_COCKPIT_EDGES_AND_ALL_LINKS_READ_FOR_HAND_CASE_7"
+    }
+  ]
+}

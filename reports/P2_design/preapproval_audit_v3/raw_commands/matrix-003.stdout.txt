@@ -1,0 +1,10 @@
+{
+  "result": "PASS_STATIC_MATRIX_ONLY",
+  "matrix_sha256": "b58fe4c2eead01fc9b92966d557ed0bb052e7387794fc0d9b58029ffdb90af0e",
+  "bytes": 1327918,
+  "rows_passed": 2520,
+  "rows_failed": 0,
+  "checks_passed": 31,
+  "checks_failed": 0,
+  "failed_checks": []
+}

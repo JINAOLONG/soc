@@ -1,0 +1,100 @@
+{
+  "namespace": "matrix",
+  "scope": "Actual substantive subprocess calls; discovery wrappers may be recorded separately",
+  "commands": [
+    {
+      "id": "matrix-001",
+      "argv": [
+        "python",
+        "-c",
+        "from pathlib import Path; fs=['STATUS.md','docs/user_request.txt','docs/research_contract.md','docs/workload_spec.md','docs/baseline_spec.md','configs/seed_partitions.json','docs/P2_design/P2_complete_design_proposal_v1.md','docs/P2_design/v2/P2_complete_design_proposal_v2.md']; [(print('SOURCE:',f),print(Path(f).read_text())) for f in fs]"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_REVIEW",
+      "started_at_utc": "2026-10-18T13:44:39.286842+00:00",
+      "ended_at_utc": "2026-10-18T13:44:39.317525+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/matrix-001.stdout.txt",
+        "sha256": "8d3d4912af90f4856962651f2af72594b4b079c8d8a468a60ddebb68b7d5de95",
+        "size_bytes": 111970
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/matrix-001.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "matrix-002",
+      "argv": [
+        "python",
+        "-c",
+        "from pathlib import Path\nimport json\nfor f in ['docs/research_contract.md','docs/workload_spec.md','docs/baseline_spec.md','configs/seed_partitions.json']:\n print('SOURCE:',f); print(Path(f).read_text())\np=Path('docs/P2_design/v2/P2_trial_matrix_draft_v2.json'); d=json.loads(p.read_text())\nprint('MATRIX_SIZE',p.stat().st_size)\nfor k,v in d.items():\n if isinstance(v,list) and len(v)>40: print(k,'LEN',len(v),'FIRST',v[:3],'LAST',v[-3:])\n else: print(k,json.dumps(v,ensure_ascii=False,indent=2))\n"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_REVIEW",
+      "started_at_utc": "2026-10-18T13:44:47.746184+00:00",
+      "ended_at_utc": "2026-10-18T13:44:47.793804+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/matrix-002.stdout.txt",
+        "sha256": "0e079065f92bab83ba380344b2dda3977576140eab035f2486dddbb1037eee0d",
+        "size_bytes": 30913
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/matrix-002.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "matrix-003",
+      "argv": [
+        "python",
+        "reports/P2_design/preapproval_audit_v3/matrix_static_audit.py.txt"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_REVIEW",
+      "started_at_utc": "2026-10-18T13:47:08.711562+00:00",
+      "ended_at_utc": "2026-10-18T13:47:08.968364+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/matrix-003.stdout.txt",
+        "sha256": "e65d7d74067e5401ce9dbd506bab16f8e541599e0e76961038c41ecb2b316667",
+        "size_bytes": 260
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/matrix-003.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "matrix-004",
+      "argv": [
+        "python",
+        "reports/P2_design/preapproval_audit_v3/matrix_static_audit.py.txt"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_REVIEW",
+      "started_at_utc": "2026-10-18T13:48:23.004508+00:00",
+      "ended_at_utc": "2026-10-18T13:48:23.242204+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/matrix-004.stdout.txt",
+        "sha256": "34d45d3b810c6959f5c5670efb7850f3752becde6ee118e32c82b16d37a9955f",
+        "size_bytes": 260
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/matrix-004.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    }
+  ]
+}

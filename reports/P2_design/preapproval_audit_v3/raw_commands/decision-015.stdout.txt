@@ -1,0 +1,178 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "namespace",
+    "schema_version",
+    "execution_plan_sha256",
+    "source_bundle_sha256",
+    "state",
+    "expected_trial_slots",
+    "attempted_trial_slots",
+    "completed_trial_slots",
+    "reused_trial_slots",
+    "failed_trial_slots",
+    "not_started_trial_slots",
+    "expected_input_count",
+    "selected_condition_ids",
+    "integrity_report_ref",
+    "selection_report_ref",
+    "diagnostic_report_ref",
+    "criterion_report_ref",
+    "timing_freeze_receipt_ref",
+    "prerequisite_evidence"
+  ],
+  "properties": {
+    "namespace": {
+      "const": "soc.science.p2.stage-record"
+    },
+    "schema_version": {
+      "const": 2
+    },
+    "execution_plan_sha256": {
+      "$ref": "#/$defs/SHA256"
+    },
+    "source_bundle_sha256": {
+      "$ref": "#/$defs/SHA256"
+    },
+    "state": {
+      "$ref": "#/$defs/GATE_STATE"
+    },
+    "expected_trial_slots": {
+      "const": 2520
+    },
+    "attempted_trial_slots": {
+      "$ref": "#/$defs/UINT"
+    },
+    "completed_trial_slots": {
+      "$ref": "#/$defs/UINT"
+    },
+    "reused_trial_slots": {
+      "$ref": "#/$defs/UINT"
+    },
+    "failed_trial_slots": {
+      "$ref": "#/$defs/UINT"
+    },
+    "not_started_trial_slots": {
+      "$ref": "#/$defs/UINT"
+    },
+    "expected_input_count": {
+      "const": 1080
+    },
+    "selected_condition_ids": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ID"
+      }
+    },
+    "integrity_report_ref": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ARTIFACT_REF"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "selection_report_ref": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ARTIFACT_REF"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "diagnostic_report_ref": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ARTIFACT_REF"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "criterion_report_ref": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ARTIFACT_REF"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "timing_freeze_receipt_ref": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ARTIFACT_REF"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "prerequisite_evidence": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ARTIFACT_REF"
+      }
+    }
+  }
+}
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "status",
+    "metric_protocol_sha256",
+    "runtime_metrics_ref",
+    "independent_metrics_ref",
+    "comparison_ref"
+  ],
+  "properties": {
+    "status": {
+      "enum": [
+        "NOT_RUN",
+        "MATCH",
+        "MISMATCH"
+      ]
+    },
+    "metric_protocol_sha256": {
+      "$ref": "#/$defs/SHA256"
+    },
+    "runtime_metrics_ref": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ARTIFACT_REF"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "independent_metrics_ref": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ARTIFACT_REF"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "comparison_ref": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ARTIFACT_REF"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  }
+}

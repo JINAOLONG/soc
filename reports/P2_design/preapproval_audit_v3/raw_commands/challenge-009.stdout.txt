@@ -1,0 +1,459 @@
+KEYS ['document_kind', 'version', 'status', 'classification', 'approved', 'frozen', 'executable', 'execution_authorized', 'read_by_pipeline', 'source_checkpoint', 'data_unit', 'latency_unit', 'bandwidth_unit', 'edge_tables', 'links', 'semantics', 'examples', 'source_refs', 'reason', 'sensitivity_risk', 'document_version', 'approval', 'starting_commit', 'preserved_semantic_content_version', 'parent_proposal', 'revision_note']
+{
+  "document_kind": "COMMUNICATION_PROFILE_PROPOSAL",
+  "version": "v2",
+  "status": "DRAFT_UNAPPROVED_NONEXECUTABLE",
+  "classification": "PROPOSED",
+  "approved": false,
+  "frozen": false,
+  "executable": false,
+  "execution_authorized": false,
+  "read_by_pipeline": false,
+  "source_checkpoint": "160800d9b136e953c6415cd5229ded87eae72a0f",
+  "data_unit": "MiB",
+  "latency_unit": "ms",
+  "bandwidth_unit": "MiB/ms",
+  "edge_tables": [
+    {
+      "template_id": "COCKPIT-8-v1",
+      "edges": [
+        {
+          "id": "COCKPIT.n01->COCKPIT.n02",
+          "source": "COCKPIT.n01",
+          "destination": "COCKPIT.n02",
+          "size_mib": 0.25,
+          "kind": "ROLE_OUTPUT",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "COCKPIT.n02->COCKPIT.n03",
+          "source": "COCKPIT.n02",
+          "destination": "COCKPIT.n03",
+          "size_mib": 0.125,
+          "kind": "ROLE_OUTPUT",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "COCKPIT.n03->COCKPIT.n04",
+          "source": "COCKPIT.n03",
+          "destination": "COCKPIT.n04",
+          "size_mib": 0.0625,
+          "kind": "ROLE_OUTPUT",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "COCKPIT.n05->COCKPIT.n04",
+          "source": "COCKPIT.n05",
+          "destination": "COCKPIT.n04",
+          "size_mib": 0.125,
+          "kind": "ROLE_OUTPUT",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "COCKPIT.n03->COCKPIT.n06",
+          "source": "COCKPIT.n03",
+          "destination": "COCKPIT.n06",
+          "size_mib": 0.0625,
+          "kind": "ROLE_OUTPUT",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "COCKPIT.n05->COCKPIT.n06",
+          "source": "COCKPIT.n05",
+          "destination": "COCKPIT.n06",
+          "size_mib": 0.125,
+          "kind": "ROLE_OUTPUT",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "COCKPIT.n04->COCKPIT.n07",
+          "source": "COCKPIT.n04",
+          "destination": "COCKPIT.n07",
+          "size_mib": 1,
+          "kind": "ROLE_OUTPUT",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "COCKPIT.n06->COCKPIT.n07",
+          "source": "COCKPIT.n06",
+          "destination": "COCKPIT.n07",
+          "size_mib": 0.25,
+          "kind": "ROLE_OUTPUT",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "COCKPIT.n07->COCKPIT.n08",
+          "source": "COCKPIT.n07",
+          "destination": "COCKPIT.n08",
+          "size_mib": 1,
+          "kind": "ROLE_OUTPUT",
+          "classification": "PROPOSED"
+        }
+      ]
+    },
+    {
+      "template_id": "COCKPIT-16-v1",
+      "edges": [
+        {
+          "id": "COCKPIT.n01.a->COCKPIT.n01.b",
+          "source": "COCKPIT.n01.a",
+          "destination": "COCKPIT.n01.b",
+          "size_mib": 0.0625,
+          "kind": "SPLIT_INTERNAL",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "COCKPIT.n01.b->COCKPIT.n02.a",
+          "source": "COCKPIT.n01.b",
+          "destination": "COCKPIT.n02.a",
+          "size_mib": 0.25,
+          "kind": "ROLE_OUTPUT",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "COCKPIT.n02.a->COCKPIT.n02.b",
+          "source": "COCKPIT.n02.a",
+          "destination": "COCKPIT.n02.b",
+          "size_mib": 0.0625,
+          "kind": "SPLIT_INTERNAL",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "COCKPIT.n02.b->COCKPIT.n03.a",
+          "source": "COCKPIT.n02.b",
+          "destination": "COCKPIT.n03.a",
+          "size_mib": 0.125,
+          "kind": "ROLE_OUTPUT",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "COCKPIT.n03.a->COCKPIT.n03.b",
+          "source": "COCKPIT.n03.a",
+          "destination": "COCKPIT.n03.b",
+          "size_mib": 0.0625,
+          "kind": "SPLIT_INTERNAL",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "COCKPIT.n03.b->COCKPIT.n04.a",
+          "source": "COCKPIT.n03.b",
+          "destination": "COCKPIT.n04.a",
+          "size_mib": 0.0625,
+          "kind": "ROLE_OUTPUT",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "COCKPIT.n05.b->COCKPIT.n04.a",
+          "source": "COCKPIT.n05.b",
+          "destination": "COCKPIT.n04.a",
+          "size_mib": 0.125,
+          "kind": "ROLE_OUTPUT",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "COCKPIT.n04.a->COCKPIT.n04.b",
+          "source": "COCKPIT.n04.a",
+          "destination": "COCKPIT.n04.b",
+          "size_mib": 0.0625,
+          "kind": "SPLIT_INTERNAL",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "COCKPIT.n05.a->COCKPIT.n05.b",
+          "source": "COCKPIT.n05.a",
+          "destination": "COCKPIT.n05.b",
+          "size_mib": 0.0625,
+          "kind": "SPLIT_INTERNAL",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "COCKPIT.n03.b->COCKPIT.n06.a",
+          "source": "COCKPIT.n03.b",
+          "destination": "COCKPIT.n06.a",
+          "size_mib": 0.0625,
+          "kind": "ROLE_OUTPUT",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "COCKPIT.n05.b->COCKPIT.n06.a",
+          "source": "COCKPIT.n05.b",
+          "destination": "COCKPIT.n06.a",
+          "size_mib": 0.125,
+          "kind": "ROLE_OUTPUT",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "COCKPIT.n06.a->COCKPIT.n06.b",
+          "source": "COCKPIT.n06.a",
+          "destination": "COCKPIT.n06.b",
+          "size_mib": 0.0625,
+          "kind": "SPLIT_INTERNAL",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "COCKPIT.n04.b->COCKPIT.n07.a",
+          "source": "COCKPIT.n04.b",
+          "destination": "COCKPIT.n07.a",
+          "size_mib": 1,
+          "kind": "ROLE_OUTPUT",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "COCKPIT.n06.b->COCKPIT.n07.a",
+          "source": "COCKPIT.n06.b",
+          "destination": "COCKPIT.n07.a",
+          "size_mib": 0.25,
+          "kind": "ROLE_OUTPUT",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "COCKPIT.n07.a->COCKPIT.n07.b",
+          "source": "COCKPIT.n07.a",
+          "destination": "COCKPIT.n07.b",
+          "size_mib": 0.0625,
+          "kind": "SPLIT_INTERNAL",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "COCKPIT.n07.b->COCKPIT.n08.a",
+          "source": "COCKPIT.n07.b",
+          "destination": "COCKPIT.n08.a",
+          "size_mib": 1,
+          "kind": "ROLE_OUTPUT",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "COCKPIT.n08.a->COCKPIT.n08.b",
+          "source": "COCKPIT.n08.a",
+          "destination": "COCKPIT.n08.b",
+          "size_mib": 0.0625,
+          "kind": "SPLIT_INTERNAL",
+          "classification": "PROPOSED"
+        }
+      ]
+    },
+    {
+      "template_id": "ADAS-8-v1",
+      "edges": [
+        {
+          "id": "ADAS.n01->ADAS.n02",
+          "source": "ADAS.n01",
+          "destination": "ADAS.n02",
+          "size_mib": 4,
+          "kind": "ROLE_OUTPUT",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "ADAS.n01->ADAS.n03",
+          "source": "ADAS.n01",
+          "destination": "ADAS.n03",
+          "size_mib": 4,
+          "kind": "ROLE_OUTPUT",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "ADAS.n02->ADAS.n04",
+          "source": "ADAS.n02",
+          "destination": "ADAS.n04",
+          "size_mib": 1,
+          "kind": "ROLE_OUTPUT",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "ADAS.n03->ADAS.n05",
+          "source": "ADAS.n03",
+          "destination": "ADAS.n05",
+          "size_mib": 2,
+          "kind": "ROLE_OUTPUT",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "ADAS.n04->ADAS.n05",
+          "source": "ADAS.n04",
+          "destination": "ADAS.n05",
+          "size_mib": 0.25,
+          "kind": "ROLE_OUTPUT",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "ADAS.n05->ADAS.n06",
+          "source": "ADAS.n05",
+          "destination": "ADAS.n06",
+          "size_mib": 0.5,
+          "kind": "ROLE_OUTPUT",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "ADAS.n05->ADAS.n07",
+          "source": "ADAS.n05",
+          "destination": "ADAS.n07",
+          "size_mib": 0.5,
+          "kind": "ROLE_OUTPUT",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "ADAS.n06->ADAS.n08",
+          "source": "ADAS.n06",
+          "destination": "ADAS.n08",
+          "size_mib": 0.125,
+          "kind": "ROLE_OUTPUT",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "ADAS.n07->ADAS.n08",
+          "source": "ADAS.n07",
+          "destination": "ADAS.n08",
+          "size_mib": 1,
+          "kind": "ROLE_OUTPUT",
+          "classification": "PROPOSED"
+        }
+      ]
+    },
+    {
+      "template_id": "ADAS-16-v1",
+      "edges": [
+        {
+          "id": "ADAS.n01.a->ADAS.n01.b",
+          "source": "ADAS.n01.a",
+          "destination": "ADAS.n01.b",
+          "size_mib": 0.0625,
+          "kind": "SPLIT_INTERNAL",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "ADAS.n01.b->ADAS.n02.a",
+          "source": "ADAS.n01.b",
+          "destination": "ADAS.n02.a",
+          "size_mib": 4,
+          "kind": "ROLE_OUTPUT",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "ADAS.n02.a->ADAS.n02.b",
+          "source": "ADAS.n02.a",
+          "destination": "ADAS.n02.b",
+          "size_mib": 0.0625,
+          "kind": "SPLIT_INTERNAL",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "ADAS.n01.b->ADAS.n03.a",
+          "source": "ADAS.n01.b",
+          "destination": "ADAS.n03.a",
+          "size_mib": 4,
+          "kind": "ROLE_OUTPUT",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "ADAS.n03.a->ADAS.n03.b",
+          "source": "ADAS.n03.a",
+          "destination": "ADAS.n03.b",
+          "size_mib": 0.0625,
+          "kind": "SPLIT_INTERNAL",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "ADAS.n02.b->ADAS.n04.a",
+          "source": "ADAS.n02.b",
+          "destination": "ADAS.n04.a",
+          "size_mib": 1,
+          "kind": "ROLE_OUTPUT",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "ADAS.n04.a->ADAS.n04.b",
+          "source": "ADAS.n04.a",
+          "destination": "ADAS.n04.b",
+          "size_mib": 0.0625,
+          "kind": "SPLIT_INTERNAL",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "ADAS.n03.b->ADAS.n05.a",
+          "source": "ADAS.n03.b",
+          "destination": "ADAS.n05.a",
+          "size_mib": 2,
+          "kind": "ROLE_OUTPUT",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "ADAS.n04.b->ADAS.n05.a",
+          "source": "ADAS.n04.b",
+          "destination": "ADAS.n05.a",
+          "size_mib": 0.25,
+          "kind": "ROLE_OUTPUT",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "ADAS.n05.a->ADAS.n05.b",
+          "source": "ADAS.n05.a",
+          "destination": "ADAS.n05.b",
+          "size_mib": 0.0625,
+          "kind": "SPLIT_INTERNAL",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "ADAS.n05.b->ADAS.n06.a",
+          "source": "ADAS.n05.b",
+          "destination": "ADAS.n06.a",
+          "size_mib": 0.5,
+          "kind": "ROLE_OUTPUT",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "ADAS.n06.a->ADAS.n06.b",
+          "source": "ADAS.n06.a",
+          "destination": "ADAS.n06.b",
+          "size_mib": 0.0625,
+          "kind": "SPLIT_INTERNAL",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "ADAS.n05.b->ADAS.n07.a",
+          "source": "ADAS.n05.b",
+          "destination": "ADAS.n07.a",
+          "size_mib": 0.5,
+          "kind": "ROLE_OUTPUT",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "ADAS.n07.a->ADAS.n07.b",
+          "source": "ADAS.n07.a",
+          "destination": "ADAS.n07.b",
+          "size_mib": 0.0625,
+          "kind": "SPLIT_INTERNAL",
+          "classification": "PROPOSED"
+        },
+    
+ — Fixed suffix can hide an available public mapping improvement
+
+Source: S3:23–27,45–55,58,115; S10:COCKPIT-8 at 17–138; S12:display/route/compose/interaction/intent profiles; S13:COCKPIT edges18–95 and links639–702; S15:20–31; S22:173–174.
+
+This is a hand-authored public-state calculation using COCKPIT-8 topology and profile base estimates, not a generated input or proof of occurrence under a selected seed/B2 trajectory. No production snapshot or schedule artifact is created. Public history can be valid; actual complete B2 reachability/frequency is deliberately unclaimed.
+
+Let now=20. H_A and H_B use the complete COCKPIT-8 graph; H_A sorts first by deadline/service ID. All unmentioned required predecessors have known completions early enough that the stated running-prefix completion controls readiness. H_A has route n06 on CPU0, estimate8, start13, elapsed7, forecast release21; its display n04 is already complete on GPU0. Its only not-started nodes are compose n07 and interaction n08. H_B has intent n03 on CPU1, estimate1, start20, elapsed0, forecast release21; navigation n05 is complete on CPU3. Its unstarted nodes are display n04, route n06, compose n07, interaction n08. All other H nodes are completed with compatible fixed resources and predecessor identities.
+
+K consists only of two L terminal interaction nodes, each CPU-only estimate1 with all destination copies available by now20 and service deadline>=23. There are no other ready actions or pending H targets. L predecessors are already complete. CPU2/3 are idle. All 4² current-action assignments finish by23 (even both on a busy CPU, sequentially21..22 and22..23); they cannot delay the later H CPU suffix nodes. Thus none of the 16 K assignments alters the relevant suffix calendars. L cap admits the placements. There is no truncation or expired running estimate.
+
+Let lambda be the **exact rational encoded by binary64 0.05**, and let r=21. Edge sizes and power-of-two bandwidths below are exactly representable. Source forecasts use rational lambda, not a hidden true duration. The source suffix order is H_A.compose, H_A.interaction, then H_B.display, H_B.route, H_B.compose, H_B.interaction. Static Kahn/service ordering places earlier-service nodes first but allows insertion in later idle gaps.
+
+| Suffix node | Current fixed-EFT forecast finish (decimal display) | Alternative only H_A.compose→NPU (decimal display) |
+|---|---:|---:|
+| H_A compose | r+lambda+1/32+2 ≈23.08125, GPU | r+lambda+1/16+3 ≈24.1125, NPU |
+| H_A interaction | r+2lambda+101/32 ≈24.25625 | r+2lambda+69/16 ≈25.4125 |
+| H_B display | r+lambda+1/32+4 ≈25.08125, GPU | r+lambda+1/128+2 ≈23.0578125, GPU |
+| H_B route | r+lambda+1/32+7 ≈28.08125, GPU | r+lambda+1/128+5 ≈26.0578125, GPU |
+| H_B compose | r+lambda+1/32+9 ≈30.08125, GPU | r+lambda+1/128+7 ≈28.0578125, GPU |
+| H_B interaction | r+2lambda+325/32 ≈31.25625 | r+2lambda+1041/128 ≈29.2328125 |
+
+Why the baseline picks these resources: compose GPU2 beats NPU3 and CPU6 at its ready time; H_B display GPU2 beats CPU8 even after H_A's GPU reservation; H_B route GPU3 beats CPU8; subsequent compose remains fastest on GPU. The initial gap between H_B display's readiness r+lambda+1/128 and H_A's GPU start r+lambda+1/32 is only3/128ms, too short for display2. Changing only H_A's *suffix* mapping to NPU removes that GPU reservation. CPU tasks' later finish choices have spare identical cores; K cannot obstruct them after23. All edge copies use the source/destination bandwidths in S13, including GPU→CPU1/8 and NPU→CPU1/4 for the compose→interaction edge.
+
+The source's fixed-suffix diagnostic reports g=0 for every K assignment: expected FULL, E=1,F=1,hits=0, NO_IMPROVEMENT_IN_TESTED_SPACE. The hand alternative lies outside that enumeration, not outside the public information boundary. It gives:
+
+- b = 1 + 2lambda + 213/32 ≈7.75625.
+- o_alt = 1 + 2lambda + 1593/256 ≈7.32265625.
+- b-o_alt = 111/256ms > 0, and (111/256)/b > 1/20.
+
+These are **hand-calculated explanatory numbers**, not stored scientific gains or a new algorithm. They show FULL means complete coverage of the declared current-K/fixed-suffix space, not all public remaining-H mappings. The report does not propose implementing suffix search. Any observer change needs separate explicit UNAPPROVED design review. The current source already disclaims global absence; a permanent stop based on this surrogate is a conservative research-policy choice, not a deduction that the original mechanism is absent.
+
+

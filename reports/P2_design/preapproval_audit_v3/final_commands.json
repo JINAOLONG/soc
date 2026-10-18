@@ -1,0 +1,98 @@
+{
+  "namespace": "final",
+  "scope": "Actual substantive subprocess calls; discovery wrappers may be recorded separately",
+  "commands": [
+    {
+      "id": "final-001",
+      "argv": [
+        "python",
+        "reports/P2_design/preapproval_audit_v3/report_integrity_verifier.py.txt"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "REPORT_INTEGRITY_AND_DESIGN_FINDING_EXIT_CHECK",
+      "started_at_utc": "2026-10-18T14:01:12.276871+00:00",
+      "ended_at_utc": "2026-10-18T14:01:12.559780+00:00",
+      "exit_code": 1,
+      "expected_exit_code": 2,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/final-001.stdout.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/final-001.stderr.txt",
+        "sha256": "5f9808e099ab80939fe9bc00f060db33616dbd26c0e6a343ff3496a96cb8ab1e",
+        "size_bytes": 979
+      }
+    },
+    {
+      "id": "final-002",
+      "argv": [
+        "python",
+        "reports/P2_design/preapproval_audit_v3/decision_report_verifier.py.txt"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "REPORT_INTEGRITY_AND_SOURCE_REFERENCE_VERIFICATION",
+      "started_at_utc": "2026-10-18T14:01:52.689217+00:00",
+      "ended_at_utc": "2026-10-18T14:01:52.832536+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/final-002.stdout.txt",
+        "sha256": "719bf0e330fbe6bf25734d9540a9e7f2796f1ee7a0dcb6040c347008f4d8cfe0",
+        "size_bytes": 309
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/final-002.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "final-003",
+      "argv": [
+        "python",
+        "reports/P2_design/preapproval_audit_v3/report_integrity_verifier.py.txt"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "REPORT_INTEGRITY_AND_SOURCE_REFERENCE_VERIFICATION",
+      "started_at_utc": "2026-10-18T14:01:52.833031+00:00",
+      "ended_at_utc": "2026-10-18T14:01:53.157627+00:00",
+      "exit_code": 1,
+      "expected_exit_code": 2,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/final-003.stdout.txt",
+        "sha256": "d77f296abc6d938428cff9d3bdf3e827551b7426b704f2f3f4901e5693fd79e2",
+        "size_bytes": 874
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/final-003.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "final-004",
+      "argv": [
+        "python",
+        "reports/P2_design/preapproval_audit_v3/report_integrity_verifier.py.txt"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "REPORT_INTEGRITY_AND_DESIGN_FINDING_EXIT_CHECK",
+      "started_at_utc": "2026-10-18T14:02:00.438390+00:00",
+      "ended_at_utc": "2026-10-18T14:02:00.787311+00:00",
+      "exit_code": 2,
+      "expected_exit_code": 2,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/final-004.stdout.txt",
+        "sha256": "763dfd2afa3e557634e65e414c9b6228e73d1a900add5d7a5899ae454cc75433",
+        "size_bytes": 661
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/final-004.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    }
+  ]
+}

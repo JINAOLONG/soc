@@ -1,0 +1,97 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "execution_completion",
+    "artifact_integrity",
+    "input_seed_identity",
+    "selection_status",
+    "diagnostic_validity",
+    "mapping_classification",
+    "engineering_timing_prerequisite",
+    "p2_progression_status",
+    "reason_codes"
+  ],
+  "properties": {
+    "execution_completion": {
+      "enum": [
+        "NOT_STARTED",
+        "RUNNING",
+        "COMPLETE",
+        "FAILED",
+        "INCOMPLETE"
+      ]
+    },
+    "artifact_integrity": {
+      "enum": [
+        "NOT_CHECKED",
+        "VALID",
+        "MISSING",
+        "CORRUPT",
+        "INVALID"
+      ]
+    },
+    "input_seed_identity": {
+      "enum": [
+        "NOT_CHECKED",
+        "VALID",
+        "INVALID"
+      ]
+    },
+    "selection_status": {
+      "enum": [
+        "NOT_EVALUATED",
+        "SELECTED_ALL_18",
+        "NO_ELIGIBLE_CONDITION",
+        "INVALID_EVIDENCE"
+      ]
+    },
+    "diagnostic_validity": {
+      "enum": [
+        "NOT_RUN",
+        "VALID",
+        "POSITIVE_COVERAGE_ONLY",
+        "INSUFFICIENT_COVERAGE",
+        "INVALID",
+        "INCOMPLETE"
+      ]
+    },
+    "mapping_classification": {
+      "enum": [
+        "NOT_EVALUATED",
+        "SUPPORTED",
+        "NOT_SUPPORTED",
+        "INCONCLUSIVE"
+      ]
+    },
+    "engineering_timing_prerequisite": {
+      "enum": [
+        "NOT_FROZEN",
+        "FROZEN_PROTOCOL_VERIFIED",
+        "INVALID"
+      ]
+    },
+    "p2_progression_status": {
+      "enum": [
+        "BLOCKED",
+        "REQUIREMENTS_MET_PENDING_EXPLICIT_NEXT_STAGE_AUTHORIZATION"
+      ]
+    },
+    "reason_codes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ID"
+      }
+    }
+  }
+}
+D01 选择显式角色 DAG 还是确定性 grammar，并提供三场景的完整8/16节点拓扑、角色/H-L归属及尺寸规则。 ['P2-B1']
+D02 选择有来源的profile表或批准的合成规则，提供兼容集合、各资源估计/实际代价及全部参数/来源。 ['P2-B1']
+D03 提供边MiB与type-pair latency/bandwidth的完整表或有来源规则，保留既有通信语义。 ['P2-B1']
+D04 确定keyed扰动/PRNG/版本、到达/突发、H-L组成、deadline、服务数或窗口及停止边界的完整定义/值。 ['P2-B1']
+D05 确定枚举或有限轴展开，提供所有值/方法子集及理由/顺序/预算/seed到trial-condition-workload的精确映射。 ['P2-B2']
+D06 确定H可行性对照、压力/负载分类、配置选择/平局以及不达标、不可行、无效、失败、不完整的处置规则。 ['P2-B1', 'P2-B2']
+D07 选择M1机制诊断、M2基线描述或组合，确定观察量、反事实控制/视窗、信息边界和每seed/condition汇总。 ['P2-B3']
+D08 确定跨seed/条件聚合、稳定性、不确定性和三向结论的全部条件/参数及缺失无效处置，保持既有CI方法。 ['P2-B3']
+D09 选择runner架构，裁决完成产物精确复用、失败/不完整默认停止、重试登记和P2源码dirty控制。 ['P2-B4']
+D10 选择可验证的科学envelope或新schema+adapter，批准namespace、规范化、ID、provenance、引用与旧P1兼容验证范围。 ['P2-B5']

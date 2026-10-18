@@ -1,0 +1,293 @@
+{
+  "audited_commit": "a3680acf45c5578fc090cf53cc186f28a8e9b88a",
+  "files": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "5435e5e690a64e0e7f432bae22b8f459f646e12233d99a7a4b1a70266d8c9a22",
+      "size_bytes": 4586,
+      "lines": 63,
+      "matches_audited_commit": true,
+      "review_scope": "Full byte identity; content assigned across coordinated review components. Parsing alone is not semantic approval."
+    },
+    {
+      "path": "STATUS.md",
+      "sha256": "5f4c9fc321d22010400f260e8ed82a714b4a19453ae7b3102e04db93211f5222",
+      "size_bytes": 2207,
+      "lines": 56,
+      "matches_audited_commit": true,
+      "review_scope": "Full byte identity; content assigned across coordinated review components. Parsing alone is not semantic approval."
+    },
+    {
+      "path": "docs/P2_design/P2_complete_design_proposal_v1.md",
+      "sha256": "e378e85071d6c97fb6cd5801d9449eef176a90baddcd786181c6685eaa29feac",
+      "size_bytes": 28397,
+      "lines": 339,
+      "matches_audited_commit": true,
+      "review_scope": "Full byte identity; content assigned across coordinated review components. Parsing alone is not semantic approval."
+    },
+    {
+      "path": "docs/P2_design/P2_mapping_opportunity_decision_table_v1.md",
+      "sha256": "4c981f2f2303e1b1535168dd320e3c11151ea86ad35a502513893370a5906ea2",
+      "size_bytes": 4533,
+      "lines": 59,
+      "matches_audited_commit": true,
+      "review_scope": "Full byte identity; content assigned across coordinated review components. Parsing alone is not semantic approval."
+    },
+    {
+      "path": "docs/P2_design/v2/P2_D01_D10_approval_checklist_v2.md",
+      "sha256": "2bde515669146fe5432118c223c62d41fe37eb848ee525df08b42dc83bbd7c3b",
+      "size_bytes": 3857,
+      "lines": 19,
+      "matches_audited_commit": true,
+      "review_scope": "Full byte identity; content assigned across coordinated review components. Parsing alone is not semantic approval."
+    },
+    {
+      "path": "docs/P2_design/v2/P2_D01_D10_traceability_v2.csv",
+      "sha256": "578b0a1b6b3b990b9ae153b485ce0e2d92d3e068b92cd4a5bbc3f67723195c4d",
+      "size_bytes": 15283,
+      "lines": 54,
+      "matches_audited_commit": true,
+      "review_scope": "Full byte identity; content assigned across coordinated review components. Parsing alone is not semantic approval."
+    },
+    {
+      "path": "docs/P2_design/v2/P2_canonical_golden_vectors_v2.json",
+      "sha256": "c74cd5a06f0683e28857d07fee2791bbe6c3cf384bbe863f63bcaa6e176b3160",
+      "size_bytes": 13243,
+      "lines": 162,
+      "matches_audited_commit": true,
+      "review_scope": "Full byte identity; content assigned across coordinated review components. Parsing alone is not semantic approval."
+    },
+    {
+      "path": "docs/P2_design/v2/P2_communication_profiles_v2.json",
+      "sha256": "74f7dde644b11d0b459fb68e9f250d9799e34f09652609b63122e0de5bf6e3b8",
+      "size_bytes": 22387,
+      "lines": 752,
+      "matches_audited_commit": true,
+      "review_scope": "Full byte identity; content assigned across coordinated review components. Parsing alone is not semantic approval."
+    },
+    {
+      "path": "docs/P2_design/v2/P2_complete_design_proposal_v2.md",
+      "sha256": "7f929b85554193ef1256deb3f7cc184e47c362f91e93950896a80450c9eb5fe8",
+      "size_bytes": 17076,
+      "lines": 215,
+      "matches_audited_commit": true,
+      "review_scope": "Full byte identity; content assigned across coordinated review components. Parsing alone is not semantic approval."
+    },
+    {
+      "path": "docs/P2_design/v2/P2_criterion_spec_v2.json",
+      "sha256": "98a578944e7910db933f5b3b02aee4bb03de8005853024b38cc3b02630b04e38",
+      "size_bytes": 4139,
+      "lines": 103,
+      "matches_audited_commit": true,
+      "review_scope": "Full byte identity; content assigned across coordinated review components. Parsing alone is not semantic approval."
+    },
+    {
+      "path": "docs/P2_design/v2/P2_diagnostic_spec_v2.json",
+      "sha256": "9bec37d044f4c7742d931149c195c2c3ec1540d41dc3f0a899a2b29f8c7e3e90",
+      "size_bytes": 8809,
+      "lines": 120,
+      "matches_audited_commit": true,
+      "review_scope": "Full byte identity; content assigned across coordinated review components. Parsing alone is not semantic approval."
+    },
+    {
+      "path": "docs/P2_design/v2/P2_generation_spec_v2.json",
+      "sha256": "33e3ccf437510986ffa401eea1ef48e995a1ad08df38a834374d4a1c483a91f2",
+      "size_bytes": 13039,
+      "lines": 328,
+      "matches_audited_commit": true,
+      "review_scope": "Full byte identity; content assigned across coordinated review components. Parsing alone is not semantic approval."
+    },
+    {
+      "path": "docs/P2_design/v2/P2_mapping_opportunity_decision_table_v2.md",
+      "sha256": "594863a579ac32fdd980454fe6e0f0d24d165729a60f1c6f6526c8688fd296f4",
+      "size_bytes": 3542,
+      "lines": 48,
+      "matches_audited_commit": true,
+      "review_scope": "Full byte identity; content assigned across coordinated review components. Parsing alone is not semantic approval."
+    },
+    {
+      "path": "docs/P2_design/v2/P2_public_snapshot_spec_v2.json",
+      "sha256": "fa4ce177c2d4a49a5f8f5b30bfa44e2b0d529f1e735ddfa259ae1811edc2f1af",
+      "size_bytes": 4613,
+      "lines": 64,
+      "matches_audited_commit": true,
+      "review_scope": "Full byte identity; content assigned across coordinated review components. Parsing alone is not semantic approval."
+    },
+    {
+      "path": "docs/P2_design/v2/P2_resource_profiles_v2.json",
+      "sha256": "9eea5cfd43ce50d796a00d7cac86f9a7ca8798da4a3ea0c2fd9e598d965f13ae",
+      "size_bytes": 8858,
+      "lines": 370,
+      "matches_audited_commit": true,
+      "review_scope": "Full byte identity; content assigned across coordinated review components. Parsing alone is not semantic approval."
+    },
+    {
+      "path": "docs/P2_design/v2/P2_runner_schema_review_v2.md",
+      "sha256": "fd1a59638bf1754af0a6423b57873a6691af8c3559a1c1d62ceeeffda2da5099",
+      "size_bytes": 10655,
+      "lines": 118,
+      "matches_audited_commit": true,
+      "review_scope": "Full byte identity; content assigned across coordinated review components. Parsing alone is not semantic approval."
+    },
+    {
+      "path": "docs/P2_design/v2/P2_scientific_parameter_registry_v2.json",
+      "sha256": "15ee54e75f658d5f66edb00534003d3aed642f86736b2932ae61f0692e4559c2",
+      "size_bytes": 43099,
+      "lines": 1178,
+      "matches_audited_commit": true,
+      "review_scope": "Full byte identity; content assigned across coordinated review components. Parsing alone is not semantic approval."
+    },
+    {
+      "path": "docs/P2_design/v2/P2_stage_state_contract_v2.json",
+      "sha256": "c64803a93c74ee9dba6a7bc61de2d2e550264f2c5d4a920e1248665fa7e86b93",
+      "size_bytes": 10336,
+      "lines": 264,
+      "matches_audited_commit": true,
+      "review_scope": "Full byte identity; content assigned across coordinated review components. Parsing alone is not semantic approval."
+    },
+    {
+      "path": "docs/P2_design/v2/P2_trial_matrix_draft_v2.json",
+      "sha256": "b58fe4c2eead01fc9b92966d557ed0bb052e7387794fc0d9b58029ffdb90af0e",
+      "size_bytes": 1327918,
+      "lines": 3110,
+      "matches_audited_commit": true,
+      "review_scope": "Full byte identity; content assigned across coordinated review components. Parsing alone is not semantic approval."
+    },
+    {
+      "path": "docs/P2_design/v2/P2_typed_identity_schema_v2.json",
+      "sha256": "9b478cf7e96776f6cc69f29426715efed6eec2309270be1efb3dd77985ebfbc9",
+      "size_bytes": 85745,
+      "lines": 3381,
+      "matches_audited_commit": true,
+      "review_scope": "Full byte identity; content assigned across coordinated review components. Parsing alone is not semantic approval."
+    },
+    {
+      "path": "docs/P2_design/v2/P2_workload_templates_v2.json",
+      "sha256": "f282955ab09d0110f50447269b18d0389231bed9711532853d6cdbda92d9027c",
+      "size_bytes": 28557,
+      "lines": 1125,
+      "matches_audited_commit": true,
+      "review_scope": "Full byte identity; content assigned across coordinated review components. Parsing alone is not semantic approval."
+    },
+    {
+      "path": "docs/P2_design/v2/README.md",
+      "sha256": "bf21a587e3a4e0b11349f16fa11d20af75e64c30f38713383132bc1e40133ed0",
+      "size_bytes": 1416,
+      "lines": 19,
+      "matches_audited_commit": true,
+      "review_scope": "Full byte identity; content assigned across coordinated review components. Parsing alone is not semantic approval."
+    },
+    {
+      "path": "docs/baseline_spec.md",
+      "sha256": "54a1cdb86d0235671a7d1ece31e489289c026bf083f33388580b6f3fdbb42e12",
+      "size_bytes": 2826,
+      "lines": 38,
+      "matches_audited_commit": true,
+      "review_scope": "Full byte identity; content assigned across coordinated review components. Parsing alone is not semantic approval."
+    },
+    {
+      "path": "docs/metric_spec.md",
+      "sha256": "c4b912fc672979ddc763d882e546b7a92bf53090e5b5dddd5777e2e867df182a",
+      "size_bytes": 3242,
+      "lines": 52,
+      "matches_audited_commit": true,
+      "review_scope": "Full byte identity; content assigned across coordinated review components. Parsing alone is not semantic approval."
+    },
+    {
+      "path": "docs/model_spec.md",
+      "sha256": "3f74116fa6cb85e4f2db1c96d246ac830a282be28847a0af21184fde2e17197b",
+      "size_bytes": 4381,
+      "lines": 65,
+      "matches_audited_commit": true,
+      "review_scope": "Full byte identity; content assigned across coordinated review components. Parsing alone is not semantic approval."
+    },
+    {
+      "path": "docs/research_contract.md",
+      "sha256": "8ccd2f6fce470013af89c653eb3ff84a0b66809c56d321993cd973ebc18031e4",
+      "size_bytes": 3119,
+      "lines": 48,
+      "matches_audited_commit": true,
+      "review_scope": "Full byte identity; content assigned across coordinated review components. Parsing alone is not semantic approval."
+    },
+    {
+      "path": "docs/statistical_protocol.md",
+      "sha256": "f9c0eeb6e76f68330ba3e5d8d90e58d175c3947a1948bb41b26ad50dbc041e8a",
+      "size_bytes": 3081,
+      "lines": 47,
+      "matches_audited_commit": true,
+      "review_scope": "Full byte identity; content assigned across coordinated review components. Parsing alone is not semantic approval."
+    },
+    {
+      "path": "docs/user_request.txt",
+      "sha256": "4c3481f0c67553eaa6d2dd6f181cc8d3f792e40fdc9586547c1c2e91fb52b461",
+      "size_bytes": 57544,
+      "lines": 3302,
+      "matches_audited_commit": true,
+      "review_scope": "Full byte identity; content assigned across coordinated review components. Parsing alone is not semantic approval."
+    },
+    {
+      "path": "docs/workload_spec.md",
+      "sha256": "a098008f3abe47f4cfb830685009b19bf4d3555a8e370ad242a2fce1debea606",
+      "size_bytes": 1574,
+      "lines": 25,
+      "matches_audited_commit": true,
+      "review_scope": "Full byte identity; content assigned across coordinated review components. Parsing alone is not semantic approval."
+    },
+    {
+      "path": "reports/P2_design/design_revision_v2/human_decision_packet.md",
+      "sha256": "7c54a0f17c11036e1cb7f34b82734792746c946b20f5cf021c1ced298cc04367",
+      "size_bytes": 19494,
+      "lines": 261,
+      "matches_audited_commit": true,
+      "review_scope": "Full byte identity; content assigned across coordinated review components. Parsing alone is not semantic approval."
+    },
+    {
+      "path": "reports/P2_design/independent_review_v2/D01_D10_review_matrix.csv",
+      "sha256": "750738fec2d2f90e89fe0000a21d55e71ae427b69b5626e90e22c0c4c9450181",
+      "size_bytes": 24889,
+      "lines": 11,
+      "matches_audited_commit": true,
+      "review_scope": "Full byte identity; content assigned across coordinated review components. Parsing alone is not semantic approval."
+    },
+    {
+      "path": "reports/P2_design/independent_review_v2/critical_findings.md",
+      "sha256": "77f1435a708e379e760dd1f23ea56a1077913693f21ca4771e0fc7c584b1bd5a",
+      "size_bytes": 14512,
+      "lines": 157,
+      "matches_audited_commit": true,
+      "review_scope": "Full byte identity; content assigned across coordinated review components. Parsing alone is not semantic approval."
+    },
+    {
+      "path": "reports/P2_design/independent_review_v2/executive_decision.md",
+      "sha256": "0344c3d1ec6e0f1729bb758503f03dedf1fb780b00c55cbd9c60261b91d398b7",
+      "size_bytes": 4275,
+      "lines": 57,
+      "matches_audited_commit": true,
+      "review_scope": "Full byte identity; content assigned across coordinated review components. Parsing alone is not semantic approval."
+    },
+    {
+      "path": "reports/P2_design/independent_review_v2/findings.json",
+      "sha256": "a56925d56f431714fbdd334bee5303a3fb58234caf26c12fa98375ce0219933b",
+      "size_bytes": 15080,
+      "lines": 185,
+      "matches_audited_commit": true,
+      "review_scope": "Full byte identity; content assigned across coordinated review components. Parsing alone is not semantic approval."
+    },
+    {
+      "path": "reports/P2_design/independent_review_v2/required_changes.md",
+      "sha256": "df05818d4f8c8997a559d2a46ed0e01a1741090528f52277c36f99f1a2f6c0c8",
+      "size_bytes": 7222,
+      "lines": 75,
+      "matches_audited_commit": true,
+      "review_scope": "Full byte identity; content assigned across coordinated review components. Parsing alone is not semantic approval."
+    },
+    {
+      "path": "reports/P2_design/independent_review_v2/review_method_notes.md",
+      "sha256": "31b6737cbe12dbce6328c1161bd3f3a46fab88475e54a58321ead5dfc7a59fc6",
+      "size_bytes": 1105,
+      "lines": 14,
+      "matches_audited_commit": true,
+      "review_scope": "Full byte identity; content assigned across coordinated review components. Parsing alone is not semantic approval."
+    }
+  ]
+}

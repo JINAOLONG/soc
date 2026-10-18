@@ -1,0 +1,275 @@
+FILE src/soc/simulator/engine.py
+1: """D1 event engine. The only scheduler call argument is an immutable Observation."""
+2: from __future__ import annotations
+3: 
+4: from dataclasses import asdict
+5: import heapq
+6: from typing import Callable
+7: 
+8: from soc.model.schema import Workload, ModelError, communication, number
+9: from soc.model.observation import Observation, Running, Completed, observe, dependency_ready
+10: from soc.scheduler.kernels import Proposal, choose
+11: from soc.metrics.fixture import summarize
+12: 
+13: 
+14: class DeadlockError(RuntimeError):
+15:     pass
+16: 
+17: 
+18: def simulate(workload: Workload, method: str,
+19:              policy: Callable[[Observation], Proposal | None] | None = None) -> dict:
+20:     """Execute only the supplied input; never derive a seed or materialize a job.
+21: 
+22:     Optional policies are for synthetic negative tests. Normal B1–B5 accept only
+23:     public observations. This function exposes no queue or realized duration to
+24:     the policy, and makes no performance/host-timing claims.
+25:     """
+26:     if method not in {"B1", "B2", "B3", "B4", "B5"}:
+27:         raise ValueError("unknown baseline")
+28:     queue = [(s.arrival, 1, s.id, "", "") for s in workload.services]
+29:     heapq.heapify(queue)
+30:     services = {s.id: s for s in workload.services}
+31:     nodes = {(s.id, n.id): n for s in workload.services for n in s.nodes}
+32:     running: dict[tuple[str, str], dict] = {}
+33:     completed: dict[tuple[str, str], Completed] = {}
+34:     events, executions, decisions = [], [], []
+35:     now = 0.0
+36:     controller = policy if policy is not None else lambda view: choose(view, method)
+37:     while queue or running or len(completed) < len(nodes):
+38:         # Full batches are drained before the first observation at this time.
+39:         while queue and queue[0][0] == now:
+40:             at, phase, service, node, resource = heapq.heappop(queue)
+41:             if phase == 0:
+42:                 row = running.pop((service, node))
+43:                 completed[service, node] = Completed(service, node, resource, at)
+44:                 events.append(dict(time=at, kind="complete", service=service, node=node, resource=resource))
+45:             else:
+46:                 events.append(dict(time=at, kind="arrival", service=service, node="", resource=""))
+47:         while True:
+48:             view = observe(workload, now,
+49:                            tuple(Running(s, n, r["resource"], r["start"], now-r["start"])
+50:                                  for (s, n), r in running.items()), tuple(completed.values()))
+51:             proposal = controller(view)
+52:             decisions.append(dict(time=now, observation=asdict(view),
+53:                                   proposal=asdict(proposal) if proposal is not None else None))
+54:             if proposal is None:
+55:                 break
+56:             key = proposal.service, proposal.node
+57:             if key not in dependency_ready(view):
+58:                 raise ModelError("policy attempted non-ready/duplicate task")
+59:             node = nodes[key]
+60:             cost = node.cost(proposal.resource)
+61:             if any(r["resource"] == proposal.resource for r in running.values()):
+62:                 raise ModelError("policy attempted occupied resource")
+63:             for edge in node.predecessors:
+64:                 pred = completed[proposal.service, edge.node]
+65:                 if now < pred.finish + communication(workload, pred.resource, proposal.resource, edge.size):
+66:                     raise ModelError("policy attempted start before data ready")
+67:             finish = now + cost.realized
+68:             number(finish, "actual completion", positive=True)
+69:             if finish <= now:
+70:                 raise ModelError("duration below representable virtual-time resolution")
+71:             row = dict(service=proposal.service, node=proposal.node, resource=proposal.resource,
+72:                        start=now, finish=finish)
+73:             running[key] = row
+74:             executions.append(row.copy())
+75:             events.append(dict(time=now, kind="start", service=proposal.service,
+76:                                node=proposal.node, resource=proposal.resource))
+77:             heapq.heappush(queue, (finish, 0, proposal.service, proposal.node, proposal.resource))
+78:         if len(completed) == len(nodes) and not queue:
+79:             break
+80:         # Data arrival is a wakeup, not a fabricated resource reservation.
+81:         wakeups = []
+82:         busy = {r["resource"] for r in running.values()}
+83:         for service, node_id in dependency_ready(view):
+84:             node = nodes[service, node_id]
+85:             for cost in node.durations:
+86:                 if cost.resource in busy:
+87:                     continue
+88:                 ready = max((completed[service, e.node].finish + communication(
+89:                     workload, completed[service, e.node].resource, cost.resource, e.size)
+90:                     for e in node.predecessors), default=services[service].arrival)
+91:                 if ready > now:
+92:                     wakeups.append(ready)
+93:         candidates = ([queue[0][0]] if queue else []) + wakeups
+94:         if not candidates:
+95:             raise DeadlockError("unfinished admitted nodes, no legal start or future event/data wakeup")
+96:         next_time = min(candidates)
+97:         if next_time <= now:
+98:             raise DeadlockError("event progression failed")
+99:         now = next_time
+100:     return dict(schema_version=1, origin="HAND_AUTHORED_CORRECTNESS_FIXTURE", method=method,
+101:                 executions=executions, events=events, decisions=decisions,
+102:                 metrics=summarize(workload, executions))
+FILE src/soc/scheduler/kernels.py
+160:             return service.deadline, s, n
+161:         if method == "B2":
+162:             return service.group != "H", service.deadline, s, n
+163:         if method == "B3":
+164:             return -rank[n], s, n
+165:         if method == "B4":
+166:             return -oct_rank[n], s, n
+167:         return service.group != "H", -oct_rank[n], s, n
+168:     return tuple(sorted(dependency_ready(view), key=key))
+169: 
+170: 
+171: def choose(view: Observation, method: str) -> Proposal | None:
+172:     """D5: best mapping may wait; continue scanning others; reserve nothing."""
+173:     _, oct_table, _ = online_tables(view) if method in {"B4", "B5"} else ({}, {}, {})
+174:     for service, node in ordered_ready(view, method):
+175:         proposals = predictions(view, service, node, oct_table[node] if method in {"B4", "B5"} else None)
+176:         if proposals[0].feasible_now:
+177:             return proposals[0]
+178:     return None
+FILE docs/baseline_spec.md
+1: # Baselines — original sources reviewed; P1 online adaptation implemented
+2: 
+3: All methods share one immutable observation boundary, workload, compatibility,
+4: communication semantics and deterministic tie rule. Root/ready eligibility never
+5: uses future arrivals or unfinished predecessor truth. Estimated finish prediction
+6: on a busy unit must use observable elapsed execution and estimates. A processor
+7: selection proposal is revocable until the task starts; dispatch must recheck
+8: actual feasibility and may not reserve an idle unit indefinitely by accident.
+9: The user approved the precise online adaptation rules D1–D5 during the P1 task.
+10: Their authoritative definition and acceptance dependencies are in
+11: [P1_implementation_spec.md](P1_implementation_spec.md). They must be tested
+12: before P1 is marked complete.
+13: 
+14: | ID | Ready-node ordering | Mapping | Status |
+15: |---|---|---|---|
+16: | B1 | ascending service absolute deadline | minimum estimated finish among compatible units | implemented; P1 report provides actual correctness evidence |
+17: | B2 | H before L, then ascending service absolute deadline | same EFT rule as B1 | fixed L-budget reference; implemented |
+18: | B3 | Online-HEFT adaptation; original upward rank source-verified | insertion/EFT with approved D1–D5 online dispatch | implemented; original static method distinguished |
+19: | B4 | Online-PEFT adaptation; original OCT/rank source-verified | insertion/OEFT with approved D1–D5 online dispatch | implemented; original static method distinguished |
+20: | B5 | H-priority Online-PEFT adaptation | same mapping requirement as B4 | implemented; source and adaptation kept separate |
+21: 
+22: The actual user-provided originals are now reviewed in
+23: [heft_cpop.md](literature_reviews/heft_cpop.md) and
+24: [peft.md](literature_reviews/peft.md), with equations, figures, page numbers and
+25: version/provenance limits. This is an evidence-status update, not a change to any
+26: baseline requirement or an implementation. Original HEFT rank ties are random;
+27: PEFT OCT excludes availability while EFT includes partial-schedule availability.
+28: Online adaptation still must explicitly specify visible DAG set, ready filtering,
+29: compatibility, busy-resource handling, rank/OCT refresh, idle/wait behavior, ties
+30: and boundary cases before P1 can be complete. The previous local-PDF task did
+31: not authorize implementation; the separate P1 task and explicit D1–D5 replies
+32: now authorize the documented adaptation. Online adaptations must never be presented
+33: as the original static algorithms.
+34: 
+35: Required P1 evidence: distinguish B1/B2 by hand fixture; verify ranks/OCT against
+FILE docs/P2_design/scientific_artifacts.schema.draft.json
+40:         },
+41:         "sha256": {
+42:           "$ref": "#/$defs/sha256"
+43:         },
+44:         "bytes": {
+45:           "type": "integer",
+46:           "minimum": 0
+47:         },
+48:         "media_type": {
+49:           "type": "string"
+50:         }
+51:       }
+52:     },
+53:     "sourceIdentity": {
+54:       "type": "object",
+55:       "additionalProperties": false,
+56:       "required": [
+57:         "git_commit",
+58:         "dirty_status",
+59:         "source_sha256",
+60:         "model_ref",
+61:         "config_ref",
+62:         "test_identity_ref"
+63:       ],
+64:       "properties": {
+65:         "git_commit": {
+66:           "type": "string",
+67:           "pattern": "^[0-9a-f]{40}$"
+68:         },
+69:         "dirty_status": {
+70:           "type": "string"
+71:         },
+72:         "source_sha256": {
+73:           "$ref": "#/$defs/sha256"
+74:         },
+75:         "model_ref": {
+76:           "$ref": "#/$defs/artifactRef"
+77:         },
+78:         "config_ref": {
+79:           "$ref": "#/$defs/artifactRef"
+80:         },
+81:         "test_identity_ref": {
+82:           "$ref": "#/$defs/artifactRef"
+83:         }
+FILE docs/user_request.txt
+2498: 
+2499: LAST_COMMAND=
+2500: RESULT_PATHS=
+2501: NEXT_ALLOWED_ACTION=
+2502: 
+2503: 不得长期过时。
+2504: 
+2505: ============================================================
+2506: 90. 每次 scientific run manifest
+2507: ============================================================
+2508: 
+2509: 每个 run 至少记录：
+2510: 
+2511: run id
+2512: timestamp
+2513: Git commit
+2514: dirty status
+2515: source SHA256
+2516: config SHA256
+2517: workload SHA256
+2518: partition
+2519: seed
+2520: scene
+2521: load
+2522: size
+2523: method
+2524: host
+2525: command
+2526: result
+2527: validity。
+2528: 
+2529: ============================================================
+2530: 91. 科学 run 与 Git
+2531: ============================================================
+2532: 
+2533: development precheck
+2534: validation
+2535: formal
+2536: 
+2537: 必须运行在：
+2538: 
+2539: 已经 commit 的 source state。
+2540: 
+2541: 正式冻结阶段禁止：
+2542: 
+2543: 无法解释的 dirty scheduler source。
+2544: 
+2545: 如果 dirty：
+2546: 
+2547: STOP。
+2548: 
+2549: 先确认变化。
+2550: 
+2551: ============================================================
+2552: 92. 数据完整性
+2553: ============================================================
+2554: 
+2555: 阶段结束：
+2556: 
+2557: 生成 SHA256 manifest。
+2558: 
+2559: 核验：
+2560: 
+2561: missing=0
+2562: mismatch=0
+2563: duplicate identity=0
+2564: unexpected seed=0
+2565: unexpected method=0
+ADAS_TEMPLATE ADAS-8-v1 roots ['ADAS.n01'] positive_cost_scales ['1'] nonroot_count 7
+ADAS_TEMPLATE ADAS-16-v1 roots ['ADAS.n01.a'] positive_cost_scales ['1/2'] nonroot_count 15

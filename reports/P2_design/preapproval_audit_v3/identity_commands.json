@@ -1,0 +1,76 @@
+{
+  "namespace": "identity",
+  "scope": "Actual substantive subprocess calls; discovery wrappers may be recorded separately",
+  "commands": [
+    {
+      "id": "identity-001",
+      "argv": [
+        "python",
+        "reports/P2_design/preapproval_audit_v3/identity_static_review.py.txt"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "STATIC_DOCUMENT_AND_NONSCIENTIFIC_METADATA_INSPECTION",
+      "started_at_utc": "2026-10-18T13:47:48.990422+00:00",
+      "ended_at_utc": "2026-10-18T13:47:49.032933+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/identity-001.stdout.txt",
+        "sha256": "89714dc60689bcc2e573f33df5107074c285968d4b2e507f969742fc24071131",
+        "size_bytes": 456
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/identity-001.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "identity-002",
+      "argv": [
+        "python",
+        "reports/P2_design/preapproval_audit_v3/identity_static_review.py.txt"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "STATIC_DOCUMENT_INSPECTION_WITH_ALL_LISTED_JSON_SOURCES_PARSED",
+      "started_at_utc": "2026-10-18T13:51:20.042745+00:00",
+      "ended_at_utc": "2026-10-18T13:51:20.085125+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/identity-002.stdout.txt",
+        "sha256": "89714dc60689bcc2e573f33df5107074c285968d4b2e507f969742fc24071131",
+        "size_bytes": 456
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/identity-002.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "identity-003",
+      "argv": [
+        "python",
+        "-c",
+        "import json,hashlib,pathlib; r=pathlib.Path('.'); p=r/'reports/P2_design/preapproval_audit_v3'; f=json.loads((p/'identity_findings.json').read_text()); sources=json.loads((p/'identity_source_reads.json').read_text())['sources']; refs=[s for x in f['findings'] for s in x['sources']]; assert all(hashlib.sha256((r/s['path']).read_bytes()).hexdigest()==s['sha256'] for s in sources+refs); assert all(1<=s['lines'][0]<=s['lines'][1]<=len((r/s['path']).read_text().splitlines()) for s in refs); assert len(sources)==19; assert len(f['findings'])==3; assert all(x['approval']=='UNAPPROVED' for x in f['findings']); print(json.dumps({'source_files':len(sources),'finding_citations':len(refs),'hashes_and_line_bounds':'MATCH','findings':len(f['findings']),'runtime_tests_executed':False}))"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "VERIFY_IDENTITY_REPORT_REFERENCES_AND_SCOPE",
+      "started_at_utc": "2026-10-18T13:51:20.085436+00:00",
+      "ended_at_utc": "2026-10-18T13:51:20.121514+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/identity-003.stdout.txt",
+        "sha256": "3ebce0e5ed89e90a17e2bcd5c1aacad64f119621c5a3a8e0914f852dd05110d2",
+        "size_bytes": 129
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/identity-003.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    }
+  ]
+}

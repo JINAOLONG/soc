@@ -1,0 +1,367 @@
+{
+  "document_kind": "EXECUTION_SELECTION_AND_PROGRESSION_CONTRACT",
+  "document_version": "v2",
+  "status": "DRAFT_UNAPPROVED_NONEXECUTABLE",
+  "classification": "PROPOSED",
+  "approval": "UNAPPROVED",
+  "approved": false,
+  "frozen": false,
+  "executable": false,
+  "execution_authorized": false,
+  "read_by_pipeline": false,
+  "starting_commit": "79f9c245b23119ce25175d6dc6ff148e9e092461",
+  "state_schema": "P2_typed_identity_schema_v2.json#/$defs/GATE_STATE",
+  "state_fields": {
+    "execution_completion": {
+      "enum": [
+        "NOT_STARTED",
+        "RUNNING",
+        "COMPLETE",
+        "FAILED",
+        "INCOMPLETE"
+      ]
+    },
+    "artifact_integrity": {
+      "enum": [
+        "NOT_CHECKED",
+        "VALID",
+        "MISSING",
+        "CORRUPT",
+        "INVALID"
+      ]
+    },
+    "input_seed_identity": {
+      "enum": [
+        "NOT_CHECKED",
+        "VALID",
+        "INVALID"
+      ]
+    },
+    "selection_status": {
+      "enum": [
+        "NOT_EVALUATED",
+        "SELECTED_ALL_18",
+        "NO_ELIGIBLE_CONDITION",
+        "INVALID_EVIDENCE"
+      ]
+    },
+    "diagnostic_validity": {
+      "enum": [
+        "NOT_RUN",
+        "VALID",
+        "POSITIVE_COVERAGE_ONLY",
+        "INSUFFICIENT_COVERAGE",
+        "INVALID",
+        "INCOMPLETE"
+      ]
+    },
+    "mapping_classification": {
+      "enum": [
+        "NOT_EVALUATED",
+        "SUPPORTED",
+        "NOT_SUPPORTED",
+        "INCONCLUSIVE"
+      ]
+    },
+    "engineering_timing_prerequisite": {
+      "enum": [
+        "NOT_FROZEN",
+        "FROZEN_PROTOCOL_VERIFIED",
+        "INVALID"
+      ]
+    },
+    "p2_progression_status": {
+      "enum": [
+        "BLOCKED",
+        "REQUIREMENTS_MET_PENDING_EXPLICIT_NEXT_STAGE_AUTHORIZATION"
+      ]
+    },
+    "reason_codes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ID"
+      }
+    }
+  },
+  "current_design_values": {
+    "execution_completion": "NOT_STARTED",
+    "artifact_integrity": "NOT_CHECKED",
+    "input_seed_identity": "NOT_CHECKED",
+    "selection_status": "NOT_EVALUATED",
+    "diagnostic_validity": "NOT_RUN",
+    "mapping_classification": "NOT_EVALUATED",
+    "engineering_timing_prerequisite": "NOT_FROZEN",
+    "p2_progression_status": "BLOCKED",
+    "reason_codes": [
+      "DESIGN_UNAPPROVED",
+      "IMPLEMENTATION_NOT_VALIDATED",
+      "EXECUTION_NOT_AUTHORIZED",
+      "TIMING_PROTOCOL_NOT_FROZEN"
+    ]
+  },
+  "load_classification": {
+    "order": [
+      "REGISTERED",
+      "EXECUTED_SET_COMPLETE_OR_FAIL_CLOSED",
+      "VALID_INPUT_AND_TRACE_AND_REPLAY",
+      "CONTROL_QUALIFICATION",
+      "DECLARED_TARGET_LOAD_MATCH",
+      "ELIGIBLE_OR_INELIGIBLE",
+      "SELECT_FIRST_A_ELSE_B",
+      "SELECTED_OR_NO_ELIGIBLE"
+    ],
+    "pressure": "p_seed=max_r exact_measure(busy intervals intersect[0,W))/W; p=mean over10 seeds; finite[0,1] required, no clamp",
+    "bands": [
+      {
+        "load": "light",
+        "pressure_low": "0",
+        "low_inclusive": true,
+        "pressure_high": "1/2",
+        "high_inclusive": false,
+        "H_DMR_mean_max": "1/100",
+        "L_DMR_mean_max": "1/100"
+      },
+      {
+        "load": "medium",
+        "pressure_low": "1/2",
+        "low_inclusive": true,
+        "pressure_high": "4/5",
+        "high_inclusive": false,
+        "H_DMR_mean_min": "1/100",
+        "H_DMR_mean_max": "4/5",
+        "each_seed_busy_wait_required": true
+      },
+      {
+        "load": "near-saturation",
+        "pressure_low": "4/5",
+        "low_inclusive": true,
+        "pressure_high": "1",
+        "high_inclusive": true,
+        "H_DMR_mean_min": "1/100",
+        "H_DMR_mean_max": "4/5",
+        "each_seed_busy_wait_required": true
+      }
+    ],
+    "waiting": "At least one strictly positive assigned-resource busy interval after dependency/data readiness on some node per MAIN-B2 seed; exact interval measure from validated trace, not all policy idle waiting.",
+    "controls": "All10 H_ISOLATED no-service-overlap and all H on-time; all10 LOW_COMPETITION no-service-overlap and all H/L on-time. Miss/no isolation =>NO_CONTROL_WITNESS and config ineligible, not universal infeasibility.",
+    "invalid": "Missing/nonfinite required stats, wrong counts, malformed transform/input/seed, illegal trace, metric/replay mismatch =>INVALID_EVIDENCE, stop entire plan; no relabel/retry.",
+    "valid_off_target": "A valid complete set failing control/target predicates remains valid scientific evidence but INELIGIBLE; no other load label is substituted.",
+    "selection": "First eligible A else B across all10 seeds; selected18 conditions required. Same selected-calibration data not an independent confirmatory dataset."
+  },
+  "feasibility": {
+    "mathematical": "Exact-real m_v=min compatible actual duration; e_uv=min legal compatible transfer; ell_v=m_v+max_pred(ell_u+e_uv), empty max0; LB=max nodes. Sufficient infeasible if LB>D, not converse.",
+    "computational": "Offline absolute binary64 lower bound: compute each c_min using SAME per-operation RN64(latency+RN64(size/bandwidth)) or same-unit0 over legal compatible pairs. m_v=min actual binary64 durations. R_v=max(arrival, max_pred RN64(B_pred+c_min)); B_v=RN64(R_v+m_v). B_service=max_v B_v; absolute deadline=RN64(arrival+relative_deadline). CERTIFIED_NATURALLY_INFEASIBLE iff B_service>absolute_deadline. Equality is NOT certified; no subtraction to a relative bound, no epsilon.",
+    "proof": "Finite nonnegative RN64 operations are monotone. Inductively B_pred<=actual pred finish, c_min<=chosen delay and m_v<=chosen duration; same grouping then implies B_v<=actual finish. Reject nonfinite/overflow rather than certify.",
+    "privacy": "Actual durations/certificates are offline validator-only, excluded from PUBLIC_SNAPSHOT, scheduler and M1R.",
+    "statuses": [
+      "CERTIFIED_NATURALLY_INFEASIBLE",
+      "FEASIBILITY_NOT_ESTABLISHED",
+      "CONTROL_SPECIFIC_FEASIBILITY_WITNESS",
+      "INPUT_OR_TRACE_INVALID"
+    ],
+    "witness_scope": "Control-specific only, never a claim about MAIN admission stream; correctness failure separate."
+  },
+  "group_counts": {
+    "MAIN": {
+      "total": 100,
+      "H": 50,
+      "L": 50
+    },
+    "H_ISOLATED": {
+      "total": 50,
+      "H": 50,
+      "L": 0
+    },
+    "LOW_COMPETITION": {
+      "total": 100,
+      "H": 50,
+      "L": 50
+    }
+  },
+  "control_na_token": "NOT_APPLICABLE_CONTROL",
+  "window_semantics": "P2_generation_spec_v2.json#/windows",
+  "per_trial_complete": [
+    "actual primary process started+exit0",
+    "valid source/approval/seed/descriptor/resolved input lineage",
+    "all required input/trace/log/snapshot refs match raw SHA and sizes",
+    "independent physical trace PASS",
+    "independent metric recomputation exact",
+    "one registered deterministic replay exact",
+    "no errors",
+    "atomic completion receipt published"
+  ],
+  "stage_execution_complete": "All2520 trial identities COMPLETE or exact-match reused; missing/mismatch/duplicates/unexpected seed/method/condition=0. Both A/B retained. This does not imply selected18, diagnostic support or timing frozen.",
+  "progression_conjunction": [
+    "all decisions explicitly approved and actual implementation/lineage validated",
+    "separate execution authorization valid",
+    "P0/P1 actual gates PASS for exact source",
+    "execution_completion COMPLETE",
+    "artifact_integrity VALID",
+    "input_seed_identity VALID",
+    "selection_status SELECTED_ALL_18",
+    "diagnostic_validity VALID or POSITIVE_COVERAGE_ONLY with registered positive coverage",
+    "mapping_classification SUPPORTED",
+    "engineering_timing_prerequisite FROZEN_PROTOCOL_VERIFIED",
+    "all required workload/config/generator/criterion/engineering protocol freeze receipts verified"
+  ],
+  "progression_false": "Any false/unknown prerequisite ->BLOCKED. REQUIREMENTS_MET_PENDING_EXPLICIT_NEXT_STAGE_AUTHORIZATION is future conditional status, never an unlock or permission; existing gate files/code unchanged.",
+  "timing": {
+    "current": "NOT_FROZEN",
+    "matrix_runs": 0,
+    "decision_P95_target_ms": 2,
+    "measurement_status": "NOT_MEASURED",
+    "required_before_progression": "Separately approve/freeze exact timing inputs/warmup/repetitions/timer/aggregation and verify protocol identity; do not invent measurements or drop requirement.",
+    "H_L_targets": "Unchanged research-contract H/L targets belong to later candidate evaluation; mapping support does not mean they pass."
+  },
+  "proposed_orchestrator_exits": [
+    {
+      "code": 0,
+      "meaning": "Future all progression requirements met; still no automatic next-stage authorization"
+    },
+    {
+      "code": 2,
+      "meaning": "Precondition/identity/approval rejection before prohibited operation"
+    },
+    {
+      "code": 3,
+      "meaning": "Actual engine/generation failure, raw child code separately recorded"
+    },
+    {
+      "code": 4,
+      "meaning": "Invalid/corrupt/verification mismatch"
+    },
+    {
+      "code": 5,
+      "meaning": "Interrupted/incomplete"
+    },
+    {
+      "code": 6,
+      "meaning": "Valid completed calibration but no eligible selection, NOT_SUPPORTED/INCONCLUSIVE or timing NOT_FROZEN; progression blocked"
+    }
+  ],
+  "exit_semantics": "Actual child exit always saved verbatim/null if not started/unknown. Child0, report-writer0 or COMPLETE alone never authorizes progression. These are proposed future interface codes, not executed current pipeline returns.",
+  "legal_transitions": {
+    "execution_completion": [
+      "NOT_STARTED->RUNNING",
+      "RUNNING->COMPLETE",
+      "RUNNING->FAILED",
+      "RUNNING->INCOMPLETE"
+    ],
+    "integrity": [
+      "NOT_CHECKED->VALID",
+      "NOT_CHECKED->MISSING",
+      "NOT_CHECKED->CORRUPT",
+      "NOT_CHECKED->INVALID"
+    ],
+    "classification": [
+      "NOT_EVALUATED->SUPPORTED",
+      "NOT_EVALUATED->NOT_SUPPORTED",
+      "NOT_EVALUATED->INCONCLUSIVE"
+    ],
+    "terminal_rule": "Terminal evidence immutable. No BLOCKED->eligible unless every registered conjunction is independently proven under newly explicit authorization; missing/failed cannot become valid by relabel."
+  },
+  "binding_to_existing_gate": "Proposed stage report must carry every GATE_STATE field and immutable refs. Future gate consumer must verify conjunction, not exit0/COMPLETE. No existing P2_mapping_opportunity.json or governance code is modified."
+}
+{
+  "document_kind": "MAPPING_OPPORTUNITY_CRITERION",
+  "document_version": "v2",
+  "status": "DRAFT_UNAPPROVED_NONEXECUTABLE",
+  "classification": "PROPOSED",
+  "approval": "UNAPPROVED",
+  "approved": false,
+  "frozen": false,
+  "executable": false,
+  "execution_authorized": false,
+  "read_by_pipeline": false,
+  "starting_commit": "79f9c245b23119ce25175d6dc6ff148e9e092461",
+  "observer_id": "M1R_PATH_V2",
+  "threshold_bundle_selection": "UNAPPROVED_NO_DEFAULT",
+  "bundles": [
+    {
+      "id": "FINE",
+      "tau": "1/100",
+      "frequency": "1/100",
+      "support_seed_count": 8,
+      "absence_seed_count_max": 2
+    },
+    {
+      "id": "COARSE",
+      "tau": "1/20",
+      "frequency": "1/20",
+      "support_seed_count": 8,
+      "absence_seed_count_max": 2
+    }
+  ],
+  "coverage_thresholds": {
+    "support_min_each_seed_condition": "4/5",
+    "negative_required_each_seed_condition": "1",
+    "approval": "UNAPPROVED"
+  },
+  "units": {
+    "independent_resampling_unit": "paired registered calibration seed",
+    "observation_unit": "deduplicated fully covered primary MAIN-B2 public state",
+    "eligible_count": "E",
+    "covered_count": "F",
+    "hit_count": "hits",
+    "opportunity_rate": "hits/F",
+    "coverage": "F/E",
+    "partial_not_zero": true
+  },
+  "preconditions": [
+    "definition/criterion explicitly approved before data",
+    "all2520 primary/replay/validation/artifact sets complete valid",
+    "all18 conditions selected by fixed B2 qualification before diagnostic inspection",
+    "all expected primary B2 snapshot streams complete and independently checked",
+    "each of12 selected medium/near conditions has10 paired seeds",
+    "each seed/condition E>0 and F>0",
+    "zero INVALID/INCOMPLETE diagnostic record"
+  ],
+  "bootstrap": {
+    "method": "unchanged10000 paired-seed percentile95%, type7(.025,.975), fixed analysis_seed20261018",
+    "key_schema": "P2_typed_identity_schema_v2.json#/$defs/ANALYSIS_INDEX_KEY",
+    "index": "SHA256 SEMANTIC_CANON_V2(key); q first64 big-endian; limit=18446744073709551610; if q>=limit increment counter else index=q%10; each replicate10 indices, same vector across all methods/conditions",
+    "indices_generated_this_task": false,
+    "aggregate": "Within each condition resample paired seed p and take seed mean. Mandatory descriptive macro: within each seed equal-weight mean of12 selected loaded conditions, then mean over seeds; reuse same bootstrap seed-index vector for every condition/method/macro. Macro never compensates for any condition failure.",
+    "interpretation": "Pointwise descriptive intervals conditional on selected calibration configs and VALID_FULL coverage; not independent confirmatory evidence or simultaneous-coverage claim."
+  },
+  "decision_order": [
+    {
+      "priority": 0,
+      "when": "No scientific evaluation executed",
+      "classification": "NOT_EVALUATED"
+    },
+    {
+      "priority": 1,
+      "when": "Evaluation attempted but any precondition or support coverage fails",
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "priority": 2,
+      "when": "All preconditions; every seed/condition coverage>=4/5; each of12 conditions CI_low>=f and count_seed(p>=f)>=8",
+      "classification": "SUPPORTED"
+    },
+    {
+      "priority": 3,
+      "when": "All preconditions; every seed/condition coverage=1; each of12 conditions CI_high<f and count_seed(p>=f)<=2",
+      "classification": "NOT_SUPPORTED"
+    },
+    {
+      "priority": 4,
+      "when": "All remaining cases, including partial coverage preventing negative interpretation",
+      "classification": "INCONCLUSIVE"
+    }
+  ],
+  "scope": "SUPPORTED concerns projected remaining-H-path opportunity in this bounded public model only; not actual H benefit/L compliance or independent causal mapping success. NOT_SUPPORTED stops this operational mainline under the registered criterion but is not universal absence proof. INCONCLUSIVE cannot PASS.",
+  "parameters_ref": {
+    "file": "P2_scientific_parameter_registry_v2.json",
+    "ids": [
+      "SP28",
+      "SP29",
+      "SP30",
+      "SP31",
+      "SP32",
+      "SP36",
+      "SP39"
+    ]
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "review_kind": "FRESH_ADVERSARIAL_REPORT_ONLY_SAME_ASSISTANT",
+  "scientific_workloads_generated": 0,
+  "scientific_workloads_run": 0,
+  "new_seeds_generated": false,
+  "locks_or_runners_implemented": false,
+  "runtime_tests_executed": false,
+  "observation_assertions_passed": 47,
+  "observation_assertions_failed": 0,
+  "acceptance_note": "Observation checks include confirmed unresolved defects; zero assertion failures is not design acceptance."
+}

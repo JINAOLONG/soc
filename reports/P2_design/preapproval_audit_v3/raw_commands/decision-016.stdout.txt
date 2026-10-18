@@ -1,0 +1,458 @@
+推荐M1作为局部机制证据、M2作为补充描述，两者不能作为候选算法。
+SOURCE_SUPPORTED：原始需求§44允许2–4 ready任务的局部枚举diagnostic oracle；
+原需求§23禁止未来信息。下述具体目标/截断/记录点都是新增提案。
+
+M1在B2主运行每次公共view刷新、派发调用前记录（包括一次派发后的新view），以
+(run_id,decision_seq,public_view_digest)标识，纯重复无状态改变的view只记一次；记录全部
+已到达公共图、ready集合、估计、可见running elapsed、已完成数据及闲忙状态。
+用既有B2 ready次序前min(4,ready_count)个组成K；K≥2且至少含一个H即eligible，
+不因没有替代资源删掉此状态。分母N_cs是该条件/seed主B2的全部eligible独特view数，
+另记总view数、截断次数、K分布；N=0是缺乏观察而非机会率0。
+
+固定K和顺序，只枚举兼容mapping（最多6^4=1296），不排列任务顺序。以同一公共估计
+busy release=now+max(0,estimate−elapsed)、真实已完成前驱的目的地就绪，串行追加每个
+resource上K任务的预计占用，允许预测等待但不执行/不保留资源。基准是同固定序的局部
+greedy EFT追加；枚举集合包含此基准。反事实只允许每个L局部预计finish≤基准相应finish，
+目标为最小K内H预计finish均值，平局按resource ID元组。不存在未来到达、未ready节点或
+后继运行；不会反馈到实际B2调度。这是离线局部比较，非新online policy或真实反事实轨迹。
+
+记b=基准H预计finish均值−now>0，o=可行枚举最优对应值，Δ=b−o≥0（ms），g=Δ/b（无量纲）。
+比较使用binary64输入值对应的精确有理数，不加未注册epsilon；枚举的具体传输/预计排队
+也用这些公共有理数进行，保持内部基准与反事实完全同一算术。不能声称与浮点runtime
+局部预测逐bit相同，未来须报告差异；无真实收益担保。记录最优assignment/基准/约束/
+成本/截断，审计者可独立复算。M1只证明当前K/估计/约束下有局部映射余量；看不到尚未
+ready的稀缺H需求，估计误差和选择B2轨迹都限制解释。
+
+辅助离线trace描述：逐服务以最长实际依赖/通信路径标识H critical path（同长按node ID），
+逐节点记录CPU/GPU/NPU等待、完成前驱后data-ready等待、实际资源/兼容数、替代预计代价，
+单位ms/计数，参考trace与公共view。完成后的关键路径不能喂给scheduler或用于调选trial。
+具体定义为：dep=max(arrival,各前驱finish)，data=max(arrival,各前驱finish+实际目的地delay)，
+data_wait=data−dep，post_wait=start−data；assigned_busy_wait为[data,start)内已分配单元
+被其他节点占用的区间测度，policy_idle_wait=post_wait−assigned_busy_wait，均ms且不重叠。
+post_wait包含策略选择的空闲等待，不能全称为物理资源阻塞。CPU/GPU/NPU等待分项按实际
+目的单元类型累加assigned_busy_wait，逐服务分母为1、跨服务分母为该组50，注明node-ms求和
+可能在并行分支上重叠。关键路径采用node权重duration+post_wait、edge权重实际delay，根从
+arrival起，最长路径长度应等于服务response；同长按完整node-ID路径字典序。H critical-path
+blocking为这条事后路径的assigned_busy_wait之和(ms)，另报policy_idle_wait/compute/transfer，
+不得与全图节点wait和混为同一个端到端分解。每次实际start同时引用最近公共view，记录
+compatible数以及每个替代资源的预测EFT−实际所选资源在同view的预测EFT（ms，可为负；无
+替代记NONE），不拿私有真值比较替代资源。以上恒等式/区间测度需未来独立复算验证。
+
+M2用同workload的B1/B3/B4/B5逐一配对B2；每seed/condition报告H-DMR差（比例点）、
+L-P95差(ms)、每服务资源等待均值差(ms)、M1机会率及eligible数（只B2）和兼容性分布。
+主服务分母每类50；控制不混入；实际trace等待分解须先验证恒等式，零/缺失不可编0。
+可用既有paired-seed CI，不能按100个服务或数千view重采样。B3/B4或B2/B5同时改变
+ordering/lookahead/mapping，M2**不能单独支持映射独立因果贡献**，也不替代P3 A3–A1检验。
+待答：是否批准K/截断/基准/局部L约束/目标、分母及M1+M2解释边界？
+
+## D08 — 三态判据（PROPOSED / UNRESOLVED）
+
+原始问题：可观察量聚合、稳定性、不确定性、三态条件、无效/缺失处理。
+完整三态表、两套有限候选和精确边界在 `P2_mapping_opportunity_decision_table_v1.md`。
+推荐讨论FINE方案，理由为不要求5%局部估计收益才能观察弱机会；这不是来源证明，也不能
+保证稳健。COARSE更保守；两者必须**在看结果前二选一**，不能逐结果挑最容易通过者。
+tau/frequency/stability及bootstrap实现pin全部UNRESOLVED，32组参数登记中单列。
+所有既有H/L、P3 mapping阈值和CI算法保持原件不变；不把统计门槛从它们挪来。
+任何方案通过只能支持所定义局部机会，不等于H收益/L合规/候选成功。待答：选FINE、COARSE，
+还是拒绝并给另一套完整规则？批准条件覆盖/缺失/稳定性/paired-seed实现pin吗？
+
+## D09 — 唯一runner与恢复（PROPOSED / UNRESOLVED）
+
+原始问题：唯一入口或同守卫薄launcher，身份/源码/恢复/重试/退出等。
+推荐扩展现有 `scripts/run_pipeline.py --stage calibration` 为未来唯一正式入口；
+完整比较、复用等值条件、状态机、attempt链和洁净策略在 `P2_runner_schema_review_v1.md`。
+此命令仅为未来接口定位，本轮没调用。R2可作为无独立权力的薄launcher，当前不需要。
+自动重试预算0；不完整不续写、重新执行必须新的审批和新attempt而不能救统计结果。
+P2相关源码/配置已提交且洁净是新增工程推荐，**不是现行已批准P2规则**；现合同明确强制
+洁净的是precheck/validation/formal。待答：是否批准R1、精确复用、零自动重试和P2洁净政策？
+
+## D10 — 科学schema/adapter（PROPOSED / UNRESOLVED）
+
+原始问题：envelope或新版本schema+adapter，以及血缘、COMPLETE、P1兼容。
+推荐S2新scientific v1+显式adapter，理由为现代码硬编码fixture origin，外包envelope本身
+无法证明科学来源。S1保留为经未来兼容性证据支持的备选。本版给完整规范字段表和不变量，
+不修改现有schema草案/模型、engine或validator。见 `P2_runner_schema_review_v1.md` D10。
+static字段/规范检查不等于运行时hash/血缘/恢复已验证；科学输入原始字节、generator出生
+证明和P1负例回归都需未来实现验证。待答：是否批准S2、ID/canonicalization/引用规范及
+COMPLETE必须同时成立的条件？
+
+## 跨决策一致性、已知风险与停止
+
+| 核对项 | 结论/仍待验证 |
+|---|---|
+| D01↔D02身份 | 六模板角色均存在profile；所有节点兼容集非空；两尺寸比例明确，未来实例ID须唯一 |
+| D01↔D03 | 六模板前驱与74边一一对应；9类型对完整；单位同引擎，未生成网络实例 |
+| D04↔D10 hash | 参数精确有理身份与运行binary64 payload分开hash；控制变体不同hash但扰动key保留；无自引用hash |
+| D05 seeds/budget | 只引用既有10 CALIBRATION值；36配置/18条件/2520条/1080输入；5040含重放；无新seed |
+| D06公平性 | B2和独占见证决定选型；不按候选/机会结果挑选；独占miss不冒充不可行证明 |
+| D07↔D08 | per-seed机会率、共同重采样索引；非节点/view独立CI，全部12 loaded条件检查 |
+| D09↔D10复用 | 全语义身份及raw refs/hash/validator/metrics/replay/COMPLETE核对；receipt不增样本 |
+| P1隔离 | 旧origin拒绝当前科学输入；S2未实现；P1字节/测试/审计不改，不能改标签充样本 |
+| 封存 | 不创建unlock、不生成非calibration realization/outcome；元数据校验不是访问结果 |
+| 设计≠证据 | B1–B3仍UNRESOLVED；B4/B5仍DESIGNED_UNAPPROVED，代码/行为与科学检验均待做 |
+
+明确保留的冲突/不足：旧draft矩阵与schema只是历史选项；本v1是它们的**具体提案层**，
+未取代生效文件。旧schema缺开始/结束与COMPLETE行为，本版补设计，未修实现。现P1
+硬编码origin与科学读取不兼容，须先S2及P1回归，不能直接运行。source代码/配置哈希为
+P1已验证身份；任何未来adapter会改变它，必须重新验证，不继承当前PASS作为新代码保证。
+timing不在本矩阵，不能宣称P2所有未来输出均已可冻结。多条件CI为pointwise，三态表没有
+同时置信覆盖保证。FUSION/硬兼容/合成speedup和固定突发都可能人为塑造机会。
+
+`P2_scientific_parameter_registry_v1.json` 枚举**32个未批准科学参数组**（不是32个标量或
+10个决定）；全部有明确提案或有限选项，批准值仍null。工程runner/schema另由D09/D10
+审批，不混计科学参数。D01–D10提案覆盖完整不等于已解决：resolved=0、human=10。
+人工应在v1 checklist逐项选择并记录版本/文件hash/批准值或修改意见，不能仅回答“同意P2”。
+随后只能启动另行授权的实现验证任务；P2保持BLOCKED，当前science=0，STOP=YES。
+# P2 Mapping-opportunity decision table v1
+
+DRAFT / UNAPPROVED / NOT COMPUTED。D07观察按complete proposal同名章节；本文件为D08
+具体候选。SOURCE_SUPPORTED：`docs/statistical_protocol.md:3–16,34–47`、
+`docs/user_request.txt` §44、§100；源文件没有给出以下机会阈值，不冒充注册值。
+
+## 参数
+
+| 参数 | FINE（建议供讨论） | COARSE（有限替代） | 状态/含义 |
+|---|---:|---:|---|
+| tau，单view实质预计相对收益 | .01 | .05 | PROPOSED，g≥tau是hit；并非H收益门槛 |
+| f，最低hit频率 | .01 | .05 | PROPOSED，每seed/condition p=hits/N，N为D07 eligible view |
+| 稳定seed数k | 8/10 | 8/10 | PROPOSED，每条件至少k seed有p≥f |
+| 观察范围 | 每个选定medium/near条件，共12 | 同左 | 12范围由注册主条件推导；要求全覆盖为新增提案 |
+| 宏聚合 | seed内等权12条件平均，再跨seed平均 | 同左 | 描述用，不补偿任何条件不支持 |
+| CI | 每条件p的seed均值及宏均值的95% percentile CI | 同左 | 沿用paired-seed 10,000/type-7/分析seed20261018，不另创算法 |
+| 额外最低N | 无 | 无 | 只要求每个seed/condition N>0；小N稳定性/区间限制须报告 |
+
+tau/f/k/覆盖仍UNRESOLVED；FINE能捕捉弱局部机会、也可能使合成微小差异看似实质；
+COARSE要求更大的局部收益/频率，保守但可能拒绝弱效应。不存在来源证明哪组正确。
+不得运行两套后选通过者；人工必须在任何结果生成前选定一套或拒绝本版。
+没有从10% H收益、1.10 L预算、P3 A3–A1 CI>0推导这些参数。
+
+bootstrap具体实现pin为**PROPOSED**：不改变既定resampling方法，只固定索引产生。
+对replicate=0..9999、position=0..9，用domain=`soc.p2.analysis.bootstrap.v1`和
+analysis_seed（整数）=20261018、replicate/position/counter（整数），依D04的canonical JSON取
+SHA-256前8字节q。令limit=floor(2^64/10)*10；q≥limit时counter递增重取，否则index=q mod10。
+每replicate的同一10索引向量复用于全部条件、方法和seed配对统计，保存索引文件/digest。
+这些是分析索引，不生成/替换workload seed。现统计协议要求pin实现但未指定PRNG；
+本实现pin仍待人工批准和未来统计验证，不能假称已有实现完成。
+
+## 决策表
+
+先决V：18条件均有按D06预选的配置；所有2520计划trial完整有效（若提前停止则V=false）；
+输入/运行/重放/验证/指标/预选收据身份匹配；每个选定12条件×10seed的M1 N>0、g与hit可
+独立复算，全部M2配对完整。不得临时缩条件、删零机会seed或用剩余样本继续。
+
+对每个loaded条件c，定义L_c/U_c为seed机会率均值CI端点，K_c=#seed(p_cs≥f)。
+S：**每个**12条件 L_c≥f 且K_c≥8。
+N：**每个**12条件 U_c<f 且K_c≤2。
+f>0且CI有序，因此S/N不可能同时成立（DERIVED）；出现同时成立为实现/数据错误。
+
+| 优先级 | 条件 | 三态输出 | 协议处置 |
+|---:|---|---|---|
+| 1 | 设计未批准/未实施/本任务 | INCONCLUSIVE，reason=NOT_RUN | P2 BLOCKED；本文件不创建实际判据结果 |
+| 2 | V=false，任何missing/invalid/failed/incomplete或N=0 | INCONCLUSIVE，reason=EVIDENCE_INCOMPLETE | P2 BLOCKED，不把缺失当0或负面机会证据 |
+| 3 | V=true，S=true | SUPPORTED | 仅支持所定义局部机制，仍须其他P2冻结/准入条件，不自动进P3 |
+| 4 | V=true，N=true | NOT_SUPPORTED | 保留阴性并停止mapping主线，不按结果扩预算 |
+| 5 | V=true，S/N都false（混合场景、跨界、seed不稳等） | INCONCLUSIVE | 不能PASS；停止推进，不按观察结果另选阈值 |
+
+临界L=f允许支持，U=f不能归N；K=7不能归S、K=3不能归N。宏均值即使漂亮也不能覆盖
+单条件缺口。NOT_SUPPORTED要求明确的低机会证据，不等于“没有通过S”。这套负面边界
+和跨条件严格性都是PROPOSED，需批准；其他定义不能默认为同义。
+
+每条件保存10个N/hits/p、CI/seed计数、每view理由/assignment/ref、截断覆盖率、全量
+bootstrap索引digest、M2原始配对/描述、条件与宏结果、缺失诊断、选择收据、规则及输入hash。
+不做node/view bootstrap、不跨seedpooling、不p值过滤、不改CI。所有CI是pointwise，
+12条件共同判断没有同时覆盖保证；本设计的局部预计量不推出实际deadline收益或因果贡献。
+本轮不计算上述任何数值，实际gate仍为既有BLOCKED/NOT_RUN。
+# Independent design audit v2 — executive decision
+
+**DESIGN_REVIEW_REVISE_REQUIRED**
+
+Audit target: `892ce2b71fd0c89f1b241c950b597eafab894e23`, branch `work`, repository `https://github.com/JINAOLONG/soc.git`.
+This is report-only adversarial design review. Independence refers to new checks/proofs rather than
+reuse of v1's94-check result; the same collaborating assistant performed the review, so no external
+personnel/institutional independence is claimed. No scientific sample, comparison or P2 execution.
+
+The matrix and topology arithmetic are sound, but complete human approval is premature. The two
+critical findings are V2-F01 (ready-H local objective does not cover the registered later-H blocking
+mechanism for negative inference) and V2-F02 (first materialization is behind guards/locks requiring
+its own content identity). V2-F03/F05 require exact key/identity and stage-exit contracts. V2-F04/F06/F07
+pin denominator, selected-calibration interpretation and typed control/metric semantics. V2-F08 is
+known future P1/scientific-lineage verification, not a newly demonstrated implementation defect.
+
+Recommendations:4 ACCEPT AS PROPOSED (D01,D02,D03,D05);6 REVISE BEFORE APPROVAL
+(D04,D06,D07,D08,D09,D10);0 REJECT decisions. These are review recommendations only.
+Findings:2 CRITICAL,2 MAJOR,3 MEDIUM,1 INFO. All10 human approvals remain UNAPPROVED;
+all32 named scientific parameter groups remain unresolved. Neither FINE nor COARSE selected.
+
+Actual evidence:
+
+- CMD-064 P0 check-only exit0; CMD-065 P1 check-only exit0 (existing manual correctness fixtures only).
+- CMD-066 P1 inventory122 files matches; CMD-067 v1 inventory315 files matches.
+- CMD-068 independent metadata checks60 PASS/0 FAIL: exact36 configs/10 calibration seeds,
+  2520 rows=1800 MAIN+360 H_ISOLATED+360 LOW_COMPETITION;1080 planned input references;
+  replay-inclusive maximum5040 engine invocations. All actual scientific counts remain0.
+- CMD-073 final adversarial check exit2 as expected:7 proof checks verified,2 design acceptance
+  failures ADV-01/ADV-02. This is a negative design audit, not a test crash/P1 or scientific failure.
+- CMD-069 initial adversarial exit2 is preserved; ADV-03 was corrected from FAIL to NOT_VERIFIED
+  because v1 already requires repeated-state dedup. See review_method_notes.md and initial snapshots.
+
+No protected proposal/source/config/test/seed/gate/history/STATUS bytes may change. This user task's
+report-only scope overrides the general AGENTS instruction to sync STATUS. Therefore the existing
+STATUS/design_status v1 declarations remain historical/current v1 statements; this directory carries
+the new v2 review verdict. A proposal_complete=true flag does not establish approval or executability.
+
+P0/P1 remain PASS for the current unchanged source. P2 remains BLOCKED/NOT_RUN. B1–B3 unresolved,
+B4/B5 designed but unapproved/unimplemented. Timing is out of matrix, budget0 and still unfrozen;
+it cannot be silently counted as a completed P2 freeze output.
+
+Read D01_D10_review_matrix.csv for exact version/hash and all eight requested decision fields,
+critical_findings.md for reproducible consequences, required_changes.md for precise revisions and
+future regression requirements, human_decision_packet.md for unchanged values and UNAPPROVED fields.
+Actual commands/exits and source/protection hashes are separate evidence, not simulated results.
+Publication checkpoint/status will be recorded in delivery_checkpoint.json; final enclosing HEAD
+and remote SHA are resolved with git rev-parse HEAD / git ls-remote origin refs/heads/work.
+
+Next safe action: separately authorize documentation-only revision of the findings, then repeat
+static review and human decisions. Do not implement, generate, run P2 or create unlocks. STOP=YES.
+
+Publication checkpoint `8ddfc27496f94250b9f59bf4b2d73d3656a6a783` was normally committed/pushed (exit0),
+remote SHA verified identical and worktree clean.25 new report artifacts only; all316 original tracked
+files preserved. The ledger now contains81 audit commands plus13 actual publication-checkpoint
+commands (94 total), with2 expected design-audit exit2 records and0 unexpected exits. Exact raw
+receipt is delivery_checkpoint.json. Enclosing metadata receipt commit is resolved live, not self-hashed.
+# Independent design review v2: critical findings
+
+Audit target 892ce2b71fd0c89f1b241c950b597eafab894e23; version/hash per decision in D01_D10_review_matrix.csv and reviewed_sources.json.
+
+Severity: CRITICAL=blocks approval of mechanism/lifecycle; MAJOR=must resolve before complete approval; MEDIUM=pin interpretation/contract; INFO=known future validation. Evidence labels are not runtime test results.
+
+## V2-F01 — 当前ready-H局部目标的阴性结果不能覆盖原登记的后继H稀缺资源机制
+
+- Severity: CRITICAL; evidence: BLOCKING; decisions: D07, D08.
+
+- Evidence: `docs/P2_design/P2_complete_design_proposal_v1.md:239–263`; `docs/P2_design/P2_mapping_opportunity_decision_table_v1.md:34–49`; `docs/user_request.txt:§§32,43–44`; `docs/baseline_spec.md:16–20`.
+
+- Reproducible check / explicit rationale: CMD-073 / adversarial_checks.json: ADV-01；7个辅助证明检查；单ready-H先于所有L的固定B2顺序归纳。
+
+
+K中若只有一个H，它被固定B2次序首先安排；greedy EFT已最小化其局部finish。后续L的mapping不影响这个H前缀目标，所以g=0，与L是否阻塞尚未ready的H后继无关。v1又排除未ready后继并要求每个局部L finish不劣化。原§32解释例的H前驱2、后继4、L占NPU6或CPU6.5，正好落在这两个盲区：局部H目标均为2，而手算完整H完成10或6。该例只作解释，不是科学样本或运行。
+
+Consequence: NOT_SUPPORTED只能说明该受限当前ready目标的机会不足，不能据此声称没有原研究机制。直接绑定停止主线有结构性假阴性风险；FINE/COARSE换阈值不能修复观测对象。当前并未计算任何项目结果。
+
+Recommended disposition: REVISE BEFORE APPROVAL
+
+Exact suggested changes: 保留M1为窄局部诊断；在同一已到达公共DAG/估计边界内，先提出有限、可复算、能观察已登记remaining-H-path阻塞的诊断定义，并用非科学§32解释例及反例验证覆盖。明确严格局部L约束与全局L-P95预算的不同作用。D08必须只对其实际覆盖的机制下结论；不得更改既有H/L/CI门槛，不在本审计中实现或批准新观察器。
+
+Closure evidence: 修订D07/D08文本、参数登记及适用/不适用案例，人工重新裁决；未来另行实现验证。
+
+## V2-F02 — 首次物化的输入守卫、run锁和内容身份形成先决循环
+
+- Severity: CRITICAL; evidence: BLOCKING; decisions: D04, D05, D09, D10.
+
+- Evidence: `docs/P2_design/P2_generation_spec_v1.json:96–110`; `docs/P2_design/P2_runner_schema_review_v1.md:18–21,30–32,59–65,82–84`; `docs/P2_design/P2_complete_design_proposal_v1.md:158–159,165–167`.
+
+- Reproducible check / explicit rationale: CMD-073 / ADV-02：按v1先决关系建立设计依赖图，Kahn消除后仍有循环节点；不生成任何payload。
+
+
+实际workload identity需要canonical payload hash；run identity需要workload/input hash。runner先拒绝未解析wlref/null必填并申请run identity锁，再物化输入。首次生成时却还没有这些内容hash，因此按当前步骤无法取得run锁/通过守卫。复用已有完整输入不能解决首次物化路径。
+
+Consequence: 实现者必须自行改变阶段顺序、放松守卫或预先生成输入；这会引入未批准实现选择，甚至绕过生成授权。v1所谓无自引用hash并没有解决这个执行先决循环。当前入口仍未实现，未实际绕过。
+
+Recommended disposition: REVISE BEFORE APPROVAL
+
+Exact suggested changes: 明确两层身份/守卫：批准的不可变blueprint与生成授权在前，以blueprint/config/seed/variant取得临时输入锁；授权后物化并保存generation receipt；再解析wlref形成独立不可变input-resolution receipt、实际workload/run ID与运行锁，最后做pre-invocation守卫。蓝图hash不得包含未来resolved payload/run ID，已批蓝图不回填改hash。精确argv的身份部分不得反向包含自身run ID；此为待审修订建议而非已批准流程。
+
+Closure evidence: D04/D05/D09/D10共同给出无环身份图、首次/复用/中断三条顺序、明确字段与hash范围，另行人工批准。
+
+## V2-F03 — key填值与identity preimage未达到跨实现逐字节唯一
+
+- Severity: MAJOR; evidence: BLOCKING; decisions: D04, D09, D10.
+
+- Evidence: `docs/P2_design/P2_generation_spec_v1.json:12–18,20–64,90–110`; `docs/P2_design/P2_runner_schema_review_v1.md:59–65,79–90,101–107`.
+
+- Reproducible check / explicit rationale: CMD-010/CMD-070完整key文本；CMD-073仅演示不同字段类型得到不同canonical bytes，不对calibration key求随机值。
+
+
+key有version字段，而文档同时有version=v1和generator_version=soc-p2-synthetic-v1-PROPOSED，未规定version具体绑定。arrival_jitter说other IDs empty但没有逐字段说明scenario/condition/config是否保留。identity preimage仍是概念字段列表，未给精确键名、类型和参数hash范围；H-only的G=max_service也未明确遍历父输入还是保留后的服务集。序列化算法固定不足以唯一决定被序列化对象。
+
+Consequence: 独立实现可以在不改变列出的分布/seed的情况下产生不同扰动、到达、控制窗口或run/workload ID，无法保证重放或精确复用。尚未证明任何现有实际hash错误，因为没有科学输入。
+
+Recommended disposition: REVISE BEFORE APPROVAL
+
+Exact suggested changes: 增加逐随机字段的完整typed-key填值表，逐一固定version绑定和空字段；固定control父身份及G的集合范围、整型/分数字段规范；列出workload/run preimage精确对象、raw/semantic/plan/argv hash范围及数组顺序。使用无真实科学seed的静态golden byte vectors检验规范，后续实现再验证；不生成新seed。
+
+Closure evidence: 同一批准规格下两种独立编码实现必须输出相同golden bytes；审批明确涵盖会改变key的选择。
+
+## V2-F04 — M1记录身份不等于分母去重契约，snapshot与重放范围仍需定型
+
+- Severity: MEDIUM; evidence: NOT_VERIFIED; decisions: D07, D08, D10.
+
+- Evidence: `docs/P2_design/P2_complete_design_proposal_v1.md:239–245,254–263`; `docs/P2_design/P2_runner_schema_review_v1.md:94–95,101–103`.
+
+- Reproducible check / explicit rationale: CMD-073 / ADV-03最终为NOT_VERIFIED；相同digest、不同decision_seq的两个通用ID计数2，而state-equivalence计数1。初版误列FAIL的记录完整保留，见review_method_notes.md。
+
+
+v1已明确要求纯重复无状态变化的view只计一次，这点不能忽略。但同时给出的三元record ID含decision_seq，不能直接当dedup key；没有完整public_view_digest字段/规范、去重作用域、是否排除重放收据或每次空派发采样的精确契约。
+
+Consequence: 不同观察hook或重放日志合并可能改变N和hit频率；这是待实现前需要写全的接口，不是已经观测到的计数bug。
+
+Recommended disposition: REVISE BEFORE APPROVAL
+
+Exact suggested changes: 分开record_id和state_key；规定B2主attempt的何种view计数、失败/空派发、连续重复/非连续相同状态、now/elapsed参与规则、replay不进入分母。给出相同状态重复计1与同刻真实start后状态改变计2的静态验收例。
+
+Closure evidence: D07/D08与schema共同固定state bytes、scope和expected denominator；未来独立复算测试。
+
+## V2-F05 — 执行完整性出口尚未精确绑定选择、诊断、冻结与P2门禁输出
+
+- Severity: MAJOR; evidence: BLOCKING; decisions: D08, D09, D10.
+
+- Evidence: `docs/P2_design/P2_mapping_opportunity_decision_table_v1.md:34–49`; `docs/P2_design/P2_runner_schema_review_v1.md:30–32,53–55,99,109–114`; `scripts/run_pipeline.py:26–39`; `src/soc/validation/governance.py:181–208`; `docs/user_request.txt:§80`.
+
+- Reproducible check / explicit rationale: 设计逐阶段对照：生命周期到trace/metrics/replay/COMPLETE，但未给typed stage/gate字段、写入顺序、退出含义与现有P2 gate接口的完整映射；未运行P2。
+
+
+v1正确区分COMPLETE与SUPPORTED，也明确不自动进P3；但runner exit0仅表示计划完整，D08又要求选定18条件、完整M1/M2、批准判据等。两者之间缺少明确的选择/分析/判据/冻结出口及fail-closed机器字段。timing协议仍未冻结，是原P2输出的未关闭事项。
+
+Consequence: 不能把2520合法完成、进程exit0或COMPLETE当作P2 PASS。若未来实现只接完成标记，会有错误推进风险；当前不存在可执行新gate，因此本审计没有证明发生了false PASS。
+
+Recommended disposition: REVISE BEFORE APPROVAL
+
+Exact suggested changes: 提供字段级出口真值表：execution_completion、input_integrity、selection_status、diagnostic_validity、mapping_status、freeze/timing prerequisite与p2_progression_status分别记录。明确有效阴性可COMPLETE但不准推进，缺失一律闭锁；现有P2 gate消费接口与不同退出码语义需在实现任务前登记。timing留为未关闭前提，不能靠预算0宣称已完成原P2输出；不在本任务编写gate。
+
+Closure evidence: D08/D09/D10联合审查完整的stage出口规范，任何COMPLETE→PASS快捷路径均应有负例拒绝。
+
+## V2-F06 — B2选型后的机会CI需限定为校准选中样本的条件性描述
+
+- Severity: MEDIUM; evidence: PROPOSAL_ONLY; decisions: D06, D08.
+
+- Evidence: `docs/P2_design/P2_complete_design_proposal_v1.md:184–185,218–229`; `docs/P2_design/P2_mapping_opportunity_decision_table_v1.md:14–17,34–40,57–58`; `docs/statistical_protocol.md:3–16,34–47`.
+
+- Reproducible check / explicit rationale: 选择依赖同10seed的B2 pressure/miss，机会观察也来自同B2轨迹；这是设计依赖分析，不是观察到的偏差大小。META检查已验证A/B完整、顺序确定且无candidate/M1选型。
+
+
+A-before-B只按事前规定的B2资格，符合不按候选或机会效果挑配置的要求。它仍是同校准数据的选择；不得把对选定配置的pointwise bootstrap解释为未经选型的独立确认性coverage。miss/压力/机会可能相关，但没有数据可估计偏差。压力三段对有效p∈[0,1]互斥且穷尽；加入miss/控制/等待过滤后必须保留VALID_OFF_TARGET/INELIGIBLE，而非强贴某个load标签。
+
+Consequence: 若省略适用范围会夸大P2证据的独立性；若实现将任意满足另一档的候选重贴标签，则破坏已注册condition。当前矩阵/文字禁止relabel，未发现实际删seed或删候选。
+
+Recommended disposition: REVISE BEFORE APPROVAL
+
+Exact suggested changes: 补充明确的总分类谓词：先validity、control witness、declared target-load匹配，再A/B选择；NaN/越域/控制重叠/缺组的出口须定型，不能clamp。明确P2区间仅为选中校准配置的描述，全部A/B资格和原始统计保留，不声称调整选择后的确认性覆盖。不更换CI方法、不加seed、不按结果改阈值。
+
+Closure evidence: 审定分类伪代码/边界表及报告措辞，保持已提出数值和原研究契约未变或另行显式审批修订。
+
+## V2-F07 — 控制缺组状态与窗口/排空指标需统一typed语义
+
+- Severity: MEDIUM; evidence: NOT_VERIFIED; decisions: D04, D06, D10.
+
+- Evidence: `docs/P2_design/P2_generation_spec_v1.json:78–94`; `docs/P2_design/P2_complete_design_proposal_v1.md:201–202,219–223`; `docs/P2_design/P2_runner_schema_review_v1.md:93,111`; `docs/metric_spec.md:3–10,41–46`; `src/soc/metrics/fixture.py:36–44`.
+
+- Reproducible check / explicit rationale: 逐字对照NOT_APPLICABLE_CONTROL与CONTROL_NA两个标签；source指标makespan=max finish，与拟议observation end=max(W,last finish)是不同量。无运行时指标验证。
+
+
+v1允许H-only缺L且主输入必须含H/L，方向正确。JSON/proposal用NOT_APPLICABLE_CONTROL，runner文档用CONTROL_NA，尚无统一enum/null/validity字段；arrival-window、last completion和observation end也需要独立字段，不能靠一个run_end解释全部利用率。 另须钉死LB的数值与绝对deadline比较语义：exact-real路径下界证明不能自动认证binary64逐次加法；详见feasibility_and_mechanism_analysis.md。
+
+Consequence: 未来adapter可能拒绝合法控制或接受缺L主输入；若用max(W,last finish)覆盖既有makespan，可能悄然改变已批准指标。当前P1代码/证据仍正确且未改，未发生这种覆盖。
+
+Recommended disposition: REVISE BEFORE APPROVAL
+
+Exact suggested changes: 统一一个待批控制N/A枚举及其适用kind，main强制精确100/50/50计数、control分别50H或100H/L；给出absence/nonfinite/invalid矩阵。分别命名arrival_window_end、drain_completion、observation_end、busy_window_pressure与既有full-drain makespan/utilization，不改变原公式；定义G域与control overlap失败类型。 给出与现行binary64事件/绝对deadline一致的保守LB算术和等号边界测试，不引入任意epsilon；此为待批定义，不宣称已实现。
+
+Closure evidence: 字段类型/enum/必填-null条件及独立指标验收例在D04/D06/D10一致，未来实现回归。
+
+## V2-F08 — S2来源隔离与P1兼容仍需未来行为证明，不能用声明替代
+
+- Severity: INFO; evidence: NOT_VERIFIED; decisions: D09, D10.
+
+- Evidence: `docs/P2_design/P2_runner_schema_review_v1.md:68–75,116–128`; `src/soc/model/schema.py:175–189`; `src/soc/simulator/engine.py:100–102`; `src/soc/validation/trace.py:75–79`; `reports/P1_correctness.json`.
+
+- Reproducible check / explicit rationale: 当前P0/P1 check-only及122项P1清单真实返回0，见CMD-064..066；只证明现行P1，不证明未来S2。
+
+
+S2选择方向合理，当前硬编码fixture origin确实存在；v1已承认adapter和行为验证未实现。这是预期未完成工作，单独不构成新增实现缺陷。
+
+Consequence: 仅origin/fixture_derivation=false或schema parse成功不足以证明科学出生；未来代码变化后不能继承当前P1 PASS。
+
+Recommended disposition: KEEP_PENDING_FOR_SEPARATELY_AUTHORIZED_IMPLEMENTATION
+
+Exact suggested changes: 先登记本审计required_changes中的P1兼容、错误来源拒绝、public-view隔离、故障/恢复/完整性测试，再另行授权实现。当前不写adapter、不改fixture、不解锁。
+
+Closure evidence: 真实未来测试/独立validator/原始生成日志与完整hash血缘；无这些证据继续闭锁。
+# P2 design revision v2 — delivery verdict
+
+**DESIGN_REVISION_READY_FOR_HUMAN_DECISION**
+
+This is a documentation/static-review delivery verdict only. It does not approve any decision,
+activate v2, establish scientific validity, freeze the full engineering protocol, or authorize
+implementation/execution. P0/P1 check-only PASS; P2 preflight remains BLOCKED/NOT_RUN.
+
+## Scope and evidence
+
+Starting repository/branch: https://github.com/JINAOLONG/soc.git / work; actual starting HEAD and
+origin/work: 79f9c245b23119ce25175d6dc6ff148e9e092461. Initial worktree CLEAN. All341 starting tracked
+files remain byte-identical, including v1, old audit/failures, STATUS.md, design_status, source,
+tests, thresholds/statistics, seed metadata and gates. Only the two authorized new namespaces added.
+The actual old D05 recommendation was ACCEPT, differing from the request summary; historical record
+is preserved. Its axes/budget remain unchanged and its future identity references are clarified.
+
+Fresh v2 review: **351 PASS /0 FAIL**, CMD-025 exit0. Five synthetic canonical vectors agree across
+two generic encoders and external GNU sha256sum (CMD-031 exit0). No scientific key/seed realization,
+workload, bootstrap index, observer rollout, comparison or timing measurement was generated.
+P0/P1 check-only both exit0 (CMD-026/027); P1 reports historical64 tests/47 P1,0failed, not a new test
+execution. P1/v1/prior-audit manifests:122/315/24 files,0missing/0mismatch (CMD-028..030).
+
+## What changed in proposed documents
+
+V2-F01: M1R_PATH_V2 observes bounded remaining arrived-H paths using public estimates; fixed suffix
+projection is not an optimal scheduler or candidate. New local L slack cap, complete/partial coverage
+and scope restrictions are explicit assumptions. V1 M1 retains its limited negative interpretation.
+V2-F02: lifecycle has35 nodes/40 edges and is acyclic; blueprint/auth/inputlock precede materialization;
+content resolution precedes workload/run/attempt identity and execution. Recovery is append-only.
+V2-F03:61 closed typed definitions,21 exact identity preimages, all15 keyed fields explicitly bound;
+semantic/raw/runtime hash scopes separated; G covers all100 parent-MAIN services. New version changes
+future random identity while preserving distributions. V2-F04: event records and state equivalence
+separate; repeat states deduplicate within primary attempt, replay excluded, missing is not zero.
+V2-F05: execution, integrity, identity, selection, diagnostic, classification, timing and progression
+separate; timing NOT_FROZEN always blocks. COMPLETE/exit0/support alone cannot authorize P2/P3.
+V2-F06: A-before-B retained; all candidates/off-target records retained; selected-calibration CIs
+labelled conditional, pointwise and descriptive. V2-F07:100/50/100 controls, one control N/A token,
+full-drain makespan unchanged, strict absolute RN64 feasibility certificate; no epsilon or truth leak.
+Resolution matrix records all seven as addressed in proposed design/static review, not runtime closure.
+Historical F08 lineage/adapter implementation risk remains NOT_VERIFIED, with future regression required.
+
+## Unapproved decisions and limitations
+
+D01–D10 all UNAPPROVED. Original SP01–SP32 trace into **40 unresolved groups SP01–SP40**;
+eight split-out additions SP33–SP40, no deletion/merge. D01–D03 scientific tables preserved exactly.
+New rules are proposals, not source-supported/hardware measurements. Choose FINE versus COARSE
+explicitly; neither is default. Proposed support coverage4/5 and negative coverage1 require approval.
+Bounded observation can still miss opportunities; partial coverage cannot establish absence.
+No macro compensates a failing condition. Same-seed selection cannot justify confirmatory inference.
+No runtime generator/worker/adapter/validator was implemented or validated; engineering timing
+protocol remains NOT_FROZEN and decision-P95 target remains2ms, not measured. These do not disappear
+when the design packet is accepted. Future implementation and execution need separate authorization.
+
+## Failure history, integrity and publication
+
+The initial authoring field-collision exception is preserved and reproduced as CMD-008 exit1.
+CMD-021 had301 passing checks and one exact-prose assertion failure; structured selection fields
+were added and the check corrected. CMD-023 then passed302; the final typed-binding review passes351.
+CMD-033 delivery-metadata review also stopped on a Path-join authoring typo; original traceback/checker
+and caller parse failure are disclosed in authoring_error_history.md. Its correction affects no design
+rule. CMD-034 then caught an incorrect reviewer expectation of18 packet references; actual16
+references to13 files all hash-match. Corrected the reviewer count only; final31 metadata checks pass.
+All original failure outputs/checker/results remain archived. This report is a fresh method review by the
+same assistant, not an external independent human review. Command ledger scope explicitly excludes
+initial discovery/wrappers; raw stdout/stderr references/hashes and actual nonzero exits are preserved.
+
+See review_evidence_manifest.json for all new artifact hashes. first_publication_receipt.json records
+actual first normal commit 3f81bc6c69d30c16b9ed350c5dfab6111759987e and verified push/CLEAN worktree;
+18 design files and102 report files were added in that commit. This receipt is now added in the final
+report-only metadata commit (18 design/103 report files total). The38-command audit ledger has
+4 nonzero subprocess exits (CMD-008/021/033/034),3 unexpected; all failures retained. Publication
+commands are preserved separately in the receipt, not added to those38. The first final-publication
+precheck stopped before staging because wrapper strip() lost a porcelain leading space; its actual
+commands/error and rstrip correction are preserved in the publication receipt. No scope or rule changed. The final enclosing commit cannot contain its own hash and is verified externally
+in /tmp/soc-design-revision-v2-final-delivery.json and the final user handoff. No force/history rewrite.
+
+**Single next safe action:** user reviews human_decision_packet.md and records explicit approval,
+rejection or requested revision for the hash-identified v2 D01–D10, including every scientific group
+and FINE/COARSE choice. This task stops without implementation or P2 execution.

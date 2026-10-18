@@ -1,0 +1,1 @@
+{"state_fields_match": true, "current_values_in_enums": true, "state_dimensions": 8, "parameter_groups": 40, "human_approvals": 0, "timing_target_ms": 2, "timing_frozen": false, "scientific_runs": 0}

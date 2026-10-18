@@ -1,0 +1,32 @@
+from pathlib import Path
+import json,csv,hashlib
+R=Path('/workspace/soc');O=R/'reports/P2_design/preapproval_audit_v3'
+cat=json.loads((R/'docs/P2_design/decisions.draft.json').read_text())['decisions']
+reg=json.loads((R/'docs/P2_design/v2/P2_scientific_parameter_registry_v2.json').read_text())['parameters']
+D=list(csv.DictReader((O/'D01_D10_decision_readiness.csv').open()));S=list(csv.DictReader((O/'SP01_SP40_traceability.csv').open()))
+assert [d['decision_id'] for d in D]==[x['id'] for x in cat]
+assert [d['original_question'] for d in D]==[x['question'] for x in cat]
+assert [s['parameter_group_id'] for s in S]==[x['id'] for x in reg]
+assert all(d['current_approval_status']=='UNAPPROVED' for d in D)
+assert all(s['approval']==s['reviewer_approval']=='UNAPPROVED' for s in S)
+checks=0
+for row in D+S:
+ for col in ['source_supported_facts','derived_facts','new_scientific_assumptions','engineering_conventions','missing_evidence','exact_human_question','blocked_until_resolved']:
+  assert row[col].strip();checks+=1
+ for col in ['exact_source_refs_json','original_requirement_refs_json']:
+  for ref in json.loads(row[col]):
+   p=R/ref['path'];assert hashlib.sha256(p.read_bytes()).hexdigest()==ref['sha256'];assert ref['locator'];checks+=1
+for row,param in zip(S,reg):
+ path,pointer=param['proposal_ref'].split('#',1)
+ if path.endswith('.json'):
+  o=json.loads((R/'docs/P2_design/v2'/path).read_text())
+  for seg in pointer.strip('/').split('/'):
+   seg=seg.replace('~1','/').replace('~0','~');o=o[int(seg)] if isinstance(o,list) else o[seg]
+  assert json.loads(row['exact_proposed_value_or_rule_json'])==o;checks+=1
+# Validate the report's authority distinction against actual present version/count fields, not a historical static PASS.
+assert 'UNRESOLVED_SCIENTIFIC_PARAMETERS=32' in (R/'STATUS.md').read_text()
+assert len(reg)==40 and all(x['approval']=='UNAPPROVED' for x in reg)
+t=json.loads((R/'docs/P2_design/v2/P2_typed_identity_schema_v2.json').read_text());st=json.loads((R/'docs/P2_design/v2/P2_stage_state_contract_v2.json').read_text())
+assert st['state_fields']==t['$defs']['GATE_STATE']['properties']
+assert st['timing']['decision_P95_target_ms']==2 and st['timing']['current']=='NOT_FROZEN'
+print(json.dumps({'document_cross_references_and_required_cells_verified':checks,'decision_questions_exact_match':10,'parameter_ids_exact_match':40,'all_approval_fields_UNAPPROVED':True,'current_registry_count':40,'historical_status_count':32,'stage_schema_enum_match':True,'execution_or_science_performed':False},ensure_ascii=False))

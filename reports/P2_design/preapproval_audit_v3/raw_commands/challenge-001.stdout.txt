@@ -1,0 +1,163 @@
+STATUS.md:24:GIT_COMMIT=c7e94e438674bcfbb16ed1281ce0437cb6df3072 (audited proposal checkpoint; enclosing HEAD resolved live)
+STATUS.md:33:FINAL_ENCLOSING_HEAD_COMMAND=git rev-parse HEAD
+STATUS.md:40:CURRENT_GIT_HEAD=RESOLVE_WITH_git-rev-parse_HEAD
+STATUS.md:42:TASK_START_HEAD=160800d9b136e953c6415cd5229ded87eae72a0f
+docs/P1_implementation_spec.md:14:The current model explicitly says **Proposed** event ordering. The P1 request
+docs/P1_implementation_spec.md:18:options below before event-engine or full-baseline implementation began.
+docs/P1_implementation_spec.md:22:| D1 | Same-time arrival/completion/dispatch can alter winners | All completions at t, all arrivals at t, immutable view, feasible dispatch until no further start, stable (service,node,resource) tie; then advance to next completion/arrival/data wakeup | Arrival/dispatch interleaving gives different schedules. Blocks event loop and full replay. |
+docs/P1_implementation_spec.md:23:| D2 | Source methods have full execution matrices, soc has incompatible units | HEFT mean execution over each task's compatible units; OCT child minimization over compatible child units, rows/rank average over the current task's compatible units; explicit destination-dependent same-unit zero | Full six-unit averages with invented incompatible costs, or another normalization; changes priorities. Blocks B3/B4/B5. |
+docs/P1_implementation_spec.md:24:| D3 | Source average communication does not define soc type/pair weights | For each edge average latency and bandwidth separately over ordered compatible endpoint unit pairs with different IDs, then Lbar+size/Bbar; if no such pair exists, zero | Mean of per-pair delays is generally different. Weight by resource type rather than unit is also different. Blocks B3/B4/B5. |
+docs/P1_implementation_spec.md:25:| D4 | Overrun makes estimated remaining busy duration ambiguous | Predicted release now+max(0,estimate-on-running-unit-elapsed), never actual event timestamp; no extra forecast padding | Another observable predictor requires explicit definition. Blocks busy-resource mapping for all B1–B5. |
+docs/P1_implementation_spec.md:26:| D5 | A future best mapping may intentionally leave an idle compatible unit unused | Order dependency-ready tasks; score all compatible units, including estimated busy/data-delayed starts; mapping proposals are revocable. Start only if selected unit is currently feasible; inspect lower-priority tasks when a higher one waits. Recompute after each start; no reservation of idle units | Restrict scoring to currently feasible units (work conserving) or stop scanning at first waiting task; changes schedules and fairness. Blocks all full B1–B5 dispatch. |
+docs/P1_implementation_spec.md:38:public observation DTO that contains no realized duration/future services/event
+docs/P1_implementation_spec.md:62:An event engine must maintain a private queue, immutable observable snapshots,
+docs/P1_implementation_spec.md:63:revocable proposals, independent actual durations, deterministic event batches,
+docs/P1_implementation_spec.md:64:full drain and deadlock detection. Every implemented B1–B5 must run the same
+docs/P1_implementation_spec.md:65:stored synthetic input. Required evidence includes engine event/decision traces,
+docs/P1_implementation_spec.md:87:total, dependency wait, communication wait and ready-to-start wait. The latter
+docs/model_spec.md:1:# System model — P0 definitions with user-approved P1 event order
+docs/model_spec.md:25:max over predecessors of C_u + delay(u,r); a root is ready at service arrival.
+docs/model_spec.md:33:States are distinct: dependency_ready (all predecessors completed), data_ready
+docs/model_spec.md:35:resource_ready (destination idle), started, running, completed. A proposal may
+docs/model_spec.md:39:Deterministic event ordering approved by the user in the P1 task (D1): at virtual time t,
+docs/model_spec.md:44:endpoints are legal. When no start is possible, advance to the next true event
+docs/model_spec.md:45:or feasible data-readiness wakeup. Detect a deadlock rather than silently dropping
+docs/model_spec.md:50:data readiness. Never disclose the private event queue, future arrivals, true
+docs/model_spec.md:57:No RNG call sequence may depend on scheduler decisions. Exact event, trace and
+docs/model_spec.md:63:a 6–8-node hand-checkable DAG, simultaneous events, equality at deadline and drain.
+docs/P2_design/v2/P2_workload_templates_v2.json:1118:  "starting_commit": "79f9c245b23119ce25175d6dc6ff148e9e092461",
+docs/P2_design/v2/P2_typed_identity_schema_v2.json:12:  "starting_commit": "79f9c245b23119ce25175d6dc6ff148e9e092461",
+docs/P2_design/v2/P2_typed_identity_schema_v2.json:45:      "description": "Production must equal one of the 10 committed CALIBRATION decimal values; membership is additional semantic validation."
+docs/P2_design/v2/P2_typed_identity_schema_v2.json:531:          "const": "soc.p2.input-lock.v2"
+docs/P2_design/v2/P2_typed_identity_schema_v2.json:555:        "input_lock_sha256",
+docs/P2_design/v2/P2_typed_identity_schema_v2.json:571:        "input_lock_sha256": {
+docs/P2_design/v2/P2_typed_identity_schema_v2.json:974:          "const": "soc.p2.run-lock.v2"
+docs/P2_design/v2/P2_typed_identity_schema_v2.json:1371:        "event_seq",
+docs/P2_design/v2/P2_typed_identity_schema_v2.json:1380:          "const": "soc.p2.snapshot-event.v2"
+docs/P2_design/v2/P2_typed_identity_schema_v2.json:1400:        "event_seq": {
+docs/P2_design/v2/P2_typed_identity_schema_v2.json:1673:            "NOT_SUPPORTED",
+docs/P2_design/v2/P2_typed_identity_schema_v2.json:1799:        "representative_event_seq",
+docs/P2_design/v2/P2_typed_identity_schema_v2.json:1802:        "all_ready_count",
+docs/P2_design/v2/P2_typed_identity_schema_v2.json:1807:        "coverage_status",
+docs/P2_design/v2/P2_typed_identity_schema_v2.json:1818:        "projected_H_path_and_resource_blockers",
+docs/P2_design/v2/P2_typed_identity_schema_v2.json:1844:        "representative_event_seq": {
+docs/P2_design/v2/P2_typed_identity_schema_v2.json:1853:        "all_ready_count": {
+docs/P2_design/v2/P2_typed_identity_schema_v2.json:1877:        "coverage_status": {
+docs/P2_design/v2/P2_typed_identity_schema_v2.json:1944:        "projected_H_path_and_resource_blockers": {
+docs/P2_design/v2/P2_typed_identity_schema_v2.json:1952:              "blocking_intervals"
+docs/P2_design/v2/P2_typed_identity_schema_v2.json:1964:              "blocking_intervals": {
+docs/P2_design/v2/P2_typed_identity_schema_v2.json:2057:        "expected_event_seq",
+docs/P2_design/v2/P2_typed_identity_schema_v2.json:2076:        "expected_event_seq": {
+docs/P2_design/v2/P2_typed_identity_schema_v2.json:2895:        "source_commit",
+docs/P2_design/v2/P2_typed_identity_schema_v2.json:2899:        "dirty_policy"
+docs/P2_design/v2/P2_typed_identity_schema_v2.json:2908:        "source_commit": {
+docs/P2_design/v2/P2_typed_identity_schema_v2.json:2937:        "dirty_policy": {
+docs/P2_design/v2/P2_typed_identity_schema_v2.json:3101:      "id_prefix": "urn:soc:input-lock:v2:",
+docs/P2_design/v2/P2_typed_identity_schema_v2.json:3200:      "id_prefix": "urn:soc:run-lock:v2:",
+docs/P2_design/v2/P2_typed_identity_schema_v2.json:3292:    "arrays": "use per-kind ordering in generation/snapshot specs; never sort chronological event arrays",
+docs/P2_design/v2/P2_typed_identity_schema_v2.json:3323:    "path_rule": "All paths deterministic within approved CALIBRATION root from already-known IDs, resolved against actual cwd; forbid path traversal/symlinks; all flags exact, reject extras. Actual argv retained independently of semantic hash.",
+docs/P2_design/v2/P2_typed_identity_schema_v2.json:3371:    "event_records": "actual contiguous event_seq order, never sort by state digest"
+docs/P2_design/v2/P2_typed_identity_schema_v2.json:3379:    "STAGE_RECORD": "No COMPLETE or exit0 shortcut to progression; all explicit conjunction fields checked; NOT_FROZEN always blocks."
+docs/P2_design/v2/P2_diagnostic_spec_v2.json:12:  "starting_commit": "79f9c245b23119ce25175d6dc6ff148e9e092461",
+docs/P2_design/v2/P2_diagnostic_spec_v2.json:22:    "eligible": "At least one dependency-ready not-started node anywhere among arrived services AND at least one arrived H service with a not-started node; H running prefix with an unready H descendant qualifies.",
+docs/P2_design/v2/P2_diagnostic_spec_v2.json:23:    "action_nodes": "First min(4,all_dependency_ready_count) in unchanged B2 (H first, absolute deadline, service_id,node_id) order when at least2 ready nodes exist. With exactly1 ready node record COVERAGE_INSUFFICIENT/READY_COUNT_BELOW_TWO and do not enumerate, preserving the original2-4-ready oracle scope.",
+docs/P2_design/v2/P2_diagnostic_spec_v2.json:25:    "suffix": "All still-unplaced nodes of the selected target H services, including public unready descendants; each approved graph has at most16 nodes. Completed/running/current-action target nodes treated as already fixed/forecast placed.",
+docs/P2_design/v2/P2_diagnostic_spec_v2.json:27:    "unselected_work": "No unselected ready node, unselected H target, L successor or future arrival is projected; report exclusions and truncation. Never interpret result as global optimality."
+docs/P2_design/v2/P2_diagnostic_spec_v2.json:49:    "suffix_order": "Static Kahn placement of selected target pending nodes after treating completed/running/K as placed; among available nodes choose (service absolute deadline,service_id,node_id). Same order in baseline and every assignment; no suffix search.",
+docs/P2_design/v2/P2_diagnostic_spec_v2.json:50:    "suffix_mapping": "For each suffix node, choose minimum predicted EFT/resource ID among compatible units using earliest entire idle-gap insertion. Parents may have fixed known or projected finishes; projected finish is never an actual completed fact.",
+docs/P2_design/v2/P2_diagnostic_spec_v2.json:54:    "ties": "Compare H objective exactly; equal objectives choose lexicographic resource-ID tuple in K order. Suffix/greedy resource ties use fixed resource ID order.",
+docs/P2_design/v2/P2_diagnostic_spec_v2.json:57:  "coverage": {
+docs/P2_design/v2/P2_diagnostic_spec_v2.json:58:    "FULL": "All ready actions fit2<=K<=4; all candidate pending H services fit<=2; complete approved target DAGs; all running releases predictable from estimates; all enumeration/projection records complete.",
+docs/P2_design/v2/P2_diagnostic_spec_v2.json:59:    "PARTIAL": "Ready count below2 or ready/target cap truncates, or busy estimate exhausted, or bounded model cannot cover target. Record COVERAGE_INSUFFICIENT; optional bounded partial projection is descriptive only, never enter hit/rate denominator or be imputed zero.",
+docs/P2_design/v2/P2_diagnostic_spec_v2.json:61:    "MISSING": "Missing required snapshot/stream/record is INCOMPLETE, not PARTIAL coverage."
+docs/P2_design/v2/P2_diagnostic_spec_v2.json:78:    "representative_event_seq",
+docs/P2_design/v2/P2_diagnostic_spec_v2.json:81:    "all_ready_count",
+docs/P2_design/v2/P2_diagnostic_spec_v2.json:86:    "coverage_status",
+docs/P2_design/v2/P2_diagnostic_spec_v2.json:97:    "projected_H_path_and_resource_blockers",
+docs/P2_design/v2/P2_diagnostic_spec_v2.json:108:    "E": "all unique IN_SCOPE states from complete primary MAIN-B2 stream, including valid partial-coverage states",
+docs/P2_design/v2/P2_diagnostic_spec_v2.json:112:    "coverage": "F/E only when E>0",
+docs/P2_design/v2/P2_diagnostic_spec_v2.json:115:  "negative_interpretation": "No improvement means none for this exact tested local action/suffix model. Partial coverage cannot yield negative absence evidence. Even complete tested-space negative is an operational failure to support the preregistered bounded diagnostic, not a theorem that all mappings or future workloads lack the registered mechanism.",
+docs/P2_design/v2/P2_diagnostic_spec_v2.json:116:  "independent_recomputation": "Use snapshot+observer spec only; verify fixed target/action/order, baseline membership, all Cartesian assignments and L caps, projection intervals, exact objective/ties/gain, coverage and representative event. No source-private true fields.",
+docs/P2_design/v2/P2_diagnostic_spec_v2.json:119:  "record_semantics": "VALID_FULL requires nonnull b/o/delta/g/enumeration digest and all baseline/best projections; counts exact. Other coverage states cannot be filled with zero g: use null if uncomputed. Missing required state data produces ERROR_RECORD, not a fabricated complete diagnostic. PASS independent recomputation required before criterion use."
+docs/P2_design/v2/P2_resource_profiles_v2.json:363:  "starting_commit": "79f9c245b23119ce25175d6dc6ff148e9e092461",
+docs/P2_design/v2/P2_criterion_spec_v2.json:12:  "starting_commit": "79f9c245b23119ce25175d6dc6ff148e9e092461",
+docs/P2_design/v2/P2_criterion_spec_v2.json:31:  "coverage_thresholds": {
+docs/P2_design/v2/P2_criterion_spec_v2.json:43:    "coverage": "F/E",
+docs/P2_design/v2/P2_criterion_spec_v2.json:61:    "interpretation": "Pointwise descriptive intervals conditional on selected calibration configs and VALID_FULL coverage; not independent confirmatory evidence or simultaneous-coverage claim."
+docs/P2_design/v2/P2_criterion_spec_v2.json:71:      "when": "Evaluation attempted but any precondition or support coverage fails",
+docs/P2_design/v2/P2_criterion_spec_v2.json:76:      "when": "All preconditions; every seed/condition coverage>=4/5; each of12 conditions CI_low>=f and count_seed(p>=f)>=8",
+docs/P2_design/v2/P2_criterion_spec_v2.json:81:      "when": "All preconditions; every seed/condition coverage=1; each of12 conditions CI_high<f and count_seed(p>=f)<=2",
+docs/P2_design/v2/P2_criterion_spec_v2.json:82:      "classification": "NOT_SUPPORTED"
+docs/P2_design/v2/P2_criterion_spec_v2.json:86:      "when": "All remaining cases, including partial coverage preventing negative interpretation",
+docs/P2_design/v2/P2_criterion_spec_v2.json:90:  "scope": "SUPPORTED concerns projected remaining-H-path opportunity in this bounded public model only; not actual H benefit/L compliance or independent causal mapping success. NOT_SUPPORTED stops this operational mainline under the registered criterion but is not universal absence proof. INCONCLUSIVE cannot PASS.",
+docs/P2_design/v2/P2_public_snapshot_spec_v2.json:12:  "starting_commit": "79f9c245b23119ce25175d6dc6ff148e9e092461",
+docs/P2_design/v2/P2_public_snapshot_spec_v2.json:14:  "event_schema": "P2_typed_identity_schema_v2.json#/$defs/SNAPSHOT_EVENT",
+docs/P2_design/v2/P2_public_snapshot_spec_v2.json:27:    "event_seq",
+docs/P2_design/v2/P2_public_snapshot_spec_v2.json:51:  "hash": "state_sha256=SHA256(SEMANTIC_CANON_V2(snapshot body)); event metadata excluded",
+docs/P2_design/v2/P2_public_snapshot_spec_v2.json:52:  "record_rule": "Preserve every actual event record, including EMPTY_DISPATCH and duplicate state references; contiguous event_seq, verified hook stream receipt.",
+docs/P2_design/v2/P2_public_snapshot_spec_v2.json:55:  "state_key": "SHA256 canonical STATE_KEY_PREIMAGE(scope hash,state_sha256); record ID/event_seq/decision_seq are not state-equivalence keys",
+docs/P2_design/v2/P2_public_snapshot_spec_v2.json:56:  "counting": "Globally dedup identical state_key within scope; first event_seq is representative, later events link to counted_as_event_seq. now/elapsed are included, so genuine time advance changes state; same-time start/completion/arrival changes public status/DAG and counts distinctly.",
+docs/P2_design/v2/P2_public_snapshot_spec_v2.json:57:  "empty_calls": "Preserve empty calls; same snapshot counts once. A unique state with no ready action or no pending H target is NOT_IN_SCOPE, not a zero-opportunity eligible state.",
+docs/P2_design/v2/P2_public_snapshot_spec_v2.json:60:  "independent_check": "Reconstruct hook coverage from validated physical/decision trace and observer contract; check all refs/state hashes, earliest representative and scope membership, then recompute E/F/coverage/hits from complete primary stream.",
+docs/P2_design/v2/P2_public_snapshot_spec_v2.json:61:  "exact_event_rule": "Exactly one SNAPSHOT_EVENT for each actual engine scheduler invocation: body is pre-call public view, dispatch_result records returned START/NONE. event_seq and decision_seq are the contiguous0-based invocation index within stream; causes are unique in listed enum order. EMPTY_DISPATCH is metadata on that event, not an extra observation. Final completion must have a final empty call/view as the existing P1 engine does; no synthetic polling calls may be inserted.",
+docs/P2_design/v2/P2_public_snapshot_spec_v2.json:62:  "duplicate_event_rule": "Duplicate event ID in an exported stream is integrity failure, even if byte-identical; multiple genuinely executed calls with different event IDs and same state_sha are retained but state counted once.",
+docs/P2_design/v2/P2_complete_design_proposal_v2.md:109:后两H均值∈[.01,.80]且每seed至少一个节点在data-ready之后有正的实际资源busy等待。
+docs/P2_design/v2/P2_complete_design_proposal_v2.md:131:E的在域状态：至少一个dependency-ready未开始节点，且至少一个已到达H服务有未开始节点。
+docs/P2_design/v2/P2_complete_design_proposal_v2.md:132:先按原B2顺序选最多4 ready任务；保留原§44的2–4 ready oracle范围：只有1 ready时记覆盖不足，
+docs/P2_design/v2/P2_complete_design_proposal_v2.md:133:不把它当零机会或执行单任务oracle。K不必含ready H，目标H可以是正在运行前驱之后的公开后继。
+docs/P2_design/v2/P2_complete_design_proposal_v2.md:148:FULL：ready全部落在2..4内、所有pending H服务≤2、DAG/日历/枚举完整、running释放可预测。
+docs/P2_design/v2/P2_complete_design_proposal_v2.md:149:截断、单ready或估计过期：COVERAGE_INSUFFICIENT；可存有限子空间描述，但不计hit或率，不补零。
+docs/P2_design/v2/P2_complete_design_proposal_v2.md:156:M2仍为相同输入B1/B3/B4/B5相对B2的H-DMR、L-P95、资源等待等配对描述；不作为独立因果
+docs/P2_design/v2/P2_complete_design_proposal_v2.md:157:mapping证据。旧M1不进入v2门禁，不声称M1R或M2验证了候选，也没有提出online候选公式。
+docs/P2_design/v2/P2_complete_design_proposal_v2.md:165:E=完整primary MAIN-B2 stream中唯一在域状态数；F=FULL状态数；p=hits/F，coverage=F/E。
+docs/P2_design/v2/P2_complete_design_proposal_v2.md:170:支持：全部12条件CI下端≥f且各有≥8seed p≥f，全部coverage≥4/5。
+docs/P2_design/v2/P2_complete_design_proposal_v2.md:171:不支持：全部coverage=1且全部12条件CI上端<f、各≤2seed p≥f。
+docs/P2_design/v2/P2_complete_design_proposal_v2.md:182:hash取得input lock，才能物化。MAIN先生成并验证解析，控制再派生；resolution receipt不改蓝图。
+docs/P2_design/v2/P2_mapping_opportunity_decision_table_v2.md:4:来源：原`docs/statistical_protocol.md:3–16,34–47`及需求§44/§100；新cutoff/coverage均PROPOSED。
+docs/P2_design/v2/P2_mapping_opportunity_decision_table_v2.md:13:| 支持覆盖 | 每个seed/condition F/E≥4/5 | 同左 | 新增UNAPPROVED |
+docs/P2_design/v2/P2_mapping_opportunity_decision_table_v2.md:14:| 阴性覆盖 | 每个seed/condition F/E=1 | 同左 | 新增UNAPPROVED |
+docs/P2_design/v2/P2_mapping_opportunity_decision_table_v2.md:17:E含所有唯一在域状态，包含单ready、截断和估计释放未知的合法覆盖不足；F只含完整FULL。
+docs/P2_design/v2/P2_mapping_opportunity_decision_table_v2.md:22:单元配对且E/F>0、所有M1R记录独立核验、无invalid/incomplete、M2配对完整，所有定义在观察前批准。
+docs/P2_design/v2/P2_mapping_opportunity_decision_table_v2.md:28:| 1 | 判定已尝试，V=false或任何coverage<4/5 | INCONCLUSIVE | BLOCKED |
+docs/P2_design/v2/P2_mapping_opportunity_decision_table_v2.md:29:| 2 | V=true，coverage全部≥4/5，每条件L≥f且K≥8 | SUPPORTED | 仍须其余P2前提，不自动PASS |
+docs/P2_design/v2/P2_mapping_opportunity_decision_table_v2.md:30:| 3 | V=true，coverage全部=1，每条件U<f且K≤2 | NOT_SUPPORTED | 保留阴性，停止推进 |
+docs/P2_design/v2/P2_mapping_opportunity_decision_table_v2.md:34:互斥；剩余情况全落INCONCLUSIVE。有partial覆盖时即使FULL子集全零，也不能判NOT_SUPPORTED。
+docs/P2_design/v2/P2_communication_profiles_v2.json:745:  "starting_commit": "79f9c245b23119ce25175d6dc6ff148e9e092461",
+docs/P2_design/v2/P2_generation_spec_v2.json:12:  "starting_commit": "79f9c245b23119ce25175d6dc6ff148e9e092461",
+docs/P2_design/v2/P2_generation_spec_v2.json:104:    "burst_block_slots": 5,
+docs/P2_design/v2/P2_canonical_golden_vectors_v2.json:12:  "starting_commit": "79f9c245b23119ce25175d6dc6ff148e9e092461",
+docs/P2_design/v2/P2_D01_D10_traceability_v2.csv:35:D07,V2-F01;V2-F04,SP25;SP26;SP27;SP33;SP34;SP35;SP37,EXISTING_REQUIREMENT_OR_HISTORICAL_OPTION,docs/P2_design/mapping_criterion_options.md,7–24,2c63c2e3968eb8a365081b8ce65a7e53101a05b80865b36f4059f6361a56f388,UNAPPROVED,M1/M2原始方案与混杂风险; new numerical values not upgraded to source support
+docs/P2_design/v2/P2_scientific_parameter_registry_v2.json:12:  "starting_commit": "79f9c245b23119ce25175d6dc6ff148e9e092461",
+docs/P2_design/v2/P2_scientific_parameter_registry_v2.json:13:  "count_scope": "Named scientific parameter/rule groups, not scalar values. SP01-SP32 traced, 8 split-out explicit groups SP33-SP40 added; none deleted/merged. All40 unresolved/unapproved; engineering-only identity/lock details not counted as scientific scalar parameters.",
+docs/P2_design/v2/P2_scientific_parameter_registry_v2.json:844:        "v1_value_or_rule": "Historical M1: K2..4 containing H, ready-prefix only",
+docs/P2_design/v2/P2_scientific_parameter_registry_v2.json:845:        "v2_value_or_rule": "M1R: K2..4 (single-ready states explicitly coverage-insufficient) and pending arrived H targets; target scope/dedup separately registered SP33/SP37.",
+docs/P2_design/v2/P2_scientific_parameter_registry_v2.json:867:        "v1_value_or_rule": "Mean ready-prefix H finish, strict localL nondegradation",
+docs/P2_design/v2/P2_scientific_parameter_registry_v2.json:877:      "name": "M2_measurements",
+docs/P2_design/v2/P2_scientific_parameter_registry_v2.json:878:      "previous_name": "M2_measurements",
+docs/P2_design/v2/P2_scientific_parameter_registry_v2.json:889:        "v1_value_or_rule": "M2 B1/B3/B4/B5 vsB2 descriptive",
+docs/P2_design/v2/P2_scientific_parameter_registry_v2.json:934:        "v2_value_or_rule": "Same candidate frequency values; hits/F over FULL covered unique states, coverage separately F/E.",
+docs/P2_design/v2/P2_scientific_parameter_registry_v2.json:957:        "v2_value_or_rule": "Same numeric stability on new per-seed FULL-coverage frequency, no new independent unit.",
+docs/P2_design/v2/P2_scientific_parameter_registry_v2.json:979:        "v2_value_or_rule": "Same condition/macro units; coverage and selected-calibration interpretation separately SP36/SP39.",
+docs/P2_design/v2/P2_scientific_parameter_registry_v2.json:1023:        "v2_value_or_rule": "First2 unfinished arrived H with pending nodes by deadline/service ID; truncation is coverage insufficiency.",
+docs/P2_design/v2/P2_scientific_parameter_registry_v2.json:1074:      "name": "coverage_and_missing_evidence",
+docs/P2_design/v2/P2_scientific_parameter_registry_v2.json:1078:      "proposal_ref": "P2_criterion_spec_v2.json#/coverage_thresholds",
+docs/P2_design/v2/P2_scientific_parameter_registry_v2.json:1086:        "v2_value_or_rule": "Propose support coverage>=4/5 per seed/condition; negative requires1; E/F>0, partial neverzero, invalid/missing fail closed.",
+docs/P2_design/v2/P2_stage_state_contract_v2.json:12:  "starting_commit": "79f9c245b23119ce25175d6dc6ff148e9e092461",
+docs/P2_design/v2/P2_stage_state_contract_v2.json:62:        "NOT_SUPPORTED",
+docs/P2_design/v2/P2_stage_state_contract_v2.json:191:    "atomic completion receipt published"
+docs/P2_design/v2/P2_stage_state_contract_v2.json:202:    "diagnostic_validity VALID or POSITIVE_COVERAGE_ONLY with registered positive coverage",
+docs/P2_design/v2/P2_stage_state_contract_v2.json:207:  "progression_false": "Any false/unknown prerequisite ->BLOCKED. REQUIREMENTS_MET_PENDING_EXPLICIT_NEXT_STAGE_AUTHORIZATION is future conditional status, never an unlock or permission; existing gate files/code unchanged.",
+docs/P2_design/v2/P2_stage_state_contract_v2.json:239:      "meaning": "Valid completed calibration but no eligible selection, NOT_SUPPORTED/INCONCLUSIVE or timing NOT_FROZEN; progression blocked"
+docs/P2_design/v2/P2_stage_state_contract_v2.json:258:      "NOT_EVALUATED->NOT_SUPPORTED",
+docs/P2_design/v2/P2_runner_schema_review_v2.md:20:| Generation authorization / input lock / generation attempt | 上述descriptor及明确生成授权已知 | 内容hash、workload ID、run锁 |
+docs/P2_design/v2/P2_runner_schema_review_v2.md:31:source bundle只含已冻结源码/依赖/原模型协议及其source commit，不含blueprint实例/结果/本身的
+docs/P2_design/v2/P2_runner_schema_review_v2.md:32:外层metadata提交hash。实际执行HEAD另实记；不得伪装dirty字节。P2相关源码洁净是新增待批工程规则。
+docs/P2_design/v2/P2_runner_schema_review_v2.md:55:10. 全2520完整证据后先做B2-only资格/选择，保存全部A/B记录；之后做M1R/M2及D08分类，再写分离
+docs/P2_design/v2/P2_runner_schema_review_v2.md:99:有效阴性可以执行COMPLETE，但NOT_SUPPORTED/INCONCLUSIVE/NO_ELIGIBLE/TIMING_NOT_FROZEN均闭锁。
+docs/P2_design/v2/P2_runner_schema_review_v2.md:102:mapping支持不是H/L或候选通过；即使未来全前提满足，也仅“待明确下一阶段授权”，不创建unlock。
+docs/P2_design/v2/P2_D01_D10_approval_checklist_v2.md:13:| D07 | UNAPPROVED | M1R_PATH_V2: original2-4 ready enumeration; target<=2 pending arrivedH DAGs<=16nodes each; fixed public suffix EFT,<=36nodes/1296maps; L cap=max(baseline finish,deadline); exact snapshot scope/dedup/replay exclusion; no actual scheduler feedback. | 是否批准M1R的目标选择、固定suffix、局部L slack、边界/截断/去重和记录范围？ |
+docs/P2_design/v2/P2_D01_D10_approval_checklist_v2.md:14:| D08 | UNAPPROVED | FINE(.01,.01) vs COARSE(.05,.05),8/10 support and<=2/10 absence remain undecided; M1R hits/F,F/E; proposed positive coverage>=4/5,negative=1,all12conditions/10seeds; samepaired10000,type7,20261018; selected calibration descriptive only. | 选择FINE还是COARSE（或提出明确替代）？是否批准4/5正覆盖、1阴性覆盖、三态及条件性解释？ |
+docs/P2_design/v2/P2_D01_D10_approval_checklist_v2.md:15:| D09 | UNAPPROVED | RecommendR1 formalrunner vsR2thinlauncher; blueprint/auth/inputlock/generate/resolve/workload/run/attempt/runlock/preinvoke withoutcycle; exactreuse,0automaticretry,append-only recovery; P2clean policy newunapproved; explicit stages/exits, timingNOT_FROZEN blocks. | 是否批准R1、精确复用、零自动retry、恢复表、新增P2洁净和分离状态/出口契约？ |
+docs/P2_design/v2/P2_trial_matrix_draft_v2.json:503:    "SEL-v2": "All2520 slots retained. For each declared condition evaluate each A/B config using all10 B2 records, complete validity/control qualification and its OWN target-load predicates. Select first eligible A elseB; no eligible =>NO_ELIGIBLE_CONDITION/BLOCKED. No candidate/M1R/M2 effect enters selection; no relabel, drop, clamp or expansion. All unselected/off-target records preserved.",
+docs/P2_design/v2/P2_trial_matrix_draft_v2.json:555:  "starting_commit": "79f9c245b23119ce25175d6dc6ff148e9e092461",
+docs/P2_design/v2/P2_trial_matrix_draft_v2.json:584:      "M2_method_advantage"

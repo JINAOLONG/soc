@@ -1,0 +1,4 @@
+  File "<string>", line 1
+    import json; d=json.load(open("docs/P2_design/v2/P2_typed_identity_schema_v2.json")); print(json.dumps(d["$defs"]["GATE_STATE"],ensure_ascii=False,indent=2)); d=json.load(open("docs/P2_design/decisions.draft.json")); [print(x["id"],x["question"],x["blockers"]) for x in d["decisions"]
+                                                                                                                                                                                                                             ^
+SyntaxError: '[' was never closed

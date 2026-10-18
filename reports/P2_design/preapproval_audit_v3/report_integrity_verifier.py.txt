@@ -1,0 +1,71 @@
+"""Report/source metadata verifier. No project code import or scientific execution.
+Exit1: report integrity error. Exit2: intact report with unresolved design issues.
+This is a NEW review helper, not a modification or substitute for any P0/P1/P2 gate.
+"""
+from pathlib import Path
+import json,csv,hashlib,re,subprocess,collections,sys
+R=Path('/workspace/soc');O=R/'reports/P2_design/preapproval_audit_v3'
+checks=[]
+def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+def check(name,ok,detail=None):checks.append(dict(id=name,pass_=bool(ok),detail=detail))
+def load(n):return json.loads((O/n).read_text())
+required=['executive_decision.md','D01_D10_decision_readiness.csv','SP01_SP40_traceability.csv','M1R_adversarial_cases.md','coverage_threshold_review.md','trial_matrix_row_audit.json','identity_recovery_review.md','stage_state_timing_review.md','cross_document_findings.json','actual_commands_and_exit_codes.json','review_evidence_manifest.json','human_decision_packet.md']
+check('ALL12_REQUIRED_REPORTS',all((O/x).is_file() for x in required))
+baseline=load('protected_baseline.json');bad=[]
+for x in baseline['files']:
+ p=R/x['path']
+ if not p.is_file() or p.stat().st_size!=x['size_bytes'] or sha(p)!=x['sha256']:bad.append(x['path'])
+check('ALL462_PREEXISTING_BYTES_UNCHANGED',len(baseline['files'])==462 and not bad,bad)
+prefix='reports/P2_design/preapproval_audit_v3/'
+status=subprocess.check_output(['git','status','--porcelain=v1','--untracked-files=all'],cwd=R,text=True).splitlines()
+check('WORKTREE_CHANGES_ONLY_REPORT_NAMESPACE',all(x[3:].startswith(prefix) for x in status),dict(changed_paths=len(status)))
+diff=subprocess.check_output(['git','diff','--name-status',baseline['starting_head']],cwd=R,text=True).splitlines()
+check('DIFF_FROM_START_ONLY_NEW_REPORTS',all(x.startswith('A\t'+prefix) for x in diff),dict(tracked_diff_paths=len(diff)))
+refs=[];badrefs=[];badlines=[]
+def walk(x,origin):
+ if isinstance(x,dict):
+  if isinstance(x.get('path'),str) and isinstance(x.get('sha256'),str):
+   p=R/x['path'];refs.append((origin,x['path']))
+   if not p.is_file() or sha(p)!=x['sha256'] or ('size_bytes' in x and p.stat().st_size!=x['size_bytes']):badrefs.append((origin,x['path']))
+   elif p.suffix not in ['.pdf']:
+    n=len(p.read_text(errors='replace').splitlines());v=x.get('lines',x.get('locator',''))
+    if isinstance(v,list) and v and all(isinstance(i,int) for i in v):
+     if min(v)<1 or max(v)>n:badlines.append((origin,x['path'],v,n))
+    elif isinstance(v,str) and ('lines' in v or re.fullmatch(r'[\d, \-]+',v)):
+     for m in re.finditer(r'(\d+)\s*[-–]\s*(\d+)',v.split('lines',1)[-1]):
+      if int(m[1])<1 or int(m[2])>n:badlines.append((origin,x['path'],v,n))
+  for v in x.values():walk(v,origin)
+ elif isinstance(x,list):
+  for v in x:walk(v,origin)
+for f in O.glob('*.json'):
+ if f.name not in ['review_evidence_manifest.json','report_integrity_check.json']:walk(json.loads(f.read_text()),f.name)
+for f in O.glob('*.csv'):
+ for r in csv.DictReader(f.open()):
+  for k,v in r.items():
+   if k.endswith('_json'):walk(json.loads(v),f.name+':'+r.get('decision_id',''))
+check('ALL_STRUCTURED_FILE_REFERENCES_MATCH',not badrefs,dict(references=len(refs),mismatches=badrefs))
+check('ALL_EXPLICIT_LINE_RANGES_WITHIN_SOURCE',not badlines,badlines)
+ds=list(csv.DictReader((O/'D01_D10_decision_readiness.csv').open()));sp=list(csv.DictReader((O/'SP01_SP40_traceability.csv').open()))
+check('TEN_ORIGINAL_DECISION_IDS', [x['decision_id'] for x in ds]==[f'D{i:02}' for i in range(1,11)])
+check('FORTY_ORIGINAL_PARAMETER_IDS',[x['parameter_group_id'] for x in sp]==[f'SP{i:02}' for i in range(1,41)])
+check('ALL50_APPROVALS_UNAPPROVED',all(x['current_approval_status']=='UNAPPROVED' for x in ds) and all(x['approval']==x['reviewer_approval']=='UNAPPROVED' for x in sp))
+check('FIVE_READY_FIVE_REVISION_RECOMMENDATIONS',sum(x['review_recommendation']=='READY_FOR_HUMAN_DECISION' for x in ds)==5 and all(x['decision_status']=='HUMAN_DECISION_REQUIRED' for x in ds))
+check('NO_IMPLEMENTATION_OR_EXECUTION_AUTHORIZED',all(x['implementation_authorized']==x['scientific_execution_authorized']=='NO' for x in ds) and all(x['execution_authorized']=='NO' for x in sp))
+f=load('cross_document_findings.json');counts=dict(collections.Counter(x['severity'] for x in f['findings']))
+check('NINE_FINDINGS_FIVE_CORRECTIONS_FOUR_INFO',counts=={'CRITICAL':1,'MAJOR':2,'MEDIUM':1,'LOW':1,'INFO':4} and sum(x['requires_targeted_document_correction'] for x in f['findings'])==5,counts)
+check('CANONICAL_REPORT_MATCHES_LOCAL_FINAL_FINDINGS',all(sha(O/x['local_report'])==x['local_report_sha256'] for x in f['findings']))
+check('CONSISTENT_VERDICT',f['review_verdict']=='DESIGN_REVIEW_REVISE_REQUIRED' and 'DESIGN_REVIEW_REVISE_REQUIRED' in (O/'executive_decision.md').read_text() and 'DESIGN_REVIEW_REVISE_REQUIRED' in (O/'human_decision_packet.md').read_text())
+m=load('trial_matrix_row_audit.json')
+check('ALL2520_ROWS20_FIELDS_PASS',len(m['row_results'])==2520 and all(x['result']=='PASS' and x['compared_field_count']==20 and x['actual_metadata_digest']==x['expected_metadata_digest'] and not x['differences'] for x in m['row_results']))
+check('ALL36_CONFIGURATIONS_PASS',len(m['configuration_results'])==36 and all(x['result']=='PASS' and not x['differences'] for x in m['configuration_results']))
+check('MATRIX_COUNTS_AND_FRESH_SOURCE_HASH',m['row_field_comparisons']==50400 and m['config_field_comparisons']==396 and m['checks_passed']==37 and m['checks_failed']==0 and sha(R/'docs/P2_design/v2/P2_trial_matrix_draft_v2.json')=='b58fe4c2eead01fc9b92966d557ed0bb052e7387794fc0d9b58029ffdb90af0e')
+check('NINE_M1R_CASES_REPORTED',load('m1r_findings.json')['cases']==9 and all(f'Case {i}' in (O/'M1R_adversarial_cases.md').read_text() for i in range(1,10)))
+check('ZERO_SCIENCE_REPORTED',f['scientific_workloads_generated']==f['scientific_workloads_run']==m['actual_scientific_workloads_generated']==m['actual_scientific_workloads_run']==0 and not f['design_approved'] and not f['design_frozen'])
+ledger=load('actual_commands_and_exit_codes.json');ids=[x['id'] for x in ledger['commands']]
+check('COMMAND_IDS_UNIQUE_REAL_OUTPUT_REFS',len(ids)==len(set(ids))==ledger['command_count'])
+check('KNOWN_READ_ERROR_PRESERVED_AND_CORRECTED',any(x['id']=='decision-010' and x['exit_code']==1 for x in ledger['commands']) and any(x['id']=='decision-011' and x['exit_code']==0 for x in ledger['commands']))
+fail=[x for x in checks if not x['pass_']]
+code=1 if fail else 2 if any(x['severity']=='CRITICAL' for x in f['findings']) else 0
+result=dict(scope='Static report integrity and source identity only; not P0/P1/P2 gate or runtime/scientific test',passed=sum(x['pass_'] for x in checks),failed=fail,checks=checks,integrity_status='PASS' if not fail else 'FAIL',design_review=f['review_verdict'],audit_exit_code=code,exit_semantics={'0':'intact report with no critical finding','1':'report integrity failure','2':'intact report preserving unresolved critical design finding'},reviewed_command_count_at_check=ledger['command_count'],manifest_validation_scope='Manifest emitted after this check and final command aggregation; separate publication check validates all final files',scientific_workloads_generated=0,scientific_workloads_run=0)
+(O/'report_integrity_check.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n')
+print(json.dumps({k:v for k,v in result.items() if k!='checks'},ensure_ascii=False));sys.exit(code)

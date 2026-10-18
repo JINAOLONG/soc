@@ -1,0 +1,37 @@
+from pathlib import Path
+import json,hashlib,subprocess,math
+R=Path(__file__).resolve().parents[3];O=R/'reports/P2_design/preapproval_audit_v3';D=R/'docs/P2_design/v2'
+def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+def strict(p):
+ def pairs(xs):
+  if len(xs)!=len({k for k,v in xs}):raise ValueError('duplicate JSON key')
+  return dict(xs)
+ return json.loads(p.read_text(),object_pairs_hook=pairs,parse_constant=lambda v:(_ for _ in ()).throw(ValueError(v)))
+checks=[]
+def ck(name,b,detail=None):checks.append(dict(id=name,pass_=bool(b),detail=detail))
+base=strict(O/'protected_baseline.json');mismatch=[x['path'] for x in base['files'] if not(R/x['path']).is_file() or sha(R/x['path'])!=x['sha256']]
+ck('EXISTING462_UNCHANGED',len(base['files'])==462 and not mismatch,mismatch)
+manifest_results=[]
+for rel in ['checkpoints/P1_artifact_manifest.json','checkpoints/P2_design_artifact_manifest.json','reports/P2_design/independent_review_v2/review_evidence_manifest.json','reports/P2_design/design_revision_v2/review_evidence_manifest.json']:
+ data=strict(R/rel);rows=data['files'];bad=[x['path'] for x in rows if not(R/x['path']).is_file() or sha(R/x['path'])!=x['sha256']];unique=len({x['path'] for x in rows})==len(rows);manifest_results.append(dict(path=rel,sha256=sha(R/rel),count=len(rows),mismatch=bad,unique=unique));ck('HISTORICAL_MANIFEST_'+rel,not bad and unique)
+jsons={p.name:strict(p) for p in D.glob('*.json')}
+ck('ALL_V2_JSON_STRICT_PARSE',len(jsons)==12,list(jsons))
+ck('ALL_DRAFT_UNAPPROVED',all(x['approval']=='UNAPPROVED' and x['status']=='DRAFT_UNAPPROVED_NONEXECUTABLE' and all(x[k] is False for k in ['approved','frozen','executable','execution_authorized','read_by_pipeline']) for x in jsons.values()))
+reg=jsons['P2_scientific_parameter_registry_v2.json'];ck('PARAMETERS40_UNAPPROVED',len(reg['parameters'])==40 and {x['id'] for x in reg['parameters']}=={f'SP{i:02}' for i in range(1,41)} and all(x['approval']=='UNAPPROVED' and x['status']=='UNRESOLVED' for x in reg['parameters']))
+ck('LINEAGE32_PLUS8_NO_DELETE_MERGE',reg['previous_group_count']==32 and reg['current_group_count']==40 and len(reg['v1_to_v2_group_map'])==32 and reg['additions']==[f'SP{i:02}' for i in range(33,41)] and not reg['deletions'] and not reg['merges'])
+I=jsons['P2_typed_identity_schema_v2.json'];G=jsons['P2_generation_spec_v2.json'];S=jsons['P2_stage_state_contract_v2.json'];key_fields=list(I['$defs']['KEY']['properties']);ck('ACTUAL_KEY14_MATCHES_ALL_BINDINGS',len(key_fields)==14 and all(set(x)==set(key_fields) for x in G['key_bindings'].values()),key_fields)
+ck('STAGE_FIELDS_MATCH_CLOSED_SCHEMA',S['state_fields']==I['$defs']['GATE_STATE']['properties'])
+ck('CURRENT_STAGE_REMAINS_BLOCKED',S['current_design_values']['p2_progression_status']=='BLOCKED' and S['current_design_values']['engineering_timing_prerequisite']=='NOT_FROZEN')
+ck('NO_UNLOCKS',not(R/'checkpoints/VALIDATION_UNLOCKED').exists() and not(R/'checkpoints/FORMAL_UNLOCKED').exists())
+status=subprocess.run(['git','status','--porcelain=v1','--untracked-files=all'],cwd=R,capture_output=True,text=True)
+ck('REPORT_ONLY_NEW_NAMESPACE',status.returncode==0 and all(x.startswith('?? reports/P2_design/preapproval_audit_v3/') for x in status.stdout.splitlines()))
+required=['AGENTS.md','STATUS.md','docs/user_request.txt','docs/research_contract.md','docs/statistical_protocol.md','docs/model_spec.md','docs/workload_spec.md','docs/baseline_spec.md','docs/metric_spec.md','docs/P2_design/P2_complete_design_proposal_v1.md','docs/P2_design/P2_mapping_opportunity_decision_table_v1.md','reports/P2_design/design_revision_v2/human_decision_packet.md']
+required+=sorted(p.relative_to(R).as_posix() for p in D.iterdir() if p.is_file())
+required+=['reports/P2_design/independent_review_v2/'+n for n in ['executive_decision.md','findings.json','critical_findings.md','required_changes.md','review_method_notes.md','D01_D10_review_matrix.csv']]
+source_rows=[]
+for rel in sorted(set(required)):
+ p=R/rel;b=p.read_bytes();blob=subprocess.run(['git','show',base['starting_head']+':'+rel],cwd=R,capture_output=True)
+ source_rows.append(dict(path=rel,sha256=sha(p),size_bytes=len(b),lines=len(b.splitlines()),matches_audited_commit=blob.returncode==0 and b==blob.stdout,review_scope='Full byte identity; content assigned across coordinated review components. Parsing alone is not semantic approval.'))
+ck('SOURCE_BYTES_MATCH_AUDITED_COMMIT',all(x['matches_audited_commit'] for x in source_rows))
+(O/'reviewed_source_inventory.json').write_text(json.dumps(dict(audited_commit=base['starting_head'],files=source_rows),ensure_ascii=False,indent=2)+'\n')
+failed=[x['id'] for x in checks if not x['pass_']];out=dict(scope='Read-only repository and proposal metadata checks; no gate/scheduler/scientific execution',checks=checks,passed=len(checks)-len(failed),failed=failed,manifests=manifest_results,scientific_workloads_generated=0,scientific_workloads_run=0,prior_P0_P1_check_only_rerun=False,known_key_count_discrepancy='Actual14 fields; generation text says All15, retained and reported rather than modified.');print(json.dumps(out,ensure_ascii=False,indent=2));raise SystemExit(bool(failed))

@@ -1,0 +1,99 @@
+{
+  "review_kind": "SAME_ASSISTANT_TEAM_ADVERSARIAL_CHALLENGE",
+  "approval": "UNAPPROVED",
+  "scientific_workloads_generated": 0,
+  "scientific_workloads_run": 0,
+  "findings": [
+    {
+      "subject": "C1",
+      "candidate": "Global NOT_SUPPORTED unreachable under unchanged current v2 rules",
+      "challenge_result": "CONFIRMED_SPECIFICATION_LEVEL_DERIVATION",
+      "severity_recommendation": "CRITICAL",
+      "basis": [
+        "ADAS templates have exactly one root in both sizes",
+        "First paired H/L arrival precedes all later slots",
+        "Positive-duration H root dispatch leaves unique one-ready in-scope view",
+        "View enters E but not F and cannot be deduplicated away",
+        "Every valid ADAS seed/condition therefore has coverage<1",
+        "All12 negative rule requires coverage=1 in every seed/condition"
+      ],
+      "limitations": [
+        "Conditional on valid complete execution under unchanged v2 definitions",
+        "No claim about actual opportunity rate or support reachability",
+        "No science performed"
+      ],
+      "exculpatory_definitions_reviewed": [
+        "Exact per-invocation snapshot hooks",
+        "State-body deduplication",
+        "A-before-B selection",
+        "Invalid input closes criterion rather than creates counterexample"
+      ],
+      "recommendation": "Document explicit human resolution before approval; do not silently alter scope or coverage cutoff"
+    },
+    {
+      "subject": "C2",
+      "candidate": "Concurrency/stale-lock semantics incomplete",
+      "challenge_result": "RETAIN_WITH_NARROWED_CLAIM",
+      "severity_recommendation": "MAJOR",
+      "already_specified": [
+        "Conflict fail closed",
+        "Owner/lease/attempt receipts preserved",
+        "Explicit stale-release authorization",
+        "Immutable receipts and fsync/CAS publication",
+        "Zero automatic retries"
+      ],
+      "remaining_gap": [
+        "Common exclusion domain across authorization/attempt identities",
+        "Lease receipt exact fields and stale-owner fencing",
+        "Atomic budget reservation versus duplicate calls"
+      ],
+      "refuted_overstatement": "The design does not completely omit locking or recovery; no actual race was executed or proven",
+      "recommendation": "Specify exclusion/ownership/fencing contract and future runtime tests before implementation claims"
+    },
+    {
+      "subject": "C3",
+      "candidate": "Actual execution Git HEAD and observed dirty status not required by typed records",
+      "challenge_result": "RETAIN_WITH_NARROWED_CLAIM",
+      "severity_recommendation": "MAJOR",
+      "already_specified": [
+        "Original run manifest requirement",
+        "Runner prose promises separately recorded actual execution HEAD",
+        "SOURCE_BUNDLE has source_commit and dirty_policy"
+      ],
+      "remaining_gap": [
+        "No required actual execution HEAD/status field or typed artifact membership",
+        "Capture point and independent verification missing"
+      ],
+      "refuted_overstatement": "Generic raw_artifacts could represent additional provenance; representation is possible but not bound or required",
+      "recommendation": "Bind actual execution provenance receipt or fields explicitly without confusing source commit and runtime checkout"
+    },
+    {
+      "subject": "C4",
+      "candidate": "M2 paired completeness not bound to JSON criterion and stage evidence",
+      "challenge_result": "RETAIN_WITH_NARROWED_CLAIM",
+      "severity_recommendation": "MEDIUM",
+      "already_specified": [
+        "Decision table requires M2 paired completeness",
+        "Main proposal and SP27 define M2",
+        "Runner orders M2 before D08",
+        "Same-input method trial data are planned"
+      ],
+      "remaining_gap": [
+        "Explicit M2 completeness predicate absent from JSON preconditions",
+        "No required M2 report schema/pair membership/verification receipt in stage contract"
+      ],
+      "refuted_overstatement": "Generic diagnostic_report_ref/prerequisite_evidence can carry M2; requirement is present in prose, not absent from entire design",
+      "recommendation": "Make M2 pairing evidence membership and rejection behavior explicit before claiming a machine-complete gate"
+    }
+  ],
+  "detail_ref": "reports/P2_design/preapproval_audit_v3/challenge_notes.md",
+  "sources_ref": "reports/P2_design/preapproval_audit_v3/challenge_source_reads.json",
+  "additional_hand_review": {
+    "case": "M1R_adversarial_cases.md Case7",
+    "result": "CONFIRMED_HAND_ARITHMETIC_AND_ALL_K_INVARIANCE",
+    "severity_recommendation": "INFO_ALREADY_DISCLOSED_SCOPE_LIMIT",
+    "scientific_or_runtime_validation": false,
+    "scheduler_or_diagnostic_implementation": false,
+    "details_ref": "challenge_notes.md#additional-hand-challenge-case-7-fixed-suffix-example"
+  }
+}

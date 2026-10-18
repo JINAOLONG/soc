@@ -1,0 +1,238 @@
+{
+  "check_scope": "Static source premises and hand-derived scalar arithmetic only",
+  "status": "PASS",
+  "passed": 27,
+  "failed": 0,
+  "scientific_workloads_generated": 0,
+  "scientific_workloads_run": 0,
+  "scientific_interpretation": "No scientific result. Critical negative-branch inconsistency remains; check PASS means proof premises/arithmetic consistent.",
+  "checks": [
+    {
+      "id": "ADAS_BOTH_REGISTERED_SIZES",
+      "passed": true,
+      "evidence": [
+        [
+          "ADAS-8-v1",
+          8
+        ],
+        [
+          "ADAS-16-v1",
+          16
+        ]
+      ]
+    },
+    {
+      "id": "SOLE_ROOT_ADAS-8-v1",
+      "passed": true,
+      "evidence": [
+        "ADAS.n01"
+      ]
+    },
+    {
+      "id": "ALL_OTHER_NODES_NONROOT_ADAS-8-v1",
+      "passed": true,
+      "evidence": "Every other node has a predecessor; after first positive start no descendant completes."
+    },
+    {
+      "id": "SOLE_ROOT_ADAS-16-v1",
+      "passed": true,
+      "evidence": [
+        "ADAS.n01.a"
+      ]
+    },
+    {
+      "id": "ALL_OTHER_NODES_NONROOT_ADAS-16-v1",
+      "passed": true,
+      "evidence": "Every other node has a predecessor; after first positive start no descendant completes."
+    },
+    {
+      "id": "SHARED_PAIR_FIRST_ARRIVAL",
+      "passed": true,
+      "evidence": {
+        "slots": 50,
+        "services_per_slot": 2,
+        "total_services": 100,
+        "H": 50,
+        "L": 50,
+        "burst_block_slots": 5,
+        "burst_compression": "1/4",
+        "formula": "for j=0..49: q=j//5,k=j%5; a_H=a_L=P*(5*q+k/4+U_j/10); P from unchanged config period_ms",
+        "arrival_window": "[0,W), W=50*P; no admission at W; full drain; observation_end=max(W,last_finish) metadata only; makespan remains last_finish",
+        "no_warmup_exclusion": true
+      }
+    },
+    {
+      "id": "JITTER_BOUND_AND_SLOT_SEPARATION",
+      "passed": true,
+      "evidence": "a0/P<1/10<1/4<=a1/P. This evaluates constants, not any U or seed."
+    },
+    {
+      "id": "POSITIVE_DURATION_DESIGN",
+      "passed": true,
+      "evidence": "No zero-duration completion at the first start time in a valid run."
+    },
+    {
+      "id": "EVERY_INVOCATION_SNAPSHOT",
+      "passed": true,
+      "evidence": "Exactly one SNAPSHOT_EVENT for each actual engine scheduler invocation: body is pre-call public view, dispatch_result records returned START/NONE. event_seq and decision_seq are the contiguous0-based invocation index within stream; causes are unique in listed enum order. EMPTY_DISPATCH is metadata on that event, not an extra observation. Final completion must have a final empty call/view as the existing P1 engine does; no synthetic polling calls may be inserted."
+    },
+    {
+      "id": "REAL_START_DISTINCT_STATE",
+      "passed": true,
+      "evidence": "Globally dedup identical state_key within scope; first event_seq is representative, later events link to counted_as_event_seq. now/elapsed are included, so genuine time advance changes state; same-time start/completion/arrival changes public status/DAG and counts distinctly."
+    },
+    {
+      "id": "SINGLE_READY_ELIGIBLE",
+      "passed": true,
+      "evidence": "At least one dependency-ready not-started node anywhere among arrived services AND at least one arrived H service with a not-started node; H running prefix with an unready H descendant qualifies."
+    },
+    {
+      "id": "SINGLE_READY_MANDATORY_PARTIAL",
+      "passed": true,
+      "evidence": "First min(4,all_dependency_ready_count) in unchanged B2 (H first, absolute deadline, service_id,node_id) order when at least2 ready nodes exist. With exactly1 ready node record COVERAGE_INSUFFICIENT/READY_COUNT_BELOW_TWO and do not enumerate, preserving the original2-4-ready oracle scope."
+    },
+    {
+      "id": "PARTIAL_RETAINED_IN_E",
+      "passed": true,
+      "evidence": "all unique IN_SCOPE states from complete primary MAIN-B2 stream, including valid partial-coverage states"
+    },
+    {
+      "id": "NEGATIVE_REQUIRES_FULL_COVERAGE",
+      "passed": true,
+      "evidence": {
+        "priority": 3,
+        "when": "All preconditions; every seed/condition coverage=1; each of12 conditions CI_high<f and count_seed(p>=f)<=2",
+        "classification": "NOT_SUPPORTED"
+      }
+    },
+    {
+      "id": "ALL_40_UNAPPROVED",
+      "passed": true,
+      "evidence": [
+        "SP01",
+        "SP02",
+        "SP03",
+        "SP04",
+        "SP05",
+        "SP06",
+        "SP07",
+        "SP08",
+        "SP09",
+        "SP10",
+        "SP11",
+        "SP12",
+        "SP13",
+        "SP14",
+        "SP15",
+        "SP16",
+        "SP17",
+        "SP18",
+        "SP19",
+        "SP20",
+        "SP21",
+        "SP22",
+        "SP23",
+        "SP24",
+        "SP25",
+        "SP26",
+        "SP27",
+        "SP28",
+        "SP29",
+        "SP30",
+        "SP31",
+        "SP32",
+        "SP33",
+        "SP34",
+        "SP35",
+        "SP36",
+        "SP37",
+        "SP38",
+        "SP39",
+        "SP40"
+      ]
+    },
+    {
+      "id": "CASE7_EXACT_SUFFIX_IMPROVEMENT",
+      "passed": true,
+      "evidence": {
+        "b": "279448356878339277/36028797018963968",
+        "alternative_o": "263826495670897869/36028797018963968",
+        "delta_ms": "111/256"
+      }
+    },
+    {
+      "id": "CASE7_GAIN_ABOVE_COARSE",
+      "passed": true,
+      "evidence": {
+        "explanatory_gain": "5207287069147136/93149452292779759",
+        "threshold": "1/20",
+        "scientific_outcome": false
+      }
+    },
+    {
+      "id": "CASE7_ZERO_BOUNDED_GAIN",
+      "passed": true,
+      "evidence": "All K choices leave the hand-specified suffix unchanged; exhaustiveness is the written calendar argument, not an implemented enumerator."
+    },
+    {
+      "id": "ZERO_GAIN_BELOW_BUNDLES",
+      "passed": true,
+      "evidence": [
+        {
+          "id": "FINE",
+          "tau": "1/100",
+          "frequency": "1/100",
+          "support_seed_count": 8,
+          "absence_seed_count_max": 2
+        },
+        {
+          "id": "COARSE",
+          "tau": "1/20",
+          "frequency": "1/20",
+          "support_seed_count": 8,
+          "absence_seed_count_max": 2
+        }
+      ]
+    },
+    {
+      "id": "FINE_EQUALITY_BOUNDARY",
+      "passed": true,
+      "evidence": "Hand scalars b100,o99 exactly tau; no diagnostic executed."
+    },
+    {
+      "id": "COARSE_EQUALITY_BOUNDARY",
+      "passed": true,
+      "evidence": "Hand scalars b20,o19 exactly tau; no diagnostic executed."
+    },
+    {
+      "id": "L_CAP_NO_GLOBAL_IMPLICATION",
+      "passed": true,
+      "evidence": "Hand scalar cap8<=12 while full-service response ratio10/8>1.10."
+    },
+    {
+      "id": "COVERAGE_ALGEBRA_ONLY",
+      "passed": true,
+      "evidence": "Hypothetical counts only; no sampled states or rates."
+    },
+    {
+      "id": "FIXED_SUFFIX_NOT_OPTIMIZED",
+      "passed": true,
+      "evidence": "Enumerate complete Cartesian product of compatible resources for K, <=6^4. No task-order branching, no optimization of suffix mappings, no future tasks. Baseline is included and satisfies its own L cap."
+    },
+    {
+      "id": "MISSING_NOT_ZERO",
+      "passed": true,
+      "evidence": "Any expected hook/snapshot/reference/required field missing or corrupt is INCOMPLETE/INVALID evidence; cannot decide eligibility and silently exclude it. Fail closed; no zero imputation."
+    },
+    {
+      "id": "PAIRED_CI_CONSTANTS_UNCHANGED",
+      "passed": true,
+      "evidence": "Checked text constants; generated no resampling index."
+    },
+    {
+      "id": "SOURCE_IDENTITIES_STILL_MATCH",
+      "passed": true,
+      "evidence": 29
+    }
+  ]
+}

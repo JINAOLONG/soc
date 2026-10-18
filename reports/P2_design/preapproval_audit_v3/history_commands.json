@@ -1,0 +1,75 @@
+{
+  "namespace": "history",
+  "scope": "Actual substantive subprocess calls; discovery wrappers may be recorded separately",
+  "commands": [
+    {
+      "id": "history-001",
+      "argv": [
+        "cat",
+        "docs/P2_design/P2_complete_design_proposal_v1.md"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_REVIEW",
+      "started_at_utc": "2026-10-18T13:45:03.943414+00:00",
+      "ended_at_utc": "2026-10-18T13:45:03.946521+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/history-001.stdout.txt",
+        "sha256": "e378e85071d6c97fb6cd5801d9449eef176a90baddcd786181c6685eaa29feac",
+        "size_bytes": 28397
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/history-001.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "history-002",
+      "argv": [
+        "cat",
+        "docs/P2_design/P2_mapping_opportunity_decision_table_v1.md"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_REVIEW",
+      "started_at_utc": "2026-10-18T13:45:03.947053+00:00",
+      "ended_at_utc": "2026-10-18T13:45:03.949696+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/history-002.stdout.txt",
+        "sha256": "4c981f2f2303e1b1535168dd320e3c11151ea86ad35a502513893370a5906ea2",
+        "size_bytes": 4533
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/history-002.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "history-003",
+      "argv": [
+        "cat",
+        "reports/P2_design/independent_review_v2/executive_decision.md"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_REVIEW",
+      "started_at_utc": "2026-10-18T13:45:03.950007+00:00",
+      "ended_at_utc": "2026-10-18T13:45:03.951903+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/history-003.stdout.txt",
+        "sha256": "0344c3d1ec6e0f1729bb758503f03dedf1fb780b00c55cbd9c60261b91d398b7",
+        "size_bytes": 4275
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/history-003.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    }
+  ]
+}

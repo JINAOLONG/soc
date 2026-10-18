@@ -1,0 +1,170 @@
+{
+  "review_kind": "Fresh adversarial report-only review by collaborating Codex agents; not third-party audit",
+  "audited_revision": "a3680acf45c5578fc090cf53cc186f28a8e9b88a",
+  "findings": [
+    {
+      "local_id": "DECISION-M2-COMPLETENESS",
+      "severity": "MEDIUM",
+      "status": "OPEN_DOCUMENT_BINDING_GAP",
+      "decisions": [
+        "D07",
+        "D08",
+        "D09",
+        "D10"
+      ],
+      "parameters": [
+        "SP27",
+        "SP31"
+      ],
+      "title": "Mandatory M2 paired-analysis completeness is not explicitly bound into machine criterion/stage contract",
+      "evidence": [
+        {
+          "path": "docs/P2_design/v2/P2_mapping_opportunity_decision_table_v2.md",
+          "locator": "lines21–23",
+          "sha256": "594863a579ac32fdd980454fe6e0f0d24d165729a60f1c6f6526c8688fd296f4",
+          "version": "v2 DRAFT_UNAPPROVED",
+          "audited_revision": "a3680acf45c5578fc090cf53cc186f28a8e9b88a"
+        },
+        {
+          "path": "docs/P2_design/v2/P2_criterion_spec_v2.json",
+          "locator": "#/preconditions, lines49–57",
+          "sha256": "98a578944e7910db933f5b3b02aee4bb03de8005853024b38cc3b02630b04e38",
+          "version": "v2 DRAFT_UNAPPROVED",
+          "audited_revision": "a3680acf45c5578fc090cf53cc186f28a8e9b88a"
+        },
+        {
+          "path": "docs/P2_design/v2/P2_stage_state_contract_v2.json",
+          "locator": "#/stage_execution_complete and progression_conjunction, lines193–206",
+          "sha256": "c64803a93c74ee9dba6a7bc61de2d2e550264f2c5d4a920e1248665fa7e86b93",
+          "version": "v2 DRAFT_UNAPPROVED",
+          "audited_revision": "a3680acf45c5578fc090cf53cc186f28a8e9b88a"
+        },
+        {
+          "path": "docs/P2_design/v2/P2_typed_identity_schema_v2.json",
+          "locator": "#/$defs/STAGE_RECORD; lines2674–2800",
+          "sha256": "9b478cf7e96776f6cc69f29426715efed6eec2309270be1efb3dd77985ebfbc9",
+          "version": "v2 DRAFT_UNAPPROVED",
+          "audited_revision": "a3680acf45c5578fc090cf53cc186f28a8e9b88a"
+        }
+      ],
+      "reasoning": "Markdown V explicitly requires M2 paired completeness. JSON preconditions enumerate complete trial/metric/replay sets and M1R records but do not enumerate produced M2 paired contrasts. STAGE_RECORD generic diagnostic_report_ref/prerequisite_evidence can carry this evidence, but no normative required M2 membership/semantic validation is specified. Complete raw metrics permit analysis; they do not prove the analysis and reports were produced.",
+      "static_countermodel": "All trial raw artifacts and per-run independently matched metrics exist; selection and M1R checked; paired M2 report generation skipped. Listed JSON prerequisites need not change, while markdown V=false. This is a contract-binding omission, not a demonstrated executable bypass.",
+      "required_revision": "In a separately authorized revision, explicitly bind exact M2 pairing roster/contrasts and report membership to criterion/stage preconditions and failure output. Do not add methods or change statistics.",
+      "human_question": "是否要求补齐 M2 配对输出及缺失闭锁规则后再批准 D07–D10 的相关条款？",
+      "approval": "UNAPPROVED"
+    },
+    {
+      "local_id": "DECISION-STATUS-SCOPE",
+      "severity": "INFO",
+      "status": "RECONCILED_WITHOUT_MODIFICATION",
+      "decisions": [
+        "D01",
+        "D02",
+        "D03",
+        "D04",
+        "D05",
+        "D06",
+        "D07",
+        "D08",
+        "D09",
+        "D10"
+      ],
+      "parameters": [
+        "SP01-SP40"
+      ],
+      "title": "STATUS and design_status retain historical v1 counts; current v2 proposal has40 unapproved groups",
+      "evidence": [
+        {
+          "path": "STATUS.md",
+          "locator": "lines1–56; v1/32 group statements",
+          "sha256": "5f4c9fc321d22010400f260e8ed82a714b4a19453ae7b3102e04db93211f5222",
+          "version": "immutable source at audited revision",
+          "audited_revision": "a3680acf45c5578fc090cf53cc186f28a8e9b88a"
+        },
+        {
+          "path": "docs/P2_design/v2/P2_scientific_parameter_registry_v2.json",
+          "locator": "lines13–28 and /parameters",
+          "sha256": "15ee54e75f658d5f66edb00534003d3aed642f86736b2932ae61f0692e4559c2",
+          "version": "v2 DRAFT_UNAPPROVED",
+          "audited_revision": "a3680acf45c5578fc090cf53cc186f28a8e9b88a"
+        },
+        {
+          "path": "reports/P2_design/design_status.json",
+          "locator": "historical proposal_v1 status",
+          "sha256": "95f27100ef7e02a883115b1dea2a87e6a94b2a6ddc4920c5a73da955737edcc4",
+          "version": "immutable source at audited revision",
+          "audited_revision": "a3680acf45c5578fc090cf53cc186f28a8e9b88a"
+        }
+      ],
+      "reasoning": "STATUS explicitly names v1 and an old checkpoint; it is preserved under the current task. Its32 is accurate for that historical scope, stale as a current v2 count. V2 registry40 describes latest proposal, not approved contract. Neither v1 nor v2 proposal is an execution authorization.",
+      "required_revision": "No existing file edits in this task. Report current-scoped facts here; any later state-sync task must preserve historical distinctions and approval truth.",
+      "approval": "UNAPPROVED"
+    },
+    {
+      "local_id": "DECISION-TIMING-PENDING",
+      "severity": "INFO",
+      "status": "KNOWN_OPEN_PREREQUISITE",
+      "decisions": [
+        "D05",
+        "D09",
+        "D10"
+      ],
+      "parameters": [],
+      "title": "Timing protocol remains unfrozen; required freeze precedes candidate timing and full P2 progression",
+      "evidence": [
+        {
+          "path": "docs/user_request.txt",
+          "locator": "§59, lines1833–1860; §80, lines2332–2344",
+          "sha256": "4c3481f0c67553eaa6d2dd6f181cc8d3f792e40fdc9586547c1c2e91fb52b461",
+          "version": "immutable source at audited revision",
+          "audited_revision": "a3680acf45c5578fc090cf53cc186f28a8e9b88a"
+        },
+        {
+          "path": "docs/metric_spec.md",
+          "locator": "lines48–52",
+          "sha256": "c4b912fc672979ddc763d882e546b7a92bf53090e5b5dddd5777e2e867df182a",
+          "version": "immutable source at audited revision",
+          "audited_revision": "a3680acf45c5578fc090cf53cc186f28a8e9b88a"
+        },
+        {
+          "path": "docs/research_contract.md",
+          "locator": "lines45–48",
+          "sha256": "8ccd2f6fce470013af89c653eb3ff84a0b66809c56d321993cd973ebc18031e4",
+          "version": "immutable source at audited revision",
+          "audited_revision": "a3680acf45c5578fc090cf53cc186f28a8e9b88a"
+        },
+        {
+          "path": "docs/P2_design/v2/P2_stage_state_contract_v2.json",
+          "locator": "#/timing and progression_conjunction",
+          "sha256": "c64803a93c74ee9dba6a7bc61de2d2e550264f2c5d4a920e1248665fa7e86b93",
+          "version": "v2 DRAFT_UNAPPROVED",
+          "audited_revision": "a3680acf45c5578fc090cf53cc186f28a8e9b88a"
+        }
+      ],
+      "reasoning": "Original timing target2ms unchanged. Exactinputs,warmup,repetitions,timer,aggregation,P95definition,host environment must be registered before dependent candidate timing. No original requirement found forcing timing protocol freeze before baseline-only calibration or implementation. V2 explicitly blocks overall progression until frozen protocol verified, while no candidate exists/timingbudget0.",
+      "required_revision": "Separate future task must fully specify and approve/freeze timing protocol before dependent measurements/P2 completion. No warmup,repetition,timer defaults inferred here.",
+      "approval": "UNAPPROVED"
+    }
+  ],
+  "external_findings_to_merge": [
+    "M1R_NEGATIVE_UNREACHABILITY",
+    "IDENTITY_LOCK_EXCLUSION_AND_FENCING",
+    "ACTUAL_EXECUTION_HEAD_DIRTY_PROVENANCE",
+    "ID-R03_14_ACTUAL_KEY_FIELDS_VS_15_SUMMARY"
+  ],
+  "counts": {
+    "original_decisions_found": 10,
+    "human_approvals": 0,
+    "parameter_groups": 40,
+    "approved_parameter_groups": 0,
+    "ready_for_human_decision_recommendations": 5,
+    "revision_or_dependent_revision_recommendations": 5
+  },
+  "read_expression_failure": {
+    "command": "decision-010",
+    "exit_code": 1,
+    "cause": "Reviewer inline Python missing closing bracket; no source modified",
+    "corrected_command": "decision-011",
+    "corrected_exit_code": 0
+  }
+}

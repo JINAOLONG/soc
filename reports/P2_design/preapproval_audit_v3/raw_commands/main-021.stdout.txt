@@ -1,0 +1,144 @@
+{
+  "scope": "Read-only repository and proposal metadata checks; no gate/scheduler/scientific execution",
+  "checks": [
+    {
+      "id": "EXISTING462_UNCHANGED",
+      "pass_": true,
+      "detail": []
+    },
+    {
+      "id": "HISTORICAL_MANIFEST_checkpoints/P1_artifact_manifest.json",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "HISTORICAL_MANIFEST_checkpoints/P2_design_artifact_manifest.json",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "HISTORICAL_MANIFEST_reports/P2_design/independent_review_v2/review_evidence_manifest.json",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "HISTORICAL_MANIFEST_reports/P2_design/design_revision_v2/review_evidence_manifest.json",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "ALL_V2_JSON_STRICT_PARSE",
+      "pass_": true,
+      "detail": [
+        "P2_canonical_golden_vectors_v2.json",
+        "P2_communication_profiles_v2.json",
+        "P2_criterion_spec_v2.json",
+        "P2_diagnostic_spec_v2.json",
+        "P2_generation_spec_v2.json",
+        "P2_public_snapshot_spec_v2.json",
+        "P2_resource_profiles_v2.json",
+        "P2_scientific_parameter_registry_v2.json",
+        "P2_stage_state_contract_v2.json",
+        "P2_trial_matrix_draft_v2.json",
+        "P2_typed_identity_schema_v2.json",
+        "P2_workload_templates_v2.json"
+      ]
+    },
+    {
+      "id": "ALL_DRAFT_UNAPPROVED",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "PARAMETERS40_UNAPPROVED",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "LINEAGE32_PLUS8_NO_DELETE_MERGE",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "ACTUAL_KEY14_MATCHES_ALL_BINDINGS",
+      "pass_": true,
+      "detail": [
+        "domain",
+        "schema_version",
+        "generator_version",
+        "actual_seed_decimal_string",
+        "scenario",
+        "condition_id",
+        "config_id",
+        "service_slot",
+        "service_group",
+        "template_node_id",
+        "resource_id",
+        "edge_id",
+        "field",
+        "counter"
+      ]
+    },
+    {
+      "id": "STAGE_FIELDS_MATCH_CLOSED_SCHEMA",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "CURRENT_STAGE_REMAINS_BLOCKED",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "NO_UNLOCKS",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "REPORT_ONLY_NEW_NAMESPACE",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "SOURCE_BYTES_MATCH_AUDITED_COMMIT",
+      "pass_": true,
+      "detail": null
+    }
+  ],
+  "passed": 15,
+  "failed": [],
+  "manifests": [
+    {
+      "path": "checkpoints/P1_artifact_manifest.json",
+      "sha256": "54d9a8f07d2def4797033fe0d20c9aa48c0781875524da94259ae18bf3fb1a8e",
+      "count": 122,
+      "mismatch": [],
+      "unique": true
+    },
+    {
+      "path": "checkpoints/P2_design_artifact_manifest.json",
+      "sha256": "227ae56d04cba9e600678772d89d288ff80a54646d3960bf1c5e464381844b1e",
+      "count": 315,
+      "mismatch": [],
+      "unique": true
+    },
+    {
+      "path": "reports/P2_design/independent_review_v2/review_evidence_manifest.json",
+      "sha256": "5bfde579e12dac39e4e0e3e96b169def699270c77f6d887dd54475371967d721",
+      "count": 24,
+      "mismatch": [],
+      "unique": true
+    },
+    {
+      "path": "reports/P2_design/design_revision_v2/review_evidence_manifest.json",
+      "sha256": "defdc655f14b991b2131d88b76c6f94aa82e9d917ec4ec89594102178a901dc4",
+      "count": 120,
+      "mismatch": [],
+      "unique": true
+    }
+  ],
+  "scientific_workloads_generated": 0,
+  "scientific_workloads_run": 0,
+  "prior_P0_P1_check_only_rerun": false,
+  "known_key_count_discrepancy": "Actual14 fields; generation text says All15, retained and reported rather than modified."
+}

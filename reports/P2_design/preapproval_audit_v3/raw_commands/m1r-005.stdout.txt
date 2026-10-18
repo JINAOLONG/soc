@@ -1,0 +1,952 @@
+FILE docs/P2_design/v2/P2_communication_profiles_v2.json SHA256 74f7dde644b11d0b459fb68e9f250d9799e34f09652609b63122e0de5bf6e3b8
+1: {
+2:   "document_kind": "COMMUNICATION_PROFILE_PROPOSAL",
+3:   "version": "v2",
+4:   "status": "DRAFT_UNAPPROVED_NONEXECUTABLE",
+5:   "classification": "PROPOSED",
+6:   "approved": false,
+7:   "frozen": false,
+8:   "executable": false,
+9:   "execution_authorized": false,
+10:   "read_by_pipeline": false,
+11:   "source_checkpoint": "160800d9b136e953c6415cd5229ded87eae72a0f",
+12:   "data_unit": "MiB",
+13:   "latency_unit": "ms",
+14:   "bandwidth_unit": "MiB/ms",
+15:   "edge_tables": [
+16:     {
+17:       "template_id": "COCKPIT-8-v1",
+18:       "edges": [
+19:         {
+20:           "id": "COCKPIT.n01->COCKPIT.n02",
+21:           "source": "COCKPIT.n01",
+22:           "destination": "COCKPIT.n02",
+23:           "size_mib": 0.25,
+24:           "kind": "ROLE_OUTPUT",
+25:           "classification": "PROPOSED"
+26:         },
+27:         {
+28:           "id": "COCKPIT.n02->COCKPIT.n03",
+29:           "source": "COCKPIT.n02",
+30:           "destination": "COCKPIT.n03",
+31:           "size_mib": 0.125,
+32:           "kind": "ROLE_OUTPUT",
+33:           "classification": "PROPOSED"
+34:         },
+35:         {
+36:           "id": "COCKPIT.n03->COCKPIT.n04",
+37:           "source": "COCKPIT.n03",
+38:           "destination": "COCKPIT.n04",
+39:           "size_mib": 0.0625,
+40:           "kind": "ROLE_OUTPUT",
+41:           "classification": "PROPOSED"
+42:         },
+43:         {
+44:           "id": "COCKPIT.n05->COCKPIT.n04",
+45:           "source": "COCKPIT.n05",
+46:           "destination": "COCKPIT.n04",
+47:           "size_mib": 0.125,
+48:           "kind": "ROLE_OUTPUT",
+49:           "classification": "PROPOSED"
+50:         },
+51:         {
+52:           "id": "COCKPIT.n03->COCKPIT.n06",
+53:           "source": "COCKPIT.n03",
+54:           "destination": "COCKPIT.n06",
+55:           "size_mib": 0.0625,
+56:           "kind": "ROLE_OUTPUT",
+57:           "classification": "PROPOSED"
+58:         },
+59:         {
+60:           "id": "COCKPIT.n05->COCKPIT.n06",
+61:           "source": "COCKPIT.n05",
+62:           "destination": "COCKPIT.n06",
+63:           "size_mib": 0.125,
+64:           "kind": "ROLE_OUTPUT",
+65:           "classification": "PROPOSED"
+66:         },
+67:         {
+68:           "id": "COCKPIT.n04->COCKPIT.n07",
+69:           "source": "COCKPIT.n04",
+70:           "destination": "COCKPIT.n07",
+71:           "size_mib": 1,
+72:           "kind": "ROLE_OUTPUT",
+73:           "classification": "PROPOSED"
+74:         },
+75:         {
+76:           "id": "COCKPIT.n06->COCKPIT.n07",
+77:           "source": "COCKPIT.n06",
+78:           "destination": "COCKPIT.n07",
+79:           "size_mib": 0.25,
+80:           "kind": "ROLE_OUTPUT",
+81:           "classification": "PROPOSED"
+82:         },
+83:         {
+84:           "id": "COCKPIT.n07->COCKPIT.n08",
+85:           "source": "COCKPIT.n07",
+86:           "destination": "COCKPIT.n08",
+87:           "size_mib": 1,
+88:           "kind": "ROLE_OUTPUT",
+89:           "classification": "PROPOSED"
+90:         }
+91:       ]
+92:     },
+93:     {
+94:       "template_id": "COCKPIT-16-v1",
+95:       "edges": [
+96:         {
+97:           "id": "COCKPIT.n01.a->COCKPIT.n01.b",
+98:           "source": "COCKPIT.n01.a",
+99:           "destination": "COCKPIT.n01.b",
+100:           "size_mib": 0.0625,
+101:           "kind": "SPLIT_INTERNAL",
+102:           "classification": "PROPOSED"
+103:         },
+104:         {
+105:           "id": "COCKPIT.n01.b->COCKPIT.n02.a",
+106:           "source": "COCKPIT.n01.b",
+107:           "destination": "COCKPIT.n02.a",
+108:           "size_mib": 0.25,
+109:           "kind": "ROLE_OUTPUT",
+110:           "classification": "PROPOSED"
+111:         },
+112:         {
+113:           "id": "COCKPIT.n02.a->COCKPIT.n02.b",
+114:           "source": "COCKPIT.n02.a",
+115:           "destination": "COCKPIT.n02.b",
+116:           "size_mib": 0.0625,
+117:           "kind": "SPLIT_INTERNAL",
+118:           "classification": "PROPOSED"
+119:         },
+120:         {
+121:           "id": "COCKPIT.n02.b->COCKPIT.n03.a",
+122:           "source": "COCKPIT.n02.b",
+123:           "destination": "COCKPIT.n03.a",
+124:           "size_mib": 0.125,
+125:           "kind": "ROLE_OUTPUT",
+126:           "classification": "PROPOSED"
+127:         },
+128:         {
+129:           "id": "COCKPIT.n03.a->COCKPIT.n03.b",
+130:           "source": "COCKPIT.n03.a",
+131:           "destination": "COCKPIT.n03.b",
+132:           "size_mib": 0.0625,
+133:           "kind": "SPLIT_INTERNAL",
+134:           "classification": "PROPOSED"
+135:         },
+136:         {
+137:           "id": "COCKPIT.n03.b->COCKPIT.n04.a",
+138:           "source": "COCKPIT.n03.b",
+139:           "destination": "COCKPIT.n04.a",
+140:           "size_mib": 0.0625,
+141:           "kind": "ROLE_OUTPUT",
+142:           "classification": "PROPOSED"
+143:         },
+144:         {
+145:           "id": "COCKPIT.n05.b->COCKPIT.n04.a",
+146:           "source": "COCKPIT.n05.b",
+147:           "destination": "COCKPIT.n04.a",
+148:           "size_mib": 0.125,
+149:           "kind": "ROLE_OUTPUT",
+150:           "classification": "PROPOSED"
+151:         },
+152:         {
+153:           "id": "COCKPIT.n04.a->COCKPIT.n04.b",
+154:           "source": "COCKPIT.n04.a",
+155:           "destination": "COCKPIT.n04.b",
+156:           "size_mib": 0.0625,
+157:           "kind": "SPLIT_INTERNAL",
+158:           "classification": "PROPOSED"
+159:         },
+160:         {
+161:           "id": "COCKPIT.n05.a->COCKPIT.n05.b",
+162:           "source": "COCKPIT.n05.a",
+163:           "destination": "COCKPIT.n05.b",
+164:           "size_mib": 0.0625,
+165:           "kind": "SPLIT_INTERNAL",
+166:           "classification": "PROPOSED"
+167:         },
+168:         {
+169:           "id": "COCKPIT.n03.b->COCKPIT.n06.a",
+170:           "source": "COCKPIT.n03.b",
+171:           "destination": "COCKPIT.n06.a",
+172:           "size_mib": 0.0625,
+173:           "kind": "ROLE_OUTPUT",
+174:           "classification": "PROPOSED"
+175:         },
+176:         {
+177:           "id": "COCKPIT.n05.b->COCKPIT.n06.a",
+178:           "source": "COCKPIT.n05.b",
+179:           "destination": "COCKPIT.n06.a",
+180:           "size_mib": 0.125,
+181:           "kind": "ROLE_OUTPUT",
+182:           "classification": "PROPOSED"
+183:         },
+184:         {
+185:           "id": "COCKPIT.n06.a->COCKPIT.n06.b",
+186:           "source": "COCKPIT.n06.a",
+187:           "destination": "COCKPIT.n06.b",
+188:           "size_mib": 0.0625,
+189:           "kind": "SPLIT_INTERNAL",
+190:           "classification": "PROPOSED"
+191:         },
+192:         {
+193:           "id": "COCKPIT.n04.b->COCKPIT.n07.a",
+194:           "source": "COCKPIT.n04.b",
+195:           "destination": "COCKPIT.n07.a",
+196:           "size_mib": 1,
+197:           "kind": "ROLE_OUTPUT",
+198:           "classification": "PROPOSED"
+199:         },
+200:         {
+201:           "id": "COCKPIT.n06.b->COCKPIT.n07.a",
+202:           "source": "COCKPIT.n06.b",
+203:           "destination": "COCKPIT.n07.a",
+204:           "size_mib": 0.25,
+205:           "kind": "ROLE_OUTPUT",
+206:           "classification": "PROPOSED"
+207:         },
+208:         {
+209:           "id": "COCKPIT.n07.a->COCKPIT.n07.b",
+210:           "source": "COCKPIT.n07.a",
+211:           "destination": "COCKPIT.n07.b",
+212:           "size_mib": 0.0625,
+213:           "kind": "SPLIT_INTERNAL",
+214:           "classification": "PROPOSED"
+215:         },
+216:         {
+217:           "id": "COCKPIT.n07.b->COCKPIT.n08.a",
+218:           "source": "COCKPIT.n07.b",
+219:           "destination": "COCKPIT.n08.a",
+220:           "size_mib": 1,
+221:           "kind": "ROLE_OUTPUT",
+222:           "classification": "PROPOSED"
+223:         },
+224:         {
+225:           "id": "COCKPIT.n08.a->COCKPIT.n08.b",
+226:           "source": "COCKPIT.n08.a",
+227:           "destination": "COCKPIT.n08.b",
+228:           "size_mib": 0.0625,
+229:           "kind": "SPLIT_INTERNAL",
+230:           "classification": "PROPOSED"
+231:         }
+232:       ]
+233:     },
+234:     {
+235:       "template_id": "ADAS-8-v1",
+236:       "edges": [
+237:         {
+238:           "id": "ADAS.n01->ADAS.n02",
+239:           "source": "ADAS.n01",
+240:           "destination": "ADAS.n02",
+241:           "size_mib": 4,
+242:           "kind": "ROLE_OUTPUT",
+243:           "classification": "PROPOSED"
+244:         },
+245:         {
+246:           "id": "ADAS.n01->ADAS.n03",
+247:           "source": "ADAS.n01",
+248:           "destination": "ADAS.n03",
+249:           "size_mib": 4,
+250:           "kind": "ROLE_OUTPUT",
+251:           "classification": "PROPOSED"
+252:         },
+253:         {
+254:           "id": "ADAS.n02->ADAS.n04",
+255:           "source": "ADAS.n02",
+256:           "destination": "ADAS.n04",
+257:           "size_mib": 1,
+258:           "kind": "ROLE_OUTPUT",
+259:           "classification": "PROPOSED"
+260:         },
+261:         {
+262:           "id": "ADAS.n03->ADAS.n05",
+263:           "source": "ADAS.n03",
+264:           "destination": "ADAS.n05",
+265:           "size_mib": 2,
+266:           "kind": "ROLE_OUTPUT",
+267:           "classification": "PROPOSED"
+268:         },
+269:         {
+270:           "id": "ADAS.n04->ADAS.n05",
+271:           "source": "ADAS.n04",
+272:           "destination": "ADAS.n05",
+273:           "size_mib": 0.25,
+274:           "kind": "ROLE_OUTPUT",
+275:           "classification": "PROPOSED"
+276:         },
+277:         {
+278:           "id": "ADAS.n05->ADAS.n06",
+279:           "source": "ADAS.n05",
+280:           "destination": "ADAS.n06",
+281:           "size_mib": 0.5,
+282:           "kind": "ROLE_OUTPUT",
+283:           "classification": "PROPOSED"
+284:         },
+285:         {
+286:           "id": "ADAS.n05->ADAS.n07",
+287:           "source": "ADAS.n05",
+288:           "destination": "ADAS.n07",
+289:           "size_mib": 0.5,
+290:           "kind": "ROLE_OUTPUT",
+291:           "classification": "PROPOSED"
+292:         },
+293:         {
+294:           "id": "ADAS.n06->ADAS.n08",
+295:           "source": "ADAS.n06",
+296:           "destination": "ADAS.n08",
+297:           "size_mib": 0.125,
+298:           "kind": "ROLE_OUTPUT",
+299:           "classification": "PROPOSED"
+300:         },
+301:         {
+302:           "id": "ADAS.n07->ADAS.n08",
+303:           "source": "ADAS.n07",
+304:           "destination": "ADAS.n08",
+305:           "size_mib": 1,
+306:           "kind": "ROLE_OUTPUT",
+307:           "classification": "PROPOSED"
+308:         }
+309:       ]
+310:     },
+311:     {
+312:       "template_id": "ADAS-16-v1",
+313:       "edges": [
+314:         {
+315:           "id": "ADAS.n01.a->ADAS.n01.b",
+316:           "source": "ADAS.n01.a",
+317:           "destination": "ADAS.n01.b",
+318:           "size_mib": 0.0625,
+319:           "kind": "SPLIT_INTERNAL",
+320:           "classification": "PROPOSED"
+321:         },
+322:         {
+323:           "id": "ADAS.n01.b->ADAS.n02.a",
+324:           "source": "ADAS.n01.b",
+325:           "destination": "ADAS.n02.a",
+326:           "size_mib": 4,
+327:           "kind": "ROLE_OUTPUT",
+328:           "classification": "PROPOSED"
+329:         },
+330:         {
+331:           "id": "ADAS.n02.a->ADAS.n02.b",
+332:           "source": "ADAS.n02.a",
+333:           "destination": "ADAS.n02.b",
+334:           "size_mib": 0.0625,
+335:           "kind": "SPLIT_INTERNAL",
+336:           "classification": "PROPOSED"
+337:         },
+338:         {
+339:           "id": "ADAS.n01.b->ADAS.n03.a",
+340:           "source": "ADAS.n01.b",
+341:           "destination": "ADAS.n03.a",
+342:           "size_mib": 4,
+343:           "kind": "ROLE_OUTPUT",
+344:           "classification": "PROPOSED"
+345:         },
+346:         {
+347:           "id": "ADAS.n03.a->ADAS.n03.b",
+348:           "source": "ADAS.n03.a",
+349:           "destination": "ADAS.n03.b",
+350:           "size_mib": 0.0625,
+351:           "kind": "SPLIT_INTERNAL",
+352:           "classification": "PROPOSED"
+353:         },
+354:         {
+355:           "id": "ADAS.n02.b->ADAS.n04.a",
+356:           "source": "ADAS.n02.b",
+357:           "destination": "ADAS.n04.a",
+358:           "size_mib": 1,
+359:           "kind": "ROLE_OUTPUT",
+360:           "classification": "PROPOSED"
+361:         },
+362:         {
+363:           "id": "ADAS.n04.a->ADAS.n04.b",
+364:           "source": "ADAS.n04.a",
+365:           "destination": "ADAS.n04.b",
+366:           "size_mib": 0.0625,
+367:           "kind": "SPLIT_INTERNAL",
+368:           "classification": "PROPOSED"
+369:         },
+370:         {
+371:           "id": "ADAS.n03.b->ADAS.n05.a",
+372:           "source": "ADAS.n03.b",
+373:           "destination": "ADAS.n05.a",
+374:           "size_mib": 2,
+375:           "kind": "ROLE_OUTPUT",
+376:           "classification": "PROPOSED"
+377:         },
+378:         {
+379:           "id": "ADAS.n04.b->ADAS.n05.a",
+380:           "source": "ADAS.n04.b",
+381:           "destination": "ADAS.n05.a",
+382:           "size_mib": 0.25,
+383:           "kind": "ROLE_OUTPUT",
+384:           "classification": "PROPOSED"
+385:         },
+386:         {
+387:           "id": "ADAS.n05.a->ADAS.n05.b",
+388:           "source": "ADAS.n05.a",
+389:           "destination": "ADAS.n05.b",
+390:           "size_mib": 0.0625,
+391:           "kind": "SPLIT_INTERNAL",
+392:           "classification": "PROPOSED"
+393:         },
+394:         {
+395:           "id": "ADAS.n05.b->ADAS.n06.a",
+396:           "source": "ADAS.n05.b",
+397:           "destination": "ADAS.n06.a",
+398:           "size_mib": 0.5,
+399:           "kind": "ROLE_OUTPUT",
+400:           "classification": "PROPOSED"
+401:         },
+402:         {
+403:           "id": "ADAS.n06.a->ADAS.n06.b",
+404:           "source": "ADAS.n06.a",
+405:           "destination": "ADAS.n06.b",
+406:           "size_mib": 0.0625,
+407:           "kind": "SPLIT_INTERNAL",
+408:           "classification": "PROPOSED"
+409:         },
+410:         {
+411:           "id": "ADAS.n05.b->ADAS.n07.a",
+412:           "source": "ADAS.n05.b",
+413:           "destination": "ADAS.n07.a",
+414:           "size_mib": 0.5,
+415:           "kind": "ROLE_OUTPUT",
+416:           "classification": "PROPOSED"
+417:         },
+418:         {
+419:           "id": "ADAS.n07.a->ADAS.n07.b",
+420:           "source": "ADAS.n07.a",
+421:           "destination": "ADAS.n07.b",
+422:           "size_mib": 0.0625,
+423:           "kind": "SPLIT_INTERNAL",
+424:           "classification": "PROPOSED"
+425:         },
+426:         {
+427:           "id": "ADAS.n06.b->ADAS.n08.a",
+428:           "source": "ADAS.n06.b",
+429:           "destination": "ADAS.n08.a",
+430:           "size_mib": 0.125,
+431:           "kind": "ROLE_OUTPUT",
+432:           "classification": "PROPOSED"
+433:         },
+434:         {
+435:           "id": "ADAS.n07.b->ADAS.n08.a",
+436:           "source": "ADAS.n07.b",
+437:           "destination": "ADAS.n08.a",
+438:           "size_mib": 1,
+439:           "kind": "ROLE_OUTPUT",
+440:           "classification": "PROPOSED"
+441:         },
+442:         {
+443:           "id": "ADAS.n08.a->ADAS.n08.b",
+444:           "source": "ADAS.n08.a",
+445:           "destination": "ADAS.n08.b",
+446:           "size_mib": 0.0625,
+447:           "kind": "SPLIT_INTERNAL",
+448:           "classification": "PROPOSED"
+449:         }
+450:       ]
+451:     },
+452:     {
+453:       "template_id": "FUSION-8-v1",
+454:       "edges": [
+455:         {
+456:           "id": "FUSION.n01->FUSION.n02",
+457:           "source": "FUSION.n01",
+458:           "destination": "FUSION.n02",
+459:           "size_mib": 0.25,
+460:           "kind": "ROLE_OUTPUT",
+461:           "classification": "PROPOSED"
+462:         },
+463:         {
+464:           "id": "FUSION.n05->FUSION.n04",
+465:           "source": "FUSION.n05",
+466:           "destination": "FUSION.n04",
+467:           "size_mib": 4,
+468:           "kind": "ROLE_OUTPUT",
+469:           "classification": "PROPOSED"
+470:         },
+471:         {
+472:           "id": "FUSION.n02->FUSION.n06",
+473:           "source": "FUSION.n02",
+474:           "destination": "FUSION.n06",
+475:           "size_mib": 0.125,
+476:           "kind": "ROLE_OUTPUT",
+477:           "classification": "PROPOSED"
+478:         },
+479:         {
+480:           "id": "FUSION.n04->FUSION.n06",
+481:           "source": "FUSION.n04",
+482:           "destination": "FUSION.n06",
+483:           "size_mib": 1,
+484:           "kind": "ROLE_OUTPUT",
+485:           "classification": "PROPOSED"
+486:         },
+487:         {
+488:           "id": "FUSION.n03->FUSION.n07",
+489:           "source": "FUSION.n03",
+490:           "destination": "FUSION.n07",
+491:           "size_mib": 0.125,
+492:           "kind": "ROLE_OUTPUT",
+493:           "classification": "PROPOSED"
+494:         },
+495:         {
+496:           "id": "FUSION.n06->FUSION.n07",
+497:           "source": "FUSION.n06",
+498:           "destination": "FUSION.n07",
+499:           "size_mib": 0.5,
+500:           "kind": "ROLE_OUTPUT",
+501:           "classification": "PROPOSED"
+502:         },
+503:         {
+504:           "id": "FUSION.n07->FUSION.n08",
+505:           "source": "FUSION.n07",
+506:           "destination": "FUSION.n08",
+507:           "size_mib": 1,
+508:           "kind": "ROLE_OUTPUT",
+509:           "classification": "PROPOSED"
+510:         }
+511:       ]
+512:     },
+513:     {
+514:       "template_id": "FUSION-16-v1",
+515:       "edges": [
+516:         {
+517:           "id": "FUSION.n01.a->FUSION.n01.b",
+518:           "source": "FUSION.n01.a",
+519:           "destination": "FUSION.n01.b",
+520:           "size_mib": 0.0625,
+521:           "kind": "SPLIT_INTERNAL",
+522:           "classification": "PROPOSED"
+523:         },
+524:         {
+525:           "id": "FUSION.n01.b->FUSION.n02.a",
+526:           "source": "FUSION.n01.b",
+527:           "destination": "FUSION.n02.a",
+528:           "size_mib": 0.25,
+529:           "kind": "ROLE_OUTPUT",
+530:           "classification": "PROPOSED"
+531:         },
+532:         {
+533:           "id": "FUSION.n02.a->FUSION.n02.b",
+534:           "source": "FUSION.n02.a",
+535:           "destination": "FUSION.n02.b",
+536:           "size_mib": 0.0625,
+537:           "kind": "SPLIT_INTERNAL",
+538:           "classification": "PROPOSED"
+539:         },
+540:         {
+541:           "id": "FUSION.n03.a->FUSION.n03.b",
+542:           "source": "FUSION.n03.a",
+543:           "destination": "FUSION.n03.b",
+544:           "size_mib": 0.0625,
+545:           "kind": "SPLIT_INTERNAL",
+546:           "classification": "PROPOSED"
+547:         },
+548:         {
+549:           "id": "FUSION.n05.b->FUSION.n04.a",
+550:           "source": "FUSION.n05.b",
+551:           "destination": "FUSION.n04.a",
+552:           "size_mib": 4,
+553:           "kind": "ROLE_OUTPUT",
+554:           "classification": "PROPOSED"
+555:         },
+556:         {
+557:           "id": "FUSION.n04.a->FUSION.n04.b",
+558:           "source": "FUSION.n04.a",
+559:           "destination": "FUSION.n04.b",
+560:           "size_mib": 0.0625,
+561:           "kind": "SPLIT_INTERNAL",
+562:           "classification": "PROPOSED"
+563:         },
+564:         {
+565:           "id": "FUSION.n05.a->FUSION.n05.b",
+566:           "source": "FUSION.n05.a",
+567:           "destination": "FUSION.n05.b",
+568:           "size_mib": 0.0625,
+569:           "kind": "SPLIT_INTERNAL",
+570:           "classification": "PROPOSED"
+571:         },
+572:         {
+573:           "id": "FUSION.n02.b->FUSION.n06.a",
+574:           "source": "FUSION.n02.b",
+575:           "destination": "FUSION.n06.a",
+576:           "size_mib": 0.125,
+577:           "kind": "ROLE_OUTPUT",
+578:           "classification": "PROPOSED"
+579:         },
+580:         {
+581:           "id": "FUSION.n04.b->FUSION.n06.a",
+582:           "source": "FUSION.n04.b",
+583:           "destination": "FUSION.n06.a",
+584:           "size_mib": 1,
+585:           "kind": "ROLE_OUTPUT",
+586:           "classification": "PROPOSED"
+587:         },
+588:         {
+589:           "id": "FUSION.n06.a->FUSION.n06.b",
+590:           "source": "FUSION.n06.a",
+591:           "destination": "FUSION.n06.b",
+592:           "size_mib": 0.0625,
+593:           "kind": "SPLIT_INTERNAL",
+594:           "classification": "PROPOSED"
+595:         },
+596:         {
+597:           "id": "FUSION.n03.b->FUSION.n07.a",
+598:           "source": "FUSION.n03.b",
+599:           "destination": "FUSION.n07.a",
+600:           "size_mib": 0.125,
+601:           "kind": "ROLE_OUTPUT",
+602:           "classification": "PROPOSED"
+603:         },
+604:         {
+605:           "id": "FUSION.n06.b->FUSION.n07.a",
+606:           "source": "FUSION.n06.b",
+607:           "destination": "FUSION.n07.a",
+608:           "size_mib": 0.5,
+609:           "kind": "ROLE_OUTPUT",
+610:           "classification": "PROPOSED"
+611:         },
+612:         {
+613:           "id": "FUSION.n07.a->FUSION.n07.b",
+614:           "source": "FUSION.n07.a",
+615:           "destination": "FUSION.n07.b",
+616:           "size_mib": 0.0625,
+617:           "kind": "SPLIT_INTERNAL",
+618:           "classification": "PROPOSED"
+619:         },
+620:         {
+621:           "id": "FUSION.n07.b->FUSION.n08.a",
+622:           "source": "FUSION.n07.b",
+623:           "destination": "FUSION.n08.a",
+624:           "size_mib": 1,
+625:           "kind": "ROLE_OUTPUT",
+626:           "classification": "PROPOSED"
+627:         },
+628:         {
+629:           "id": "FUSION.n08.a->FUSION.n08.b",
+630:           "source": "FUSION.n08.a",
+631:           "destination": "FUSION.n08.b",
+632:           "size_mib": 0.0625,
+633:           "kind": "SPLIT_INTERNAL",
+634:           "classification": "PROPOSED"
+635:         }
+636:       ]
+637:     }
+638:   ],
+639:   "links": [
+640:     {
+641:       "source_type": "CPU",
+642:       "destination_type": "CPU",
+643:       "latency_ms": 0.01,
+644:       "bandwidth_mib_per_ms": 16,
+645:       "classification": "PROPOSED"
+646:     },
+647:     {
+648:       "source_type": "CPU",
+649:       "destination_type": "GPU",
+650:       "latency_ms": 0.05,
+651:       "bandwidth_mib_per_ms": 8,
+652:       "classification": "PROPOSED"
+653:     },
+654:     {
+655:       "source_type": "CPU",
+656:       "destination_type": "NPU",
+657:       "latency_ms": 0.05,
+658:       "bandwidth_mib_per_ms": 4,
+659:       "classification": "PROPOSED"
+660:     },
+661:     {
+662:       "source_type": "GPU",
+663:       "destination_type": "CPU",
+664:       "latency_ms": 0.05,
+665:       "bandwidth_mib_per_ms": 8,
+666:       "classification": "PROPOSED"
+667:     },
+668:     {
+669:       "source_type": "GPU",
+670:       "destination_type": "GPU",
+671:       "latency_ms": 0.01,
+672:       "bandwidth_mib_per_ms": 16,
+673:       "classification": "PROPOSED"
+674:     },
+675:     {
+676:       "source_type": "GPU",
+677:       "destination_type": "NPU",
+678:       "latency_ms": 0.08,
+679:       "bandwidth_mib_per_ms": 4,
+680:       "classification": "PROPOSED"
+681:     },
+682:     {
+683:       "source_type": "NPU",
+684:       "destination_type": "CPU",
+685:       "latency_ms": 0.05,
+686:       "bandwidth_mib_per_ms": 4,
+687:       "classification": "PROPOSED"
+688:     },
+689:     {
+690:       "source_type": "NPU",
+691:       "destination_type": "GPU",
+692:       "latency_ms": 0.08,
+693:       "bandwidth_mib_per_ms": 4,
+694:       "classification": "PROPOSED"
+695:     },
+696:     {
+697:       "source_type": "NPU",
+698:       "destination_type": "NPU",
+699:       "latency_ms": 0.01,
+700:       "bandwidth_mib_per_ms": 16,
+701:       "classification": "PROPOSED"
+702:     }
+703:   ],
+704:   "semantics": {
+705:     "classification": "SOURCE_SUPPORTED",
+706:     "same_unit_delay_ms": 0,
+707:     "different_units": "latency(type(source),type(destination)) + edge_mib / bandwidth(type(source),type(destination))",
+708:     "start": "predecessor actual completion",
+709:     "copies": "destination-specific retained copies; remap recomputes readiness for new destination, never reuses another destination copy",
+710:     "network": "no bus contention; transfers overlap compute and each other",
+711:     "diagonal_note": "type diagonal applies between distinct same-type units; CPU0->CPU1 nonzero; GPU/GPU and NPU/NPU rows retained for complete 9-pair model even with one such unit"
+712:   },
+713:   "examples": [
+714:     {
+715:       "source": "CPU0",
+716:       "destination": "GPU0",
+717:       "mib": 4,
+718:       "delay_ms": 0.55,
+719:       "calculation": "0.05 ms + 4 MiB/(8 MiB/ms) =0.55 ms"
+720:     },
+721:     {
+722:       "source": "CPU0",
+723:       "destination": "CPU1",
+724:       "mib": 1,
+725:       "delay_ms": 0.0725,
+726:       "calculation": "0.01 +1/16=0.0725 ms"
+727:     },
+728:     {
+729:       "source": "NPU0",
+730:       "destination": "NPU0",
+731:       "mib": 1,
+732:       "delay_ms": 0,
+733:       "calculation": "same unit override"
+734:     }
+735:   ],
+736:   "source_refs": [
+737:     "docs/model_spec.md:3,20–31",
+738:     "docs/literature_reviews/heft_cpop.md:39–45",
+739:     "docs/literature_reviews/peft.md:37–44"
+740:   ],
+741:   "reason": "Power-of-two bandwidth and edge sizes facilitate hand checks; cross-accelerator latency larger than CPU interconnect. All numbers synthetic and unapproved.",
+742:   "sensitivity_risk": "Communication/compute ratios and extra split edges change locality and accelerator desirability; v1 keeps network fixed, no observed-data adjustment or unbudgeted sensitivity sweep.",
+743:   "document_version": "v2",
+744:   "approval": "UNAPPROVED",
+745:   "starting_commit": "79f9c245b23119ce25175d6dc6ff148e9e092461",
+746:   "preserved_semantic_content_version": "v1",
+747:   "parent_proposal": {
+748:     "path": "docs/P2_design/P2_communication_profiles_v1.json",
+749:     "sha256": "c3671a75ec593f1f48f731812bfbfe74f4728d48f1db419ea36605407900ebad"
+750:   },
+751:   "revision_note": "Document namespace only; original topology/profile/network values and template IDs retained unapproved."
+752: }
+
+FILE src/soc/simulator/engine.py SHA256 977d01f3603f516e68e922542322976b813c01aad8d2dd177a5c0ac314399551
+1: """D1 event engine. The only scheduler call argument is an immutable Observation."""
+2: from __future__ import annotations
+3: 
+4: from dataclasses import asdict
+5: import heapq
+6: from typing import Callable
+7: 
+8: from soc.model.schema import Workload, ModelError, communication, number
+9: from soc.model.observation import Observation, Running, Completed, observe, dependency_ready
+10: from soc.scheduler.kernels import Proposal, choose
+11: from soc.metrics.fixture import summarize
+12: 
+13: 
+14: class DeadlockError(RuntimeError):
+15:     pass
+16: 
+17: 
+18: def simulate(workload: Workload, method: str,
+19:              policy: Callable[[Observation], Proposal | None] | None = None) -> dict:
+20:     """Execute only the supplied input; never derive a seed or materialize a job.
+21: 
+22:     Optional policies are for synthetic negative tests. Normal B1–B5 accept only
+23:     public observations. This function exposes no queue or realized duration to
+24:     the policy, and makes no performance/host-timing claims.
+25:     """
+26:     if method not in {"B1", "B2", "B3", "B4", "B5"}:
+27:         raise ValueError("unknown baseline")
+28:     queue = [(s.arrival, 1, s.id, "", "") for s in workload.services]
+29:     heapq.heapify(queue)
+30:     services = {s.id: s for s in workload.services}
+31:     nodes = {(s.id, n.id): n for s in workload.services for n in s.nodes}
+32:     running: dict[tuple[str, str], dict] = {}
+33:     completed: dict[tuple[str, str], Completed] = {}
+34:     events, executions, decisions = [], [], []
+35:     now = 0.0
+36:     controller = policy if policy is not None else lambda view: choose(view, method)
+37:     while queue or running or len(completed) < len(nodes):
+38:         # Full batches are drained before the first observation at this time.
+39:         while queue and queue[0][0] == now:
+40:             at, phase, service, node, resource = heapq.heappop(queue)
+41:             if phase == 0:
+42:                 row = running.pop((service, node))
+43:                 completed[service, node] = Completed(service, node, resource, at)
+44:                 events.append(dict(time=at, kind="complete", service=service, node=node, resource=resource))
+45:             else:
+46:                 events.append(dict(time=at, kind="arrival", service=service, node="", resource=""))
+47:         while True:
+48:             view = observe(workload, now,
+49:                            tuple(Running(s, n, r["resource"], r["start"], now-r["start"])
+50:                                  for (s, n), r in running.items()), tuple(completed.values()))
+51:             proposal = controller(view)
+52:             decisions.append(dict(time=now, observation=asdict(view),
+53:                                   proposal=asdict(proposal) if proposal is not None else None))
+54:             if proposal is None:
+55:                 break
+56:             key = proposal.service, proposal.node
+57:             if key not in dependency_ready(view):
+58:                 raise ModelError("policy attempted non-ready/duplicate task")
+59:             node = nodes[key]
+60:             cost = node.cost(proposal.resource)
+61:             if any(r["resource"] == proposal.resource for r in running.values()):
+62:                 raise ModelError("policy attempted occupied resource")
+63:             for edge in node.predecessors:
+64:                 pred = completed[proposal.service, edge.node]
+65:                 if now < pred.finish + communication(workload, pred.resource, proposal.resource, edge.size):
+66:                     raise ModelError("policy attempted start before data ready")
+67:             finish = now + cost.realized
+68:             number(finish, "actual completion", positive=True)
+69:             if finish <= now:
+70:                 raise ModelError("duration below representable virtual-time resolution")
+71:             row = dict(service=proposal.service, node=proposal.node, resource=proposal.resource,
+72:                        start=now, finish=finish)
+73:             running[key] = row
+74:             executions.append(row.copy())
+75:             events.append(dict(time=now, kind="start", service=proposal.service,
+76:                                node=proposal.node, resource=proposal.resource))
+77:             heapq.heappush(queue, (finish, 0, proposal.service, proposal.node, proposal.resource))
+78:         if len(completed) == len(nodes) and not queue:
+79:             break
+80:         # Data arrival is a wakeup, not a fabricated resource reservation.
+81:         wakeups = []
+82:         busy = {r["resource"] for r in running.values()}
+83:         for service, node_id in dependency_ready(view):
+84:             node = nodes[service, node_id]
+85:             for cost in node.durations:
+86:                 if cost.resource in busy:
+87:                     continue
+88:                 ready = max((completed[service, e.node].finish + communication(
+89:                     workload, completed[service, e.node].resource, cost.resource, e.size)
+90:                     for e in node.predecessors), default=services[service].arrival)
+91:                 if ready > now:
+92:                     wakeups.append(ready)
+93:         candidates = ([queue[0][0]] if queue else []) + wakeups
+94:         if not candidates:
+95:             raise DeadlockError("unfinished admitted nodes, no legal start or future event/data wakeup")
+96:         next_time = min(candidates)
+97:         if next_time <= now:
+98:             raise DeadlockError("event progression failed")
+99:         now = next_time
+100:     return dict(schema_version=1, origin="HAND_AUTHORED_CORRECTNESS_FIXTURE", method=method,
+101:                 executions=executions, events=events, decisions=decisions,
+102:                 metrics=summarize(workload, executions))
+
+FILE src/soc/model/observation.py SHA256 40554e4ba71989223b7ba8362b7d35ae7257db030fd3e1fa04e262fb5002d0cb
+1: """Public DTOs constructed by projection, not wrappers around offline state."""
+2: from dataclasses import dataclass
+3: 
+4: from soc.model.schema import Workload, ModelError, Resource, Link, number
+5: 
+6: 
+7: @dataclass(frozen=True, slots=True)
+8: class PublicNode:
+9:     id: str
+10:     estimates: tuple[tuple[str, float], ...]
+11:     predecessors: tuple[tuple[str, float], ...]
+12: 
+13: 
+14: @dataclass(frozen=True, slots=True)
+15: class PublicService:
+16:     id: str
+17:     arrival: float
+18:     deadline: float
+19:     group: str
+20:     nodes: tuple[PublicNode, ...]
+21: 
+22: 
+23: @dataclass(frozen=True, slots=True)
+24: class Running:
+25:     service: str
+26:     node: str
+27:     resource: str
+28:     start: float
+29:     elapsed: float
+30: 
+31: 
+32: @dataclass(frozen=True, slots=True)
+33: class Completed:
+34:     service: str
+35:     node: str
+36:     resource: str
+37:     finish: float
+38: 
+39: 
+40: @dataclass(frozen=True, slots=True)
+41: class Observation:
+42:     now: float
+43:     services: tuple[PublicService, ...]
+44:     running: tuple[Running, ...]
+45:     completed: tuple[Completed, ...]
+46:     resources: tuple[Resource, ...]
+47:     links: tuple[Link, ...]
+48: 
+49: 
+50: def observe(workload: Workload, now: float, running: tuple[Running, ...] = (),
+51:             completed: tuple[Completed, ...] = ()) -> Observation:
+52:     """Project only supplied observable facts; no queued completion input exists."""
+53:     number(now, "observation time")
+54:     services = tuple(PublicService(s.id, s.arrival, s.deadline, s.group,
+55:                                  tuple(PublicNode(n.id, tuple(sorted((d.resource, d.estimate) for d in n.durations)),
+56:                                                   tuple(sorted((e.node, e.size) for e in n.predecessors)))
+57:                                        for n in sorted(s.nodes, key=lambda n: n.id)))
+58:                      for s in sorted(workload.services, key=lambda s: s.id) if s.arrival <= now)
+59:     visible = {(s.id, n.id): n for s in services for n in s.nodes}
+60:     used = set()
+61:     busy = set()
+62:     for row in (*running, *completed):
+63:         if type(row) not in (Running, Completed) or (row.service, row.node) not in visible:
+64:             raise ModelError("status is not a visible task")
+65:         key = row.service, row.node
+66:         if key in used or row.resource not in dict(visible[key].estimates):
+67:             raise ModelError("duplicate status or incompatible assignment")
+68:         used.add(key)
+69:         if isinstance(row, Running):
+70:             number(row.start, "running start")
+71:             number(row.elapsed, "running elapsed")
+72:             if row.start > now or row.elapsed != now - row.start or row.resource in busy:
+73:                 raise ModelError("invalid running observation")
+74:             busy.add(row.resource)
+75:         else:
+76:             number(row.finish, "observed completion")
+77:             if row.finish > now:
+78:                 raise ModelError("future completion cannot be observed")
+79:         arrival = next(s.arrival for s in services if s.id == row.service)
+80:         if (row.start if isinstance(row, Running) else row.finish) < arrival:
+81:             raise ModelError("observation predates arrival")
+82:     key = lambda r: (r.service, r.node, r.resource)
+83:     return Observation(now, services, tuple(sorted(running, key=key)), tuple(sorted(completed, key=key)),
+84:                        tuple(sorted(workload.resources, key=lambda r: r.id)),
+85:                        tuple(sorted(workload.links, key=lambda r: (r.source, r.destination))))
+86: 
+87: 
+88: def dependency_ready(view: Observation) -> tuple[tuple[str, str], ...]:
+89:     finished = {r.node for r in view.completed}
+90:     occupied = {r.node for r in (*view.completed, *view.running)}
+91:     return tuple((s.id, n.id) for s in view.services for n in s.nodes
+92:                  if n.id not in occupied and all(p in finished for p, _ in n.predecessors))
+

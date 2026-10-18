@@ -1,0 +1,3714 @@
+FILE AGENTS.md SHA256 5435e5e690a64e0e7f432bae22b8f459f646e12233d99a7a4b1a70266d8c9a22
+1: # soc research rules
+2: 
+3: Read this file and STATUS.md at the beginning of every task. The complete user
+4: contract is preserved in docs/user_request.txt. It takes precedence over summaries.
+5: 
+6: 1. The only project repository is JINAOLONG/soc; its root is the project root.
+7:    Use the existing isolated checkout; do not create nested repositories or
+8:    worktrees unless explicitly requested. Check the remote before every push.
+9: 2. Research question: online, non-preemptive, multi-service DAG scheduling on
+10:    four CPU cores, one GPU unit and one NPU unit. Joint ordering and mapping
+11:    should reduce important-service H deadline misses while keeping every main
+12:    condition's ordinary-service L P95 ratio to B2 at or below 1.10. H/L are
+13:    service importance labels, not ASIL or safety certification.
+14: 3. Keep engine, scheduler, workload generator, metrics, independent validator,
+15:    and analysis separate. A scheduler receives immutable observations of arrived
+16:    services only; never reveal future arrivals, true future durations, random
+17:    disturbances, or the private event queue. Planned is not started.
+18: 4. Preserve LICENSE and user work. No destructive Git operations, history
+19:    rewriting, broad restore/clean/reset, or force push. Commit relevant tested
+20:    changes at stage boundaries. Attempt a normal push on the actual task branch
+21:    and record the precise result; a local commit is not a GitHub backup.
+22: 5. All scientific numbers and claims must come from actual clean-room runs.
+23:    Do not reuse legacy results, candidate parameters or profiling conclusions.
+24:    Use UNKNOWN, UNVERIFIED, NOT RUN or NOT APPLICABLE where appropriate.
+25: 6. Seeds in configs/seed_partitions.json use the user-prescribed deterministic
+26:    derivation and cannot be redrawn. P0–P2 allow only CALIBRATION execution;
+27:    P3 uses DEVELOPMENT, first 10 for search, last 10 for precheck. Metadata
+28:    generation/auditing is not workload execution. Do not inspect reserved
+29:    workload realizations or outcomes before unlock.
+30: 7. Independent validation requires Development Gate PASS, committed freeze
+31:    manifest and checkpoints/VALIDATION_UNLOCKED. Formal requires the corresponding
+32:    validation gate, committed freeze and checkpoints/FORMAL_UNLOCKED. Never
+33:    create tokens to bypass missing evidence. An unknown stage fails closed.
+34: 8. Never change user thresholds, remove losing seeds/configurations, discard
+35:    slow timing runs, select favorable conditions, or relabel development as
+36:    independent evidence. Retain all valid failures and invalid-run diagnoses.
+37:    No candidate formula before P2. At most one preregistered mechanism revision.
+38: 9. P0 cannot pass without reviewing 6–8 original studies, including HEFT/CPOP,
+39:    PEFT and DS3. Retrieval of code or a title alone is not paper verification.
+40:    B3/B4/B5 are explicitly online adaptations, not the original static methods.
+41: 10. Stop scientific progression on any unmet stage prerequisite. Correctness
+42:     failure must be fixed before science; absent stable P2 mapping opportunity
+43:     stops that hypothesis; failed validation blocks formal; provenance uncertainty
+44:     blocks execution. Preserve reports and commits even when blocked.
+45: 11. Every scientific run needs run ID, timestamp, Git commit and dirty status,
+46:     source/config/workload SHA256, partition/seed/scene/load/size/method, host,
+47:     exact command, result path and independently determined validity. Resume
+48:     only after matching all identities. Precheck/validation/formal require
+49:     committed, clean relevant source/configuration.
+50: 12. Keep profiling separate from scientific sample counts. Any purported
+51:     semantics-preserving optimization needs profiler evidence and exact old/new
+52:     decision, physical trace and event regression with zero mismatches. A mismatch
+53:     stops that optimization; it cannot retroactively rescue frozen results.
+54: 13. Update STATUS.md after meaningful changes. Record executed and unexecuted
+55:     stages separately. CURRENT_GIT_HEAD is resolved at read time if a static
+56:     file cannot contain its own enclosing commit hash; record tested source
+57:     commits explicitly in manifests. Never invent a hash.
+58: 14. Run applicable tests and audits before committing. CI is lightweight only:
+59:     never launch calibration, development, validation, formal or large benchmarks.
+60: 15. Track code, protocols, configs, scripts, reports, small summaries/manifests.
+61:     Keep large raw data compressed with identity, hash and regeneration commands;
+62:     do not introduce LFS infrastructure without need/authorization. No secrets
+63:     in files, outputs, commits or setup instructions.
+
+FILE STATUS.md SHA256 5f4c9fc321d22010400f260e8ed82a714b4a19453ae7b3102e04db93211f5222
+1: PROJECT_NAME=soc
+2: P0_STATUS=PASS
+3: P1_STATUS=PASS
+4: P2_PREFLIGHT_STATUS=BLOCKED
+5: P2_DESIGN_PACKAGE_STATUS=DRAFT
+6: P2_B1_STATUS=UNRESOLVED
+7: P2_B2_STATUS=UNRESOLVED
+8: P2_B3_STATUS=UNRESOLVED
+9: P2_B4_STATUS=DESIGNED
+10: P2_B5_STATUS=DESIGNED
+11: HUMAN_DECISIONS_REQUIRED=10
+12: SCIENTIFIC_WORKLOADS_RUN=0
+13: NEW_SEEDS_GENERATED=NO
+14: NON_CALIBRATION_PARTITIONS_ACCESSED=NO
+15: P2_ENTRYPOINT_EXECUTED=NO
+16: SIMULATOR_SOURCE_CHANGED=NO
+17: SCHEDULER_SOURCE_CHANGED=NO
+18: WORKLOAD_GENERATOR_SOURCE_CHANGED=NO
+19: SCIENTIFIC_THRESHOLDS_CHANGED=NO
+20: CI_METHOD_CHANGED=NO
+21: SEED_PARTITIONS_CHANGED=NO
+22: VALIDATION_UNLOCKED=NO
+23: FORMAL_UNLOCKED=NO
+24: GIT_COMMIT=c7e94e438674bcfbb16ed1281ce0437cb6df3072 (audited proposal checkpoint; enclosing HEAD resolved live)
+25: GITHUB_PUSH_STATUS=SUCCESS_FOR_RECORDED_PROPOSAL_CHECKPOINT
+26: WORKTREE=RESOLVE_WITH_git-status_--short
+27: NEXT_SAFE_ACTION=Human review and approval of concrete P2 design
+28: STOP=YES
+29: D01_D10_INVENTORY=10
+30: DECISIONS_RESOLVED=0
+31: DECISIONS_BLOCKED=0
+32: GIT_COMMIT_SCOPE=AUDITED_REMOTE_VERIFIED_UNAPPROVED_CONCRETE_PROPOSAL_CHECKPOINT
+33: FINAL_ENCLOSING_HEAD_COMMAND=git rev-parse HEAD
+34: FINAL_ENCLOSING_WORKTREE_COMMAND=git status --short
+35: D01_D10_PROPOSAL_COMPLETE=YES
+36: DRAFT_FILES_EXECUTABLE=NO
+37: UNRESOLVED_SCIENTIFIC_PARAMETERS=32
+38: UNRESOLVED_SCIENTIFIC_PARAMETERS_SCOPE=Named unapproved scientific parameter groups; see registry, not scalar cells
+39: CURRENT_STAGE=P2_CONCRETE_DESIGN_PROPOSAL_AWAITING_HUMAN_APPROVAL
+40: CURRENT_GIT_HEAD=RESOLVE_WITH_git-rev-parse_HEAD
+41: CURRENT_BRANCH=work
+42: TASK_START_HEAD=160800d9b136e953c6415cd5229ded87eae72a0f
+43: P0_AUDIT_EXIT_CODE=0
+44: P1_AUDIT_EXIT_CODE=0
+45: DESIGN_APPROVED=NO
+46: DESIGN_FROZEN=NO
+47: CALIBRATION_SEED_IDENTITIES_USED_OR_GENERATED=0
+48: RESULT_PATHS=docs/P2_design/P2_complete_design_proposal_v1.md;reports/P2_design/delivery_index.json
+49: P2_PLANNED_TRIAL_SLOTS=2520
+50: P2_SCIENTIFIC_REALIZATIONS_GENERATED=0
+51: 
+52: Proposal v1 is concrete but entirely unapproved. 32 named scientific parameter groups remain UNRESOLVED.
+53: P0/P1 actual read-only audits exit 0; P2 never executed. See reports/P2_design/proposal_v1.
+54: Previous STATUS preserved byte-for-byte in that directory. No implementation or reserved partition changes.
+55: PROPOSAL_CHECKS_PASSED=94
+56: PROPOSAL_GIT_RECEIPT=reports/P2_design/proposal_v1/git_checkpoint.json
+
+FILE docs/user_request.txt SHA256 4c3481f0c67553eaa6d2dd6f181cc8d3f792e40fdc9586547c1c2e91fb52b461
+1: # ============================================================
+2: # 车载异构 SoC 多业务 DAG 在线调度研究
+3: # Codex Cloud + GitHub clean-room 完整主提示词
+4: #
+5: # GitHub repository: soc
+6: # Repository root == Project root
+7: #
+8: # 目标：
+9: # 从零建立完整、可复现、可审计的硕士论文级研究工程。
+10: # ============================================================
+11: 
+12: 你正在 Codex Cloud 中执行一个全新的研究项目。
+13: 
+14: 用户已经在 Codex Cloud 环境中选择 GitHub repository：
+15: 
+16: soc
+17: 
+18: 这是本研究项目唯一的权威代码仓库和长期保存位置。
+19: 
+20: 请完整阅读本提示词以后再开始执行。
+21: 
+22: 不要只输出计划。
+23: 
+24: 在符合研究协议和停止规则的前提下实际执行工作。
+25: 
+26: ============================================================
+27: 0. 最重要的总原则
+28: ============================================================
+29: 
+30: 本项目是一项科学研究，不是“把实验做成 PASS”的任务。
+31: 
+32: 你必须：
+33: 
+34: 提出可证伪假设
+35: → 建立正确模型
+36: → 实现真实基线
+37: → 校准问题
+38: → 开发候选方法
+39: → 冻结协议
+40: → 严格验证
+41: → 得到真实 PASS / FAIL / INCONCLUSIVE
+42: → 完整保存证据。
+43: 
+44: 严禁：
+45: 
+46: - 为得到成功结果修改验收门槛；
+47: - 根据正式结果重新调参；
+48: - 删除不利 seed；
+49: - 删除慢 timing run；
+50: - 删除异常但合法的结果；
+51: - 选择性展示有利 condition；
+52: - 将开发结果称为独立验证；
+53: - 将工程 profiling 称为科学验证；
+54: - 将后续实现优化追溯解释为原冻结实验成功；
+55: - 编造论文内容；
+56: - 编造算法公式；
+57: - 编造实验数字；
+58: - 编造测试结果；
+59: - 编造 commit/hash；
+60: - 编造 profiler 数据；
+61: - 编造 seed provenance。
+62: 
+63: 无法确认时使用：
+64: 
+65: UNKNOWN
+66: UNVERIFIED
+67: NOT AVAILABLE
+68: NOT RUN
+69: NOT APPLICABLE
+70: 
+71: 而不是推测。
+72: 
+73: ============================================================
+74: 1. GitHub / Codex Cloud 是项目基础设施
+75: ============================================================
+76: 
+77: 当前任务运行于：
+78: 
+79: Codex Cloud
+80: 
+81: 用户选择的 GitHub repository：
+82: 
+83: soc
+84: 
+85: 当前 repository 即：
+86: 
+87: 项目根目录。
+88: 
+89: 不要再创建：
+90: 
+91: vehicle-soc-dag-scheduler/
+92: 
+93: 作为第二层项目仓库。
+94: 
+95: 尤其禁止创建：
+96: 
+97: soc/vehicle-soc-dag-scheduler/.git
+98: 
+99: 这样的嵌套 Git repository。
+100: 
+101: 不要执行：
+102: 
+103: git init
+104: 
+105: 除非：
+106: 
+107: git rev-parse --show-toplevel
+108: 
+109: 明确失败，并且已经确认 Codex Cloud 没有正确载入用户选择的 soc repository。
+110: 
+111: 这种情况下先报告环境问题，不要自行建立与 GitHub 脱离的新仓库。
+112: 
+113: ============================================================
+114: 2. 第一个动作：GitHub repository 审计
+115: ============================================================
+116: 
+117: 在写代码之前首先执行并保存：
+118: 
+119: pwd
+120: git rev-parse --show-toplevel
+121: git remote -v
+122: git status --short
+123: git branch --show-current
+124: git rev-parse HEAD 2>/dev/null || true
+125: git log --oneline --decorate -10 2>/dev/null || true
+126: 
+127: 确认：
+128: 
+129: EXPECTED_REPOSITORY=soc
+130: 
+131: 检查：
+132: 
+133: 1. 当前工作目录是否属于 soc repository；
+134: 2. remote 是否是用户选择的 soc repository；
+135: 3. 当前 branch 是什么；
+136: 4. repository 是否为空；
+137: 5. 是否存在用户已有文件；
+138: 6. 是否有 AGENTS.md；
+139: 7. 是否存在 README / LICENSE / workflow 等初始化文件。
+140: 
+141: 如果 remote 明显不是 soc：
+142: 
+143: STOP。
+144: 
+145: 不得向其他 repository push。
+146: 
+147: 输出：
+148: 
+149: EXPECTED_REPOSITORY=soc
+150: ACTUAL_REMOTE=<actual>
+151: REPOSITORY_MATCH=NO
+152: STOP=YES
+153: 
+154: ============================================================
+155: 3. 不破坏已有内容
+156: ============================================================
+157: 
+158: 如果 soc repository 中已经存在少量 GitHub 初始化文件，例如：
+159: 
+160: README.md
+161: LICENSE
+162: .gitignore
+163: 
+164: 保留并合理更新。
+165: 
+166: 如果存在明显属于其他项目的重要源码：
+167: 
+168: 不要覆盖。
+169: 
+170: STOP 并报告。
+171: 
+172: 禁止：
+173: 
+174: git reset --hard
+175: git clean -fd
+176: git clean -fdx
+177: git checkout -- .
+178: git restore .
+179: git filter-repo
+180: git filter-branch
+181: force push
+182: 
+183: 未经用户明确授权不得执行 destructive Git operation。
+184: 
+185: ============================================================
+186: 4. Clean-room 研究规则
+187: ============================================================
+188: 
+189: 虽然用户此前可能做过同主题研究，但本项目要求：
+190: 
+191: 从零重新执行。
+192: 
+193: 如果环境、文件系统、Library 或 GitHub 中发现以前版本：
+194: 
+195: N2
+196: N3
+197: N4
+198: N4-E1
+199: N4-E2
+200: 旧 P3
+201: 旧 Gate III
+202: 旧 candidate
+203: 旧 seed result
+204: 
+205: 不得把这些历史实验结果复制成本次新证据。
+206: 
+207: 特别不得直接复用以前已经得到的：
+208: 
+209: - H-DMR 数字；
+210: - L-P95 数字；
+211: - decision P95；
+212: - profiling 数字；
+213: - ready-key 热点；
+214: - 已调 candidate 参数；
+215: - validation/formal outcome。
+216: 
+217: 旧项目只能作为：
+218: 
+219: 历史背景或研究治理经验。
+220: 
+221: 本次所有科学结论必须来自：
+222: 
+223: 当前 soc repository
+224: +
+225: 本次 clean-room actual run。
+226: 
+227: 最终必须保证：
+228: 
+229: LEGACY_RESULTS_USED_AS_NEW_EVIDENCE=NO
+230: 
+231: ============================================================
+232: 5. GitHub repository 目录结构
+233: ============================================================
+234: 
+235: 直接在 soc repository root 建立：
+236: 
+237: README.md
+238: STATUS.md
+239: AGENTS.md
+240: .gitignore
+241: pyproject.toml
+242: 
+243: src/
+244:     model/
+245:     simulator/
+246:     scheduler/
+247:     workload/
+248:     metrics/
+249:     validation/
+250:     analysis/
+251: 
+252: configs/
+253:     model/
+254:     workload/
+255:     calibration/
+256:     development/
+257:     validation/
+258:     formal/
+259:     engineering/
+260: 
+261: scripts/
+262:     run_single.py
+263:     run_batch.py
+264:     validate_trace.py
+265:     aggregate.py
+266:     analyze.py
+267:     plot.py
+268:     hash_artifacts.py
+269:     run_pipeline.py
+270: 
+271: tests/
+272: 
+273: docs/
+274:     research_contract.md
+275:     model_spec.md
+276:     literature_matrix.md
+277:     baseline_spec.md
+278:     metric_spec.md
+279:     workload_spec.md
+280:     method_spec.md
+281:     statistical_protocol.md
+282:     development_search_protocol.md
+283:     preregistration.json
+284: 
+285: reports/
+286: 
+287: results/
+288:     calibration/
+289:     development/
+290:     validation/
+291:     formal/
+292:     engineering/
+293: 
+294: checkpoints/
+295: 
+296: .github/
+297:     workflows/
+298: 
+299: 允许根据合理的软件工程需要微调子目录，
+300: 
+301: 但必须保持：
+302: 
+303: simulation engine
+304: scheduler
+305: workload generator
+306: metrics
+307: independent validator
+308: analysis
+309: 
+310: 相互解耦。
+311: 
+312: ============================================================
+313: 6. 必须创建 AGENTS.md
+314: ============================================================
+315: 
+316: 在 repository root 创建：
+317: 
+318: AGENTS.md
+319: 
+320: 它将作为后续 Codex Cloud task 的仓库级规则。
+321: 
+322: 至少包含：
+323: 
+324: 1. 项目研究问题；
+325: 2. simulator / scheduler 信息边界；
+326: 3. H/L 业务定义；
+327: 4. GitHub repository = soc；
+328: 5. 禁止 destructive Git；
+329: 6. 科学结果必须来自真实运行；
+330: 7. seed partition isolation；
+331: 8. validation/formal 未解锁前不得访问；
+332: 9. 不得修改冻结门槛；
+333: 10. 不得删除失败证据；
+334: 11. profiling 与科学实验分离；
+335: 12. semantics-preserving optimization 必须 exact regression；
+336: 13. STATUS.md 必须同步更新；
+337: 14. commit 前必须运行相应测试；
+338: 15. 所有科学 run 必须记录 code/config/workload hash；
+339: 16. 大型 artifact 管理规则；
+340: 17. 不得把旧项目结果作为本次新证据。
+341: 
+342: 以后每个 Codex task：
+343: 
+344: 先读 AGENTS.md。
+345: 
+346: ============================================================
+347: 7. .gitignore
+348: ============================================================
+349: 
+350: 合理忽略：
+351: 
+352: __pycache__/
+353: *.pyc
+354: .pytest_cache/
+355: .mypy_cache/
+356: .ruff_cache/
+357: .venv/
+358: venv/
+359: .env
+360: build/
+361: dist/
+362: *.egg-info/
+363: *.prof
+364: 临时 profiler 文件
+365: 临时 cache
+366: OS metadata
+367: IDE metadata
+368: 
+369: 不要忽略：
+370: 
+371: src/
+372: tests/
+373: scripts/
+374: configs/
+375: docs/
+376: reports/
+377: STATUS.md
+378: AGENTS.md
+379: 小型 manifest
+380: 小型 CSV/JSON summaries
+381: 可合理版本控制的 scientific metadata。
+382: 
+383: ============================================================
+384: 8. Git commit 原则
+385: ============================================================
+386: 
+387: 本项目允许并要求阶段性 commit。
+388: 
+389: 不要整个项目跑完才第一次 commit。
+390: 
+391: 推荐 checkpoint：
+392: 
+393: P0:
+394: P0: freeze research protocol and seed partitions
+395: 
+396: P1:
+397: P1: implement simulator baselines and trace validator
+398: 
+399: P2:
+400: P2: freeze calibrated workloads and diagnostics
+401: 
+402: P3:
+403: P3: freeze development candidate and evidence
+404: 
+405: 如果 P3 失败：
+406: 
+407: P3: preserve failed development evidence
+408: 
+409: 如果进入 independent validation：
+410: 
+411: P4: freeze independent validation configuration
+412: 
+413: 如果进入 formal：
+414: 
+415: P5: freeze formal evaluation configuration
+416: 
+417: 工程优化：
+418: 
+419: ENG: optimize scheduler without semantic changes
+420: 
+421: commit message 必须准确。
+422: 
+423: 不得用：
+424: 
+425: success
+426: validated
+427: formal pass
+428: gate pass
+429: 
+430: 除非实际证据确实支持。
+431: 
+432: ============================================================
+433: 9. Git push 原则
+434: ============================================================
+435: 
+436: 每个重要阶段 commit 后：
+437: 
+438: 检查：
+439: 
+440: git remote -v
+441: 
+442: 如果 Codex Cloud 当前有 push 权限：
+443: 
+444: push 到当前研究 branch。
+445: 
+446: 禁止：
+447: 
+448: git push --force
+449: git push --force-with-lease
+450: 
+451: 如果 push 失败：
+452: 
+453: 保留本地 commit。
+454: 
+455: 记录：
+456: 
+457: GITHUB_PUSH_STATUS=FAILED
+458: 
+459: 以及失败原因。
+460: 
+461: 不得声称已经保存到 GitHub。
+462: 
+463: ============================================================
+464: 10. Branch 策略
+465: ============================================================
+466: 
+467: 首先读取实际 branch。
+468: 
+469: 不要假定一定是 main。
+470: 
+471: 如果 Codex Cloud 自动创建任务 branch：
+472: 
+473: 使用该 branch。
+474: 
+475: 如果 repository 为空且当前直接处于 main：
+476: 
+477: 可在 main 上工作，前提是环境允许。
+478: 
+479: 如果需要显式长期研究 branch：
+480: 
+481: 推荐：
+482: 
+483: research/vehicle-soc-dag-scheduler
+484: 
+485: 但不要无故频繁创建分支。
+486: 
+487: 记录：
+488: 
+489: RESEARCH_BRANCH=<actual>
+490: 
+491: ============================================================
+492: 11. GitHub Actions
+493: ============================================================
+494: 
+495: 创建轻量：
+496: 
+497: .github/workflows/tests.yml
+498: 
+499: CI 只执行：
+500: 
+501: - dependency install；
+502: - unit tests；
+503: - deterministic tests；
+504: - validator tests；
+505: - lightweight static checks，如已有。
+506: 
+507: CI 不得自动执行：
+508: 
+509: - calibration batch；
+510: - development science batch；
+511: - independent validation；
+512: - formal evaluation；
+513: - 大型 benchmark。
+514: 
+515: 避免一次普通 push
+516: 意外访问保留 seed。
+517: 
+518: ============================================================
+519: 12. 大型结果数据规则
+520: ============================================================
+521: 
+522: 用户要求所有代码保存在 GitHub soc 中。
+523: 
+524: 因此：
+525: 
+526: 所有源码、配置、测试、协议、分析脚本、报告和 manifest
+527: 必须进入 repository。
+528: 
+529: 实验 raw artifacts：
+530: 
+531: 如果规模合理，也进入 Git。
+532: 
+533: 如果规模非常大：
+534: 
+535: 不要把数 GB 文件直接塞入普通 Git history。
+536: 
+537: 优先：
+538: 
+539: - compressed CSV；
+540: - compressed JSONL；
+541: - compact binary；
+542: - summary；
+543: - SHA256；
+544: - workload identity；
+545: - regeneration command。
+546: 
+547: 如果 Git LFS 已经配置：
+548: 
+549: 可按照现有规则使用。
+550: 
+551: 如果未配置：
+552: 
+553: 不要未经确认擅自建立复杂大文件基础设施。
+554: 
+555: 必须确保 GitHub repository 中至少保存：
+556: 
+557: 能够确定性重新生成大型 artifact 的：
+558: 
+559: code
+560: config
+561: seed
+562: hash
+563: command
+564: manifest。
+565: 
+566: ============================================================
+567: 13. Secrets
+568: ============================================================
+569: 
+570: 禁止将：
+571: 
+572: GitHub token
+573: API key
+574: password
+575: secret
+576: 
+577: 写入：
+578: 
+579: 代码
+580: config
+581: report
+582: README
+583: Git history。
+584: 
+585: 使用 Codex Cloud / GitHub secret mechanism。
+586: 
+587: ============================================================
+588: 14. 研究目标
+589: ============================================================
+590: 
+591: 研究核心问题：
+592: 
+593: 在多业务 DAG 持续在线到达、
+594: CPU–GPU–NPU 异构资源共享、
+595: 资源紧张、
+596: 节点不可抢占的情况下，
+597: 
+598: 如何联合决定：
+599: 
+600: 1. 哪个就绪任务先运行；
+601: 2. 运行到哪个兼容处理单元；
+602: 
+603: 以：
+604: 
+605: 降低重要业务 H 的端到端 deadline miss rate，
+606: 
+607: 同时：
+608: 
+609: 将普通业务 L 的 P95 端到端响应时间
+610: 相对固定基线 B2
+611: 的增幅限制在 10% 以内。
+612: 
+613: ============================================================
+614: 15. 研究主线
+615: ============================================================
+616: 
+617: 研究主线：
+618: 
+619: Deadline-aware
+620: +
+621: Cross-service contention-aware
+622: +
+623: Heterogeneous DAG task scheduling
+624: 
+625: 候选核心思想：
+626: 
+627: 仅基于当前节点自己的 EFT 做 mapping，
+628: 可能占用其他已到达 H 业务高度依赖的稀缺资源。
+629: 
+630: 如果同时考虑：
+631: 
+632: - 业务 deadline；
+633: - remaining DAG path；
+634: - resource compatibility；
+635: - alternative resource penalty；
+636: - cross-service contention；
+637: - L waiting；
+638: 
+639: 可能改善 H 业务端到端表现。
+640: 
+641: 这是待验证 hypothesis。
+642: 
+643: 不能预设其成立。
+644: 
+645: ============================================================
+646: 16. 不属于当前主线的内容
+647: ============================================================
+648: 
+649: 不要将研究重新定义成：
+650: 
+651: - energy-budget scheduler；
+652: - ASIL scheduler；
+653: - functional safety certification；
+654: - hardware deployment proof；
+655: - WCET formal verification。
+656: 
+657: 能耗可以是次级模型估计指标，
+658: 
+659: 但不是当前主要优化问题。
+660: 
+661: ============================================================
+662: 17. 业务模型
+663: ============================================================
+664: 
+665: 每个业务实例 g：
+666: 
+667: arrival time:
+668: a_g
+669: 
+670: relative deadline:
+671: D_g
+672: 
+673: absolute deadline:
+674: d_g = a_g + D_g
+675: 
+676: criticality/group:
+677: H or L
+678: 
+679: DAG:
+680: G_g
+681: 
+682: H：
+683: 
+684: 重要业务。
+685: 
+686: L：
+687: 
+688: 普通业务。
+689: 
+690: H/L 是本研究业务重要性。
+691: 
+692: 不得自动解释为 ASIL。
+693: 
+694: ============================================================
+695: 18. DAG node
+696: ============================================================
+697: 
+698: 每个节点 i：
+699: 
+700: - predecessor set；
+701: - successor set；
+702: - compatible resource set A_i；
+703: - execution-time estimate；
+704: - actual execution time；
+705: - output data size；
+706: - service identity。
+707: 
+708: 节点重要性继承所属业务。
+709: 
+710: ============================================================
+711: 19. 初始异构资源
+712: ============================================================
+713: 
+714: 使用：
+715: 
+716: CPU0
+717: CPU1
+718: CPU2
+719: CPU3
+720: GPU0
+721: NPU0
+722: 
+723: 即：
+724: 
+725: 4 × CPU core
+726: 1 × GPU unit
+727: 1 × NPU unit
+728: 
+729: 每个抽象 unit
+730: 一次只执行一个 node。
+731: 
+732: GPU/NPU 内部并行：
+733: 
+734: 通过 execution-time abstraction
+735: 体现。
+736: 
+737: ============================================================
+738: 20. 兼容资源
+739: ============================================================
+740: 
+741: 每个 node：
+742: 
+743: 只能运行于自己的 compatible set A_i。
+744: 
+745: 必须存在：
+746: 
+747: CPU-only
+748: GPU-oriented
+749: NPU-oriented
+750: multi-compatible
+751: limited-alternative
+752: 
+753: 类型。
+754: 
+755: 不得把所有任务都设计成：
+756: 
+757: CPU/GPU/NPU 均可运行。
+758: 
+759: ============================================================
+760: 21. 非抢占语义
+761: ============================================================
+762: 
+763: 任务：
+764: 
+765: NON-PREEMPTIVE。
+766: 
+767: 任务启动后禁止：
+768: 
+769: 抢占
+770: 迁移
+771: 复制
+772: 重规划 execution interval。
+773: 
+774: 尚未启动：
+775: 
+776: 允许重新排序和重新评估 mapping。
+777: 
+778: 必须区分：
+779: 
+780: dependency_ready
+781: data_ready
+782: planned
+783: resource_ready
+784: started
+785: running
+786: completed
+787: 
+788: planned != started。
+789: 
+790: ============================================================
+791: 22. 通信模型
+792: ============================================================
+793: 
+794: 跨资源依赖使用：
+795: 
+796: parameterized transfer delay。
+797: 
+798: P0 必须明确：
+799: 
+800: - 同资源通信；
+801: - 跨资源通信；
+802: - transfer start；
+803: - transfer overlap；
+804: - remapping 后 data validity；
+805: - data-ready time。
+806: 
+807: 必须保证：
+808: 
+809: actual_start
+810: >=
+811: predecessor completion
+812: >=/and data ready
+813: and resource availability
+814: 
+815: 避免违反因果关系。
+816: 
+817: 第一版：
+818: 
+819: 不实现复杂共享总线竞争。
+820: 
+821: 共享总线仅作为 sensitivity extension。
+822: 
+823: ============================================================
+824: 23. 在线信息边界
+825: ============================================================
+826: 
+827: scheduler 可看到：
+828: 
+829: - 已到达业务；
+830: - 已公开 DAG；
+831: - deadline；
+832: - execution estimates；
+833: - H/L；
+834: - completed nodes；
+835: - running nodes；
+836: - observable resource state；
+837: - data-ready state。
+838: 
+839: scheduler 不得看到：
+840: 
+841: - future arrivals；
+842: - future burst；
+843: - event queue future event；
+844: - future true duration；
+845: - future random disturbance。
+846: 
+847: 通过：
+848: 
+849: read-only scheduler state
+850: 
+851: 统一提供。
+852: 
+853: ============================================================
+854: 24. 随机性
+855: ============================================================
+856: 
+857: 不同方法必须共享：
+858: 
+859: 完全相同 workload realization。
+860: 
+861: 随机扰动不得依赖 scheduler 调用 RNG 次数。
+862: 
+863: 推荐由：
+864: 
+865: seed
+866: service_instance_id
+867: node_id
+868: resource_id
+869: 
+870: 确定。
+871: 
+872: 相同：
+873: 
+874: code
+875: config
+876: seed
+877: 
+878: 应确定性重现。
+879: 
+880: ============================================================
+881: 25. 排空
+882: ============================================================
+883: 
+884: 停止 arrival 后：
+885: 
+886: 继续 simulation，
+887: 
+888: 直到所有已到达 service 完成。
+889: 
+890: 不得因 deadline miss：
+891: 
+892: 删除 workload。
+893: 
+894: ============================================================
+895: 26. Deadline metric
+896: ============================================================
+897: 
+898: 业务完成：
+899: 
+900: F_g
+901: 
+902: response：
+903: 
+904: L_g = F_g - a_g
+905: 
+906: deadline miss：
+907: 
+908: F_g > d_g
+909: 
+910: 如果：
+911: 
+912: F_g == d_g
+913: 
+914: 不算 miss。
+915: 
+916: 统计单位：
+917: 
+918: service instance
+919: 
+920: 不是 node。
+921: 
+922: ============================================================
+923: 27. 文献研究 P0
+924: ============================================================
+925: 
+926: 至少核验 6–8 篇原始研究。
+927: 
+928: 优先：
+929: 
+930: 原论文
+931: 作者稿
+932: 官方代码。
+933: 
+934: 起始文献至少包括：
+935: 
+936: HEFT/CPOP：
+937: Performance-Effective and Low-Complexity Task Scheduling for Heterogeneous Computing
+938: 
+939: PEFT：
+940: List Scheduling Algorithm for Heterogeneous Systems by an Optimistic Cost Table
+941: 
+942: DS3：
+943: A System-Level Domain-Specific System-on-Chip Simulation Framework
+944: 
+945: 另外检索：
+946: 
+947: online DAG scheduling
+948: multi-DAG scheduling
+949: heterogeneous scheduling
+950: deadline-aware DAG scheduling
+951: CPU GPU NPU task scheduling
+952: criticality-aware scheduling
+953: 
+954: 生成：
+955: 
+956: docs/literature_matrix.md
+957: 
+958: 至少包含：
+959: 
+960: Paper
+961: Model
+962: Static/online
+963: Single/multi DAG
+964: Deadline
+965: Priority
+966: Heterogeneity
+967: Mapping
+968: Communication
+969: Contention
+970: Objective
+971: Complexity
+972: Code
+973: Difference
+974: 
+975: 无法获得原文：
+976: 
+977: UNVERIFIED_SOURCE。
+978: 
+979: 不得根据标题虚构细节。
+980: 
+981: ============================================================
+982: 28. 基线 B1–B5
+983: ============================================================
+984: 
+985: 实现：
+986: 
+987: B1
+988: EDF + EFT
+989: 
+990: 就绪 node：
+991: 
+992: 所属 service absolute deadline 排序。
+993: 
+994: mapping：
+995: 
+996: compatible resources 中 EFT 最小。
+997: 
+998: ------------------------------------------------------------
+999: 
+1000: B2
+1001: H-priority + EDF + EFT
+1002: 
+1003: 先：
+1004: 
+1005: H before L
+1006: 
+1007: 组内：
+1008: 
+1009: EDF
+1010: 
+1011: mapping：
+1012: 
+1013: EFT
+1014: 
+1015: B2 是：
+1016: 
+1017: L 10% budget reference。
+1018: 
+1019: ------------------------------------------------------------
+1020: 
+1021: B3
+1022: Online-HEFT
+1023: 
+1024: 按照原论文核对：
+1025: 
+1026: upward rank
+1027: processor selection
+1028: 
+1029: 再做 online adaptation。
+1030: 
+1031: ------------------------------------------------------------
+1032: 
+1033: B4
+1034: Online-PEFT
+1035: 
+1036: 核对：
+1037: 
+1038: OCT
+1039: rank
+1040: processor selection
+1041: 
+1042: 再做 online adaptation。
+1043: 
+1044: ------------------------------------------------------------
+1045: 
+1046: B5
+1047: H-priority Online-PEFT
+1048: 
+1049: 作为强基线。
+1050: 
+1051: ============================================================
+1052: 29. Online adaptation 必须记录
+1053: ============================================================
+1054: 
+1055: 对 B3/B4/B5 明确：
+1056: 
+1057: visible DAG set
+1058: ready filtering
+1059: busy resource handling
+1060: compatibility
+1061: rank/OCT refresh
+1062: deterministic tie break。
+1063: 
+1064: 不得把自定义 online adaptation
+1065: 直接称为原始 HEFT/PEFT。
+1066: 
+1067: ============================================================
+1068: 30. Independent trace validator
+1069: ============================================================
+1070: 
+1071: 实现独立 validator。
+1072: 
+1073: 必须检查：
+1074: 
+1075: - predecessor；
+1076: - data ready；
+1077: - compatibility；
+1078: - resource overlap；
+1079: - duration；
+1080: - non-preemption；
+1081: - unique execution；
+1082: - duplicate node；
+1083: - assignment；
+1084: - DAG completion；
+1085: - deadline；
+1086: - all arrivals counted。
+1087: 
+1088: validator 不得简单调用 simulator
+1089: 自身的合法性函数。
+1090: 
+1091: 必须专门构造非法 trace：
+1092: 
+1093: 验证 validator 可以拒绝。
+1094: 
+1095: ============================================================
+1096: 31. P1 手工正确性 DAG
+1097: ============================================================
+1098: 
+1099: 建立至少一个：
+1100: 
+1101: 6–8 node DAG。
+1102: 
+1103: 覆盖：
+1104: 
+1105: predecessor
+1106: communication
+1107: incompatible resource
+1108: resource conflict
+1109: simultaneous events
+1110: non-preemption
+1111: deadline equality
+1112: drain semantics。
+1113: 
+1114: ============================================================
+1115: 32. Mapping diagnostic example
+1116: ============================================================
+1117: 
+1118: 构建：
+1119: 
+1120: H service：
+1121: 
+1122: CPU predecessor = 2
+1123: 
+1124: 后续 NPU node = 4
+1125: 
+1126: deadline = 9
+1127: 
+1128: 同时：
+1129: 
+1130: L service：
+1131: 
+1132: NPU execution = 6
+1133: 
+1134: 或者：
+1135: 
+1136: idle CPU = 6.5
+1137: 
+1138: deadline = 12
+1139: 
+1140: communication = 0。
+1141: 
+1142: 比较：
+1143: 
+1144: L→NPU
+1145: 
+1146: 与：
+1147: 
+1148: L→CPU
+1149: 
+1150: 的合法 timeline。
+1151: 
+1152: 仅用于：
+1153: 
+1154: correctness / explanation。
+1155: 
+1156: 不得成为 main scientific evidence。
+1157: 
+1158: ============================================================
+1159: 33. Scene templates
+1160: ============================================================
+1161: 
+1162: COCKPIT：
+1163: 
+1164: speech
+1165: display
+1166: navigation
+1167: interaction
+1168: 
+1169: ADAS：
+1170: 
+1171: preprocessing
+1172: perception
+1173: fusion
+1174: output
+1175: 
+1176: FUSION：
+1177: 
+1178: cockpit
+1179: +
+1180: ADAS
+1181: 
+1182: 形成 cross-service competition。
+1183: 
+1184: ============================================================
+1185: 34. DAG size
+1186: ============================================================
+1187: 
+1188: 主实验两档：
+1189: 
+1190: 8-node
+1191: 
+1192: 16-node
+1193: 
+1194: 必须写明 generator
+1195: 如何定义 size。
+1196: 
+1197: ============================================================
+1198: 35. Load
+1199: ============================================================
+1200: 
+1201: 主实验：
+1202: 
+1203: light
+1204: medium
+1205: near-saturation
+1206: 
+1207: 额外：
+1208: 
+1209: severe-overload
+1210: 
+1211: 仅 sensitivity。
+1212: 
+1213: load 不得仅按 arrival rate 命名。
+1214: 
+1215: 应参考：
+1216: 
+1217: CPU
+1218: GPU
+1219: NPU
+1220: 
+1221: 瓶颈压力。
+1222: 
+1223: ============================================================
+1224: 36. P2 calibration
+1225: ============================================================
+1226: 
+1227: Calibration：
+1228: 
+1229: 只用 baseline，
+1230: 重点 B2。
+1231: 
+1232: 不得使用 candidate advantage
+1233: 调整 workload。
+1234: 
+1235: 允许调整：
+1236: 
+1237: arrival intensity
+1238: deadline tightness
+1239: burst
+1240: number services
+1241: simulation window。
+1242: 
+1243: 目标：
+1244: 
+1245: light：
+1246: 
+1247: 接近低 miss。
+1248: 
+1249: medium / near-saturation：
+1250: 
+1251: 存在：
+1252: 
+1253: deadline miss
+1254: contention
+1255: mapping opportunity
+1256: 
+1257: 但不能：
+1258: 
+1259: 几乎全部 100% miss。
+1260: 
+1261: ============================================================
+1262: 37. H 基础可行性
+1263: ============================================================
+1264: 
+1265: 重要业务 deadline：
+1266: 
+1267: 先在独占资源或低竞争条件下
+1268: 确认基本可行。
+1269: 
+1270: 否则：
+1271: 
+1272: 不要把天然不可完成 workload
+1273: 当 scheduler failure。
+1274: 
+1275: ============================================================
+1276: 38. Clean-room seed partitions
+1277: ============================================================
+1278: 
+1279: 本次不得复用旧项目 seed。
+1280: 
+1281: P0 生成全新的：
+1282: 
+1283: configs/seed_partitions.json
+1284: 
+1285: 采用确定性 SHA256 derivation。
+1286: 
+1287: master string：
+1288: 
+1289: vehicle-soc-dag-scheduler-cleanroom-soc-v1
+1290: 
+1291: 对于：
+1292: 
+1293: partition_name
+1294: index
+1295: 
+1296: 计算：
+1297: 
+1298: SHA256(
+1299: master_string + "|" + partition_name + "|" + index
+1300: )
+1301: 
+1302: 生成整数后映射：
+1303: 
+1304: [0, 2^52 - 1]
+1305: 
+1306: 如果 collision：
+1307: 
+1308: 使用 deterministic nonce。
+1309: 
+1310: 固定：
+1311: 
+1312: CALIBRATION = 10 seeds
+1313: 
+1314: DEVELOPMENT = 20 seeds
+1315: 
+1316: INDEPENDENT_VALIDATION = 10 seeds
+1317: 
+1318: FORMAL_EVALUATION = 30 seeds
+1319: 
+1320: 总计：
+1321: 
+1322: 70 seeds。
+1323: 
+1324: 生成后：
+1325: 
+1326: commit。
+1327: 
+1328: 之后不得重新抽。
+1329: 
+1330: ============================================================
+1331: 39. Seed partition guard
+1332: ============================================================
+1333: 
+1334: runner 必须在代码层实现：
+1335: 
+1336: partition access guard。
+1337: 
+1338: P0–P2：
+1339: 
+1340: 只允许 CALIBRATION。
+1341: 
+1342: P3：
+1343: 
+1344: 允许 DEVELOPMENT。
+1345: 
+1346: Independent validation：
+1347: 
+1348: 必须有：
+1349: 
+1350: checkpoints/VALIDATION_UNLOCKED
+1351: 
+1352: Formal：
+1353: 
+1354: 必须有：
+1355: 
+1356: checkpoints/FORMAL_UNLOCKED
+1357: 
+1358: 否则：
+1359: 
+1360: runner 拒绝执行。
+1361: 
+1362: 即使开发者知道 seed：
+1363: 
+1364: 也不能绕过 guard。
+1365: 
+1366: ============================================================
+1367: 40. Development seed 子划分
+1368: ============================================================
+1369: 
+1370: 20 个 DEVELOPMENT seeds：
+1371: 
+1372: 固定为：
+1373: 
+1374: 前 10：
+1375: parameter development
+1376: 
+1377: 后 10：
+1378: development precheck
+1379: 
+1380: 或者使用其它确定性划分，
+1381: 
+1382: 但必须在看结果前冻结。
+1383: 
+1384: ============================================================
+1385: 41. Workload identity
+1386: ============================================================
+1387: 
+1388: 每个 workload identity：
+1389: 
+1390: scene
+1391: load
+1392: size
+1393: seed
+1394: generator version
+1395: config hash
+1396: 
+1397: 生成：
+1398: 
+1399: workload SHA256。
+1400: 
+1401: 所有 methods
+1402: 必须运行同一个 workload artifact。
+1403: 
+1404: ============================================================
+1405: 42. 主网格
+1406: ============================================================
+1407: 
+1408: 3 scenes
+1409: ×
+1410: 3 loads
+1411: ×
+1412: 2 sizes
+1413: 
+1414: =
+1415: 
+1416: 18 conditions。
+1417: 
+1418: Independent validation：
+1419: 
+1420: 18 × 10
+1421: =
+1422: 180 workloads。
+1423: 
+1424: Formal：
+1425: 
+1426: 18 × 30
+1427: =
+1428: 540 workloads。
+1429: 
+1430: ============================================================
+1431: 43. Candidate hypothesis
+1432: ============================================================
+1433: 
+1434: 候选假设：
+1435: 
+1436: 当前 node 的 EFT 最优 resource，
+1437: 
+1438: 可能具有较高 cross-service opportunity cost。
+1439: 
+1440: 特别当：
+1441: 
+1442: 其他 H node
+1443: resource alternatives 少
+1444: 
+1445: 或：
+1446: 
+1447: alternative execution penalty 高
+1448: 
+1449: 时，
+1450: 
+1451: 抢占稀缺 resource
+1452: 可能增加 H end-to-end miss。
+1453: 
+1454: candidate 尝试利用：
+1455: 
+1456: deadline
+1457: remaining path
+1458: resource alternatives
+1459: contention
+1460: L waiting
+1461: 
+1462: 联合排序与 mapping。
+1463: 
+1464: ============================================================
+1465: 44. P2 mapping opportunity diagnosis
+1466: ============================================================
+1467: 
+1468: 只用 CALIBRATION。
+1469: 
+1470: 记录：
+1471: 
+1472: H critical-path blocking
+1473: CPU wait
+1474: GPU wait
+1475: NPU wait
+1476: resource alternatives
+1477: substitution cost
+1478: mapping decision reason。
+1479: 
+1480: 允许少量：
+1481: 
+1482: 2–4 ready task
+1483: 
+1484: 局部 enumerated assignment
+1485: 
+1486: 作为 diagnostic oracle。
+1487: 
+1488: 不得作为 online method performance。
+1489: 
+1490: 如果没有稳定 mapping opportunity：
+1491: 
+1492: MAPPING_HYPOTHESIS_SUPPORTED=NO
+1493: 
+1494: 停止这一科学主线。
+1495: 
+1496: ============================================================
+1497: 45. Candidate method
+1498: ============================================================
+1499: 
+1500: P2 完成后才正式定义公式。
+1501: 
+1502: 候选至少考虑：
+1503: 
+1504: 1. service urgency；
+1505: 2. remaining DAG path；
+1506: 3. compatible resource finish prediction；
+1507: 4. communication；
+1508: 5. alternative resource penalty；
+1509: 6. cross-H-service contention；
+1510: 7. L waiting penalty；
+1511: 8. joint task-resource selection。
+1512: 
+1513: 要求：
+1514: 
+1515: 轻量
+1516: 可解释
+1517: 在线
+1518: 不使用未来信息。
+1519: 
+1520: ============================================================
+1521: 46. Method spec
+1522: ============================================================
+1523: 
+1524: 写：
+1525: 
+1526: docs/method_spec.md
+1527: 
+1528: 必须包含：
+1529: 
+1530: symbols
+1531: formula
+1532: normalization
+1533: candidate set
+1534: resource score
+1535: waiting rule
+1536: update events
+1537: cache semantics
+1538: tie breaking
+1539: complexity
+1540: parameters
+1541: boundary behavior。
+1542: 
+1543: ============================================================
+1544: 47. Ablation
+1545: ============================================================
+1546: 
+1547: 至少：
+1548: 
+1549: A1：
+1550: new urgency
+1551: +
+1552: EFT
+1553: 
+1554: A2：
+1555: B2 ordering
+1556: +
+1557: new mapping
+1558: 
+1559: A3：
+1560: full
+1561: 
+1562: 即：
+1563: 
+1564: new urgency
+1565: +
+1566: new mapping。
+1567: 
+1568: ============================================================
+1569: 48. Mapping contribution
+1570: ============================================================
+1571: 
+1572: mapping contribution：
+1573: 
+1574: A3 vs A1。
+1575: 
+1576: 如果 full
+1577: 没有优于 A1：
+1578: 
+1579: 不得称：
+1580: 
+1581: mapping mechanism supported。
+1582: 
+1583: ============================================================
+1584: 49. Parameter search
+1585: ============================================================
+1586: 
+1587: 使用 DEVELOPMENT 前：
+1588: 
+1589: 写：
+1590: 
+1591: docs/development_search_protocol.md
+1592: 
+1593: 预先登记：
+1594: 
+1595: parameters
+1596: candidate values
+1597: maximum trials
+1598: selection metric
+1599: tie rule。
+1600: 
+1601: 不得看到结果后扩大搜索空间。
+1602: 
+1603: 所有失败 configuration：
+1604: 
+1605: 也保存。
+1606: 
+1607: ============================================================
+1608: 50. H 主指标
+1609: ============================================================
+1610: 
+1611: 每个 run：
+1612: 
+1613: 业务级 H DMR。
+1614: 
+1615: 主要收益范围：
+1616: 
+1617: medium
+1618: +
+1619: near-saturation。
+1620: 
+1621: 先：
+1622: 
+1623: condition 内 seed mean。
+1624: 
+1625: 再：
+1626: 
+1627: condition equal-weight macro mean。
+1628: 
+1629: 不要用业务数量加权
+1630: 替代主指标。
+1631: 
+1632: ============================================================
+1633: 51. H 收益定义
+1634: ============================================================
+1635: 
+1636: M_B2
+1637: =
+1638: B2 H-DMR macro
+1639: 
+1640: M_F
+1641: =
+1642: Full H-DMR macro
+1643: 
+1644: G =
+1645: (M_B2 - M_F) / M_B2
+1646: 
+1647: 目标：
+1648: 
+1649: G >= 10%
+1650: 
+1651: 同时：
+1652: 
+1653: Δ_B2 =
+1654: M_B2 - M_F
+1655: 
+1656: paired bootstrap 95% CI
+1657: 支持正值。
+1658: 
+1659: ============================================================
+1660: 52. Bootstrap
+1661: ============================================================
+1662: 
+1663: 统计单位：
+1664: 
+1665: seed。
+1666: 
+1667: 保持：
+1668: 
+1669: method pairing
+1670: workload pairing。
+1671: 
+1672: 默认：
+1673: 
+1674: 10,000 resamples。
+1675: 
+1676: 固定 analysis random seed：
+1677: 
+1678: 20261018
+1679: 
+1680: 不得以 node/task
+1681: 作为独立统计单位
+1682: 制造 pseudo-replication。
+1683: 
+1684: ============================================================
+1685: 53. L P95 budget
+1686: ============================================================
+1687: 
+1688: 每个 condition c
+1689: 和 seed s：
+1690: 
+1691: Q(c,s)
+1692: =
+1693: 该 run 全部 L service response time 的 P95。
+1694: 
+1695: 定义：
+1696: 
+1697: R_c =
+1698: mean_s Q_F(c,s)
+1699: /
+1700: mean_s Q_B2(c,s)
+1701: 
+1702: 固定要求：
+1703: 
+1704: R_c <= 1.10
+1705: 
+1706: 逐 condition 检查。
+1707: 
+1708: ============================================================
+1709: 54. L budget CI
+1710: ============================================================
+1711: 
+1712: paired seed bootstrap。
+1713: 
+1714: 如果：
+1715: 
+1716: CI upper <= 1.10
+1717: 
+1718: 则：
+1719: 
+1720: SUPPORTED。
+1721: 
+1722: 如果：
+1723: 
+1724: point >1.10
+1725: 
+1726: 则：
+1727: 
+1728: FAIL。
+1729: 
+1730: 如果：
+1731: 
+1732: point <=1.10
+1733: but CI crosses 1.10
+1734: 
+1735: 则：
+1736: 
+1737: INCONCLUSIVE。
+1738: 
+1739: ============================================================
+1740: 55. 强基线 B5
+1741: ============================================================
+1742: 
+1743: 定义：
+1744: 
+1745: Δ_B5 =
+1746: DMR(B5)
+1747: -
+1748: DMR(Full)
+1749: 
+1750: 报告：
+1751: 
+1752: point
+1753: 95% CI
+1754: conditions。
+1755: 
+1756: 分类：
+1757: 
+1758: SUPPORTED_SUPERIOR
+1759: 
+1760: NO_CONFIRMED_DIFFERENCE
+1761: 
+1762: B5_SUPERIOR
+1763: 
+1764: 不能仅凭优于 B2
+1765: 声称超过强基线。
+1766: 
+1767: ============================================================
+1768: 56. 次级指标
+1769: ============================================================
+1770: 
+1771: 报告：
+1772: 
+1773: H DMR
+1774: L DMR
+1775: L P50
+1776: L P95
+1777: L P99
+1778: L max
+1779: mean response
+1780: resource utilization
+1781: communication
+1782: estimated energy
+1783: scheduler overhead。
+1784: 
+1785: ============================================================
+1786: 57. 能耗
+1787: ============================================================
+1788: 
+1789: 采用：
+1790: 
+1791: activity power
+1792: idle power
+1793: execution duration
+1794: 
+1795: 模型。
+1796: 
+1797: 必须明确：
+1798: 
+1799: model-estimated energy
+1800: 
+1801: 不是实际硬件测量。
+1802: 
+1803: 如果 energy 没改善：
+1804: 
+1805: 如实报告。
+1806: 
+1807: ============================================================
+1808: 58. Scheduler overhead
+1809: ============================================================
+1810: 
+1811: 必须区分：
+1812: 
+1813: virtual simulation time
+1814: 
+1815: vs
+1816: 
+1817: host computation time。
+1818: 
+1819: 计入 scheduler：
+1820: 
+1821: preprocessing
+1822: path update
+1823: urgency
+1824: candidate creation
+1825: sorting
+1826: resource scoring
+1827: mapping
+1828: selection。
+1829: 
+1830: 不能只计最后函数。
+1831: 
+1832: ============================================================
+1833: 59. 2 ms engineering target
+1834: ============================================================
+1835: 
+1836: 初始工程目标：
+1837: 
+1838: decision P95 <= 2 ms
+1839: 
+1840: 这是：
+1841: 
+1842: 普通开发电脑上的 host engineering target。
+1843: 
+1844: 不是实际 automotive hardware latency claim。
+1845: 
+1846: P2 在 candidate timing 前：
+1847: 
+1848: 冻结 engineering timing protocol。
+1849: 
+1850: 至少记录：
+1851: 
+1852: exact inputs
+1853: warm-up
+1854: repetitions
+1855: timer
+1856: aggregation
+1857: P95 definition
+1858: host environment。
+1859: 
+1860: ============================================================
+1861: 60. Development success criteria
+1862: ============================================================
+1863: 
+1864: 进入 independent validation 前至少检查：
+1865: 
+1866: CORRECTNESS_PASS
+1867: 
+1868: H_MAIN_BENEFIT_PASS
+1869: 
+1870: MAPPING_CONTRIBUTION_PASS
+1871: 
+1872: L_MAIN_CONDITIONS_PASS
+1873: 
+1874: B5_COMPARISON_STATUS
+1875: 
+1876: ENGINEERING_TARGET_PASS
+1877: 
+1878: 所有门槛在开发比较前冻结。
+1879: 
+1880: ============================================================
+1881: 61. P3 candidate v1
+1882: ============================================================
+1883: 
+1884: 实现 candidate + A1/A2/A3。
+1885: 
+1886: 只用 DEVELOPMENT。
+1887: 
+1888: 生成：
+1889: 
+1890: reports/P3_development.md
+1891: reports/P3_ablation.md
+1892: reports/P3_gate.md
+1893: 
+1894: 保存全部尝试。
+1895: 
+1896: ============================================================
+1897: 62. 最多一次机制修订
+1898: ============================================================
+1899: 
+1900: 如果第一次 candidate 不通过：
+1901: 
+1902: 允许：
+1903: 
+1904: 最多一次
+1905: 
+1906: evidence-driven limited revision。
+1907: 
+1908: 修订前写：
+1909: 
+1910: docs/mechanism_revision_preregistration.md
+1911: 
+1912: 记录：
+1913: 
+1914: failure
+1915: diagnosis
+1916: exact change
+1917: unchanged metrics
+1918: unchanged thresholds
+1919: unchanged partitions。
+1920: 
+1921: 第二次仍不通过：
+1922: 
+1923: STOP SCIENTIFIC MAINLINE。
+1924: 
+1925: ============================================================
+1926: 63. H non-degradation
+1927: ============================================================
+1928: 
+1929: 如果 revision
+1930: 主要用于 L/engineering cost，
+1931: 
+1932: 而旧 candidate 已有 H gain，
+1933: 
+1934: 注册：
+1935: 
+1936: Δ_H =
+1937: M_revision - M_previous
+1938: 
+1939: lower better。
+1940: 
+1941: δ_H = 0。
+1942: 
+1943: 要求：
+1944: 
+1945: point <=0
+1946: 
+1947: 且：
+1948: 
+1949: 95% CI upper <=0。
+1950: 
+1951: 如果 CI 跨 0：
+1952: 
+1953: 不能说显著恶化，
+1954: 
+1955: 但严格 non-degradation gate：
+1956: 
+1957: FAIL。
+1958: 
+1959: ============================================================
+1960: 64. Engineering profiling track
+1961: ============================================================
+1962: 
+1963: 如果 decision P95 太高：
+1964: 
+1965: 不要立刻重写算法。
+1966: 
+1967: 建立独立：
+1968: 
+1969: engineering profiling track。
+1970: 
+1971: 只使用：
+1972: 
+1973: CALIBRATION
+1974: 或
+1975: DEVELOPMENT
+1976: 
+1977: 不得使用：
+1978: 
+1979: validation
+1980: formal。
+1981: 
+1982: 优先：
+1983: 
+1984: cProfile
+1985: pstats
+1986: call counters
+1987: 必要的 instrumentation。
+1988: 
+1989: ============================================================
+1990: 65. Profiling 不属于科学实验
+1991: ============================================================
+1992: 
+1993: profiling results：
+1994: 
+1995: 只能用于：
+1996: 
+1997: implementation hotspot analysis。
+1998: 
+1999: 不得增加：
+2000: 
+2001: scientific sample size。
+2002: 
+2003: 不得称：
+2004: 
+2005: independent evidence。
+2006: 
+2007: ============================================================
+2008: 66. Semantics-preserving implementation optimization
+2009: ============================================================
+2010: 
+2011: 只有 profiler 支持时才能优化：
+2012: 
+2013: 例如：
+2014: 
+2015: duplicate computation
+2016: repeated scan
+2017: sorting overhead
+2018: temporary allocation
+2019: safe local cache。
+2020: 
+2021: 禁止借优化改变：
+2022: 
+2023: score formula
+2024: priority
+2025: mapping rule
+2026: candidate set
+2027: threshold
+2028: tie breaking
+2029: float expression semantics
+2030: random use
+2031: scheduler state transition。
+2032: 
+2033: ============================================================
+2034: 67. Exact equivalence
+2035: ============================================================
+2036: 
+2037: 任何实现优化后：
+2038: 
+2039: old vs new
+2040: 
+2041: 必须：
+2042: 
+2043: decision exact match。
+2044: 
+2045: 至少：
+2046: 
+2047: decision index
+2048: node
+2049: resource
+2050: action
+2051: tie identity
+2052: digest。
+2053: 
+2054: 目标：
+2055: 
+2056: mismatch=0。
+2057: 
+2058: 同时：
+2059: 
+2060: physical trace
+2061: deterministic event
+2062: 
+2063: 必须一致。
+2064: 
+2065: 任何 mismatch：
+2066: 
+2067: 该修改不是 semantics-preserving。
+2068: 
+2069: STOP engineering optimization。
+2070: 
+2071: ============================================================
+2072: 68. Development freeze
+2073: ============================================================
+2074: 
+2075: 只有 Development Gate
+2076: 满足进入条件时：
+2077: 
+2078: 创建：
+2079: 
+2080: docs/preregistration.json
+2081: 
+2082: 和：
+2083: 
+2084: checkpoints/development_freeze_manifest.json
+2085: 
+2086: 冻结：
+2087: 
+2088: Git commit
+2089: source hash
+2090: config
+2091: method
+2092: params
+2093: baselines
+2094: ablations
+2095: metrics
+2096: bootstrap
+2097: seed partitions
+2098: thresholds
+2099: timing protocol
+2100: analysis。
+2101: 
+2102: 然后：
+2103: 
+2104: commit。
+2105: 
+2106: push。
+2107: 
+2108: ============================================================
+2109: 69. Validation 解锁
+2110: ============================================================
+2111: 
+2112: Development Gate PASS 后：
+2113: 
+2114: 创建：
+2115: 
+2116: checkpoints/VALIDATION_UNLOCKED
+2117: 
+2118: 才允许运行：
+2119: 
+2120: 10 independent validation seeds。
+2121: 
+2122: ============================================================
+2123: 70. Independent validation
+2124: ============================================================
+2125: 
+2126: 使用：
+2127: 
+2128: 3 scenes
+2129: ×
+2130: 3 loads
+2131: ×
+2132: 2 sizes
+2133: ×
+2134: 10 seeds
+2135: 
+2136: =
+2137: 
+2138: 180 workloads。
+2139: 
+2140: 不得：
+2141: 
+2142: 调参
+2143: 改算法
+2144: 换 baseline
+2145: 改 threshold
+2146: 删 seed
+2147: 修改统计。
+2148: 
+2149: 每个 run：
+2150: 
+2151: 独立 trace validation。
+2152: 
+2153: ============================================================
+2154: 71. Validation 状态
+2155: ============================================================
+2156: 
+2157: 输出：
+2158: 
+2159: PASS
+2160: FAIL
+2161: INCONCLUSIVE
+2162: 
+2163: 如果关键 gate FAIL：
+2164: 
+2165: STOP scientific progression。
+2166: 
+2167: 不得运行 formal。
+2168: 
+2169: ============================================================
+2170: 72. Formal 解锁
+2171: ============================================================
+2172: 
+2173: 只有 validation
+2174: 按预注册规则允许进入 formal：
+2175: 
+2176: 创建：
+2177: 
+2178: checkpoints/FORMAL_UNLOCKED
+2179: 
+2180: 然后冻结新的 formal manifest。
+2181: 
+2182: ============================================================
+2183: 73. Formal evaluation
+2184: ============================================================
+2185: 
+2186: 使用：
+2187: 
+2188: 30 formal seeds。
+2189: 
+2190: 主网格：
+2191: 
+2192: 18 × 30
+2193: =
+2194: 540 workloads。
+2195: 
+2196: 所有算法/参数：
+2197: 
+2198: 完全冻结。
+2199: 
+2200: 不得：
+2201: 
+2202: 再优化 candidate
+2203: 调参
+2204: 添加 baseline
+2205: 修改 workload
+2206: 修改 metric。
+2207: 
+2208: ============================================================
+2209: 74. Formal bug handling
+2210: ============================================================
+2211: 
+2212: 如果 formal 发现真实实现 bug：
+2213: 
+2214: 必须：
+2215: 
+2216: 1. 保留原始结果；
+2217: 2. 写 defect report；
+2218: 3. 记录何时发现；
+2219: 4. 记录已经看过哪些结果；
+2220: 5. 修复明确 bug；
+2221: 6. 不改变 method specification；
+2222: 7. 重跑全部受影响 comparison。
+2223: 
+2224: 若修复实际改变算法：
+2225: 
+2226: 原 confirmatory formal 身份失效。
+2227: 
+2228: 需要新的研究版本。
+2229: 
+2230: ============================================================
+2231: 75. Formal failure
+2232: ============================================================
+2233: 
+2234: 如果 formal：
+2235: 
+2236: FAIL
+2237: 
+2238: 或者：
+2239: 
+2240: INCONCLUSIVE
+2241: 
+2242: 保留。
+2243: 
+2244: 不得：
+2245: 
+2246: 调整 threshold
+2247: 删 seed
+2248: 重新调参
+2249: 修改统计
+2250: 通过后续 engineering optimization
+2251: 追溯改为 PASS。
+2252: 
+2253: ============================================================
+2254: 76. P0 输出
+2255: ============================================================
+2256: 
+2257: 生成：
+2258: 
+2259: docs/research_contract.md
+2260: docs/model_spec.md
+2261: docs/literature_matrix.md
+2262: docs/baseline_spec.md
+2263: docs/metric_spec.md
+2264: docs/statistical_protocol.md
+2265: configs/seed_partitions.json
+2266: 
+2267: reports/P0_environment.md
+2268: reports/P0_protocol_audit.md
+2269: 
+2270: STATUS.md 更新。
+2271: 
+2272: 运行 P0 audit。
+2273: 
+2274: ============================================================
+2275: 77. P0 Git checkpoint
+2276: ============================================================
+2277: 
+2278: P0 通过后：
+2279: 
+2280: git status
+2281: tests/audit
+2282: git add relevant files
+2283: git commit
+2284: 
+2285: 建议 message：
+2286: 
+2287: P0: freeze research protocol and seed partitions
+2288: 
+2289: 如果 push 权限允许：
+2290: 
+2291: git push
+2292: 
+2293: 记录：
+2294: 
+2295: GITHUB_PUSH_STATUS
+2296: BRANCH
+2297: COMMIT
+2298: 
+2299: ============================================================
+2300: 78. P1 输出
+2301: ============================================================
+2302: 
+2303: 实现：
+2304: 
+2305: engine
+2306: workload model
+2307: state view
+2308: B1–B5
+2309: validator
+2310: tests。
+2311: 
+2312: 输出：
+2313: 
+2314: reports/P1_correctness.md
+2315: reports/P1_baseline_validation.md
+2316: reports/P1_trace_validator.md
+2317: 
+2318: 所有关键 correctness pass
+2319: 才进入 P2。
+2320: 
+2321: ============================================================
+2322: 79. P1 Git checkpoint
+2323: ============================================================
+2324: 
+2325: 建议：
+2326: 
+2327: P1: implement simulator baselines and trace validator
+2328: 
+2329: commit + push。
+2330: 
+2331: ============================================================
+2332: 80. P2 输出
+2333: ============================================================
+2334: 
+2335: 只用 calibration seeds。
+2336: 
+2337: 输出：
+2338: 
+2339: reports/P2_calibration.md
+2340: reports/P2_mapping_opportunity.md
+2341: reports/P2_runtime_budget.md
+2342: reports/P2_engineering_timing_protocol.md
+2343: 
+2344: 冻结 workload config。
+2345: 
+2346: ============================================================
+2347: 81. P2 Git checkpoint
+2348: ============================================================
+2349: 
+2350: 建议：
+2351: 
+2352: P2: freeze calibrated workloads and diagnostics
+2353: 
+2354: commit + push。
+2355: 
+2356: ============================================================
+2357: 82. P3 输出
+2358: ============================================================
+2359: 
+2360: 输出：
+2361: 
+2362: docs/method_spec.md
+2363: docs/development_search_protocol.md
+2364: 
+2365: reports/P3_development.md
+2366: reports/P3_ablation.md
+2367: reports/P3_gate.md
+2368: 
+2369: 以及所有 development raw results。
+2370: 
+2371: ============================================================
+2372: 83. P3 Git checkpoint
+2373: ============================================================
+2374: 
+2375: 若 pass：
+2376: 
+2377: P3: freeze development candidate and evidence
+2378: 
+2379: 若 fail：
+2380: 
+2381: P3: preserve failed development evidence
+2382: 
+2383: commit + push。
+2384: 
+2385: 失败 commit
+2386: 不得通过历史重写删除。
+2387: 
+2388: ============================================================
+2389: 84. Validation 输出
+2390: ============================================================
+2391: 
+2392: reports/P4_independent_validation.md
+2393: reports/P4_validation_gate.md
+2394: 
+2395: results/validation/
+2396: 
+2397: commit + push。
+2398: 
+2399: ============================================================
+2400: 85. Formal 输出
+2401: ============================================================
+2402: 
+2403: reports/P5_formal_evaluation.md
+2404: reports/P5_formal_gate.md
+2405: 
+2406: results/formal/
+2407: 
+2408: commit + push。
+2409: 
+2410: ============================================================
+2411: 86. 最终证据整理
+2412: ============================================================
+2413: 
+2414: 最后生成：
+2415: 
+2416: reports/final_report.md
+2417: reports/evidence_matrix.md
+2418: reports/reproducibility_report.md
+2419: reports/limitations.md
+2420: reports/failure_analysis.md
+2421: 如适用
+2422: 
+2423: reports/paper_materials.md
+2424: 
+2425: ============================================================
+2426: 87. Evidence matrix
+2427: ============================================================
+2428: 
+2429: 每个论文 claim 必须映射：
+2430: 
+2431: Claim
+2432: 
+2433: Evidence stage
+2434: 
+2435: Method comparison
+2436: 
+2437: Config
+2438: 
+2439: Seed partition
+2440: 
+2441: Raw data
+2442: 
+2443: Summary
+2444: 
+2445: Statistic
+2446: 
+2447: 95% CI
+2448: 
+2449: Status
+2450: 
+2451: Limitation
+2452: 
+2453: 禁止：
+2454: 
+2455: 结论没有数据出处。
+2456: 
+2457: ============================================================
+2458: 88. 图表
+2459: ============================================================
+2460: 
+2461: 至少生成：
+2462: 
+2463: H-DMR comparison
+2464: condition H result
+2465: L P95 ratio
+2466: L P99
+2467: mapping ablation
+2468: B5 comparison
+2469: resource utilization
+2470: resource timeline
+2471: decision latency
+2472: benefit-cost
+2473: sensitivity
+2474: worst-case。
+2475: 
+2476: 所有图：
+2477: 
+2478: 由脚本从真实结果生成。
+2479: 
+2480: ============================================================
+2481: 89. STATUS.md
+2482: ============================================================
+2483: 
+2484: 持续维护：
+2485: 
+2486: CURRENT_STAGE=
+2487: CURRENT_GIT_HEAD=
+2488: CURRENT_BRANCH=
+2489: 
+2490: COMPLETED=
+2491: FAILED=
+2492: BLOCKERS=
+2493: 
+2494: CALIBRATION_ACCESSED=
+2495: DEVELOPMENT_ACCESSED=
+2496: INDEPENDENT_VALIDATION_ACCESSED=
+2497: FORMAL_EVALUATION_ACCESSED=
+2498: 
+2499: LAST_COMMAND=
+2500: RESULT_PATHS=
+2501: NEXT_ALLOWED_ACTION=
+2502: 
+2503: 不得长期过时。
+2504: 
+2505: ============================================================
+2506: 90. 每次 scientific run manifest
+2507: ============================================================
+2508: 
+2509: 每个 run 至少记录：
+2510: 
+2511: run id
+2512: timestamp
+2513: Git commit
+2514: dirty status
+2515: source SHA256
+2516: config SHA256
+2517: workload SHA256
+2518: partition
+2519: seed
+2520: scene
+2521: load
+2522: size
+2523: method
+2524: host
+2525: command
+2526: result
+2527: validity。
+2528: 
+2529: ============================================================
+2530: 91. 科学 run 与 Git
+2531: ============================================================
+2532: 
+2533: development precheck
+2534: validation
+2535: formal
+2536: 
+2537: 必须运行在：
+2538: 
+2539: 已经 commit 的 source state。
+2540: 
+2541: 正式冻结阶段禁止：
+2542: 
+2543: 无法解释的 dirty scheduler source。
+2544: 
+2545: 如果 dirty：
+2546: 
+2547: STOP。
+2548: 
+2549: 先确认变化。
+2550: 
+2551: ============================================================
+2552: 92. 数据完整性
+2553: ============================================================
+2554: 
+2555: 阶段结束：
+2556: 
+2557: 生成 SHA256 manifest。
+2558: 
+2559: 核验：
+2560: 
+2561: missing=0
+2562: mismatch=0
+2563: duplicate identity=0
+2564: unexpected seed=0
+2565: unexpected method=0
+2566: missing expected condition=0
+2567: 
+2568: 否则：
+2569: 
+2570: 阶段不能标记 COMPLETE。
+2571: 
+2572: ============================================================
+2573: 93. Decision trace
+2574: ============================================================
+2575: 
+2576: 至少在：
+2577: 
+2578: correctness
+2579: diagnostics
+2580: engineering equivalence
+2581: selected scientific audit
+2582: 
+2583: 保存 decision trace。
+2584: 
+2585: 包括：
+2586: 
+2587: time
+2588: decision id
+2589: ready set digest
+2590: candidate count
+2591: node
+2592: resource
+2593: key components
+2594: score
+2595: reason
+2596: state digest。
+2597: 
+2598: ============================================================
+2599: 94. Resume
+2600: ============================================================
+2601: 
+2602: 支持断点续跑。
+2603: 
+2604: 结果复用前核验：
+2605: 
+2606: code hash
+2607: config hash
+2608: workload hash
+2609: method identity。
+2610: 
+2611: 如果受修改影响：
+2612: 
+2613: 重跑。
+2614: 
+2615: 禁止新旧结果静默混合。
+2616: 
+2617: ============================================================
+2618: 95. 一键运行入口
+2619: ============================================================
+2620: 
+2621: 实现类似：
+2622: 
+2623: python scripts/run_pipeline.py --stage p0
+2624: python scripts/run_pipeline.py --stage p1
+2625: python scripts/run_pipeline.py --stage calibration
+2626: python scripts/run_pipeline.py --stage development
+2627: python scripts/run_pipeline.py --stage validation
+2628: python scripts/run_pipeline.py --stage formal
+2629: python scripts/run_pipeline.py --stage report
+2630: 
+2631: 具体命令可按工程设计调整。
+2632: 
+2633: ============================================================
+2634: 96. README
+2635: ============================================================
+2636: 
+2637: 最终 README 必须包括：
+2638: 
+2639: Project overview
+2640: 
+2641: Research question
+2642: 
+2643: System model
+2644: 
+2645: Repository structure
+2646: 
+2647: Installation
+2648: 
+2649: Quick tests
+2650: 
+2651: Single simulation
+2652: 
+2653: Calibration
+2654: 
+2655: Development
+2656: 
+2657: Validation unlock
+2658: 
+2659: Formal unlock
+2660: 
+2661: Reproduction
+2662: 
+2663: Current scientific status
+2664: 
+2665: Executed stages
+2666: 
+2667: Unexecuted stages
+2668: 
+2669: Limitations。
+2670: 
+2671: ============================================================
+2672: 97. GitHub repository 必须是可恢复项目
+2673: ============================================================
+2674: 
+2675: 最终从新的：
+2676: 
+2677: git clone <soc repository>
+2678: 
+2679: 开始，
+2680: 
+2681: 应能够：
+2682: 
+2683: 安装依赖
+2684: 运行 tests
+2685: 运行单例
+2686: 运行允许阶段
+2687: 重新生成报告。
+2688: 
+2689: 不得依赖 Codex Cloud
+2690: 某个未来会消失的临时目录。
+2691: 
+2692: ============================================================
+2693: 98. 不混入其它项目
+2694: ============================================================
+2695: 
+2696: 如果发现以前的：
+2697: 
+2698: energy budget
+2699: HC/MC/LC
+2700: DRT-BPCS
+2701: 或其它论文材料，
+2702: 
+2703: 不得自动合并。
+2704: 
+2705: 当前主线是：
+2706: 
+2707: H/L service importance
+2708: 
+2709: online multi-service DAG
+2710: 
+2711: CPU/GPU/NPU
+2712: 
+2713: deadline pressure
+2714: 
+2715: cross-service contention
+2716: 
+2717: joint task ordering + resource mapping。
+2718: 
+2719: ============================================================
+2720: 99. Stop rule：P1
+2721: ============================================================
+2722: 
+2723: 正确性失败：
+2724: 
+2725: 先修 simulator / validator。
+2726: 
+2727: 不得运行 science。
+2728: 
+2729: ============================================================
+2730: 100. Stop rule：P2
+2731: ============================================================
+2732: 
+2733: 如果在合理 pressure 下
+2734: 没有稳定 mapping opportunity：
+2735: 
+2736: 停止 mapping scientific hypothesis。
+2737: 
+2738: 保留负面结果。
+2739: 
+2740: ============================================================
+2741: 101. Stop rule：P3
+2742: ============================================================
+2743: 
+2744: candidate v1 fail：
+2745: 
+2746: 最多一次 evidence-driven revision。
+2747: 
+2748: revision 仍 fail：
+2749: 
+2750: STOP scientific mainline。
+2751: 
+2752: ============================================================
+2753: 102. Stop rule：Validation
+2754: ============================================================
+2755: 
+2756: 关键 validation gate fail：
+2757: 
+2758: 不得进入 formal。
+2759: 
+2760: ============================================================
+2761: 103. Stop rule：Formal
+2762: ============================================================
+2763: 
+2764: formal fail：
+2765: 
+2766: 保留 FAIL。
+2767: 
+2768: 不得救结果。
+2769: 
+2770: ============================================================
+2771: 104. Stop rule：Engineering
+2772: ============================================================
+2773: 
+2774: semantics-preserving optimization：
+2775: 
+2776: 如果 decision mismatch >0：
+2777: 
+2778: STOP。
+2779: 
+2780: ============================================================
+2781: 105. Stop rule：Provenance
+2782: ============================================================
+2783: 
+2784: 如果 seed/input provenance
+2785: 无法确认：
+2786: 
+2787: STOP。
+2788: 
+2789: ============================================================
+2790: 106. Stop rule：GitHub
+2791: ============================================================
+2792: 
+2793: 如果实际 Git remote
+2794: 不是 soc：
+2795: 
+2796: STOP。
+2797: 
+2798: 如果必须覆盖用户已有重要代码：
+2799: 
+2800: STOP。
+2801: 
+2802: 如果 push 失败：
+2803: 
+2804: 不一定停止 science，
+2805: 
+2806: 但必须：
+2807: 
+2808: 保留 local commit
+2809: 并记录 push blocker。
+2810: 
+2811: ============================================================
+2812: 107. Failure report
+2813: ============================================================
+2814: 
+2815: 任何 stage 停止：
+2816: 
+2817: 生成：
+2818: 
+2819: reports/blocker_or_failure_report.md
+2820: 
+2821: 包含：
+2822: 
+2823: STOP_STAGE=
+2824: STOP_REASON=
+2825: AFFECTED_CLAIMS=
+2826: VALID_EVIDENCE_REMAINING=
+2827: INVALIDATED_EVIDENCE=
+2828: GITHUB_COMMIT=
+2829: GITHUB_PUSH_STATUS=
+2830: NEXT_SAFE_ACTION=
+2831: 
+2832: ============================================================
+2833: 108. 主验收矩阵
+2834: ============================================================
+2835: 
+2836: 最终至少报告：
+2837: 
+2838: CORRECTNESS_PASS=
+2839: 
+2840: H_MAIN_BENEFIT_POINT=
+2841: 
+2842: H_MAIN_BENEFIT_CI95_LOW=
+2843: H_MAIN_BENEFIT_CI95_HIGH=
+2844: 
+2845: H_MAIN_BENEFIT_PASS=
+2846: 
+2847: MAPPING_CONTRIBUTION_POINT=
+2848: 
+2849: MAPPING_CONTRIBUTION_CI95_LOW=
+2850: MAPPING_CONTRIBUTION_CI95_HIGH=
+2851: 
+2852: MAPPING_CONTRIBUTION_PASS=
+2853: 
+2854: B5_COMPARISON_STATUS=
+2855: 
+2856: L_ALL_MAIN_CONDITIONS_PASS=
+2857: 
+2858: L_WORST_RATIO=
+2859: 
+2860: L_WORST_CONDITION=
+2861: 
+2862: DECISION_P95_MS=
+2863: 
+2864: ENGINEERING_TARGET_PASS=
+2865: 
+2866: INVALID_RUNS=
+2867: 
+2868: ============================================================
+2869: 109. Partition 状态
+2870: ============================================================
+2871: 
+2872: 最终至少报告：
+2873: 
+2874: CALIBRATION_SEEDS_COUNT=10
+2875: 
+2876: DEVELOPMENT_SEEDS_COUNT=20
+2877: 
+2878: INDEPENDENT_VALIDATION_SEEDS_COUNT=10
+2879: 
+2880: FORMAL_EVALUATION_SEEDS_COUNT=30
+2881: 
+2882: CALIBRATION_ACCESSED=
+2883: 
+2884: DEVELOPMENT_ACCESSED=
+2885: 
+2886: INDEPENDENT_VALIDATION_ACCESSED=
+2887: 
+2888: FORMAL_EVALUATION_ACCESSED=
+2889: 
+2890: ============================================================
+2891: 110. 科学结论状态
+2892: ============================================================
+2893: 
+2894: 最终 scientific status 只能使用：
+2895: 
+2896: SUPPORTED
+2897: 
+2898: PARTIALLY_SUPPORTED
+2899: 
+2900: NOT_SUPPORTED
+2901: 
+2902: INCONCLUSIVE
+2903: 
+2904: BLOCKED
+2905: 
+2906: 不得默认 SUCCESS。
+2907: 
+2908: ============================================================
+2909: 111. 论文写作原则
+2910: ============================================================
+2911: 
+2912: final report 顺序：
+2913: 
+2914: 1. conclusion；
+2915: 2. gate table；
+2916: 3. scientific evidence；
+2917: 4. engineering evidence；
+2918: 5. negative results；
+2919: 6. limitations；
+2920: 7. reproducibility。
+2921: 
+2922: 严格区分：
+2923: 
+2924: planning
+2925: manual example
+2926: calibration
+2927: development
+2928: independent validation
+2929: formal
+2930: engineering profiling。
+2931: 
+2932: ============================================================
+2933: 112. 论文结构
+2934: ============================================================
+2935: 
+2936: 硕士论文材料组织：
+2937: 
+2938: Chapter 1
+2939: Introduction
+2940: 
+2941: Chapter 2
+2942: System Model and Problem Definition
+2943: 
+2944: Chapter 3
+2945: Scheduling Method
+2946: 
+2947: Chapter 4
+2948: Experimental Methodology
+2949: 
+2950: Chapter 5
+2951: Results and Analysis
+2952: 
+2953: Chapter 6
+2954: Discussion and Limitations
+2955: 
+2956: Chapter 7
+2957: Conclusion
+2958: 
+2959: 小论文：
+2960: 
+2961: Problem
+2962: Research gap
+2963: Method
+2964: Protocol
+2965: Results
+2966: Ablation
+2967: Cost
+2968: Limitation。
+2969: 
+2970: 创新点：
+2971: 
+2972: 根据实际证据最后确定。
+2973: 
+2974: ============================================================
+2975: 113. 不频繁向用户提问
+2976: ============================================================
+2977: 
+2978: 普通工程细节：
+2979: 
+2980: 自行作合理决定并记录。
+2981: 
+2982: 只有以下情况需要停下来：
+2983: 
+2984: - 会破坏用户文件；
+2985: - GitHub remote 不正确；
+2986: - 研究目标发生根本冲突；
+2987: - 必须修改冻结门槛；
+2988: - 必须提前访问保留 partition；
+2989: - provenance 不可确认；
+2990: - 缺少关键材料无法科学执行。
+2991: 
+2992: 不要因为普通目录名或变量名
+2993: 频繁要求用户裁决。
+2994: 
+2995: ============================================================
+2996: 114. 不假装完成
+2997: ============================================================
+2998: 
+2999: 没有运行：
+3000: 
+3001: NOT RUN。
+3002: 
+3003: 没有测试：
+3004: 
+3005: NOT TESTED。
+3006: 
+3007: 没有 formal：
+3008: 
+3009: FORMAL_EVALUATION_RUN=NO。
+3010: 
+3011: 没有 push：
+3012: 
+3013: GITHUB_PUSH_STATUS=FAILED
+3014: 或
+3015: NOT ATTEMPTED。
+3016: 
+3017: 不能填写不存在的 PASS。
+3018: 
+3019: ============================================================
+3020: 115. 最终 GitHub 交付
+3021: ============================================================
+3022: 
+3023: 最终 soc repository 至少应包含：
+3024: 
+3025: README.md
+3026: STATUS.md
+3027: AGENTS.md
+3028: .gitignore
+3029: pyproject.toml
+3030: 
+3031: src/
+3032: tests/
+3033: scripts/
+3034: configs/
+3035: docs/
+3036: reports/
+3037: checkpoints/
+3038: 
+3039: 以及合理大小的：
+3040: 
+3041: results/
+3042: summaries/
+3043: manifests/
+3044: selected traces/
+3045: plots/
+3046: hashes。
+3047: 
+3048: ============================================================
+3049: 116. Final GitHub audit
+3050: ============================================================
+3051: 
+3052: 最终检查：
+3053: 
+3054: git status --short
+3055: git rev-parse HEAD
+3056: git remote -v
+3057: git log --oneline --decorate -20
+3058: 
+3059: 确认：
+3060: 
+3061: - 当前 HEAD；
+3062: - current branch；
+3063: - 所有关键源码已经 tracked；
+3064: - 所有关键协议已经 tracked；
+3065: - reports 已保存；
+3066: - manifests 已保存；
+3067: - 未误提交 secrets；
+3068: - GitHub push 状态准确。
+3069: 
+3070: ============================================================
+3071: 117. 最终 machine-readable block
+3072: ============================================================
+3073: 
+3074: reports/final_report.md 末尾必须包含：
+3075: 
+3076: PROJECT_NAME=soc
+3077: 
+3078: PROJECT_STATUS=
+3079: 
+3080: CURRENT_STAGE=
+3081: 
+3082: SCIENTIFIC_MAINLINE_STATUS=
+3083: 
+3084: CORRECTNESS_PASS=
+3085: 
+3086: MAPPING_OPPORTUNITY_SUPPORTED=
+3087: 
+3088: DEVELOPMENT_GATE_PASS=
+3089: 
+3090: MECHANISM_REVISION_COUNT=
+3091: 
+3092: INDEPENDENT_VALIDATION_RUN=
+3093: 
+3094: INDEPENDENT_VALIDATION_STATUS=
+3095: 
+3096: FORMAL_EVALUATION_RUN=
+3097: 
+3098: FORMAL_EVALUATION_STATUS=
+3099: 
+3100: H_MAIN_BENEFIT_PASS=
+3101: 
+3102: MAPPING_CONTRIBUTION_PASS=
+3103: 
+3104: B5_COMPARISON_STATUS=
+3105: 
+3106: L_ALL_MAIN_CONDITIONS_PASS=
+3107: 
+3108: L_WORST_RATIO=
+3109: 
+3110: L_WORST_CONDITION=
+3111: 
+3112: DECISION_P95_MS=
+3113: 
+3114: ENGINEERING_TARGET_PASS=
+3115: 
+3116: SEMANTICS_PRESERVING_OPTIMIZATION_USED=
+3117: 
+3118: SEMANTIC_EQUIVALENCE_PASS=
+3119: 
+3120: INVALID_SCIENTIFIC_RUNS=
+3121: 
+3122: CALIBRATION_ACCESSED=
+3123: 
+3124: DEVELOPMENT_ACCESSED=
+3125: 
+3126: INDEPENDENT_VALIDATION_ACCESSED=
+3127: 
+3128: FORMAL_EVALUATION_ACCESSED=
+3129: 
+3130: LEGACY_RESULTS_USED_AS_NEW_EVIDENCE=NO
+3131: 
+3132: GITHUB_REMOTE=
+3133: 
+3134: GITHUB_BRANCH=
+3135: 
+3136: GIT_HEAD=
+3137: 
+3138: GITHUB_PUSH_STATUS=
+3139: 
+3140: REPRODUCIBILITY_AUDIT_PASS=
+3141: 
+3142: NEXT_SAFE_ACTION=
+3143: 
+3144: ============================================================
+3145: 118. 最终原则
+3146: ============================================================
+3147: 
+3148: 本项目允许最终得到：
+3149: 
+3150: 成功结果；
+3151: 
+3152: 部分成功结果；
+3153: 
+3154: 负面结果；
+3155: 
+3156: 证据不足；
+3157: 
+3158: 或者被 blocker 阻断。
+3159: 
+3160: 这些都是合法研究结果。
+3161: 
+3162: 最重要的是：
+3163: 
+3164: 模型正确；
+3165: 
+3166: 算法公平；
+3167: 
+3168: 基线真实；
+3169: 
+3170: seed 独立；
+3171: 
+3172: 指标预先冻结；
+3173: 
+3174: 失败保留；
+3175: 
+3176: 工程与科学证据分离；
+3177: 
+3178: GitHub provenance 完整；
+3179: 
+3180: 结论不超过证据。
+3181: 
+3182: ============================================================
+3183: 119. 现在开始执行
+3184: ============================================================
+3185: 
+3186: 现在从零开始。
+3187: 
+3188: 不要只给执行计划。
+3189: 
+3190: 首先实际执行：
+3191: 
+3192: STEP 1
+3193: GitHub repository audit
+3194: 
+3195: 确认：
+3196: 
+3197: repository = soc
+3198: 
+3199: STEP 2
+3200: 读取已有 AGENTS.md
+3201: 如果不存在则创建
+3202: 
+3203: STEP 3
+3204: 检查 repository 是否可安全使用
+3205: 
+3206: STEP 4
+3207: 创建基础目录
+3208: 
+3209: STEP 5
+3210: 创建：
+3211: 
+3212: README.md
+3213: STATUS.md
+3214: AGENTS.md
+3215: .gitignore
+3216: pyproject.toml
+3217: 
+3218: STEP 6
+3219: 记录：
+3220: 
+3221: Python
+3222: OS
+3223: CPU
+3224: memory
+3225: dependencies
+3226: Git remote
+3227: branch
+3228: HEAD
+3229: 
+3230: STEP 7
+3231: 执行 P0：
+3232: 
+3233: research contract
+3234: model specification
+3235: literature verification
+3236: metrics
+3237: baseline definitions
+3238: statistical protocol
+3239: 
+3240: STEP 8
+3241: 生成全新的 clean-room seed partitions
+3242: 
+3243: STEP 9
+3244: 运行 P0 audit
+3245: 
+3246: STEP 10
+3247: 运行必要轻量测试
+3248: 
+3249: STEP 11
+3250: commit：
+3251: 
+3252: P0: freeze research protocol and seed partitions
+3253: 
+3254: STEP 12
+3255: 如果有权限：
+3256: 
+3257: push 到 soc GitHub repository
+3258: 
+3259: STEP 13
+3260: 验证 push / commit 状态
+3261: 
+3262: STEP 14
+3263: 自动进入 P1。
+3264: 
+3265: 之后按：
+3266: 
+3267: P0
+3268: →
+3269: P1
+3270: →
+3271: P2
+3272: →
+3273: P3
+3274: →
+3275: Development Gate
+3276: 
+3277: 只有 Development Gate 允许时：
+3278: 
+3279: → Independent Validation
+3280: 
+3281: 只有 Validation Gate 允许时：
+3282: 
+3283: → Formal Evaluation
+3284: 
+3285: 最后：
+3286: 
+3287: → Evidence Closure
+3288: 
+3289: 如果任何 STOP rule 触发：
+3290: 
+3291: 停止不允许的后续科学实验，
+3292: 
+3293: 但仍完成：
+3294: 
+3295: 报告
+3296: STATUS
+3297: hash audit
+3298: Git commit
+3299: 如果允许则 push
+3300: failure/blocker report。
+3301: 
+3302: 现在开始。
+
+FILE docs/research_contract.md SHA256 8ccd2f6fce470013af89c653eb3ff84a0b66809c56d321993cd973ebc18031e4
+1: # Research contract — P0 DRAFT, not scientifically unlocked
+2: 
+3: P1 handoff annotation: the historical P0 literature failure described below was
+4: closed at e9afe287 and delivered at 27d90bb5 (P0 audit exit 0). The original
+5: paragraph is retained to explain this draft's provenance. The P1 task separately
+6: authorizes correctness implementation, with D1–D5 explicitly approved by the
+7: user; see P1_implementation_spec.md. No scientific protocol freeze or permission
+8: to start P2 is inferred. Scientific executions remain zero. The unchanged
+9: research_protocol.json status string is also a historical draft declaration.
+10: 
+11: The authoritative request is [user_request.txt](user_request.txt). Repository:
+12: `https://github.com/JINAOLONG/soc`; root = project root. This is a clean-room
+13: project. No legacy artifacts, results, candidate parameters or seeds have been
+14: used as new evidence. Existing Apache-2.0 LICENSE is preserved.
+15: 
+16: Question: with continuously arriving service DAGs, non-preemptive compatible
+17: CPU/GPU/NPU execution and contention, can joint ready-node ordering and resource
+18: mapping reduce important-service H end-to-end deadline misses while keeping
+19: ordinary-service L P95 within 10% of B2 in every main condition?
+20: 
+21: Falsifiable mechanism hypothesis: local EFT can occupy a scarce resource needed
+22: by another arrived H service; an online opportunity-cost rule may improve H DMR.
+23: This is a hypothesis, not an established result. H/L denotes service importance,
+24: not ASIL. No energy-budget, WCET-proof or deployment/certification claim is made.
+25: 
+26: P0 requires 6–8 reviewed original studies (HEFT/CPOP, PEFT and DS3 mandatory),
+27: model/metric/baseline/statistical specifications, committed seed metadata and
+28: passing protocol audit. P0 currently fails the primary-literature prerequisite.
+29: Documents are drafts. User-prescribed thresholds and seed derivation cannot be
+30: relaxed even while the protocol is a draft. Do not call this a P0 freeze.
+31: 
+32: Progression is P0 → P1 correctness → P2 baseline-only calibration → P3 development
+33: and ablations → Development Gate → independent validation → Validation Gate →
+34: formal → evidence closure. Every stage preserves negative/invalid evidence.
+35: P1 correctness failure blocks science. Lack of stable P2 mapping opportunity
+36: stops the mapping mainline. P3 allows at most one preregistered, evidence-driven
+37: mechanism revision. Failed validation blocks formal. Failed/inconclusive formal
+38: remains failed/inconclusive. Unknown input provenance stops execution.
+39: 
+40: P0–P2 execution is CALIBRATION only; unit tests must use synthetic fixtures.
+41: P3 DEVELOPMENT has a fixed 10/10 search/precheck split. Metadata generation and
+42: hashing all 70 prescribed seeds is explicitly distinct from workload access.
+43: No reserved workload realization is generated or inspected before its gate.
+44: 
+45: Future candidate search space, workload calibration choices and timing protocol
+46: must be registered before their dependent observations. A method formula must
+47: not be invented before P2 diagnostics. Later missing evidence cannot be filled
+48: with guesses or a passing smoke test. Current scientific status: BLOCKED.
+
+FILE docs/statistical_protocol.md SHA256 f9c0eeb6e76f68330ba3e5d8d90e58d175c3947a1948bb41b26ad50dbc041e8a
+1: # Statistical protocol — P0 draft
+2: 
+3: Seeds are the independent resampling units. Every method within a condition/seed
+4: uses the exact same materialized workload, not merely the same arrival seed.
+5: Pair methods and workloads. Use 10,000 bootstrap replicates, analysis PRNG seed
+6: 20261018, percentile 95% intervals using the type-7 0.025 and 0.975 quantiles.
+7: When implemented, pin the PRNG implementation/version and save resampling indices
+8: or their reproducible digest. No statistical result is currently available.
+9: 
+10: To preserve seed effects across conditions, sample the seed indices once per
+11: replicate and use the same vector in all compared methods and conditions. Within
+12: each replicate compute condition seed means followed by equal-weight condition
+13: macro means, then the registered contrasts. For L resample paired Q values and
+14: recompute each ratio of means. Do not average individual ratios or treat nodes
+15: as independent replicates. Report descriptive per-condition contrasts as well
+16: as primary macro estimates. No unregistered p-value filtering.
+17: 
+18: User constraints: H relative gain >=10% with positive Delta_B2 CI; L upper CI
+19: <=1.10 in every main condition; positive mapping contribution CI; B5 comparison
+20: classification; correctness and decision P95 <=2 ms. Proposed all-gates progression
+21: requires all these criteria and no confirmed B5 superiority. A boundary-crossing
+22: CI is INCONCLUSIVE, not PASS. Macro gain cannot compensate for L condition failure.
+23: The intersection of all L conditions is required; individual CIs are pointwise,
+24: not simultaneous-coverage claims. Report this limitation explicitly.
+25: 
+26: Development seeds [0:10] are parameter-search data. Seeds [10:20] are development
+27: precheck only and cannot be used for choosing a search trial. No expansion of a
+28: registered search space after observing results. A permitted one-time mechanism
+29: revision must be preregistered first, preserve thresholds/partitions, and be
+30: reported as further development rather than independent validation. If revision
+31: addresses L/engineering after a previous H gain, enforce the user's strict
+32: non-degradation test: M_revision-M_previous point <=0 and CI upper <=0 (delta=0).
+33: 
+34: P2 workload tuning uses baselines, especially B2, and CALIBRATION only, never
+35: candidate advantage. P2 must publish a stable mapping-opportunity criterion before
+36: diagnostic selection is used to pass the stage. No candidate formula at P0.
+37: 
+38: Independent validation has 180 workloads (18×10); formal has 540 (18×30).
+39: No tuning, new baselines, threshold/statistic changes, unfavorable-seed removal
+40: or selective conditions. Every run needs independent trace validity. Invalid runs
+41: are preserved and diagnosed; any rerun receives a new ID and a supersession link.
+42: Missing/invalid pairings block a complete stage; do not silently drop them.
+43: 
+44: All scientific stages require SHA256 manifests plus missing=0, mismatch=0,
+45: duplicate identity=0, unexpected seed/method=0 and missing expected condition=0.
+46: This project has zero scientific runs; those scientific completeness checks are
+47: NOT APPLICABLE yet, not a passing experiment.
+
+FILE docs/model_spec.md SHA256 3f74116fa6cb85e4f2db1c96d246ac830a282be28847a0af21184fde2e17197b
+1: # System model — P0 definitions with user-approved P1 event order
+2: 
+3: Virtual time uses milliseconds, data sizes MiB, bandwidth MiB/ms and power W.
+4: Service g has arrival a_g >= 0, relative deadline D_g > 0, absolute deadline
+5: d_g = a_g + D_g, importance H or L and a finite acyclic task graph. Completion
+6: F_g is the last node completion. Nodes inherit service importance. Instance,
+7: node and resource IDs are unique stable strings. Reject cycles, empty compatible
+8: sets, nonfinite/negative timing inputs and missing predecessor identities.
+9: 
+10: Resources are CPU0, CPU1, CPU2, CPU3, GPU0, NPU0. Each unit executes at most one
+11: node. GPU/NPU internal parallelism is abstracted by execution time. Compatible
+12: sets must include CPU-only, GPU-oriented, NPU-oriented, multi-compatible and
+13: limited-alternative types; universal compatibility is not an acceptable workload.
+14: Every resource-specific node has positive estimated and realized durations.
+15: 
+16: Execution is non-preemptive: a started node keeps its resource and contiguous
+17: execution interval until completion. No migration, replication or replanning of
+18: that interval is allowed. Pending nodes may be reordered/remapped.
+19: 
+20: Communication version 1 has no shared-bus contention. For edge u→v with size b,
+21: transfer to destination r can start at u's completion C_u. Same unit: delay 0.
+22: Different units: latency(type(u),type(r)) + b / bandwidth(type(u),type(r)); all
+23: parameters nonnegative with strictly positive bandwidth. Independent transfers
+24: overlap with each other and with compute. Data readiness on r is
+25: max over predecessors of C_u + delay(u,r); a root is ready at service arrival.
+26: These logical copies are destination-specific and retained after transfer.
+27: Remapping a pending node recomputes readiness for the new destination; it cannot
+28: reuse a copy at another unit or backdate transfer before predecessor completion.
+29: The implementation may calculate copy readiness lazily from immutable completed
+30: outputs; this is not a reservation or a started execution. No future predecessor
+31: completion is treated as an actual completed output.
+32: 
+33: States are distinct: dependency_ready (all predecessors completed), data_ready
+34: (copies arrived on a specified destination), planned (nonbinding proposal),
+35: resource_ready (destination idle), started, running, completed. A proposal may
+36: wait or be replaced. Actual start >= arrival, all predecessor completions,
+37: destination-specific data readiness and resource availability.
+38: 
+39: Deterministic event ordering approved by the user in the P1 task (D1): at virtual time t,
+40: process all completions, expose all arrivals at t, then refresh the immutable
+41: scheduler view and dispatch only feasible starts; repeat zero-time dispatch
+42: until no start is chosen. Ties use stable (service_id,node_id,resource_id).
+43: No positive-length execution interval overlaps another on the same unit; touching
+44: endpoints are legal. When no start is possible, advance to the next true event
+45: or feasible data-readiness wakeup. Detect a deadlock rather than silently dropping
+46: jobs. After stopping arrivals, drain all admitted work, even after deadline miss.
+47: 
+48: Scheduler boundary: only arrived public DAGs, estimates, deadlines, H/L, completed
+49: outputs, running task start/elapsed observations, idle/busy state and observable
+50: data readiness. Never disclose the private event queue, future arrivals, true
+51: remaining running durations or future disturbances. Busy-unit release prediction
+52: must use estimates and elapsed time, never actual queued completion timestamps.
+53: 
+54: Execution disturbances must be scheduler-independent deterministic functions of
+55: (workload seed, service ID, node ID, resource ID, disturbance version). The
+56: generator materializes the same workload artifact for every compared method.
+57: No RNG call sequence may depend on scheduler decisions. Exact event, trace and
+58: metric reproducibility is required for identical code/config/workload identities.
+59: 
+60: P1 must independently validate legal traces and reject crafted violations of
+61: precedence, data readiness, compatibility, overlaps, duration, unique execution,
+62: non-preemption, assignment, completion and full arrival accounting. It must include
+63: a 6–8-node hand-checkable DAG, simultaneous events, equality at deadline and drain.
+64: Implementation and test evidence are tracked in P1_implementation_spec.md and
+65: reports/P1_correctness.json; this model does not itself assert correctness PASS.
+
+FILE docs/workload_spec.md SHA256 a098008f3abe47f4cfb830685009b19bf4d3555a8e370ad242a2fce1debea606
+1: # Workloads — design constraints, not a frozen generator
+2: 
+3: No workload generator or scientific workload has been executed. Main conditions
+4: are 3 scenes × 3 loads × 2 sizes. Size means exactly 8 or 16 executable nodes per
+5: service instance, excluding neither sources nor sinks. No hidden dummy task may
+6: change these counts.
+7: 
+8: COCKPIT templates must cover speech, display, navigation and interaction;
+9: ADAS covers preprocessing, perception, fusion and output. FUSION mixes the two
+10: families under shared accelerators to expose cross-service competition. Concrete
+11: durations, compatible sets, edge sizes, arrival laws and deadlines await source
+12: review and a baseline-only calibration protocol. They are NOT AVAILABLE yet.
+13: 
+14: Calibrate with 10 CALIBRATION seeds, B2 as the focal reference. Label loads by
+15: measured CPU/GPU/NPU bottleneck pressure, not arrival rate alone. Light should
+16: have low misses; medium/near-saturation should expose contention, nontrivial
+17: misses and mapping alternatives without nearly universal miss. Severe-overload
+18: is sensitivity only. Verify H feasibility in isolation or low competition first.
+19: Save every tried calibration configuration and its diagnosis; do not select
+20: workloads by candidate advantage. Freeze generator/config after P2.
+21: 
+22: Identity = scene, load, size, seed, generator version, config SHA256 and the
+23: canonical artifact SHA256. Every method consumes the same stored realization.
+24: Execution disturbances use keyed hashes/PRNG independent of scheduler calls.
+25: Do not materialize validation/formal realizations during calibration or unit tests.
+
+FILE docs/baseline_spec.md SHA256 54a1cdb86d0235671a7d1ece31e489289c026bf083f33388580b6f3fdbb42e12
+1: # Baselines — original sources reviewed; P1 online adaptation implemented
+2: 
+3: All methods share one immutable observation boundary, workload, compatibility,
+4: communication semantics and deterministic tie rule. Root/ready eligibility never
+5: uses future arrivals or unfinished predecessor truth. Estimated finish prediction
+6: on a busy unit must use observable elapsed execution and estimates. A processor
+7: selection proposal is revocable until the task starts; dispatch must recheck
+8: actual feasibility and may not reserve an idle unit indefinitely by accident.
+9: The user approved the precise online adaptation rules D1–D5 during the P1 task.
+10: Their authoritative definition and acceptance dependencies are in
+11: [P1_implementation_spec.md](P1_implementation_spec.md). They must be tested
+12: before P1 is marked complete.
+13: 
+14: | ID | Ready-node ordering | Mapping | Status |
+15: |---|---|---|---|
+16: | B1 | ascending service absolute deadline | minimum estimated finish among compatible units | implemented; P1 report provides actual correctness evidence |
+17: | B2 | H before L, then ascending service absolute deadline | same EFT rule as B1 | fixed L-budget reference; implemented |
+18: | B3 | Online-HEFT adaptation; original upward rank source-verified | insertion/EFT with approved D1–D5 online dispatch | implemented; original static method distinguished |
+19: | B4 | Online-PEFT adaptation; original OCT/rank source-verified | insertion/OEFT with approved D1–D5 online dispatch | implemented; original static method distinguished |
+20: | B5 | H-priority Online-PEFT adaptation | same mapping requirement as B4 | implemented; source and adaptation kept separate |
+21: 
+22: The actual user-provided originals are now reviewed in
+23: [heft_cpop.md](literature_reviews/heft_cpop.md) and
+24: [peft.md](literature_reviews/peft.md), with equations, figures, page numbers and
+25: version/provenance limits. This is an evidence-status update, not a change to any
+26: baseline requirement or an implementation. Original HEFT rank ties are random;
+27: PEFT OCT excludes availability while EFT includes partial-schedule availability.
+28: Online adaptation still must explicitly specify visible DAG set, ready filtering,
+29: compatibility, busy-resource handling, rank/OCT refresh, idle/wait behavior, ties
+30: and boundary cases before P1 can be complete. The previous local-PDF task did
+31: not authorize implementation; the separate P1 task and explicit D1–D5 replies
+32: now authorize the documented adaptation. Online adaptations must never be presented
+33: as the original static algorithms.
+34: 
+35: Required P1 evidence: distinguish B1/B2 by hand fixture; verify ranks/OCT against
+36: source-derived worked examples; exercise incompatible/busy resources and ties;
+37: deterministic replay; and have an independent validator reject invalid traces.
+38: No custom candidate may replace a missing baseline or serve as its own control.
+
+FILE docs/metric_spec.md SHA256 c4b912fc672979ddc763d882e546b7a92bf53090e5b5dddd5777e2e867df182a
+1: # Metrics — user thresholds retained; P0 draft
+2: 
+3: Statistical observation is a service instance, not a node. Response T_g = F_g-a_g.
+4: A miss is F_g > a_g+D_g; equality is on time. H-DMR and L-DMR are the miss count
+5: divided by the number of arrived instances in the respective group, including
+6: all drained work. An absent group is invalid/undefined, never zero by default.
+7: 
+8: Within each run, calculate L P50/P95/P99/max over all L service responses,
+9: including missed services. Use linear-interpolated quantiles (Hyndman–Fan type 7):
+10: sorted x[0:n], h=(n-1)p, interpolate floor(h) and ceil(h); n=1 returns x[0].
+11: Do not pool L responses across seeds to replace the prescribed ratio of means.
+12: 
+13: There are 18 main conditions: {COCKPIT,ADAS,FUSION} ×
+14: {light,medium,near-saturation} × {8,16} nodes per service DAG.
+15: For H primary benefit, first average each method's H-DMR across seeds within
+16: each condition, then take the equal-weight condition macro mean over the 12
+17: medium/near-saturation conditions. Let these means be M_B2 and M_F.
+18: G=(M_B2-M_F)/M_B2 must be >=0.10 and paired seed-bootstrap CI for
+19: Delta_B2=M_B2-M_F must have lower endpoint strictly >0. M_B2=0 makes relative
+20: benefit undefined and cannot pass. Do not substitute task- or service-weighting.
+21: 
+22: For L, Q_m(c,s)=within-run L P95. For each of all 18 main conditions,
+23: R_c=mean_s Q_F(c,s)/mean_s Q_B2(c,s). Point >1.10 is FAIL;
+24: point <=1.10 and paired-bootstrap upper endpoint <=1.10 is SUPPORTED;
+25: otherwise it is INCONCLUSIVE. A zero/nonfinite denominator or missing run is
+26: invalid; do not clip or add arbitrary epsilons to manufacture a ratio.
+27: 
+28: Mapping contribution is Delta_A1=M_A1-M_A3 on the same 12-condition H macro;
+29: point >0 and CI lower >0 are required to claim support. A3 is full urgency and
+30: mapping; A1 uses new urgency with EFT; A2 uses B2 ordering with new mapping.
+31: No positive mapping claim from A3 vs B2 alone.
+32: 
+33: Strong-baseline contrast is Delta_B5=M_B5-M_F with paired seed CI:
+34: lower >0 => SUPPORTED_SUPERIOR; upper <0 => B5_SUPERIOR;
+35: otherwise NO_CONFIRMED_DIFFERENCE. Equality is not superiority. Report every
+36: condition as well as the macro estimate. The proposed progression rule blocks
+37: confirmed B5 superiority; absence of confirmed difference is explicitly not a
+38: claim of equivalence/noninferiority. This rule is a disclosed P0 design choice,
+39: not a user-supplied B5 effect-size target, and remains draft until P0 passes.
+40: 
+41: Secondary outputs: group DMR, L P50/P95/P99/max, group/overall mean response,
+42: per-resource busy time divided by full-drain makespan, transfer totals and
+43: waiting breakdowns. No undocumented warm-up exclusion in scientific metrics.
+44: If energy is later implemented: sum active_power*busy_duration plus
+45: idle_power*idle_duration with explicit ms→s conversion and declared power inputs;
+46: label model-estimated energy, never a hardware measurement.
+47: 
+48: Engineering decision latency is host wall computation covering preprocessing,
+49: path updates, urgency, candidate generation/sorting, scoring, mapping and selection;
+50: virtual execution/communication time is separate. P95 <=2 ms is a host target,
+51: not automotive hardware evidence. Exact warmup/repetitions/inputs must be frozen
+52: at P2 before candidate timing; no timing has been measured in this project.
+

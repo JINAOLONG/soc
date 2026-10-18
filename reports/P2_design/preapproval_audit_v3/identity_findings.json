@@ -1,0 +1,182 @@
+{
+  "review_scope": "Section D; fresh same-assistant report-only review",
+  "design_acceptance": "REVISE_REQUIRED_FOR_IDENTITY_RECOVERY_CONTRACT",
+  "findings": [
+    {
+      "id": "ID-R01",
+      "severity": "MAJOR",
+      "disposition": "REVISE_D09_D10_CONCURRENCY_CONTRACT_BEFORE_FULL_APPROVAL",
+      "status": "OPEN",
+      "approval": "UNAPPROVED",
+      "title": "Lock identity and recovery prose do not define exclusion across authorization replacement or stale owners",
+      "sources": [
+        {
+          "path": "docs/P2_design/v2/P2_typed_identity_schema_v2.json",
+          "sha256": "9b478cf7e96776f6cc69f29426715efed6eec2309270be1efb3dd77985ebfbc9",
+          "lines": [
+            419,
+            578
+          ]
+        },
+        {
+          "path": "docs/P2_design/v2/P2_typed_identity_schema_v2.json",
+          "sha256": "9b478cf7e96776f6cc69f29426715efed6eec2309270be1efb3dd77985ebfbc9",
+          "lines": [
+            933,
+            986
+          ]
+        },
+        {
+          "path": "docs/P2_design/v2/P2_runner_schema_review_v2.md",
+          "sha256": "fd1a59638bf1754af0a6423b57873a6691af8c3559a1c1d62ceeeffda2da5099",
+          "lines": [
+            46,
+            54
+          ]
+        },
+        {
+          "path": "docs/P2_design/v2/P2_runner_schema_review_v2.md",
+          "sha256": "fd1a59638bf1754af0a6423b57873a6691af8c3559a1c1d62ceeeffda2da5099",
+          "lines": [
+            69,
+            93
+          ]
+        }
+      ],
+      "source_supported_facts": [
+        "INPUT_LOCK_PREIMAGE includes generation_authorization_sha256; GENERATION_AUTH binds execution authorization. RUN_LOCK_PREIMAGE includes attempt_id; ATTEMPT binds execution_authorization_sha256 and ordinal1.",
+        "Runner requires conflicts to fail closed; stale input lock release/archive requires explicit authorization; state history and original refs immutable; no automatic retries.",
+        "Runner describes fsync, immutable receipt, CAS completion pointer, and explicitly authorized publish-only recovery."
+      ],
+      "derived_facts": [
+        "Different authorization hashes for the same descriptor or run distinguish these lock identities; confirmed using fake metadata only.",
+        "Typed lock identities are not explicitly declared to be the filesystem or coordination exclusion keys. Consequently differing hashes are not evidence that an implementation would execute twice."
+      ],
+      "missing_evidence": [
+        "Unique coordination domain keyed by semantic descriptor/run independent of reissued authorization, or a prohibition/revocation rule ensuring no two active authorizations for that domain.",
+        "Owner/lease record fields, expiration clock and lost-owner fencing, or an explicit no-takeover policy.",
+        "Compare-and-swap expected value/version and which writes/process starts require current ownership; interrupted publication reconciliation contract binding original receipt, inventory, pointer and recovery authorization."
+      ],
+      "adversarial_metadata_example": "identity_static_review_results.json#/checks ID-AUTH-LOCK-SEPARATION-OBSERVED; no production identities, seeds, locking or execution.",
+      "consequence": "Two implementations can choose different exclusion domains or lease takeover rules while satisfying the high-level words. Final duplicate checks cannot replace a pre-spawn at-most-once budget invariant. This is missing design semantics, not a demonstrated duplicate scientific run.",
+      "recommendation": "UNAPPROVED documentation clarification: choose either no takeover and one immutable active authorization per descriptor/run, or a fully specified owner/fencing/CAS protocol with authorization-independent exclusion. Preserve all failed attempts and zero automatic retries.",
+      "exact_human_question": "D09/D10采用哪一种明确的并发与失主处理契约：禁止自动接管并确保每个descriptor/run仅一份有效授权，还是规定可证明失主无法继续写入/启动的fencing与CAS协议？完整字段、授权替换和原子发布规则是否先补齐再批准？",
+      "runtime_status": "NOT_IMPLEMENTED_NOT_EXECUTED"
+    },
+    {
+      "id": "ID-R02",
+      "severity": "MAJOR",
+      "disposition": "REVISE_D10_REQUIRED_PROVENANCE_BINDING_BEFORE_FULL_APPROVAL",
+      "status": "OPEN",
+      "approval": "UNAPPROVED",
+      "title": "Actual executing Git identity and observed dirty status have no exact mandatory record binding",
+      "sources": [
+        {
+          "path": "docs/user_request.txt",
+          "sha256": "4c3481f0c67553eaa6d2dd6f181cc8d3f792e40fdc9586547c1c2e91fb52b461",
+          "lines": [
+            2506,
+            2529
+          ]
+        },
+        {
+          "path": "AGENTS.md",
+          "sha256": "5435e5e690a64e0e7f432bae22b8f459f646e12233d99a7a4b1a70266d8c9a22",
+          "lines": [
+            45,
+            49
+          ]
+        },
+        {
+          "path": "docs/P2_design/v2/P2_runner_schema_review_v2.md",
+          "sha256": "fd1a59638bf1754af0a6423b57873a6691af8c3559a1c1d62ceeeffda2da5099",
+          "lines": [
+            30,
+            40
+          ]
+        },
+        {
+          "path": "docs/P2_design/v2/P2_typed_identity_schema_v2.json",
+          "sha256": "9b478cf7e96776f6cc69f29426715efed6eec2309270be1efb3dd77985ebfbc9",
+          "lines": [
+            988,
+            1117
+          ]
+        },
+        {
+          "path": "docs/P2_design/v2/P2_typed_identity_schema_v2.json",
+          "sha256": "9b478cf7e96776f6cc69f29426715efed6eec2309270be1efb3dd77985ebfbc9",
+          "lines": [
+            2480,
+            2605
+          ]
+        },
+        {
+          "path": "docs/P2_design/v2/P2_typed_identity_schema_v2.json",
+          "sha256": "9b478cf7e96776f6cc69f29426715efed6eec2309270be1efb3dd77985ebfbc9",
+          "lines": [
+            2888,
+            2942
+          ]
+        }
+      ],
+      "source_supported_facts": [
+        "Original run manifest contract requires Git commit and dirty status. Runner32 explicitly distinguishes actual execution HEAD from frozen source bundle commit.",
+        "SCIENTIFIC_RUN_RECORD and PROCESS_RESULT are closed objects with no actual execution Git HEAD or observed dirty field. SOURCE_BUNDLE_PREIMAGE has frozen source_commit and dirty_policy, not the observed execution checkout.",
+        "raw_artifacts is a generic ARTIFACT_REF array; no required execution-provenance kind or typed body is specified."
+      ],
+      "derived_facts": [
+        "A report-only metadata commit can change execution HEAD without changing frozen relevant source files. Frozen source_commit therefore does not identify the actual invoking checkout.",
+        "A rejection policy is a rule, not the recorded result of applying the dirty-state check."
+      ],
+      "missing_evidence": [
+        "Explicit required provenance record or fields for actual execution HEAD and observed dirty status/scope, with exact source comparison and binding to the run/attempt completion inventory.",
+        "Exact source-body schema or required raw-artifact kind allowing another implementation to verify this requirement without inventing a record layout."
+      ],
+      "consequence": "The prose imposes the requirement, so omission is not semantically permitted; nevertheless the claimed exact typed schema has no normative location/type or mandatory artifact binding to satisfy it. Implementability and audit completeness remain unresolved.",
+      "recommendation": "UNAPPROVED clarification: add a mandatory typed execution-provenance receipt/ref, or required fields on a designated run/attempt record; retain frozen source identity separately, observed actual checkout and raw byte manifest separately.",
+      "exact_human_question": "是否要求D10在批准前明确实际执行HEAD与实测dirty状态的必填类型、保存位置及COMPLETE绑定？采用专门provenance收据还是运行记录字段，并明确source_commit与actual_execution_HEAD的不同含义？",
+      "runtime_status": "NOT_IMPLEMENTED_NOT_EXECUTED"
+    },
+    {
+      "id": "ID-R03",
+      "severity": "LOW",
+      "disposition": "CORRECT_COUNT_TEXT_WITHOUT_CHANGING_KEY_FIELDS",
+      "status": "OPEN",
+      "approval": "UNAPPROVED",
+      "title": "Generation key contract says 15 fields; all three bindings and KEY contain exactly 14",
+      "sources": [
+        {
+          "path": "docs/P2_design/v2/P2_generation_spec_v2.json",
+          "sha256": "33e3ccf437510986ffa401eea1ef48e995a1ad08df38a834374d4a1c483a91f2",
+          "lines": [
+            141,
+            327
+          ]
+        },
+        {
+          "path": "docs/P2_design/v2/P2_typed_identity_schema_v2.json",
+          "sha256": "9b478cf7e96776f6cc69f29426715efed6eec2309270be1efb3dd77985ebfbc9",
+          "lines": [
+            119,
+            216
+          ]
+        }
+      ],
+      "source_supported_facts": [
+        "The KEY required/properties set has 14 names; each of three binding objects has exactly the same 14 names.",
+        "key_binding_contract explicitly says All15 KEY fields produced exactly."
+      ],
+      "derived_facts": [
+        "No missing fifteenth field is inferable or authorized. The closed typed set and all three bindings agree with one another."
+      ],
+      "missing_evidence": [
+        "Corrected narrative count linked to the unchanged exact field set."
+      ],
+      "consequence": "Documentation count is false and should be corrected; adding an invented fifteenth field would alter keyed identity and violate the closed schema.",
+      "recommendation": "UNAPPROVED report recommendation: correct only All15 to All14 in a separately authorized documentation revision; retain exact key field sets.",
+      "exact_human_question": "是否确认以现有14字段closed KEY为准，仅更正字段数量文字，不新增随机key字段？",
+      "runtime_status": "NOT_IMPLEMENTED_NOT_EXECUTED"
+    }
+  ]
+}

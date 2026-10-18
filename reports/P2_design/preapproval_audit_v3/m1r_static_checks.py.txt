@@ -1,0 +1,49 @@
+"""Report-only source-premise and closed-form scalar checks.
+No project imports, scheduler, projection algorithm, workload, RNG, bootstrap or scientific outcome.
+A passing check validates the stated derivation's premise/arithmetic, not runtime or science.
+"""
+from pathlib import Path
+from fractions import Fraction as Q
+import json,hashlib
+R=Path.cwd();O=R/'reports/P2_design/preapproval_audit_v3';D=R/'docs/P2_design/v2'
+read=lambda p:json.loads(p.read_text())
+t=read(D/'P2_workload_templates_v2.json');g=read(D/'P2_generation_spec_v2.json');d=read(D/'P2_diagnostic_spec_v2.json');c=read(D/'P2_criterion_spec_v2.json');s=read(D/'P2_public_snapshot_spec_v2.json');reg=read(D/'P2_scientific_parameter_registry_v2.json')
+checks=[]
+def check(name,ok,evidence):checks.append({'id':name,'passed':bool(ok),'evidence':evidence})
+adas=[v for v in t['templates'] if v['scene']=='ADAS']
+check('ADAS_BOTH_REGISTERED_SIZES',[v['size'] for v in adas]==[8,16],[(v['template_id'],v['size']) for v in adas])
+for v in adas:
+ roots=[n['id'] for n in v['nodes'] if not n['predecessors']]
+ check('SOLE_ROOT_'+v['template_id'],len(roots)==1 and roots[0] in ['ADAS.n01','ADAS.n01.a'],roots)
+ check('ALL_OTHER_NODES_NONROOT_'+v['template_id'],all(n['predecessors'] for n in v['nodes'] if n['id']!=roots[0]),'Every other node has a predecessor; after first positive start no descendant completes.')
+check('SHARED_PAIR_FIRST_ARRIVAL','a_H=a_L=' in g['arrivals']['formula'] and g['arrivals']['services_per_slot']==2,g['arrivals'])
+check('JITTER_BOUND_AND_SLOT_SEPARATION',Q(1,10)<Q(1,4),'a0/P<1/10<1/4<=a1/P. This evaluates constants, not any U or seed.')
+check('POSITIVE_DURATION_DESIGN','nonpositive durations' in g['algorithm']['conversion'],'No zero-duration completion at the first start time in a valid run.')
+check('EVERY_INVOCATION_SNAPSHOT','Exactly one SNAPSHOT_EVENT for each actual engine scheduler invocation' in s['exact_event_rule'],s['exact_event_rule'])
+check('REAL_START_DISTINCT_STATE','same-time start/completion/arrival changes public status/DAG and counts distinctly' in s['counting'],s['counting'])
+check('SINGLE_READY_ELIGIBLE','At least one dependency-ready' in d['scope']['eligible'],d['scope']['eligible'])
+check('SINGLE_READY_MANDATORY_PARTIAL','With exactly1 ready node record COVERAGE_INSUFFICIENT' in d['scope']['action_nodes'],d['scope']['action_nodes'])
+check('PARTIAL_RETAINED_IN_E','including valid partial-coverage states' in d['stage_denominators']['E'],d['stage_denominators']['E'])
+check('NEGATIVE_REQUIRES_FULL_COVERAGE',c['coverage_thresholds']['negative_required_each_seed_condition']=='1' and 'every seed/condition coverage=1' in c['decision_order'][3]['when'],c['decision_order'][3])
+check('ALL_40_UNAPPROVED',len(reg['parameters'])==40 and len({x['id'] for x in reg['parameters']})==40 and all(x['approval']=='UNAPPROVED' and x['status']=='UNRESOLVED' for x in reg['parameters']),[x['id'] for x in reg['parameters']])
+# These are scalar formulas derived manually in Case7, not a projection/diagnostic implementation.
+lam=Q.from_float(0.05)
+b=Q(1)+2*lam+Q(213,32)
+o=Q(1)+2*lam+Q(1593,256)
+check('CASE7_EXACT_SUFFIX_IMPROVEMENT',b-o==Q(111,256),{'b':str(b),'alternative_o':str(o),'delta_ms':str(b-o)})
+check('CASE7_GAIN_ABOVE_COARSE',(b-o)/b>Q(1,20),{'explanatory_gain':str((b-o)/b),'threshold':'1/20','scientific_outcome':False})
+check('CASE7_ZERO_BOUNDED_GAIN',Q(0)/b==0,'All K choices leave the hand-specified suffix unchanged; exhaustiveness is the written calendar argument, not an implemented enumerator.')
+check('ZERO_GAIN_BELOW_BUNDLES',all(Q(0)<Q(v['tau']) for v in c['bundles']),c['bundles'])
+check('FINE_EQUALITY_BOUNDARY',(Q(100)-Q(99))/100==Q(1,100),'Hand scalars b100,o99 exactly tau; no diagnostic executed.')
+check('COARSE_EQUALITY_BOUNDARY',(Q(20)-Q(19))/20==Q(1,20),'Hand scalars b20,o19 exactly tau; no diagnostic executed.')
+check('L_CAP_NO_GLOBAL_IMPLICATION',Q(8)<=max(Q(6),Q(12)) and Q(10,8)>Q(11,10),'Hand scalar cap8<=12 while full-service response ratio10/8>1.10.')
+check('COVERAGE_ALGEBRA_ONLY',Q(8,800)==Q(1,100) and Q(8,1000)==Q(1,125) and Q(208,1000)==Q(26,125),'Hypothetical counts only; no sampled states or rates.')
+check('FIXED_SUFFIX_NOT_OPTIMIZED','no suffix search' in d['projection']['suffix_order'] and 'no optimization of suffix mappings' in d['projection']['admissible'],d['projection']['admissible'])
+check('MISSING_NOT_ZERO','INCOMPLETE/INVALID' in s['missing'] and 'no zero imputation' in s['missing'],s['missing'])
+check('PAIRED_CI_CONSTANTS_UNCHANGED',all(x in c['bootstrap']['method'] for x in ['10000','type7','20261018','paired-seed']),'Checked text constants; generated no resampling index.')
+reads=read(O/'m1r_source_reads.json')
+check('SOURCE_IDENTITIES_STILL_MATCH',all(hashlib.sha256((R/x['path']).read_bytes()).hexdigest()==x['sha256'] for x in reads['sources']),len(reads['sources']))
+result={'check_scope':'Static source premises and hand-derived scalar arithmetic only','status':'PASS' if all(x['passed'] for x in checks) else 'FAIL','passed':sum(x['passed'] for x in checks),'failed':sum(not x['passed'] for x in checks),'scientific_workloads_generated':0,'scientific_workloads_run':0,'scientific_interpretation':'No scientific result. Critical negative-branch inconsistency remains; check PASS means proof premises/arithmetic consistent.','checks':checks}
+(O/'m1r_static_checks.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n')
+print(json.dumps({k:v for k,v in result.items() if k!='checks'},indent=2))
+raise SystemExit(0 if result['failed']==0 else 1)

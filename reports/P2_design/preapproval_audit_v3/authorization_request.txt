@@ -1,0 +1,192 @@
+# SOC P2 Pre-Approval Adversarial Design Audit — Report-Only
+
+## 1. Repository and authority
+
+Repository: https://github.com/JINAOLONG/soc.git  
+Expected branch: `work`  
+Reported starting HEAD: `a3680acf45c5578fc090cf53cc186f28a8e9b88a`
+
+Before proceeding, verify the actual repository root, branch, HEAD, origin, remote `work` SHA and worktree state. Read `AGENTS.md`, `STATUS.md`, `docs/user_request.txt`, `docs/research_contract.md`, `docs/statistical_protocol.md`, `docs/model_spec.md`, `docs/workload_spec.md`, `docs/baseline_spec.md`, `docs/metric_spec.md`, the full v1 proposal, the v1 decision table, all v2 specifications, the v2 human decision packet and the independent review history.
+
+Do not infer missing definitions from D01–D10 labels or from this prompt. Original repository rules take precedence over summaries.
+
+## 2. Scope
+
+Perform a fresh, adversarial, report-only review of the current P2 v2 proposal before human approval.
+
+The purpose is to determine whether the existing v2 documents are internally complete enough for informed human decisions. This task does not approve, freeze, implement or execute P2.
+
+Only new report artifacts may be created under:
+
+`reports/P2_design/preapproval_audit_v3/`
+
+Do not modify any existing v1/v2 document, `STATUS.md`, research protocol, gate, source code, tests, configuration, seed metadata, or previous audit evidence.
+
+## 3. Absolute prohibitions
+
+Do NOT:
+
+- Execute P2, calibration, workload generation, scheduler runs, candidate runs or scientific comparisons.
+- Materialize or inspect any scientific realization or outcome.
+- Generate new seeds.
+- Access non-CALIBRATION realization/outcome data.
+- Implement or modify the simulator, scheduler, generator, adapter, runner, diagnostic or validator.
+- Create validation/formal unlocks.
+- Approve or freeze any D01–D10 decision or SP01–SP40 group.
+- Change scientific thresholds, CI methods, candidates or seed partitions.
+- Change any existing design or historical audit file.
+- Treat static PASS, a clean manifest, or an exit code of zero as scientific or runtime validation.
+
+Static parsing and hand-authored non-scientific fixtures are permitted only for design verification. Do not turn them into workload samples.
+
+## 4. Required adversarial review
+
+### A. M1R_PATH_V2 and scientific interpretation
+
+Read the exact original research question, historical M1, v2 M1R diagnostic, public snapshot contract, criterion table and parameter registry.
+
+Audit the following cases using hand calculations or non-scientific fixtures only:
+
+1. Exactly one ready node while an arrived H service has an unready remaining path.
+2. Two to four ready nodes with no ready H node but a pending H successor.
+3. More than four ready nodes and truncation.
+4. More than two unfinished arrived H targets.
+5. A visible running task with `elapsed >= estimate`.
+6. A missing/corrupt snapshot versus a legitimate coverage-insufficient snapshot.
+7. A fixed-suffix case where an alternative suffix mapping could change the result.
+8. A case where local L slack allows predicted L degradation but does not imply full-service L-P95 compliance.
+9. Boundary cases for zero gain, `gain == tau`, and deterministic assignment ties.
+
+For each case, determine the expected state, denominator treatment and allowed scientific interpretation from the current specification.
+
+State precisely which original mechanism the diagnostic can support, what its negative result cannot establish, and whether the current `NOT_SUPPORTED` operational stop is justified by the narrow observation space.
+
+Do not propose a new candidate algorithm. Any proposed diagnostic change must be labelled UNAPPROVED and must not be silently written into v2.
+
+### B. Coverage and FINE/COARSE decision support
+
+Recheck the complete D08 decision table and all SP groups.
+
+Explain the scientific meaning and potential bias of:
+
+- FINE: `tau=1/100`, `frequency=1/100`.
+- COARSE: `tau=1/20`, `frequency=1/20`.
+- Support coverage `F/E >= 4/5`.
+- Negative coverage `F/E == 1`.
+- At least 8 of 10 seeds meeting the support frequency.
+- At most 2 of 10 seeds meeting the frequency for a negative classification.
+
+Determine whether the asymmetry has an explicit rationale and whether any available source supports the numeric choices. Do not select thresholds from experimental outcomes; no such outcomes may be inspected.
+
+Explain the difference between a calibration-stage operational decision and an independent confirmatory statistical claim. Preserve the existing paired-seed bootstrap, replicate count, analysis seed and type-7 interval definitions.
+
+### C. Exact trial-matrix audit
+
+Read the actual `P2_trial_matrix_draft_v2.json` bytes from the Codex Cloud repository, not merely its summary or declared file hash.
+
+Verify every row, key, reference, seed assignment, method, trial role, control variant, ordering and duplicate constraint.
+
+Reconstruct and check:
+
+- 36 configurations.
+- 10 registered CALIBRATION seeds.
+- 2,520 trial slots.
+- 1,800 MAIN trial slots.
+- 360 H_ISOLATED slots.
+- 360 LOW_COMPETITION slots.
+- 1,080 unique input identities.
+- At most 5,040 engine calls including the registered replay.
+- Zero automatic retries.
+
+Verify that all A/B candidates remain represented and that the selection policy does not depend on candidate advantage or M1R/M2 results.
+
+If the matrix cannot be read completely, report BLOCKED. Do not infer successful row-level verification from counts or manifest presence.
+
+### D. Identity, generation and recovery
+
+Check the typed schema, generation spec, identity preimage registry, lifecycle graph, runner contract and stage-state contract together.
+
+Verify:
+
+- All identity dependencies are acyclic.
+- Each identity is computable before its first required use.
+- Input locks use only pre-materialization identity.
+- The workload ID does not depend on its own hash or future run ID.
+- MAIN/control parent identity and numeric inheritance are unambiguous.
+- Generation receipts and original raw references are immutable.
+- Interrupted, failed and incomplete artifacts cannot be reused as COMPLETE.
+- Concurrent requests, stale locks, partial writes and interrupted atomic publication have explicit fail-closed behavior.
+- Zero automatic retries is consistent with the stop and recovery rules.
+- Replay is not counted as a new scientific sample or recovery retry.
+
+Do not implement locks, recovery, runners or fault-injection code. List the exact runtime tests that must be included in a future separately authorized implementation task.
+
+### E. Stage-state, timing and status reconciliation
+
+Verify the distinctions among execution completion, artifact integrity, identity validity, configuration selection, diagnostic validity, mapping classification, timing prerequisite and overall P2 progression.
+
+Reconcile the v2 proposal against the current `STATUS.md` without editing either file.
+
+The report must explicitly identify stale or contradictory state representations and state which claims are authoritative for the current proposal versus historical status.
+
+Determine where the timing protocol must be frozen relative to implementation, any candidate timing measurement and overall P2 progression. Preserve the 2 ms target. Do not invent warmups, repetition counts, timers or aggregation rules.
+
+### F. D01–D10 and SP01–SP40 decision readiness
+
+For every decision, list:
+
+- Exact source document and version/hash.
+- Source-supported facts.
+- Derived facts.
+- New scientific assumptions.
+- Engineering conventions.
+- Missing evidence.
+- Exact human question.
+- What remains blocked until the decision is resolved.
+
+Confirm that the previous ACCEPT recommendations are not recorded as approvals. All ten decisions and all forty parameter/rule groups must remain UNAPPROVED.
+
+## 5. Required reports
+
+Create only new files under `reports/P2_design/preapproval_audit_v3/`:
+
+- `executive_decision.md`
+- `D01_D10_decision_readiness.csv`
+- `SP01_SP40_traceability.csv`
+- `M1R_adversarial_cases.md`
+- `coverage_threshold_review.md`
+- `trial_matrix_row_audit.json`
+- `identity_recovery_review.md`
+- `stage_state_timing_review.md`
+- `cross_document_findings.json`
+- `actual_commands_and_exit_codes.json`
+- `review_evidence_manifest.json`
+- `human_decision_packet.md`
+
+The human decision packet must provide exact unresolved questions and proposed options. All approval fields remain UNAPPROVED.
+
+## 6. Verification and reporting
+
+Use only static parsing, Git metadata, original source documents and hand-authored non-scientific examples.
+
+Record actual commands, outputs, exit codes, repository identity, file hashes and exact source paths.
+
+Do not claim external independent-review status if the work is performed by the same assistant or Codex environment. Label it a fresh adversarial review, not a third-party audit.
+
+If any critical inconsistency remains, report `DESIGN_REVIEW_REVISE_REQUIRED` or `DESIGN_REVIEW_BLOCKED`. Do not alter the design to manufacture a PASS.
+
+The trial matrix must be fully readable and independently reconstructed. A hash match or row-count match alone is insufficient.
+
+## 7. Git and stop condition
+
+No source changes. No modifications to existing design or historical evidence.
+
+If authorized by the task environment, commit and push only the new report files with a normal non-destructive Git operation. Verify the actual remote SHA. If publication cannot be verified, report NOT_VERIFIED.
+
+Final status must be exactly one of:
+
+- `DESIGN_REVIEW_READY_FOR_HUMAN_DECISION`
+- `DESIGN_REVIEW_REVISE_REQUIRED`
+- `DESIGN_REVIEW_BLOCKED`
+
+Stop after the report package. Do not approve D01–D10, freeze parameters, implement algorithms, generate workloads, execute P2 or create validation/formal unlocks.

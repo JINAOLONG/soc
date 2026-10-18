@@ -1,0 +1,1237 @@
+dict_keys(['document_kind', 'version', 'status', 'classification', 'approved', 'frozen', 'executable', 'execution_authorized', 'read_by_pipeline', 'source_checkpoint', 'templates', 'group_rule', 'global_node_id', 'expansion', 'validation', 'source_refs', 'mechanisms', 'limitation', 'document_version', 'approval', 'starting_commit', 'preserved_semantic_content_version', 'parent_proposal', 'revision_note'])
+{
+  "document_kind": "DAG_TEMPLATE_PROPOSAL",
+  "version": "v2",
+  "status": "DRAFT_UNAPPROVED_NONEXECUTABLE",
+  "classification": "PROPOSED",
+  "approved": false,
+  "frozen": false,
+  "executable": false,
+  "execution_authorized": false,
+  "read_by_pipeline": false,
+  "source_checkpoint": "160800d9b136e953c6415cd5229ded87eae72a0f",
+  "templates": [
+    {
+      "template_id": "COCKPIT-8-v1",
+      "scene": "COCKPIT",
+      "size": 8,
+      "node_count": 8,
+      "edge_count": 9,
+      "service_groups": [
+        "H",
+        "L"
+      ],
+      "nodes": [
+        {
+          "id": "COCKPIT.n01",
+          "role": "audio",
+          "group": "INHERIT_SERVICE_GROUP",
+          "allowed_group_variants": [
+            "H",
+            "L"
+          ],
+          "predecessors": [],
+          "cost_scale": "1",
+          "parent_8_node": "COCKPIT.n01"
+        },
+        {
+          "id": "COCKPIT.n02",
+          "role": "speech",
+          "group": "INHERIT_SERVICE_GROUP",
+          "allowed_group_variants": [
+            "H",
+            "L"
+          ],
+          "predecessors": [
+            "COCKPIT.n01"
+          ],
+          "cost_scale": "1",
+          "parent_8_node": "COCKPIT.n02"
+        },
+        {
+          "id": "COCKPIT.n03",
+          "role": "intent",
+          "group": "INHERIT_SERVICE_GROUP",
+          "allowed_group_variants": [
+            "H",
+            "L"
+          ],
+          "predecessors": [
+            "COCKPIT.n02"
+          ],
+          "cost_scale": "1",
+          "parent_8_node": "COCKPIT.n03"
+        },
+        {
+          "id": "COCKPIT.n04",
+          "role": "display",
+          "group": "INHERIT_SERVICE_GROUP",
+          "allowed_group_variants": [
+            "H",
+            "L"
+          ],
+          "predecessors": [
+            "COCKPIT.n03",
+            "COCKPIT.n05"
+          ],
+          "cost_scale": "1",
+          "parent_8_node": "COCKPIT.n04"
+        },
+        {
+          "id": "COCKPIT.n05",
+          "role": "navigation",
+          "group": "INHERIT_SERVICE_GROUP",
+          "allowed_group_variants": [
+            "H",
+            "L"
+          ],
+          "predecessors": [],
+          "cost_scale": "1",
+          "parent_8_node": "COCKPIT.n05"
+        },
+        {
+          "id": "COCKPIT.n06",
+          "role": "route",
+          "group": "INHERIT_SERVICE_GROUP",
+          "allowed_group_variants": [
+            "H",
+            "L"
+          ],
+          "predecessors": [
+            "COCKPIT.n03",
+            "COCKPIT.n05"
+          ],
+          "cost_scale": "1",
+          "parent_8_node": "COCKPIT.n06"
+        },
+        {
+          "id": "COCKPIT.n07",
+          "role": "compose",
+          "group": "INHERIT_SERVICE_GROUP",
+          "allowed_group_variants": [
+            "H",
+            "L"
+          ],
+          "predecessors": [
+            "COCKPIT.n04",
+            "COCKPIT.n06"
+          ],
+          "cost_scale": "1",
+          "parent_8_node": "COCKPIT.n07"
+        },
+        {
+          "id": "COCKPIT.n08",
+          "role": "interaction",
+          "group": "INHERIT_SERVICE_GROUP",
+          "allowed_group_variants": [
+            "H",
+            "L"
+          ],
+          "predecessors": [
+            "COCKPIT.n07"
+          ],
+          "cost_scale": "1",
+          "parent_8_node": "COCKPIT.n08"
+        }
+      ],
+      "hidden_nodes": [],
+      "implicit_dummy": false
+    },
+    {
+      "template_id": "COCKPIT-16-v1",
+      "scene": "COCKPIT",
+      "size": 16,
+      "node_count": 16,
+      "edge_count": 17,
+      "service_groups": [
+        "H",
+        "L"
+      ],
+      "nodes": [
+        {
+          "id": "COCKPIT.n01.a",
+          "role": "audio",
+          "group": "INHERIT_SERVICE_GROUP",
+          "allowed_group_variants": [
+            "H",
+            "L"
+          ],
+          "predecessors": [],
+          "cost_scale": "1/2",
+          "parent_8_node": "COCKPIT.n01"
+        },
+        {
+          "id": "COCKPIT.n01.b",
+          "role": "audio",
+          "group": "INHERIT_SERVICE_GROUP",
+          "allowed_group_variants": [
+            "H",
+            "L"
+          ],
+          "predecessors": [
+            "COCKPIT.n01.a"
+          ],
+          "cost_scale": "1/2",
+          "parent_8_node": "COCKPIT.n01"
+        },
+        {
+          "id": "COCKPIT.n02.a",
+          "role": "speech",
+          "group": "INHERIT_SERVICE_GROUP",
+          "allowed_group_variants": [
+            "H",
+            "L"
+          ],
+          "predecessors": [
+            "COCKPIT.n01.b"
+          ],
+          "cost_scale": "1/2",
+          "parent_8_node": "COCKPIT.n02"
+        },
+        {
+          "id": "COCKPIT.n02.b",
+          "role": "speech",
+          "group": "INHERIT_SERVICE_GROUP",
+          "allowed_group_variants": [
+            "H",
+            "L"
+          ],
+          "predecessors": [
+            "COCKPIT.n02.a"
+          ],
+          "cost_scale": "1/2",
+          "parent_8_node": "COCKPIT.n02"
+        },
+        {
+          "id": "COCKPIT.n03.a",
+          "role": "intent",
+          "group": "INHERIT_SERVICE_GROUP",
+          "allowed_group_variants": [
+            "H",
+            "L"
+          ],
+          "predecessors": [
+            "COCKPIT.n02.b"
+          ],
+          "cost_scale": "1/2",
+          "parent_8_node": "COCKPIT.n03"
+        },
+        {
+          "id": "COCKPIT.n03.b",
+          "role": "intent",
+          "group": "INHERIT_SERVICE_GROUP",
+          "allowed_group_variants": [
+            "H",
+            "L"
+          ],
+          "predecessors": [
+            "COCKPIT.n03.a"
+          ],
+          "cost_scale": "1/2",
+          "parent_8_node": "COCKPIT.n03"
+        },
+        {
+          "id": "COCKPIT.n04.a",
+          "role": "display",
+          "group": "INHERIT_SERVICE_GROUP",
+          "allowed_group_variants": [
+            "H",
+            "L"
+          ],
+          "predecessors": [
+            "COCKPIT.n03.b",
+            "COCKPIT.n05.b"
+          ],
+          "cost_scale": "1/2",
+          "parent_8_node": "COCKPIT.n04"
+        },
+        {
+          "id": "COCKPIT.n04.b",
+          "role": "display",
+          "group": "INHERIT_SERVICE_GROUP",
+          "allowed_group_variants": [
+            "H",
+            "L"
+          ],
+          "predecessors": [
+            "COCKPIT.n04.a"
+          ],
+          "cost_scale": "1/2",
+          "parent_8_node": "COCKPIT.n04"
+        },
+        {
+          "id": "COCKPIT.n05.a",
+          "role": "navigation",
+          "group": "INHERIT_SERVICE_GROUP",
+          "allowed_group_variants": [
+            "H",
+            "L"
+          ],
+          "predecessors": [],
+          "cost_scale": "1/2",
+          "parent_8_node": "COCKPIT.n05"
+        },
+        {
+          "id": "COCKPIT.n05.b",
+          "role": "navigation",
+          "group": "INHERIT_SERVICE_GROUP",
+          "allowed_group_variants": [
+            "H",
+            "L"
+          ],
+          "predecessors": [
+            "COCKPIT.n05.a"
+          ],
+          "cost_scale": "1/2",
+          "parent_8_node": "COCKPIT.n05"
+        },
+        {
+          "id": "COCKPIT.n06.a",
+          "role": "route",
+          "group": "INHERIT_SERVICE_GROUP",
+          "allowed_group_variants": [
+            "H",
+            "L"
+          ],
+          "predecessors": [
+            "COCKPIT.n03.b",
+            "COCKPIT.n05.b"
+          ],
+          "cost_scale": "1/2",
+          "parent_8_node": "COCKPIT.n06"
+        },
+        {
+          "id": "COCKPIT.n06.b",
+          "role": "route",
+          "group": "INHERIT_SERVICE_GROUP",
+          "allowed_group_variants": [
+            "H",
+            "L"
+          ],
+          "predecessors": [
+            "COCKPIT.n06.a"
+          ],
+          "cost_scale": "1/2",
+          "parent_8_node": "COCKPIT.n06"
+        },
+        {
+          "id": "COCKPIT.n07.a",
+          "role": "compose",
+          "group": "INHERIT_SERVICE_GROUP",
+          "allowed_group_variants": [
+            "H",
+            "L"
+          ],
+          "predecessors": [
+            "COCKPIT.n04.b",
+            "COCKPIT.n06.b"
+          ],
+          "cost_scale": "1/2",
+          "parent_8_node": "COCKPIT.n07"
+        },
+        {
+          "id": "COCKPIT.n07.b",
+          "role": "compose",
+          "group": "INHERIT_SERVICE_GROUP",
+          "allowed_group_variants": [
+            "H",
+            "L"
+          ],
+          "predecessors": [
+            "COCKPIT.n07.a"
+          ],
+          "cost_scale": "1/2",
+
+DEFINITION_KEYS ['ASCII', 'ID', 'SHA256', 'UINT', 'UTC', 'F64_BITS', 'SEED_TEXT', 'RATIONAL', 'METHOD', 'RESOURCE', 'VARIANT', 'ARTIFACT_REF', 'KEY', 'ANALYSIS_INDEX_KEY', 'BLUEPRINT_PREIMAGE', 'EXECUTION_PLAN_PREIMAGE', 'INPUT_DESCRIPTOR_PREIMAGE', 'EXECUTION_AUTH_PREIMAGE', 'GENERATION_AUTH_PREIMAGE', 'INPUT_LOCK_PREIMAGE', 'GENERATION_ATTEMPT_PREIMAGE', 'SUCCESS_PROCESS', 'GENERATION_RECEIPT_PREIMAGE', 'MATERIALIZED_INPUT_PREIMAGE', 'INPUT_RESOLUTION_PREIMAGE', 'WORKLOAD_PREIMAGE', 'SEMANTIC_ARGV_PREIMAGE', 'RUN_PREIMAGE', 'ATTEMPT_PREIMAGE', 'RUN_LOCK_PREIMAGE', 'PROCESS_RESULT', 'PUBLIC_NODE', 'PUBLIC_SERVICE', 'PUBLIC_SNAPSHOT', 'SNAPSHOT_EVENT', 'DENOMINATOR_SCOPE_PREIMAGE', 'STATE_KEY_PREIMAGE', 'WINDOWS', 'GROUP_METRICS', 'GATE_STATE', 'PROJECTION_INTERVAL', 'ASSIGNMENT', 'TARGET_FINISH', 'LOCAL_L_FINISH', 'DIAGNOSTIC_RECORD', 'DIAGNOSTIC_ERROR_RECORD', 'RUNTIME_PAYLOAD', 'SCIENTIFIC_INPUT_ENVELOPE', 'VALIDATION_RESULT', 'METRIC_DERIVATION', 'REPLAY_RESULT', 'SCIENTIFIC_RUN_RECORD', 'FEASIBILITY_CERTIFICATE', 'STAGE_RECORD', 'REPLAY_PREIMAGE', 'COMPLETION_PREIMAGE', 'SOURCE_BUNDLE_PREIMAGE', 'ENVIRONMENT_PREIMAGE', 'BINDING_LITERAL', 'BINDING_COPY', 'KEY_BINDING']
+INPUT_LOCK_PREIMAGE {
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "namespace",
+    "schema_version",
+    "blueprint_sha256",
+    "input_descriptor_sha256",
+    "generation_authorization_sha256"
+  ],
+  "properties": {
+    "namespace": {
+      "const": "soc.p2.input-lock.v2"
+    },
+    "schema_version": {
+      "const": 2
+    },
+    "blueprint_sha256": {
+      "$ref": "#/$defs/SHA256"
+    },
+    "input_descriptor_sha256": {
+      "$ref": "#/$defs/SHA256"
+    },
+    "generation_authorization_sha256": {
+      "$ref": "#/$defs/SHA256"
+    }
+  }
+}
+SUCCESS_PROCESS {
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "process_started",
+    "exit_code",
+    "argv_actual",
+    "cwd",
+    "host_identity_sha256",
+    "started_at_utc",
+    "ended_at_utc",
+    "monotonic_elapsed_ns",
+    "stdout",
+    "stderr"
+  ],
+  "properties": {
+    "process_started": {
+      "const": true
+    },
+    "exit_code": {
+      "const": 0
+    },
+    "argv_actual": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ASCII"
+      }
+    },
+    "cwd": {
+      "$ref": "#/$defs/ID"
+    },
+    "host_identity_sha256": {
+      "$ref": "#/$defs/SHA256"
+    },
+    "started_at_utc": {
+      "$ref": "#/$defs/UTC"
+    },
+    "ended_at_utc": {
+      "$ref": "#/$defs/UTC"
+    },
+    "monotonic_elapsed_ns": {
+      "$ref": "#/$defs/UINT"
+    },
+    "stdout": {
+      "$ref": "#/$defs/ARTIFACT_REF"
+    },
+    "stderr": {
+      "$ref": "#/$defs/ARTIFACT_REF"
+    }
+  }
+}
+RUN_LOCK_PREIMAGE {
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "namespace",
+    "schema_version",
+    "run_id",
+    "attempt_id"
+  ],
+  "properties": {
+    "namespace": {
+      "const": "soc.p2.run-lock.v2"
+    },
+    "schema_version": {
+      "const": 2
+    },
+    "run_id": {
+      "$ref": "#/$defs/ID"
+    },
+    "attempt_id": {
+      "$ref": "#/$defs/ID"
+    }
+  }
+}
+PROCESS_RESULT {
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "process_started",
+    "exit_code",
+    "termination_kind",
+    "signal",
+    "exception",
+    "argv_actual",
+    "cwd",
+    "host_identity_sha256",
+    "planned_at_utc",
+    "started_at_utc",
+    "ended_at_utc",
+    "monotonic_elapsed_ns",
+    "stdout",
+    "stderr"
+  ],
+  "properties": {
+    "process_started": {
+      "type": "boolean"
+    },
+    "exit_code": {
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "termination_kind": {
+      "enum": [
+        "NOT_STARTED",
+        "EXITED",
+        "SIGNALLED",
+        "SPAWN_FAILED",
+        "INTERRUPTED",
+        "UNKNOWN"
+      ]
+    },
+    "signal": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ID"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "exception": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ASCII"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "argv_actual": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ASCII"
+      }
+    },
+    "cwd": {
+      "$ref": "#/$defs/ID"
+    },
+    "host_identity_sha256": {
+      "$ref": "#/$defs/SHA256"
+    },
+    "planned_at_utc": {
+      "$ref": "#/$defs/UTC"
+    },
+    "started_at_utc": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/UTC"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "ended_at_utc": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/UTC"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "monotonic_elapsed_ns": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/UINT"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "stdout": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ARTIFACT_REF"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "stderr": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ARTIFACT_REF"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  }
+}
+DIAGNOSTIC_RECORD {
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "namespace",
+    "schema_version",
+    "diagnostic_id",
+    "observer_spec_sha256",
+    "state_key",
+    "representative_event_seq",
+    "scope_hash",
+    "eligibility_reason",
+    "all_ready_count",
+    "all_target_count",
+    "selected_K_IDs",
+    "selected_target_IDs",
+    "truncation_flags",
+    "coverage_status",
+    "baseline_assignment",
+    "baseline_calendar",
+    "baseline_target_finishes",
+    "baseline_L_finishes",
+    "enumeration_count",
+    "feasible_count",
+    "enumeration_digest_sha256",
+    "best_assignment",
+    "best_calendar",
+    "best_target_finishes",
+    "projected_H_path_and_resource_blockers",
+    "b",
+    "o",
+    "delta_ms",
+    "g",
+    "threshold_bundle_id",
+    "view_outcome",
+    "independent_recompute_ref",
+    "independent_recompute_status"
+  ],
+  "properties": {
+    "namespace": {
+      "const": "soc.p2.diagnostic-record.v2"
+    },
+    "schema_version": {
+      "const": 2
+    },
+    "diagnostic_id": {
+      "const": "M1R_PATH_V2"
+    },
+    "observer_spec_sha256": {
+      "$ref": "#/$defs/SHA256"
+    },
+    "state_key": {
+      "$ref": "#/$defs/SHA256"
+    },
+    "representative_event_seq": {
+      "$ref": "#/$defs/UINT"
+    },
+    "scope_hash": {
+      "$ref": "#/$defs/SHA256"
+    },
+    "eligibility_reason": {
+      "$ref": "#/$defs/ID"
+    },
+    "all_ready_count": {
+      "$ref": "#/$defs/UINT"
+    },
+    "all_target_count": {
+      "$ref": "#/$defs/UINT"
+    },
+    "selected_K_IDs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ID"
+      }
+    },
+    "selected_target_IDs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ID"
+      }
+    },
+    "truncation_flags": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ID"
+      }
+    },
+    "coverage_status": {
+      "enum": [
+        "NOT_IN_SCOPE",
+        "VALID_FULL",
+        "COVERAGE_INSUFFICIENT",
+        "INVALID",
+        "INCOMPLETE"
+      ]
+    },
+    "baseline_assignment": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ASSIGNMENT"
+      }
+    },
+    "baseline_calendar": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/PROJECTION_INTERVAL"
+      }
+    },
+    "baseline_target_finishes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/TARGET_FINISH"
+      }
+    },
+    "baseline_L_finishes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/LOCAL_L_FINISH"
+      }
+    },
+    "enumeration_count": {
+      "$ref": "#/$defs/UINT"
+    },
+    "feasible_count": {
+      "$ref": "#/$defs/UINT"
+    },
+    "enumeration_digest_sha256": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/SHA256"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "best_assignment": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ASSIGNMENT"
+      }
+    },
+    "best_calendar": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/PROJECTION_INTERVAL"
+      }
+    },
+    "best_target_finishes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/TARGET_FINISH"
+      }
+    },
+    "projected_H_path_and_resource_blockers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "target_service_id",
+          "critical_node_path",
+          "blocking_intervals"
+        ],
+        "properties": {
+          "target_service_id": {
+            "$ref": "#/$defs/ID"
+          },
+          "critical_node_path": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/ID"
+            }
+          },
+          "blocking_intervals": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/PROJECTION_INTERVAL"
+            }
+          }
+        }
+      }
+    },
+    "b": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/RATIONAL"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "o": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/RATIONAL"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "delta_ms": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/RATIONAL"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "g": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/RATIONAL"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "threshold_bundle_id": {
+      "enum": [
+        "FINE",
+        "COARSE"
+      ]
+    },
+    "view_outcome": {
+      "enum": [
+        "NOT_IN_SCOPE",
+        "COVERAGE_INSUFFICIENT",
+        "INVALID",
+        "INCOMPLETE",
+        "NO_IMPROVEMENT_IN_TESTED_SPACE",
+        "SUBTHRESHOLD_IMPROVEMENT",
+        "MATERIAL_IMPROVEMENT_IN_TESTED_SPACE"
+      ]
+    },
+    "independent_recompute_ref": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ARTIFACT_REF"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "independent_recompute_status": {
+      "enum": [
+        "NOT_RUN",
+        "PASS",
+        "FAIL"
+      ]
+    }
+  }
+}
+DIAGNOSTIC_ERROR_RECORD {
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "namespace",
+    "schema_version",
+    "run_id",
+    "attempt_id",
+    "expected_event_seq",
+    "phase",
+    "reason",
+    "missing_or_corrupt_ref",
+    "diagnostic_validity"
+  ],
+  "properties": {
+    "namespace": {
+      "const": "soc.p2.diagnostic-error.v2"
+    },
+    "schema_version": {
+      "const": 2
+    },
+    "run_id": {
+      "$ref": "#/$defs/ID"
+    },
+    "attempt_id": {
+      "$ref": "#/$defs/ID"
+    },
+    "expected_event_seq": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/UINT"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "phase": {
+      "$ref": "#/$defs/ID"
+    },
+    "reason": {
+      "$ref": "#/$defs/ID"
+    },
+    "missing_or_corrupt_ref": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ARTIFACT_REF"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "diagnostic_validity": {
+      "enum": [
+        "INVALID",
+        "INCOMPLETE"
+      ]
+    }
+  }
+}
+SCIENTIFIC_RUN_RECORD {
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "namespace",
+    "schema_version",
+    "run_id",
+    "attempt_id",
+    "execution_plan_sha256",
+    "trial_id",
+    "method_id",
+    "workload_id",
+    "actual_seed_decimal_string",
+    "partition",
+    "scenario",
+    "condition_id",
+    "config_id",
+    "control_variant",
+    "source_bundle_sha256",
+    "input_envelope_ref",
+    "process",
+    "raw_artifacts",
+    "trace_validation",
+    "metric_derivation",
+    "replay",
+    "completion_status",
+    "error_records"
+  ],
+  "properties": {
+    "namespace": {
+      "const": "soc.science.p2.run-record"
+    },
+    "schema_version": {
+      "const": 2
+    },
+    "run_id": {
+      "$ref": "#/$defs/ID"
+    },
+    "attempt_id": {
+      "$ref": "#/$defs/ID"
+    },
+    "execution_plan_sha256": {
+      "$ref": "#/$defs/SHA256"
+    },
+    "trial_id": {
+      "$ref": "#/$defs/ID"
+    },
+    "method_id": {
+      "$ref": "#/$defs/METHOD"
+    },
+    "workload_id": {
+      "$ref": "#/$defs/ID"
+    },
+    "actual_seed_decimal_string": {
+      "$ref": "#/$defs/SEED_TEXT"
+    },
+    "partition": {
+      "const": "CALIBRATION"
+    },
+    "scenario": {
+      "enum": [
+        "COCKPIT",
+        "ADAS",
+        "FUSION"
+      ]
+    },
+    "condition_id": {
+      "$ref": "#/$defs/ID"
+    },
+    "config_id": {
+      "$ref": "#/$defs/ID"
+    },
+    "control_variant": {
+      "$ref": "#/$defs/VARIANT"
+    },
+    "source_bundle_sha256": {
+      "$ref": "#/$defs/SHA256"
+    },
+    "input_envelope_ref": {
+      "$ref": "#/$defs/ARTIFACT_REF"
+    },
+    "process": {
+      "$ref": "#/$defs/PROCESS_RESULT"
+    },
+    "raw_artifacts": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ARTIFACT_REF"
+      }
+    },
+    "trace_validation": {
+      "$ref": "#/$defs/VALIDATION_RESULT"
+    },
+    "metric_derivation": {
+      "$ref": "#/$defs/METRIC_DERIVATION"
+    },
+    "replay": {
+      "$ref": "#/$defs/REPLAY_RESULT"
+    },
+    "completion_status": {
+      "enum": [
+        "PREPARED",
+        "RUNNING",
+        "FAILED",
+        "INVALID",
+        "INCOMPLETE",
+        "COMPLETE"
+      ]
+    },
+    "error_records": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ARTIFACT_REF"
+      }
+    }
+  }
+}
+STAGE_RECORD {
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "namespace",
+    "schema_version",
+    "execution_plan_sha256",
+    "source_bundle_sha256",
+    "state",
+    "expected_trial_slots",
+    "attempted_trial_slots",
+    "completed_trial_slots",
+    "reused_trial_slots",
+    "failed_trial_slots",
+    "not_started_trial_slots",
+    "expected_input_count",
+    "selected_condition_ids",
+    "integrity_report_ref",
+    "selection_report_ref",
+    "diagnostic_report_ref",
+    "criterion_report_ref",
+    "timing_freeze_receipt_ref",
+    "prerequisite_evidence"
+  ],
+  "properties": {
+    "namespace": {
+      "const": "soc.science.p2.stage-record"
+    },
+    "schema_version": {
+      "const": 2
+    },
+    "execution_plan_sha256": {
+      "$ref": "#/$defs/SHA256"
+    },
+    "source_bundle_sha256": {
+      "$ref": "#/$defs/SHA256"
+    },
+    "state": {
+      "$ref": "#/$defs/GATE_STATE"
+    },
+    "expected_trial_slots": {
+      "const": 2520
+    },
+    "attempted_trial_slots": {
+      "$ref": "#/$defs/UINT"
+    },
+    "completed_trial_slots": {
+      "$ref": "#/$defs/UINT"
+    },
+    "reused_trial_slots": {
+      "$ref": "#/$defs/UINT"
+    },
+    "failed_trial_slots": {
+      "$ref": "#/$defs/UINT"
+    },
+    "not_started_trial_slots": {
+      "$ref": "#/$defs/UINT"
+    },
+    "expected_input_count": {
+      "const": 1080
+    },
+    "selected_condition_ids": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ID"
+      }
+    },
+    "integrity_report_ref": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ARTIFACT_REF"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "selection_report_ref": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ARTIFACT_REF"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "diagnostic_report_ref": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ARTIFACT_REF"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "criterion_report_ref": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ARTIFACT_REF"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "timing_freeze_receipt_ref": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ARTIFACT_REF"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "prerequisite_evidence": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ARTIFACT_REF"
+      }
+    }
+  }
+}
+SOURCE_BUNDLE_PREIMAGE {
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "namespace",
+    "schema_version",
+    "source_commit",
+    "source_files",
+    "dependency_manifest_sha256",
+    "model_contract_sha256",
+    "dirty_policy"
+  ],
+  "properties": {
+    "namespace": {
+      "const": "soc.p2.source-bundle.v2"
+    },
+    "schema_version": {
+      "const": 2
+    },
+    "source_commit": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "source_files": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "path",
+          "sha256"
+        ],
+        "properties": {
+          "path": {
+            "$ref": "#/$defs/ID"
+          },
+          "sha256": {
+            "$ref": "#/$defs/SHA256"
+          }
+        }
+      }
+    },
+    "dependency_manifest_sha256": {
+      "$ref": "#/$defs/SHA256"
+    },
+    "model_contract_sha256": {
+      "$ref": "#/$defs/SHA256"
+    },
+    "dirty_policy": {
+      "const": "REJECT_RELEVANT_DIRTY_OR_UNTRACKED"
+    }
+  }
+}
+ENVIRONMENT_PREIMAGE {
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "namespace",
+    "schema_version",
+    "python_implementation",
+    "python_version",
+    "machine",
+    "platform",
+    "numeric_model",
+    "dependency_manifest_sha256",
+    "host_identity_sha256"
+  ],
+  "properties": {
+    "namespace": {
+      "const": "soc.p2.environment.v2"
+    },
+    "schema_version": {
+      "const": 2
+    },
+    "python_implementation": {
+      "const": "CPython"
+    },
+    "python_version": {
+      "$ref": "#/$defs/ID"
+    },
+    "machine": {
+      "$ref": "#/$defs/ID"
+    },
+    "platform": {
+      "$ref": "#/$defs/ID"
+    },
+    "numeric_model": {
+      "const": "IEEE754_BINARY64_RN_TIES_EVEN_NO_FMA"
+    },
+    "dependency_manifest_sha256": {
+      "$ref": "#/$defs/SHA256"
+    },
+    "host_identity_sha256": {
+      "$ref": "#/$defs/SHA256"
+    }
+  }
+}

@@ -1,0 +1,137 @@
+{
+  "scope": "Static report integrity and source identity only; not P0/P1/P2 gate or runtime/scientific test",
+  "passed": 21,
+  "failed": [],
+  "checks": [
+    {
+      "id": "ALL12_REQUIRED_REPORTS",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "ALL462_PREEXISTING_BYTES_UNCHANGED",
+      "pass_": true,
+      "detail": []
+    },
+    {
+      "id": "WORKTREE_CHANGES_ONLY_REPORT_NAMESPACE",
+      "pass_": true,
+      "detail": {
+        "changed_paths": 207
+      }
+    },
+    {
+      "id": "DIFF_FROM_START_ONLY_NEW_REPORTS",
+      "pass_": true,
+      "detail": {
+        "tracked_diff_paths": 0
+      }
+    },
+    {
+      "id": "ALL_STRUCTURED_FILE_REFERENCES_MATCH",
+      "pass_": true,
+      "detail": {
+        "references": 1339,
+        "mismatches": []
+      }
+    },
+    {
+      "id": "ALL_EXPLICIT_LINE_RANGES_WITHIN_SOURCE",
+      "pass_": true,
+      "detail": []
+    },
+    {
+      "id": "TEN_ORIGINAL_DECISION_IDS",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "FORTY_ORIGINAL_PARAMETER_IDS",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "ALL50_APPROVALS_UNAPPROVED",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "FIVE_READY_FIVE_REVISION_RECOMMENDATIONS",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "NO_IMPLEMENTATION_OR_EXECUTION_AUTHORIZED",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "NINE_FINDINGS_FIVE_CORRECTIONS_FOUR_INFO",
+      "pass_": true,
+      "detail": {
+        "CRITICAL": 1,
+        "MAJOR": 2,
+        "MEDIUM": 1,
+        "LOW": 1,
+        "INFO": 4
+      }
+    },
+    {
+      "id": "CANONICAL_REPORT_MATCHES_LOCAL_FINAL_FINDINGS",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "CONSISTENT_VERDICT",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "ALL2520_ROWS20_FIELDS_PASS",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "ALL36_CONFIGURATIONS_PASS",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "MATRIX_COUNTS_AND_FRESH_SOURCE_HASH",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "NINE_M1R_CASES_REPORTED",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "ZERO_SCIENCE_REPORTED",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "COMMAND_IDS_UNIQUE_REAL_OUTPUT_REFS",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "KNOWN_READ_ERROR_PRESERVED_AND_CORRECTED",
+      "pass_": true,
+      "detail": null
+    }
+  ],
+  "integrity_status": "PASS",
+  "design_review": "DESIGN_REVIEW_REVISE_REQUIRED",
+  "audit_exit_code": 2,
+  "exit_semantics": {
+    "0": "intact report with no critical finding",
+    "1": "report integrity failure",
+    "2": "intact report preserving unresolved critical design finding"
+  },
+  "reviewed_command_count_at_check": 79,
+  "manifest_validation_scope": "Manifest emitted after this check and final command aggregation; separate publication check validates all final files",
+  "scientific_workloads_generated": 0,
+  "scientific_workloads_run": 0
+}

@@ -1,0 +1,290 @@
+FILE docs/P2_design/v2/P2_runner_schema_review_v2.md
+1: # D09/D10 v2 — proposed lifecycle, recovery and typed artifacts
+2: 
+3: DRAFT / UNAPPROVED / IMPLEMENTATION_VALIDATION_PENDING。仅设计，不创建任何科学实例或执行入口。
+4: R1唯一正式runner、S2新scientific family仍是建议，R2薄launcher/S1 envelope是未选替代。
+5: 现行P1身份和代码不改。真实字段定义、closed对象与21个preimage在`P2_typed_identity_schema_v2.json`。
+6: 
+7: ## Hash与字段作用域
+8: 
+9: 每个`*_PREIMAGE`的精确字段、类型、required、nullability与namespace是typed schema中的对象；
+10: 不得自行加own_id、hash、未来结果或省略字段。ID prefix以preimage_registry为准。
+11: SEMANTIC_CANON_V2处理无float的身份/参数；RUNTIME_CANON_PY312_F64_V2处理运行数值payload。
+12: 原始文件另存raw SHA/size；raw与semantic值可以相等但字段和验证责任不能混称。
+13: 
+14: | 记录 | 在何时已有全部preimage字段 | 禁止依赖 |
+15: |---|---|---|
+16: | Blueprint | 源码实现经另行验证冻结、科学参数明确批准之后，生成之前 | payload、receipt、run/attempt、结果 |
+17: | Symbolic execution plan | Blueprint及批准的完整符号trial/method/observer/statistical定义已知 | resolved输入与任何结果 |
+18: | Execution authorization | 独立明确授权与blueprint/plan/source已知 | 不以文档生成本身充当授权 |
+19: | Input descriptor | blueprint/config/seed/variant已知；control只引用已知MAIN descriptor | parent真实payload或未来run |
+20: | Generation authorization / input lock / generation attempt | 上述descriptor及明确生成授权已知 | 内容hash、workload ID、run锁 |
+21: | Generation receipt | 真实生成过程完成，payload/logs/exact sidecar已有hash | 未来resolution/workload/completion ID |
+22: | Materialized content identity | descriptor+canonical payload及control父content已知 | 自身ID或最终科学envelope |
+23: | Input-resolution receipt | generation receipt、独立输入验证、control父resolution已知 | 未来workload/run ID |
+24: | Workload identity | descriptor+blueprint+materialized content已知，且resolution已核验 | generation时间/attempt/未来run |
+25: | Semantic argv / Run ID | workload ID、plan、source/environment/observer等已知 | attempt ID、输出路径、wall time |
+26: | Attempt ID / run锁 | run ID、明确execution authorization和ordinal1已知 | 实际退出、trace/未来completion |
+27: | Replay ID | primary trace、run/attempt及注册replay协议已知 | 未来replay比较结果 |
+28: | Completion receipt | 全部raw、验证、指标、重放与不含自身的artifact inventory已有hash | 自身receipt/hash或未来stage结论 |
+29: 
+30: Blueprint的generation/config语义内容不含method/criterion结果，运行计划单独绑定方法与观察器。
+31: source bundle只含已冻结源码/依赖/原模型协议及其source commit，不含blueprint实例/结果/本身的
+32: 外层metadata提交hash。实际执行HEAD另实记；不得伪装dirty字节。P2相关源码洁净是新增待批工程规则。
+33: 
+34: 输入验证分两层：resolution前检查raw payload、descriptor、generator receipt、父MAIN和变换，
+35: 其报告不得引用未来workload/envelope；resolution后才发布workload ID和scientific envelope，
+36: pre-invocation再次验证完整血缘。这样不通过“先要科学envelope才能验证输入”制造新循环。
+37: 
+38: Workload语义ID不含generation时间/receipt attempt，重建相同语义内容不因此改变内容身份。
+39: 但不能用新birth receipt覆盖旧run所引用的原始raw refs；复用必须核验原complete bundle。
+40: 旧refs丢失/不同不能因新内容相似就修补成COMPLETE，须保留冲突并闭锁。
+41: 
+42: ## 确切操作顺序与先决条件
+43: 
+44: 1. 拒绝DRAFT、未批准决定、未知source、非CALIBRATION seed或未授权生成。此时允许合法的符号wlref，
+45:    不要求未来payload hash。当前文件就是DRAFT，因此不具备通过该守卫的资格。
+46: 2. 用已知blueprint/descriptor/generation authorization取得input锁和generation attempt1。
+47: 3. 每config/seed先物化MAIN并保存真实过程/精确sidecar；独立验证，形成MAIN resolution。
+48: 4. 从该MAIN派生两个control，同位保留数值/身份，不重新draw；分别保存和核验独立resolution。
+49: 5. 发布resolved workload ID及科学envelope；形成semantic argv、run ID、attempt1、run锁。
+50: 6. pre-invocation要求所有resolved hash、source/approval/seed/plan/variant/lineage符合，拒绝未解析wlref。
+51: 7. 实际引擎顺序仍按矩阵：H-only B2、LOW B2、MAIN B1..B5。物化MAIN不等于先执行MAIN。
+52: 8. 保存raw process/code/logs/trace，独立trace验证与指标复算，执行一次注册replay并逐项比较。
+53: 9. 所有COMPLETE合取满足才原子发布trial completion。先close/fsync数据及父目录，再发布immutable
+54:    receipt，最后CAS更新完成指针；artifact inventory不含自身或未来receipt，不覆盖旧文件。
+55: 10. 全2520完整证据后先做B2-only资格/选择，保存全部A/B记录；之后做M1R/M2及D08分类，再写分离
+56:     stage状态和P2 gate出口。任何结果不能反向改input、选择或判据。
+57: 
+58: hash依赖和授权/可用性依赖分开标记：resolution必须先核验才能发布workload ID，但workload
+59: 语义preimage无需包含带时间的receipt hash。报告DAG展示两条variant分支的合并；MAIN不需要
+60: control resolution。所有instance源hash/命令/日志未来才产生，未实现值在本版没有伪造实例。
+61: 
+62: ## Invocation与attempt
+63: 
+64: 未来拟议worker接口`python -m soc.execution_worker_v2`尚不存在，不能调用。本设计仅登记角色、
+65: method、workload、source和semantic options；actual input/output paths按已知ID在批准CALIBRATION
+66: 根内确定性渲染。RUN只hash semantic argv；actual argv包含已算出的attempt路径并逐字保存，
+67: pre-invocation验证渲染完全符合模板。不得把任意flag列入“忽略字段”，不能把actual argv反向放进run ID。
+68: 
+69: attempt ID由run_id、execution_authorization_sha、ordinal1得到；run锁含run/attempt均已知。
+70: replay是同trial的注册子执行，单独ID/过程/日志，不产生第二科学样本，也不是失败重试。
+71: 当前无ordinal>1或额外retry授权。source/参数变了必须另审plan与身份，禁止静默混样本。
+72: 
+73: PROCESS_RESULT明确process_started、actual exit或null、termination、signal/exception、planned/start/end
+74: UTC与monotonic elapsed、actual argv/cwd/host及raw stdout/stderr。spawn失败start/exit=null；
+75: 进程开始但中断未收集exit也为null，不能补0。墙钟异常单独记录，不改变虚拟时间。
+76: 
+77: ## 中断与幂等恢复
+78: 
+79: | 中断点 | 必须保留 | 允许的幂等动作 / 禁止动作 |
+80: |---|---|---|
+81: | Blueprint/authorization未通过 | 拒绝原因与所见hash | 只读复查；不得生成、取得运行身份或伪造批准 |
+82: | 输入锁/GEN PREPARED后未启动 | owner/lease/attempt收据、process_started=false | 检查lease，显式授权才释放/归档；不自动重启过程 |
+83: | 生成中或payload缺receipt | 部分payload/log/实际退出 | INCOMPLETE/FAILED停；不覆盖、删残件或追加draw |
+84: | payload/GEN receipt完整，resolution未成 | 完整immutable bytes、原验证进度 | 可核验已有材料；不得假造验证PASS。若需恢复验证/发布，先明确授权、仅新增收据、不增加过程次数 |
+85: | resolution完整、run未启动 | 已解析输入与出生链 | 只复用原输入；若旧execution attempt已标INCOMPLETE，不把它改回PREPARED |
+86: | primary执行中或退出非零 | 原始日志/trace/exit/attempt | 停整个计划，不自动retry；新过程需要另审触发条件/次数/plan |
+87: | primary完成但验证/重放未完整 | 全部原始输出/已有检查 | 未满足合取不能COMPLETE；缺replay不得写exact-match；恢复步骤需显式批准且不重复已完成过程 |
+88: | 所有验证/replay已有、原子指针未发布 | 原immutable收据/hash/CAS进度 | 显式只读核验和授权的仅发布恢复可新增recovery receipt，零引擎调用，旧终态不覆盖 |
+89: | COMPLETE已发布 | 原完整bundle和指针 | 全身份/原始refs再次精确核验才复用，另写reuse receipt，零新增样本/引擎调用 |
+90: | 相同ID不同字节、锁冲突或旧refs丢失 | 冲突双方与诊断 | fail closed；不取最新，不改ID隐匿冲突，不以重建相似数据补旧证据 |
+91: 
+92: 所有状态变化为append-only新phase receipt，不原地重写终态。当前自动重试0；上述恢复是规则
+93: 设计，不等于当前授权恢复，更不允许扩大2520/5040预算。任何新增实际调用都须另行事前登记。
+94: 
+95: ## COMPLETE、科学分类、gate与退出
+96: 
+97: typed GATE_STATE强制分离execution、integrity、identity、selection、diagnostic、mapping、timing、
+98: progression。stage JSON给出每字段enum及合法转移、所需证据和退出表；错误不能靠改标签变VALID。
+99: 有效阴性可以执行COMPLETE，但NOT_SUPPORTED/INCONCLUSIVE/NO_ELIGIBLE/TIMING_NOT_FROZEN均闭锁。
+100: 子进程原exit与orchestrator出口分开：拟议0仅全前提满足，2拒绝、3过程失败、4非法、5不完整、
+101: 6完整但科学/冻结前提阻断；这些不是现行入口的实测code。当前没有调用入口。
+102: mapping支持不是H/L或候选通过；即使未来全前提满足，也仅“待明确下一阶段授权”，不创建unlock。
+103: 
+104: ## S2 schema、数值与P1隔离
+105: 
+106: 输入body仅resources/links/services，避免自指ID；科学envelope另含descriptor/workload/receipt refs。
+107: body单独的SCIENTIFIC标签不构成来源证明。闭合字段表包含全部run/attempt/source/seed/config/
+108: process/raw refs、独立trace/metrics/replay、error/completion及stage记录。每ref为允许repo-relative
+109: path+SHA+实际size+kind/media type；禁止目录穿越/越权symlink、重复身份及未注册seed/method。
+110: 
+111: MAIN必须100服务/50H50L；H-only50H，LOW100/50H50L。只有H-only的L组status可以
+112: NOT_APPLICABLE_CONTROL，count=0、指标null；主输入缺组、错误N/A或NaN均INVALID，不填0。
+113: 各窗口/makespan语义和绝对RN64可行性证书见generation/stage，不用observation_end改原利用率。
+114: 
+115: S2未来测试必须保留旧P1原始身份/serialization，拒绝fixture改名/改seed/换origin/伪造generator
+116: receipt、缺父链和错误payload哈希；仅fixture_derivation=false不够。adapter必须逐项守恒图、
+117: duration、兼容和通信，并保持D1–D5与只读公共信息边界。新source必须重新验证原64测试、45正
+118: trace/20负trace及新血缘/故障/原子发布/恢复负例，不能继承当前P1 PASS。全部仍待未来授权实现。
+FILE docs/P2_design/v2/P2_criterion_spec_v2.json
+1: {
+2:   "document_kind": "MAPPING_OPPORTUNITY_CRITERION",
+3:   "document_version": "v2",
+4:   "status": "DRAFT_UNAPPROVED_NONEXECUTABLE",
+5:   "classification": "PROPOSED",
+6:   "approval": "UNAPPROVED",
+7:   "approved": false,
+8:   "frozen": false,
+9:   "executable": false,
+10:   "execution_authorized": false,
+11:   "read_by_pipeline": false,
+12:   "starting_commit": "79f9c245b23119ce25175d6dc6ff148e9e092461",
+13:   "observer_id": "M1R_PATH_V2",
+14:   "threshold_bundle_selection": "UNAPPROVED_NO_DEFAULT",
+15:   "bundles": [
+16:     {
+17:       "id": "FINE",
+18:       "tau": "1/100",
+19:       "frequency": "1/100",
+20:       "support_seed_count": 8,
+21:       "absence_seed_count_max": 2
+22:     },
+23:     {
+24:       "id": "COARSE",
+25:       "tau": "1/20",
+26:       "frequency": "1/20",
+27:       "support_seed_count": 8,
+28:       "absence_seed_count_max": 2
+29:     }
+30:   ],
+31:   "coverage_thresholds": {
+32:     "support_min_each_seed_condition": "4/5",
+33:     "negative_required_each_seed_condition": "1",
+34:     "approval": "UNAPPROVED"
+35:   },
+36:   "units": {
+37:     "independent_resampling_unit": "paired registered calibration seed",
+38:     "observation_unit": "deduplicated fully covered primary MAIN-B2 public state",
+39:     "eligible_count": "E",
+40:     "covered_count": "F",
+41:     "hit_count": "hits",
+42:     "opportunity_rate": "hits/F",
+43:     "coverage": "F/E",
+44:     "partial_not_zero": true
+45:   },
+46:   "preconditions": [
+47:     "definition/criterion explicitly approved before data",
+48:     "all2520 primary/replay/validation/artifact sets complete valid",
+49:     "all18 conditions selected by fixed B2 qualification before diagnostic inspection",
+50:     "all expected primary B2 snapshot streams complete and independently checked",
+51:     "each of12 selected medium/near conditions has10 paired seeds",
+52:     "each seed/condition E>0 and F>0",
+53:     "zero INVALID/INCOMPLETE diagnostic record"
+54:   ],
+55:   "bootstrap": {
+56:     "method": "unchanged10000 paired-seed percentile95%, type7(.025,.975), fixed analysis_seed20261018",
+57:     "key_schema": "P2_typed_identity_schema_v2.json#/$defs/ANALYSIS_INDEX_KEY",
+58:     "index": "SHA256 SEMANTIC_CANON_V2(key); q first64 big-endian; limit=18446744073709551610; if q>=limit increment counter else index=q%10; each replicate10 indices, same vector across all methods/conditions",
+59:     "indices_generated_this_task": false,
+60:     "aggregate": "Within each condition resample paired seed p and take seed mean. Mandatory descriptive macro: within each seed equal-weight mean of12 selected loaded conditions, then mean over seeds; reuse same bootstrap seed-index vector for every condition/method/macro. Macro never compensates for any condition failure.",
+61:     "interpretation": "Pointwise descriptive intervals conditional on selected calibration configs and VALID_FULL coverage; not independent confirmatory evidence or simultaneous-coverage claim."
+62:   },
+63:   "decision_order": [
+64:     {
+65:       "priority": 0,
+66:       "when": "No scientific evaluation executed",
+67:       "classification": "NOT_EVALUATED"
+68:     },
+69:     {
+70:       "priority": 1,
+71:       "when": "Evaluation attempted but any precondition or support coverage fails",
+72:       "classification": "INCONCLUSIVE"
+73:     },
+74:     {
+75:       "priority": 2,
+76:       "when": "All preconditions; every seed/condition coverage>=4/5; each of12 conditions CI_low>=f and count_seed(p>=f)>=8",
+77:       "classification": "SUPPORTED"
+78:     },
+79:     {
+80:       "priority": 3,
+81:       "when": "All preconditions; every seed/condition coverage=1; each of12 conditions CI_high<f and count_seed(p>=f)<=2",
+82:       "classification": "NOT_SUPPORTED"
+83:     },
+84:     {
+85:       "priority": 4,
+86:       "when": "All remaining cases, including partial coverage preventing negative interpretation",
+87:       "classification": "INCONCLUSIVE"
+88:     }
+89:   ],
+90:   "scope": "SUPPORTED concerns projected remaining-H-path opportunity in this bounded public model only; not actual H benefit/L compliance or independent causal mapping success. NOT_SUPPORTED stops this operational mainline under the registered criterion but is not universal absence proof. INCONCLUSIVE cannot PASS.",
+91:   "parameters_ref": {
+92:     "file": "P2_scientific_parameter_registry_v2.json",
+93:     "ids": [
+94:       "SP28",
+95:       "SP29",
+96:       "SP30",
+97:       "SP31",
+98:       "SP32",
+99:       "SP36",
+100:       "SP39"
+101:     ]
+102:   }
+103: }
+FILE docs/P2_design/v2/P2_generation_spec_v2.json
+75:     "control_arrival_time",
+76:     "generation_receipt_id"
+77:   ],
+78:   "parent_key_rule": "Both controls reuse resolved MAIN numeric bits and original MAIN field keys; controls never draw their own duration/jitter keys.",
+79:   "algorithm": {
+80:     "name": "SHA256",
+81:     "input": "SEMANTIC_CANON_V2(exact fully filled KEY object)",
+82:     "digest_to_U": "q=unsigned big-endian first8 bytes; U=q/2^64 exact Rational in[0,1)",
+83:     "service_role_factor": "9/10+U/5, independent key per MAIN slot/group/node; same factor for all compatible resources of this node",
+84:     "duration_factor": "9/10+U/5, separate MAIN slot/group/node/resource key; realized_exact=estimate_exact*factor",
+85:     "arrival_jitter": "U/10 per MAIN slot with H/L/node/resource/edge fields empty; scenario/condition/config retained",
+86:     "nonrandom_fields": [
+87:       "edge sizes fixed D03",
+88:       "deadline formula no draws"
+89:     ],
+90:     "conversion": "All generation arithmetic exact Rational; each estimated/realized/arrival/relative-deadline value converted ONCE with correctly rounded binary64 ties-to-even; normalize -0; reject nonfinite/nonpositive durations, do not silently repair. Save exact estimates/deadlines sidecar for G."
+91:   },
+92:   "service_identity": {
+93:     "service_id": "{scenario}/{load}/{size}/{config_id}/s{slot:03d}/{H|L}",
+94:     "node_id": "{service_id}/{preserved_template_node_id}",
+95:     "condition_id": "{scenario}-{load}-{size}",
+96:     "preserved_template_ids": "COCKPIT/ADAS/FUSION-{8|16}-v1; semantic templates remain v1 within draft document namespace v2"
+97:   },
+98:   "arrivals": {
+99:     "slots": 50,
+100:     "services_per_slot": 2,
+101:     "total_services": 100,
+102:     "H": 50,
+103:     "L": 50,
+104:     "burst_block_slots": 5,
+105:     "burst_compression": "1/4",
+106:     "formula": "for j=0..49: q=j//5,k=j%5; a_H=a_L=P*(5*q+k/4+U_j/10); P from unchanged config period_ms",
+107:     "arrival_window": "[0,W), W=50*P; no admission at W; full drain; observation_end=max(W,last_finish) metadata only; makespan remains last_finish",
+108:     "no_warmup_exclusion": true
+109:   },
+110:   "deadlines": {
+111:     "reference": "C_est=max_root_to_sink sum_node min_compatible E_exact(g,v,r) before binary64 conversion; no communication. Relative deadline exact multiplier*C_est is converted once; actual absolute deadline RN64(arrival+relative_deadline_bits).",
+112:     "H_multiplier": "5/2",
+113:     "L_multiplier": "4",
+114:     "formula": "D_g = multiplier(group) * C_est(service); positive, relative to each admitted arrival",
+115:     "risk": "C_est is optimistic and not a feasibility certificate; D06 independent controls mandatory"
+116:   },
+117:   "controls": {
+118:     "service_set_for_G": "ALL 100 services in the resolved parent MAIN input, identically for both controls; never max over only retained H",
+119:     "G_exact": "ceil(max over parent100 services g of [sum_v max_r(11/10 * E_exact(g,v,r)) + sum_edges max_over_all9_pairs(L_exact+b_exact/B_exact) + D_exact(g)]) +1 ms",
+120:     "G_inputs": "E_exact and D_exact are pre-binary64 values in parent generation sidecar with hash; edge/network proposed decimals parsed exactly. No new draws and no scheduler truth access.",
+121:     "G_rounding": "All operations Rational; ceil only once then+1 integer ms. Control arrival k*G is converted exactly to binary64 in the finite registered range; independently verify interval isolation, never assume feasibility from G.",
+122:     "H_ISOLATED": "retain parent50 H services with identical service/node IDs, complete per-resource estimate/realized bit patterns, edges and relative-deadline bits; remove L; order retained H by original integer slot; kth arrival=k*G, k=0..49",
+123:     "LOW_COMPETITION": "retain all100 services; order original slot then H before L; kth arrival=k*G,k=0..99; all other retained bytes identical to parent",
+124:     "parent_materialization_order": "Resolve parent MAIN first without executing its method; then derive/resolve controls. Engine execution order remains H_ISOLATED B2, LOW_COMPETITION B2, MAIN B1..B5.",
+125:     "no_overlap": "Qualification requires max finish of each control service <= next control arrival and each required group meets original deadlines; failure of this witness is not universal infeasibility or engine correctness failure.",
+126:     "label": "NOT_APPLICABLE_CONTROL",
+127:     "parent_identity": "Input descriptor for control references pre-known MAIN descriptor hash; actual derivation references independently verified MAIN resolution receipt after it exists.",
+128:     "actual_G": "NOT_COMPUTED_NO_REALIZATION"
+129:   },
+130:   "windows": {
+131:     "arrival_admission": "[0,W), W=50P for MAIN; controls[0,N*G)",
+132:     "last_admitted_arrival": "max actual admitted arrival, separately recorded",
+133:     "last_service_completion": "max node finish over all admitted services after full drain",
+134:     "full_drain_makespan": "last_service_completion, preserving existing metric origin t=0",
+135:     "observation_end": "max(arrival_window_end,last_service_completion), metadata only; never overwrite full_drain_makespan",
+136:     "pressure": "For each resource, exact measure of execution intervals intersect[0,W), divided by W. p_seed=max_resource; p=arithmetic mean across10 seeds. Existing full-drain utilization retains busy/full_drain_makespan."
+137:   },
+138:   "production_artifacts": "NONE. This specifies future generation only; no actual blueprint, input, receipt, source hash or scientific output instance is emitted.",
+139:   "identity_spec": "P2_typed_identity_schema_v2.json",
+140:   "scope_change": "Typed version/domain v2 will change future keyed draws relative to v1; distributions remain unchanged; no v1 realizations exist or were compared.",

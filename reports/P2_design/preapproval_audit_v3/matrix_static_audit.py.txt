@@ -1,0 +1,311 @@
+"""Report-only matrix reconstruction. Stdlib only; never imports SOC or runs science.
+
+The expected roster is constructed from explicit proposed axes/order/roles in v1
+D05 and the unchanged v2 D05, not copied from the matrix being audited. Registered
+CALIBRATION seed values are read as existing metadata, not generated or realized.
+This script is audit text, not a workload generator or an execution entry point.
+"""
+from pathlib import Path
+from collections import Counter, defaultdict
+import hashlib
+import itertools
+import json
+
+ROOT = Path('/workspace/soc')
+OUT = ROOT / 'reports/P2_design/preapproval_audit_v3'
+BASE = 'docs/P2_design/v2/'
+MATRIX = BASE + 'P2_trial_matrix_draft_v2.json'
+OLD = 'docs/P2_design/P2_trial_matrix_draft_v1.json'
+sources = []
+
+
+def reject_duplicate(pairs):
+    result = {}
+    for key, value in pairs:
+        if key in result:
+            raise ValueError('Duplicate JSON key: ' + key)
+        result[key] = value
+    return result
+
+
+def read(path):
+    raw = (ROOT / path).read_bytes()
+    text = raw.decode('utf-8', errors='strict')
+    sources.append(dict(path=path, sha256=hashlib.sha256(raw).hexdigest(),
+                        size_bytes=len(raw), full_bytes_read=True,
+                        line_count=len(text.splitlines()),
+                        scope='Existing source/design/seed METADATA only; no realizations'))
+    if path.endswith('.json'):
+        return json.loads(text, object_pairs_hook=reject_duplicate,
+                          parse_constant=lambda s: (_ for _ in ()).throw(ValueError(s)))
+    return text
+
+
+def canonical_bytes(value):
+    # Audit-only equality digest of parsed design metadata, not production identity.
+    return (json.dumps(value, ensure_ascii=True, sort_keys=True,
+                       separators=(',', ':'), allow_nan=False) + '\n').encode()
+
+
+def audit_digest(value):
+    return hashlib.sha256(canonical_bytes(value)).hexdigest()
+
+
+def differences(actual, expected, pointer=''):
+    """Exact type/value/key comparison: bool never silently equals integer 1."""
+    if type(actual) is not type(expected):
+        return [dict(pointer=pointer, reason='TYPE_MISMATCH',
+                     actual_type=type(actual).__name__, expected_type=type(expected).__name__)]
+    if isinstance(expected, dict):
+        errors = []
+        for key in sorted(set(actual) - set(expected)):
+            errors.append(dict(pointer=pointer + '/' + key, reason='UNEXPECTED_KEY'))
+        for key in sorted(set(expected) - set(actual)):
+            errors.append(dict(pointer=pointer + '/' + key, reason='MISSING_KEY'))
+        for key in sorted(set(expected) & set(actual)):
+            errors += differences(actual[key], expected[key], pointer + '/' + key)
+        return errors
+    if isinstance(expected, list):
+        errors = [] if len(actual) == len(expected) else [dict(pointer=pointer, reason='LENGTH_MISMATCH')]
+        for index, (a, e) in enumerate(zip(actual, expected)):
+            errors += differences(a, e, pointer + '/' + str(index))
+        return errors
+    return [] if actual == expected else [dict(pointer=pointer, reason='VALUE_MISMATCH',
+                                             actual=actual, expected=expected)]
+
+
+def dump(name, data):
+    (OUT / name).write_text(json.dumps(data, ensure_ascii=False, indent=2) + '\n')
+
+
+texts = {}
+for name in ['AGENTS.md', 'STATUS.md', 'docs/user_request.txt', 'docs/research_contract.md',
+             'docs/workload_spec.md', 'docs/baseline_spec.md',
+             'docs/P2_design/P2_complete_design_proposal_v1.md',
+             BASE + 'P2_complete_design_proposal_v2.md',
+             BASE + 'P2_runner_schema_review_v2.md']:
+    texts[name] = read(name)
+matrix = read(MATRIX)
+old = read(OLD)
+seed_metadata = read('configs/seed_partitions.json')
+templates = read(BASE + 'P2_workload_templates_v2.json')
+generation = read(BASE + 'P2_generation_spec_v2.json')
+stage = read(BASE + 'P2_stage_state_contract_v2.json')
+identity = read(BASE + 'P2_typed_identity_schema_v2.json')
+
+checks = []
+
+
+def check(name, condition, evidence=None):
+    checks.append(dict(check=name, result='PASS' if condition else 'FAIL', evidence=evidence))
+
+
+expected_root_keys = {'document_kind','version','status','classification','approved','frozen','executable',
+    'execution_authorized','read_by_pipeline','source_checkpoint','registered_main_conditions',
+    'registered_seeds','configs','methods','rules','budget','method_justification','alternative_budgets',
+    'document_version','approval','starting_commit','parent_matrix_sha256','materialization_order',
+    'diagnostic_spec_ref','criterion_spec_ref','stage_contract_ref','diagnostic_budget','selection_policy','trials'}
+check('ROOT_KEYS_EXACT_REVIEWED_METADATA_SET', set(matrix) == expected_root_keys)
+check('MATRIX_DOCUMENT_KIND_VERSION_PROPOSED_STATUS', matrix['document_kind'] == 'FINITE_TRIAL_MATRIX_PROPOSAL' and
+      matrix['version'] == matrix['document_version'] == 'v2' and matrix['classification'] == 'PROPOSED')
+
+
+# Independently enumerated from source constraints and v1 D05 documented order.
+scenarios = ['COCKPIT', 'ADAS', 'FUSION']
+loads = ['light', 'medium', 'near-saturation']
+sizes = [8, 16]
+candidates = ['A', 'B']
+periods = {'light': {'A': 80, 'B': 64}, 'medium': {'A': 24, 'B': 20},
+           'near-saturation': {'A': 12, 'B': 10}}
+methods = ['B1', 'B2', 'B3', 'B4', 'B5']
+roles = {'B1': 'IMPORTANCE_ORDER_CONTROL', 'B2': 'FOCAL_REFERENCE',
+         'B3': 'ONLINE_RANK_EFT_CONTROL', 'B4': 'ONLINE_OCT_MAPPING_CONTROL',
+         'B5': 'STRONG_H_PRIORITY_OCT_CONTROL'}
+slot_order = [('H_ISOLATED', 'B2', 'H_ISOLATED_FEASIBILITY_CONTROL'),
+              ('LOW_COMPETITION', 'B2', 'LOW_COMPETITION_FEASIBILITY_CONTROL')]
+slot_order += [('MAIN', method, roles[method]) for method in methods]
+seeds = seed_metadata['partitions']['CALIBRATION']
+check('REGISTERED_CALIBRATION_SEED_METADATA_COUNT_UNIQUENESS_AND_INTEGER_TYPE',
+      len(seeds) == 10 and len(set(seeds)) == 10 and all(type(x) is int for x in seeds))
+check('MATRIX_REGISTERED_SEEDS_EXACT_METADATA_ORDER', not differences(matrix['registered_seeds'], seeds))
+check('REGISTERED_MAIN_CONDITIONS_EXACT_3_BY_3_BY_2', matrix['registered_main_conditions'] == 18)
+check('MAIN_METHODS_EXACT_BASELINE_SET_AND_ORDER', not differences(matrix['methods'], methods))
+
+expected_configs = []
+expected_rows = []
+for scenario, load, size, candidate in itertools.product(scenarios, loads, sizes, candidates):
+    condition_id = f'{scenario}-{load}-{size}'
+    config_id = condition_id + '-' + candidate
+    expected_configs.append(dict(config_id=config_id, scenario=scenario, condition_id=condition_id,
+        load=load, size=size, arrival_candidate=candidate, period_ms=periods[load][candidate],
+        template_id=f'{scenario}-{size}-v1', source='PROPOSED',
+        other_parameters_ref='P2_generation_spec_v2.json', selection_priority=1 if candidate == 'A' else 2))
+    for seed_index, seed in enumerate(seeds):
+        for variant, method, comparison_role in slot_order:
+            n = len(expected_rows) + 1
+            expected_rows.append(dict(trial_id=f'proposal-v2-t{n:04d}', scenario=scenario,
+                condition_id=condition_id, config_id=config_id, load=load, size=size,
+                variant=variant, method=method, calibration_seed=seed, seed_index=seed_index,
+                partition='CALIBRATION', workload_id=f'wlref:v2:{config_id}:s{seed_index:02d}:{variant}',
+                workload_sha256=None, comparison_role=comparison_role, execution_order=n, budget_count=1,
+                selection_rule='SEL-v2', tie_rule='TIE-v2', failure_rule='FAIL-v2', command=None))
+
+configuration_results = []
+for i in range(max(len(expected_configs), len(matrix['configs']))):
+    actual = matrix['configs'][i] if i < len(matrix['configs']) else None
+    expected = expected_configs[i] if i < len(expected_configs) else None
+    diff = differences(actual, expected)
+    configuration_results.append(dict(array_index=i, config_id=expected['config_id'] if expected else None,
+        result='PASS' if not diff else 'FAIL', every_key_and_type_compared=True, differences=diff))
+check('ALL_36_CONFIGS_EXACT_EVERY_FIELD_AND_ORDER',
+      len(configuration_results) == 36 and all(x['result'] == 'PASS' for x in configuration_results))
+
+row_results = []
+trial_source_lines = [i for i,line in enumerate((ROOT/MATRIX).read_text().splitlines(),1) if '"trial_id":' in line]
+for i in range(max(len(expected_rows), len(matrix['trials']))):
+    actual = matrix['trials'][i] if i < len(matrix['trials']) else None
+    expected = expected_rows[i] if i < len(expected_rows) else None
+    diff = differences(actual, expected)
+    row_results.append(dict(array_index=i, source_pointer=f'/trials/{i}',
+        source_trial_id_line=trial_source_lines[i] if i<len(trial_source_lines) else None,
+        expected_trial_id=expected['trial_id'] if expected else None,
+        result='PASS' if not diff else 'FAIL', compared_field_count=len(expected) if expected else 0,
+        actual_metadata_digest=audit_digest(actual), expected_metadata_digest=audit_digest(expected),
+        differences=diff))
+check('ALL_2520_ROWS_EXACT_EVERY_FIELD_TYPE_AND_POSITION',
+      len(row_results) == 2520 and all(x['result'] == 'PASS' for x in row_results))
+
+rows = matrix['trials']
+trial_ids = [r['trial_id'] for r in rows]
+logical_keys = [(r['config_id'], r['seed_index'], r['variant'], r['method']) for r in rows]
+check('TRIAL_IDS_AND_LOGICAL_TUPLES_UNIQUE', len(set(trial_ids)) == len(rows) == len(set(logical_keys)))
+check('EXECUTION_ORDER_CONTIGUOUS_AND_ARRAY_ORDER', [r['execution_order'] for r in rows] == list(range(1, 2521)))
+check('RULE_REFERENCE_CLOSED_SET', set(matrix['rules']) == {'SEL-v2', 'TIE-v2', 'FAIL-v2'} and
+      all(r[k] in matrix['rules'] for r in rows for k in ['selection_rule', 'tie_rule', 'failure_rule']))
+check('ALL_WORKLOAD_REFS_SYMBOLIC_AND_CONTENT_COMMAND_UNRESOLVED',
+      all(r['workload_id'].startswith('wlref:v2:') and r['workload_sha256'] is None and r['command'] is None for r in rows))
+config_map = {c['config_id']: c for c in matrix['configs']}
+template_map = {t['template_id']: t for t in templates['templates']}
+check('CONFIG_TEMPLATE_REFERENCES_EXIST_AND_MATCH_SCENE_SIZE', all(
+      c['template_id'] in template_map and template_map[c['template_id']]['scene'] == c['scenario'] and
+      template_map[c['template_id']]['size'] == c['size'] for c in matrix['configs']))
+check('ROW_CONFIG_REFERENCES_MATCH_ALL_INHERITED_FIELDS', all(r['config_id'] in config_map and all(
+      r[k] == config_map[r['config_id']][k] for k in ['scenario', 'condition_id', 'load', 'size']) for r in rows))
+check('ROW_REGISTERED_SEED_INDEX_PAIR_EXACT', all(type(r['seed_index']) is int and
+      0 <= r['seed_index'] < 10 and r['calibration_seed'] == seeds[r['seed_index']] and
+      r['partition'] == 'CALIBRATION' for r in rows))
+input_uses = defaultdict(list)
+for row in rows:
+    input_uses[row['workload_id']].append(row)
+check('1080_INPUT_REFS_UNIQUE_SEMANTIC_TUPLES_AND_MAIN_SHARED_BY_ALL_FIVE_METHODS',
+      len(input_uses) == 1080 and all(len({(r['config_id'], r['seed_index'], r['variant']) for r in uses}) == 1 and
+      [r['method'] for r in uses] == (methods if uses[0]['variant'] == 'MAIN' else ['B2']) for uses in input_uses.values()))
+counts = dict(Counter(r['variant'] for r in rows))
+check('VARIANT_COUNTS_EXACT', counts == {'MAIN': 1800, 'H_ISOLATED': 360, 'LOW_COMPETITION': 360})
+check('ALL_A_B_REPRESENTED_EQUALLY', Counter(config_map[r['config_id']]['arrival_candidate'] for r in rows) == {'A': 1260, 'B': 1260})
+check('ALL_SEEDS_REPRESENTED_EQUALLY', Counter(r['seed_index'] for r in rows) == {i: 252 for i in range(10)})
+check('EACH_CONDITION_HAS_140_TRIALS', Counter(r['condition_id'] for r in rows) == {f'{s}-{l}-{z}': 140 for s,l,z in itertools.product(scenarios,loads,sizes)})
+check('EACH_CONFIG_HAS_70_TRIALS', Counter(r['config_id'] for r in rows) == {c['config_id']: 70 for c in expected_configs})
+
+expected_budget = dict(configurations=36,seeds=10,main_methods=5,main_runs=1800,H_isolated_runs=360,
+    low_competition_runs=360,total_trial_slots=2520,workload_artifacts_if_all_materialized=1080,
+    main_workload_artifacts=360,selected_main_workloads_after_calibration=180,reuse_calls_add_samples=0,
+    automatic_retries=0,replay_per_trial=1,physical_engine_invocations_including_replay_max=5040,
+    analysis_only_M1_engine_invocations=0,engineering_timing_runs=0,
+    timing_reason='Explicitly excluded from this P2 calibration proposal; timing protocol remains UNRESOLVED, not silently defaulted or frozen.')
+check('BUDGET_EVERY_FIELD_AND_TYPE_MATCH_INDEPENDENT_PRODUCTS', not differences(matrix['budget'],expected_budget))
+expected_selection = dict(candidate_order=['A','B'],reference_method='B2',
+    selection_unit='ONE_CONFIG_PER_DECLARED_CONDITION_USING_ALL10_SEEDS',
+    qualification='ALL_VALID_CONTROLS_AND_OWN_DECLARED_TARGET_LOAD',retain_all_candidate_records=True,
+    allow_load_relabelling=False,allow_seed_deletion=False,
+    forbidden_selection_inputs=['candidate_advantage','M1R_gain','mapping_classification','M2_method_advantage'],
+    no_eligible_action='NO_ELIGIBLE_CONDITION_AND_BLOCKED')
+check('SELECTION_POLICY_CLOSED_FIELDS_AND_RESULT_INDEPENDENCE', not differences(matrix['selection_policy'],expected_selection))
+check('STAGE_SELECTION_ONLY_ALL_SEEDS_B2_A_THEN_B',
+      'all10 seeds' in stage['load_classification']['selection'] and
+      'First eligible A else B' in stage['load_classification']['selection'] and
+      stage['load_classification']['order'][-3:] == ['ELIGIBLE_OR_INELIGIBLE','SELECT_FIRST_A_ELSE_B','SELECTED_OR_NO_ELIGIBLE'])
+check('MATERIALIZATION_MAIN_FIRST_ENGINE_CONTROLS_FIRST_EXPLICIT',
+      'MAIN generation+resolution first' in matrix['materialization_order'] and
+      'MAIN first' in generation['controls']['parent_materialization_order'] and
+      'H_ISOLATED B2, LOW_COMPETITION B2, MAIN B1..B5' in generation['controls']['parent_materialization_order'])
+check('FIVE_METHODS_IN_MAIN_NO_UNREGISTERED_CANDIDATE_OR_SENSITIVITY_ROW',
+      set(r['method'] for r in rows) == set(methods) and set(r['load'] for r in rows) == set(loads))
+check('NO_APPROVAL_OR_EXECUTION_FLAG_ACTIVATED', matrix['approval'] == 'UNAPPROVED' and
+      matrix['status'] == 'DRAFT_UNAPPROVED_NONEXECUTABLE' and all(matrix[k] is False for k in
+      ['approved','frozen','executable','execution_authorized','read_by_pipeline']))
+
+# Cross-version comparison is secondary corroboration, never the expected source.
+old_config_errors = []
+for index, item in enumerate(old['configs']):
+    changed = dict(item, other_parameters_ref='P2_generation_spec_v2.json')
+    old_config_errors += differences(matrix['configs'][index], changed, f'/configs/{index}')
+old_row_errors = []
+for index, item in enumerate(old['trials']):
+    changed = dict(item)
+    changed['trial_id'] = changed['trial_id'].replace('proposal-v1-', 'proposal-v2-')
+    changed['workload_id'] = changed['workload_id'].replace('wlref:v1:', 'wlref:v2:')
+    for key in ['selection_rule','tie_rule','failure_rule']:
+        changed[key] = changed[key].replace('-v1','-v2')
+    old_row_errors += differences(matrix['trials'][index], changed, f'/trials/{index}')
+check('V1_CONFIGS_PRESERVED_EXCEPT_VERSIONED_GENERATION_REF', len(old['configs']) == 36 and not old_config_errors)
+check('V1_TRIALS_PRESERVED_EXCEPT_DECLARED_SYMBOLIC_VERSIONED_REFS', len(old['trials']) == 2520 and not old_row_errors)
+check('PARENT_MATRIX_HASH_MATCHES_ACTUAL_V1_BYTES', matrix['parent_matrix_sha256'] == hashlib.sha256((ROOT/OLD).read_bytes()).hexdigest())
+check('V1_METHOD_JUSTIFICATIONS_UNCHANGED_ALL_FIELDS', not differences(matrix['method_justification'], old['method_justification']))
+check('V1_ALTERNATIVE_BUDGETS_UNCHANGED_NOT_ENUMERATED_ACTIVE_CHOICES',
+      not differences(matrix['alternative_budgets'], old['alternative_budgets']) and
+      matrix['alternative_budgets'][0]['total_trial_slots'] == 36*10*(4+2) == 2160 and
+      matrix['alternative_budgets'][1]['total_trial_slots'] == 18*3*10*(5+2) == 3780 and
+      set(c['arrival_candidate'] for c in matrix['configs']) == {'A','B'})
+check('DIAGNOSTIC_BUDGET_IS_SEPARATE_COMBINATORIAL_BOUND_NOT_RUNTIME_COST',
+      matrix['diagnostic_budget'] == dict(max_action_assignments_per_covered_view=6**4,
+      max_projected_nodes_per_assignment=2*16+4,independent_of_engine_invocation_budget=True,
+      actual_views='UNKNOWN_NOT_RUN',wall_cost='UNKNOWN_NOT_MEASURED',
+      early_exit='No result-dependent early stopping; interrupted analysis INCOMPLETE'))
+check('PROVENANCE_FIELDS_IDENTIFY_INHERITED_SOURCE_AND_V2_AUTHORING_CHECKPOINT',
+      matrix['source_checkpoint'] == old['source_checkpoint'] == '160800d9b136e953c6415cd5229ded87eae72a0f' and
+      matrix['starting_commit'] == '79f9c245b23119ce25175d6dc6ff148e9e092461')
+
+for key, expected in [('diagnostic_spec_ref','P2_diagnostic_spec_v2.json'),
+                      ('criterion_spec_ref','P2_criterion_spec_v2.json'),
+                      ('stage_contract_ref','P2_stage_state_contract_v2.json')]:
+    check('RELATIVE_REF_'+key, matrix[key] == expected and (ROOT/BASE/expected).is_file())
+
+failed = [x for x in checks if x['result'] == 'FAIL']
+out = dict(audit_kind='FRESH_REPORT_ONLY_EXACT_MATRIX_RECONSTRUCTION',
+    external_independent_review=False, source=next(x for x in sources if x['path']==MATRIX),
+    parse=dict(full_bytes_read=True,strict_utf8=True,duplicate_keys_rejected=True,nonfinite_json_rejected=True),
+    expected_roster_source='Original 3x3x2 contract; v1 D05 axes and explicit order; unchanged v2 D05; existing CALIBRATION metadata',
+    expected_roster_independent_of_actual_rows=True,
+    actual_rows= len(rows), expected_rows=len(expected_rows), compared_row_fields=20,
+    row_field_comparisons=len(expected_rows)*20,config_field_comparisons=36*11,
+    rows_passed=sum(x['result']=='PASS' for x in row_results), rows_failed=sum(x['result']=='FAIL' for x in row_results),
+    configurations_passed=sum(x['result']=='PASS' for x in configuration_results),
+    checks_passed=len(checks)-len(failed),checks_failed=len(failed),
+    trial_ids_unique=len(set(trial_ids)),logical_trial_keys_unique=len(set(logical_keys)),
+    planned_counts=dict(configurations=36,calibration_seed_metadata=10,trials=2520,**counts,
+        symbolic_input_references=1080,max_engine_calls_with_one_registered_replay=5040,automatic_retries=0),
+    actual_scientific_workloads_generated=0,actual_scientific_workloads_run=0,
+    non_calibration_realizations_accessed=False,seeds_generated=False,
+    input_identity_scope='1080 unique SYMBOLIC planned input references; ZERO resolved content identities or materialized workloads',
+    budget_scope='Maximum proposed future calls; failed/invalid/incomplete stops can leave NOT_STARTED slots; this audit invokes no engine',
+    selection_scope='All A/B slots represented; first eligible A else B by B2-only control/own-load predicates across all10 seeds; no M1R/M2/candidate outcome inputs',
+    science_scope='Static consistency only; does not establish empirical load bands, feasibility, runtime cost or scientific validity',
+    aggregate_result='PASS_STATIC_MATRIX_ONLY' if not failed else 'STATIC_MATRIX_REVISE_REQUIRED',
+    checks=checks,configuration_results=configuration_results,row_results=row_results,
+    v1_comparison_errors=dict(configs=old_config_errors,rows=old_row_errors))
+dump('trial_matrix_row_audit.json',out)
+dump('matrix_source_reads.json',dict(read_scope='Full file bytes, metadata-only; source text reviewed and line pointers in matrix_method.md',sources=sources))
+dump('matrix_findings.json',dict(scope='Matrix-specific findings only, not a global design verdict',
+    critical_inconsistencies=[],failed_checks=failed,
+    limitations=[
+        'Unapproved proposed finite budget is arithmetically complete, not scientifically validated or a timing feasibility proof.',
+        'Symbolic wlref values are not resolved content-addressed workload IDs and cannot pass the future invocation guard.',
+        'Matrix source_checkpoint is inherited v1 provenance; starting_commit is v2 authoring baseline, neither is current HEAD.',
+        'Original protocol registers 18 main conditions; A/B candidates and chosen periods are new unapproved design choices.',
+        'Only B2 controls are planned; B2 control failure is not evidence every baseline or schedule is infeasible.',
+        'Timing budget zero in this calibration roster leaves timing prerequisite unresolved; it is not approval to omit timing.']))
+print(json.dumps(dict(result=out['aggregate_result'],matrix_sha256=out['source']['sha256'],
+    bytes=out['source']['size_bytes'],rows_passed=out['rows_passed'],rows_failed=out['rows_failed'],
+    checks_passed=out['checks_passed'],checks_failed=out['checks_failed'],failed_checks=failed),indent=2))
+raise SystemExit(0 if not failed else 1)
