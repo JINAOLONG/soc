@@ -1,1 +1,1 @@
-"""Clean-room SoC research; scientific components are not yet implemented."""
+"""Immutable offline model and arrived-only public observation records."""

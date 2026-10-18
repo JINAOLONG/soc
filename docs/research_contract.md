@@ -1,5 +1,13 @@
 # Research contract — P0 DRAFT, not scientifically unlocked
 
+P1 handoff annotation: the historical P0 literature failure described below was
+closed at e9afe287 and delivered at 27d90bb5 (P0 audit exit 0). The original
+paragraph is retained to explain this draft's provenance. The P1 task separately
+authorizes correctness implementation, with D1–D5 explicitly approved by the
+user; see P1_implementation_spec.md. No scientific protocol freeze or permission
+to start P2 is inferred. Scientific executions remain zero. The unchanged
+research_protocol.json status string is also a historical draft declaration.
+
 The authoritative request is [user_request.txt](user_request.txt). Repository:
 `https://github.com/JINAOLONG/soc`; root = project root. This is a clean-room
 project. No legacy artifacts, results, candidate parameters or seeds have been

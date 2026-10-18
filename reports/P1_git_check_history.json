@@ -1,0 +1,14 @@
+{
+  "checks": [
+    {
+      "command": ["git", "diff", "--cached", "--check"],
+      "exit_code": 2,
+      "reason": "The user-pasted P1 authorization is preserved byte-for-byte with CRLF. Git's default whitespace check classifies its CR bytes as trailing whitespace.",
+      "resolution": "Use Git's documented cr-at-eol whitespace option for the check; retain other whitespace checks and preserve the original authorization bytes. No source, algorithm or test change."
+    },
+    {
+      "command": ["git", "-c", "core.whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol", "diff", "--cached", "--check"],
+      "exit_code": 0
+    }
+  ]
+}

@@ -1,0 +1,161 @@
+{
+  "commands": [
+    {
+      "command": [
+        "git",
+        "rev-parse",
+        "--show-toplevel"
+      ],
+      "exit_code": 0,
+      "stdout": "/workspace/soc\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "remote",
+        "-v"
+      ],
+      "exit_code": 0,
+      "stdout": "origin\thttps://github.com/JINAOLONG/soc.git (fetch)\norigin\thttps://github.com/JINAOLONG/soc.git (push)\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "branch",
+        "--show-current"
+      ],
+      "exit_code": 0,
+      "stdout": "work\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "exit_code": 0,
+      "stdout": "27d90bb5cccd990f2b65d7ea48abe98c2af7218c\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "status",
+        "--short"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "log",
+        "--oneline",
+        "--decorate",
+        "-10"
+      ],
+      "exit_code": 0,
+      "stdout": "27d90bb (HEAD -> work) P0: record verified review push and close evidence delivery\ne9afe28 P0: verify supplied HEFT and PEFT originals and pass unchanged audit\n1b36f39 P0: record blocked literature audit and verified documentation push\ncb29fe7 P0: preserve primary-source access failures and page-evidence gaps\nebab07e P0: record GitHub clone reproduction and preserve blocked-stage evidence\n4d67240 P0: preserve protocol drafts, seed partitions and source-access blocker\n0834f21 (origin/main) Initial commit\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "ls-remote",
+        "origin",
+        "refs/heads/work"
+      ],
+      "exit_code": 0,
+      "stdout": "27d90bb5cccd990f2b65d7ea48abe98c2af7218c\trefs/heads/work\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        ".venv/bin/python",
+        "scripts/hash_artifacts.py",
+        "--verify"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"files\": 120, \"missing\": [], \"mismatch\": []}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        ".venv/bin/python",
+        "scripts/run_pipeline.py",
+        "--stage",
+        "p0",
+        "--check-only"
+      ],
+      "exit_code": 0,
+      "stdout": "{\n  \"stage\": \"P0\",\n  \"status\": \"PASS\",\n  \"errors\": [],\n  \"partition_counts\": {\n    \"CALIBRATION\": 10,\n    \"DEVELOPMENT\": 20,\n    \"INDEPENDENT_VALIDATION\": 10,\n    \"FORMAL_EVALUATION\": 30\n  },\n  \"seed_sha256\": \"e5ded56e2fbe1ba2ed992a3026f3c5780d90afb50aaab4d1d8b75b8c014f4f31\",\n  \"source_sha256\": \"d222e1dae96743c890bba98abb28acea5321c0a5a4d504e0e8d458476d6add0d\",\n  \"scientific_partitions_executed\": [],\n  \"legacy_results_used_as_new_evidence\": false\n}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        ".venv/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_build_metadata_does_not_change_scientific_source_identity (test_governance.AuditTests.test_build_metadata_does_not_change_scientific_source_identity) ... ok\ntest_corrupted_primary_evidence_is_rejected (test_governance.AuditTests.test_corrupted_primary_evidence_is_rejected) ... ok\ntest_p0_block_is_explicit_and_missing_files_are_reported (test_governance.AuditTests.test_p0_block_is_explicit_and_missing_files_are_reported) ... ok\ntest_source_hash_changes_when_source_changes (test_governance.AuditTests.test_source_hash_changes_when_source_changes) ... ok\ntest_unverified_literature_is_not_treated_as_pass (test_governance.AuditTests.test_unverified_literature_is_not_treated_as_pass) ... ok\ntest_calibration_metadata_authorization_does_not_run_workload (test_governance.GuardTests.test_calibration_metadata_authorization_does_not_run_workload) ... ok\ntest_cross_partition_and_unknown_stage_rejected_before_seed_read (test_governance.GuardTests.test_cross_partition_and_unknown_stage_rejected_before_seed_read) ... ok\ntest_fake_pass_gate_without_freeze_rejected (test_governance.GuardTests.test_fake_pass_gate_without_freeze_rejected) ... ok\ntest_forged_unlock_file_is_insufficient (test_governance.GuardTests.test_forged_unlock_file_is_insufficient) ... ok\ntest_invalid_indices_rejected (test_governance.GuardTests.test_invalid_indices_rejected) ... ok\ntest_reserved_partition_without_gate_never_reads_seed (test_governance.GuardTests.test_reserved_partition_without_gate_never_reads_seed) ... ok\ntest_science_blocked_by_unreviewed_literature (test_governance.GuardTests.test_science_blocked_by_unreviewed_literature) ... ok\ntest_exact_prescribed_derivation_and_metadata (test_governance.SeedMetadataTests.test_exact_prescribed_derivation_and_metadata) ... ok\ntest_independent_first_seed_calculation (test_governance.SeedMetadataTests.test_independent_first_seed_calculation) ... ok\ntest_partition_counts_ranges_disjointness_and_split (test_governance.SeedMetadataTests.test_partition_counts_ranges_disjointness_and_split) ... ok\ntest_seed_generation_repeats_without_rewriting (test_governance.SeedMetadataTests.test_seed_generation_repeats_without_rewriting) ... ok\ntest_tampered_seed_metadata_rejected (test_governance.SeedMetadataTests.test_tampered_seed_metadata_rejected) ... ok\n\n----------------------------------------------------------------------\nRan 17 tests in 0.067s\n\nOK\n"
+    }
+  ],
+  "papers": [
+    {
+      "id": "heft_cpop",
+      "path": ".cache/literature/HEFT_CPOP_Topcuoglu_2002.pdf",
+      "sha256": "186bcf6a9fefb25c99cfd4d247e92f3fabc91cef5c3555ccb4d2d04ba6fec694",
+      "hash_matches": true
+    },
+    {
+      "id": "peft",
+      "path": ".cache/literature/PEFT_Arabnejad_Barbosa_2014.pdf",
+      "sha256": "51c5036310ea4f4deb9f2e6c65730fc1b2321dd1e2975bc3940285b03ede5fc8",
+      "hash_matches": true
+    },
+    {
+      "id": "ds3",
+      "path": ".cache/literature/ds3.pdf",
+      "sha256": "e025cdcb00a8b50daa3bc9b09fdab799226646a26087a7a37634d826ed7cbb09",
+      "hash_matches": true
+    },
+    {
+      "id": "starpu",
+      "path": ".cache/literature/starpu.pdf",
+      "sha256": "1d1277c11847303d315ac8ff11bd5a2faaad0927c50cb32e040ac825778e55af",
+      "hash_matches": true
+    },
+    {
+      "id": "autoware_dag",
+      "path": ".cache/literature/autoware_dag.pdf",
+      "sha256": "b743b8fb8fc9fe8f447f3e84dd16e8496403dff6eded6056a6380625709ae465",
+      "hash_matches": true
+    },
+    {
+      "id": "federated_limit",
+      "path": ".cache/literature/federated_limit.pdf",
+      "sha256": "405cf0a7d5efc2d80bf997686d2257418ee1e67aeb5642deaf4bf0afe11f5f3b",
+      "hash_matches": true
+    }
+  ],
+  "protected_sha256": {
+    "configs/research_protocol.json": "e019b6830b6bf08f39b13a456d6123fca0d634478dae475b989c07617a45cdfc",
+    "configs/seed_partitions.json": "e5ded56e2fbe1ba2ed992a3026f3c5780d90afb50aaab4d1d8b75b8c014f4f31",
+    "docs/statistical_protocol.md": "f9c0eeb6e76f68330ba3e5d8d90e58d175c3947a1948bb41b26ad50dbc041e8a",
+    "docs/method_spec.md": "c29862a891a866d38dfee2e958c58646973f8c77a37f11f8ab17d9f319f15925",
+    "docs/metric_spec.md": "c4b912fc672979ddc763d882e546b7a92bf53090e5b5dddd5777e2e867df182a",
+    "AGENTS.md": "5435e5e690a64e0e7f432bae22b8f459f646e12233d99a7a4b1a70266d8c9a22",
+    "LICENSE": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+    "src/soc/validation/governance.py": "6241f913c8c384e0d1bc9cf9632c1880fd6de4d5406facca114f0c59825c065b"
+  }
+}

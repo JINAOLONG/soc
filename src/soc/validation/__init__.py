@@ -1,1 +1,1 @@
-"""Clean-room SoC research; scientific components are not yet implemented."""
+"""Governance gates and independent offline trace validation."""

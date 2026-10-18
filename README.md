@@ -6,9 +6,10 @@
 
 **当前 P0 文献与协议审计：PASS（实际退出码 0）。** 两份用户提供的 HEFT/CPOP、PEFT
 原文已完成全文及页码审查，原有四篇原稿也重新核验了计数资格；17 项治理测试通过。
-这仅是 P0 审计通过。科学工作负载运行数为 0，P1 尚未启动，模拟器、调度器与性能结论
-仍为 NOT RUN / NOT IMPLEMENTED。详见 [STATUS.md](STATUS.md)、
-[文献阻断关闭报告](reports/P0_literature_gap_closure.md) 和 [最终报告](reports/final_report.md)。
+P1 已实现事件引擎、只读视图、B1–B5 和独立 Trace Validator；当前正确性证据见
+[P1 报告](reports/P1_correctness_report.md) 与 [STATUS.md](STATUS.md)。科学工作负载运行数为 0，
+P2/P3、独立验证、正式评估均未启动。原 [P0 文献关闭报告](reports/P0_literature_gap_closure.md)
+和 [P0 最终报告](reports/final_report.md) 保留为历史交付，不充当 P1 结果。
 
 仓库即项目根目录；保留原有 Apache-2.0 LICENSE。不创建第二层 Git 仓库或 worktree。
 每次任务先读 [AGENTS.md](AGENTS.md)。完整用户要求保存在
@@ -16,7 +17,7 @@
 
 ## 安装与轻量测试
 
-需要 Python >=3.12。P0 运行和测试只使用标准库；构建工具固定为 setuptools 80.9.0。
+需要 Python >=3.12。P0/P1 运行和测试只使用标准库；构建工具固定为 setuptools 80.9.0。
 
 ```bash
 bash scripts/setup_environment.sh
@@ -29,7 +30,8 @@ bash scripts/setup_environment.sh
 缓存缺失或哈希不符会使原有检查失败；不能仅依据文档状态宣告通过。
 seed 命令已存在时只验证，不重写或重抽。生成全部 70 个 seed 元数据不等于访问其工作负载。
 安装脚本使用 `.cache/literature/`：四篇既有公开原稿可按 URL/SHA256 恢复；
-两篇用户提供的私有阅读副本必须先手动补入并核对 SHA256（见下文）。当前实例六份均已核验。CI 只运行轻量治理测试，不执行任何科学分区。
+两篇用户提供的私有阅读副本必须先手动补入并核对 SHA256（见下文）。当前实例六份均已核验。
+CI 运行治理和手工合成正确性单测，不需要论文 PDF，不执行任何科学分区；正式 P0/P1 审计需要原文缓存。
 
 ## 系统模型与目录
 
@@ -38,9 +40,11 @@ seed 命令已存在时只验证，不重写或重抽。生成全部 70 个 seed
 未来到达和私有事件队列必须隔离。参见 [model_spec.md](docs/model_spec.md)。
 
 `src/soc/` 按 model、simulator、scheduler、workload、metrics、validation、analysis
-分包；目前实际实现只有 validation/governance.py。其余包是明确的未实现结构。
+分包；P1 实现位于 model/schema.py、model/observation.py、simulator/engine.py、
+scheduler/kernels.py、metrics/fixture.py、validation/trace.py 和 validation/p1.py。
+workload 科学生成器、候选方法和科学统计分析尚未实现。
 `configs/` 保存协议和 seed；`scripts/` 保存环境安装、分区生成、审计、文献连通性诊断和
-哈希检查入口；`tests/` 为合成治理测试；`docs/`、`reports/`、`checkpoints/` 保存研究协议
+哈希检查入口；`tests/` 为治理和手工合成正确性测试；`docs/`、`reports/`、`checkpoints/` 保存研究协议
 与证据；`results/` 的各科学分区目前没有实验数据。
 
 ## 阶段命令与锁
@@ -55,8 +59,18 @@ seed 命令已存在时只验证，不重写或重抽。生成全部 70 个 seed
 .venv/bin/python scripts/run_pipeline.py --stage report
 ```
 
-P0 可生成真实审计报告。P1 及以后尚未实现；当前入口会拒绝运行，不能把这些命令
-描述为已验证的仿真功能。单例运行、批量仿真、结果聚合和绘图也尚未实现。
+本轮只执行 P0/P1；上面的后续阶段命令列为接口说明，不构成运行授权。
+复现 P1（只运行手工 fixture）并验证产物：
+
+```bash
+.venv/bin/python scripts/run_p1_correctness.py
+.venv/bin/python scripts/run_pipeline.py --stage p1
+.venv/bin/python scripts/hash_artifacts.py --verify --output checkpoints/P1_artifact_manifest.json
+```
+
+P1 门禁重新检查 P0、用户批准的 D1–D5、代码/测试/输入/Trace 哈希、逐项测试身份、
+45 份完整轨迹的独立校验和精确重放，以及 20 个非法轨迹的实际拒绝结果。
+P2 及以后尚未实现；科学批量运行、聚合和绘图尚未实现。
 
 独立验证必须先有 Development Gate PASS、已提交的 freeze manifest 和绑定其哈希的
 `checkpoints/VALIDATION_UNLOCKED`；正式实验需要相应的 validation gate、freeze 和
@@ -82,15 +96,19 @@ PDF 不进入 Git。当前实例的两份副本位于忽略目录：
 
 原始算法与未来在线扩展的边界、全部必查公式/图号见
 [HEFT/CPOP 原文审查](docs/literature_reviews/heft_cpop.md) 和
-[PEFT 原文审查](docs/literature_reviews/peft.md)。本轮在 P0 决定后停止。
+[PEFT 原文审查](docs/literature_reviews/peft.md)。P1 在线适配是经用户批准的项目定义，
+见 [P1 实现规格](docs/P1_implementation_spec.md)，不能称为静态原算法复现。
 
 从新 clone 安装后，可重跑上述治理测试、seed 核对和 P0 审计。
 证据清单验证：
 
 ```bash
-.venv/bin/python scripts/hash_artifacts.py --verify
+.venv/bin/python scripts/hash_artifacts.py --verify --output checkpoints/P1_artifact_manifest.json
 ```
 
-已执行：仓库审计、seed 元数据生成、源访问诊断、本地原文全文审查、治理测试、P0 audit 和证据哈希检查
-（实际结果见 reports）。未执行：P1、P2、P3、独立验证、正式实验、profiling 和性能图表。
+P0_artifact_manifest.json 绑定历史 P0 提交的文件；它不会被覆盖为 P1 清单，不能用来验证
+有意改变过的 P1 源码树。当前文件身份以 P1_artifact_manifest.json 为准。
+
+已执行：P0 原文审查、治理审计及 P1 手工合成正确性测试（实际结果见 reports）。
+未执行：P2、P3、独立验证、正式实验、profiling 和性能图表。
 后续论文主张必须来自本次真实运行，不得引用历史结果充当新证据。

@@ -1,0 +1,11 @@
+{
+  "scope": "Actual implementation-time tests; retained even after correction",
+  "runs": [
+    {"command": ".venv/bin/python -m unittest discover -s tests -v", "exit_code": 0, "tests": 56, "failed": 0, "scope_note": "Before paper-table regression and secondary metric additions"},
+    {"command": ".venv/bin/python -m unittest discover -s tests -p test_p1_kernels.py -v", "exit_code": 0, "tests": 12, "failed": 0, "scope_note": "Included original HEFT ten-rank and PEFT thirty-cell regressions"},
+    {"command": ".venv/bin/python -m unittest discover -s tests -v", "exit_code": 1, "tests": 58, "failed": 1,
+     "failure": "test_p1_metrics.MetricTests.test_handwritten_completions_equality_miss_and_group_quantiles: AssertionError: 8 != 9",
+     "diagnosis": "Wrong hand-written test expectation: cross-unit edge sizes total 1+1+2+1+1+1+1 = 8 MiB. Runtime and independent validator both calculated 8.",
+     "correction": "Corrected the fixture-specific expected total from 9 to 8; no model, scientific threshold, acceptance criterion or algorithm changed."}
+  ]
+}

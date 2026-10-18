@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "status": "FROZEN",
+  "user_approved_ids": ["D1", "D2", "D3", "D4", "D5"],
+  "approval_source": "Explicit user replies to two clarification questions in this P1 task",
+  "event_order_reply": "批准 D1 建议顺序",
+  "online_semantics_reply": "批准 D2–D5 整套建议",
+  "definition": "docs/P1_implementation_spec.md, USER_APPROVED rule column",
+  "scope": "P1 online baseline adaptation only; no scientific threshold/statistic/partition change"
+}

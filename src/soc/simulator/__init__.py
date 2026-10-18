@@ -1,1 +1,1 @@
-"""Clean-room SoC research; scientific components are not yet implemented."""
+"""Deterministic non-preemptive P1 event engine."""

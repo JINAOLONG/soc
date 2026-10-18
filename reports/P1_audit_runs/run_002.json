@@ -1,0 +1,28 @@
+{
+  "timestamp_utc": "2026-10-18T09:53:58.232748+00:00",
+  "commands": [
+    {
+      "command": [
+        ".venv/bin/python",
+        "scripts/run_pipeline.py",
+        "--stage",
+        "p1"
+      ],
+      "exit_code": 0,
+      "stdout": "{\n  \"stage\": \"P1\",\n  \"status\": \"PASS\",\n  \"errors\": [],\n  \"scientific_workloads_run\": 0,\n  \"P2_started\": false,\n  \"source_sha256\": \"32860d432e7fef62f03fef64be3118c2ba260de6850d8f88a447fb7589cf412b\",\n  \"governance_and_p1_tests\": 64,\n  \"p1_tests\": 47,\n  \"tests_failed\": 0,\n  \"tests_blocked\": 0,\n  \"positive_traces\": 45,\n  \"negative_traces\": 20,\n  \"deterministic_replay_pass\": true,\n  \"independent_metric_recomputation_pass\": true,\n  \"tested_git_head\": \"27d90bb5cccd990f2b65d7ea48abe98c2af7218c\",\n  \"tested_worktree\": \" M README.md\\n M STATUS.md\\n M docs/baseline_spec.md\\n M docs/model_spec.md\\n M docs/research_contract.md\\n M scripts/run_pipeline.py\\n M src/soc/metrics/__init__.py\\n M src/soc/model/__init__.py\\n M src/soc/scheduler/__init__.py\\n M src/soc/simulator/__init__.py\\n M src/soc/validation/__init__.py\\n?? checkpoints/P1_artifact_manifest.json\\n?? docs/P1_acceptance_matrix.md\\n?? docs/P1_authorization_request.txt\\n?? docs/P1_decisions.json\\n?? docs/P1_implementation_spec.md\\n?? reports/P1_acceptance_matrix.md\\n?? reports/P1_artifacts/\\n?? reports/P1_audit_runs/\\n?? reports/P1_baseline_implementation_report.md\\n?? reports/P1_correctness.json\\n?? reports/P1_correctness_report.md\\n?? reports/P1_delivery_status.json\\n?? reports/P1_preflight.json\\n?? reports/P1_test_history.json\\n?? reports/P1_test_run.json\\n?? reports/P1_test_runs/\\n?? reports/P1_trace_validation_report.md\\n?? scripts/run_p1_correctness.py\\n?? src/soc/metrics/fixture.py\\n?? src/soc/model/observation.py\\n?? src/soc/model/schema.py\\n?? src/soc/scheduler/kernels.py\\n?? src/soc/simulator/engine.py\\n?? src/soc/validation/p1.py\\n?? src/soc/validation/trace.py\\n?? tests/p1_fixtures.py\\n?? tests/p1_negative_cases.py\\n?? tests/p1_source_examples.py\\n?? tests/test_p1_engine.py\\n?? tests/test_p1_gate.py\\n?? tests/test_p1_kernels.py\\n?? tests/test_p1_metrics.py\\n?? tests/test_p1_model.py\\n?? tests/test_p1_observation.py\\n?? tests/test_p1_trace.py\\n\",\n  \"seed_sha256\": \"e5ded56e2fbe1ba2ed992a3026f3c5780d90afb50aaab4d1d8b75b8c014f4f31\",\n  \"specification_status\": \"FROZEN\",\n  \"baseline_status\": {\n    \"B1\": \"PASS\",\n    \"B2\": \"PASS\",\n    \"B3\": \"PASS\",\n    \"B4\": \"PASS\",\n    \"B5\": \"PASS\"\n  }\n}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        ".venv/bin/python",
+        "scripts/hash_artifacts.py",
+        "--verify",
+        "--output",
+        "checkpoints/P1_artifact_manifest.json"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"files\": 122, \"missing\": [], \"mismatch\": []}\n",
+      "stderr": ""
+    }
+  ]
+}

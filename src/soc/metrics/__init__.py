@@ -1,1 +1,1 @@
-"""Clean-room SoC research; scientific components are not yet implemented."""
+"""Hand-authored correctness-fixture metrics; no scientific aggregation."""

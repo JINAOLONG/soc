@@ -1,4 +1,4 @@
-"""P0 audit and fail-closed stage entry. No scientific engine is implemented yet."""
+"""P0/P1 correctness audits and fail-closed scientific stage entry."""
 from pathlib import Path
 import argparse
 import json
@@ -16,6 +16,13 @@ def main() -> int:
     if args.stage == "report":
         print("Evidence closure is in reports/final_report.md; no scientific result generated.")
         return 0
+    if args.stage == "p1":
+        from soc.validation.p1 import audit_p1
+        result = audit_p1(root)
+        if not args.check_only:
+            (root / "reports/P1_correctness.json").write_text(json.dumps(result, indent=2) + "\n")
+        print(json.dumps(result, indent=2))
+        return 0 if result["status"] == "PASS" else 2
     if args.stage != "p0":
         if args.stage in {"validation", "formal"}:
             partition = "INDEPENDENT_VALIDATION" if args.stage == "validation" else "FORMAL_EVALUATION"

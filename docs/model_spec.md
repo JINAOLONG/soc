@@ -1,4 +1,4 @@
-# System model — P0 draft
+# System model — P0 definitions with user-approved P1 event order
 
 Virtual time uses milliseconds, data sizes MiB, bandwidth MiB/ms and power W.
 Service g has arrival a_g >= 0, relative deadline D_g > 0, absolute deadline
@@ -36,7 +36,7 @@ resource_ready (destination idle), started, running, completed. A proposal may
 wait or be replaced. Actual start >= arrival, all predecessor completions,
 destination-specific data readiness and resource availability.
 
-Proposed deterministic event ordering, to be tested in P1: at virtual time t,
+Deterministic event ordering approved by the user in the P1 task (D1): at virtual time t,
 process all completions, expose all arrivals at t, then refresh the immutable
 scheduler view and dispatch only feasible starts; repeat zero-time dispatch
 until no start is chosen. Ties use stable (service_id,node_id,resource_id).
@@ -61,4 +61,5 @@ P1 must independently validate legal traces and reject crafted violations of
 precedence, data readiness, compatibility, overlaps, duration, unique execution,
 non-preemption, assignment, completion and full arrival accounting. It must include
 a 6–8-node hand-checkable DAG, simultaneous events, equality at deadline and drain.
-No engine or validator is claimed implemented in this P0 draft.
+Implementation and test evidence are tracked in P1_implementation_spec.md and
+reports/P1_correctness.json; this model does not itself assert correctness PASS.
