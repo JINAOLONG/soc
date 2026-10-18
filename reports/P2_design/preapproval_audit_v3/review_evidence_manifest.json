@@ -4,7 +4,7 @@
   "review_verdict": "DESIGN_REVIEW_REVISE_REQUIRED",
   "scope": "Only new report files; all preexisting462 files protected by protected_baseline.json",
   "self_exclusion": "This manifest is excluded to avoid self-hash recursion; enclosing Git commit binds it. Final publication receipt external to commit resolves live final SHA.",
-  "artifact_count": 208,
+  "artifact_count": 209,
   "files": [
     {
       "path": "reports/P2_design/preapproval_audit_v3/D01_D10_decision_readiness.csv",
@@ -23,8 +23,8 @@
     },
     {
       "path": "reports/P2_design/preapproval_audit_v3/actual_commands_and_exit_codes.json",
-      "sha256": "5a9e19eeee6ff33ca579a15f82350461802c87ab96f734643289d2e1ec3cdddc",
-      "size_bytes": 84537
+      "sha256": "169abd6cce4b422f4603fb0f0f0ce7f2df6e8d1f6b3aa5ecdfe5a39add8c0f2f",
+      "size_bytes": 84453
     },
     {
       "path": "reports/P2_design/preapproval_audit_v3/authorization_request.txt",
@@ -100,6 +100,11 @@
       "path": "reports/P2_design/preapproval_audit_v3/final_commands.json",
       "sha256": "8396fd72420cced2c533db3b5a12fdef0cc93292e398cbed1e4cf9a653913f18",
       "size_bytes": 3735
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/first_publication_receipt.json",
+      "sha256": "ea1af38266fbaf3b79a2d7179514309112ee285a9bae90cd2f38453b514b4cb1",
+      "size_bytes": 71045
     },
     {
       "path": "reports/P2_design/preapproval_audit_v3/history_commands.json",

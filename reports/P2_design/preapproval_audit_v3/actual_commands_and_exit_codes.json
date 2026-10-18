@@ -1990,6 +1990,6 @@
       "reason": "final-002 appended the final command ledger after aggregate generation, producing a stale aggregate-ledger hash. Regenerated aggregate before recheck; final-004 all21 integrity checks PASS, expected design-review exit2. Original failure stdout preserved."
     }
   ],
-  "publication_receipt": "Final Git publication occurs after report evidence closes; enclosing commit resolved live; no fabricated self hash",
+  "publication_receipt": "first_publication_receipt.json",
   "scientific_commands_executed": 0
 }
