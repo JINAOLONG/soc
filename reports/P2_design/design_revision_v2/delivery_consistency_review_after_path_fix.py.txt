@@ -1,0 +1,34 @@
+from pathlib import Path
+import json,csv,hashlib,re,subprocess
+R=Path(__file__).resolve().parents[3];D=R/'docs/P2_design/v2';O=R/'reports/P2_design/design_revision_v2'
+def load(p):
+ def pairs(xs):
+  if len(xs)!=len({k for k,v in xs}):raise ValueError('duplicate object field')
+  return dict(xs)
+ return json.loads(p.read_text(),object_pairs_hook=pairs)
+def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+checks=[]
+def check(i,b):checks.append(dict(id=i,status='PASS' if b else 'FAIL'))
+required_docs=['P2_complete_design_proposal_v2.md','P2_workload_templates_v2.json','P2_resource_profiles_v2.json','P2_communication_profiles_v2.json','P2_generation_spec_v2.json','P2_trial_matrix_draft_v2.json','P2_mapping_opportunity_decision_table_v2.md','P2_runner_schema_review_v2.md','P2_D01_D10_approval_checklist_v2.md','P2_scientific_parameter_registry_v2.json','P2_D01_D10_traceability_v2.csv','README.md']
+required_reports=['executive_decision.md','V2_F01_F07_resolution_matrix.csv','v1_v2_change_log.md','identity_dependency_graph.json','diagnostic_semantics_review.md','cross_document_consistency.json','static_review_checks.json','actual_commands_and_exit_codes.json','human_decision_packet.md']
+check('12_REQUIRED_DESIGN_DELIVERABLES',all((D/x).is_file() for x in required_docs))
+check('9_PRE_MANIFEST_REQUIRED_REPORTS',all((O/x).is_file() for x in required_reports))
+for p in sorted(D.glob('*.json')):check('STRICT_JSON_'+p.name,isinstance(load(p),dict))
+audit=load(O/'static_review_checks.json');ids={x['id'] for x in audit['checks']}
+check('FRESH351_ALLPASS',audit['check_count']==audit['passed']==351 and not audit['failed'])
+with (O/'V2_F01_F07_resolution_matrix.csv').open(newline='') as f:rows=list(csv.DictReader(f))
+check('7_FINDINGS_REAL_CHECK_REFERENCES',len(rows)==7 and all(set(x['static_check_ids'].split(';'))<=ids for x in rows))
+check('FINDINGS_NOT_APPROVED_OR_RUNTIME_CLAIMED',all(x['approval']=='UNAPPROVED' and x['runtime_validation']=='NOT_VERIFIED' and x['scientific_validation']=='NOT_RUN' and x['resolution_state']=='ADDRESSED_IN_PROPOSED_DESIGN_STATICALLY_CHECKED_NOT_APPROVED' for x in rows))
+packet=(O/'human_decision_packet.md').read_text();refs=re.findall(r'`(docs/P2_design/v2/[^`]+)` / v2 / SHA256 `([0-9a-f]{64})`',packet)
+check('HUMAN_PACKET_ALL_ACTUAL_HASHES',len(refs)==18 and all(sha(R/p)==h for p,h in refs))
+check('HUMAN_PACKET_10_UNAPPROVED',len(re.findall(r'^Approval: \*\*UNAPPROVED\*\*$',packet,re.M))==10 and len(re.findall(r'^## D\d\d$',packet,re.M))==10)
+pr=load(D/'P2_scientific_parameter_registry_v2.json');check('ALL40_SCIENTIFIC_RULES_UNRESOLVED',len(pr['parameters'])==40 and all(x['status']=='UNRESOLVED' and x['approval']=='UNAPPROVED' for x in pr['parameters']))
+for field in ['v1_value_or_rule','v2_value_or_rule','change_type','findings']:check('PARAMETER_LINEAGE_'+field,all(field in x['lineage'] for x in pr['parameters']))
+log=load(O/'actual_commands_and_exit_codes.json');check('COMMAND_RAW_BYTE_HASHES',all((R/x[k]['path']).is_file() and sha(R/x[k]['path'])==x[k]['sha256'] and (R/x[k]['path']).stat().st_size==x[k]['size_bytes'] for x in log['commands'] for k in ['stdout_ref','stderr_ref']))
+check('RECORDED_FAILURES_RETAINED',log['nonzero_exit_count']==3 and log['unexpected_exit_count']==2 and (O/'raw_commands/CMD-033.stderr.txt').is_file() and (O/'static_review_checks_initial.json').is_file() and (O/'fresh_static_review_initial.py.txt').is_file() and (O/'spec_builder_initial.py.txt').is_file())
+check('TWO_INDEPENDENT_ENCODERS_PLUS_EXTERNAL_GNU',load(O/'external_golden_vector_verification.json')['vectors_checked']==5 and load(O/'external_golden_vector_verification.json')['all_match'])
+cons=load(O/'cross_document_consistency.json');check('CROSS_DOCUMENT9_AREAS_NO_STRUCTURAL_BLOCKER',len(cons['checks'])==9 and not cons['critical_structural_inconsistencies_observed'] and cons['p2_preflight_status']=='BLOCKED' and cons['engineering_timing']=='NOT_FROZEN')
+base=load(O/'protected_baseline.json');check('ALL341_OLD_FILES_IDENTICAL',len(base['files'])==341 and all((R/x['path']).is_file() and sha(R/x['path'])==x['sha256'] for x in base['files']))
+status=subprocess.run(['git','status','--porcelain','--untracked-files=all'],cwd=R,text=True,capture_output=True);lines=status.stdout.splitlines();check('ONLY_TWO_AUTHORIZED_NEW_NAMESPACES',status.returncode==0 and all(x.startswith('?? docs/P2_design/v2/') or x.startswith('?? reports/P2_design/design_revision_v2/') for x in lines))
+check('EXACT_ONE_FINAL_VERDICT',(O/'executive_decision.md').read_text().count('DESIGN_REVISION_READY_FOR_HUMAN_DECISION')==1 and 'PENDING_STATIC_REVIEW' not in (O/'V2_F01_F07_resolution_matrix.csv').read_text())
+failed=[x['id'] for x in checks if x['status']=='FAIL'];result=dict(scope='Metadata/document consistency only; no runtime or scientific generation',checks=checks,check_count=len(checks),passed=len(checks)-len(failed),failed=failed);print(json.dumps(result,indent=2));raise SystemExit(bool(failed))

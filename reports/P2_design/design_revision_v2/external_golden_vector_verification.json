@@ -1,0 +1,78 @@
+{
+  "scope": "Synthetic non-scientific canonical byte literals only; no digest-to-U, workload or bootstrap generation",
+  "tool": "GNU sha256sum",
+  "vectors_checked": 5,
+  "all_match": true,
+  "vectors": [
+    {
+      "vector_id": "VEC-01-CANONICAL",
+      "external_command": [
+        "sha256sum",
+        "<temporary-nonscientific-fixture>/vector-0.txt"
+      ],
+      "exit_code": 0,
+      "stdout": "6041395b81b1768146ec16d6fd56c8b5322aa0d400d6d6ff427e5c428b8f9975  /tmp/soc-nonscientific-canonical-mgkq5mov/vector-0.txt\n",
+      "stderr": "",
+      "expected_sha256": "6041395b81b1768146ec16d6fd56c8b5322aa0d400d6d6ff427e5c428b8f9975",
+      "actual_sha256": "6041395b81b1768146ec16d6fd56c8b5322aa0d400d6d6ff427e5c428b8f9975",
+      "match": true,
+      "production_instance": false
+    },
+    {
+      "vector_id": "VEC-02-JITTER-KEY-SHAPE",
+      "external_command": [
+        "sha256sum",
+        "<temporary-nonscientific-fixture>/vector-1.txt"
+      ],
+      "exit_code": 0,
+      "stdout": "d00def58308420540d55c081a5d794c5cef0baeef62837d1a71badf12d3a106d  /tmp/soc-nonscientific-canonical-mgkq5mov/vector-1.txt\n",
+      "stderr": "",
+      "expected_sha256": "d00def58308420540d55c081a5d794c5cef0baeef62837d1a71badf12d3a106d",
+      "actual_sha256": "d00def58308420540d55c081a5d794c5cef0baeef62837d1a71badf12d3a106d",
+      "match": true,
+      "production_instance": false
+    },
+    {
+      "vector_id": "VEC-03-DURATION-KEY-SHAPE",
+      "external_command": [
+        "sha256sum",
+        "<temporary-nonscientific-fixture>/vector-2.txt"
+      ],
+      "exit_code": 0,
+      "stdout": "074ca1f465e825f8339c2396a39cc440e9b9a278327c07a274a98d4b611c47b1  /tmp/soc-nonscientific-canonical-mgkq5mov/vector-2.txt\n",
+      "stderr": "",
+      "expected_sha256": "074ca1f465e825f8339c2396a39cc440e9b9a278327c07a274a98d4b611c47b1",
+      "actual_sha256": "074ca1f465e825f8339c2396a39cc440e9b9a278327c07a274a98d4b611c47b1",
+      "match": true,
+      "production_instance": false
+    },
+    {
+      "vector_id": "VEC-04-BLUEPRINT-SHAPE",
+      "external_command": [
+        "sha256sum",
+        "<temporary-nonscientific-fixture>/vector-3.txt"
+      ],
+      "exit_code": 0,
+      "stdout": "62f7bd27801f0be6d2dfa13e076c71b96b3194da7b1253e9930df453d366f69a  /tmp/soc-nonscientific-canonical-mgkq5mov/vector-3.txt\n",
+      "stderr": "",
+      "expected_sha256": "62f7bd27801f0be6d2dfa13e076c71b96b3194da7b1253e9930df453d366f69a",
+      "actual_sha256": "62f7bd27801f0be6d2dfa13e076c71b96b3194da7b1253e9930df453d366f69a",
+      "match": true,
+      "production_instance": false
+    },
+    {
+      "vector_id": "VEC-05-STATE-KEY-SHAPE",
+      "external_command": [
+        "sha256sum",
+        "<temporary-nonscientific-fixture>/vector-4.txt"
+      ],
+      "exit_code": 0,
+      "stdout": "e996fab6a66f8a4cc428919dde7ad8e704c2499b07730e47827fdd73c7ce13bb  /tmp/soc-nonscientific-canonical-mgkq5mov/vector-4.txt\n",
+      "stderr": "",
+      "expected_sha256": "e996fab6a66f8a4cc428919dde7ad8e704c2499b07730e47827fdd73c7ce13bb",
+      "actual_sha256": "e996fab6a66f8a4cc428919dde7ad8e704c2499b07730e47827fdd73c7ce13bb",
+      "match": true,
+      "production_instance": false
+    }
+  ]
+}

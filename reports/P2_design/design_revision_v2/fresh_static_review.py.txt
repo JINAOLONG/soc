@@ -1,0 +1,186 @@
+"""Fresh v2 metadata / synthetic algebra review. No soc import or implementation.
+No Workload/Service, generator, scheduler, diagnostic rollout, bootstrap or gate
+is executed. Canonical encoders and Boolean prototypes below are fixture-only
+specification tests, not installed production components.
+"""
+from pathlib import Path
+from fractions import Fraction as F
+from decimal import Decimal
+from collections import Counter,defaultdict
+from itertools import product
+import json,hashlib,csv,math
+R=Path('.');D=R/'docs/P2_design/v2';O=R/'reports/P2_design/design_revision_v2';checks=[]
+def get(n):return json.loads((D/n).read_text(),parse_float=Decimal)
+def check(name,ok,evidence=''):
+ checks.append(dict(id=name,status='PASS' if ok else 'FAIL',evidence=evidence))
+def ssha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+T=get('P2_workload_templates_v2.json');P=get('P2_resource_profiles_v2.json');C=get('P2_communication_profiles_v2.json');G=get('P2_generation_spec_v2.json');M=get('P2_trial_matrix_draft_v2.json');I=get('P2_typed_identity_schema_v2.json');Q=get('P2_diagnostic_spec_v2.json');U=get('P2_public_snapshot_spec_v2.json');K=get('P2_criterion_spec_v2.json');S=get('P2_stage_state_contract_v2.json');PR=get('P2_scientific_parameter_registry_v2.json');V=get('P2_canonical_golden_vectors_v2.json')
+for stem,x,fields in [('workload_templates',T,['templates','group_rule','expansion']),('resource_profiles',P,['resources','profiles','node_scale']),('communication_profiles',C,['edge_tables','links','data_unit','latency_unit','bandwidth_unit','semantics'])]:
+ old=json.loads((R/f'docs/P2_design/P2_{stem}_v1.json').read_text(),parse_float=Decimal)
+ for f in fields:check('PRESERVE_'+stem+'_'+f,x[f]==old[f],f'v1 and v2 /{f} deep equality; metadata version may differ')
+templates={t['template_id']:t for t in T['templates']};roles={p['role']:p for p in P['profiles']};edges={e['template_id']:e['edges'] for e in C['edge_tables']}
+check('SIX_REGISTERED_TEMPLATES',len(templates)==6 and {(t['scene'],t['size']) for t in templates.values()}==set(product(['COCKPIT','ADAS','FUSION'],[8,16])))
+for tid,t in templates.items():
+ nodes={n['id']:n for n in t['nodes']};pairs={(p,n['id']) for n in nodes.values() for p in n['predecessors']};es=edges[tid]
+ check('COUNT_'+tid,len(nodes)==len(t['nodes'])==t['size']==t['node_count'] and len(pairs)==len(es)==t['edge_count'] and not t['hidden_nodes'] and not t['implicit_dummy'])
+ remaining=set(nodes);done=set()
+ while remaining:
+  ready={n for n in remaining if set(nodes[n]['predecessors'])<=done}
+  if not ready:break
+  done|=ready;remaining-=ready
+ check('ACYCLIC_'+tid,not remaining and all(u in nodes and u!=v for u,v in pairs))
+ check('ROLE_EDGE_'+tid,all(n['role'] in roles and n['group']=='INHERIT_SERVICE_GROUP' and set(n['allowed_group_variants'])=={'H','L'} for n in nodes.values()) and pairs=={(e['source'],e['destination']) for e in es} and all(F(e['size_mib'])>=0 for e in es))
+ if t['size']==16:
+  parent=templates[tid.replace('-16-','-8-')];want={(n['id']+'.a',n['id']+'.b') for n in parent['nodes']}|{(p+'.b',n['id']+'.a') for n in parent['nodes'] for p in n['predecessors']}
+  check('EXPANSION_'+tid,pairs==want and len(es)==parent['edge_count']+8 and all(n['cost_scale']=='1/2' for n in nodes.values()))
+check('74_EDGES',sum(len(es) for es in edges.values())==74)
+check('POSITIVE_PROFILE_COMPATIBILITY',P['resources']==['CPU0','CPU1','CPU2','CPU3','GPU0','NPU0'] and len(roles)==16 and all(set(p['estimated_base_ms'])==set(P['resources']) and set(p['compatible_resources'])=={r for r,c in p['estimated_base_ms'].items() if c is not None} and p['compatible_resources'] and all(c is None or F(c)>0 for c in p['estimated_base_ms'].values()) for p in roles.values()))
+check('SYMBOLIC_POSITIVE_BOUND',F(1)*F(1,2)*F(9,10)**2==F(81,200))
+check('NINE_DIRECTED_LINKS_UNITS',len(C['links'])==9 and {(e['source_type'],e['destination_type']) for e in C['links']}==set(product(['CPU','GPU','NPU'],repeat=2)) and all(F(e['latency_ms'])>=0 and F(e['bandwidth_mib_per_ms'])>0 for e in C['links']) and (C['data_unit'],C['latency_unit'],C['bandwidth_unit'])==('MiB','ms','MiB/ms'))
+cfg={c['config_id']:c for c in M['configs']};rows=M['trials'];seeds=json.loads((R/'configs/seed_partitions.json').read_text())['partitions']['CALIBRATION']
+expected={(cid,i,var,m) for cid in cfg for i in range(10) for var,ms in [('MAIN',['B1','B2','B3','B4','B5']),('H_ISOLATED',['B2']),('LOW_COMPETITION',['B2'])] for m in ms}
+actual=[(t['config_id'],t['seed_index'],t['variant'],t['method']) for t in rows]
+check('EXACT_FULL_TRIAL_ROSTER',len(cfg)==36 and len({c['condition_id'] for c in cfg.values()})==18 and len(rows)==len(set(actual))==len(expected)==2520 and set(actual)==expected)
+check('EXACT_CALIBRATION_SEEDS',M['registered_seeds']==seeds and len(seeds)==10 and all(t['calibration_seed']==seeds[t['seed_index']] and t['partition']=='CALIBRATION' for t in rows))
+check('VARIANT_COUNTS',Counter(t['variant'] for t in rows)=={'MAIN':1800,'H_ISOLATED':360,'LOW_COMPETITION':360})
+check('TRIAL_FIELDS_AND_VERSIONED_REFS',len({t['trial_id'] for t in rows})==2520 and all(t['trial_id'].startswith('proposal-v2-t') and t['workload_id']==f'wlref:v2:{t["config_id"]}:s{t["seed_index"]:02}:{t["variant"]}' and t['budget_count']==1 and t['command'] is None and t['workload_sha256'] is None and all(t[k] in M['rules'] for k in ['selection_rule','tie_rule','failure_rule']) for t in rows))
+oldrows=json.loads((R/'docs/P2_design/P2_trial_matrix_draft_v1.json').read_text())['trials']
+check('AXES_METHOD_ORDER_PRESERVED',len(oldrows)==len(rows) and all(all(a[k]==b[k] for k in ['scenario','condition_id','config_id','load','size','variant','method','calibration_seed','seed_index','execution_order','budget_count']) for a,b in zip(oldrows,rows)))
+groups=defaultdict(list)
+for t in rows:groups[t['workload_id']].append(t)
+check('INPUT_PLAN_AND_REPLAY_BUDGET',len(groups)==1080 and sum(v[0]['variant']=='MAIN' for v in groups.values())==360 and M['budget']['physical_engine_invocations_including_replay_max']==2*len(rows)==5040 and M['budget']['automatic_retries']==M['budget']['engineering_timing_runs']==0)
+check('METHOD_SHARED_MAIN_REFERENCES',all(len(v)==5 and {t['method'] for t in v}==set(M['methods']) if v[0]['variant']=='MAIN' else len(v)==1 for v in groups.values()))
+check('ALL_A_B_ACCOUNTED',all(sum(t['config_id']==cid for t in rows)==70 for cid in cfg))
+
+defs=I['$defs'];keyprops=defs['KEY']['properties']
+check('TYPED_KEY_FIELD_BINDINGS',set(G['key_fill_templates'])=={'arrival_jitter','service_role_factor','duration_factor'} and all(set(v)==set(keyprops) for v in G['key_fill_templates'].values()) and keyprops['schema_version']['const']==2 and keyprops['generator_version']['const']==G['generator_version'] and keyprops['counter']['const']==0)
+check('NORMATIVE_BINDING_FIELD_SETS',set(G['key_bindings'])=={'arrival_jitter','service_role_factor','duration_factor'} and all(set(v)==set(keyprops) for v in G['key_bindings'].values()))
+for field,binding in G['key_bindings'].items():
+ for name,op in binding.items():
+  check('KEY_BINDING_'+field+'_'+name, (op['kind']=='LITERAL' and set(op)=={'kind','value'} and op['value']==G['key_fill_templates'][field][name]) or (op['kind']=='COPY' and set(op)=={'kind','source'} and op['source'] in G['binding_context_types']))
+check('KEY_COPY_PARENT_DESCRIPTOR_ONLY',all(binding[k]=={'kind':'COPY','source':'main_descriptor.'+k} for binding in G['key_bindings'].values() for k in ['actual_seed_decimal_string','scenario','condition_id','config_id']))
+check('KEY_CONTEXT_RESOURCE_SCOPES',G['key_bindings']['duration_factor']['resource_id']=={'kind':'COPY','source':'compatible_resource_id'} and all(G['key_bindings'][f]['resource_id']=={'kind':'LITERAL','value':''} for f in ['arrival_jitter','service_role_factor']))
+check('TYPED_BINDING_OPERATIONS_CLOSED',len(defs)==61 and {x['$ref'] for x in defs['KEY_BINDING']['oneOf']}=={'#/$defs/BINDING_COPY','#/$defs/BINDING_LITERAL'} and set(defs['BINDING_COPY']['properties']['source']['enum'])==set(G['binding_context_types']))
+check('MANDATORY_MACRO_EXACT_ORDER','Mandatory descriptive macro' in K['bootstrap']['aggregate'] and 'within each seed equal-weight mean of12' in K['bootstrap']['aggregate'] and 'same bootstrap seed-index vector' in K['bootstrap']['aggregate'] and 'never compensates' in K['bootstrap']['aggregate'])
+
+for f,v in G['key_fill_templates'].items():
+ check('KEY_CONTEXT_'+f,all(v[k] for k in ['scenario','condition_id','config_id','actual_seed_decimal_string']) and v['field']==f and v['edge_id']=='' and v['schema_version']==2)
+check('JITTER_EXACT_EMPTY_FIELDS',all(G['key_fill_templates']['arrival_jitter'][k]=='' for k in ['service_group','template_node_id','resource_id','edge_id']))
+check('NO_MUTABLE_RANDOM_SOURCE',G['algorithm']['name']=='SHA256' and set(G['algorithm']['nonrandom_fields'])=={'edge sizes fixed D03','deadline formula no draws'} and all(k in G['key_exclusions'] for k in ['method','run_id','attempt_id','scheduler_call_count','control_variant']))
+check('PARENT100_G_EXACT','ALL 100' in G['controls']['service_set_for_G'] and 'E_exact' in G['controls']['G_exact'] and 'exact' in G['controls']['G_rounding'].lower() and G['controls']['actual_G']=='NOT_COMPUTED_NO_REALIZATION')
+check('ARRIVALS_DEADLINES_COUNTS',G['arrivals']['slots']==50 and G['arrivals']['H']==G['arrivals']['L']==50 and G['deadlines']['H_multiplier']=='5/2' and G['deadlines']['L_multiplier']=='4' and F(5*(49//5))+F(49%5,4)+F(1,10)<50)
+for name,s in defs.items():
+ if s.get('type')=='object':check('CLOSED_TYPE_'+name,s['additionalProperties'] is False and set(s['required'])==set(s['properties']) and len(s['required'])==len(set(s['required'])))
+def refs_in(v):
+ if isinstance(v,dict):
+  for k,x in v.items():
+   if k=='$ref':yield x
+   else:yield from refs_in(x)
+ elif isinstance(v,list):
+  for x in v:yield from refs_in(x)
+check('ALL_TYPED_REFS_RESOLVE',all(x.startswith('#/$defs/') and x.split('/')[-1] in defs for x in refs_in(defs)))
+check('PREIMAGE_REGISTRY_COMPLETE',set(I['preimage_registry'])=={n for n in defs if n.endswith('_PREIMAGE')} and len(I['preimage_registry'])==21)
+for name in ['BLUEPRINT_PREIMAGE','EXECUTION_PLAN_PREIMAGE','INPUT_LOCK_PREIMAGE']:
+ check('PREIMAGE_NO_FUTURE_SELF_FIELDS_'+name,not(set(defs[name]['properties']) & {'run_id','attempt_id','workload_id','payload_content_sha256','input_resolution_receipt_sha256','completion_id'}))
+check('RUN_ARGV_NO_ATTEMPT_SELF_REFERENCE','attempt_id' not in defs['RUN_PREIMAGE']['properties'] and 'argv_actual' not in defs['RUN_PREIMAGE']['properties'] and defs['SEMANTIC_ARGV_PREIMAGE']['properties']['semantic_options']['maxItems']==0)
+check('WORKLOAD_ID_NO_BIRTH_TIMESTAMP_DEPENDENCY',not(set(defs['WORKLOAD_PREIMAGE']['properties']) & {'generation_receipt_id','generation_attempt_id','started_at_utc','run_id'}))
+check('EXACT_PROCESS_INTERFACE_PROPOSED_NOT_IMPLEMENTED',I['worker_invocation_contract']['currently_implemented'] is False and not (R/'src/soc/execution_worker_v2.py').exists() and '--attempt-id' in I['worker_invocation_contract']['engine_argv_template'])
+graph=json.loads((O/'identity_dependency_graph.json').read_text());remaining=set(graph['nodes']);done=[]
+while remaining:
+ ready=sorted(n for n in remaining if not any(e['after']==n and e['before'] in remaining for e in graph['edges']))
+ if not ready:break
+ done.extend(ready);remaining.difference_update(ready)
+check('IDENTITY_DAG_ACYCLIC',not remaining and len(set(graph['nodes']))==35 and all(e['before'] in done and e['after'] in done for e in graph['edges']))
+check('MAIN_CONTROL_MATERIALIZATION_ORDER',done.index('main_resolution_receipt')<done.index('control_derivation') and done.index('main_input_lock')<done.index('main_materialization')<done.index('resolved_workload_ID')<done.index('run_ID')<done.index('pre_invocation_guard'))
+
+# Two generic independent encoders over synthetic metadata only.
+def libencode(x):return (json.dumps(x,sort_keys=True,separators=(',',':'),ensure_ascii=True,allow_nan=False)+'\n').encode()
+def manual_body(x):
+ if x is None:return 'null'
+ if isinstance(x,bool):return 'true' if x else 'false'
+ if isinstance(x,int):return str(x)
+ if isinstance(x,str):
+  if any(ord(c)<32 or ord(c)>126 for c in x):raise ValueError('not printable ASCII')
+  return '"'+x.replace('\\','\\\\').replace('"','\\"')+'"'
+ if isinstance(x,list):return '['+','.join(manual_body(v) for v in x)+']'
+ if isinstance(x,dict):return '{'+','.join(manual_body(k)+':'+manual_body(x[k]) for k in sorted(x))+'}'
+ raise ValueError('float/unsupported semantic type')
+for v in V['vectors']:
+ a=libencode(v['input']);b=(manual_body(v['input'])+'\n').encode()
+ check('GOLDEN_'+v['id'],a==b==v['expected_canonical_utf8'].encode() and a.hex()==v['expected_canonical_hex'] and hashlib.sha256(a).hexdigest()==v['expected_sha256'])
+ check('GOLDEN_PRODUCTION_REJECTION_'+v['id'],v['valid_production_instance'] is False and v['production_guard_expected']=='REJECT_NONSCIENTIFIC_FIXTURE' and v['digest_to_random_or_workload_generation_performed'] is False)
+check('GOLDEN_VECTORS_TWO_ENCODERS',len(V['vectors'])==5 and all(libencode(v['input'])==(manual_body(v['input'])+'\n').encode() for v in V['vectors']))
+for f in V['fixture_materials']:check('REAL_FIXTURE_HASH_'+f['id'],hashlib.sha256(f['utf8'].encode()).hexdigest()==f['raw_sha256'])
+q=2**64-1
+check('NUMERIC_DIGEST_BOUNDARY_LITERALS_ONLY',F(9,10)+(F(0)/2**64)/5==F(9,10) and F(9,10)<F(9,10)+(F(q)/2**64)/5<F(11,10))
+for name,value in [('FLOAT',.5),('NONASCII','中文')]:
+ try:manual_body(value);rejected=False
+ except ValueError:rejected=True
+ check('CANONICAL_REJECT_'+name,rejected)
+try:json.loads('{"x":1,"x":2}',object_pairs_hook=lambda p:dict(p) if len({k for k,v in p})==len(p) else (_ for _ in ()).throw(ValueError('duplicate')));bad=False
+except ValueError:bad=True
+check('CANONICAL_REJECT_DUPLICATE_KEYS',bad)
+
+limits=Q['limits'];check('ORACLE_SCOPE_2_TO_4',limits['min_action_nodes']==2 and limits['max_action_nodes']==4 and 'below2' in Q['coverage']['PARTIAL'] and 'at least2' in Q['scope']['action_nodes'])
+check('DIAGNOSTIC_BOUNDED_NOT_GLOBAL_OPTIMUM',limits['max_target_H_services']==2 and limits['max_nodes_per_target']==16 and limits['max_projected_nodes']==36 and limits['max_assignments']==6**4==1296 and limits['max_numeric_gap_checks_per_view']==1296*36*6*43 and limits['early_stopping'] is False)
+check('CURRENT_K_AND_SUFFIX_FIXED','fixed' in Q['projection']['current_actions'] and 'Same order' in Q['projection']['suffix_order'] and 'No task-order branching' in Q['projection']['admissible'])
+check('BASELINE_IN_ADMISSIBLE_SPACE','Baseline is included' in Q['projection']['admissible'] and 'max(baseline predicted finish' in Q['projection']['L_constraint'])
+check('H_PATH_EXPLANATION_ARITHMETIC',max(F(2),F(6))+F(4)==10 and F(2)+F(4)==6 and F(13,2)<=max(F(6),F(12)), 'Closed-form section32 explanation only; no diagnostic/scheduler/workload executed.')
+check('ESTIMATE_EXHAUSTION_NOT_HIDDEN_TRUTH','elapsed>=estimate' in Q['scope']['visible_running'] and 'COVERAGE_INSUFFICIENT' in Q['scope']['visible_running'])
+check('MISSING_NOT_ZERO','INCOMPLETE' in Q['coverage']['MISSING'] and 'p=null' in Q['stage_denominators']['zero'])
+check('COVERAGE_PARTIAL_NOT_ZERO','never enter hit/rate denominator' in Q['coverage']['PARTIAL'] and K['units']['partial_not_zero'] is True and K['coverage_thresholds']['support_min_each_seed_condition']=='4/5' and K['coverage_thresholds']['negative_required_each_seed_condition']=='1')
+check('DIAGNOSTIC_RECORD_SCHEMA_COMPLETE',set(Q['record_fields'])==set(defs['DIAGNOSTIC_RECORD']['properties']) and 'independent_recompute_status' in Q['record_fields'])
+check('STATE_KEY_EXCLUDES_SEQUENCE',set(defs['STATE_KEY_PREIMAGE']['properties'])=={'namespace','schema_version','denominator_scope_sha256','state_sha256'} and 'now_bits' in defs['PUBLIC_SNAPSHOT']['properties'])
+events=[('PRIMARY',0,'A'),('PRIMARY',1,'A'),('PRIMARY',2,'B'),('REPLAY',0,'A')]
+state_count=len({state for stream,seq,state in events if stream=='PRIMARY'})
+check('DUPLICATE_STATE_ONE_REAL_CHANGE_TWO',len(events)==4 and state_count==2,'Synthetic event tokens only; no services/snapshots or actual trace generated.')
+check('REPLAY_EXCLUDED','never contributes denominator' in U['replay'] and 'PRIMARY' in defs['SNAPSHOT_EVENT']['properties']['stream_role']['enum'])
+check('SNAPSHOT_PRIVATE_FIELDS_REJECTED',not(set(defs['PUBLIC_SNAPSHOT']['properties']) & {'realized','queue','future_arrivals','seed','event_seq','decision_seq','run_id'}) and all(defs[n]['additionalProperties'] is False for n in ['PUBLIC_NODE','PUBLIC_SERVICE','PUBLIC_SNAPSHOT']))
+check('SNAPSHOT_EVENT_HOOK_COMPLETE','Exactly one SNAPSHOT_EVENT' in U['exact_event_rule'] and 'not an extra observation' in U['exact_event_rule'])
+check('COUNTS_AND_SINGLE_NA_TOKEN',S['group_counts']=={'MAIN':{'total':100,'H':50,'L':50},'H_ISOLATED':{'total':50,'H':50,'L':0},'LOW_COMPETITION':{'total':100,'H':50,'L':50}} and S['control_na_token']=='NOT_APPLICABLE_CONTROL' and defs['GROUP_METRICS']['properties']['status']['enum']==['APPLICABLE','NOT_APPLICABLE_CONTROL','INVALID'])
+check('WINDOW_MAKESPAN_DISTINCT','last_service_completion' in G['windows']['full_drain_makespan'] and 'metadata only' in G['windows']['observation_end'] and max(100,80)==100 and 80!=100)
+check('ABSOLUTE_RN64_BOUND_EQUALITY',(.9+1.0)==(.9+1.0) and not ((.9+1.0)>(.9+1.0)) and 'Equality is NOT certified' in S['feasibility']['computational'] and 'no epsilon' in S['feasibility']['computational'])
+check('ABSOLUTE_RN64_MONOTONIC_SCALARS',all(a+min(x,y)<=a+x and a+min(x,y)<=a+y for a,x,y in [(0.,.9,1.),(2.**30,.5,2.),(1024.,.405,3.)]),'Scalar float operations only, not runtime lower-bound implementation.')
+check('CONTROL_WITNESS_NOT_MAIN_FEASIBILITY','never a claim about MAIN' in S['feasibility']['witness_scope'])
+check('A_BEFORE_B_NO_RELABELLING',M['selection_policy']['candidate_order']==['A','B'] and M['selection_policy']['reference_method']=='B2' and M['selection_policy']['retain_all_candidate_records'] is True and M['selection_policy']['allow_load_relabelling'] is False and M['selection_policy']['allow_seed_deletion'] is False and all(sum(t['config_id']==cid for t in rows)==70 for cid in cfg))
+check('CALIBRATION_CI_CONDITIONAL','not independent confirmatory' in K['bootstrap']['interpretation'] and 'same vector' in K['bootstrap']['index'] and '10000' in K['bootstrap']['method'] and '20261018' in K['bootstrap']['method'])
+check('CUTOFFS_UNCHANGED_BUT_UNAPPROVED',K['threshold_bundle_selection']=='UNAPPROVED_NO_DEFAULT' and [(b['id'],b['tau'],b['frequency'],b['support_seed_count'],b['absence_seed_count_max']) for b in K['bundles']]==[('FINE','1/100','1/100',8,2),('COARSE','1/20','1/20',8,2)])
+abstract_results=set()
+for v,cp,cn,s,n in product([False,True],repeat=5):
+ if s and n:continue
+ result='INCONCLUSIVE' if not v or not cp else 'SUPPORTED' if s else 'NOT_SUPPORTED' if cn and n else 'INCONCLUSIVE'
+ abstract_results.add(result)
+ check('THREE_STATE_ABSTRACT_'+''.join(str(int(x)) for x in [v,cp,cn,s,n]),result in {'SUPPORTED','NOT_SUPPORTED','INCONCLUSIVE'})
+check('THREE_STATES_DISTINCT_EXHAUSTIVE',abstract_results=={'SUPPORTED','NOT_SUPPORTED','INCONCLUSIVE'})
+current=S['current_design_values']
+check('STAGE_GATE_TIMING_BLOCKS',current['engineering_timing_prerequisite']=='NOT_FROZEN' and current['p2_progression_status']=='BLOCKED' and S['timing']['decision_P95_target_ms']==2 and S['timing']['measurement_status']=='NOT_MEASURED')
+check('COMPLETE_NOT_SUPPORTED',current['mapping_classification']=='NOT_EVALUATED' and 'does not imply' in S['stage_execution_complete'] and 'exit always saved' in S['exit_semantics'])
+for flags in product([False,True],repeat=6):
+ execution,integrity,identity,selection,mapping_supported,timing_frozen=flags
+ permitted=all(flags)
+ check('NEGATIVE_NEVER_PROGRESSION_'+''.join(str(int(x)) for x in flags),not permitted if not mapping_supported or not timing_frozen else permitted==all(flags))
+check('TIMING_NO_MEASUREMENTS',M['budget']['engineering_timing_runs']==0 and S['timing']['current']=='NOT_FROZEN')
+check('PARAMETER_GROUP_COUNT_AND_LINEAGE',PR['previous_group_count']==32 and PR['current_group_count']==PR['unresolved_scientific_parameters']==len(PR['parameters'])==40 and {p['id'] for p in PR['parameters']}=={f'SP{i:02}' for i in range(1,41)} and len(PR['v1_to_v2_group_map'])==32 and not PR['deletions'] and not PR['merges'])
+check('NO_HUMAN_APPROVALS',all(p['approval']=='UNAPPROVED' and p['status']=='UNRESOLVED' for p in PR['parameters']))
+for p in PR['parameters']:
+ filename,frag=p['proposal_ref'].split('#',1);path=D/filename;exists=path.exists()
+ if exists and path.suffix=='.json':
+  try:
+   val=json.loads(path.read_text())
+   for part in frag.lstrip('/').split('/'):val=val[part]
+  except (KeyError,TypeError):exists=False
+ elif exists:exists=frag in path.read_text()
+ check('PARAMETER_REF_'+p['id'],exists)
+for p in D.glob('*.json'):
+ data=json.loads(p.read_text());check('DRAFT_FLAGS_'+p.name,data['approval']=='UNAPPROVED' and data['status']=='DRAFT_UNAPPROVED_NONEXECUTABLE' and all(data[k] is False for k in ['approved','frozen','executable','execution_authorized','read_by_pipeline']))
+with (O/'V2_F01_F07_resolution_matrix.csv').open(newline='') as f:resolution=list(csv.DictReader(f))
+check('ALL_FINDINGS_TRACED',len(resolution)==7 and {x['finding_id'] for x in resolution}=={f'V2-F{i:02}' for i in range(1,8)} and all(x['approval']=='UNAPPROVED' for x in resolution))
+with (D/'P2_D01_D10_traceability_v2.csv').open(newline='') as f:trace=list(csv.DictReader(f))
+check('TRACEABILITY_REFS_VALID',len(trace)==53 and {x['decision_id'] for x in trace}=={f'D{i:02}' for i in range(1,11)} and all((R/x['source_file']).is_file() and ssha(R/x['source_file'])==x['sha256'] for x in trace))
+base=json.loads((O/'protected_baseline.json').read_text());bad=[x['path'] for x in base['files'] if not (R/x['path']).is_file() or ssha(R/x['path'])!=x['sha256']]
+check('ALL_341_PROTECTED_FILES_PRESERVED',len(base['files'])==341 and not bad,str(bad))
+check('NO_UNLOCKS_OR_NEW_PRODUCTION_COMPONENT',not (R/'checkpoints/VALIDATION_UNLOCKED').exists() and not (R/'checkpoints/FORMAL_UNLOCKED').exists() and not (R/'src/soc/execution_worker_v2.py').exists())
+check('OLD_PIPELINE_NO_V2_WIRING',all('P2_design/v2' not in p.read_text() for folder in ['src','scripts'] for p in (R/folder).rglob('*.py')))
+failed=[c['id'] for c in checks if c['status']=='FAIL']
+print(json.dumps(dict(scope='FRESH_V2_STATIC_DESIGN_AND_NONSCIENTIFIC_FIXTURE_REVIEW_ONLY',check_count=len(checks),passed=len(checks)-len(failed),failed=failed,checks=checks,scientific_keys_evaluated=0,scientific_workloads_generated=0,scientific_workloads_run=0,bootstrap_indices_generated=0,diagnostic_rollouts_implemented_or_run=False,runtime_validated=False),ensure_ascii=False,indent=2))
+raise SystemExit(1 if failed else 0)

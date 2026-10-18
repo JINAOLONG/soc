@@ -1,0 +1,182 @@
+{
+  "scope": "Fresh cross-document specification consistency; not independent third-party or runtime/scientific validation",
+  "reviewed_starting_commit": "79f9c245b23119ce25175d6dc6ff148e9e092461",
+  "static_check_count": 351,
+  "static_passed": 351,
+  "static_failed": [],
+  "checks": [
+    {
+      "area": "D01_D03",
+      "status": "STATICALLY_CONSISTENT_PROPOSED_ONLY",
+      "static_check_ids": [
+        "POSITIVE_PROFILE_COMPATIBILITY"
+      ],
+      "evidence": "reports/P2_design/design_revision_v2/static_review_checks.json",
+      "conclusion": "Six exact preserved templates,74 edges,16x6 role table,9 directed type pairs; fresh static review contains specific checks"
+    },
+    {
+      "area": "IDENTITY_LIFECYCLE",
+      "status": "STATICALLY_CONSISTENT_PROPOSED_ONLY",
+      "static_check_ids": [
+        "IDENTITY_DAG_ACYCLIC",
+        "MAIN_CONTROL_MATERIALIZATION_ORDER"
+      ],
+      "evidence": "reports/P2_design/design_revision_v2/static_review_checks.json",
+      "conclusion": "35 nodes/40 edges; no future content/run field in pre-materialization lock; semantic vs raw hashes and21 preimages"
+    },
+    {
+      "area": "KEY_SCHEMA_CANONICAL",
+      "status": "STATICALLY_CONSISTENT_PROPOSED_ONLY",
+      "static_check_ids": [
+        "NORMATIVE_BINDING_FIELD_SETS",
+        "TYPED_BINDING_OPERATIONS_CLOSED",
+        "GOLDEN_VECTORS_TWO_ENCODERS"
+      ],
+      "evidence": "reports/P2_design/design_revision_v2/static_review_checks.json",
+      "conclusion": "All15 fields explicit across3 bindings;61 typed definitions;five non-scientific vectors, two independent encoders plus external sha256sum"
+    },
+    {
+      "area": "D05_D06_SELECTION",
+      "status": "STATICALLY_CONSISTENT_PROPOSED_ONLY",
+      "static_check_ids": [
+        "EXACT_FULL_TRIAL_ROSTER",
+        "A_BEFORE_B_NO_RELABELLING"
+      ],
+      "evidence": "reports/P2_design/design_revision_v2/static_review_checks.json",
+      "conclusion": "2520 symbolic rows; no actual input realization; fixed B2/A-before-B and all candidate evidence retained"
+    },
+    {
+      "area": "D07_D08_DENOMINATOR",
+      "status": "STATICALLY_CONSISTENT_PROPOSED_ONLY",
+      "static_check_ids": [
+        "ORACLE_SCOPE_2_TO_4",
+        "COVERAGE_PARTIAL_NOT_ZERO",
+        "MISSING_NOT_ZERO",
+        "MANDATORY_MACRO_EXACT_ORDER"
+      ],
+      "evidence": "reports/P2_design/design_revision_v2/static_review_checks.json",
+      "conclusion": "Same E/F/hit and null rules, partial nonzero distinction; mandatory equal-condition macro is descriptive only"
+    },
+    {
+      "area": "D07_SNAPSHOT",
+      "status": "STATICALLY_CONSISTENT_PROPOSED_ONLY",
+      "static_check_ids": [
+        "STATE_KEY_EXCLUDES_SEQUENCE",
+        "REPLAY_EXCLUDED",
+        "DUPLICATE_STATE_ONE_REAL_CHANGE_TWO"
+      ],
+      "evidence": "reports/P2_design/design_revision_v2/static_review_checks.json",
+      "conclusion": "Public-state hash scoped to primary attempt; retain distinct events, deduplicate identical states; replay excluded"
+    },
+    {
+      "area": "D06_D10_CONTROLS_NUMERICS",
+      "status": "STATICALLY_CONSISTENT_PROPOSED_ONLY",
+      "static_check_ids": [
+        "COUNTS_AND_SINGLE_NA_TOKEN",
+        "WINDOW_MAKESPAN_DISTINCT",
+        "ABSOLUTE_RN64_BOUND_EQUALITY"
+      ],
+      "evidence": "reports/P2_design/design_revision_v2/static_review_checks.json",
+      "conclusion": "100/50/100 service counts, one N/A token, full-drain lastfinish retained; strict absolute RN64 bound without epsilon"
+    },
+    {
+      "area": "D08_D09_STAGE_EXIT",
+      "status": "STATICALLY_CONSISTENT_PROPOSED_ONLY",
+      "static_check_ids": [
+        "STAGE_GATE_TIMING_BLOCKS",
+        "COMPLETE_NOT_SUPPORTED",
+        "THREE_STATES_DISTINCT_EXHAUSTIVE"
+      ],
+      "evidence": "reports/P2_design/design_revision_v2/static_review_checks.json",
+      "conclusion": "Execution COMPLETE, diagnostic verdict and progression separate; timing NOT_FROZEN blocks;0 childexit not stage authorization"
+    },
+    {
+      "area": "TRACE_APPROVAL_HISTORY",
+      "status": "STATICALLY_CONSISTENT_PROPOSED_ONLY",
+      "static_check_ids": [
+        "ALL_FINDINGS_TRACED",
+        "TRACEABILITY_REFS_VALID",
+        "NO_HUMAN_APPROVALS",
+        "ALL_341_PROTECTED_FILES_PRESERVED"
+      ],
+      "evidence": "reports/P2_design/design_revision_v2/static_review_checks.json",
+      "conclusion": "7 requested findings/53 source references/10 unapproved decisions/40 unresolved groups;341 old files immutable"
+    }
+  ],
+  "requested_findings_addressed_in_proposed_docs": 7,
+  "critical_structural_inconsistencies_observed": [],
+  "decisions_unapproved": 10,
+  "scientific_groups_unresolved": 40,
+  "parameter_ids": [
+    "SP01",
+    "SP02",
+    "SP03",
+    "SP04",
+    "SP05",
+    "SP06",
+    "SP07",
+    "SP08",
+    "SP09",
+    "SP10",
+    "SP11",
+    "SP12",
+    "SP13",
+    "SP14",
+    "SP15",
+    "SP16",
+    "SP17",
+    "SP18",
+    "SP19",
+    "SP20",
+    "SP21",
+    "SP22",
+    "SP23",
+    "SP24",
+    "SP25",
+    "SP26",
+    "SP27",
+    "SP28",
+    "SP29",
+    "SP30",
+    "SP31",
+    "SP32",
+    "SP33",
+    "SP34",
+    "SP35",
+    "SP36",
+    "SP37",
+    "SP38",
+    "SP39",
+    "SP40"
+  ],
+  "added_ids": [
+    "SP33",
+    "SP34",
+    "SP35",
+    "SP36",
+    "SP37",
+    "SP38",
+    "SP39",
+    "SP40"
+  ],
+  "human_approval": false,
+  "runtime_implementation_validation": "NOT_VERIFIED",
+  "scientific_validity": "NOT_EVALUATED",
+  "p2_preflight_status": "BLOCKED",
+  "engineering_timing": "NOT_FROZEN",
+  "historical_P1_evidence": {
+    "check_only_command": "CMD-027",
+    "reported_tests": 64,
+    "tested_git_head": "d60b94a791580af09fc0b40827eb57de439f1916",
+    "tests_rerun_this_task": false
+  },
+  "read_only_audit_command_ids": [
+    "CMD-025",
+    "CMD-026",
+    "CMD-027",
+    "CMD-028",
+    "CMD-029",
+    "CMD-030",
+    "CMD-031"
+  ]
+}

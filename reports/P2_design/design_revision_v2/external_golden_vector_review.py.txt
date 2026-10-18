@@ -1,0 +1,12 @@
+from pathlib import Path
+import json,subprocess,tempfile,hashlib
+R=Path('/workspace/soc');D=R/'docs/P2_design/v2';O=R/'reports/P2_design/design_revision_v2'
+v=json.loads((D/'P2_canonical_golden_vectors_v2.json').read_text());rows=[]
+with tempfile.TemporaryDirectory(prefix='soc-nonscientific-canonical-',dir='/tmp') as d:
+ for i,x in enumerate(v['vectors']):
+  p=Path(d)/f'vector-{i}.txt';p.write_bytes(bytes.fromhex(x['expected_canonical_hex']))
+  r=subprocess.run(['sha256sum',str(p)],text=True,capture_output=True)
+  actual=r.stdout.split()[0] if r.returncode==0 else None
+  rows.append(dict(vector_id=x['id'],external_command=['sha256sum',f'<temporary-nonscientific-fixture>/vector-{i}.txt'],exit_code=r.returncode,stdout=r.stdout,stderr=r.stderr,expected_sha256=x['expected_sha256'],actual_sha256=actual,match=actual==x['expected_sha256'],production_instance=False))
+result=dict(scope='Synthetic non-scientific canonical byte literals only; no digest-to-U, workload or bootstrap generation',tool='GNU sha256sum',vectors_checked=len(rows),all_match=all(x['match'] and x['exit_code']==0 for x in rows),vectors=rows)
+(O/'external_golden_vector_verification.json').write_text(json.dumps(result,indent=2)+'\n');print(json.dumps(result,indent=2));raise SystemExit(0 if result['all_match'] else 1)

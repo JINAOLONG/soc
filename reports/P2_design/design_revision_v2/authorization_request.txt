@@ -1,0 +1,413 @@
+# SOC P2 Design Revision v2 — Documentation-Only, Audit-Driven
+
+## 1. Repository and starting checkpoint
+
+Project: `soc`
+
+Repository: https://github.com/JINAOLONG/soc.git
+
+Expected workspace: `/workspace/soc`
+
+Expected branch: `work`
+
+Last reported delivery HEAD:
+
+`79f9c245b23119ce25175d6dc6ff148e9e092461`
+
+Before any changes, verify the actual repository root, branch, HEAD, origin URL, remote branch SHA, worktree status and applicable AGENTS.md instructions.
+
+Do not assume the reported checkpoint is still current. If the repository identity, history, or protected baseline differs unexpectedly, stop and report the discrepancy.
+
+The previous P2 design audit concluded:
+
+`DESIGN_REVIEW_REVISE_REQUIRED`
+
+The audit recommendations were:
+
+- D01–D03: ACCEPT AS PROPOSED, pending actual human approval.
+- D04–D09: REVISE BEFORE APPROVAL.
+- D10: REVISE BEFORE APPROVAL.
+
+These are audit recommendations, not human approvals.
+
+## 2. Objective
+
+Prepare a new, versioned P2 experimental design proposal v2, addressing all findings V2-F01 through V2-F07 in the committed report directory:
+
+`reports/P2_design/independent_review_v2/`
+
+The purpose is to make the experimental design logically coherent, reproducible, implementable and auditable before any scientific implementation or execution is authorized.
+
+This task is limited to documentation, machine-readable design specifications, static analysis and review evidence.
+
+The task does not approve the design, implement the simulator, or authorize P2 execution.
+
+## 3. Absolute safety boundaries
+
+Do NOT:
+
+1. Execute the P2/calibration pipeline.
+2. Generate, materialize or run scientific workloads.
+3. Run scientific comparisons, calculate scientific mapping-opportunity outcomes or inspect scientific outcomes.
+4. Access non-calibration seed realizations or outcomes.
+5. generate new scientific seeds or alter seed partitions.
+6. Implement or modify the simulator, scheduler, workload generator, runner, scientific adapter or runtime validator.
+7. Change existing H/L scientific thresholds, CI methodology, candidate definitions, seed assignments or the research contract.
+8. Create validation/formal unlocks.
+9. Mark any D01–D10 decision as approved.
+10. Change v1 proposal files or rewrite previous audit conclusions.
+11. Present synthetic parameters as source-supported facts or measured hardware data.
+12. Treat a design-review PASS, a COMPLETE artifact, or an exit code of zero as authorization to proceed to P2 or P3.
+
+Do not introduce any change that makes a currently blocked gate appear passed.
+
+If a finding cannot be resolved without a new scientific assumption, document a concrete proposed alternative and keep its approval state UNAPPROVED.
+
+## 4. Versioning and file preservation
+
+Keep all existing v1 files and all historical reports immutable.
+
+Create the new design in a separate versioned namespace, preferably:
+
+`docs/P2_design/v2/`
+
+Store the revision audit and evidence under:
+
+`reports/P2_design/design_revision_v2/`
+
+The v2 package must explicitly state:
+
+- v1 remains the preserved historical proposal.
+- v2 is a proposed revision, not an approved replacement.
+- The previous independent audit and its failures remain in the historical record.
+- All new or revised scientific assumptions require human approval.
+- All D01–D10 approvals remain UNAPPROVED until a separate, explicit approval record is created.
+- The 32 previously registered scientific parameter groups must be traced into v2, with every addition, deletion, split, merge or changed value documented. Do not assume the new version still has exactly 32 groups.
+- Any new parameter or rule must be identified as a proposal, not silently treated as an existing contract.
+
+Do not modify STATUS.md, existing design_status.json, v1 README, v1 proposal, research protocol, seed metadata, gate logic, source code or tests. A new versioned index may identify v2 as the latest draft without declaring it the active approved contract.
+
+## 5. Mandatory finding-by-finding revisions
+
+### V2-F01 — CRITICAL: D07/D08 diagnostic coverage
+
+The previous M1 diagnostic fixes the B2 ready-task order, takes at most four currently ready tasks, minimizes the mean predicted finish of H tasks in that prefix, and constrains each local L finish to be no later than its local baseline finish.
+
+The audit demonstrated that this diagnostic can report zero opportunity when a currently selected L task blocks a later H successor on a scarce resource. Changing only the FINE/COARSE threshold does not repair this observation blind spot.
+
+Required work:
+
+1. Preserve the v1 M1 definition as a separately identified historical diagnostic.
+2. Specify its valid interpretation and explicit negative-result limitation.
+3. Propose a revised, bounded diagnostic that can examine a remaining H dependency path within the already-arrived public DAG and the approved public estimates.
+4. State exactly which arrived nodes, completed predecessors, ready tasks, visible running tasks and resource states are observable.
+5. Explicitly prohibit future arrivals, private true durations, hidden event queues, unobserved execution truth and any feedback from the diagnostic into the actual scheduler.
+6. Define the diagnostic's baseline, admissible alternative assignments, local L constraints, objective, deterministic ties, maximum search size, truncation behavior, record schema and independent recomputation.
+7. State how the revised diagnostic distinguishes:
+   - no opportunity within the tested local action space;
+   - no opportunity observed because coverage is insufficient;
+   - an invalid or incomplete diagnostic.
+8. Explain what a negative result does and does not imply about the registered remaining-H-path mechanism.
+9. Compare the revised diagnostic with v1 and identify the new scientific assumptions it introduces.
+
+Do not automatically replace M1 with an unrestricted optimal scheduler or a new online candidate.
+
+Do not assume a mathematically plausible diagnostic is already scientifically validated.
+
+D08 must be revised consistently with the chosen proposed observation definition. Keep every proposed cutoff, coverage requirement and aggregation rule explicit and UNAPPROVED.
+
+### V2-F02 — CRITICAL: First-materialization identity cycle
+
+The v1 design creates a dependency cycle between workload content hash, run identity, identity locking and initial materialization.
+
+Design an acyclic, auditable lifecycle separating at least:
+
+1. Approved immutable workload blueprint and generation authorization.
+2. A pre-materialization lock based only on already-known identity fields.
+3. Workload materialization and a generation receipt.
+4. An independently verifiable input-resolution receipt.
+5. Resolved workload content identity and actual workload ID.
+6. Run and attempt identity.
+7. A pre-invocation guard.
+8. Actual process execution and raw-output preservation.
+9. Independent validation, metric derivation and deterministic replay.
+10. Atomic completion publication.
+
+Define the exact identity dependencies, required fields, hash preimages and state transitions.
+
+No hash preimage may depend on its own future hash or a future run ID.
+
+The immutable blueprint hash must not be retroactively changed by filling fields that are only known after materialization.
+
+Explain idempotent recovery after each interruption point without overwriting failed or incomplete evidence.
+
+Do not implement the lifecycle in code.
+
+### V2-F03 — MAJOR: Exact keyed-generation and identity specification
+
+Replace conceptual field lists with an explicit typed schema.
+
+Specify:
+
+- Root schema version and generator version, including their exact correspondence.
+- Field names, types, nullability, ordering and canonical encoding.
+- Exact key material for every stochastic field, including arrival jitter.
+- The treatment of scenario, condition, configuration, service slot, node, resource, edge, field and counter domains.
+- Which fields are deliberately excluded from perturbation keys.
+- The distinction between parent input identity and H_ISOLATED/LOW_COMPETITION control identity.
+- Exact JSON canonicalization, Unicode/ASCII rules, numeric representation, duplicate-key rejection and hash scope.
+- Separate semantic hashes and raw-byte hashes.
+- Exact preimage objects for blueprint, materialized input, generation receipt, resolved input, run and attempt identities.
+- The handling of H-only control interval G, explicitly identifying the service set over which it is computed.
+- The exact conversion from keyed digest to numeric perturbation and then to the runtime representation.
+
+Add static golden byte vectors using synthetic, non-scientific fixture identifiers. Record expected canonical bytes and hashes so two independent implementations can compare results.
+
+These vectors must not use reserved scientific outcomes or generate calibration realizations.
+
+Do not invent an unregistered random source or rely on mutable PRNG state.
+
+### V2-F04 — MEDIUM: Public-view identity and denominator deduplication
+
+Separate decision-event identity from state-equivalence identity.
+
+Specify:
+
+- A canonical public snapshot schema.
+- The exact fields included and excluded from the state-equivalence key.
+- The deduplication scope: per run, per trial, or another explicitly justified scope.
+- Treatment of decision sequence numbers and repeated digests.
+- Empty dispatch calls.
+- Same-time events that genuinely change state.
+- Post-completion refreshes.
+- Snapshot references used by deterministic replay.
+- Whether repeated snapshots are excluded from the M1 denominator and how this is independently checked.
+- How missing snapshot data differs from a genuine zero-opportunity observation.
+
+Do not treat `(run_id, decision_seq, public_view_digest)` itself as the state-equivalence key if the sequence changes for an otherwise identical state.
+
+The final rule must preserve all required distinct event records while preventing duplicate state observations from inflating the denominator.
+
+### V2-F05 — MAJOR: Completion, integrity and P2 gate outputs
+
+Specify a complete machine-readable state and exit contract.
+
+Separate at least:
+
+- Execution completion.
+- Artifact integrity.
+- Input and seed identity validity.
+- Trial-selection status.
+- Diagnostic validity.
+- Mapping-opportunity classification.
+- Engineering-timing prerequisite status.
+- Overall P2 progression status.
+
+Define all statuses, required evidence, legal transitions and actual process-exit semantics.
+
+Distinguish a valid negative scientific result from invalid, failed, incomplete, missing, or corrupt evidence.
+
+A fully executed and valid trial may still yield NOT_SUPPORTED or INCONCLUSIVE. Neither outcome may be converted into a false PASS.
+
+An exit code of zero must never independently authorize P2 progression.
+
+COMPLETE must not mean mapping opportunity is supported, and mapping opportunity being supported must not imply H/L scientific thresholds pass.
+
+Preserve the existing 2 ms engineering decision-P95 target.
+
+Engineering timing remains outside the current calibration matrix and is NOT_FROZEN. Do not invent timing measurements, silently drop a timing requirement, or claim the full P2 engineering protocol is frozen.
+
+Specify how the unresolved timing prerequisite is represented without mislabelling a calibration-only execution as an overall project pass.
+
+### V2-F06 — MEDIUM: Selection, CI interpretation and result classification
+
+Retain the proposed deterministic A-before-B configuration-selection policy unless the audit establishes a concrete logical defect.
+
+Do not use candidate advantage or mapping-opportunity results to choose the selected configuration.
+
+Explicitly distinguish:
+
+- Registered candidate configurations.
+- Fully executed configurations.
+- Valid configurations.
+- Valid but off-target configurations.
+- Eligible configurations.
+- Selected configurations.
+- Conditions with no eligible configuration.
+- Invalid, failed and incomplete trial sets.
+
+Preserve every A/B result, including unselected and off-target configurations.
+
+Explain that selecting a configuration using the same calibration-seed records later used for analysis does not create an independent confirmatory dataset. Any selected-configuration CI must be labelled and interpreted consistently with that selection process.
+
+Do not claim confirmatory inference unless the existing research contract supports it.
+
+No seed deletion, load-bin relabelling, threshold adjustment or result-dependent retry is permitted.
+
+### V2-F07 — MEDIUM: Control, observation-window and numerical semantics
+
+Unify control labels and result schemas.
+
+Specify exact service counts and applicability:
+
+- Main input: 100 services, 50 H and 50 L.
+- H_ISOLATED: 50 H services; L metrics explicitly not applicable.
+- LOW_COMPETITION: 100 services with the declared control-specific arrival/placement changes.
+
+Define the distinction between:
+
+- Arrival admission window `[0, W)`.
+- Last admitted arrival.
+- Last service completion.
+- Observation end.
+- Full-drain makespan.
+- Any diagnostic-only window summary.
+
+Do not replace the existing full-drain makespan with `max(W, last_finish)` unless the original metric contract explicitly defines that operation.
+
+Use one exact machine token for control-only N/A metrics.
+
+For the H feasibility lower bound, define the mathematical quantity and its computational verification separately. Specify conservative arithmetic, resource/communication lower-bound assumptions, absolute-deadline conversion, equality handling and rounding rules.
+
+Do not use an arbitrary epsilon. Do not let private true durations or feasibility calculations leak into the scheduler.
+
+Distinguish:
+
+- Proven natural infeasibility when the registered lower-bound criterion is satisfied.
+- Failure to establish feasibility.
+- A valid control-specific feasibility witness.
+- A scheduler correctness failure.
+
+A successful H_ISOLATED control must not be interpreted as proving feasibility under the main arrival process.
+
+## 6. Cross-document consistency requirements
+
+Reconcile all affected D01–D10 definitions, the scientific parameter registry, generation specification, trial matrix, runner/schema proposal, approval checklist and traceability matrix.
+
+Verify the following dependency chain:
+
+`blueprint -> generation authorization -> materialized input -> input-resolution receipt -> workload ID -> run/attempt ID -> execution -> independent validation -> metrics -> replay -> COMPLETE -> diagnostic classification -> P2 gate status`
+
+Verify that the graph is acyclic and that all identities are defined before the corresponding operation requires them.
+
+Check that the revised D07 diagnostic and D08 criterion use identical observation units, denominators, seed aggregation and missing-data semantics.
+
+Check that D05 selected conditions, D06 feasibility classifications, D07/D08 coverage and D09 completion semantics agree.
+
+Check that timing remains explicitly unresolved and does not become an implicit PASS or silently disappear from the overall progression status.
+
+Preserve D01–D03's existing proposed values unless a concrete inconsistency requires a documented change. Do not treat their previous ACCEPT recommendations as approvals.
+
+For every changed parameter, record:
+
+- v1 value or rule.
+- v2 proposed value or rule.
+- Reason for the change.
+- Affected artifacts and findings.
+- Whether it is an existing source-supported requirement or a new assumption.
+- Human approval status.
+
+## 7. Required deliverables
+
+Create a complete versioned proposal package under `docs/P2_design/v2/`, including:
+
+1. `P2_complete_design_proposal_v2.md`
+2. `P2_workload_templates_v2.json`
+3. `P2_resource_profiles_v2.json`
+4. `P2_communication_profiles_v2.json`
+5. `P2_generation_spec_v2.json`
+6. `P2_trial_matrix_draft_v2.json`
+7. `P2_mapping_opportunity_decision_table_v2.md`
+8. `P2_runner_schema_review_v2.md`
+9. `P2_D01_D10_approval_checklist_v2.md`
+10. `P2_scientific_parameter_registry_v2.json`
+11. `P2_D01_D10_traceability_v2.csv`
+12. `README.md`
+
+Add a revision audit package under `reports/P2_design/design_revision_v2/`:
+
+- `executive_decision.md`
+- `V2_F01_F07_resolution_matrix.csv`
+- `v1_v2_change_log.md`
+- `identity_dependency_graph.json`
+- `diagnostic_semantics_review.md`
+- `cross_document_consistency.json`
+- `static_review_checks.json`
+- `review_evidence_manifest.json`
+- `actual_commands_and_exit_codes.json`
+- `human_decision_packet.md`
+
+The human decision packet must list every unresolved decision, exact proposed values and rules, affected files, remaining risks and an explicit approval field.
+
+All approval fields must remain `UNAPPROVED`.
+
+If a required detail cannot be resolved from available evidence, record the precise blocker. Do not silently omit the artifact or invent supporting source evidence.
+
+## 8. Static verification
+
+Conduct a fresh static review of v2, not merely a re-run of the old v1 checker.
+
+At minimum verify:
+
+- All six DAG templates and their declared counts.
+- Complete node/edge/profile correspondence.
+- Positive finite proposed costs and valid compatibility sets.
+- All directed communication-type pairs and units.
+- Exact seed/config/trial identity coverage.
+- Trial-budget arithmetic.
+- Acyclic identity dependencies.
+- Complete canonical field and hash-preimage definitions.
+- Deterministic golden byte-vector consistency.
+- M1/M1-revision denominator and missing-state behavior.
+- D08's logical distinction among SUPPORTED, NOT_SUPPORTED and INCONCLUSIVE.
+- Control N/A semantics and window definitions.
+- Completion-state and P2-gate transitions.
+- Complete traceability from findings to proposed changes.
+- Preservation of the v1 and independent-review history.
+- No accidental human approvals, unlock artifacts or scientific outputs.
+
+Static checks must use non-scientific fixtures and metadata only.
+
+Do not claim runtime correctness, scientific validity, hardware realism or statistical support from static checks.
+
+If any critical inconsistency remains, report REVISE_REQUIRED or BLOCKED. Do not conceal it to obtain a clean audit result.
+
+## 9. Git, evidence and delivery
+
+Only add the new v2 design documents and v2 review artifacts. Do not modify existing protected files.
+
+Record actual commands, stdout/stderr references, return codes, Git identities and file hashes.
+
+Verify the manifest against the actual generated files.
+
+If authorized repository credentials and project policy permit, create a normal commit and push to `work` without force-push, rebase or history rewriting. If publication cannot be verified, state NOT_VERIFIED.
+
+Do not include your own enclosing commit hash in a file that would require retroactively modifying that file. Record the actual final HEAD and remote SHA in the final delivery receipt after publication.
+
+## 10. Final report and stop condition
+
+Finish with exactly one status:
+
+- `DESIGN_REVISION_READY_FOR_HUMAN_DECISION`
+- `DESIGN_REVISION_REVISE_REQUIRED`
+- `DESIGN_REVISION_BLOCKED`
+
+The final report must state:
+
+- Actual starting and ending HEAD.
+- Branch and remote SHA.
+- Worktree status.
+- Changed-file count and exact scope.
+- Protected-file preservation result.
+- Actual static checks executed and their exit codes.
+- Unresolved findings and assumptions.
+- Approval status of D01–D10.
+- Number and identity of unresolved scientific parameter groups.
+- Scientific workloads generated and run: both must remain zero.
+- Whether any prohibited seed partition or scientific outcome was accessed.
+- Whether the report package was committed and pushed.
+- The single next safe action.
+
+Stop after delivering the design revision.
+
+Do not implement the generator, runner, adapter or diagnostic, and do not start P2 scientific execution.

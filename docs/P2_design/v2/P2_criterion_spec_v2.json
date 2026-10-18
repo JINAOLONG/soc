@@ -1,0 +1,103 @@
+{
+  "document_kind": "MAPPING_OPPORTUNITY_CRITERION",
+  "document_version": "v2",
+  "status": "DRAFT_UNAPPROVED_NONEXECUTABLE",
+  "classification": "PROPOSED",
+  "approval": "UNAPPROVED",
+  "approved": false,
+  "frozen": false,
+  "executable": false,
+  "execution_authorized": false,
+  "read_by_pipeline": false,
+  "starting_commit": "79f9c245b23119ce25175d6dc6ff148e9e092461",
+  "observer_id": "M1R_PATH_V2",
+  "threshold_bundle_selection": "UNAPPROVED_NO_DEFAULT",
+  "bundles": [
+    {
+      "id": "FINE",
+      "tau": "1/100",
+      "frequency": "1/100",
+      "support_seed_count": 8,
+      "absence_seed_count_max": 2
+    },
+    {
+      "id": "COARSE",
+      "tau": "1/20",
+      "frequency": "1/20",
+      "support_seed_count": 8,
+      "absence_seed_count_max": 2
+    }
+  ],
+  "coverage_thresholds": {
+    "support_min_each_seed_condition": "4/5",
+    "negative_required_each_seed_condition": "1",
+    "approval": "UNAPPROVED"
+  },
+  "units": {
+    "independent_resampling_unit": "paired registered calibration seed",
+    "observation_unit": "deduplicated fully covered primary MAIN-B2 public state",
+    "eligible_count": "E",
+    "covered_count": "F",
+    "hit_count": "hits",
+    "opportunity_rate": "hits/F",
+    "coverage": "F/E",
+    "partial_not_zero": true
+  },
+  "preconditions": [
+    "definition/criterion explicitly approved before data",
+    "all2520 primary/replay/validation/artifact sets complete valid",
+    "all18 conditions selected by fixed B2 qualification before diagnostic inspection",
+    "all expected primary B2 snapshot streams complete and independently checked",
+    "each of12 selected medium/near conditions has10 paired seeds",
+    "each seed/condition E>0 and F>0",
+    "zero INVALID/INCOMPLETE diagnostic record"
+  ],
+  "bootstrap": {
+    "method": "unchanged10000 paired-seed percentile95%, type7(.025,.975), fixed analysis_seed20261018",
+    "key_schema": "P2_typed_identity_schema_v2.json#/$defs/ANALYSIS_INDEX_KEY",
+    "index": "SHA256 SEMANTIC_CANON_V2(key); q first64 big-endian; limit=18446744073709551610; if q>=limit increment counter else index=q%10; each replicate10 indices, same vector across all methods/conditions",
+    "indices_generated_this_task": false,
+    "aggregate": "Within each condition resample paired seed p and take seed mean. Mandatory descriptive macro: within each seed equal-weight mean of12 selected loaded conditions, then mean over seeds; reuse same bootstrap seed-index vector for every condition/method/macro. Macro never compensates for any condition failure.",
+    "interpretation": "Pointwise descriptive intervals conditional on selected calibration configs and VALID_FULL coverage; not independent confirmatory evidence or simultaneous-coverage claim."
+  },
+  "decision_order": [
+    {
+      "priority": 0,
+      "when": "No scientific evaluation executed",
+      "classification": "NOT_EVALUATED"
+    },
+    {
+      "priority": 1,
+      "when": "Evaluation attempted but any precondition or support coverage fails",
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "priority": 2,
+      "when": "All preconditions; every seed/condition coverage>=4/5; each of12 conditions CI_low>=f and count_seed(p>=f)>=8",
+      "classification": "SUPPORTED"
+    },
+    {
+      "priority": 3,
+      "when": "All preconditions; every seed/condition coverage=1; each of12 conditions CI_high<f and count_seed(p>=f)<=2",
+      "classification": "NOT_SUPPORTED"
+    },
+    {
+      "priority": 4,
+      "when": "All remaining cases, including partial coverage preventing negative interpretation",
+      "classification": "INCONCLUSIVE"
+    }
+  ],
+  "scope": "SUPPORTED concerns projected remaining-H-path opportunity in this bounded public model only; not actual H benefit/L compliance or independent causal mapping success. NOT_SUPPORTED stops this operational mainline under the registered criterion but is not universal absence proof. INCONCLUSIVE cannot PASS.",
+  "parameters_ref": {
+    "file": "P2_scientific_parameter_registry_v2.json",
+    "ids": [
+      "SP28",
+      "SP29",
+      "SP30",
+      "SP31",
+      "SP32",
+      "SP36",
+      "SP39"
+    ]
+  }
+}

@@ -1,0 +1,752 @@
+{
+  "document_kind": "COMMUNICATION_PROFILE_PROPOSAL",
+  "version": "v2",
+  "status": "DRAFT_UNAPPROVED_NONEXECUTABLE",
+  "classification": "PROPOSED",
+  "approved": false,
+  "frozen": false,
+  "executable": false,
+  "execution_authorized": false,
+  "read_by_pipeline": false,
+  "source_checkpoint": "160800d9b136e953c6415cd5229ded87eae72a0f",
+  "data_unit": "MiB",
+  "latency_unit": "ms",
+  "bandwidth_unit": "MiB/ms",
+  "edge_tables": [
+    {
+      "template_id": "COCKPIT-8-v1",
+      "edges": [
+        {
+          "id": "COCKPIT.n01->COCKPIT.n02",
+          "source": "COCKPIT.n01",
+          "destination": "COCKPIT.n02",
+          "size_mib": 0.25,
+          "kind": "ROLE_OUTPUT",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "COCKPIT.n02->COCKPIT.n03",
+          "source": "COCKPIT.n02",
+          "destination": "COCKPIT.n03",
+          "size_mib": 0.125,
+          "kind": "ROLE_OUTPUT",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "COCKPIT.n03->COCKPIT.n04",
+          "source": "COCKPIT.n03",
+          "destination": "COCKPIT.n04",
+          "size_mib": 0.0625,
+          "kind": "ROLE_OUTPUT",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "COCKPIT.n05->COCKPIT.n04",
+          "source": "COCKPIT.n05",
+          "destination": "COCKPIT.n04",
+          "size_mib": 0.125,
+          "kind": "ROLE_OUTPUT",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "COCKPIT.n03->COCKPIT.n06",
+          "source": "COCKPIT.n03",
+          "destination": "COCKPIT.n06",
+          "size_mib": 0.0625,
+          "kind": "ROLE_OUTPUT",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "COCKPIT.n05->COCKPIT.n06",
+          "source": "COCKPIT.n05",
+          "destination": "COCKPIT.n06",
+          "size_mib": 0.125,
+          "kind": "ROLE_OUTPUT",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "COCKPIT.n04->COCKPIT.n07",
+          "source": "COCKPIT.n04",
+          "destination": "COCKPIT.n07",
+          "size_mib": 1,
+          "kind": "ROLE_OUTPUT",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "COCKPIT.n06->COCKPIT.n07",
+          "source": "COCKPIT.n06",
+          "destination": "COCKPIT.n07",
+          "size_mib": 0.25,
+          "kind": "ROLE_OUTPUT",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "COCKPIT.n07->COCKPIT.n08",
+          "source": "COCKPIT.n07",
+          "destination": "COCKPIT.n08",
+          "size_mib": 1,
+          "kind": "ROLE_OUTPUT",
+          "classification": "PROPOSED"
+        }
+      ]
+    },
+    {
+      "template_id": "COCKPIT-16-v1",
+      "edges": [
+        {
+          "id": "COCKPIT.n01.a->COCKPIT.n01.b",
+          "source": "COCKPIT.n01.a",
+          "destination": "COCKPIT.n01.b",
+          "size_mib": 0.0625,
+          "kind": "SPLIT_INTERNAL",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "COCKPIT.n01.b->COCKPIT.n02.a",
+          "source": "COCKPIT.n01.b",
+          "destination": "COCKPIT.n02.a",
+          "size_mib": 0.25,
+          "kind": "ROLE_OUTPUT",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "COCKPIT.n02.a->COCKPIT.n02.b",
+          "source": "COCKPIT.n02.a",
+          "destination": "COCKPIT.n02.b",
+          "size_mib": 0.0625,
+          "kind": "SPLIT_INTERNAL",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "COCKPIT.n02.b->COCKPIT.n03.a",
+          "source": "COCKPIT.n02.b",
+          "destination": "COCKPIT.n03.a",
+          "size_mib": 0.125,
+          "kind": "ROLE_OUTPUT",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "COCKPIT.n03.a->COCKPIT.n03.b",
+          "source": "COCKPIT.n03.a",
+          "destination": "COCKPIT.n03.b",
+          "size_mib": 0.0625,
+          "kind": "SPLIT_INTERNAL",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "COCKPIT.n03.b->COCKPIT.n04.a",
+          "source": "COCKPIT.n03.b",
+          "destination": "COCKPIT.n04.a",
+          "size_mib": 0.0625,
+          "kind": "ROLE_OUTPUT",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "COCKPIT.n05.b->COCKPIT.n04.a",
+          "source": "COCKPIT.n05.b",
+          "destination": "COCKPIT.n04.a",
+          "size_mib": 0.125,
+          "kind": "ROLE_OUTPUT",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "COCKPIT.n04.a->COCKPIT.n04.b",
+          "source": "COCKPIT.n04.a",
+          "destination": "COCKPIT.n04.b",
+          "size_mib": 0.0625,
+          "kind": "SPLIT_INTERNAL",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "COCKPIT.n05.a->COCKPIT.n05.b",
+          "source": "COCKPIT.n05.a",
+          "destination": "COCKPIT.n05.b",
+          "size_mib": 0.0625,
+          "kind": "SPLIT_INTERNAL",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "COCKPIT.n03.b->COCKPIT.n06.a",
+          "source": "COCKPIT.n03.b",
+          "destination": "COCKPIT.n06.a",
+          "size_mib": 0.0625,
+          "kind": "ROLE_OUTPUT",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "COCKPIT.n05.b->COCKPIT.n06.a",
+          "source": "COCKPIT.n05.b",
+          "destination": "COCKPIT.n06.a",
+          "size_mib": 0.125,
+          "kind": "ROLE_OUTPUT",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "COCKPIT.n06.a->COCKPIT.n06.b",
+          "source": "COCKPIT.n06.a",
+          "destination": "COCKPIT.n06.b",
+          "size_mib": 0.0625,
+          "kind": "SPLIT_INTERNAL",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "COCKPIT.n04.b->COCKPIT.n07.a",
+          "source": "COCKPIT.n04.b",
+          "destination": "COCKPIT.n07.a",
+          "size_mib": 1,
+          "kind": "ROLE_OUTPUT",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "COCKPIT.n06.b->COCKPIT.n07.a",
+          "source": "COCKPIT.n06.b",
+          "destination": "COCKPIT.n07.a",
+          "size_mib": 0.25,
+          "kind": "ROLE_OUTPUT",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "COCKPIT.n07.a->COCKPIT.n07.b",
+          "source": "COCKPIT.n07.a",
+          "destination": "COCKPIT.n07.b",
+          "size_mib": 0.0625,
+          "kind": "SPLIT_INTERNAL",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "COCKPIT.n07.b->COCKPIT.n08.a",
+          "source": "COCKPIT.n07.b",
+          "destination": "COCKPIT.n08.a",
+          "size_mib": 1,
+          "kind": "ROLE_OUTPUT",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "COCKPIT.n08.a->COCKPIT.n08.b",
+          "source": "COCKPIT.n08.a",
+          "destination": "COCKPIT.n08.b",
+          "size_mib": 0.0625,
+          "kind": "SPLIT_INTERNAL",
+          "classification": "PROPOSED"
+        }
+      ]
+    },
+    {
+      "template_id": "ADAS-8-v1",
+      "edges": [
+        {
+          "id": "ADAS.n01->ADAS.n02",
+          "source": "ADAS.n01",
+          "destination": "ADAS.n02",
+          "size_mib": 4,
+          "kind": "ROLE_OUTPUT",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "ADAS.n01->ADAS.n03",
+          "source": "ADAS.n01",
+          "destination": "ADAS.n03",
+          "size_mib": 4,
+          "kind": "ROLE_OUTPUT",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "ADAS.n02->ADAS.n04",
+          "source": "ADAS.n02",
+          "destination": "ADAS.n04",
+          "size_mib": 1,
+          "kind": "ROLE_OUTPUT",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "ADAS.n03->ADAS.n05",
+          "source": "ADAS.n03",
+          "destination": "ADAS.n05",
+          "size_mib": 2,
+          "kind": "ROLE_OUTPUT",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "ADAS.n04->ADAS.n05",
+          "source": "ADAS.n04",
+          "destination": "ADAS.n05",
+          "size_mib": 0.25,
+          "kind": "ROLE_OUTPUT",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "ADAS.n05->ADAS.n06",
+          "source": "ADAS.n05",
+          "destination": "ADAS.n06",
+          "size_mib": 0.5,
+          "kind": "ROLE_OUTPUT",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "ADAS.n05->ADAS.n07",
+          "source": "ADAS.n05",
+          "destination": "ADAS.n07",
+          "size_mib": 0.5,
+          "kind": "ROLE_OUTPUT",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "ADAS.n06->ADAS.n08",
+          "source": "ADAS.n06",
+          "destination": "ADAS.n08",
+          "size_mib": 0.125,
+          "kind": "ROLE_OUTPUT",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "ADAS.n07->ADAS.n08",
+          "source": "ADAS.n07",
+          "destination": "ADAS.n08",
+          "size_mib": 1,
+          "kind": "ROLE_OUTPUT",
+          "classification": "PROPOSED"
+        }
+      ]
+    },
+    {
+      "template_id": "ADAS-16-v1",
+      "edges": [
+        {
+          "id": "ADAS.n01.a->ADAS.n01.b",
+          "source": "ADAS.n01.a",
+          "destination": "ADAS.n01.b",
+          "size_mib": 0.0625,
+          "kind": "SPLIT_INTERNAL",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "ADAS.n01.b->ADAS.n02.a",
+          "source": "ADAS.n01.b",
+          "destination": "ADAS.n02.a",
+          "size_mib": 4,
+          "kind": "ROLE_OUTPUT",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "ADAS.n02.a->ADAS.n02.b",
+          "source": "ADAS.n02.a",
+          "destination": "ADAS.n02.b",
+          "size_mib": 0.0625,
+          "kind": "SPLIT_INTERNAL",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "ADAS.n01.b->ADAS.n03.a",
+          "source": "ADAS.n01.b",
+          "destination": "ADAS.n03.a",
+          "size_mib": 4,
+          "kind": "ROLE_OUTPUT",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "ADAS.n03.a->ADAS.n03.b",
+          "source": "ADAS.n03.a",
+          "destination": "ADAS.n03.b",
+          "size_mib": 0.0625,
+          "kind": "SPLIT_INTERNAL",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "ADAS.n02.b->ADAS.n04.a",
+          "source": "ADAS.n02.b",
+          "destination": "ADAS.n04.a",
+          "size_mib": 1,
+          "kind": "ROLE_OUTPUT",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "ADAS.n04.a->ADAS.n04.b",
+          "source": "ADAS.n04.a",
+          "destination": "ADAS.n04.b",
+          "size_mib": 0.0625,
+          "kind": "SPLIT_INTERNAL",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "ADAS.n03.b->ADAS.n05.a",
+          "source": "ADAS.n03.b",
+          "destination": "ADAS.n05.a",
+          "size_mib": 2,
+          "kind": "ROLE_OUTPUT",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "ADAS.n04.b->ADAS.n05.a",
+          "source": "ADAS.n04.b",
+          "destination": "ADAS.n05.a",
+          "size_mib": 0.25,
+          "kind": "ROLE_OUTPUT",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "ADAS.n05.a->ADAS.n05.b",
+          "source": "ADAS.n05.a",
+          "destination": "ADAS.n05.b",
+          "size_mib": 0.0625,
+          "kind": "SPLIT_INTERNAL",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "ADAS.n05.b->ADAS.n06.a",
+          "source": "ADAS.n05.b",
+          "destination": "ADAS.n06.a",
+          "size_mib": 0.5,
+          "kind": "ROLE_OUTPUT",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "ADAS.n06.a->ADAS.n06.b",
+          "source": "ADAS.n06.a",
+          "destination": "ADAS.n06.b",
+          "size_mib": 0.0625,
+          "kind": "SPLIT_INTERNAL",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "ADAS.n05.b->ADAS.n07.a",
+          "source": "ADAS.n05.b",
+          "destination": "ADAS.n07.a",
+          "size_mib": 0.5,
+          "kind": "ROLE_OUTPUT",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "ADAS.n07.a->ADAS.n07.b",
+          "source": "ADAS.n07.a",
+          "destination": "ADAS.n07.b",
+          "size_mib": 0.0625,
+          "kind": "SPLIT_INTERNAL",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "ADAS.n06.b->ADAS.n08.a",
+          "source": "ADAS.n06.b",
+          "destination": "ADAS.n08.a",
+          "size_mib": 0.125,
+          "kind": "ROLE_OUTPUT",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "ADAS.n07.b->ADAS.n08.a",
+          "source": "ADAS.n07.b",
+          "destination": "ADAS.n08.a",
+          "size_mib": 1,
+          "kind": "ROLE_OUTPUT",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "ADAS.n08.a->ADAS.n08.b",
+          "source": "ADAS.n08.a",
+          "destination": "ADAS.n08.b",
+          "size_mib": 0.0625,
+          "kind": "SPLIT_INTERNAL",
+          "classification": "PROPOSED"
+        }
+      ]
+    },
+    {
+      "template_id": "FUSION-8-v1",
+      "edges": [
+        {
+          "id": "FUSION.n01->FUSION.n02",
+          "source": "FUSION.n01",
+          "destination": "FUSION.n02",
+          "size_mib": 0.25,
+          "kind": "ROLE_OUTPUT",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "FUSION.n05->FUSION.n04",
+          "source": "FUSION.n05",
+          "destination": "FUSION.n04",
+          "size_mib": 4,
+          "kind": "ROLE_OUTPUT",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "FUSION.n02->FUSION.n06",
+          "source": "FUSION.n02",
+          "destination": "FUSION.n06",
+          "size_mib": 0.125,
+          "kind": "ROLE_OUTPUT",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "FUSION.n04->FUSION.n06",
+          "source": "FUSION.n04",
+          "destination": "FUSION.n06",
+          "size_mib": 1,
+          "kind": "ROLE_OUTPUT",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "FUSION.n03->FUSION.n07",
+          "source": "FUSION.n03",
+          "destination": "FUSION.n07",
+          "size_mib": 0.125,
+          "kind": "ROLE_OUTPUT",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "FUSION.n06->FUSION.n07",
+          "source": "FUSION.n06",
+          "destination": "FUSION.n07",
+          "size_mib": 0.5,
+          "kind": "ROLE_OUTPUT",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "FUSION.n07->FUSION.n08",
+          "source": "FUSION.n07",
+          "destination": "FUSION.n08",
+          "size_mib": 1,
+          "kind": "ROLE_OUTPUT",
+          "classification": "PROPOSED"
+        }
+      ]
+    },
+    {
+      "template_id": "FUSION-16-v1",
+      "edges": [
+        {
+          "id": "FUSION.n01.a->FUSION.n01.b",
+          "source": "FUSION.n01.a",
+          "destination": "FUSION.n01.b",
+          "size_mib": 0.0625,
+          "kind": "SPLIT_INTERNAL",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "FUSION.n01.b->FUSION.n02.a",
+          "source": "FUSION.n01.b",
+          "destination": "FUSION.n02.a",
+          "size_mib": 0.25,
+          "kind": "ROLE_OUTPUT",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "FUSION.n02.a->FUSION.n02.b",
+          "source": "FUSION.n02.a",
+          "destination": "FUSION.n02.b",
+          "size_mib": 0.0625,
+          "kind": "SPLIT_INTERNAL",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "FUSION.n03.a->FUSION.n03.b",
+          "source": "FUSION.n03.a",
+          "destination": "FUSION.n03.b",
+          "size_mib": 0.0625,
+          "kind": "SPLIT_INTERNAL",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "FUSION.n05.b->FUSION.n04.a",
+          "source": "FUSION.n05.b",
+          "destination": "FUSION.n04.a",
+          "size_mib": 4,
+          "kind": "ROLE_OUTPUT",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "FUSION.n04.a->FUSION.n04.b",
+          "source": "FUSION.n04.a",
+          "destination": "FUSION.n04.b",
+          "size_mib": 0.0625,
+          "kind": "SPLIT_INTERNAL",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "FUSION.n05.a->FUSION.n05.b",
+          "source": "FUSION.n05.a",
+          "destination": "FUSION.n05.b",
+          "size_mib": 0.0625,
+          "kind": "SPLIT_INTERNAL",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "FUSION.n02.b->FUSION.n06.a",
+          "source": "FUSION.n02.b",
+          "destination": "FUSION.n06.a",
+          "size_mib": 0.125,
+          "kind": "ROLE_OUTPUT",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "FUSION.n04.b->FUSION.n06.a",
+          "source": "FUSION.n04.b",
+          "destination": "FUSION.n06.a",
+          "size_mib": 1,
+          "kind": "ROLE_OUTPUT",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "FUSION.n06.a->FUSION.n06.b",
+          "source": "FUSION.n06.a",
+          "destination": "FUSION.n06.b",
+          "size_mib": 0.0625,
+          "kind": "SPLIT_INTERNAL",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "FUSION.n03.b->FUSION.n07.a",
+          "source": "FUSION.n03.b",
+          "destination": "FUSION.n07.a",
+          "size_mib": 0.125,
+          "kind": "ROLE_OUTPUT",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "FUSION.n06.b->FUSION.n07.a",
+          "source": "FUSION.n06.b",
+          "destination": "FUSION.n07.a",
+          "size_mib": 0.5,
+          "kind": "ROLE_OUTPUT",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "FUSION.n07.a->FUSION.n07.b",
+          "source": "FUSION.n07.a",
+          "destination": "FUSION.n07.b",
+          "size_mib": 0.0625,
+          "kind": "SPLIT_INTERNAL",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "FUSION.n07.b->FUSION.n08.a",
+          "source": "FUSION.n07.b",
+          "destination": "FUSION.n08.a",
+          "size_mib": 1,
+          "kind": "ROLE_OUTPUT",
+          "classification": "PROPOSED"
+        },
+        {
+          "id": "FUSION.n08.a->FUSION.n08.b",
+          "source": "FUSION.n08.a",
+          "destination": "FUSION.n08.b",
+          "size_mib": 0.0625,
+          "kind": "SPLIT_INTERNAL",
+          "classification": "PROPOSED"
+        }
+      ]
+    }
+  ],
+  "links": [
+    {
+      "source_type": "CPU",
+      "destination_type": "CPU",
+      "latency_ms": 0.01,
+      "bandwidth_mib_per_ms": 16,
+      "classification": "PROPOSED"
+    },
+    {
+      "source_type": "CPU",
+      "destination_type": "GPU",
+      "latency_ms": 0.05,
+      "bandwidth_mib_per_ms": 8,
+      "classification": "PROPOSED"
+    },
+    {
+      "source_type": "CPU",
+      "destination_type": "NPU",
+      "latency_ms": 0.05,
+      "bandwidth_mib_per_ms": 4,
+      "classification": "PROPOSED"
+    },
+    {
+      "source_type": "GPU",
+      "destination_type": "CPU",
+      "latency_ms": 0.05,
+      "bandwidth_mib_per_ms": 8,
+      "classification": "PROPOSED"
+    },
+    {
+      "source_type": "GPU",
+      "destination_type": "GPU",
+      "latency_ms": 0.01,
+      "bandwidth_mib_per_ms": 16,
+      "classification": "PROPOSED"
+    },
+    {
+      "source_type": "GPU",
+      "destination_type": "NPU",
+      "latency_ms": 0.08,
+      "bandwidth_mib_per_ms": 4,
+      "classification": "PROPOSED"
+    },
+    {
+      "source_type": "NPU",
+      "destination_type": "CPU",
+      "latency_ms": 0.05,
+      "bandwidth_mib_per_ms": 4,
+      "classification": "PROPOSED"
+    },
+    {
+      "source_type": "NPU",
+      "destination_type": "GPU",
+      "latency_ms": 0.08,
+      "bandwidth_mib_per_ms": 4,
+      "classification": "PROPOSED"
+    },
+    {
+      "source_type": "NPU",
+      "destination_type": "NPU",
+      "latency_ms": 0.01,
+      "bandwidth_mib_per_ms": 16,
+      "classification": "PROPOSED"
+    }
+  ],
+  "semantics": {
+    "classification": "SOURCE_SUPPORTED",
+    "same_unit_delay_ms": 0,
+    "different_units": "latency(type(source),type(destination)) + edge_mib / bandwidth(type(source),type(destination))",
+    "start": "predecessor actual completion",
+    "copies": "destination-specific retained copies; remap recomputes readiness for new destination, never reuses another destination copy",
+    "network": "no bus contention; transfers overlap compute and each other",
+    "diagonal_note": "type diagonal applies between distinct same-type units; CPU0->CPU1 nonzero; GPU/GPU and NPU/NPU rows retained for complete 9-pair model even with one such unit"
+  },
+  "examples": [
+    {
+      "source": "CPU0",
+      "destination": "GPU0",
+      "mib": 4,
+      "delay_ms": 0.55,
+      "calculation": "0.05 ms + 4 MiB/(8 MiB/ms) =0.55 ms"
+    },
+    {
+      "source": "CPU0",
+      "destination": "CPU1",
+      "mib": 1,
+      "delay_ms": 0.0725,
+      "calculation": "0.01 +1/16=0.0725 ms"
+    },
+    {
+      "source": "NPU0",
+      "destination": "NPU0",
+      "mib": 1,
+      "delay_ms": 0,
+      "calculation": "same unit override"
+    }
+  ],
+  "source_refs": [
+    "docs/model_spec.md:3,20–31",
+    "docs/literature_reviews/heft_cpop.md:39–45",
+    "docs/literature_reviews/peft.md:37–44"
+  ],
+  "reason": "Power-of-two bandwidth and edge sizes facilitate hand checks; cross-accelerator latency larger than CPU interconnect. All numbers synthetic and unapproved.",
+  "sensitivity_risk": "Communication/compute ratios and extra split edges change locality and accelerator desirability; v1 keeps network fixed, no observed-data adjustment or unbudgeted sensitivity sweep.",
+  "document_version": "v2",
+  "approval": "UNAPPROVED",
+  "starting_commit": "79f9c245b23119ce25175d6dc6ff148e9e092461",
+  "preserved_semantic_content_version": "v1",
+  "parent_proposal": {
+    "path": "docs/P2_design/P2_communication_profiles_v1.json",
+    "sha256": "c3671a75ec593f1f48f731812bfbfe74f4728d48f1db419ea36605407900ebad"
+  },
+  "revision_note": "Document namespace only; original topology/profile/network values and template IDs retained unapproved."
+}

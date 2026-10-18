@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/workspace/soc/reports/P2_design/design_revision_v2/delivery_consistency_review.py.txt", line 27, in <module>
+    log=load(O/'actual_commands_and_exit_codes.json');check('COMMAND_RAW_BYTE_HASHES',all((R[x[k]['path']]).is_file() and sha(R/x[k]['path'])==x[k]['sha256'] and (R/x[k]['path']).stat().st_size==x[k]['size_bytes'] for x in log['commands'] for k in ['stdout_ref','stderr_ref']))
+                                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/soc/reports/P2_design/design_revision_v2/delivery_consistency_review.py.txt", line 27, in <genexpr>
+    log=load(O/'actual_commands_and_exit_codes.json');check('COMMAND_RAW_BYTE_HASHES',all((R[x[k]['path']]).is_file() and sha(R/x[k]['path'])==x[k]['sha256'] and (R/x[k]['path']).stat().st_size==x[k]['size_bytes'] for x in log['commands'] for k in ['stdout_ref','stderr_ref']))
+                                                                                           ~^^^^^^^^^^^^^^
+TypeError: 'PosixPath' object is not subscriptable

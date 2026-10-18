@@ -1,0 +1,1125 @@
+{
+  "document_kind": "DAG_TEMPLATE_PROPOSAL",
+  "version": "v2",
+  "status": "DRAFT_UNAPPROVED_NONEXECUTABLE",
+  "classification": "PROPOSED",
+  "approved": false,
+  "frozen": false,
+  "executable": false,
+  "execution_authorized": false,
+  "read_by_pipeline": false,
+  "source_checkpoint": "160800d9b136e953c6415cd5229ded87eae72a0f",
+  "templates": [
+    {
+      "template_id": "COCKPIT-8-v1",
+      "scene": "COCKPIT",
+      "size": 8,
+      "node_count": 8,
+      "edge_count": 9,
+      "service_groups": [
+        "H",
+        "L"
+      ],
+      "nodes": [
+        {
+          "id": "COCKPIT.n01",
+          "role": "audio",
+          "group": "INHERIT_SERVICE_GROUP",
+          "allowed_group_variants": [
+            "H",
+            "L"
+          ],
+          "predecessors": [],
+          "cost_scale": "1",
+          "parent_8_node": "COCKPIT.n01"
+        },
+        {
+          "id": "COCKPIT.n02",
+          "role": "speech",
+          "group": "INHERIT_SERVICE_GROUP",
+          "allowed_group_variants": [
+            "H",
+            "L"
+          ],
+          "predecessors": [
+            "COCKPIT.n01"
+          ],
+          "cost_scale": "1",
+          "parent_8_node": "COCKPIT.n02"
+        },
+        {
+          "id": "COCKPIT.n03",
+          "role": "intent",
+          "group": "INHERIT_SERVICE_GROUP",
+          "allowed_group_variants": [
+            "H",
+            "L"
+          ],
+          "predecessors": [
+            "COCKPIT.n02"
+          ],
+          "cost_scale": "1",
+          "parent_8_node": "COCKPIT.n03"
+        },
+        {
+          "id": "COCKPIT.n04",
+          "role": "display",
+          "group": "INHERIT_SERVICE_GROUP",
+          "allowed_group_variants": [
+            "H",
+            "L"
+          ],
+          "predecessors": [
+            "COCKPIT.n03",
+            "COCKPIT.n05"
+          ],
+          "cost_scale": "1",
+          "parent_8_node": "COCKPIT.n04"
+        },
+        {
+          "id": "COCKPIT.n05",
+          "role": "navigation",
+          "group": "INHERIT_SERVICE_GROUP",
+          "allowed_group_variants": [
+            "H",
+            "L"
+          ],
+          "predecessors": [],
+          "cost_scale": "1",
+          "parent_8_node": "COCKPIT.n05"
+        },
+        {
+          "id": "COCKPIT.n06",
+          "role": "route",
+          "group": "INHERIT_SERVICE_GROUP",
+          "allowed_group_variants": [
+            "H",
+            "L"
+          ],
+          "predecessors": [
+            "COCKPIT.n03",
+            "COCKPIT.n05"
+          ],
+          "cost_scale": "1",
+          "parent_8_node": "COCKPIT.n06"
+        },
+        {
+          "id": "COCKPIT.n07",
+          "role": "compose",
+          "group": "INHERIT_SERVICE_GROUP",
+          "allowed_group_variants": [
+            "H",
+            "L"
+          ],
+          "predecessors": [
+            "COCKPIT.n04",
+            "COCKPIT.n06"
+          ],
+          "cost_scale": "1",
+          "parent_8_node": "COCKPIT.n07"
+        },
+        {
+          "id": "COCKPIT.n08",
+          "role": "interaction",
+          "group": "INHERIT_SERVICE_GROUP",
+          "allowed_group_variants": [
+            "H",
+            "L"
+          ],
+          "predecessors": [
+            "COCKPIT.n07"
+          ],
+          "cost_scale": "1",
+          "parent_8_node": "COCKPIT.n08"
+        }
+      ],
+      "hidden_nodes": [],
+      "implicit_dummy": false
+    },
+    {
+      "template_id": "COCKPIT-16-v1",
+      "scene": "COCKPIT",
+      "size": 16,
+      "node_count": 16,
+      "edge_count": 17,
+      "service_groups": [
+        "H",
+        "L"
+      ],
+      "nodes": [
+        {
+          "id": "COCKPIT.n01.a",
+          "role": "audio",
+          "group": "INHERIT_SERVICE_GROUP",
+          "allowed_group_variants": [
+            "H",
+            "L"
+          ],
+          "predecessors": [],
+          "cost_scale": "1/2",
+          "parent_8_node": "COCKPIT.n01"
+        },
+        {
+          "id": "COCKPIT.n01.b",
+          "role": "audio",
+          "group": "INHERIT_SERVICE_GROUP",
+          "allowed_group_variants": [
+            "H",
+            "L"
+          ],
+          "predecessors": [
+            "COCKPIT.n01.a"
+          ],
+          "cost_scale": "1/2",
+          "parent_8_node": "COCKPIT.n01"
+        },
+        {
+          "id": "COCKPIT.n02.a",
+          "role": "speech",
+          "group": "INHERIT_SERVICE_GROUP",
+          "allowed_group_variants": [
+            "H",
+            "L"
+          ],
+          "predecessors": [
+            "COCKPIT.n01.b"
+          ],
+          "cost_scale": "1/2",
+          "parent_8_node": "COCKPIT.n02"
+        },
+        {
+          "id": "COCKPIT.n02.b",
+          "role": "speech",
+          "group": "INHERIT_SERVICE_GROUP",
+          "allowed_group_variants": [
+            "H",
+            "L"
+          ],
+          "predecessors": [
+            "COCKPIT.n02.a"
+          ],
+          "cost_scale": "1/2",
+          "parent_8_node": "COCKPIT.n02"
+        },
+        {
+          "id": "COCKPIT.n03.a",
+          "role": "intent",
+          "group": "INHERIT_SERVICE_GROUP",
+          "allowed_group_variants": [
+            "H",
+            "L"
+          ],
+          "predecessors": [
+            "COCKPIT.n02.b"
+          ],
+          "cost_scale": "1/2",
+          "parent_8_node": "COCKPIT.n03"
+        },
+        {
+          "id": "COCKPIT.n03.b",
+          "role": "intent",
+          "group": "INHERIT_SERVICE_GROUP",
+          "allowed_group_variants": [
+            "H",
+            "L"
+          ],
+          "predecessors": [
+            "COCKPIT.n03.a"
+          ],
+          "cost_scale": "1/2",
+          "parent_8_node": "COCKPIT.n03"
+        },
+        {
+          "id": "COCKPIT.n04.a",
+          "role": "display",
+          "group": "INHERIT_SERVICE_GROUP",
+          "allowed_group_variants": [
+            "H",
+            "L"
+          ],
+          "predecessors": [
+            "COCKPIT.n03.b",
+            "COCKPIT.n05.b"
+          ],
+          "cost_scale": "1/2",
+          "parent_8_node": "COCKPIT.n04"
+        },
+        {
+          "id": "COCKPIT.n04.b",
+          "role": "display",
+          "group": "INHERIT_SERVICE_GROUP",
+          "allowed_group_variants": [
+            "H",
+            "L"
+          ],
+          "predecessors": [
+            "COCKPIT.n04.a"
+          ],
+          "cost_scale": "1/2",
+          "parent_8_node": "COCKPIT.n04"
+        },
+        {
+          "id": "COCKPIT.n05.a",
+          "role": "navigation",
+          "group": "INHERIT_SERVICE_GROUP",
+          "allowed_group_variants": [
+            "H",
+            "L"
+          ],
+          "predecessors": [],
+          "cost_scale": "1/2",
+          "parent_8_node": "COCKPIT.n05"
+        },
+        {
+          "id": "COCKPIT.n05.b",
+          "role": "navigation",
+          "group": "INHERIT_SERVICE_GROUP",
+          "allowed_group_variants": [
+            "H",
+            "L"
+          ],
+          "predecessors": [
+            "COCKPIT.n05.a"
+          ],
+          "cost_scale": "1/2",
+          "parent_8_node": "COCKPIT.n05"
+        },
+        {
+          "id": "COCKPIT.n06.a",
+          "role": "route",
+          "group": "INHERIT_SERVICE_GROUP",
+          "allowed_group_variants": [
+            "H",
+            "L"
+          ],
+          "predecessors": [
+            "COCKPIT.n03.b",
+            "COCKPIT.n05.b"
+          ],
+          "cost_scale": "1/2",
+          "parent_8_node": "COCKPIT.n06"
+        },
+        {
+          "id": "COCKPIT.n06.b",
+          "role": "route",
+          "group": "INHERIT_SERVICE_GROUP",
+          "allowed_group_variants": [
+            "H",
+            "L"
+          ],
+          "predecessors": [
+            "COCKPIT.n06.a"
+          ],
+          "cost_scale": "1/2",
+          "parent_8_node": "COCKPIT.n06"
+        },
+        {
+          "id": "COCKPIT.n07.a",
+          "role": "compose",
+          "group": "INHERIT_SERVICE_GROUP",
+          "allowed_group_variants": [
+            "H",
+            "L"
+          ],
+          "predecessors": [
+            "COCKPIT.n04.b",
+            "COCKPIT.n06.b"
+          ],
+          "cost_scale": "1/2",
+          "parent_8_node": "COCKPIT.n07"
+        },
+        {
+          "id": "COCKPIT.n07.b",
+          "role": "compose",
+          "group": "INHERIT_SERVICE_GROUP",
+          "allowed_group_variants": [
+            "H",
+            "L"
+          ],
+          "predecessors": [
+            "COCKPIT.n07.a"
+          ],
+          "cost_scale": "1/2",
+          "parent_8_node": "COCKPIT.n07"
+        },
+        {
+          "id": "COCKPIT.n08.a",
+          "role": "interaction",
+          "group": "INHERIT_SERVICE_GROUP",
+          "allowed_group_variants": [
+            "H",
+            "L"
+          ],
+          "predecessors": [
+            "COCKPIT.n07.b"
+          ],
+          "cost_scale": "1/2",
+          "parent_8_node": "COCKPIT.n08"
+        },
+        {
+          "id": "COCKPIT.n08.b",
+          "role": "interaction",
+          "group": "INHERIT_SERVICE_GROUP",
+          "allowed_group_variants": [
+            "H",
+            "L"
+          ],
+          "predecessors": [
+            "COCKPIT.n08.a"
+          ],
+          "cost_scale": "1/2",
+          "parent_8_node": "COCKPIT.n08"
+        }
+      ],
+      "hidden_nodes": [],
+      "implicit_dummy": false
+    },
+    {
+      "template_id": "ADAS-8-v1",
+      "scene": "ADAS",
+      "size": 8,
+      "node_count": 8,
+      "edge_count": 9,
+      "service_groups": [
+        "H",
+        "L"
+      ],
+      "nodes": [
+        {
+          "id": "ADAS.n01",
+          "role": "preprocess",
+          "group": "INHERIT_SERVICE_GROUP",
+          "allowed_group_variants": [
+            "H",
+            "L"
+          ],
+          "predecessors": [],
+          "cost_scale": "1",
+          "parent_8_node": "ADAS.n01"
+        },
+        {
+          "id": "ADAS.n02",
+          "role": "detect",
+          "group": "INHERIT_SERVICE_GROUP",
+          "allowed_group_variants": [
+            "H",
+            "L"
+          ],
+          "predecessors": [
+            "ADAS.n01"
+          ],
+          "cost_scale": "1",
+          "parent_8_node": "ADAS.n02"
+        },
+        {
+          "id": "ADAS.n03",
+          "role": "segment",
+          "group": "INHERIT_SERVICE_GROUP",
+          "allowed_group_variants": [
+            "H",
+            "L"
+          ],
+          "predecessors": [
+            "ADAS.n01"
+          ],
+          "cost_scale": "1",
+          "parent_8_node": "ADAS.n03"
+        },
+        {
+          "id": "ADAS.n04",
+          "role": "track",
+          "group": "INHERIT_SERVICE_GROUP",
+          "allowed_group_variants": [
+            "H",
+            "L"
+          ],
+          "predecessors": [
+            "ADAS.n02"
+          ],
+          "cost_scale": "1",
+          "parent_8_node": "ADAS.n04"
+        },
+        {
+          "id": "ADAS.n05",
+          "role": "fusion",
+          "group": "INHERIT_SERVICE_GROUP",
+          "allowed_group_variants": [
+            "H",
+            "L"
+          ],
+          "predecessors": [
+            "ADAS.n03",
+            "ADAS.n04"
+          ],
+          "cost_scale": "1",
+          "parent_8_node": "ADAS.n05"
+        },
+        {
+          "id": "ADAS.n06",
+          "role": "plan",
+          "group": "INHERIT_SERVICE_GROUP",
+          "allowed_group_variants": [
+            "H",
+            "L"
+          ],
+          "predecessors": [
+            "ADAS.n05"
+          ],
+          "cost_scale": "1",
+          "parent_8_node": "ADAS.n06"
+        },
+        {
+          "id": "ADAS.n07",
+          "role": "render",
+          "group": "INHERIT_SERVICE_GROUP",
+          "allowed_group_variants": [
+            "H",
+            "L"
+          ],
+          "predecessors": [
+            "ADAS.n05"
+          ],
+          "cost_scale": "1",
+          "parent_8_node": "ADAS.n07"
+        },
+        {
+          "id": "ADAS.n08",
+          "role": "output",
+          "group": "INHERIT_SERVICE_GROUP",
+          "allowed_group_variants": [
+            "H",
+            "L"
+          ],
+          "predecessors": [
+            "ADAS.n06",
+            "ADAS.n07"
+          ],
+          "cost_scale": "1",
+          "parent_8_node": "ADAS.n08"
+        }
+      ],
+      "hidden_nodes": [],
+      "implicit_dummy": false
+    },
+    {
+      "template_id": "ADAS-16-v1",
+      "scene": "ADAS",
+      "size": 16,
+      "node_count": 16,
+      "edge_count": 17,
+      "service_groups": [
+        "H",
+        "L"
+      ],
+      "nodes": [
+        {
+          "id": "ADAS.n01.a",
+          "role": "preprocess",
+          "group": "INHERIT_SERVICE_GROUP",
+          "allowed_group_variants": [
+            "H",
+            "L"
+          ],
+          "predecessors": [],
+          "cost_scale": "1/2",
+          "parent_8_node": "ADAS.n01"
+        },
+        {
+          "id": "ADAS.n01.b",
+          "role": "preprocess",
+          "group": "INHERIT_SERVICE_GROUP",
+          "allowed_group_variants": [
+            "H",
+            "L"
+          ],
+          "predecessors": [
+            "ADAS.n01.a"
+          ],
+          "cost_scale": "1/2",
+          "parent_8_node": "ADAS.n01"
+        },
+        {
+          "id": "ADAS.n02.a",
+          "role": "detect",
+          "group": "INHERIT_SERVICE_GROUP",
+          "allowed_group_variants": [
+            "H",
+            "L"
+          ],
+          "predecessors": [
+            "ADAS.n01.b"
+          ],
+          "cost_scale": "1/2",
+          "parent_8_node": "ADAS.n02"
+        },
+        {
+          "id": "ADAS.n02.b",
+          "role": "detect",
+          "group": "INHERIT_SERVICE_GROUP",
+          "allowed_group_variants": [
+            "H",
+            "L"
+          ],
+          "predecessors": [
+            "ADAS.n02.a"
+          ],
+          "cost_scale": "1/2",
+          "parent_8_node": "ADAS.n02"
+        },
+        {
+          "id": "ADAS.n03.a",
+          "role": "segment",
+          "group": "INHERIT_SERVICE_GROUP",
+          "allowed_group_variants": [
+            "H",
+            "L"
+          ],
+          "predecessors": [
+            "ADAS.n01.b"
+          ],
+          "cost_scale": "1/2",
+          "parent_8_node": "ADAS.n03"
+        },
+        {
+          "id": "ADAS.n03.b",
+          "role": "segment",
+          "group": "INHERIT_SERVICE_GROUP",
+          "allowed_group_variants": [
+            "H",
+            "L"
+          ],
+          "predecessors": [
+            "ADAS.n03.a"
+          ],
+          "cost_scale": "1/2",
+          "parent_8_node": "ADAS.n03"
+        },
+        {
+          "id": "ADAS.n04.a",
+          "role": "track",
+          "group": "INHERIT_SERVICE_GROUP",
+          "allowed_group_variants": [
+            "H",
+            "L"
+          ],
+          "predecessors": [
+            "ADAS.n02.b"
+          ],
+          "cost_scale": "1/2",
+          "parent_8_node": "ADAS.n04"
+        },
+        {
+          "id": "ADAS.n04.b",
+          "role": "track",
+          "group": "INHERIT_SERVICE_GROUP",
+          "allowed_group_variants": [
+            "H",
+            "L"
+          ],
+          "predecessors": [
+            "ADAS.n04.a"
+          ],
+          "cost_scale": "1/2",
+          "parent_8_node": "ADAS.n04"
+        },
+        {
+          "id": "ADAS.n05.a",
+          "role": "fusion",
+          "group": "INHERIT_SERVICE_GROUP",
+          "allowed_group_variants": [
+            "H",
+            "L"
+          ],
+          "predecessors": [
+            "ADAS.n03.b",
+            "ADAS.n04.b"
+          ],
+          "cost_scale": "1/2",
+          "parent_8_node": "ADAS.n05"
+        },
+        {
+          "id": "ADAS.n05.b",
+          "role": "fusion",
+          "group": "INHERIT_SERVICE_GROUP",
+          "allowed_group_variants": [
+            "H",
+            "L"
+          ],
+          "predecessors": [
+            "ADAS.n05.a"
+          ],
+          "cost_scale": "1/2",
+          "parent_8_node": "ADAS.n05"
+        },
+        {
+          "id": "ADAS.n06.a",
+          "role": "plan",
+          "group": "INHERIT_SERVICE_GROUP",
+          "allowed_group_variants": [
+            "H",
+            "L"
+          ],
+          "predecessors": [
+            "ADAS.n05.b"
+          ],
+          "cost_scale": "1/2",
+          "parent_8_node": "ADAS.n06"
+        },
+        {
+          "id": "ADAS.n06.b",
+          "role": "plan",
+          "group": "INHERIT_SERVICE_GROUP",
+          "allowed_group_variants": [
+            "H",
+            "L"
+          ],
+          "predecessors": [
+            "ADAS.n06.a"
+          ],
+          "cost_scale": "1/2",
+          "parent_8_node": "ADAS.n06"
+        },
+        {
+          "id": "ADAS.n07.a",
+          "role": "render",
+          "group": "INHERIT_SERVICE_GROUP",
+          "allowed_group_variants": [
+            "H",
+            "L"
+          ],
+          "predecessors": [
+            "ADAS.n05.b"
+          ],
+          "cost_scale": "1/2",
+          "parent_8_node": "ADAS.n07"
+        },
+        {
+          "id": "ADAS.n07.b",
+          "role": "render",
+          "group": "INHERIT_SERVICE_GROUP",
+          "allowed_group_variants": [
+            "H",
+            "L"
+          ],
+          "predecessors": [
+            "ADAS.n07.a"
+          ],
+          "cost_scale": "1/2",
+          "parent_8_node": "ADAS.n07"
+        },
+        {
+          "id": "ADAS.n08.a",
+          "role": "output",
+          "group": "INHERIT_SERVICE_GROUP",
+          "allowed_group_variants": [
+            "H",
+            "L"
+          ],
+          "predecessors": [
+            "ADAS.n06.b",
+            "ADAS.n07.b"
+          ],
+          "cost_scale": "1/2",
+          "parent_8_node": "ADAS.n08"
+        },
+        {
+          "id": "ADAS.n08.b",
+          "role": "output",
+          "group": "INHERIT_SERVICE_GROUP",
+          "allowed_group_variants": [
+            "H",
+            "L"
+          ],
+          "predecessors": [
+            "ADAS.n08.a"
+          ],
+          "cost_scale": "1/2",
+          "parent_8_node": "ADAS.n08"
+        }
+      ],
+      "hidden_nodes": [],
+      "implicit_dummy": false
+    },
+    {
+      "template_id": "FUSION-8-v1",
+      "scene": "FUSION",
+      "size": 8,
+      "node_count": 8,
+      "edge_count": 7,
+      "service_groups": [
+        "H",
+        "L"
+      ],
+      "nodes": [
+        {
+          "id": "FUSION.n01",
+          "role": "audio",
+          "group": "INHERIT_SERVICE_GROUP",
+          "allowed_group_variants": [
+            "H",
+            "L"
+          ],
+          "predecessors": [],
+          "cost_scale": "1",
+          "parent_8_node": "FUSION.n01"
+        },
+        {
+          "id": "FUSION.n02",
+          "role": "speech",
+          "group": "INHERIT_SERVICE_GROUP",
+          "allowed_group_variants": [
+            "H",
+            "L"
+          ],
+          "predecessors": [
+            "FUSION.n01"
+          ],
+          "cost_scale": "1",
+          "parent_8_node": "FUSION.n02"
+        },
+        {
+          "id": "FUSION.n03",
+          "role": "navigation",
+          "group": "INHERIT_SERVICE_GROUP",
+          "allowed_group_variants": [
+            "H",
+            "L"
+          ],
+          "predecessors": [],
+          "cost_scale": "1",
+          "parent_8_node": "FUSION.n03"
+        },
+        {
+          "id": "FUSION.n04",
+          "role": "detect",
+          "group": "INHERIT_SERVICE_GROUP",
+          "allowed_group_variants": [
+            "H",
+            "L"
+          ],
+          "predecessors": [
+            "FUSION.n05"
+          ],
+          "cost_scale": "1",
+          "parent_8_node": "FUSION.n04"
+        },
+        {
+          "id": "FUSION.n05",
+          "role": "preprocess",
+          "group": "INHERIT_SERVICE_GROUP",
+          "allowed_group_variants": [
+            "H",
+            "L"
+          ],
+          "predecessors": [],
+          "cost_scale": "1",
+          "parent_8_node": "FUSION.n05"
+        },
+        {
+          "id": "FUSION.n06",
+          "role": "fusion",
+          "group": "INHERIT_SERVICE_GROUP",
+          "allowed_group_variants": [
+            "H",
+            "L"
+          ],
+          "predecessors": [
+            "FUSION.n02",
+            "FUSION.n04"
+          ],
+          "cost_scale": "1",
+          "parent_8_node": "FUSION.n06"
+        },
+        {
+          "id": "FUSION.n07",
+          "role": "compose",
+          "group": "INHERIT_SERVICE_GROUP",
+          "allowed_group_variants": [
+            "H",
+            "L"
+          ],
+          "predecessors": [
+            "FUSION.n03",
+            "FUSION.n06"
+          ],
+          "cost_scale": "1",
+          "parent_8_node": "FUSION.n07"
+        },
+        {
+          "id": "FUSION.n08",
+          "role": "interaction",
+          "group": "INHERIT_SERVICE_GROUP",
+          "allowed_group_variants": [
+            "H",
+            "L"
+          ],
+          "predecessors": [
+            "FUSION.n07"
+          ],
+          "cost_scale": "1",
+          "parent_8_node": "FUSION.n08"
+        }
+      ],
+      "hidden_nodes": [],
+      "implicit_dummy": false
+    },
+    {
+      "template_id": "FUSION-16-v1",
+      "scene": "FUSION",
+      "size": 16,
+      "node_count": 16,
+      "edge_count": 15,
+      "service_groups": [
+        "H",
+        "L"
+      ],
+      "nodes": [
+        {
+          "id": "FUSION.n01.a",
+          "role": "audio",
+          "group": "INHERIT_SERVICE_GROUP",
+          "allowed_group_variants": [
+            "H",
+            "L"
+          ],
+          "predecessors": [],
+          "cost_scale": "1/2",
+          "parent_8_node": "FUSION.n01"
+        },
+        {
+          "id": "FUSION.n01.b",
+          "role": "audio",
+          "group": "INHERIT_SERVICE_GROUP",
+          "allowed_group_variants": [
+            "H",
+            "L"
+          ],
+          "predecessors": [
+            "FUSION.n01.a"
+          ],
+          "cost_scale": "1/2",
+          "parent_8_node": "FUSION.n01"
+        },
+        {
+          "id": "FUSION.n02.a",
+          "role": "speech",
+          "group": "INHERIT_SERVICE_GROUP",
+          "allowed_group_variants": [
+            "H",
+            "L"
+          ],
+          "predecessors": [
+            "FUSION.n01.b"
+          ],
+          "cost_scale": "1/2",
+          "parent_8_node": "FUSION.n02"
+        },
+        {
+          "id": "FUSION.n02.b",
+          "role": "speech",
+          "group": "INHERIT_SERVICE_GROUP",
+          "allowed_group_variants": [
+            "H",
+            "L"
+          ],
+          "predecessors": [
+            "FUSION.n02.a"
+          ],
+          "cost_scale": "1/2",
+          "parent_8_node": "FUSION.n02"
+        },
+        {
+          "id": "FUSION.n03.a",
+          "role": "navigation",
+          "group": "INHERIT_SERVICE_GROUP",
+          "allowed_group_variants": [
+            "H",
+            "L"
+          ],
+          "predecessors": [],
+          "cost_scale": "1/2",
+          "parent_8_node": "FUSION.n03"
+        },
+        {
+          "id": "FUSION.n03.b",
+          "role": "navigation",
+          "group": "INHERIT_SERVICE_GROUP",
+          "allowed_group_variants": [
+            "H",
+            "L"
+          ],
+          "predecessors": [
+            "FUSION.n03.a"
+          ],
+          "cost_scale": "1/2",
+          "parent_8_node": "FUSION.n03"
+        },
+        {
+          "id": "FUSION.n04.a",
+          "role": "detect",
+          "group": "INHERIT_SERVICE_GROUP",
+          "allowed_group_variants": [
+            "H",
+            "L"
+          ],
+          "predecessors": [
+            "FUSION.n05.b"
+          ],
+          "cost_scale": "1/2",
+          "parent_8_node": "FUSION.n04"
+        },
+        {
+          "id": "FUSION.n04.b",
+          "role": "detect",
+          "group": "INHERIT_SERVICE_GROUP",
+          "allowed_group_variants": [
+            "H",
+            "L"
+          ],
+          "predecessors": [
+            "FUSION.n04.a"
+          ],
+          "cost_scale": "1/2",
+          "parent_8_node": "FUSION.n04"
+        },
+        {
+          "id": "FUSION.n05.a",
+          "role": "preprocess",
+          "group": "INHERIT_SERVICE_GROUP",
+          "allowed_group_variants": [
+            "H",
+            "L"
+          ],
+          "predecessors": [],
+          "cost_scale": "1/2",
+          "parent_8_node": "FUSION.n05"
+        },
+        {
+          "id": "FUSION.n05.b",
+          "role": "preprocess",
+          "group": "INHERIT_SERVICE_GROUP",
+          "allowed_group_variants": [
+            "H",
+            "L"
+          ],
+          "predecessors": [
+            "FUSION.n05.a"
+          ],
+          "cost_scale": "1/2",
+          "parent_8_node": "FUSION.n05"
+        },
+        {
+          "id": "FUSION.n06.a",
+          "role": "fusion",
+          "group": "INHERIT_SERVICE_GROUP",
+          "allowed_group_variants": [
+            "H",
+            "L"
+          ],
+          "predecessors": [
+            "FUSION.n02.b",
+            "FUSION.n04.b"
+          ],
+          "cost_scale": "1/2",
+          "parent_8_node": "FUSION.n06"
+        },
+        {
+          "id": "FUSION.n06.b",
+          "role": "fusion",
+          "group": "INHERIT_SERVICE_GROUP",
+          "allowed_group_variants": [
+            "H",
+            "L"
+          ],
+          "predecessors": [
+            "FUSION.n06.a"
+          ],
+          "cost_scale": "1/2",
+          "parent_8_node": "FUSION.n06"
+        },
+        {
+          "id": "FUSION.n07.a",
+          "role": "compose",
+          "group": "INHERIT_SERVICE_GROUP",
+          "allowed_group_variants": [
+            "H",
+            "L"
+          ],
+          "predecessors": [
+            "FUSION.n03.b",
+            "FUSION.n06.b"
+          ],
+          "cost_scale": "1/2",
+          "parent_8_node": "FUSION.n07"
+        },
+        {
+          "id": "FUSION.n07.b",
+          "role": "compose",
+          "group": "INHERIT_SERVICE_GROUP",
+          "allowed_group_variants": [
+            "H",
+            "L"
+          ],
+          "predecessors": [
+            "FUSION.n07.a"
+          ],
+          "cost_scale": "1/2",
+          "parent_8_node": "FUSION.n07"
+        },
+        {
+          "id": "FUSION.n08.a",
+          "role": "interaction",
+          "group": "INHERIT_SERVICE_GROUP",
+          "allowed_group_variants": [
+            "H",
+            "L"
+          ],
+          "predecessors": [
+            "FUSION.n07.b"
+          ],
+          "cost_scale": "1/2",
+          "parent_8_node": "FUSION.n08"
+        },
+        {
+          "id": "FUSION.n08.b",
+          "role": "interaction",
+          "group": "INHERIT_SERVICE_GROUP",
+          "allowed_group_variants": [
+            "H",
+            "L"
+          ],
+          "predecessors": [
+            "FUSION.n08.a"
+          ],
+          "cost_scale": "1/2",
+          "parent_8_node": "FUSION.n08"
+        }
+      ],
+      "hidden_nodes": [],
+      "implicit_dummy": false
+    }
+  ],
+  "group_rule": "One service is entirely H or entirely L. Instantiate H and L variants; never mix node criticality within a service.",
+  "global_node_id": "service_id + / + template_node_id",
+  "expansion": "Replace each 8-node v by v.a -> v.b, each half cost; replace every u->v by u.b->v.a. Internal edge is explicit 1/16 MiB, no dummy. Group and role inherited.",
+  "validation": "Kahn indegree traversal over explicit predecessor sets; missing/duplicate nodes, cycles, self-edges rejected; exact executable counts 8/16. IDs need not be topologically sorted.",
+  "source_refs": [
+    "docs/workload_spec.md:3–12",
+    "docs/user_request.txt:§§18,33–34"
+  ],
+  "mechanisms": {
+    "COCKPIT": "speech/interaction chain plus navigation/display branches merging at composition",
+    "ADAS": "parallel detection/segmentation, fusion then planning/render join; scarce NPU/GPU",
+    "FUSION": "cockpit and perception chains in each instance; all instances share the same six resources, creating cross-service competition"
+  },
+  "limitation": "All six topologies are new synthetic proposals, not extracted from reviewed papers or vehicles. Equal compute under split does not preserve communication or parallelism.",
+  "document_version": "v2",
+  "approval": "UNAPPROVED",
+  "starting_commit": "79f9c245b23119ce25175d6dc6ff148e9e092461",
+  "preserved_semantic_content_version": "v1",
+  "parent_proposal": {
+    "path": "docs/P2_design/P2_workload_templates_v1.json",
+    "sha256": "97762849c9fd4d6e715d197b553fe157a091ce2a09bce8270b8e5eba7dcbff04"
+  },
+  "revision_note": "Document namespace only; original topology/profile/network values and template IDs retained unapproved."
+}

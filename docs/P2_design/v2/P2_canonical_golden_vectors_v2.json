@@ -1,0 +1,162 @@
+{
+  "document_kind": "NONSCIENTIFIC_CANONICAL_GOLDEN_VECTORS",
+  "document_version": "v2",
+  "status": "DRAFT_UNAPPROVED_NONEXECUTABLE",
+  "classification": "PROPOSED",
+  "approval": "UNAPPROVED",
+  "approved": false,
+  "frozen": false,
+  "executable": false,
+  "execution_authorized": false,
+  "read_by_pipeline": false,
+  "starting_commit": "79f9c245b23119ce25175d6dc6ff148e9e092461",
+  "fixture_materials": [
+    {
+      "id": "FIXTURE_SOURCE",
+      "utf8": "NONSCIENTIFIC_SOURCE_FIXTURE_V2\n",
+      "raw_sha256": "11d0def2d870441af13ebb606f92a29f424274489af04501081ac1fabf278b4a"
+    },
+    {
+      "id": "FIXTURE_SCOPE",
+      "utf8": "NONSCIENTIFIC_SCOPE_FIXTURE_V2\n",
+      "raw_sha256": "fea4327059ffbdbd28ce2f8612dc4be985e77c1b5168dff50a21bedf86b4c507"
+    }
+  ],
+  "vectors": [
+    {
+      "id": "VEC-01-CANONICAL",
+      "input": {
+        "namespace": "soc.fixture.canonical.v2",
+        "schema_version": 2,
+        "ascii_text": "quote\"slash\\",
+        "fraction": {
+          "numerator": "1",
+          "denominator": "20"
+        },
+        "integer": 0,
+        "flag": false,
+        "empty": null,
+        "array": [
+          "B",
+          "A"
+        ]
+      },
+      "expected_canonical_utf8": "{\"array\":[\"B\",\"A\"],\"ascii_text\":\"quote\\\"slash\\\\\",\"empty\":null,\"flag\":false,\"fraction\":{\"denominator\":\"20\",\"numerator\":\"1\"},\"integer\":0,\"namespace\":\"soc.fixture.canonical.v2\",\"schema_version\":2}\n",
+      "expected_canonical_hex": "7b226172726179223a5b2242222c2241225d2c2261736369695f74657874223a2271756f74655c22736c6173685c5c222c22656d707479223a6e756c6c2c22666c6167223a66616c73652c226672616374696f6e223a7b2264656e6f6d696e61746f72223a223230222c226e756d657261746f72223a2231227d2c22696e7465676572223a302c226e616d657370616365223a22736f632e666978747572652e63616e6f6e6963616c2e7632222c22736368656d615f76657273696f6e223a327d0a",
+      "expected_sha256": "6041395b81b1768146ec16d6fd56c8b5322aa0d400d6d6ff427e5c428b8f9975",
+      "valid_production_instance": false,
+      "production_guard_expected": "REJECT_NONSCIENTIFIC_FIXTURE",
+      "digest_to_random_or_workload_generation_performed": false
+    },
+    {
+      "id": "VEC-02-JITTER-KEY-SHAPE",
+      "input": {
+        "domain": "soc.fixture.key.v2",
+        "schema_version": 2,
+        "generator_version": "FIXTURE-GENERATOR-NOT-PRODUCTION",
+        "actual_seed_decimal_string": "FIXTURE-NOT-A-SEED",
+        "scenario": "FIXTURE_SCENE",
+        "condition_id": "FIXTURE_CONDITION",
+        "config_id": "FIXTURE_CONFIG",
+        "service_slot": 0,
+        "service_group": "",
+        "template_node_id": "",
+        "resource_id": "",
+        "edge_id": "",
+        "field": "arrival_jitter",
+        "counter": 0
+      },
+      "expected_canonical_utf8": "{\"actual_seed_decimal_string\":\"FIXTURE-NOT-A-SEED\",\"condition_id\":\"FIXTURE_CONDITION\",\"config_id\":\"FIXTURE_CONFIG\",\"counter\":0,\"domain\":\"soc.fixture.key.v2\",\"edge_id\":\"\",\"field\":\"arrival_jitter\",\"generator_version\":\"FIXTURE-GENERATOR-NOT-PRODUCTION\",\"resource_id\":\"\",\"scenario\":\"FIXTURE_SCENE\",\"schema_version\":2,\"service_group\":\"\",\"service_slot\":0,\"template_node_id\":\"\"}\n",
+      "expected_canonical_hex": "7b2261637475616c5f736565645f646563696d616c5f737472696e67223a22464958545552452d4e4f542d412d53454544222c22636f6e646974696f6e5f6964223a22464958545552455f434f4e444954494f4e222c22636f6e6669675f6964223a22464958545552455f434f4e464947222c22636f756e746572223a302c22646f6d61696e223a22736f632e666978747572652e6b65792e7632222c22656467655f6964223a22222c226669656c64223a226172726976616c5f6a6974746572222c2267656e657261746f725f76657273696f6e223a22464958545552452d47454e455241544f522d4e4f542d50524f44554354494f4e222c227265736f757263655f6964223a22222c227363656e6172696f223a22464958545552455f5343454e45222c22736368656d615f76657273696f6e223a322c22736572766963655f67726f7570223a22222c22736572766963655f736c6f74223a302c2274656d706c6174655f6e6f64655f6964223a22227d0a",
+      "expected_sha256": "d00def58308420540d55c081a5d794c5cef0baeef62837d1a71badf12d3a106d",
+      "valid_production_instance": false,
+      "production_guard_expected": "REJECT_NONSCIENTIFIC_FIXTURE",
+      "digest_to_random_or_workload_generation_performed": false
+    },
+    {
+      "id": "VEC-03-DURATION-KEY-SHAPE",
+      "input": {
+        "domain": "soc.fixture.key.v2",
+        "schema_version": 2,
+        "generator_version": "FIXTURE-GENERATOR-NOT-PRODUCTION",
+        "actual_seed_decimal_string": "FIXTURE-NOT-A-SEED",
+        "scenario": "FIXTURE_SCENE",
+        "condition_id": "FIXTURE_CONDITION",
+        "config_id": "FIXTURE_CONFIG",
+        "service_slot": 0,
+        "service_group": "H",
+        "template_node_id": "FIXTURE_NODE",
+        "resource_id": "CPU0",
+        "edge_id": "",
+        "field": "duration_factor",
+        "counter": 0
+      },
+      "expected_canonical_utf8": "{\"actual_seed_decimal_string\":\"FIXTURE-NOT-A-SEED\",\"condition_id\":\"FIXTURE_CONDITION\",\"config_id\":\"FIXTURE_CONFIG\",\"counter\":0,\"domain\":\"soc.fixture.key.v2\",\"edge_id\":\"\",\"field\":\"duration_factor\",\"generator_version\":\"FIXTURE-GENERATOR-NOT-PRODUCTION\",\"resource_id\":\"CPU0\",\"scenario\":\"FIXTURE_SCENE\",\"schema_version\":2,\"service_group\":\"H\",\"service_slot\":0,\"template_node_id\":\"FIXTURE_NODE\"}\n",
+      "expected_canonical_hex": "7b2261637475616c5f736565645f646563696d616c5f737472696e67223a22464958545552452d4e4f542d412d53454544222c22636f6e646974696f6e5f6964223a22464958545552455f434f4e444954494f4e222c22636f6e6669675f6964223a22464958545552455f434f4e464947222c22636f756e746572223a302c22646f6d61696e223a22736f632e666978747572652e6b65792e7632222c22656467655f6964223a22222c226669656c64223a226475726174696f6e5f666163746f72222c2267656e657261746f725f76657273696f6e223a22464958545552452d47454e455241544f522d4e4f542d50524f44554354494f4e222c227265736f757263655f6964223a2243505530222c227363656e6172696f223a22464958545552455f5343454e45222c22736368656d615f76657273696f6e223a322c22736572766963655f67726f7570223a2248222c22736572766963655f736c6f74223a302c2274656d706c6174655f6e6f64655f6964223a22464958545552455f4e4f4445227d0a",
+      "expected_sha256": "074ca1f465e825f8339c2396a39cc440e9b9a278327c07a274a98d4b611c47b1",
+      "valid_production_instance": false,
+      "production_guard_expected": "REJECT_NONSCIENTIFIC_FIXTURE",
+      "digest_to_random_or_workload_generation_performed": false
+    },
+    {
+      "id": "VEC-04-BLUEPRINT-SHAPE",
+      "input": {
+        "namespace": "soc.fixture.blueprint.v2",
+        "schema_version": 2,
+        "generator_version": "FIXTURE-GENERATOR-NOT-PRODUCTION",
+        "generator_source_sha256": "11d0def2d870441af13ebb606f92a29f424274489af04501081ac1fabf278b4a",
+        "model_contract_sha256": "11d0def2d870441af13ebb606f92a29f424274489af04501081ac1fabf278b4a",
+        "template_content_sha256": "11d0def2d870441af13ebb606f92a29f424274489af04501081ac1fabf278b4a",
+        "resource_content_sha256": "11d0def2d870441af13ebb606f92a29f424274489af04501081ac1fabf278b4a",
+        "communication_content_sha256": "11d0def2d870441af13ebb606f92a29f424274489af04501081ac1fabf278b4a",
+        "generation_rules_sha256": "11d0def2d870441af13ebb606f92a29f424274489af04501081ac1fabf278b4a",
+        "config_table_sha256": "11d0def2d870441af13ebb606f92a29f424274489af04501081ac1fabf278b4a",
+        "seed_metadata_raw_sha256": "11d0def2d870441af13ebb606f92a29f424274489af04501081ac1fabf278b4a",
+        "calibration_allowlist_semantic_sha256": "11d0def2d870441af13ebb606f92a29f424274489af04501081ac1fabf278b4a",
+        "allowed_partition": "NONSCIENTIFIC_FIXTURE"
+      },
+      "expected_canonical_utf8": "{\"allowed_partition\":\"NONSCIENTIFIC_FIXTURE\",\"calibration_allowlist_semantic_sha256\":\"11d0def2d870441af13ebb606f92a29f424274489af04501081ac1fabf278b4a\",\"communication_content_sha256\":\"11d0def2d870441af13ebb606f92a29f424274489af04501081ac1fabf278b4a\",\"config_table_sha256\":\"11d0def2d870441af13ebb606f92a29f424274489af04501081ac1fabf278b4a\",\"generation_rules_sha256\":\"11d0def2d870441af13ebb606f92a29f424274489af04501081ac1fabf278b4a\",\"generator_source_sha256\":\"11d0def2d870441af13ebb606f92a29f424274489af04501081ac1fabf278b4a\",\"generator_version\":\"FIXTURE-GENERATOR-NOT-PRODUCTION\",\"model_contract_sha256\":\"11d0def2d870441af13ebb606f92a29f424274489af04501081ac1fabf278b4a\",\"namespace\":\"soc.fixture.blueprint.v2\",\"resource_content_sha256\":\"11d0def2d870441af13ebb606f92a29f424274489af04501081ac1fabf278b4a\",\"schema_version\":2,\"seed_metadata_raw_sha256\":\"11d0def2d870441af13ebb606f92a29f424274489af04501081ac1fabf278b4a\",\"template_content_sha256\":\"11d0def2d870441af13ebb606f92a29f424274489af04501081ac1fabf278b4a\"}\n",
+      "expected_canonical_hex": "7b22616c6c6f7765645f706172746974696f6e223a224e4f4e534349454e54494649435f46495854555245222c2263616c6962726174696f6e5f616c6c6f776c6973745f73656d616e7469635f736861323536223a2231316430646566326438373034343161663133656262363036663932613239663432343237343438396166303435303130383161633166616266323738623461222c22636f6d6d756e69636174696f6e5f636f6e74656e745f736861323536223a2231316430646566326438373034343161663133656262363036663932613239663432343237343438396166303435303130383161633166616266323738623461222c22636f6e6669675f7461626c655f736861323536223a2231316430646566326438373034343161663133656262363036663932613239663432343237343438396166303435303130383161633166616266323738623461222c2267656e65726174696f6e5f72756c65735f736861323536223a2231316430646566326438373034343161663133656262363036663932613239663432343237343438396166303435303130383161633166616266323738623461222c2267656e657261746f725f736f757263655f736861323536223a2231316430646566326438373034343161663133656262363036663932613239663432343237343438396166303435303130383161633166616266323738623461222c2267656e657261746f725f76657273696f6e223a22464958545552452d47454e455241544f522d4e4f542d50524f44554354494f4e222c226d6f64656c5f636f6e74726163745f736861323536223a2231316430646566326438373034343161663133656262363036663932613239663432343237343438396166303435303130383161633166616266323738623461222c226e616d657370616365223a22736f632e666978747572652e626c75657072696e742e7632222c227265736f757263655f636f6e74656e745f736861323536223a2231316430646566326438373034343161663133656262363036663932613239663432343237343438396166303435303130383161633166616266323738623461222c22736368656d615f76657273696f6e223a322c22736565645f6d657461646174615f7261775f736861323536223a2231316430646566326438373034343161663133656262363036663932613239663432343237343438396166303435303130383161633166616266323738623461222c2274656d706c6174655f636f6e74656e745f736861323536223a2231316430646566326438373034343161663133656262363036663932613239663432343237343438396166303435303130383161633166616266323738623461227d0a",
+      "expected_sha256": "62f7bd27801f0be6d2dfa13e076c71b96b3194da7b1253e9930df453d366f69a",
+      "valid_production_instance": false,
+      "production_guard_expected": "REJECT_NONSCIENTIFIC_FIXTURE",
+      "digest_to_random_or_workload_generation_performed": false
+    },
+    {
+      "id": "VEC-05-STATE-KEY-SHAPE",
+      "input": {
+        "namespace": "soc.fixture.state-key.v2",
+        "schema_version": 2,
+        "denominator_scope_sha256": "fea4327059ffbdbd28ce2f8612dc4be985e77c1b5168dff50a21bedf86b4c507",
+        "state_sha256": "11d0def2d870441af13ebb606f92a29f424274489af04501081ac1fabf278b4a"
+      },
+      "expected_canonical_utf8": "{\"denominator_scope_sha256\":\"fea4327059ffbdbd28ce2f8612dc4be985e77c1b5168dff50a21bedf86b4c507\",\"namespace\":\"soc.fixture.state-key.v2\",\"schema_version\":2,\"state_sha256\":\"11d0def2d870441af13ebb606f92a29f424274489af04501081ac1fabf278b4a\"}\n",
+      "expected_canonical_hex": "7b2264656e6f6d696e61746f725f73636f70655f736861323536223a2266656134333237303539666662646264323863653266383631326463346265393835653737633162353136386466663530613231626564663836623463353037222c226e616d657370616365223a22736f632e666978747572652e73746174652d6b65792e7632222c22736368656d615f76657273696f6e223a322c2273746174655f736861323536223a2231316430646566326438373034343161663133656262363036663932613239663432343237343438396166303435303130383161633166616266323738623461227d0a",
+      "expected_sha256": "e996fab6a66f8a4cc428919dde7ad8e704c2499b07730e47827fdd73c7ce13bb",
+      "valid_production_instance": false,
+      "production_guard_expected": "REJECT_NONSCIENTIFIC_FIXTURE",
+      "digest_to_random_or_workload_generation_performed": false
+    }
+  ],
+  "scope": "Expected hashes computed from actual supplied synthetic metadata bytes, not fabricated source-file hashes. No scientific seed, PRNG output, bootstrap index, workload or public service realization.",
+  "numeric_boundary_cases": [
+    {
+      "q_literal": "0",
+      "U": "0",
+      "factor": "9/10"
+    },
+    {
+      "q_literal": "18446744073709551615",
+      "U": "18446744073709551615/18446744073709551616",
+      "factor": "202914184810805067774/184467440737095516160"
+    }
+  ],
+  "negative_cases": [
+    "duplicate JSON key rejected before mapping",
+    "non-ASCII identity rejected",
+    "float in semantic preimage rejected",
+    "nonreduced Rational rejected",
+    "Rational -0 rejected",
+    "fixture namespace/seed cannot pass production guard"
+  ]
+}

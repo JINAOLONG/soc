@@ -1,0 +1,909 @@
+{
+  "scope": "Recorded substantive audit subprocess calls; initial attachment discovery and authoring wrappers excluded; final enclosing publication is recorded externally to avoid self-hash recursion.",
+  "commands": [
+    {
+      "id": "CMD-001",
+      "argv": [
+        "git",
+        "rev-parse",
+        "--show-toplevel"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_AUDIT",
+      "started_at_utc": "2026-10-18T12:33:44.790565+00:00",
+      "ended_at_utc": "2026-10-18T12:33:44.794558+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/design_revision_v2/raw_commands/CMD-001.stdout.txt",
+        "sha256": "cb68db68fcc70d67be575a6e90e6448d6df8b0924ca866e3f43dab3e3093f686",
+        "size_bytes": 15
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/design_revision_v2/raw_commands/CMD-001.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "CMD-002",
+      "argv": [
+        "git",
+        "branch",
+        "--show-current"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_AUDIT",
+      "started_at_utc": "2026-10-18T12:33:44.794909+00:00",
+      "ended_at_utc": "2026-10-18T12:33:44.798331+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/design_revision_v2/raw_commands/CMD-002.stdout.txt",
+        "sha256": "4c7a03f2c9a663a0678eef8293f7609a609c92a6b3bccb2e556301f8b290c7f2",
+        "size_bytes": 5
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/design_revision_v2/raw_commands/CMD-002.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "CMD-003",
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_AUDIT",
+      "started_at_utc": "2026-10-18T12:33:44.798843+00:00",
+      "ended_at_utc": "2026-10-18T12:33:44.808565+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/design_revision_v2/raw_commands/CMD-003.stdout.txt",
+        "sha256": "4929db663bd37be25fd192cf2c1e15fd7d3b125592ee046e5af9d5c62996e0cb",
+        "size_bytes": 41
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/design_revision_v2/raw_commands/CMD-003.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "CMD-004",
+      "argv": [
+        "git",
+        "remote",
+        "-v"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_AUDIT",
+      "started_at_utc": "2026-10-18T12:33:44.808859+00:00",
+      "ended_at_utc": "2026-10-18T12:33:44.814578+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/design_revision_v2/raw_commands/CMD-004.stdout.txt",
+        "sha256": "cfad3f4760a420c201c5f836e7b4afb2af5bdfa560c7f8977d18cfe0374ffd3d",
+        "size_bytes": 103
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/design_revision_v2/raw_commands/CMD-004.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "CMD-005",
+      "argv": [
+        "git",
+        "ls-remote",
+        "origin",
+        "refs/heads/work"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_AUDIT",
+      "started_at_utc": "2026-10-18T12:33:44.814960+00:00",
+      "ended_at_utc": "2026-10-18T12:33:45.545016+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/design_revision_v2/raw_commands/CMD-005.stdout.txt",
+        "sha256": "ffd97126da0d0916ceec5beff76d8441fd12efdcf0e149d68a2aa0f5b1304c6f",
+        "size_bytes": 57
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/design_revision_v2/raw_commands/CMD-005.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "CMD-006",
+      "argv": [
+        "git",
+        "status",
+        "--porcelain"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_AUDIT",
+      "started_at_utc": "2026-10-18T12:33:45.546534+00:00",
+      "ended_at_utc": "2026-10-18T12:33:45.554595+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/design_revision_v2/raw_commands/CMD-006.stdout.txt",
+        "sha256": "e2ca45ea4058bedd253bb1cebc94ee99ff00975a109bb133dcbbc0e5cfe7440d",
+        "size_bytes": 41
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/design_revision_v2/raw_commands/CMD-006.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "CMD-007",
+      "argv": [
+        "git",
+        "ls-files",
+        "-z"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_AUDIT",
+      "started_at_utc": "2026-10-18T12:33:45.554970+00:00",
+      "ended_at_utc": "2026-10-18T12:33:45.558299+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/design_revision_v2/raw_commands/CMD-007.stdout.txt",
+        "sha256": "428d786921e955d23dbb6cf9c589a90cd2f38a35d3907ef8fc0124fbfc889b19",
+        "size_bytes": 14599
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/design_revision_v2/raw_commands/CMD-007.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "CMD-008",
+      "argv": [
+        "python",
+        "/tmp/build_soc_design_v2_specs.py"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "REPRODUCTION_OF_DOCUMENT_AUTHORING_ERROR",
+      "started_at_utc": "2026-10-18T12:40:41.885034+00:00",
+      "ended_at_utc": "2026-10-18T12:40:42.085863+00:00",
+      "exit_code": 1,
+      "expected_exit_code": 1,
+      "stdout_ref": {
+        "path": "reports/P2_design/design_revision_v2/raw_commands/CMD-008.stdout.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/design_revision_v2/raw_commands/CMD-008.stderr.txt",
+        "sha256": "4274222d2e5e01fedb795ccc59049c4e8e035ce74153bcd3da53cd2d6de05201",
+        "size_bytes": 15607
+      }
+    },
+    {
+      "id": "CMD-009",
+      "argv": [
+        "python",
+        "/tmp/build_soc_design_v2_specs.py"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "DOCUMENT_SPECIFICATION_AUTHORING_ONLY",
+      "started_at_utc": "2026-10-18T12:40:42.086945+00:00",
+      "ended_at_utc": "2026-10-18T12:40:42.278738+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/design_revision_v2/raw_commands/CMD-009.stdout.txt",
+        "sha256": "0b09c0b13868c8e6314fdc5f6a6a0415be3b9ade77f12e1446f92b395c75c78a",
+        "size_bytes": 184
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/design_revision_v2/raw_commands/CMD-009.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "CMD-010",
+      "argv": [
+        "python",
+        "/tmp/build_soc_design_v2_specs.py"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "DOCUMENT_SPECIFICATION_AUTHORING_ONLY",
+      "started_at_utc": "2026-10-18T12:42:35.213711+00:00",
+      "ended_at_utc": "2026-10-18T12:42:35.373398+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/design_revision_v2/raw_commands/CMD-010.stdout.txt",
+        "sha256": "e4d04c240a2207efd3d7fa7978ae226e4d3d09706b13abab178cb8e79eec396c",
+        "size_bytes": 184
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/design_revision_v2/raw_commands/CMD-010.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "CMD-011",
+      "argv": [
+        "python",
+        "/tmp/build_soc_design_v2_registry_vectors.py"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "DOCUMENT_METADATA_AND_NONSCIENTIFIC_VECTOR_AUTHORING",
+      "started_at_utc": "2026-10-18T12:45:59.136826+00:00",
+      "ended_at_utc": "2026-10-18T12:45:59.191192+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/design_revision_v2/raw_commands/CMD-011.stdout.txt",
+        "sha256": "c7ac91306f252b00625090b75ceaa77f4a3358bdfda8d937ed93f95dd4074a7a",
+        "size_bytes": 173
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/design_revision_v2/raw_commands/CMD-011.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "CMD-012",
+      "argv": [
+        "python",
+        "/tmp/build_soc_design_v2_specs.py"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "DOCUMENT_SPECIFICATION_AUTHORING_ONLY",
+      "started_at_utc": "2026-10-18T12:47:41.135616+00:00",
+      "ended_at_utc": "2026-10-18T12:47:41.402029+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/design_revision_v2/raw_commands/CMD-012.stdout.txt",
+        "sha256": "e4d04c240a2207efd3d7fa7978ae226e4d3d09706b13abab178cb8e79eec396c",
+        "size_bytes": 184
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/design_revision_v2/raw_commands/CMD-012.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "CMD-013",
+      "argv": [
+        "python",
+        "/tmp/build_soc_design_v2_registry_vectors.py"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "DOCUMENT_SPECIFICATION_AUTHORING_ONLY",
+      "started_at_utc": "2026-10-18T12:47:41.402747+00:00",
+      "ended_at_utc": "2026-10-18T12:47:41.451674+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/design_revision_v2/raw_commands/CMD-013.stdout.txt",
+        "sha256": "c7ac91306f252b00625090b75ceaa77f4a3358bdfda8d937ed93f95dd4074a7a",
+        "size_bytes": 173
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/design_revision_v2/raw_commands/CMD-013.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "CMD-014",
+      "argv": [
+        "python",
+        "/tmp/build_soc_design_v2_specs.py"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "DOCUMENT_SPECIFICATION_AUTHORING_ONLY",
+      "started_at_utc": "2026-10-18T12:48:57.464214+00:00",
+      "ended_at_utc": "2026-10-18T12:48:57.642703+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/design_revision_v2/raw_commands/CMD-014.stdout.txt",
+        "sha256": "e4d04c240a2207efd3d7fa7978ae226e4d3d09706b13abab178cb8e79eec396c",
+        "size_bytes": 184
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/design_revision_v2/raw_commands/CMD-014.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "CMD-015",
+      "argv": [
+        "python",
+        "/tmp/build_soc_design_v2_registry_vectors.py"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "DOCUMENT_SPECIFICATION_AUTHORING_ONLY",
+      "started_at_utc": "2026-10-18T12:48:57.647266+00:00",
+      "ended_at_utc": "2026-10-18T12:48:57.961280+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/design_revision_v2/raw_commands/CMD-015.stdout.txt",
+        "sha256": "c7ac91306f252b00625090b75ceaa77f4a3358bdfda8d937ed93f95dd4074a7a",
+        "size_bytes": 173
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/design_revision_v2/raw_commands/CMD-015.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "CMD-016",
+      "argv": [
+        "python",
+        "/tmp/build_soc_design_v2_specs.py"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "DOCUMENT_SPECIFICATION_AUTHORING_ONLY",
+      "started_at_utc": "2026-10-18T12:50:18.834346+00:00",
+      "ended_at_utc": "2026-10-18T12:50:19.127231+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/design_revision_v2/raw_commands/CMD-016.stdout.txt",
+        "sha256": "1c4f09d3b022fb1246b175bf7bae8f54a61f228c7ddb784c6a9278f46a9664ab",
+        "size_bytes": 184
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/design_revision_v2/raw_commands/CMD-016.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "CMD-017",
+      "argv": [
+        "python",
+        "/tmp/build_soc_design_v2_registry_vectors.py"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "DOCUMENT_SPECIFICATION_AUTHORING_ONLY",
+      "started_at_utc": "2026-10-18T12:50:19.127844+00:00",
+      "ended_at_utc": "2026-10-18T12:50:19.228230+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/design_revision_v2/raw_commands/CMD-017.stdout.txt",
+        "sha256": "c7ac91306f252b00625090b75ceaa77f4a3358bdfda8d937ed93f95dd4074a7a",
+        "size_bytes": 173
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/design_revision_v2/raw_commands/CMD-017.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "CMD-018",
+      "argv": [
+        "python",
+        "/tmp/build_soc_design_v2_specs.py"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "DOCUMENT_SPECIFICATION_AUTHORING_ONLY",
+      "started_at_utc": "2026-10-18T12:56:31.905585+00:00",
+      "ended_at_utc": "2026-10-18T12:56:32.091157+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/design_revision_v2/raw_commands/CMD-018.stdout.txt",
+        "sha256": "defb5249d0bc847da28e8a92e83b58c557ef5ae4b148a511514c534567461513",
+        "size_bytes": 184
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/design_revision_v2/raw_commands/CMD-018.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "CMD-019",
+      "argv": [
+        "python",
+        "/tmp/build_soc_design_v2_registry_vectors.py"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "DOCUMENT_SPECIFICATION_AUTHORING_ONLY",
+      "started_at_utc": "2026-10-18T12:56:32.092287+00:00",
+      "ended_at_utc": "2026-10-18T12:56:32.145232+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/design_revision_v2/raw_commands/CMD-019.stdout.txt",
+        "sha256": "c7ac91306f252b00625090b75ceaa77f4a3358bdfda8d937ed93f95dd4074a7a",
+        "size_bytes": 173
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/design_revision_v2/raw_commands/CMD-019.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "CMD-020",
+      "argv": [
+        "python",
+        "/tmp/build_soc_design_v2_packet.py"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "DOCUMENT_AND_REVIEW_PACKET_AUTHORING_ONLY",
+      "started_at_utc": "2026-10-18T12:59:45.580661+00:00",
+      "ended_at_utc": "2026-10-18T12:59:46.808364+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/design_revision_v2/raw_commands/CMD-020.stdout.txt",
+        "sha256": "7bf173ea69e96b6f08eafde2931c55076d0d6ec4f7fd1bb29138e9f8dd3eddd7",
+        "size_bytes": 105
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/design_revision_v2/raw_commands/CMD-020.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "CMD-021",
+      "argv": [
+        ".venv/bin/python",
+        "reports/P2_design/design_revision_v2/fresh_static_review.py.txt"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_AUDIT",
+      "started_at_utc": "2026-10-18T13:03:38.766945+00:00",
+      "ended_at_utc": "2026-10-18T13:03:38.991118+00:00",
+      "exit_code": 1,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/design_revision_v2/raw_commands/CMD-021.stdout.txt",
+        "sha256": "a8ef7ba4bb388f3dc63b395ef2ac93bbfa986954880921bf77672d8578751cde",
+        "size_bytes": 32386
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/design_revision_v2/raw_commands/CMD-021.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "CMD-022",
+      "argv": [
+        "python",
+        "/tmp/build_soc_design_v2_packet.py"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "REFRESH_DOCUMENT_TRACEABILITY_AFTER_EXPLICIT_SELECTION_SCHEMA",
+      "started_at_utc": "2026-10-18T13:04:35.201428+00:00",
+      "ended_at_utc": "2026-10-18T13:04:35.287321+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/design_revision_v2/raw_commands/CMD-022.stdout.txt",
+        "sha256": "7bf173ea69e96b6f08eafde2931c55076d0d6ec4f7fd1bb29138e9f8dd3eddd7",
+        "size_bytes": 105
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/design_revision_v2/raw_commands/CMD-022.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "CMD-023",
+      "argv": [
+        ".venv/bin/python",
+        "reports/P2_design/design_revision_v2/fresh_static_review.py.txt"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_AUDIT",
+      "started_at_utc": "2026-10-18T13:04:35.288809+00:00",
+      "ended_at_utc": "2026-10-18T13:04:35.507252+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/design_revision_v2/raw_commands/CMD-023.stdout.txt",
+        "sha256": "86655160011ebd30d8f075cc9f31c0e1a5634df6895100b2cd1b8ad572a07f3d",
+        "size_bytes": 32351
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/design_revision_v2/raw_commands/CMD-023.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "CMD-024",
+      "argv": [
+        "python",
+        "/tmp/build_soc_design_v2_packet.py"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "REFRESH_PACKET_AFTER_NORMATIVE_TYPED_BINDINGS",
+      "started_at_utc": "2026-10-18T13:07:21.504440+00:00",
+      "ended_at_utc": "2026-10-18T13:07:21.576085+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/design_revision_v2/raw_commands/CMD-024.stdout.txt",
+        "sha256": "7bf173ea69e96b6f08eafde2931c55076d0d6ec4f7fd1bb29138e9f8dd3eddd7",
+        "size_bytes": 105
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/design_revision_v2/raw_commands/CMD-024.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "CMD-025",
+      "argv": [
+        ".venv/bin/python",
+        "reports/P2_design/design_revision_v2/fresh_static_review.py.txt"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_AUDIT",
+      "started_at_utc": "2026-10-18T13:11:04.815055+00:00",
+      "ended_at_utc": "2026-10-18T13:11:05.033030+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/design_revision_v2/raw_commands/CMD-025.stdout.txt",
+        "sha256": "1a5ff85ed81357d055adf8900689002353936d02cd245881fa30688fe606ec23",
+        "size_bytes": 37879
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/design_revision_v2/raw_commands/CMD-025.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "CMD-026",
+      "argv": [
+        ".venv/bin/python",
+        "scripts/run_pipeline.py",
+        "--stage",
+        "p0",
+        "--check-only"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_AUDIT",
+      "started_at_utc": "2026-10-18T13:11:14.433369+00:00",
+      "ended_at_utc": "2026-10-18T13:11:14.515921+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/design_revision_v2/raw_commands/CMD-026.stdout.txt",
+        "sha256": "4dd9621706c696ba1810eca4ba8bb723769b39802b2740751ccb7984d06f6749",
+        "size_bytes": 453
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/design_revision_v2/raw_commands/CMD-026.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "CMD-027",
+      "argv": [
+        ".venv/bin/python",
+        "scripts/run_pipeline.py",
+        "--stage",
+        "p1",
+        "--check-only"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_AUDIT",
+      "started_at_utc": "2026-10-18T13:11:14.517160+00:00",
+      "ended_at_utc": "2026-10-18T13:11:14.791880+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/design_revision_v2/raw_commands/CMD-027.stdout.txt",
+        "sha256": "8aed8108e722d186feb8cd63ab84fe6e876f65e8cd4bbcc60645fb71a8a0887b",
+        "size_bytes": 824
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/design_revision_v2/raw_commands/CMD-027.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "CMD-028",
+      "argv": [
+        ".venv/bin/python",
+        "scripts/hash_artifacts.py",
+        "--verify",
+        "--output",
+        "checkpoints/P1_artifact_manifest.json"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_AUDIT",
+      "started_at_utc": "2026-10-18T13:11:14.794022+00:00",
+      "ended_at_utc": "2026-10-18T13:11:14.869901+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/design_revision_v2/raw_commands/CMD-028.stdout.txt",
+        "sha256": "4dc0b3b2895e61427811d28b99ee7a15a0ceb226095e59688f8b78db0bd4e2c9",
+        "size_bytes": 46
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/design_revision_v2/raw_commands/CMD-028.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "CMD-029",
+      "argv": [
+        ".venv/bin/python",
+        "scripts/hash_artifacts.py",
+        "--verify",
+        "--output",
+        "checkpoints/P2_design_artifact_manifest.json"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_AUDIT",
+      "started_at_utc": "2026-10-18T13:11:14.870907+00:00",
+      "ended_at_utc": "2026-10-18T13:11:14.943168+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/design_revision_v2/raw_commands/CMD-029.stdout.txt",
+        "sha256": "79cdb271fd2a99f28b5ecfde1d4f976fe4db26bc617294e1a5969ce37987c76a",
+        "size_bytes": 46
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/design_revision_v2/raw_commands/CMD-029.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "CMD-030",
+      "argv": [
+        ".venv/bin/python",
+        "scripts/hash_artifacts.py",
+        "--verify",
+        "--output",
+        "reports/P2_design/independent_review_v2/review_evidence_manifest.json"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_AUDIT",
+      "started_at_utc": "2026-10-18T13:11:14.944517+00:00",
+      "ended_at_utc": "2026-10-18T13:11:15.003901+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/design_revision_v2/raw_commands/CMD-030.stdout.txt",
+        "sha256": "b097ec93edd5b2c622ea32fabbf857292d50a15814d8c384672e0662facc9db7",
+        "size_bytes": 45
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/design_revision_v2/raw_commands/CMD-030.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "CMD-031",
+      "argv": [
+        ".venv/bin/python",
+        "reports/P2_design/design_revision_v2/external_golden_vector_review.py.txt"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_AUDIT",
+      "started_at_utc": "2026-10-18T13:11:44.789697+00:00",
+      "ended_at_utc": "2026-10-18T13:11:44.937899+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/design_revision_v2/raw_commands/CMD-031.stdout.txt",
+        "sha256": "9a7e1e94ee07f7ef0d6188c648624bcd098c090a0e47e8f7ab7e22b04798307e",
+        "size_bytes": 3195
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/design_revision_v2/raw_commands/CMD-031.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "CMD-032",
+      "argv": [
+        ".venv/bin/python",
+        "/tmp/finalize_soc_design_v2.py"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "FINALIZE_DOCUMENT_ONLY_REVISION_REVIEW",
+      "started_at_utc": "2026-10-18T13:13:03.757179+00:00",
+      "ended_at_utc": "2026-10-18T13:13:03.860020+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/design_revision_v2/raw_commands/CMD-032.stdout.txt",
+        "sha256": "cf7db9dd10db580b7b377079dc3ee89e4379d7c6c52d66ea5845cab9690754f6",
+        "size_bytes": 177
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/design_revision_v2/raw_commands/CMD-032.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "CMD-033",
+      "argv": [
+        ".venv/bin/python",
+        "reports/P2_design/design_revision_v2/delivery_consistency_review.py.txt"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_AUDIT",
+      "started_at_utc": "2026-10-18T13:13:53.759783+00:00",
+      "ended_at_utc": "2026-10-18T13:13:53.852716+00:00",
+      "exit_code": 1,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/design_revision_v2/raw_commands/CMD-033.stdout.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/design_revision_v2/raw_commands/CMD-033.stderr.txt",
+        "sha256": "81874a04736d71055347fc77ef1e6ad2baf3732b1514bc1c415760db6f142e3b",
+        "size_bytes": 1263
+      }
+    },
+    {
+      "id": "CMD-034",
+      "argv": [
+        ".venv/bin/python",
+        "reports/P2_design/design_revision_v2/delivery_consistency_review.py.txt"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_AUDIT",
+      "started_at_utc": "2026-10-18T13:14:17.445444+00:00",
+      "ended_at_utc": "2026-10-18T13:14:17.575054+00:00",
+      "exit_code": 1,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/design_revision_v2/raw_commands/CMD-034.stdout.txt",
+        "sha256": "0c0fe247546162b48bb264c29ff9c6ab75bebb1c7105d99286c13964bbd8d377",
+        "size_bytes": 2900
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/design_revision_v2/raw_commands/CMD-034.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "CMD-035",
+      "argv": [
+        ".venv/bin/python",
+        "reports/P2_design/design_revision_v2/delivery_consistency_review.py.txt"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_AUDIT",
+      "started_at_utc": "2026-10-18T13:14:40.967984+00:00",
+      "ended_at_utc": "2026-10-18T13:14:41.088368+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/design_revision_v2/raw_commands/CMD-035.stdout.txt",
+        "sha256": "54b8e7db54e96ab6f4d951d2133ee8c746cb5858a8daf5491c0863917430d2c1",
+        "size_bytes": 2860
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/design_revision_v2/raw_commands/CMD-035.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "CMD-036",
+      "argv": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "PRE_PUBLICATION_READ_ONLY_SCOPE",
+      "started_at_utc": "2026-10-18T13:15:15.449966+00:00",
+      "ended_at_utc": "2026-10-18T13:15:15.456463+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/design_revision_v2/raw_commands/CMD-036.stdout.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/design_revision_v2/raw_commands/CMD-036.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "CMD-037",
+      "argv": [
+        "git",
+        "diff",
+        "--name-only"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "PRE_PUBLICATION_READ_ONLY_SCOPE",
+      "started_at_utc": "2026-10-18T13:15:15.458078+00:00",
+      "ended_at_utc": "2026-10-18T13:15:15.465157+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/design_revision_v2/raw_commands/CMD-037.stdout.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/design_revision_v2/raw_commands/CMD-037.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "CMD-038",
+      "argv": [
+        "git",
+        "ls-remote",
+        "origin",
+        "refs/heads/work"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "PRE_PUBLICATION_READ_ONLY_SCOPE",
+      "started_at_utc": "2026-10-18T13:15:15.467640+00:00",
+      "ended_at_utc": "2026-10-18T13:15:15.960275+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/design_revision_v2/raw_commands/CMD-038.stdout.txt",
+        "sha256": "ffd97126da0d0916ceec5beff76d8441fd12efdcf0e149d68a2aa0f5b1304c6f",
+        "size_bytes": 57
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/design_revision_v2/raw_commands/CMD-038.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    }
+  ],
+  "command_count": 38,
+  "nonzero_exit_count": 4,
+  "unexpected_exit_count": 3
+}

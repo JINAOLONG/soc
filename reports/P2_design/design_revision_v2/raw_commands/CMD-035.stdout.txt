@@ -1,0 +1,132 @@
+{
+  "scope": "Metadata/document consistency only; no runtime or scientific generation",
+  "checks": [
+    {
+      "id": "12_REQUIRED_DESIGN_DELIVERABLES",
+      "status": "PASS"
+    },
+    {
+      "id": "9_PRE_MANIFEST_REQUIRED_REPORTS",
+      "status": "PASS"
+    },
+    {
+      "id": "STRICT_JSON_P2_canonical_golden_vectors_v2.json",
+      "status": "PASS"
+    },
+    {
+      "id": "STRICT_JSON_P2_communication_profiles_v2.json",
+      "status": "PASS"
+    },
+    {
+      "id": "STRICT_JSON_P2_criterion_spec_v2.json",
+      "status": "PASS"
+    },
+    {
+      "id": "STRICT_JSON_P2_diagnostic_spec_v2.json",
+      "status": "PASS"
+    },
+    {
+      "id": "STRICT_JSON_P2_generation_spec_v2.json",
+      "status": "PASS"
+    },
+    {
+      "id": "STRICT_JSON_P2_public_snapshot_spec_v2.json",
+      "status": "PASS"
+    },
+    {
+      "id": "STRICT_JSON_P2_resource_profiles_v2.json",
+      "status": "PASS"
+    },
+    {
+      "id": "STRICT_JSON_P2_scientific_parameter_registry_v2.json",
+      "status": "PASS"
+    },
+    {
+      "id": "STRICT_JSON_P2_stage_state_contract_v2.json",
+      "status": "PASS"
+    },
+    {
+      "id": "STRICT_JSON_P2_trial_matrix_draft_v2.json",
+      "status": "PASS"
+    },
+    {
+      "id": "STRICT_JSON_P2_typed_identity_schema_v2.json",
+      "status": "PASS"
+    },
+    {
+      "id": "STRICT_JSON_P2_workload_templates_v2.json",
+      "status": "PASS"
+    },
+    {
+      "id": "FRESH351_ALLPASS",
+      "status": "PASS"
+    },
+    {
+      "id": "7_FINDINGS_REAL_CHECK_REFERENCES",
+      "status": "PASS"
+    },
+    {
+      "id": "FINDINGS_NOT_APPROVED_OR_RUNTIME_CLAIMED",
+      "status": "PASS"
+    },
+    {
+      "id": "HUMAN_PACKET_ALL_ACTUAL_HASHES",
+      "status": "PASS"
+    },
+    {
+      "id": "HUMAN_PACKET_10_UNAPPROVED",
+      "status": "PASS"
+    },
+    {
+      "id": "ALL40_SCIENTIFIC_RULES_UNRESOLVED",
+      "status": "PASS"
+    },
+    {
+      "id": "PARAMETER_LINEAGE_v1_value_or_rule",
+      "status": "PASS"
+    },
+    {
+      "id": "PARAMETER_LINEAGE_v2_value_or_rule",
+      "status": "PASS"
+    },
+    {
+      "id": "PARAMETER_LINEAGE_change_type",
+      "status": "PASS"
+    },
+    {
+      "id": "PARAMETER_LINEAGE_findings",
+      "status": "PASS"
+    },
+    {
+      "id": "COMMAND_RAW_BYTE_HASHES",
+      "status": "PASS"
+    },
+    {
+      "id": "RECORDED_FAILURES_RETAINED",
+      "status": "PASS"
+    },
+    {
+      "id": "TWO_INDEPENDENT_ENCODERS_PLUS_EXTERNAL_GNU",
+      "status": "PASS"
+    },
+    {
+      "id": "CROSS_DOCUMENT9_AREAS_NO_STRUCTURAL_BLOCKER",
+      "status": "PASS"
+    },
+    {
+      "id": "ALL341_OLD_FILES_IDENTICAL",
+      "status": "PASS"
+    },
+    {
+      "id": "ONLY_TWO_AUTHORIZED_NEW_NAMESPACES",
+      "status": "PASS"
+    },
+    {
+      "id": "EXACT_ONE_FINAL_VERDICT",
+      "status": "PASS"
+    }
+  ],
+  "check_count": 31,
+  "passed": 31,
+  "failed": []
+}

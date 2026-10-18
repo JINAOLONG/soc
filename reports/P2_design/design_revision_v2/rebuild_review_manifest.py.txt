@@ -1,0 +1,7 @@
+from pathlib import Path
+import hashlib,json
+R=Path(__file__).resolve().parents[3];O=R/'reports/P2_design/design_revision_v2';target=O/'review_evidence_manifest.json';roots=[R/'docs/P2_design/v2',O]
+files=sorted(p for root in roots for p in root.rglob('*') if p.is_file() and p!=target)
+rows=[dict(path=p.relative_to(R).as_posix(),sha256=hashlib.sha256(p.read_bytes()).hexdigest(),size_bytes=p.stat().st_size) for p in files]
+data=dict(schema_version=1,scope='Documentation-only proposed P2 design revision v2 and fresh static review; no scientific execution',starting_commit='79f9c245b23119ce25175d6dc6ff148e9e092461',review_result='DESIGN_REVISION_READY_FOR_HUMAN_DECISION',self_excluded='This manifest cannot hash itself; tracked Git blob supplies enclosing identity. No old file/manifest changed.',protected_baseline='reports/P2_design/design_revision_v2/protected_baseline.json',protected_starting_file_count=341,all_human_approvals='UNAPPROVED',p2_status='BLOCKED',files=rows)
+target.write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n');print(json.dumps(dict(manifest=target.relative_to(R).as_posix(),files=len(rows),doc_files=sum(x['path'].startswith('docs/') for x in rows),report_files_including_manifest=sum(x['path'].startswith('reports/') for x in rows)+1)))

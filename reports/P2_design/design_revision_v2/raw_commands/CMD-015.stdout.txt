@@ -1,0 +1,1 @@
+{"old_groups": 32, "current_groups": 40, "additions": ["SP33", "SP34", "SP35", "SP36", "SP37", "SP38", "SP39", "SP40"], "golden_vectors": 5, "scientific_keys_evaluated": 0}

@@ -1,0 +1,1 @@
+{"typed_definitions": 40, "preimage_types": 17, "diagnostic_max_assignments": 1296, "diagnostic_max_nodes": 36, "trials": 2520, "identity_graph_nodes": 35, "identity_graph_edges": 40}

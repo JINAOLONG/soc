@@ -1,0 +1,222 @@
+{
+  "document_kind": "IDENTITY_AND_OPERATION_DAG",
+  "document_version": "v2",
+  "status": "DRAFT_UNAPPROVED_NONEXECUTABLE",
+  "classification": "PROPOSED",
+  "approval": "UNAPPROVED",
+  "approved": false,
+  "frozen": false,
+  "executable": false,
+  "execution_authorized": false,
+  "read_by_pipeline": false,
+  "starting_commit": "79f9c245b23119ce25175d6dc6ff148e9e092461",
+  "nodes": [
+    "frozen_source",
+    "approved_blueprint",
+    "approved_symbolic_execution_plan",
+    "explicit_generation_execution_authorization",
+    "main_descriptor",
+    "main_input_lock",
+    "main_generation_attempt",
+    "main_materialization",
+    "main_generation_receipt",
+    "main_materialized_content_ID",
+    "main_independent_input_validation",
+    "main_resolution_receipt",
+    "control_descriptor",
+    "control_input_lock",
+    "control_generation_attempt",
+    "control_derivation",
+    "control_generation_receipt",
+    "control_materialized_content_ID",
+    "control_independent_input_validation",
+    "control_resolution_receipt",
+    "resolved_workload_ID",
+    "semantic_worker_argv",
+    "run_ID",
+    "attempt_ID",
+    "run_lock",
+    "pre_invocation_guard",
+    "actual_primary_execution",
+    "raw_output_preservation",
+    "independent_trace_validation",
+    "independent_metrics",
+    "registered_replay",
+    "atomic_trial_COMPLETE",
+    "B2_only_selection_all18",
+    "diagnostic_classification",
+    "P2_gate_status"
+  ],
+  "edges": [
+    {
+      "before": "frozen_source",
+      "after": "approved_blueprint"
+    },
+    {
+      "before": "approved_blueprint",
+      "after": "approved_symbolic_execution_plan"
+    },
+    {
+      "before": "approved_symbolic_execution_plan",
+      "after": "explicit_generation_execution_authorization"
+    },
+    {
+      "before": "approved_blueprint",
+      "after": "main_descriptor"
+    },
+    {
+      "before": "main_descriptor",
+      "after": "main_input_lock"
+    },
+    {
+      "before": "explicit_generation_execution_authorization",
+      "after": "main_input_lock"
+    },
+    {
+      "before": "main_input_lock",
+      "after": "main_generation_attempt"
+    },
+    {
+      "before": "main_generation_attempt",
+      "after": "main_materialization"
+    },
+    {
+      "before": "main_materialization",
+      "after": "main_generation_receipt"
+    },
+    {
+      "before": "main_generation_receipt",
+      "after": "main_materialized_content_ID"
+    },
+    {
+      "before": "main_materialized_content_ID",
+      "after": "main_independent_input_validation"
+    },
+    {
+      "before": "main_independent_input_validation",
+      "after": "main_resolution_receipt"
+    },
+    {
+      "before": "main_descriptor",
+      "after": "control_descriptor"
+    },
+    {
+      "before": "control_descriptor",
+      "after": "control_input_lock"
+    },
+    {
+      "before": "explicit_generation_execution_authorization",
+      "after": "control_input_lock"
+    },
+    {
+      "before": "control_input_lock",
+      "after": "control_generation_attempt"
+    },
+    {
+      "before": "control_generation_attempt",
+      "after": "control_derivation"
+    },
+    {
+      "before": "main_resolution_receipt",
+      "after": "control_derivation"
+    },
+    {
+      "before": "control_derivation",
+      "after": "control_generation_receipt"
+    },
+    {
+      "before": "control_generation_receipt",
+      "after": "control_materialized_content_ID"
+    },
+    {
+      "before": "control_materialized_content_ID",
+      "after": "control_independent_input_validation"
+    },
+    {
+      "before": "control_independent_input_validation",
+      "after": "control_resolution_receipt"
+    },
+    {
+      "before": "main_resolution_receipt",
+      "after": "resolved_workload_ID"
+    },
+    {
+      "before": "control_resolution_receipt",
+      "after": "resolved_workload_ID"
+    },
+    {
+      "before": "resolved_workload_ID",
+      "after": "semantic_worker_argv"
+    },
+    {
+      "before": "semantic_worker_argv",
+      "after": "run_ID"
+    },
+    {
+      "before": "approved_symbolic_execution_plan",
+      "after": "run_ID"
+    },
+    {
+      "before": "run_ID",
+      "after": "attempt_ID"
+    },
+    {
+      "before": "explicit_generation_execution_authorization",
+      "after": "attempt_ID"
+    },
+    {
+      "before": "attempt_ID",
+      "after": "run_lock"
+    },
+    {
+      "before": "run_lock",
+      "after": "pre_invocation_guard"
+    },
+    {
+      "before": "pre_invocation_guard",
+      "after": "actual_primary_execution"
+    },
+    {
+      "before": "actual_primary_execution",
+      "after": "raw_output_preservation"
+    },
+    {
+      "before": "raw_output_preservation",
+      "after": "independent_trace_validation"
+    },
+    {
+      "before": "independent_trace_validation",
+      "after": "independent_metrics"
+    },
+    {
+      "before": "independent_metrics",
+      "after": "registered_replay"
+    },
+    {
+      "before": "registered_replay",
+      "after": "atomic_trial_COMPLETE"
+    },
+    {
+      "before": "atomic_trial_COMPLETE",
+      "after": "B2_only_selection_all18"
+    },
+    {
+      "before": "B2_only_selection_all18",
+      "after": "diagnostic_classification"
+    },
+    {
+      "before": "diagnostic_classification",
+      "after": "P2_gate_status"
+    }
+  ],
+  "variant_branch": "For MAIN use main_resolution_receipt branch; controls additionally require resolved MAIN before derivation. Diagram union DAG does not mean MAIN depends on control resolution.",
+  "hash_dependencies": "Exact typed preimage registry is authoritative for hash dependencies; diagram also includes authorization/provenance availability edges.",
+  "forbidden_edges": [
+    "materialization -> blueprint hash",
+    "resolved_workload_ID -> input_lock",
+    "run_ID -> materialization",
+    "attempt_ID -> run_ID semantic argv",
+    "COMPLETE -> source/blueprint preimage"
+  ],
+  "runtime_validated": false
+}

@@ -1,0 +1,1 @@
+{"cross_document_areas": 9, "static_passed": 351, "findings": 7, "unapproved_decisions": 10, "unresolved_parameters": 40, "verdict": "DESIGN_REVISION_READY_FOR_HUMAN_DECISION"}

@@ -1,0 +1,1 @@
+{"decisions": 10, "traceability_rows": 53, "finding_resolution_rows": 7, "current_parameter_groups": 40}
