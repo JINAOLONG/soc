@@ -65,8 +65,14 @@ All original failure outputs/checker/results remain archived. This report is a f
 same assistant, not an external independent human review. Command ledger scope explicitly excludes
 initial discovery/wrappers; raw stdout/stderr references/hashes and actual nonzero exits are preserved.
 
-See review_evidence_manifest.json for all new artifact hashes. Publication receipt records first
-normal commit/push; final enclosing commit cannot contain its own hash and is verified externally
+See review_evidence_manifest.json for all new artifact hashes. first_publication_receipt.json records
+actual first normal commit 3f81bc6c69d30c16b9ed350c5dfab6111759987e and verified push/CLEAN worktree;
+18 design files and102 report files were added in that commit. This receipt is now added in the final
+report-only metadata commit (18 design/103 report files total). The38-command audit ledger has
+4 nonzero subprocess exits (CMD-008/021/033/034),3 unexpected; all failures retained. Publication
+commands are preserved separately in the receipt, not added to those38. The first final-publication
+precheck stopped before staging because wrapper strip() lost a porcelain leading space; its actual
+commands/error and rstrip correction are preserved in the publication receipt. No scope or rule changed. The final enclosing commit cannot contain its own hash and is verified externally
 in /tmp/soc-design-revision-v2-final-delivery.json and the final user handoff. No force/history rewrite.
 
 **Single next safe action:** user reviews human_decision_packet.md and records explicit approval,

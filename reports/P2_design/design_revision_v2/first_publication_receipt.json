@@ -1,0 +1,264 @@
+{
+  "phase": "FIRST_NORMAL_DOCUMENTATION_PUBLICATION",
+  "starting_head": "79f9c245b23119ce25175d6dc6ff148e9e092461",
+  "commit": "3f81bc6c69d30c16b9ed350c5dfab6111759987e",
+  "remote_head": "3f81bc6c69d30c16b9ed350c5dfab6111759987e",
+  "push_status": "VERIFIED",
+  "worktree": "CLEAN",
+  "added_files": 120,
+  "protected_files_unchanged": 341,
+  "commands": [
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "exit_code": 0,
+      "stdout": "79f9c245b23119ce25175d6dc6ff148e9e092461\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "branch",
+        "--show-current"
+      ],
+      "exit_code": 0,
+      "stdout": "work\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "remote",
+        "get-url",
+        "origin"
+      ],
+      "exit_code": 0,
+      "stdout": "https://github.com/JINAOLONG/soc.git\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "ls-remote",
+        "origin",
+        "refs/heads/work"
+      ],
+      "exit_code": 0,
+      "stdout": "79f9c245b23119ce25175d6dc6ff148e9e092461\trefs/heads/work\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        ".venv/bin/python",
+        "scripts/hash_artifacts.py",
+        "--verify",
+        "--output",
+        "reports/P2_design/design_revision_v2/review_evidence_manifest.json"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"files\": 119, \"missing\": [], \"mismatch\": []}\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "status",
+        "--porcelain",
+        "--untracked-files=all"
+      ],
+      "exit_code": 0,
+      "stdout": "?? docs/P2_design/v2/P2_D01_D10_approval_checklist_v2.md\n?? docs/P2_design/v2/P2_D01_D10_traceability_v2.csv\n?? docs/P2_design/v2/P2_canonical_golden_vectors_v2.json\n?? docs/P2_design/v2/P2_communication_profiles_v2.json\n?? docs/P2_design/v2/P2_complete_design_proposal_v2.md\n?? docs/P2_design/v2/P2_criterion_spec_v2.json\n?? docs/P2_design/v2/P2_diagnostic_spec_v2.json\n?? docs/P2_design/v2/P2_generation_spec_v2.json\n?? docs/P2_design/v2/P2_mapping_opportunity_decision_table_v2.md\n?? docs/P2_design/v2/P2_public_snapshot_spec_v2.json\n?? docs/P2_design/v2/P2_resource_profiles_v2.json\n?? docs/P2_design/v2/P2_runner_schema_review_v2.md\n?? docs/P2_design/v2/P2_scientific_parameter_registry_v2.json\n?? docs/P2_design/v2/P2_stage_state_contract_v2.json\n?? docs/P2_design/v2/P2_trial_matrix_draft_v2.json\n?? docs/P2_design/v2/P2_typed_identity_schema_v2.json\n?? docs/P2_design/v2/P2_workload_templates_v2.json\n?? docs/P2_design/v2/README.md\n?? reports/P2_design/design_revision_v2/V2_F01_F07_resolution_matrix.csv\n?? reports/P2_design/design_revision_v2/actual_commands_and_exit_codes.json\n?? reports/P2_design/design_revision_v2/authoring_error_history.md\n?? reports/P2_design/design_revision_v2/authorization_request.txt\n?? reports/P2_design/design_revision_v2/cross_document_consistency.json\n?? reports/P2_design/design_revision_v2/delivery_consistency_checks.json\n?? reports/P2_design/design_revision_v2/delivery_consistency_checks_initial.json\n?? reports/P2_design/design_revision_v2/delivery_consistency_review.py.txt\n?? reports/P2_design/design_revision_v2/delivery_consistency_review_after_path_fix.py.txt\n?? reports/P2_design/design_revision_v2/delivery_consistency_review_initial.py.txt\n?? reports/P2_design/design_revision_v2/diagnostic_semantics_review.md\n?? reports/P2_design/design_revision_v2/executive_decision.md\n?? reports/P2_design/design_revision_v2/external_golden_vector_review.py.txt\n?? reports/P2_design/design_revision_v2/external_golden_vector_verification.json\n?? reports/P2_design/design_revision_v2/fresh_static_review.py.txt\n?? reports/P2_design/design_revision_v2/fresh_static_review_initial.py.txt\n?? reports/P2_design/design_revision_v2/human_decision_packet.md\n?? reports/P2_design/design_revision_v2/identity_dependency_graph.json\n?? reports/P2_design/design_revision_v2/protected_baseline.json\n?? reports/P2_design/design_revision_v2/raw_commands/CMD-001.stderr.txt\n?? reports/P2_design/design_revision_v2/raw_commands/CMD-001.stdout.txt\n?? reports/P2_design/design_revision_v2/raw_commands/CMD-002.stderr.txt\n?? reports/P2_design/design_revision_v2/raw_commands/CMD-002.stdout.txt\n?? reports/P2_design/design_revision_v2/raw_commands/CMD-003.stderr.txt\n?? reports/P2_design/design_revision_v2/raw_commands/CMD-003.stdout.txt\n?? reports/P2_design/design_revision_v2/raw_commands/CMD-004.stderr.txt\n?? reports/P2_design/design_revision_v2/raw_commands/CMD-004.stdout.txt\n?? reports/P2_design/design_revision_v2/raw_commands/CMD-005.stderr.txt\n?? reports/P2_design/design_revision_v2/raw_commands/CMD-005.stdout.txt\n?? reports/P2_design/design_revision_v2/raw_commands/CMD-006.stderr.txt\n?? reports/P2_design/design_revision_v2/raw_commands/CMD-006.stdout.txt\n?? reports/P2_design/design_revision_v2/raw_commands/CMD-007.stderr.txt\n?? reports/P2_design/design_revision_v2/raw_commands/CMD-007.stdout.txt\n?? reports/P2_design/design_revision_v2/raw_commands/CMD-008.stderr.txt\n?? reports/P2_design/design_revision_v2/raw_commands/CMD-008.stdout.txt\n?? reports/P2_design/design_revision_v2/raw_commands/CMD-009.stderr.txt\n?? reports/P2_design/design_revision_v2/raw_commands/CMD-009.stdout.txt\n?? reports/P2_design/design_revision_v2/raw_commands/CMD-010.stderr.txt\n?? reports/P2_design/design_revision_v2/raw_commands/CMD-010.stdout.txt\n?? reports/P2_design/design_revision_v2/raw_commands/CMD-011.stderr.txt\n?? reports/P2_design/design_revision_v2/raw_commands/CMD-011.stdout.txt\n?? reports/P2_design/design_revision_v2/raw_commands/CMD-012.stderr.txt\n?? reports/P2_design/design_revision_v2/raw_commands/CMD-012.stdout.txt\n?? reports/P2_design/design_revision_v2/raw_commands/CMD-013.stderr.txt\n?? reports/P2_design/design_revision_v2/raw_commands/CMD-013.stdout.txt\n?? reports/P2_design/design_revision_v2/raw_commands/CMD-014.stderr.txt\n?? reports/P2_design/design_revision_v2/raw_commands/CMD-014.stdout.txt\n?? reports/P2_design/design_revision_v2/raw_commands/CMD-015.stderr.txt\n?? reports/P2_design/design_revision_v2/raw_commands/CMD-015.stdout.txt\n?? reports/P2_design/design_revision_v2/raw_commands/CMD-016.stderr.txt\n?? reports/P2_design/design_revision_v2/raw_commands/CMD-016.stdout.txt\n?? reports/P2_design/design_revision_v2/raw_commands/CMD-017.stderr.txt\n?? reports/P2_design/design_revision_v2/raw_commands/CMD-017.stdout.txt\n?? reports/P2_design/design_revision_v2/raw_commands/CMD-018.stderr.txt\n?? reports/P2_design/design_revision_v2/raw_commands/CMD-018.stdout.txt\n?? reports/P2_design/design_revision_v2/raw_commands/CMD-019.stderr.txt\n?? reports/P2_design/design_revision_v2/raw_commands/CMD-019.stdout.txt\n?? reports/P2_design/design_revision_v2/raw_commands/CMD-020.stderr.txt\n?? reports/P2_design/design_revision_v2/raw_commands/CMD-020.stdout.txt\n?? reports/P2_design/design_revision_v2/raw_commands/CMD-021.stderr.txt\n?? reports/P2_design/design_revision_v2/raw_commands/CMD-021.stdout.txt\n?? reports/P2_design/design_revision_v2/raw_commands/CMD-022.stderr.txt\n?? reports/P2_design/design_revision_v2/raw_commands/CMD-022.stdout.txt\n?? reports/P2_design/design_revision_v2/raw_commands/CMD-023.stderr.txt\n?? reports/P2_design/design_revision_v2/raw_commands/CMD-023.stdout.txt\n?? reports/P2_design/design_revision_v2/raw_commands/CMD-024.stderr.txt\n?? reports/P2_design/design_revision_v2/raw_commands/CMD-024.stdout.txt\n?? reports/P2_design/design_revision_v2/raw_commands/CMD-025.stderr.txt\n?? reports/P2_design/design_revision_v2/raw_commands/CMD-025.stdout.txt\n?? reports/P2_design/design_revision_v2/raw_commands/CMD-026.stderr.txt\n?? reports/P2_design/design_revision_v2/raw_commands/CMD-026.stdout.txt\n?? reports/P2_design/design_revision_v2/raw_commands/CMD-027.stderr.txt\n?? reports/P2_design/design_revision_v2/raw_commands/CMD-027.stdout.txt\n?? reports/P2_design/design_revision_v2/raw_commands/CMD-028.stderr.txt\n?? reports/P2_design/design_revision_v2/raw_commands/CMD-028.stdout.txt\n?? reports/P2_design/design_revision_v2/raw_commands/CMD-029.stderr.txt\n?? reports/P2_design/design_revision_v2/raw_commands/CMD-029.stdout.txt\n?? reports/P2_design/design_revision_v2/raw_commands/CMD-030.stderr.txt\n?? reports/P2_design/design_revision_v2/raw_commands/CMD-030.stdout.txt\n?? reports/P2_design/design_revision_v2/raw_commands/CMD-031.stderr.txt\n?? reports/P2_design/design_revision_v2/raw_commands/CMD-031.stdout.txt\n?? reports/P2_design/design_revision_v2/raw_commands/CMD-032.stderr.txt\n?? reports/P2_design/design_revision_v2/raw_commands/CMD-032.stdout.txt\n?? reports/P2_design/design_revision_v2/raw_commands/CMD-033.stderr.txt\n?? reports/P2_design/design_revision_v2/raw_commands/CMD-033.stdout.txt\n?? reports/P2_design/design_revision_v2/raw_commands/CMD-034.stderr.txt\n?? reports/P2_design/design_revision_v2/raw_commands/CMD-034.stdout.txt\n?? reports/P2_design/design_revision_v2/raw_commands/CMD-035.stderr.txt\n?? reports/P2_design/design_revision_v2/raw_commands/CMD-035.stdout.txt\n?? reports/P2_design/design_revision_v2/raw_commands/CMD-036.stderr.txt\n?? reports/P2_design/design_revision_v2/raw_commands/CMD-036.stdout.txt\n?? reports/P2_design/design_revision_v2/raw_commands/CMD-037.stderr.txt\n?? reports/P2_design/design_revision_v2/raw_commands/CMD-037.stdout.txt\n?? reports/P2_design/design_revision_v2/raw_commands/CMD-038.stderr.txt\n?? reports/P2_design/design_revision_v2/raw_commands/CMD-038.stdout.txt\n?? reports/P2_design/design_revision_v2/rebuild_review_manifest.py.txt\n?? reports/P2_design/design_revision_v2/review_evidence_manifest.json\n?? reports/P2_design/design_revision_v2/reviewed_sources.json\n?? reports/P2_design/design_revision_v2/spec_builder_initial.py.txt\n?? reports/P2_design/design_revision_v2/static_review_checks.json\n?? reports/P2_design/design_revision_v2/static_review_checks_initial.json\n?? reports/P2_design/design_revision_v2/v1_v2_change_log.md\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "add",
+        "--",
+        "docs/P2_design/v2/",
+        "reports/P2_design/design_revision_v2/"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol",
+        "diff",
+        "--cached",
+        "--check"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--name-status"
+      ],
+      "exit_code": 0,
+      "stdout": "A\tdocs/P2_design/v2/P2_D01_D10_approval_checklist_v2.md\nA\tdocs/P2_design/v2/P2_D01_D10_traceability_v2.csv\nA\tdocs/P2_design/v2/P2_canonical_golden_vectors_v2.json\nA\tdocs/P2_design/v2/P2_communication_profiles_v2.json\nA\tdocs/P2_design/v2/P2_complete_design_proposal_v2.md\nA\tdocs/P2_design/v2/P2_criterion_spec_v2.json\nA\tdocs/P2_design/v2/P2_diagnostic_spec_v2.json\nA\tdocs/P2_design/v2/P2_generation_spec_v2.json\nA\tdocs/P2_design/v2/P2_mapping_opportunity_decision_table_v2.md\nA\tdocs/P2_design/v2/P2_public_snapshot_spec_v2.json\nA\tdocs/P2_design/v2/P2_resource_profiles_v2.json\nA\tdocs/P2_design/v2/P2_runner_schema_review_v2.md\nA\tdocs/P2_design/v2/P2_scientific_parameter_registry_v2.json\nA\tdocs/P2_design/v2/P2_stage_state_contract_v2.json\nA\tdocs/P2_design/v2/P2_trial_matrix_draft_v2.json\nA\tdocs/P2_design/v2/P2_typed_identity_schema_v2.json\nA\tdocs/P2_design/v2/P2_workload_templates_v2.json\nA\tdocs/P2_design/v2/README.md\nA\treports/P2_design/design_revision_v2/V2_F01_F07_resolution_matrix.csv\nA\treports/P2_design/design_revision_v2/actual_commands_and_exit_codes.json\nA\treports/P2_design/design_revision_v2/authoring_error_history.md\nA\treports/P2_design/design_revision_v2/authorization_request.txt\nA\treports/P2_design/design_revision_v2/cross_document_consistency.json\nA\treports/P2_design/design_revision_v2/delivery_consistency_checks.json\nA\treports/P2_design/design_revision_v2/delivery_consistency_checks_initial.json\nA\treports/P2_design/design_revision_v2/delivery_consistency_review.py.txt\nA\treports/P2_design/design_revision_v2/delivery_consistency_review_after_path_fix.py.txt\nA\treports/P2_design/design_revision_v2/delivery_consistency_review_initial.py.txt\nA\treports/P2_design/design_revision_v2/diagnostic_semantics_review.md\nA\treports/P2_design/design_revision_v2/executive_decision.md\nA\treports/P2_design/design_revision_v2/external_golden_vector_review.py.txt\nA\treports/P2_design/design_revision_v2/external_golden_vector_verification.json\nA\treports/P2_design/design_revision_v2/fresh_static_review.py.txt\nA\treports/P2_design/design_revision_v2/fresh_static_review_initial.py.txt\nA\treports/P2_design/design_revision_v2/human_decision_packet.md\nA\treports/P2_design/design_revision_v2/identity_dependency_graph.json\nA\treports/P2_design/design_revision_v2/protected_baseline.json\nA\treports/P2_design/design_revision_v2/raw_commands/CMD-001.stderr.txt\nA\treports/P2_design/design_revision_v2/raw_commands/CMD-001.stdout.txt\nA\treports/P2_design/design_revision_v2/raw_commands/CMD-002.stderr.txt\nA\treports/P2_design/design_revision_v2/raw_commands/CMD-002.stdout.txt\nA\treports/P2_design/design_revision_v2/raw_commands/CMD-003.stderr.txt\nA\treports/P2_design/design_revision_v2/raw_commands/CMD-003.stdout.txt\nA\treports/P2_design/design_revision_v2/raw_commands/CMD-004.stderr.txt\nA\treports/P2_design/design_revision_v2/raw_commands/CMD-004.stdout.txt\nA\treports/P2_design/design_revision_v2/raw_commands/CMD-005.stderr.txt\nA\treports/P2_design/design_revision_v2/raw_commands/CMD-005.stdout.txt\nA\treports/P2_design/design_revision_v2/raw_commands/CMD-006.stderr.txt\nA\treports/P2_design/design_revision_v2/raw_commands/CMD-006.stdout.txt\nA\treports/P2_design/design_revision_v2/raw_commands/CMD-007.stderr.txt\nA\treports/P2_design/design_revision_v2/raw_commands/CMD-007.stdout.txt\nA\treports/P2_design/design_revision_v2/raw_commands/CMD-008.stderr.txt\nA\treports/P2_design/design_revision_v2/raw_commands/CMD-008.stdout.txt\nA\treports/P2_design/design_revision_v2/raw_commands/CMD-009.stderr.txt\nA\treports/P2_design/design_revision_v2/raw_commands/CMD-009.stdout.txt\nA\treports/P2_design/design_revision_v2/raw_commands/CMD-010.stderr.txt\nA\treports/P2_design/design_revision_v2/raw_commands/CMD-010.stdout.txt\nA\treports/P2_design/design_revision_v2/raw_commands/CMD-011.stderr.txt\nA\treports/P2_design/design_revision_v2/raw_commands/CMD-011.stdout.txt\nA\treports/P2_design/design_revision_v2/raw_commands/CMD-012.stderr.txt\nA\treports/P2_design/design_revision_v2/raw_commands/CMD-012.stdout.txt\nA\treports/P2_design/design_revision_v2/raw_commands/CMD-013.stderr.txt\nA\treports/P2_design/design_revision_v2/raw_commands/CMD-013.stdout.txt\nA\treports/P2_design/design_revision_v2/raw_commands/CMD-014.stderr.txt\nA\treports/P2_design/design_revision_v2/raw_commands/CMD-014.stdout.txt\nA\treports/P2_design/design_revision_v2/raw_commands/CMD-015.stderr.txt\nA\treports/P2_design/design_revision_v2/raw_commands/CMD-015.stdout.txt\nA\treports/P2_design/design_revision_v2/raw_commands/CMD-016.stderr.txt\nA\treports/P2_design/design_revision_v2/raw_commands/CMD-016.stdout.txt\nA\treports/P2_design/design_revision_v2/raw_commands/CMD-017.stderr.txt\nA\treports/P2_design/design_revision_v2/raw_commands/CMD-017.stdout.txt\nA\treports/P2_design/design_revision_v2/raw_commands/CMD-018.stderr.txt\nA\treports/P2_design/design_revision_v2/raw_commands/CMD-018.stdout.txt\nA\treports/P2_design/design_revision_v2/raw_commands/CMD-019.stderr.txt\nA\treports/P2_design/design_revision_v2/raw_commands/CMD-019.stdout.txt\nA\treports/P2_design/design_revision_v2/raw_commands/CMD-020.stderr.txt\nA\treports/P2_design/design_revision_v2/raw_commands/CMD-020.stdout.txt\nA\treports/P2_design/design_revision_v2/raw_commands/CMD-021.stderr.txt\nA\treports/P2_design/design_revision_v2/raw_commands/CMD-021.stdout.txt\nA\treports/P2_design/design_revision_v2/raw_commands/CMD-022.stderr.txt\nA\treports/P2_design/design_revision_v2/raw_commands/CMD-022.stdout.txt\nA\treports/P2_design/design_revision_v2/raw_commands/CMD-023.stderr.txt\nA\treports/P2_design/design_revision_v2/raw_commands/CMD-023.stdout.txt\nA\treports/P2_design/design_revision_v2/raw_commands/CMD-024.stderr.txt\nA\treports/P2_design/design_revision_v2/raw_commands/CMD-024.stdout.txt\nA\treports/P2_design/design_revision_v2/raw_commands/CMD-025.stderr.txt\nA\treports/P2_design/design_revision_v2/raw_commands/CMD-025.stdout.txt\nA\treports/P2_design/design_revision_v2/raw_commands/CMD-026.stderr.txt\nA\treports/P2_design/design_revision_v2/raw_commands/CMD-026.stdout.txt\nA\treports/P2_design/design_revision_v2/raw_commands/CMD-027.stderr.txt\nA\treports/P2_design/design_revision_v2/raw_commands/CMD-027.stdout.txt\nA\treports/P2_design/design_revision_v2/raw_commands/CMD-028.stderr.txt\nA\treports/P2_design/design_revision_v2/raw_commands/CMD-028.stdout.txt\nA\treports/P2_design/design_revision_v2/raw_commands/CMD-029.stderr.txt\nA\treports/P2_design/design_revision_v2/raw_commands/CMD-029.stdout.txt\nA\treports/P2_design/design_revision_v2/raw_commands/CMD-030.stderr.txt\nA\treports/P2_design/design_revision_v2/raw_commands/CMD-030.stdout.txt\nA\treports/P2_design/design_revision_v2/raw_commands/CMD-031.stderr.txt\nA\treports/P2_design/design_revision_v2/raw_commands/CMD-031.stdout.txt\nA\treports/P2_design/design_revision_v2/raw_commands/CMD-032.stderr.txt\nA\treports/P2_design/design_revision_v2/raw_commands/CMD-032.stdout.txt\nA\treports/P2_design/design_revision_v2/raw_commands/CMD-033.stderr.txt\nA\treports/P2_design/design_revision_v2/raw_commands/CMD-033.stdout.txt\nA\treports/P2_design/design_revision_v2/raw_commands/CMD-034.stderr.txt\nA\treports/P2_design/design_revision_v2/raw_commands/CMD-034.stdout.txt\nA\treports/P2_design/design_revision_v2/raw_commands/CMD-035.stderr.txt\nA\treports/P2_design/design_revision_v2/raw_commands/CMD-035.stdout.txt\nA\treports/P2_design/design_revision_v2/raw_commands/CMD-036.stderr.txt\nA\treports/P2_design/design_revision_v2/raw_commands/CMD-036.stdout.txt\nA\treports/P2_design/design_revision_v2/raw_commands/CMD-037.stderr.txt\nA\treports/P2_design/design_revision_v2/raw_commands/CMD-037.stdout.txt\nA\treports/P2_design/design_revision_v2/raw_commands/CMD-038.stderr.txt\nA\treports/P2_design/design_revision_v2/raw_commands/CMD-038.stdout.txt\nA\treports/P2_design/design_revision_v2/rebuild_review_manifest.py.txt\nA\treports/P2_design/design_revision_v2/review_evidence_manifest.json\nA\treports/P2_design/design_revision_v2/reviewed_sources.json\nA\treports/P2_design/design_revision_v2/spec_builder_initial.py.txt\nA\treports/P2_design/design_revision_v2/static_review_checks.json\nA\treports/P2_design/design_revision_v2/static_review_checks_initial.json\nA\treports/P2_design/design_revision_v2/v1_v2_change_log.md\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--stat"
+      ],
+      "exit_code": 0,
+      "stdout": " .../v2/P2_D01_D10_approval_checklist_v2.md         |   19 +\n docs/P2_design/v2/P2_D01_D10_traceability_v2.csv   |   54 +\n .../v2/P2_canonical_golden_vectors_v2.json         |  162 +\n .../P2_design/v2/P2_communication_profiles_v2.json |  752 +++++\n .../P2_design/v2/P2_complete_design_proposal_v2.md |  215 ++\n docs/P2_design/v2/P2_criterion_spec_v2.json        |  103 +\n docs/P2_design/v2/P2_diagnostic_spec_v2.json       |  120 +\n docs/P2_design/v2/P2_generation_spec_v2.json       |  328 ++\n .../v2/P2_mapping_opportunity_decision_table_v2.md |   48 +\n docs/P2_design/v2/P2_public_snapshot_spec_v2.json  |   64 +\n docs/P2_design/v2/P2_resource_profiles_v2.json     |  370 +++\n docs/P2_design/v2/P2_runner_schema_review_v2.md    |  118 +\n .../v2/P2_scientific_parameter_registry_v2.json    | 1178 +++++++\n docs/P2_design/v2/P2_stage_state_contract_v2.json  |  264 ++\n docs/P2_design/v2/P2_trial_matrix_draft_v2.json    | 3110 ++++++++++++++++++\n docs/P2_design/v2/P2_typed_identity_schema_v2.json | 3381 ++++++++++++++++++++\n docs/P2_design/v2/P2_workload_templates_v2.json    | 1125 +++++++\n docs/P2_design/v2/README.md                        |   19 +\n .../V2_F01_F07_resolution_matrix.csv               |    8 +\n .../actual_commands_and_exit_codes.json            |  909 ++++++\n .../design_revision_v2/authoring_error_history.md  |   26 +\n .../design_revision_v2/authorization_request.txt   |  413 +++\n .../cross_document_consistency.json                |  182 ++\n .../delivery_consistency_checks.json               |  132 +\n .../delivery_consistency_checks_initial.json       |  134 +\n .../delivery_consistency_review.py.txt             |   34 +\n ...livery_consistency_review_after_path_fix.py.txt |   34 +\n .../delivery_consistency_review_initial.py.txt     |   34 +\n .../diagnostic_semantics_review.md                 |   27 +\n .../design_revision_v2/executive_decision.md       |   74 +\n .../external_golden_vector_review.py.txt           |   12 +\n .../external_golden_vector_verification.json       |   78 +\n .../design_revision_v2/fresh_static_review.py.txt  |  186 ++\n .../fresh_static_review_initial.py.txt             |  177 +\n .../design_revision_v2/human_decision_packet.md    |  261 ++\n .../identity_dependency_graph.json                 |  222 ++\n .../design_revision_v2/protected_baseline.json     | 1372 ++++++++\n .../raw_commands/CMD-001.stderr.txt                |    0\n .../raw_commands/CMD-001.stdout.txt                |    1 +\n .../raw_commands/CMD-002.stderr.txt                |    0\n .../raw_commands/CMD-002.stdout.txt                |    1 +\n .../raw_commands/CMD-003.stderr.txt                |    0\n .../raw_commands/CMD-003.stdout.txt                |    1 +\n .../raw_commands/CMD-004.stderr.txt                |    0\n .../raw_commands/CMD-004.stdout.txt                |    2 +\n .../raw_commands/CMD-005.stderr.txt                |    0\n .../raw_commands/CMD-005.stdout.txt                |    1 +\n .../raw_commands/CMD-006.stderr.txt                |    0\n .../raw_commands/CMD-006.stdout.txt                |    1 +\n .../raw_commands/CMD-007.stderr.txt                |    0\n .../raw_commands/CMD-007.stdout.txt                |  Bin 0 -> 14599 bytes\n .../raw_commands/CMD-008.stderr.txt                |    8 +\n .../raw_commands/CMD-008.stdout.txt                |    0\n .../raw_commands/CMD-009.stderr.txt                |    0\n .../raw_commands/CMD-009.stdout.txt                |    1 +\n .../raw_commands/CMD-010.stderr.txt                |    0\n .../raw_commands/CMD-010.stdout.txt                |    1 +\n .../raw_commands/CMD-011.stderr.txt                |    0\n .../raw_commands/CMD-011.stdout.txt                |    1 +\n .../raw_commands/CMD-012.stderr.txt                |    0\n .../raw_commands/CMD-012.stdout.txt                |    1 +\n .../raw_commands/CMD-013.stderr.txt                |    0\n .../raw_commands/CMD-013.stdout.txt                |    1 +\n .../raw_commands/CMD-014.stderr.txt                |    0\n .../raw_commands/CMD-014.stdout.txt                |    1 +\n .../raw_commands/CMD-015.stderr.txt                |    0\n .../raw_commands/CMD-015.stdout.txt                |    1 +\n .../raw_commands/CMD-016.stderr.txt                |    0\n .../raw_commands/CMD-016.stdout.txt                |    1 +\n .../raw_commands/CMD-017.stderr.txt                |    0\n .../raw_commands/CMD-017.stdout.txt                |    1 +\n .../raw_commands/CMD-018.stderr.txt                |    0\n .../raw_commands/CMD-018.stdout.txt                |    1 +\n .../raw_commands/CMD-019.stderr.txt                |    0\n .../raw_commands/CMD-019.stdout.txt                |    1 +\n .../raw_commands/CMD-020.stderr.txt                |    0\n .../raw_commands/CMD-020.stdout.txt                |    1 +\n .../raw_commands/CMD-021.stderr.txt                |    0\n .../raw_commands/CMD-021.stdout.txt                | 1526 +++++++++\n .../raw_commands/CMD-022.stderr.txt                |    0\n .../raw_commands/CMD-022.stdout.txt                |    1 +\n .../raw_commands/CMD-023.stderr.txt                |    0\n .../raw_commands/CMD-023.stdout.txt                | 1524 +++++++++\n .../raw_commands/CMD-024.stderr.txt                |    0\n .../raw_commands/CMD-024.stdout.txt                |    1 +\n .../raw_commands/CMD-025.stderr.txt                |    0\n .../raw_commands/CMD-025.stdout.txt                | 1769 ++++++++++\n .../raw_commands/CMD-026.stderr.txt                |    0\n .../raw_commands/CMD-026.stdout.txt                |   15 +\n .../raw_commands/CMD-027.stderr.txt                |    0\n .../raw_commands/CMD-027.stdout.txt                |   27 +\n .../raw_commands/CMD-028.stderr.txt                |    0\n .../raw_commands/CMD-028.stdout.txt                |    1 +\n .../raw_commands/CMD-029.stderr.txt                |    0\n .../raw_commands/CMD-029.stdout.txt                |    1 +\n .../raw_commands/CMD-030.stderr.txt                |    0\n .../raw_commands/CMD-030.stdout.txt                |    1 +\n .../raw_commands/CMD-031.stderr.txt                |    0\n .../raw_commands/CMD-031.stdout.txt                |   78 +\n .../raw_commands/CMD-032.stderr.txt                |    0\n .../raw_commands/CMD-032.stdout.txt                |    1 +\n .../raw_commands/CMD-033.stderr.txt                |    8 +\n .../raw_commands/CMD-033.stdout.txt                |    0\n .../raw_commands/CMD-034.stderr.txt                |    0\n .../raw_commands/CMD-034.stdout.txt                |  134 +\n .../raw_commands/CMD-035.stderr.txt                |    0\n .../raw_commands/CMD-035.stdout.txt                |  132 +\n .../raw_commands/CMD-036.stderr.txt                |    0\n .../raw_commands/CMD-036.stdout.txt                |    0\n .../raw_commands/CMD-037.stderr.txt                |    0\n .../raw_commands/CMD-037.stdout.txt                |    0\n .../raw_commands/CMD-038.stderr.txt                |    0\n .../raw_commands/CMD-038.stdout.txt                |    1 +\n .../rebuild_review_manifest.py.txt                 |    7 +\n .../review_evidence_manifest.json                  |  608 ++++\n .../design_revision_v2/reviewed_sources.json       |  447 +++\n .../design_revision_v2/spec_builder_initial.py.txt |  125 +\n .../design_revision_v2/static_review_checks.json   | 1769 ++++++++++\n .../static_review_checks_initial.json              | 1540 +++++++++\n .../design_revision_v2/v1_v2_change_log.md         |   58 +\n 120 files changed, 25546 insertions(+)\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "commit",
+        "-m",
+        "docs: propose P2 design v2 addressing seven audit findings"
+      ],
+      "exit_code": 0,
+      "stdout": "[work 3f81bc6] docs: propose P2 design v2 addressing seven audit findings\n 120 files changed, 25546 insertions(+)\n create mode 100644 docs/P2_design/v2/P2_D01_D10_approval_checklist_v2.md\n create mode 100644 docs/P2_design/v2/P2_D01_D10_traceability_v2.csv\n create mode 100644 docs/P2_design/v2/P2_canonical_golden_vectors_v2.json\n create mode 100644 docs/P2_design/v2/P2_communication_profiles_v2.json\n create mode 100644 docs/P2_design/v2/P2_complete_design_proposal_v2.md\n create mode 100644 docs/P2_design/v2/P2_criterion_spec_v2.json\n create mode 100644 docs/P2_design/v2/P2_diagnostic_spec_v2.json\n create mode 100644 docs/P2_design/v2/P2_generation_spec_v2.json\n create mode 100644 docs/P2_design/v2/P2_mapping_opportunity_decision_table_v2.md\n create mode 100644 docs/P2_design/v2/P2_public_snapshot_spec_v2.json\n create mode 100644 docs/P2_design/v2/P2_resource_profiles_v2.json\n create mode 100644 docs/P2_design/v2/P2_runner_schema_review_v2.md\n create mode 100644 docs/P2_design/v2/P2_scientific_parameter_registry_v2.json\n create mode 100644 docs/P2_design/v2/P2_stage_state_contract_v2.json\n create mode 100644 docs/P2_design/v2/P2_trial_matrix_draft_v2.json\n create mode 100644 docs/P2_design/v2/P2_typed_identity_schema_v2.json\n create mode 100644 docs/P2_design/v2/P2_workload_templates_v2.json\n create mode 100644 docs/P2_design/v2/README.md\n create mode 100644 reports/P2_design/design_revision_v2/V2_F01_F07_resolution_matrix.csv\n create mode 100644 reports/P2_design/design_revision_v2/actual_commands_and_exit_codes.json\n create mode 100644 reports/P2_design/design_revision_v2/authoring_error_history.md\n create mode 100644 reports/P2_design/design_revision_v2/authorization_request.txt\n create mode 100644 reports/P2_design/design_revision_v2/cross_document_consistency.json\n create mode 100644 reports/P2_design/design_revision_v2/delivery_consistency_checks.json\n create mode 100644 reports/P2_design/design_revision_v2/delivery_consistency_checks_initial.json\n create mode 100644 reports/P2_design/design_revision_v2/delivery_consistency_review.py.txt\n create mode 100644 reports/P2_design/design_revision_v2/delivery_consistency_review_after_path_fix.py.txt\n create mode 100644 reports/P2_design/design_revision_v2/delivery_consistency_review_initial.py.txt\n create mode 100644 reports/P2_design/design_revision_v2/diagnostic_semantics_review.md\n create mode 100644 reports/P2_design/design_revision_v2/executive_decision.md\n create mode 100644 reports/P2_design/design_revision_v2/external_golden_vector_review.py.txt\n create mode 100644 reports/P2_design/design_revision_v2/external_golden_vector_verification.json\n create mode 100644 reports/P2_design/design_revision_v2/fresh_static_review.py.txt\n create mode 100644 reports/P2_design/design_revision_v2/fresh_static_review_initial.py.txt\n create mode 100644 reports/P2_design/design_revision_v2/human_decision_packet.md\n create mode 100644 reports/P2_design/design_revision_v2/identity_dependency_graph.json\n create mode 100644 reports/P2_design/design_revision_v2/protected_baseline.json\n create mode 100644 reports/P2_design/design_revision_v2/raw_commands/CMD-001.stderr.txt\n create mode 100644 reports/P2_design/design_revision_v2/raw_commands/CMD-001.stdout.txt\n create mode 100644 reports/P2_design/design_revision_v2/raw_commands/CMD-002.stderr.txt\n create mode 100644 reports/P2_design/design_revision_v2/raw_commands/CMD-002.stdout.txt\n create mode 100644 reports/P2_design/design_revision_v2/raw_commands/CMD-003.stderr.txt\n create mode 100644 reports/P2_design/design_revision_v2/raw_commands/CMD-003.stdout.txt\n create mode 100644 reports/P2_design/design_revision_v2/raw_commands/CMD-004.stderr.txt\n create mode 100644 reports/P2_design/design_revision_v2/raw_commands/CMD-004.stdout.txt\n create mode 100644 reports/P2_design/design_revision_v2/raw_commands/CMD-005.stderr.txt\n create mode 100644 reports/P2_design/design_revision_v2/raw_commands/CMD-005.stdout.txt\n create mode 100644 reports/P2_design/design_revision_v2/raw_commands/CMD-006.stderr.txt\n create mode 100644 reports/P2_design/design_revision_v2/raw_commands/CMD-006.stdout.txt\n create mode 100644 reports/P2_design/design_revision_v2/raw_commands/CMD-007.stderr.txt\n create mode 100644 reports/P2_design/design_revision_v2/raw_commands/CMD-007.stdout.txt\n create mode 100644 reports/P2_design/design_revision_v2/raw_commands/CMD-008.stderr.txt\n create mode 100644 reports/P2_design/design_revision_v2/raw_commands/CMD-008.stdout.txt\n create mode 100644 reports/P2_design/design_revision_v2/raw_commands/CMD-009.stderr.txt\n create mode 100644 reports/P2_design/design_revision_v2/raw_commands/CMD-009.stdout.txt\n create mode 100644 reports/P2_design/design_revision_v2/raw_commands/CMD-010.stderr.txt\n create mode 100644 reports/P2_design/design_revision_v2/raw_commands/CMD-010.stdout.txt\n create mode 100644 reports/P2_design/design_revision_v2/raw_commands/CMD-011.stderr.txt\n create mode 100644 reports/P2_design/design_revision_v2/raw_commands/CMD-011.stdout.txt\n create mode 100644 reports/P2_design/design_revision_v2/raw_commands/CMD-012.stderr.txt\n create mode 100644 reports/P2_design/design_revision_v2/raw_commands/CMD-012.stdout.txt\n create mode 100644 reports/P2_design/design_revision_v2/raw_commands/CMD-013.stderr.txt\n create mode 100644 reports/P2_design/design_revision_v2/raw_commands/CMD-013.stdout.txt\n create mode 100644 reports/P2_design/design_revision_v2/raw_commands/CMD-014.stderr.txt\n create mode 100644 reports/P2_design/design_revision_v2/raw_commands/CMD-014.stdout.txt\n create mode 100644 reports/P2_design/design_revision_v2/raw_commands/CMD-015.stderr.txt\n create mode 100644 reports/P2_design/design_revision_v2/raw_commands/CMD-015.stdout.txt\n create mode 100644 reports/P2_design/design_revision_v2/raw_commands/CMD-016.stderr.txt\n create mode 100644 reports/P2_design/design_revision_v2/raw_commands/CMD-016.stdout.txt\n create mode 100644 reports/P2_design/design_revision_v2/raw_commands/CMD-017.stderr.txt\n create mode 100644 reports/P2_design/design_revision_v2/raw_commands/CMD-017.stdout.txt\n create mode 100644 reports/P2_design/design_revision_v2/raw_commands/CMD-018.stderr.txt\n create mode 100644 reports/P2_design/design_revision_v2/raw_commands/CMD-018.stdout.txt\n create mode 100644 reports/P2_design/design_revision_v2/raw_commands/CMD-019.stderr.txt\n create mode 100644 reports/P2_design/design_revision_v2/raw_commands/CMD-019.stdout.txt\n create mode 100644 reports/P2_design/design_revision_v2/raw_commands/CMD-020.stderr.txt\n create mode 100644 reports/P2_design/design_revision_v2/raw_commands/CMD-020.stdout.txt\n create mode 100644 reports/P2_design/design_revision_v2/raw_commands/CMD-021.stderr.txt\n create mode 100644 reports/P2_design/design_revision_v2/raw_commands/CMD-021.stdout.txt\n create mode 100644 reports/P2_design/design_revision_v2/raw_commands/CMD-022.stderr.txt\n create mode 100644 reports/P2_design/design_revision_v2/raw_commands/CMD-022.stdout.txt\n create mode 100644 reports/P2_design/design_revision_v2/raw_commands/CMD-023.stderr.txt\n create mode 100644 reports/P2_design/design_revision_v2/raw_commands/CMD-023.stdout.txt\n create mode 100644 reports/P2_design/design_revision_v2/raw_commands/CMD-024.stderr.txt\n create mode 100644 reports/P2_design/design_revision_v2/raw_commands/CMD-024.stdout.txt\n create mode 100644 reports/P2_design/design_revision_v2/raw_commands/CMD-025.stderr.txt\n create mode 100644 reports/P2_design/design_revision_v2/raw_commands/CMD-025.stdout.txt\n create mode 100644 reports/P2_design/design_revision_v2/raw_commands/CMD-026.stderr.txt\n create mode 100644 reports/P2_design/design_revision_v2/raw_commands/CMD-026.stdout.txt\n create mode 100644 reports/P2_design/design_revision_v2/raw_commands/CMD-027.stderr.txt\n create mode 100644 reports/P2_design/design_revision_v2/raw_commands/CMD-027.stdout.txt\n create mode 100644 reports/P2_design/design_revision_v2/raw_commands/CMD-028.stderr.txt\n create mode 100644 reports/P2_design/design_revision_v2/raw_commands/CMD-028.stdout.txt\n create mode 100644 reports/P2_design/design_revision_v2/raw_commands/CMD-029.stderr.txt\n create mode 100644 reports/P2_design/design_revision_v2/raw_commands/CMD-029.stdout.txt\n create mode 100644 reports/P2_design/design_revision_v2/raw_commands/CMD-030.stderr.txt\n create mode 100644 reports/P2_design/design_revision_v2/raw_commands/CMD-030.stdout.txt\n create mode 100644 reports/P2_design/design_revision_v2/raw_commands/CMD-031.stderr.txt\n create mode 100644 reports/P2_design/design_revision_v2/raw_commands/CMD-031.stdout.txt\n create mode 100644 reports/P2_design/design_revision_v2/raw_commands/CMD-032.stderr.txt\n create mode 100644 reports/P2_design/design_revision_v2/raw_commands/CMD-032.stdout.txt\n create mode 100644 reports/P2_design/design_revision_v2/raw_commands/CMD-033.stderr.txt\n create mode 100644 reports/P2_design/design_revision_v2/raw_commands/CMD-033.stdout.txt\n create mode 100644 reports/P2_design/design_revision_v2/raw_commands/CMD-034.stderr.txt\n create mode 100644 reports/P2_design/design_revision_v2/raw_commands/CMD-034.stdout.txt\n create mode 100644 reports/P2_design/design_revision_v2/raw_commands/CMD-035.stderr.txt\n create mode 100644 reports/P2_design/design_revision_v2/raw_commands/CMD-035.stdout.txt\n create mode 100644 reports/P2_design/design_revision_v2/raw_commands/CMD-036.stderr.txt\n create mode 100644 reports/P2_design/design_revision_v2/raw_commands/CMD-036.stdout.txt\n create mode 100644 reports/P2_design/design_revision_v2/raw_commands/CMD-037.stderr.txt\n create mode 100644 reports/P2_design/design_revision_v2/raw_commands/CMD-037.stdout.txt\n create mode 100644 reports/P2_design/design_revision_v2/raw_commands/CMD-038.stderr.txt\n create mode 100644 reports/P2_design/design_revision_v2/raw_commands/CMD-038.stdout.txt\n create mode 100644 reports/P2_design/design_revision_v2/rebuild_review_manifest.py.txt\n create mode 100644 reports/P2_design/design_revision_v2/review_evidence_manifest.json\n create mode 100644 reports/P2_design/design_revision_v2/reviewed_sources.json\n create mode 100644 reports/P2_design/design_revision_v2/spec_builder_initial.py.txt\n create mode 100644 reports/P2_design/design_revision_v2/static_review_checks.json\n create mode 100644 reports/P2_design/design_revision_v2/static_review_checks_initial.json\n create mode 100644 reports/P2_design/design_revision_v2/v1_v2_change_log.md\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "exit_code": 0,
+      "stdout": "3f81bc6c69d30c16b9ed350c5dfab6111759987e\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "remote",
+        "get-url",
+        "origin"
+      ],
+      "exit_code": 0,
+      "stdout": "https://github.com/JINAOLONG/soc.git\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "push",
+        "origin",
+        "HEAD:refs/heads/work"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "To https://github.com/JINAOLONG/soc.git\n   79f9c24..3f81bc6  HEAD -> work\n"
+    },
+    {
+      "argv": [
+        "git",
+        "ls-remote",
+        "origin",
+        "refs/heads/work"
+      ],
+      "exit_code": 0,
+      "stdout": "3f81bc6c69d30c16b9ed350c5dfab6111759987e\trefs/heads/work\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "status",
+        "--porcelain",
+        "--untracked-files=all"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "ended_at_utc": "2026-10-18T13:15:42.002303+00:00",
+  "subsequent_final_publication_precheck_failure": {
+    "error": "AssertionError in four-file status scope check before git add; wrapper strip() removed leading porcelain status space, so x[3:] sliced one path character. No commit/push attempted in this failed call.",
+    "correction": "Use rstrip(newline) to retain exact leading status columns; no document scope changed.",
+    "actual_partial_receipt": {
+      "phase": "FINAL_REPORT_RECEIPT_PUBLICATION",
+      "commands": [
+        {
+          "argv": [
+            "git",
+            "rev-parse",
+            "HEAD"
+          ],
+          "exit_code": 0,
+          "stdout": "3f81bc6c69d30c16b9ed350c5dfab6111759987e\n",
+          "stderr": ""
+        },
+        {
+          "argv": [
+            "git",
+            "branch",
+            "--show-current"
+          ],
+          "exit_code": 0,
+          "stdout": "work\n",
+          "stderr": ""
+        },
+        {
+          "argv": [
+            "git",
+            "remote",
+            "get-url",
+            "origin"
+          ],
+          "exit_code": 0,
+          "stdout": "https://github.com/JINAOLONG/soc.git\n",
+          "stderr": ""
+        },
+        {
+          "argv": [
+            "git",
+            "ls-remote",
+            "origin",
+            "refs/heads/work"
+          ],
+          "exit_code": 0,
+          "stdout": "3f81bc6c69d30c16b9ed350c5dfab6111759987e\trefs/heads/work\n",
+          "stderr": ""
+        },
+        {
+          "argv": [
+            ".venv/bin/python",
+            "scripts/hash_artifacts.py",
+            "--verify",
+            "--output",
+            "reports/P2_design/design_revision_v2/review_evidence_manifest.json"
+          ],
+          "exit_code": 0,
+          "stdout": "{\"files\": 120, \"missing\": [], \"mismatch\": []}\n",
+          "stderr": ""
+        },
+        {
+          "argv": [
+            "git",
+            "status",
+            "--porcelain",
+            "--untracked-files=all"
+          ],
+          "exit_code": 0,
+          "stdout": " M reports/P2_design/design_revision_v2/actual_commands_and_exit_codes.json\n M reports/P2_design/design_revision_v2/executive_decision.md\n M reports/P2_design/design_revision_v2/review_evidence_manifest.json\n?? reports/P2_design/design_revision_v2/first_publication_receipt.json\n",
+          "stderr": ""
+        }
+      ]
+    }
+  }
+}

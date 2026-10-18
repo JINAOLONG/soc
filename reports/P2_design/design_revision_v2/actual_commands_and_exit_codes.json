@@ -905,5 +905,11 @@
   ],
   "command_count": 38,
   "nonzero_exit_count": 4,
-  "unexpected_exit_count": 3
+  "unexpected_exit_count": 3,
+  "publication_receipt": {
+    "path": "reports/P2_design/design_revision_v2/first_publication_receipt.json",
+    "sha256": "1b74121a39785d2a071fea3375736f242eb8c9f6756ba487720705d3897b6645",
+    "size_bytes": 41089,
+    "kind": "ACTUAL_NORMAL_COMMIT_PUSH_COMMANDS_COPY_FROM_EXTERNAL_RECEIPT_NOT_RERUN"
+  }
 }

@@ -106,8 +106,8 @@
     },
     {
       "path": "reports/P2_design/design_revision_v2/actual_commands_and_exit_codes.json",
-      "sha256": "1790158b5b0f8c8eb1a7536da805ccf23dbf23f508ca92a934b7e1e73f6024c9",
-      "size_bytes": 32706
+      "sha256": "6f73deb04d6760826b5d5057cc38fed21f0c6fac16325d266fc20f9d73712218",
+      "size_bytes": 33014
     },
     {
       "path": "reports/P2_design/design_revision_v2/authoring_error_history.md",
@@ -156,8 +156,8 @@
     },
     {
       "path": "reports/P2_design/design_revision_v2/executive_decision.md",
-      "sha256": "5652a16f97c5c7e9b736260cf70e3d007dfb8a82472bf0638e86942bcb65a98e",
-      "size_bytes": 5699
+      "sha256": "50b8756dfdd5bef56f1d7f792d9adf24765ca30402c96d08c428d52fdb1accc8",
+      "size_bytes": 6389
     },
     {
       "path": "reports/P2_design/design_revision_v2/external_golden_vector_review.py.txt",
@@ -168,6 +168,11 @@
       "path": "reports/P2_design/design_revision_v2/external_golden_vector_verification.json",
       "sha256": "9a7e1e94ee07f7ef0d6188c648624bcd098c090a0e47e8f7ab7e22b04798307e",
       "size_bytes": 3195
+    },
+    {
+      "path": "reports/P2_design/design_revision_v2/first_publication_receipt.json",
+      "sha256": "1b74121a39785d2a071fea3375736f242eb8c9f6756ba487720705d3897b6645",
+      "size_bytes": 41089
     },
     {
       "path": "reports/P2_design/design_revision_v2/fresh_static_review.py.txt",
