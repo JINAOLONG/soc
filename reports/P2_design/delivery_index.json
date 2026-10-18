@@ -32,5 +32,7 @@
   "human_review_original_catalog": "reports/P2_design/review/original_decision_catalog.json",
   "human_review_original_questions": "reports/P2_design/review/original_human_decisions.md",
   "previous_document_check_report": "reports/P2_design/document_checks.json",
-  "review_starting_head": "a585c5bba0215c1ac4b2f126f5a752ae443b56b4"
+  "review_starting_head": "a585c5bba0215c1ac4b2f126f5a752ae443b56b4",
+  "human_review_git_receipt": "reports/P2_design/review/git_checkpoint.json",
+  "audited_human_review_checkpoint": "f53120f2b88803504f63d500d24a5eae95646679"
 }

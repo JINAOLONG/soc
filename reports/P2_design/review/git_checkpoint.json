@@ -1,0 +1,25 @@
+{
+  "scope": "Human decision review DRAFT checkpoint; no approvals or science, receipt added subsequently",
+  "git_commit": "f53120f2b88803504f63d500d24a5eae95646679",
+  "branch": "work",
+  "remote": "https://github.com/JINAOLONG/soc.git",
+  "push_command": [
+    "git",
+    "push",
+    "origin",
+    "HEAD:refs/heads/work"
+  ],
+  "push_exit_code": 0,
+  "push_stdout": "",
+  "push_stderr": "To https://github.com/JINAOLONG/soc.git\n   a585c5b..f53120f  HEAD -> work\n",
+  "remote_verify_exit_code": 0,
+  "remote_verify_stdout": "f53120f2b88803504f63d500d24a5eae95646679\trefs/heads/work\n",
+  "remote_matches": true,
+  "worktree_at_checkpoint": "CLEAN",
+  "inventory": 10,
+  "resolved": 0,
+  "human_decisions_required": 10,
+  "decisions_blocked": 0,
+  "P2_preflight_status": "BLOCKED",
+  "scientific_workloads_run": 0
+}
