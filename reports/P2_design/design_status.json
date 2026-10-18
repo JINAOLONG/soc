@@ -1,0 +1,109 @@
+{
+  "schema_version": 1,
+  "task": "P2_DESIGN_RESOLUTION_PREPARATION",
+  "status": "DRAFT",
+  "approved": false,
+  "frozen": false,
+  "executable": false,
+  "starting_head": "d016ad8d8b2be6fbeb80fadfee6194d9aa9bd0ae",
+  "human_decision_count_scope": "10 numbered decision groups, not the number of individual unresolved parameter values",
+  "human_decision_ids": [
+    "D01",
+    "D02",
+    "D03",
+    "D04",
+    "D05",
+    "D06",
+    "D07",
+    "D08",
+    "D09",
+    "D10"
+  ],
+  "machine_status": {
+    "PROJECT_NAME": "soc",
+    "P0_STATUS": "PASS",
+    "P1_STATUS": "PASS",
+    "P2_PREFLIGHT_STATUS": "BLOCKED",
+    "P2_DESIGN_PACKAGE_STATUS": "DRAFT",
+    "P2_B1_STATUS": "UNRESOLVED",
+    "P2_B2_STATUS": "UNRESOLVED",
+    "P2_B3_STATUS": "UNRESOLVED",
+    "P2_B4_STATUS": "DESIGNED",
+    "P2_B5_STATUS": "DESIGNED",
+    "HUMAN_DECISIONS_REQUIRED": 10,
+    "SCIENTIFIC_WORKLOADS_RUN": 0,
+    "NEW_SEEDS_GENERATED": "NO",
+    "NON_CALIBRATION_PARTITIONS_ACCESSED": "NO",
+    "P2_ENTRYPOINT_EXECUTED": "NO",
+    "SIMULATOR_SOURCE_CHANGED": "NO",
+    "SCHEDULER_SOURCE_CHANGED": "NO",
+    "WORKLOAD_GENERATOR_SOURCE_CHANGED": "NO",
+    "SCIENTIFIC_THRESHOLDS_CHANGED": "NO",
+    "CI_METHOD_CHANGED": "NO",
+    "SEED_PARTITIONS_CHANGED": "NO",
+    "VALIDATION_UNLOCKED": "NO",
+    "FORMAL_UNLOCKED": "NO",
+    "GIT_COMMIT": "NONE",
+    "GITHUB_PUSH_STATUS": "PENDING_DOCUMENTATION_CHECKPOINT",
+    "WORKTREE": "DRAFT_DOCUMENTATION_PENDING",
+    "NEXT_SAFE_ACTION": "人工审阅并回答docs/P2_design/human_decisions.md的D01–D10；本轮不实施或执行",
+    "STOP": "YES"
+  },
+  "blockers": {
+    "P2-B1": {
+      "status": "UNRESOLVED",
+      "document": "docs/P2_design/workload_gaps.md",
+      "decisions": [
+        "D01",
+        "D02",
+        "D03",
+        "D04",
+        "D06"
+      ]
+    },
+    "P2-B2": {
+      "status": "UNRESOLVED",
+      "document": "docs/P2_design/calibration_matrix.draft.json",
+      "decisions": [
+        "D05",
+        "D06"
+      ]
+    },
+    "P2-B3": {
+      "status": "UNRESOLVED",
+      "document": "docs/P2_design/mapping_criterion_options.md",
+      "decisions": [
+        "D07",
+        "D08"
+      ]
+    },
+    "P2-B4": {
+      "status": "DESIGNED",
+      "meaning": "Unapproved documentation only; implementation and validation pending",
+      "document": "docs/P2_design/runner_and_schema.md",
+      "decisions": [
+        "D09"
+      ]
+    },
+    "P2-B5": {
+      "status": "DESIGNED",
+      "meaning": "Unapproved structural design only; schema/adapter semantics unverified",
+      "document": "docs/P2_design/scientific_artifacts.schema.draft.json",
+      "decisions": [
+        "D10"
+      ]
+    }
+  },
+  "registered_calibration_seed_count": 10,
+  "registered_seed_source": "configs/seed_partitions.json#partitions.CALIBRATION",
+  "calibration_seed_identities_used_or_generated": 0,
+  "implementation_authorized": false,
+  "scientific_execution_authorized": false,
+  "approved_design_decisions": [],
+  "schema_validation_status": "NOT_SEMANTICALLY_VALIDATED; structural documentation checks only",
+  "mapping_opportunity_computed": false,
+  "prior_gate_unchanged": "reports/P2_mapping_opportunity.json",
+  "historical_preflight": "reports/P2_preflight.json",
+  "authorization": "docs/P2_design/authorization_request.txt",
+  "calibration_matrix": "docs/P2_design/calibration_matrix.draft.json"
+}

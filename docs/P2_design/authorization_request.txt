@@ -1,0 +1,292 @@
+# SOC — P2 Design Resolution and Pre-registration Preparation
+
+## 1. Task authorization
+
+Repository: `https://github.com/JINAOLONG/soc.git`
+
+Project: `soc`
+
+Current reported state:
+- P0: PASS
+- P1 correctness: PASS
+- P2 preflight: BLOCKED
+- Scientific calibration workloads executed in the preceding preflight: 0
+
+This task authorizes only:
+
+1. Read-only inspection of the current repository and P2 blockers.
+2. Preparation of a P2 design decision package.
+3. Documentation-only changes required to preserve the preflight evidence and present explicit design choices.
+4. Normal Git commit/push of these audit and draft documents, subject to the preservation rules below.
+
+This task does NOT authorize:
+
+- Scientific workload generation or execution.
+- Implementation or modification of the simulator, scheduler, or workload generator.
+- Execution of P2 or any later pipeline stage.
+- Changes to seed partitions, candidate definitions, scientific thresholds, confidence-interval methods, or the frozen research contract.
+- Independent validation or formal evaluation.
+- Automatic approval or freezing of a proposed experimental design.
+
+## 2. Verify the live repository state
+
+Work from the actual repository root.
+
+Inspect:
+- `AGENTS.md`
+- `docs/user_request.txt`
+- `docs/workload_spec.md`
+- `docs/model_spec.md`
+- `docs/baseline_spec.md`
+- `docs/metric_spec.md`
+- `docs/statistical_protocol.md`
+- `docs/research_contract.md`
+- `configs/research_protocol.json`
+- Existing calibration configurations and seed metadata
+- Existing P0/P1 gate implementations and evidence
+- The complete P2 preflight report, raw command records, and delivery index
+- Current Git history, working-tree state, and remote branch
+
+Run read-only Git inspection:
+- `git rev-parse --show-toplevel`
+- `git remote -v`
+- `git branch --show-current`
+- `git rev-parse HEAD`
+- `git status --short`
+- `git log --oneline --decorate -10`
+- `git ls-remote origin refs/heads/work`
+
+Do not assume any previously reported SHA is the current HEAD.
+
+Preserve existing uncommitted changes. Never reset, clean, force-push, or overwrite unrelated work.
+
+If the preflight evidence is only in `/tmp`, determine whether the original files still exist. Preserve the actual command records and outputs in repository documentation when possible. Do not fabricate missing records or reconstruct unavailable stdout from a summary.
+
+## 3. Treat the five P2 blockers individually
+
+Create a traceable decision table for P2-B1 through P2-B5.
+
+For every blocker, record:
+- Exact existing file and line or section.
+- What the existing specification actually establishes.
+- What remains unspecified.
+- Why the missing definition prevents execution.
+- Which decisions require human approval.
+- Candidate design options supported by existing project constraints.
+- Advantages, disadvantages, reproducibility implications, and possible sources of bias.
+- The recommended option, if the existing evidence supports a recommendation.
+- The exact question that the user must decide.
+- The evidence required before the item can be marked resolved.
+
+Do not label an item PASS merely because a draft proposal exists.
+
+### P2-B1: Scientific workload generation
+
+Inspect the workload specification and identify the missing definitions for:
+- The three registered workload scenarios.
+- The 8-node and 16-node DAG templates.
+- Task execution-cost generation across heterogeneous resources.
+- Resource compatibility sets.
+- Edge data sizes and communication parameters.
+- Workload perturbations and their deterministic construction.
+- Arrival process, deadline, observation window, and drain behavior.
+- H-only feasibility and baseline checks.
+- Expected workload identities and artifact structure.
+
+Produce a field-by-field specification gap table.
+
+Do not invent numerical distributions, probabilities, bounds, or feasibility thresholds.
+
+Where no existing source determines a value, provide explicit alternatives for human consideration and mark the value UNRESOLVED.
+
+### P2-B2: Finite calibration trial matrix
+
+The registered 3×3×2 main-condition structure must not be treated as a complete experiment matrix by itself.
+
+Identify the exact missing definitions for:
+- Parameter axes and legal values.
+- The full finite list of trials and configurations.
+- Which methods are included in each trial.
+- The role of B2 as the focal reference.
+- The permitted baseline subset and the justification for its selection.
+- Trial ordering and run budget.
+- Selection criteria and deterministic tie handling.
+- Treatment of failed, invalid, infeasible, or incomplete runs.
+- The mapping from calibration seeds to workloads and conditions.
+
+Do not select a method subset or parameter values without documented support.
+
+Provide a machine-readable DRAFT matrix only if every unresolved field is explicitly marked as unresolved and the draft cannot be mistaken for an executable or approved matrix.
+
+### P2-B3: Mapping-opportunity criterion
+
+Read `docs/statistical_protocol.md` and all existing definitions of mapping opportunity.
+
+Identify what is required to turn the registered concept into an executable criterion:
+- The observable quantity.
+- The comparison or counterfactual.
+- The unit of analysis.
+- The aggregation across seeds, scenarios, and conditions.
+- The stability criterion.
+- The treatment of uncertainty.
+- The definition of infeasible or invalid observations.
+- The decision rule for SUPPORTED, NOT_SUPPORTED, and INCONCLUSIVE.
+- The required output evidence and audit trail.
+
+Present explicit alternative formulations only where they can be justified by existing project requirements.
+
+Do not invent a new threshold or select the criterion after examining scientific outcomes.
+
+Do not silently equate mapping opportunity with H improvement, L compliance, or the eventual success of a candidate scheduler.
+
+No mapping-opportunity result may be computed in this task.
+
+### P2-B4: Scientific execution entry point
+
+Inspect the current pipeline and existing recovery infrastructure.
+
+Prepare a design for the future P2 runner covering:
+- Explicit input and configuration identities.
+- Registered calibration seed enforcement.
+- Deterministic workload materialization.
+- Run IDs and source/configuration/input hashes.
+- Invocation records, actual exit codes, and failure preservation.
+- Trace validation and metric computation.
+- Incomplete-run detection and restart behavior.
+- Idempotency and duplicate-output detection.
+- Fail-closed behavior for missing or corrupted artifacts.
+- A machine-readable P2 gate decision.
+
+Do not implement the runner or call the P2 entry point in this task.
+
+### P2-B5: Scientific artifact schema
+
+Distinguish scientific run artifacts from P1 hand-authored correctness fixtures.
+
+Prepare a proposed schema for:
+- Scientific workload identity and provenance.
+- Actual seed identity and partition.
+- Scenario, condition, method, and configuration identity.
+- Source, model, configuration, and input hashes.
+- Simulator invocation and exit status.
+- Trace validation outcome.
+- Metrics and their derivation.
+- Run completeness and error status.
+- Links to raw outputs and logs.
+
+A P1 fixture must never become a scientific sample through relabeling.
+
+Any new schema must preserve compatibility with the existing frozen protocol and existing P0/P1 artifact identities.
+
+Do not claim schema correctness merely because a JSON document parses.
+
+## 4. Seed and scientific isolation
+
+Read only the committed seed metadata required to identify the registered calibration partition.
+
+Do not generate any seed or scientific realization.
+
+Do not access workload realizations or outcomes from:
+- Development partition.
+- Independent-validation partition.
+- Formal-evaluation partition.
+
+Do not create validation or formal unlock artifacts.
+
+Record the exact registered calibration seed count and source file without generating new identities.
+
+If isolation cannot be established, stop and document the blocker.
+
+## 5. Required deliverables
+
+Use the repository's existing structure where possible. Avoid duplicate competing specifications.
+
+Produce equivalent documents for:
+
+1. P2 design decision package, covering P2-B1 through P2-B5.
+2. Workload specification gap analysis.
+3. Draft finite calibration matrix, explicitly marked NON-EXECUTABLE.
+4. Mapping-opportunity criterion alternatives and unresolved decisions.
+5. Scientific runner and artifact-schema design.
+6. A traceability matrix connecting each proposed decision to existing requirements.
+7. A human decision checklist with exact questions.
+8. A machine-readable P2 design status manifest.
+9. An updated audit delivery index.
+
+The decision checklist must distinguish:
+- Supported directly by existing specifications.
+- Proposed interpretation requiring approval.
+- Unresolved and blocking.
+- Reserved for later implementation validation.
+- Reserved for later scientific execution.
+
+Every statement must be traceable to actual repository evidence or explicitly labeled as a proposal.
+
+Do not produce scientific plots, candidate rankings, performance claims, or mapping-opportunity results.
+
+## 6. Git preservation and evidence
+
+Before committing:
+- Review every changed file.
+- Confirm no simulator, scheduler, workload-generator, seed, threshold, CI-method, or candidate-definition changes occurred.
+- Confirm no scientific workload or realization was generated.
+- Confirm P0/P1 evidence and prior failure history remain preserved.
+- Confirm private PDFs and temporary environments are not tracked.
+
+If the original preflight report or raw command records cannot be recovered, explicitly report the missing evidence rather than fabricating it.
+
+Commit and normally push only the authorized documentation changes if the working tree and remote can be updated safely.
+
+If `origin/work` has advanced, fetch and inspect the new history before integrating. Never force-push or rewrite history.
+
+Verify the actual remote SHA after pushing.
+
+If committing or pushing is unsafe, preserve the changes and report the exact blocker.
+
+## 7. Mandatory stop conditions
+
+Stop if:
+- A source document needed to resolve a blocker is unavailable.
+- The proposed design would require changing frozen scientific rules.
+- A decision requires human authorization.
+- The repository has unrelated changes that cannot be safely preserved.
+
+Do not execute scientific workloads under any circumstance in this task.
+
+Do not automatically turn proposed alternatives into frozen rules.
+
+## 8. Final report
+
+Report:
+
+```text
+PROJECT_NAME=soc
+P0_STATUS=<actual>
+P1_STATUS=<actual>
+P2_PREFLIGHT_STATUS=BLOCKED
+P2_DESIGN_PACKAGE_STATUS=<DRAFT/INCOMPLETE>
+P2_B1_STATUS=<RESOLVED/UNRESOLVED/BLOCKED>
+P2_B2_STATUS=<RESOLVED/UNRESOLVED/BLOCKED>
+P2_B3_STATUS=<RESOLVED/UNRESOLVED/BLOCKED>
+P2_B4_STATUS=<DESIGNED/UNRESOLVED/BLOCKED>
+P2_B5_STATUS=<DESIGNED/UNRESOLVED/BLOCKED>
+HUMAN_DECISIONS_REQUIRED=<actual count>
+SCIENTIFIC_WORKLOADS_RUN=0
+NEW_SEEDS_GENERATED=NO
+NON_CALIBRATION_PARTITIONS_ACCESSED=NO
+P2_ENTRYPOINT_EXECUTED=NO
+SIMULATOR_SOURCE_CHANGED=NO
+SCHEDULER_SOURCE_CHANGED=NO
+SCIENTIFIC_THRESHOLDS_CHANGED=NO
+CI_METHOD_CHANGED=NO
+SEED_PARTITIONS_CHANGED=NO
+VALIDATION_UNLOCKED=NO
+FORMAL_UNLOCKED=NO
+GIT_COMMIT=<actual hash or NONE>
+GITHUB_PUSH_STATUS=<actual status>
+WORKTREE=<actual status>
+NEXT_SAFE_ACTION=<specific human decision or action>
+STOP=YES
+```
+
+Finish by presenting the exact decisions the user must make, in numbered form. Do not start P2 or P3 after generating the decision package.

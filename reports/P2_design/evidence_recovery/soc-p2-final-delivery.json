@@ -1,0 +1,10 @@
+{
+  "final_git_commit": "d016ad8d8b2be6fbeb80fadfee6194d9aa9bd0ae",
+  "push_exit_code": 0,
+  "push_stdout": "",
+  "push_stderr": "To https://github.com/JINAOLONG/soc.git\n   f890ba4..d016ad8  HEAD -> work\n",
+  "remote_verify_exit_code": 0,
+  "remote_verify_stdout": "d016ad8d8b2be6fbeb80fadfee6194d9aa9bd0ae\trefs/heads/work\n",
+  "remote_matches": true,
+  "worktree": ""
+}

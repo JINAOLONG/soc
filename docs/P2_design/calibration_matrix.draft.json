@@ -1,0 +1,294 @@
+{
+  "document_kind": "DESIGN_DRAFT_ONLY",
+  "status": "DRAFT_NON_EXECUTABLE",
+  "approved": false,
+  "frozen": false,
+  "executable": false,
+  "execution_authorized": false,
+  "warning": "Not a plan or workload artifact. Every unresolved field must be explicitly decided and separately approved before any implementation or execution.",
+  "sources": [
+    "E01",
+    "E02",
+    "E04",
+    "E06",
+    "E08"
+  ],
+  "source_checkpoint": "d016ad8d8b2be6fbeb80fadfee6194d9aa9bd0ae",
+  "registered_constraints": {
+    "scenarios": [
+      "COCKPIT",
+      "ADAS",
+      "FUSION"
+    ],
+    "main_load_labels": [
+      "light",
+      "medium",
+      "near-saturation"
+    ],
+    "executable_nodes_per_service": [
+      8,
+      16
+    ],
+    "registered_calibration_seed_count": 10,
+    "calibration_seed_source": "configs/seed_partitions.json#partitions.CALIBRATION",
+    "registered_calibration_seed_ids": [
+      1677814459331049,
+      328864591381281,
+      336367723740484,
+      3743487258850314,
+      2011277673915613,
+      4276916424184236,
+      265049119938611,
+      2453465547245351,
+      2784239167199445,
+      3512531139176427
+    ],
+    "permitted_method_identifiers": [
+      "B1",
+      "B2",
+      "B3",
+      "B4",
+      "B5"
+    ],
+    "focal_reference": "B2",
+    "candidate_allowed": false
+  },
+  "parameter_axes": {
+    "arrival_intensity": {
+      "status": "UNRESOLVED_BLOCKING",
+      "value": null,
+      "decision_ids": [
+        "D04",
+        "D05"
+      ],
+      "default": null
+    },
+    "deadline_tightness": {
+      "status": "UNRESOLVED_BLOCKING",
+      "value": null,
+      "decision_ids": [
+        "D04",
+        "D05"
+      ],
+      "default": null
+    },
+    "burst": {
+      "status": "UNRESOLVED_BLOCKING",
+      "value": null,
+      "decision_ids": [
+        "D04",
+        "D05"
+      ],
+      "default": null
+    },
+    "number_services": {
+      "status": "UNRESOLVED_BLOCKING",
+      "value": null,
+      "decision_ids": [
+        "D04",
+        "D05"
+      ],
+      "default": null
+    },
+    "simulation_window": {
+      "status": "UNRESOLVED_BLOCKING",
+      "value": null,
+      "decision_ids": [
+        "D04",
+        "D05"
+      ],
+      "default": null
+    }
+  },
+  "template_registry": {
+    "status": "UNRESOLVED_BLOCKING",
+    "value": null,
+    "decision_ids": [
+      "D01"
+    ],
+    "default": null
+  },
+  "cost_and_compatibility_registry": {
+    "status": "UNRESOLVED_BLOCKING",
+    "value": null,
+    "decision_ids": [
+      "D02"
+    ],
+    "default": null
+  },
+  "edge_network_registry": {
+    "status": "UNRESOLVED_BLOCKING",
+    "value": null,
+    "decision_ids": [
+      "D03"
+    ],
+    "default": null
+  },
+  "perturbation_rng_and_version": {
+    "status": "UNRESOLVED_BLOCKING",
+    "value": null,
+    "decision_ids": [
+      "D04"
+    ],
+    "default": null
+  },
+  "arrival_deadline_window_rules": {
+    "status": "UNRESOLVED_BLOCKING",
+    "value": null,
+    "decision_ids": [
+      "D04"
+    ],
+    "default": null
+  },
+  "h_feasibility_controls": {
+    "status": "UNRESOLVED_BLOCKING",
+    "value": null,
+    "decision_ids": [
+      "D06"
+    ],
+    "default": null
+  },
+  "trial_expansion_mode": {
+    "status": "UNRESOLVED_BLOCKING",
+    "value": null,
+    "decision_ids": [
+      "D05"
+    ],
+    "default": null
+  },
+  "legal_axis_values": {
+    "status": "UNRESOLVED_BLOCKING",
+    "value": null,
+    "decision_ids": [
+      "D05"
+    ],
+    "default": null
+  },
+  "full_finite_trials": {
+    "status": "UNRESOLVED_BLOCKING",
+    "value": null,
+    "decision_ids": [
+      "D05"
+    ],
+    "default": null
+  },
+  "included_methods_by_trial": {
+    "status": "UNRESOLVED_BLOCKING",
+    "value": null,
+    "decision_ids": [
+      "D05"
+    ],
+    "default": null
+  },
+  "method_subset_rationale": {
+    "status": "UNRESOLVED_BLOCKING",
+    "value": null,
+    "decision_ids": [
+      "D05"
+    ],
+    "default": null
+  },
+  "seed_to_trial_condition_workload_mapping": {
+    "status": "UNRESOLVED_BLOCKING",
+    "value": null,
+    "decision_ids": [
+      "D05"
+    ],
+    "default": null
+  },
+  "trial_order": {
+    "status": "UNRESOLVED_BLOCKING",
+    "value": null,
+    "decision_ids": [
+      "D05"
+    ],
+    "default": null
+  },
+  "run_budget": {
+    "status": "UNRESOLVED_BLOCKING",
+    "value": null,
+    "decision_ids": [
+      "D05"
+    ],
+    "default": null
+  },
+  "calibration_configuration_selection": {
+    "status": "UNRESOLVED_BLOCKING",
+    "value": null,
+    "decision_ids": [
+      "D06"
+    ],
+    "default": null
+  },
+  "deterministic_selection_ties": {
+    "status": "UNRESOLVED_BLOCKING",
+    "value": null,
+    "decision_ids": [
+      "D06"
+    ],
+    "default": null
+  },
+  "pressure_and_miss_load_labels": {
+    "status": "UNRESOLVED_BLOCKING",
+    "value": null,
+    "decision_ids": [
+      "D06"
+    ],
+    "default": null
+  },
+  "failure_invalid_infeasible_incomplete_rules": {
+    "status": "UNRESOLVED_BLOCKING",
+    "value": null,
+    "decision_ids": [
+      "D06",
+      "D09"
+    ],
+    "default": null
+  },
+  "mapping_opportunity_criterion": {
+    "status": "UNRESOLVED_BLOCKING",
+    "value": null,
+    "decision_ids": [
+      "D07",
+      "D08"
+    ],
+    "default": null
+  },
+  "resume_reuse_and_retry_policy": {
+    "status": "UNRESOLVED_BLOCKING",
+    "value": null,
+    "decision_ids": [
+      "D09"
+    ],
+    "default": null
+  },
+  "scientific_schema_adapter_and_identity": {
+    "status": "UNRESOLVED_BLOCKING",
+    "value": null,
+    "decision_ids": [
+      "D10"
+    ],
+    "default": null
+  },
+  "timing_protocol_if_included": {
+    "status": "UNRESOLVED_BLOCKING",
+    "value": null,
+    "decision_ids": [
+      "D05"
+    ],
+    "default": null
+  },
+  "execution_command": null,
+  "trial_instances": null,
+  "workload_instances": null,
+  "scientific_results": null,
+  "planned_executable_workloads": 0,
+  "blocker_ids": [
+    "P2-B1",
+    "P2-B2",
+    "P2-B3",
+    "P2-B4",
+    "P2-B5"
+  ],
+  "interpretation": "18 main condition labels and 10 seed identities do not determine a finite calibration trial list or authorize 180 workloads; budget is UNRESOLVED, not zero-run success."
+}

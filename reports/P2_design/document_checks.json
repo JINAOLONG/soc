@@ -1,0 +1,198 @@
+{
+  "scope": "Documentation consistency only; no science, implementation or schema semantic validation",
+  "status": "DOCUMENTATION_CHECKS_COMPLETE",
+  "checks": [
+    {
+      "check": "preserve_all_existing_files_except_STATUS",
+      "status": "PASS_DOCUMENT_CHECK_ONLY",
+      "detail": []
+    },
+    {
+      "check": "prior_STATUS_snapshot",
+      "status": "PASS_DOCUMENT_CHECK_ONLY",
+      "detail": "Actual original bytes"
+    },
+    {
+      "check": "exact_human_decision_groups",
+      "status": "PASS_DOCUMENT_CHECK_ONLY",
+      "detail": "D01–D10 exactly once; no approval"
+    },
+    {
+      "check": "decision_answers_unresolved",
+      "status": "PASS_DOCUMENT_CHECK_ONLY",
+      "detail": "No approvals or scientific values supplied"
+    },
+    {
+      "check": "human_checklist_numbering",
+      "status": "PASS_DOCUMENT_CHECK_ONLY",
+      "detail": "Ten exact numbered question groups"
+    },
+    {
+      "check": "matrix_cannot_execute",
+      "status": "PASS_DOCUMENT_CHECK_ONLY",
+      "detail": "No command, trial instances or scientific artifacts"
+    },
+    {
+      "check": "all_unresolved_matrix_slots_explicit",
+      "status": "PASS_DOCUMENT_CHECK_ONLY",
+      "detail": [
+        "template_registry",
+        "cost_and_compatibility_registry",
+        "edge_network_registry",
+        "perturbation_rng_and_version",
+        "arrival_deadline_window_rules",
+        "h_feasibility_controls",
+        "trial_expansion_mode",
+        "legal_axis_values",
+        "full_finite_trials",
+        "included_methods_by_trial",
+        "method_subset_rationale",
+        "seed_to_trial_condition_workload_mapping",
+        "trial_order",
+        "run_budget",
+        "calibration_configuration_selection",
+        "deterministic_selection_ties",
+        "pressure_and_miss_load_labels",
+        "failure_invalid_infeasible_incomplete_rules",
+        "mapping_opportunity_criterion",
+        "resume_reuse_and_retry_policy",
+        "scientific_schema_adapter_and_identity",
+        "timing_protocol_if_included",
+        "arrival_intensity",
+        "deadline_tightness",
+        "burst",
+        "number_services",
+        "simulation_window"
+      ]
+    },
+    {
+      "check": "seed_identity_no_generation",
+      "status": "PASS_DOCUMENT_CHECK_ONLY",
+      "detail": "Exact committed CALIBRATION list only"
+    },
+    {
+      "check": "schema_draft_internal_references",
+      "status": "PASS_DOCUMENT_CHECK_ONLY",
+      "detail": "44 internal references; resolution only, not JSON Schema conformance or semantic validation"
+    },
+    {
+      "check": "schema_unapproved_not_instantiated",
+      "status": "PASS_DOCUMENT_CHECK_ONLY",
+      "detail": "Proposed structure only; no scientific instances, behavioral/schema semantic tests NOT_RUN"
+    },
+    {
+      "check": "source_and_decision_reference_ids",
+      "status": "PASS_DOCUMENT_CHECK_ONLY",
+      "detail": "All IDs resolve to catalog/registry"
+    },
+    {
+      "check": "no_stage_unlocked",
+      "status": "PASS_DOCUMENT_CHECK_ONLY",
+      "detail": "Existing gate remains BLOCKED"
+    },
+    {
+      "check": "raw_evidence_recovery_bytes",
+      "status": "PASS_DOCUMENT_CHECK_ONLY",
+      "detail": "Actual /tmp receipt preserved byte-for-byte"
+    },
+    {
+      "check": "delivery_reference_entry",
+      "status": "PASS_DOCUMENT_CHECK_ONLY",
+      "detail": "docs/P2_design/README.md"
+    },
+    {
+      "check": "delivery_reference_blocker_decisions",
+      "status": "PASS_DOCUMENT_CHECK_ONLY",
+      "detail": "docs/P2_design/blocker_decisions.md"
+    },
+    {
+      "check": "delivery_reference_workload_gap_analysis",
+      "status": "PASS_DOCUMENT_CHECK_ONLY",
+      "detail": "docs/P2_design/workload_gaps.md"
+    },
+    {
+      "check": "delivery_reference_finite_calibration_options",
+      "status": "PASS_DOCUMENT_CHECK_ONLY",
+      "detail": "docs/P2_design/calibration_options.md"
+    },
+    {
+      "check": "delivery_reference_non_executable_matrix",
+      "status": "PASS_DOCUMENT_CHECK_ONLY",
+      "detail": "docs/P2_design/calibration_matrix.draft.json"
+    },
+    {
+      "check": "delivery_reference_mapping_options",
+      "status": "PASS_DOCUMENT_CHECK_ONLY",
+      "detail": "docs/P2_design/mapping_criterion_options.md"
+    },
+    {
+      "check": "delivery_reference_runner_schema_design",
+      "status": "PASS_DOCUMENT_CHECK_ONLY",
+      "detail": "docs/P2_design/runner_and_schema.md"
+    },
+    {
+      "check": "delivery_reference_schema_draft",
+      "status": "PASS_DOCUMENT_CHECK_ONLY",
+      "detail": "docs/P2_design/scientific_artifacts.schema.draft.json"
+    },
+    {
+      "check": "delivery_reference_traceability",
+      "status": "PASS_DOCUMENT_CHECK_ONLY",
+      "detail": "docs/P2_design/evidence_and_traceability.md"
+    },
+    {
+      "check": "delivery_reference_human_decision_checklist",
+      "status": "PASS_DOCUMENT_CHECK_ONLY",
+      "detail": "docs/P2_design/human_decisions.md"
+    },
+    {
+      "check": "delivery_reference_machine_status",
+      "status": "PASS_DOCUMENT_CHECK_ONLY",
+      "detail": "reports/P2_design/design_status.json"
+    },
+    {
+      "check": "delivery_reference_repository_and_raw_evidence_audit",
+      "status": "PASS_DOCUMENT_CHECK_ONLY",
+      "detail": "reports/P2_design/repository_audit.json"
+    },
+    {
+      "check": "delivery_reference_recovered_raw_push_receipt",
+      "status": "PASS_DOCUMENT_CHECK_ONLY",
+      "detail": "reports/P2_design/evidence_recovery/soc-p2-final-delivery.json"
+    },
+    {
+      "check": "delivery_reference_previous_preflight_index",
+      "status": "PASS_DOCUMENT_CHECK_ONLY",
+      "detail": "reports/P2_delivery_index.json"
+    },
+    {
+      "check": "delivery_reference_previous_gate",
+      "status": "PASS_DOCUMENT_CHECK_ONLY",
+      "detail": "reports/P2_mapping_opportunity.json"
+    },
+    {
+      "check": "delivery_reference_final_audit",
+      "status": "PASS_DOCUMENT_CHECK_ONLY",
+      "detail": "reports/P2_design/final_audit.md"
+    }
+  ],
+  "scientific_workloads_run": 0,
+  "schema_semantic_validation": "NOT_RUN",
+  "new_implementation_tests": "NOT_RUN_DOCUMENTATION_ONLY",
+  "human_approvals": [],
+  "reviewed_document_files": [
+    "docs/P2_design/README.md",
+    "docs/P2_design/authorization_request.txt",
+    "docs/P2_design/blocker_decisions.md",
+    "docs/P2_design/calibration_matrix.draft.json",
+    "docs/P2_design/calibration_options.md",
+    "docs/P2_design/decisions.draft.json",
+    "docs/P2_design/evidence_and_traceability.md",
+    "docs/P2_design/human_decisions.md",
+    "docs/P2_design/mapping_criterion_options.md",
+    "docs/P2_design/runner_and_schema.md",
+    "docs/P2_design/scientific_artifacts.schema.draft.json",
+    "docs/P2_design/workload_gaps.md"
+  ],
+  "protected_baseline_changed": []
+}

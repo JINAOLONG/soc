@@ -1,0 +1,685 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:soc:p2:scientific-artifacts:DRAFT",
+  "title": "DRAFT scientific artifacts: UNAPPROVED, NON_EXECUTABLE, NOT SEMANTICALLY VALIDATED",
+  "x_approval_state": "UNAPPROVED",
+  "x_executable": false,
+  "x_human_decisions": [
+    "D09",
+    "D10"
+  ],
+  "$comment": "Structural design only; not registered into any runtime. Does not relabel or modify P1 fixtures. ID/hash/adapter/lifecycle/completeness/provenance rules still require approval and implementation tests. Numeric enums/ranges here encode existing metadata/model constraints, not new scientific parameters.",
+  "oneOf": [
+    {
+      "$ref": "#/$defs/scientificWorkload"
+    },
+    {
+      "$ref": "#/$defs/scientificRun"
+    },
+    {
+      "$ref": "#/$defs/p2Gate"
+    }
+  ],
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "artifactRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256",
+        "bytes",
+        "media_type"
+      ],
+      "properties": {
+        "path": {
+          "type": "string"
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "media_type": {
+          "type": "string"
+        }
+      }
+    },
+    "sourceIdentity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "git_commit",
+        "dirty_status",
+        "source_sha256",
+        "model_ref",
+        "config_ref",
+        "test_identity_ref"
+      ],
+      "properties": {
+        "git_commit": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$"
+        },
+        "dirty_status": {
+          "type": "string"
+        },
+        "source_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "model_ref": {
+          "$ref": "#/$defs/artifactRef"
+        },
+        "config_ref": {
+          "$ref": "#/$defs/artifactRef"
+        },
+        "test_identity_ref": {
+          "$ref": "#/$defs/artifactRef"
+        }
+      }
+    },
+    "condition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "role",
+        "scene",
+        "load",
+        "nodes_per_service",
+        "control_design_id"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "role": {
+          "enum": [
+            "MAIN_CONDITION",
+            "H_FEASIBILITY_CONTROL"
+          ]
+        },
+        "scene": {
+          "enum": [
+            "COCKPIT",
+            "ADAS",
+            "FUSION"
+          ]
+        },
+        "load": {
+          "enum": [
+            "light",
+            "medium",
+            "near-saturation",
+            null
+          ]
+        },
+        "nodes_per_service": {
+          "enum": [
+            8,
+            16
+          ]
+        },
+        "control_design_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "$comment": "Role/load/control consistency must be checked against the human-approved D05/D06 plan; null load is not an approved main-condition label."
+    },
+    "generatorLineage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "generator_commit",
+        "generator_sha256",
+        "template_ref",
+        "generation_config_ref",
+        "rng_spec_ref",
+        "generation_command",
+        "generation_exit_code",
+        "generation_log_ref",
+        "payload_ref",
+        "payload_schema_id",
+        "fixture_derivation"
+      ],
+      "properties": {
+        "generator_commit": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$"
+        },
+        "generator_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "template_ref": {
+          "$ref": "#/$defs/artifactRef"
+        },
+        "generation_config_ref": {
+          "$ref": "#/$defs/artifactRef"
+        },
+        "rng_spec_ref": {
+          "$ref": "#/$defs/artifactRef"
+        },
+        "generation_command": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "generation_exit_code": {
+          "type": "integer"
+        },
+        "generation_log_ref": {
+          "$ref": "#/$defs/artifactRef"
+        },
+        "payload_ref": {
+          "$ref": "#/$defs/artifactRef"
+        },
+        "payload_schema_id": {
+          "type": "string"
+        },
+        "fixture_derivation": {
+          "const": false
+        }
+      },
+      "$comment": "fixture_derivation=false is a claim, not proof: generator source/invocation/hash/approved plan must be independently verified and existing fixture lineage rejected."
+    },
+    "scientificWorkload": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_id",
+        "origin",
+        "partition",
+        "seed",
+        "condition",
+        "trial_id",
+        "configuration_id",
+        "approved_plan_ref",
+        "identity",
+        "artifact_kind",
+        "workload_id",
+        "workload_sha256",
+        "generator_lineage"
+      ],
+      "properties": {
+        "schema_id": {
+          "const": "SOC_P2_SCIENTIFIC_DRAFT_NOT_APPROVED"
+        },
+        "origin": {
+          "const": "SCIENTIFIC_CALIBRATION_PROPOSED"
+        },
+        "partition": {
+          "const": "CALIBRATION"
+        },
+        "seed": {
+          "type": "integer",
+          "enum": [
+            1677814459331049,
+            328864591381281,
+            336367723740484,
+            3743487258850314,
+            2011277673915613,
+            4276916424184236,
+            265049119938611,
+            2453465547245351,
+            2784239167199445,
+            3512531139176427
+          ]
+        },
+        "condition": {
+          "$ref": "#/$defs/condition"
+        },
+        "trial_id": {
+          "type": "string"
+        },
+        "configuration_id": {
+          "type": "string"
+        },
+        "approved_plan_ref": {
+          "$ref": "#/$defs/artifactRef"
+        },
+        "identity": {
+          "$ref": "#/$defs/sourceIdentity"
+        },
+        "artifact_kind": {
+          "const": "WORKLOAD_IDENTITY"
+        },
+        "workload_id": {
+          "type": "string"
+        },
+        "workload_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "generator_lineage": {
+          "$ref": "#/$defs/generatorLineage"
+        }
+      }
+    },
+    "invocation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "command",
+        "host",
+        "timestamp",
+        "process_started",
+        "exit_code",
+        "stdout_ref",
+        "stderr_ref",
+        "error"
+      ],
+      "properties": {
+        "command": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "host": {
+          "type": "object"
+        },
+        "timestamp": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "process_started": {
+          "type": "boolean"
+        },
+        "exit_code": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "stdout_ref": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/artifactRef"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "stderr_ref": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/artifactRef"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "error": {
+          "type": [
+            "object",
+            "null"
+          ]
+        }
+      },
+      "$comment": "No process means no actual exit code; COMPLETE requires actual zero exit under D09 approved semantic checks."
+    },
+    "traceValidation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "validator_identity_ref",
+        "trace_ref",
+        "result_ref",
+        "replay_ref",
+        "errors"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "NOT_RUN",
+            "PASS",
+            "FAIL",
+            "BLOCKED"
+          ]
+        },
+        "validator_identity_ref": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/artifactRef"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "trace_ref": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/artifactRef"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "result_ref": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/artifactRef"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "replay_ref": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/artifactRef"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "errors": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        }
+      }
+    },
+    "metricDerivation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "metric_protocol_ref",
+        "derivation_source_ref",
+        "runtime_result_ref",
+        "independent_result_ref",
+        "equality_check_ref"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "NOT_RUN",
+            "VERIFIED_EQUAL",
+            "MISMATCH",
+            "INVALID"
+          ]
+        },
+        "metric_protocol_ref": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/artifactRef"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "derivation_source_ref": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/artifactRef"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "runtime_result_ref": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/artifactRef"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "independent_result_ref": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/artifactRef"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "equality_check_ref": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/artifactRef"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "$comment": "No metric estimates or scientific values are generated by this design schema."
+    },
+    "scientificRun": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_id",
+        "origin",
+        "partition",
+        "seed",
+        "condition",
+        "trial_id",
+        "configuration_id",
+        "approved_plan_ref",
+        "identity",
+        "artifact_kind",
+        "run_id",
+        "attempt_id",
+        "supersedes",
+        "method",
+        "workload_identity_ref",
+        "invocation",
+        "trace_validation",
+        "metrics",
+        "completion",
+        "raw_artifacts"
+      ],
+      "properties": {
+        "schema_id": {
+          "const": "SOC_P2_SCIENTIFIC_DRAFT_NOT_APPROVED"
+        },
+        "origin": {
+          "const": "SCIENTIFIC_CALIBRATION_PROPOSED"
+        },
+        "partition": {
+          "const": "CALIBRATION"
+        },
+        "seed": {
+          "type": "integer",
+          "enum": [
+            1677814459331049,
+            328864591381281,
+            336367723740484,
+            3743487258850314,
+            2011277673915613,
+            4276916424184236,
+            265049119938611,
+            2453465547245351,
+            2784239167199445,
+            3512531139176427
+          ]
+        },
+        "condition": {
+          "$ref": "#/$defs/condition"
+        },
+        "trial_id": {
+          "type": "string"
+        },
+        "configuration_id": {
+          "type": "string"
+        },
+        "approved_plan_ref": {
+          "$ref": "#/$defs/artifactRef"
+        },
+        "identity": {
+          "$ref": "#/$defs/sourceIdentity"
+        },
+        "artifact_kind": {
+          "const": "RUN_RECORD"
+        },
+        "run_id": {
+          "type": "string"
+        },
+        "attempt_id": {
+          "type": "string"
+        },
+        "supersedes": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "method": {
+          "enum": [
+            "B1",
+            "B2",
+            "B3",
+            "B4",
+            "B5"
+          ]
+        },
+        "workload_identity_ref": {
+          "$ref": "#/$defs/artifactRef"
+        },
+        "invocation": {
+          "$ref": "#/$defs/invocation"
+        },
+        "trace_validation": {
+          "$ref": "#/$defs/traceValidation"
+        },
+        "metrics": {
+          "$ref": "#/$defs/metricDerivation"
+        },
+        "completion": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status",
+            "manifest_ref",
+            "error_records"
+          ],
+          "properties": {
+            "status": {
+              "enum": [
+                "PLANNED",
+                "INCOMPLETE",
+                "COMPLETE",
+                "FAILED",
+                "INVALID",
+                "BLOCKED"
+              ]
+            },
+            "manifest_ref": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/artifactRef"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "error_records": {
+              "type": "array",
+              "items": {
+                "type": "object"
+              }
+            }
+          }
+        },
+        "raw_artifacts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/artifactRef"
+          }
+        }
+      },
+      "$comment": "COMPLETE must mean real invocation, valid full trace, verified metric/replay and complete approved identities, not merely this document parsing."
+    },
+    "p2Gate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "artifact_kind",
+        "criterion_ref",
+        "approved_plan_ref",
+        "run_manifest_ref",
+        "source_identity",
+        "status",
+        "mapping_opportunity_status",
+        "integrity_ref",
+        "diagnostics_ref",
+        "errors"
+      ],
+      "properties": {
+        "artifact_kind": {
+          "const": "P2_GATE_RECORD_PROPOSED"
+        },
+        "criterion_ref": {
+          "$ref": "#/$defs/artifactRef"
+        },
+        "approved_plan_ref": {
+          "$ref": "#/$defs/artifactRef"
+        },
+        "run_manifest_ref": {
+          "$ref": "#/$defs/artifactRef"
+        },
+        "source_identity": {
+          "$ref": "#/$defs/sourceIdentity"
+        },
+        "status": {
+          "enum": [
+            "PASS",
+            "FAIL",
+            "BLOCKED",
+            "NOT_RUN"
+          ]
+        },
+        "mapping_opportunity_status": {
+          "enum": [
+            "SUPPORTED",
+            "NOT_SUPPORTED",
+            "INCONCLUSIVE",
+            "NOT_RUN"
+          ]
+        },
+        "integrity_ref": {
+          "$ref": "#/$defs/artifactRef"
+        },
+        "diagnostics_ref": {
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "errors": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        }
+      },
+      "$comment": "Allowed labels are not a decision rule. No D08 criterion or numeric threshold is supplied or approved here."
+    }
+  }
+}
