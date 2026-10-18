@@ -1,7 +1,199 @@
 {
-  "status": "NOT_YET_COMMITTED_OR_PUSHED",
+  "timestamp_utc": "2026-10-18T12:13:05.315357+00:00",
   "audited_source_commit": "892ce2b71fd0c89f1b241c950b597eafab894e23",
-  "meaning": "Will hold actual first publication receipt; final enclosing delivery HEAD resolved live",
+  "review_checkpoint": "8ddfc27496f94250b9f59bf4b2d73d3656a6a783",
+  "push_exit_code": 0,
+  "remote_sha": "8ddfc27496f94250b9f59bf4b2d73d3656a6a783",
+  "remote_matches_head": true,
+  "worktree": "CLEAN",
+  "changed_file_count": 25,
+  "changed_paths": [
+    "reports/P2_design/independent_review_v2/D01_D10_review_matrix.csv",
+    "reports/P2_design/independent_review_v2/actual_commands_and_exit_codes.json",
+    "reports/P2_design/independent_review_v2/adversarial_checks.json",
+    "reports/P2_design/independent_review_v2/adversarial_checks.py.txt",
+    "reports/P2_design/independent_review_v2/adversarial_checks_initial.json",
+    "reports/P2_design/independent_review_v2/adversarial_checks_initial.py.txt",
+    "reports/P2_design/independent_review_v2/audit_command_summary.json",
+    "reports/P2_design/independent_review_v2/authorization_request.txt",
+    "reports/P2_design/independent_review_v2/critical_findings.md",
+    "reports/P2_design/independent_review_v2/cross_decision_consistency.json",
+    "reports/P2_design/independent_review_v2/delivery_checkpoint.json",
+    "reports/P2_design/independent_review_v2/executive_decision.md",
+    "reports/P2_design/independent_review_v2/feasibility_and_mechanism_analysis.md",
+    "reports/P2_design/independent_review_v2/findings.json",
+    "reports/P2_design/independent_review_v2/human_decision_packet.md",
+    "reports/P2_design/independent_review_v2/metadata_checks.json",
+    "reports/P2_design/independent_review_v2/metadata_checks.py.txt",
+    "reports/P2_design/independent_review_v2/protected_baseline.json",
+    "reports/P2_design/independent_review_v2/report_package_checks.json",
+    "reports/P2_design/independent_review_v2/report_package_checks.py.txt",
+    "reports/P2_design/independent_review_v2/required_changes.md",
+    "reports/P2_design/independent_review_v2/review_evidence_manifest.json",
+    "reports/P2_design/independent_review_v2/review_method_notes.md",
+    "reports/P2_design/independent_review_v2/reviewed_sources.json",
+    "reports/P2_design/independent_review_v2/scope_preservation.json"
+  ],
+  "commands": [
+    {
+      "id": "PUB-001",
+      "argv": [
+        "git",
+        "remote",
+        "get-url",
+        "origin"
+      ],
+      "exit_code": 0,
+      "stdout": "https://github.com/JINAOLONG/soc.git\n",
+      "stderr": ""
+    },
+    {
+      "id": "PUB-002",
+      "argv": [
+        "git",
+        "ls-remote",
+        "origin",
+        "refs/heads/work"
+      ],
+      "exit_code": 0,
+      "stdout": "892ce2b71fd0c89f1b241c950b597eafab894e23\trefs/heads/work\n",
+      "stderr": ""
+    },
+    {
+      "id": "PUB-003",
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "exit_code": 0,
+      "stdout": "892ce2b71fd0c89f1b241c950b597eafab894e23\n",
+      "stderr": ""
+    },
+    {
+      "id": "PUB-004",
+      "argv": [
+        ".venv/bin/python",
+        "scripts/hash_artifacts.py",
+        "--verify",
+        "--output",
+        "reports/P2_design/independent_review_v2/review_evidence_manifest.json"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"files\": 24, \"missing\": [], \"mismatch\": []}\n",
+      "stderr": ""
+    },
+    {
+      "id": "PUB-005",
+      "argv": [
+        "git",
+        "add",
+        "--",
+        "reports/P2_design/independent_review_v2"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "id": "PUB-006",
+      "argv": [
+        "git",
+        "-c",
+        "core.whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol",
+        "diff",
+        "--cached",
+        "--check"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "id": "PUB-007",
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--name-only"
+      ],
+      "exit_code": 0,
+      "stdout": "reports/P2_design/independent_review_v2/D01_D10_review_matrix.csv\nreports/P2_design/independent_review_v2/actual_commands_and_exit_codes.json\nreports/P2_design/independent_review_v2/adversarial_checks.json\nreports/P2_design/independent_review_v2/adversarial_checks.py.txt\nreports/P2_design/independent_review_v2/adversarial_checks_initial.json\nreports/P2_design/independent_review_v2/adversarial_checks_initial.py.txt\nreports/P2_design/independent_review_v2/audit_command_summary.json\nreports/P2_design/independent_review_v2/authorization_request.txt\nreports/P2_design/independent_review_v2/critical_findings.md\nreports/P2_design/independent_review_v2/cross_decision_consistency.json\nreports/P2_design/independent_review_v2/delivery_checkpoint.json\nreports/P2_design/independent_review_v2/executive_decision.md\nreports/P2_design/independent_review_v2/feasibility_and_mechanism_analysis.md\nreports/P2_design/independent_review_v2/findings.json\nreports/P2_design/independent_review_v2/human_decision_packet.md\nreports/P2_design/independent_review_v2/metadata_checks.json\nreports/P2_design/independent_review_v2/metadata_checks.py.txt\nreports/P2_design/independent_review_v2/protected_baseline.json\nreports/P2_design/independent_review_v2/report_package_checks.json\nreports/P2_design/independent_review_v2/report_package_checks.py.txt\nreports/P2_design/independent_review_v2/required_changes.md\nreports/P2_design/independent_review_v2/review_evidence_manifest.json\nreports/P2_design/independent_review_v2/review_method_notes.md\nreports/P2_design/independent_review_v2/reviewed_sources.json\nreports/P2_design/independent_review_v2/scope_preservation.json\n",
+      "stderr": ""
+    },
+    {
+      "id": "PUB-008",
+      "argv": [
+        "git",
+        "commit",
+        "-m",
+        "docs(p2): audit v1 design and require revision before approval"
+      ],
+      "exit_code": 0,
+      "stdout": "[work 8ddfc27] docs(p2): audit v1 design and require revision before approval\n 25 files changed, 5289 insertions(+)\n create mode 100644 reports/P2_design/independent_review_v2/D01_D10_review_matrix.csv\n create mode 100644 reports/P2_design/independent_review_v2/actual_commands_and_exit_codes.json\n create mode 100644 reports/P2_design/independent_review_v2/adversarial_checks.json\n create mode 100644 reports/P2_design/independent_review_v2/adversarial_checks.py.txt\n create mode 100644 reports/P2_design/independent_review_v2/adversarial_checks_initial.json\n create mode 100644 reports/P2_design/independent_review_v2/adversarial_checks_initial.py.txt\n create mode 100644 reports/P2_design/independent_review_v2/audit_command_summary.json\n create mode 100644 reports/P2_design/independent_review_v2/authorization_request.txt\n create mode 100644 reports/P2_design/independent_review_v2/critical_findings.md\n create mode 100644 reports/P2_design/independent_review_v2/cross_decision_consistency.json\n create mode 100644 reports/P2_design/independent_review_v2/delivery_checkpoint.json\n create mode 100644 reports/P2_design/independent_review_v2/executive_decision.md\n create mode 100644 reports/P2_design/independent_review_v2/feasibility_and_mechanism_analysis.md\n create mode 100644 reports/P2_design/independent_review_v2/findings.json\n create mode 100644 reports/P2_design/independent_review_v2/human_decision_packet.md\n create mode 100644 reports/P2_design/independent_review_v2/metadata_checks.json\n create mode 100644 reports/P2_design/independent_review_v2/metadata_checks.py.txt\n create mode 100644 reports/P2_design/independent_review_v2/protected_baseline.json\n create mode 100644 reports/P2_design/independent_review_v2/report_package_checks.json\n create mode 100644 reports/P2_design/independent_review_v2/report_package_checks.py.txt\n create mode 100644 reports/P2_design/independent_review_v2/required_changes.md\n create mode 100644 reports/P2_design/independent_review_v2/review_evidence_manifest.json\n create mode 100644 reports/P2_design/independent_review_v2/review_method_notes.md\n create mode 100644 reports/P2_design/independent_review_v2/reviewed_sources.json\n create mode 100644 reports/P2_design/independent_review_v2/scope_preservation.json\n",
+      "stderr": ""
+    },
+    {
+      "id": "PUB-009",
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "exit_code": 0,
+      "stdout": "8ddfc27496f94250b9f59bf4b2d73d3656a6a783\n",
+      "stderr": ""
+    },
+    {
+      "id": "PUB-010",
+      "argv": [
+        "git",
+        "status",
+        "--porcelain"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "id": "PUB-011",
+      "argv": [
+        "git",
+        "push",
+        "origin",
+        "HEAD:refs/heads/work"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "To https://github.com/JINAOLONG/soc.git\n   892ce2b..8ddfc27  HEAD -> work\n"
+    },
+    {
+      "id": "PUB-012",
+      "argv": [
+        "git",
+        "ls-remote",
+        "origin",
+        "refs/heads/work"
+      ],
+      "exit_code": 0,
+      "stdout": "8ddfc27496f94250b9f59bf4b2d73d3656a6a783\trefs/heads/work\n",
+      "stderr": ""
+    },
+    {
+      "id": "PUB-013",
+      "argv": [
+        "git",
+        "status",
+        "--porcelain"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "command_count": 13,
   "review_result": "DESIGN_REVIEW_REVISE_REQUIRED",
-  "approvals": "UNAPPROVED"
+  "human_approvals": "UNAPPROVED",
+  "p2_status": "BLOCKED",
+  "scientific_workloads_run": 0
 }

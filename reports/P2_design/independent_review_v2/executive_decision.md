@@ -49,3 +49,9 @@ and remote SHA are resolved with git rev-parse HEAD / git ls-remote origin refs/
 
 Next safe action: separately authorize documentation-only revision of the findings, then repeat
 static review and human decisions. Do not implement, generate, run P2 or create unlocks. STOP=YES.
+
+Publication checkpoint `8ddfc27496f94250b9f59bf4b2d73d3656a6a783` was normally committed/pushed (exit0),
+remote SHA verified identical and worktree clean.25 new report artifacts only; all316 original tracked
+files preserved. The ledger now contains81 audit commands plus13 actual publication-checkpoint
+commands (94 total), with2 expected design-audit exit2 records and0 unexpected exits. Exact raw
+receipt is delivery_checkpoint.json. Enclosing metadata receipt commit is resolved live, not self-hashed.

@@ -14,8 +14,8 @@
     },
     {
       "path": "reports/P2_design/independent_review_v2/actual_commands_and_exit_codes.json",
-      "sha256": "48e2df0818b6854c4febe5d252dda253f258218cb6988e05621b9536fe26da0b",
-      "size_bytes": 220676
+      "sha256": "22114478a59d2f0ede0d3adae094f88047a1bf42ef0f839a2a1245d0c2626934",
+      "size_bytes": 231624
     },
     {
       "path": "reports/P2_design/independent_review_v2/adversarial_checks.json",
@@ -39,8 +39,8 @@
     },
     {
       "path": "reports/P2_design/independent_review_v2/audit_command_summary.json",
-      "sha256": "ab2e84ec3f5910a887f561b7c3db0301812cfadc0d4b33c46dd9c1a1b3d38ade",
-      "size_bytes": 826
+      "sha256": "d1f0c73cdeb79207ca84df723e1727c55130321c8a706438abe0c39582c15d91",
+      "size_bytes": 1085
     },
     {
       "path": "reports/P2_design/independent_review_v2/authorization_request.txt",
@@ -59,13 +59,13 @@
     },
     {
       "path": "reports/P2_design/independent_review_v2/delivery_checkpoint.json",
-      "sha256": "ff43ca892294baab841c27ec64d3ea317338af6231084c069c1c973e0d9b4470",
-      "size_bytes": 302
+      "sha256": "36bdab3f1799ca3d670ac9165013f290d759ca9a3e59a718c3c3700d4307da7b",
+      "size_bytes": 9481
     },
     {
       "path": "reports/P2_design/independent_review_v2/executive_decision.md",
-      "sha256": "37c0fe5b2df1dc2ff64d48ecfd93d3e9b14ca5103368305d1ff95b62888c9e06",
-      "size_bytes": 3769
+      "sha256": "0344c3d1ec6e0f1729bb758503f03dedf1fb780b00c55cbd9c60261b91d398b7",
+      "size_bytes": 4275
     },
     {
       "path": "reports/P2_design/independent_review_v2/feasibility_and_mechanism_analysis.md",
