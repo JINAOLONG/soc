@@ -1,0 +1,18 @@
+{
+  "stage": "P0",
+  "status": "BLOCKED",
+  "errors": [
+    "original studies verified: 4; required: at least 6",
+    "required originals unverified: heft_cpop, peft"
+  ],
+  "partition_counts": {
+    "CALIBRATION": 10,
+    "DEVELOPMENT": 20,
+    "INDEPENDENT_VALIDATION": 10,
+    "FORMAL_EVALUATION": 30
+  },
+  "seed_sha256": "e5ded56e2fbe1ba2ed992a3026f3c5780d90afb50aaab4d1d8b75b8c014f4f31",
+  "source_sha256": "d222e1dae96743c890bba98abb28acea5321c0a5a4d504e0e8d458476d6add0d",
+  "scientific_partitions_executed": [],
+  "legacy_results_used_as_new_evidence": false
+}

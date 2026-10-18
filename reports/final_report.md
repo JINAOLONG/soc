@@ -1,3 +1,10 @@
+> Current targeted P0 remediation: see [P0_literature_gap_closure.md](P0_literature_gap_closure.md).
+> The live task started at ebab07e (work), reconfirmed four existing primary reviews,
+> and remains BLOCKED: neither mandatory HEFT/CPOP nor PEFT original was retrieved.
+> Existing 17 tests pass; P0 audit exits 2. No P1 or scientific workload was run.
+> Older source-checkpoint and clone results below are historical evidence, not an
+> assertion that the live HEAD is their recorded checkpoint.
+
 # Current conclusion
 
 **SCIENTIFIC_MAINLINE_STATUS=BLOCKED at P0.** Four primary-source manuscripts have

@@ -1,0 +1,343 @@
+# Codex Task: P0 Literature Blocker Closure
+
+## 1. Objective
+
+Continue the existing clean-room research project in the GitHub repository `soc`.
+
+The current scientific mainline is BLOCKED at P0. The immediate task is to obtain and review the missing original HEFT/CPOP and PEFT papers, complete the required literature evidence matrix, and rerun the existing P0 protocol audit.
+
+This is a targeted P0 remediation task, not a restart of the project.
+
+Do not merely produce a plan. Perform the permitted source acquisition, document review, evidence recording, and audit steps that the environment actually supports.
+
+## 2. Repository identity and preservation
+
+First inspect:
+
+- `git rev-parse --show-toplevel`
+- `git remote -v`
+- `git status --short`
+- `git branch --show-current`
+- `git rev-parse HEAD`
+- `git log --oneline --decorate -10`
+
+Confirm that the repository is the existing GitHub project `soc`, with the expected remote:
+
+`https://github.com/JINAOLONG/soc.git`
+
+Do not assume the current HEAD equals a historical source checkpoint. Record the actual live HEAD and branch.
+
+Read the repository's `AGENTS.md`, `STATUS.md`, P0 audit files, literature evidence inventory, acquisition logs, source manifests, and existing test instructions before editing anything.
+
+Preserve all existing user changes and failure records. Do not use destructive Git commands, force-push, rewrite history, or create a nested Git repository.
+
+If the remote is incorrect, important files are unexpectedly modified, or the repository cannot be identified reliably, stop and report the discrepancy.
+
+## 3. Existing evidence baseline
+
+The current audit reports:
+
+- Four primary-source manuscripts have scoped reviews.
+- Required original HEFT/CPOP and PEFT sources remain unavailable in the accepted evidence inventory.
+- The minimum six-source literature requirement is unmet.
+- The P0 protocol audit exits with status 2 and reports BLOCKED.
+- P0 governance tooling passed 17 tests.
+- No scientific workloads have run.
+- No simulator correctness pass is established.
+- P1, P2, and P3 have not run.
+- Independent validation and formal evaluation remain locked.
+
+Treat these as reported baseline facts to verify against the actual repository. Do not invent new findings or overwrite contradictory evidence without documenting the discrepancy.
+
+## 4. Priority source acquisition
+
+### Source A: HEFT and CPOP
+
+Target paper:
+
+Topcuoglu, H., Hariri, S., and Wu, M.-Y. (2002).
+
+"Performance-Effective and Low-Complexity Task Scheduling for Heterogeneous Computing."
+
+IEEE Transactions on Parallel and Distributed Systems, 13(3), 260–274.
+
+DOI: `10.1109/71.993206`
+
+Start with these source leads:
+
+- Institutional repository record:
+  https://openaccess.marmara.edu.tr/entities/publication/feba5344-0457-405a-8cb2-1d26f8963e33
+- Repository PDF endpoint:
+  https://openaccess.marmara.edu.tr/bitstreams/d1584f1e-5066-47a6-8c04-15607a53960f/download
+- Publisher record:
+  https://ieeexplore.ieee.org/document/993206/
+
+The source lead lists an institutional PDF, but actual retrieval and file integrity must be verified.
+
+### Source B: PEFT
+
+Target paper:
+
+Arabnejad, H., and Barbosa, J. G. (2014).
+
+"List Scheduling Algorithm for Heterogeneous Systems by an Optimistic Cost Table."
+
+IEEE Transactions on Parallel and Distributed Systems, 25(3), 682–694.
+
+DOI: `10.1109/TPDS.2013.57`
+
+Start with these source leads:
+
+- Author-uploaded full-text listing:
+  https://www.researchgate.net/publication/245032173_List_Scheduling_Algorithm_for_Heterogeneous_Systems_by_an_Optimistic_Cost_Table
+- Publisher record:
+  https://ieeexplore.ieee.org/document/6471969/
+
+The listing is a retrieval lead, not proof that a usable full text has been downloaded.
+
+### Acquisition rules
+
+Use lawful institutional repositories, publisher access available to the environment, author manuscripts, or other authorized open-access sources.
+
+Do not bypass authentication, paywalls, access controls, or download restrictions.
+
+If direct download fails, try reasonable alternative authorized routes and record each attempt. If a paper remains inaccessible, stop treating it as reviewed and preserve the blocker.
+
+Do not treat abstracts, search snippets, citation databases, or other papers' descriptions as substitutes for reviewing the required original manuscript.
+
+## 5. Verify the acquired originals
+
+For every successfully obtained manuscript:
+
+1. Record the exact title, authors, publication venue, year, volume, issue, pages, and DOI.
+2. Verify that the downloaded file corresponds to the intended paper.
+3. Record its original URL, acquisition date, file type, size, and SHA-256.
+4. Confirm that the file can actually be opened and its pages inspected.
+5. Record the page numbers supporting every important algorithm statement.
+6. Distinguish publisher versions from author manuscripts and accepted manuscripts.
+7. Record any version discrepancies.
+
+Do not claim successful acquisition based only on an HTTP success code or an HTML landing page.
+
+Do not commit copyrighted PDFs to GitHub unless the applicable license or permission explicitly allows redistribution. Where redistribution is not permitted, preserve bibliographic metadata, authorized source URLs, hashes, page-specific review notes, and acquisition records in the repository.
+
+## 6. Required technical review
+
+### HEFT/CPOP
+
+Inspect the original algorithm definitions and record page-specific evidence for:
+
+- Upward-rank definition and recurrence.
+- Computation and communication cost averages.
+- HEFT task-priority ordering.
+- HEFT processor selection using earliest finish time.
+- Insertion-based scheduling behavior.
+- CPOP priority definition using upward and downward ranks.
+- CPOP critical-path processor selection.
+- Assumptions about the heterogeneous platform.
+- Communication and processor availability assumptions.
+- Computational complexity, as stated by the original authors.
+
+Do not infer missing formulas from secondary sources. Mark any unverified item explicitly.
+
+### PEFT
+
+Inspect the original algorithm definitions and record page-specific evidence for:
+
+- Optimistic Cost Table (OCT) definition and recurrence.
+- Task ranking based on OCT.
+- Processor selection rule.
+- The role of look-ahead information.
+- Whether processor availability is included in OCT calculation.
+- Communication-cost assumptions.
+- Computational complexity.
+- Differences from HEFT that matter to this project's implementation.
+
+Do not substitute a different OCT variant or a later PEFT extension.
+
+## 7. Complete the literature evidence matrix
+
+Inspect the existing matrix and its schema before making changes.
+
+The project requires at least six reviewed sources, including the mandatory HEFT/CPOP and PEFT originals.
+
+For each source, record:
+
+- Complete bibliographic identity.
+- Source type and version.
+- Access status.
+- Whether the original full text was inspected.
+- Exact pages supporting the review.
+- Scheduling model.
+- Static versus online scheduling.
+- Single versus multiple DAGs.
+- Deadline awareness.
+- Task-priority method.
+- Heterogeneity model.
+- Resource-mapping method.
+- Communication model.
+- Contention assumptions.
+- Objective function.
+- Computational complexity.
+- Availability of implementation or code.
+- Relevance and limitations for the present study.
+
+Clearly distinguish:
+
+1. What the original paper defines.
+2. What later literature reports.
+3. What this project proposes as an online adaptation.
+4. What remains unverified.
+
+Do not silently upgrade an existing secondary-source review to primary-source status.
+
+If the six-source minimum is not satisfied after the two mandatory papers are reviewed, identify the remaining missing sources and continue only with lawful, verifiable acquisition.
+
+## 8. Update P0 evidence without weakening the protocol
+
+Inspect the actual repository paths and existing file schemas first. Reuse established names where possible.
+
+Update the relevant existing artifacts, such as:
+
+- Literature matrix.
+- Primary-source evidence inventory.
+- Source acquisition log.
+- Source hash manifest.
+- P0 literature-gap closure report.
+- P0 protocol audit evidence.
+
+Do not create redundant competing versions when an established file already serves the purpose.
+
+Do not modify:
+
+- Research hypotheses.
+- Scientific acceptance thresholds.
+- Statistical methods.
+- Seed derivation or seed partitions.
+- Candidate definitions.
+- Baseline requirements.
+- Validation/formal unlock conditions.
+- Required source count.
+- P0 gate semantics.
+
+Do not edit the P0 audit to force a PASS. Fix evidence gaps, not the acceptance criteria.
+
+## 9. Re-run the existing P0 audit
+
+After completing the literature review:
+
+1. Validate the literature evidence inventory.
+2. Verify recorded file hashes.
+3. Check that all required original-source reviews have actual page-level evidence.
+4. Check that the minimum six-source requirement is satisfied.
+5. Run the existing lightweight governance tests.
+6. Run the existing P0 protocol audit using its documented command.
+7. Preserve the previous audit results and failure history.
+8. Save the actual exit status and machine-readable output.
+
+If the audit passes, record the exact evidence supporting each gate.
+
+If the audit remains blocked, report every remaining blocker precisely.
+
+Do not change the audit exit behavior or replace the existing audit with a weaker script.
+
+## 10. Strict execution boundary
+
+This task authorizes literature acquisition, literature review, documentation updates, lightweight governance tests, and the existing P0 audit only.
+
+It does NOT authorize:
+
+- Implementing the simulator.
+- Implementing or changing scheduling algorithms.
+- Running scientific workloads.
+- Generating new workload realizations.
+- Accessing calibration, development, independent-validation, or formal outcomes.
+- Creating unlock files.
+- Opening reserved seed partitions.
+- Running P1, P2, P3, independent validation, or formal evaluation.
+- Changing scientific thresholds or statistical methods.
+
+Keep all seed partitions unchanged. Verify that no scientific workload was run during this task.
+
+## 11. Git and publication
+
+Before committing, inspect `git diff` and `git status`.
+
+Only commit the permitted literature evidence, review notes, source metadata, and audit outputs.
+
+Never commit credentials, secrets, unauthorized copyrighted PDFs, or unrelated user changes.
+
+If changes are complete and the evidence is internally consistent, create a descriptive commit, for example:
+
+`P0: complete primary-source literature review`
+
+If P0 remains blocked, a documentation-only checkpoint may be committed with a message that accurately describes the remaining blocker.
+
+Push normally only if the remote is verified and the environment permits it. Never force-push.
+
+Record the actual commit hash, branch, push result, and post-commit worktree status.
+
+## 12. Required deliverables
+
+Provide and preserve:
+
+1. Source acquisition results and failure log.
+2. SHA-256 records for successfully acquired source files.
+3. Page-specific HEFT/CPOP review.
+4. Page-specific PEFT review.
+5. Updated six-or-more-source literature matrix, if the requirement is satisfied.
+6. Updated primary-source evidence inventory.
+7. Updated P0 audit output.
+8. Lightweight test output.
+9. A blocker/failure report if any requirement remains unmet.
+10. Updated `STATUS.md`.
+
+Use actual repository-relative paths.
+
+Do not invent files, hashes, test counts, or commit IDs.
+
+## 13. Final decision
+
+Return exactly one of:
+
+`P0_STATUS=PASS`
+
+or
+
+`P0_STATUS=BLOCKED`
+
+A PASS requires the actual P0 audit to pass with all mandatory original-source reviews complete and the minimum literature requirement satisfied.
+
+Include this machine-readable summary:
+
+```text
+PROJECT_NAME=soc
+CURRENT_STAGE=P0
+P0_STATUS=<PASS/BLOCKED>
+HEFT_CPOP_ORIGINAL_RETRIEVED=<YES/NO>
+HEFT_CPOP_FULL_TEXT_REVIEWED=<YES/NO>
+PEFT_ORIGINAL_RETRIEVED=<YES/NO>
+PEFT_FULL_TEXT_REVIEWED=<YES/NO>
+PRIMARY_SOURCE_PAGE_EVIDENCE_COMPLETE=<YES/NO>
+REVIEWED_SOURCE_COUNT=<actual integer>
+LITERATURE_REQUIREMENT_PASS=<YES/NO>
+P0_AUDIT_EXIT_CODE=<actual integer>
+P0_GOVERNANCE_TESTS=<actual result>
+SCIENTIFIC_WORKLOADS_RUN=0
+SIMULATOR_IMPLEMENTATION_STARTED=NO
+SEED_PARTITIONS_CHANGED=NO
+RESERVED_PARTITIONS_ACCESSED=NO
+VALIDATION_UNLOCKED=NO
+FORMAL_UNLOCKED=NO
+GIT_COMMIT=<actual hash or NONE>
+GITHUB_PUSH_STATUS=<actual result>
+WORKTREE=<actual status>
+NEXT_SAFE_ACTION=<specific action>
+STOP=<YES/NO>
+```
+
+If P0 passes, stop after recording the P0 decision and its evidence. Do not automatically start P1.
+
+If P0 remains blocked, preserve the exact blocker and stop. Do not relax requirements.
+
+Begin by auditing the live `soc` repository, then work through the source acquisition and review in order.

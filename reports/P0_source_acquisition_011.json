@@ -1,0 +1,198 @@
+{
+  "attempts": [
+    {
+      "id": "peft_uminho_public_discovery",
+      "url": "https://repositorium.uminho.pt/server/api/discover/search/objects?size=5&query=%22List%20Scheduling%20Algorithm%20for%20Heterogeneous%20Systems%20by%20an%20Optimistic%20Cost%20Table%22",
+      "timestamp_utc": "2026-10-18T08:20:59.268682+00:00",
+      "reason": "Public REST base URL discovered from institutional UI configuration",
+      "status": 200,
+      "bytes": 5779,
+      "sha256": "2cbfc32f6bc25aa4f73d885a47b8ad8e890a348386d7589cf7d18dddca872a14",
+      "body": {
+        "id": null,
+        "scope": null,
+        "query": "\"List Scheduling Algorithm for Heterogeneous Systems by an Optimistic Cost Table\"",
+        "appliedFilters": null,
+        "sort": null,
+        "configuration": null,
+        "type": "discover",
+        "_links": {
+          "self": {
+            "href": "https://repositorium.uminho.pt/server/api/discover/search/objects?query=%2522List%2520Scheduling%2520Algorithm%2520for%2520Heterogeneous%2520Systems%2520by%2520an%2520Optimistic%2520Cost%2520Table%2522"
+          }
+        },
+        "_embedded": {
+          "searchResult": {
+            "_embedded": {
+              "objects": []
+            },
+            "page": {
+              "number": 0,
+              "size": 5,
+              "totalPages": 0,
+              "totalElements": 0
+            },
+            "_links": {
+              "self": {
+                "href": "https://repositorium.uminho.pt/server/api/discover/search/objects?query=%22List%20Scheduling%20Algorithm%20for%20Heterogeneous%20Systems%20by%20an%20Optimistic%20Cost%20Table%22&size=5"
+              }
+            }
+          },
+          "facets": [
+            {
+              "name": "entityType",
+              "facetType": "text",
+              "facetLimit": 5,
+              "_links": {
+                "self": {
+                  "href": "https://repositorium.uminho.pt/server/api/discover/facets/entityType?query=%22List%20Scheduling%20Algorithm%20for%20Heterogeneous%20Systems%20by%20an%20Optimistic%20Cost%20Table%22"
+                }
+              },
+              "_embedded": {
+                "values": []
+              }
+            },
+            {
+              "name": "author",
+              "facetType": "text",
+              "facetLimit": 5,
+              "minValue": "Aalfs, Cora M.",
+              "maxValue": "Zywicki, Krzysztof",
+              "_links": {
+                "self": {
+                  "href": "https://repositorium.uminho.pt/server/api/discover/facets/author?query=%22List%20Scheduling%20Algorithm%20for%20Heterogeneous%20Systems%20by%20an%20Optimistic%20Cost%20Table%22"
+                }
+              },
+              "_embedded": {
+                "values": []
+              }
+            },
+            {
+              "name": "itemtype",
+              "facetType": "text",
+              "facetLimit": 10,
+              "_links": {
+                "self": {
+                  "href": "https://repositorium.uminho.pt/server/api/discover/facets/itemtype?query=%22List%20Scheduling%20Algorithm%20for%20Heterogeneous%20Systems%20by%20an%20Optimistic%20Cost%20Table%22"
+                }
+              },
+              "_embedded": {
+                "values": []
+              }
+            },
+            {
+              "name": "rights",
+              "facetType": "text",
+              "facetLimit": 10,
+              "_links": {
+                "self": {
+                  "href": "https://repositorium.uminho.pt/server/api/discover/facets/rights?query=%22List%20Scheduling%20Algorithm%20for%20Heterogeneous%20Systems%20by%20an%20Optimistic%20Cost%20Table%22"
+                }
+              },
+              "_embedded": {
+                "values": []
+              }
+            },
+            {
+              "name": "subject",
+              "facetType": "hierarchical",
+              "facetLimit": 5,
+              "_links": {
+                "self": {
+                  "href": "https://repositorium.uminho.pt/server/api/discover/facets/subject?query=%22List%20Scheduling%20Algorithm%20for%20Heterogeneous%20Systems%20by%20an%20Optimistic%20Cost%20Table%22"
+                }
+              },
+              "_embedded": {
+                "values": []
+              }
+            },
+            {
+              "name": "itemlanguage",
+              "facetType": "text",
+              "facetLimit": 10,
+              "_links": {
+                "self": {
+                  "href": "https://repositorium.uminho.pt/server/api/discover/facets/itemlanguage?query=%22List%20Scheduling%20Algorithm%20for%20Heterogeneous%20Systems%20by%20an%20Optimistic%20Cost%20Table%22"
+                }
+              },
+              "_embedded": {
+                "values": []
+              }
+            },
+            {
+              "name": "dateIssued",
+              "facetType": "date",
+              "facetLimit": 5,
+              "minValue": "0024-06-20",
+              "maxValue": "2027-07-15",
+              "_links": {
+                "self": {
+                  "href": "https://repositorium.uminho.pt/server/api/discover/facets/dateIssued?query=%22List%20Scheduling%20Algorithm%20for%20Heterogeneous%20Systems%20by%20an%20Optimistic%20Cost%20Table%22"
+                }
+              },
+              "_embedded": {
+                "values": []
+              }
+            },
+            {
+              "name": "project_funder",
+              "facetType": "text",
+              "facetLimit": 5,
+              "minValue": "Agence Nationale de la Recherche",
+              "maxValue": "Wellcome Trust",
+              "_links": {
+                "self": {
+                  "href": "https://repositorium.uminho.pt/server/api/discover/facets/project_funder?query=%22List%20Scheduling%20Algorithm%20for%20Heterogeneous%20Systems%20by%20an%20Optimistic%20Cost%20Table%22"
+                }
+              },
+              "_embedded": {
+                "values": []
+              }
+            },
+            {
+              "name": "funding_stream",
+              "facetType": "text",
+              "facetLimit": 10,
+              "_links": {
+                "self": {
+                  "href": "https://repositorium.uminho.pt/server/api/discover/facets/funding_stream?query=%22List%20Scheduling%20Algorithm%20for%20Heterogeneous%20Systems%20by%20an%20Optimistic%20Cost%20Table%22"
+                }
+              },
+              "_embedded": {
+                "values": []
+              }
+            },
+            {
+              "name": "orgtype",
+              "facetType": "text",
+              "facetLimit": 10,
+              "_links": {
+                "self": {
+                  "href": "https://repositorium.uminho.pt/server/api/discover/facets/orgtype?query=%22List%20Scheduling%20Algorithm%20for%20Heterogeneous%20Systems%20by%20an%20Optimistic%20Cost%20Table%22"
+                }
+              },
+              "_embedded": {
+                "values": []
+              }
+            },
+            {
+              "name": "jel",
+              "facetType": "text",
+              "facetLimit": 5,
+              "minValue": "A: General Economics and Teaching",
+              "maxValue": "Z: Other Special Topics::Z3: Tourism Economics::Z39: Other",
+              "_links": {
+                "self": {
+                  "href": "https://repositorium.uminho.pt/server/api/discover/facets/jel?query=%22List%20Scheduling%20Algorithm%20for%20Heterogeneous%20Systems%20by%20an%20Optimistic%20Cost%20Table%22"
+                }
+              },
+              "_embedded": {
+                "values": []
+              }
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

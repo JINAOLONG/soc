@@ -1,0 +1,25 @@
+{
+  "draft_id": "2162c9d8-cb2c-4395-8f3d-f94c05957aba~cecfgdraft_6ad478c7488c81a280a07e799c9ed0a5",
+  "revision": 7,
+  "fields_changed_this_task": [
+    "network.allowed_domains"
+  ],
+  "custom_domain_count": 24,
+  "source_domains_added_this_task": [
+    "openaccess.marmara.edu.tr",
+    "www.researchgate.net",
+    "researchgate.net",
+    "repositorio-aberto.up.pt",
+    "meseec.ce.rit.edu",
+    "xplorestaging.ieee.org"
+  ],
+  "presets_preserved": [
+    "package_managers"
+  ],
+  "install_script_changed": false,
+  "start_skill_changed": false,
+  "secret_requirements_added": 0,
+  "publication": "NOT VERIFIED",
+  "runtime_evidence": "Marmara/RG/Porto/RIT/xplorestaging requests proxy-denied on recorded attempts; draft contents alone do not establish access.",
+  "required_user_action": "Review and save the source-domain additions in environment settings, then publish; retry the affected lawful source requests after a meaningful runtime change, or provide lawfully obtained original manuscripts."
+}

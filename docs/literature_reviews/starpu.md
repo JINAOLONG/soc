@@ -33,3 +33,17 @@ is recorded rather than silently treating template year as publication year.
 Relevance: separation of runtime, data management and pluggable scheduling;
 resource-specific prediction and the cost of naive offloading. Differences are
 scoped to the reviewed formulation, not an exhaustive novelty claim.
+
+## P0 remediation: explicit page map and version checks
+
+Page references below are 1-based PDF viewer pages. They preserve the prior
+scoped review; they do not claim every manuscript page has been reviewed.
+
+| PDF page(s) | Evidence scope |
+|---|---|
+| 1 | HAL cover bibliography |
+| 4, 5 | Printed pages 3–4: Section 2 model/data and Section 3.1 |
+| 6, 7 | Printed pages 5–6: ready-task policies, priority, prediction and Table I |
+| 8 | Printed page 7: Sections 4.1–4.2 evaluation design |
+
+Bibliographic/version check: HAL cover cites 2011 publication; deposited manuscript template says 2009, not the same pagination as the journal.

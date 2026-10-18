@@ -26,3 +26,16 @@ Relevance: precise comparator definitions and preserving negative results.
 This theorem is not a complexity, feasibility or speedup theorem about the planned
 non-preemptive heterogeneous scheduler in soc. No numerical experimental claim
 is drawn from it.
+
+## P0 remediation: explicit page map and version checks
+
+Page references below are 1-based PDF viewer pages. They preserve the prior
+scoped review; they do not claim every manuscript page has been reviewed.
+
+| PDF page(s) | Evidence scope |
+|---|---|
+| 1, 2 | model, comparator scope and definitions |
+| 3, 4, 5 | construction, Lemmas 1–2 and Theorem 1 |
+| 5 | Section 3 interpretation and limitations |
+
+Bibliographic/version check: v2 is 22 June 2016; identifier originates in 2015. No journal/publication identity inferred.

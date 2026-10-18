@@ -26,3 +26,30 @@ The initial setup test failure (15/16 passing) is retained in P0_test_history.js
 Its cause was a test coupled to an unfinished STATUS.md, not a scientific defect.
 It was corrected with an isolated fixture; the final tooling run passes 17 tests.
 Simulator correctness remains NOT RUN.
+
+
+## Targeted literature remediation (following delivery ebab07e)
+
+The task-start live HEAD was ebab07e008745aa4200f2f7ac156275400532c36, branch
+work, clean worktree, correct JINAOLONG/soc remote. This new task authorizes only
+source acquisition/review/documentation, the existing governance tests and P0
+audit. The previous report and audit are archived under
+reports/history/p0_before_literature_closure_ebab07e/ before active updates.
+
+P0 remains BLOCKED. Newly supplied Marmara and ResearchGate routes failed with
+proxy CONNECT 403. Lawful OpenAlex discovery found institutional alternatives;
+Porto/RIT/crossref publisher-PDF routes did not supply full text. IEEE landing
+responses are empty 202 and PDF endpoints 418. UMinho's public exact-title search
+returned zero records. Crossref verified the two bibliographic identities, but
+no mandatory original PDF was acquired. Source logs 006–013 preserve each attempt.
+
+The existing 17 governance tests pass; the unchanged P0 audit returns 2 with
+four originals counted and heft_cpop/peft unverified. Page-specific checklists
+explicitly mark unavailable evidence; no formula was filled from secondary
+sources. All 25 protected source/script/config/test files match the task-start
+hashes. Scientific workloads run: 0. No simulator implementation, seed change,
+reserved realization, or unlock file was created. The six new source domains are
+saved as a network draft; runtime access/publication are not inferred from that.
+
+NEXT_SAFE_ACTION=Supply lawful originals or apply the required source access,
+then inspect their algorithm pages and rerun P0; stop without starting P1.

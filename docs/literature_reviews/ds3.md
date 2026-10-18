@@ -40,3 +40,18 @@ context. Difference: our planned tests require immutable online observations,
 independent trace validation and the specified paired-seed H/L budget experiment.
 This scoped comparison does not prove novelty. No DS3 reported number is used as
 new experimental evidence or as a workload calibration target.
+
+## P0 remediation: explicit page map and version checks
+
+Page references below are 1-based PDF viewer pages. They preserve the prior
+scoped review; they do not claim every manuscript page has been reviewed.
+
+| PDF page(s) | Evidence scope |
+|---|---|
+| 1 | identity and abstract |
+| 3, 4 | Sections 3–4.3 model/resource/job/scheduling interfaces |
+| 4, 5, 6 | Section 4.4 task lifecycle/communication and Section 5 policies |
+| 6 | Section 6 opening validation design |
+| 12, 13 | Section 7.6 scalability / Section 8 conclusion |
+
+Bibliographic/version check: Crossref has placeholder pagination and different ordering of Mack/Kumbhare; reviewed arXiv order is retained.

@@ -1,0 +1,287 @@
+{
+  "purpose": "Authorized alternative source discovery; not a replacement for original review",
+  "attempts": [
+    {
+      "id": "heft_oa_locations",
+      "url": "https://api.openalex.org/works/https://doi.org/10.1109/71.993206",
+      "timestamp_utc": "2026-10-18T08:19:12.335369+00:00",
+      "tls_verification": "DEFAULT_ENABLED",
+      "review_status": "NOT_REVIEWED",
+      "status": 200,
+      "final_url": "https://api.openalex.org/works/https://doi.org/10.1109/71.993206",
+      "content_type": "application/json",
+      "bytes": 19556,
+      "sha256": "d58513e5ba1438bb0220247b0513c2ad3a60ed3b06b149d2082f03a57d8ea509",
+      "local_cache": ".cache/literature/acquisition/heft_oa_locations.response",
+      "is_pdf": false,
+      "outcome": "RETRIEVED_NOT_REVIEWED",
+      "discovery": {
+        "title": "Performance-effective and low-complexity task scheduling for heterogeneous computing",
+        "locations": [
+          {
+            "id": "doi:10.1109/71.993206",
+            "doi": "https://doi.org/10.1109/71.993206",
+            "is_oa": false,
+            "landing_page_url": "https://doi.org/10.1109/71.993206",
+            "pdf_url": null,
+            "source": {
+              "id": "https://openalex.org/S97130795",
+              "display_name": "IEEE Transactions on Parallel and Distributed Systems",
+              "issn_l": "1045-9219",
+              "issn": [
+                "1045-9219",
+                "1558-2183",
+                "2161-9883"
+              ],
+              "is_oa": false,
+              "is_in_doaj": false,
+              "is_core": true,
+              "listed_in": [
+                "ccf-a",
+                "cwts-core",
+                "dongbi-a",
+                "jufo-2",
+                "norway-2",
+                "poland-140",
+                "russia-white-list-1",
+                "vabb-shw"
+              ],
+              "host_organization": "https://openalex.org/P4310319808",
+              "host_organization_name": "Institute of Electrical and Electronics Engineers",
+              "host_organization_lineage": [
+                "https://openalex.org/P4310319808"
+              ],
+              "host_organization_lineage_names": [
+                "Institute of Electrical and Electronics Engineers"
+              ],
+              "type": "journal"
+            },
+            "license": null,
+            "license_id": null,
+            "version": "publishedVersion",
+            "is_accepted": true,
+            "is_published": true,
+            "raw_source_name": "IEEE Transactions on Parallel and Distributed Systems",
+            "raw_type": "journal-article"
+          },
+          {
+            "id": "pmh:oai:CiteSeerX.psu:10.1.1.119.122",
+            "doi": null,
+            "is_oa": false,
+            "landing_page_url": "http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.119.122",
+            "pdf_url": null,
+            "source": null,
+            "license": null,
+            "license_id": null,
+            "version": "submittedVersion",
+            "is_accepted": false,
+            "is_published": false,
+            "raw_source_name": "http://meseec.ce.rit.edu/eecc722-fall2002/papers/hc/5/l0260.pdf",
+            "raw_type": "text"
+          },
+          {
+            "id": "pmh:oai:openaccess.marmara.edu.tr:11424/244213",
+            "doi": null,
+            "is_oa": true,
+            "landing_page_url": "https://hdl.handle.net/11424/244213",
+            "pdf_url": null,
+            "source": {
+              "id": "https://openalex.org/S4306401380",
+              "display_name": "Dspace Repository (Marmara \u00dcniversitesi)",
+              "issn_l": null,
+              "issn": null,
+              "is_oa": false,
+              "is_in_doaj": false,
+              "is_core": false,
+              "listed_in": [],
+              "host_organization": "https://openalex.org/I74897591",
+              "host_organization_name": "Marmara University",
+              "host_organization_lineage": [
+                "https://openalex.org/I74897591"
+              ],
+              "host_organization_lineage_names": [],
+              "type": "repository"
+            },
+            "license": "other-oa",
+            "license_id": "https://openalex.org/licenses/other-oa",
+            "version": "submittedVersion",
+            "is_accepted": false,
+            "is_published": false,
+            "raw_source_name": null,
+            "raw_type": "article"
+          },
+          {
+            "id": "pmh:oai:openaccess.marmara.edu.tr:11424/88874",
+            "doi": null,
+            "is_oa": true,
+            "landing_page_url": "http://hdl.handle.net/11424/88874",
+            "pdf_url": null,
+            "source": {
+              "id": "https://openalex.org/S4306401380",
+              "display_name": "Dspace Repository (Marmara \u00dcniversitesi)",
+              "issn_l": null,
+              "issn": null,
+              "is_oa": false,
+              "is_in_doaj": false,
+              "is_core": false,
+              "listed_in": [],
+              "host_organization": "https://openalex.org/I74897591",
+              "host_organization_name": "Marmara University",
+              "host_organization_lineage": [
+                "https://openalex.org/I74897591"
+              ],
+              "host_organization_lineage_names": [],
+              "type": "repository"
+            },
+            "license": "other-oa",
+            "license_id": "https://openalex.org/licenses/other-oa",
+            "version": "submittedVersion",
+            "is_accepted": false,
+            "is_published": false,
+            "raw_source_name": "",
+            "raw_type": "article"
+          }
+        ],
+        "openAccessPdf": null
+      }
+    },
+    {
+      "id": "peft_oa_locations",
+      "url": "https://api.openalex.org/works/https://doi.org/10.1109/TPDS.2013.57",
+      "timestamp_utc": "2026-10-18T08:19:12.337370+00:00",
+      "tls_verification": "DEFAULT_ENABLED",
+      "review_status": "NOT_REVIEWED",
+      "status": 200,
+      "final_url": "https://api.openalex.org/works/https://doi.org/10.1109/TPDS.2013.57",
+      "content_type": "application/json",
+      "bytes": 14850,
+      "sha256": "ec868369f1b1f2267f9df703fc8949910901024abbe4c9a355e8b02680b40108",
+      "local_cache": ".cache/literature/acquisition/peft_oa_locations.response",
+      "is_pdf": false,
+      "outcome": "RETRIEVED_NOT_REVIEWED",
+      "discovery": {
+        "title": "List Scheduling Algorithm for Heterogeneous Systems by an Optimistic Cost Table",
+        "locations": [
+          {
+            "id": "doi:10.1109/tpds.2013.57",
+            "doi": "https://doi.org/10.1109/tpds.2013.57",
+            "is_oa": false,
+            "landing_page_url": "https://doi.org/10.1109/tpds.2013.57",
+            "pdf_url": null,
+            "source": {
+              "id": "https://openalex.org/S97130795",
+              "display_name": "IEEE Transactions on Parallel and Distributed Systems",
+              "issn_l": "1045-9219",
+              "issn": [
+                "1045-9219",
+                "1558-2183",
+                "2161-9883"
+              ],
+              "is_oa": false,
+              "is_in_doaj": false,
+              "is_core": true,
+              "listed_in": [
+                "ccf-a",
+                "cwts-core",
+                "dongbi-a",
+                "jufo-2",
+                "norway-2",
+                "poland-140",
+                "russia-white-list-1",
+                "vabb-shw"
+              ],
+              "host_organization": "https://openalex.org/P4310319808",
+              "host_organization_name": "Institute of Electrical and Electronics Engineers",
+              "host_organization_lineage": [
+                "https://openalex.org/P4310319808"
+              ],
+              "host_organization_lineage_names": [
+                "Institute of Electrical and Electronics Engineers"
+              ],
+              "type": "journal"
+            },
+            "license": null,
+            "license_id": null,
+            "version": "publishedVersion",
+            "is_accepted": true,
+            "is_published": true,
+            "raw_source_name": "IEEE Transactions on Parallel and Distributed Systems",
+            "raw_type": "journal-article"
+          },
+          {
+            "id": "pmh:oai:repositorio-aberto.up.pt:10216/97674",
+            "doi": null,
+            "is_oa": false,
+            "landing_page_url": "https://repositorio-aberto.up.pt/handle/10216/97674",
+            "pdf_url": null,
+            "source": {
+              "id": "https://openalex.org/S4306402433",
+              "display_name": "Portuguese National Funding Agency for Science, Research and Technology (RCAAP Project by FCT)",
+              "issn_l": null,
+              "issn": null,
+              "is_oa": false,
+              "is_in_doaj": false,
+              "is_core": false,
+              "listed_in": [],
+              "host_organization": null,
+              "host_organization_name": null,
+              "host_organization_lineage": [],
+              "host_organization_lineage_names": [],
+              "type": "repository"
+            },
+            "license": null,
+            "license_id": null,
+            "version": "submittedVersion",
+            "is_accepted": false,
+            "is_published": false,
+            "raw_source_name": "",
+            "raw_type": "journal article"
+          }
+        ],
+        "openAccessPdf": null
+      }
+    },
+    {
+      "id": "peft_semantic_author_copy",
+      "url": "https://api.semanticscholar.org/graph/v1/paper/DOI:10.1109/TPDS.2013.57?fields=title,openAccessPdf",
+      "timestamp_utc": "2026-10-18T08:19:12.337976+00:00",
+      "tls_verification": "DEFAULT_ENABLED",
+      "review_status": "NOT_REVIEWED",
+      "outcome": "ACCESS_FAILED",
+      "error": "HTTP Error 429: Too Many Requests"
+    },
+    {
+      "id": "peft_institution_current",
+      "url": "https://repositorium.uminho.pt/search?query=List%20Scheduling%20Algorithm%20for%20Heterogeneous%20Systems%20by%20an%20Optimistic%20Cost%20Table",
+      "timestamp_utc": "2026-10-18T08:19:12.678570+00:00",
+      "tls_verification": "DEFAULT_ENABLED",
+      "review_status": "NOT_REVIEWED",
+      "status": 200,
+      "final_url": "https://repositorium.uminho.pt/search?query=List%20Scheduling%20Algorithm%20for%20Heterogeneous%20Systems%20by%20an%20Optimistic%20Cost%20Table",
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 3212,
+      "sha256": "6c60bf65810ca270188266cef53c387569646566986b5bce0086b7817029e86f",
+      "local_cache": ".cache/literature/acquisition/peft_institution_current.response",
+      "is_pdf": false,
+      "outcome": "RETRIEVED_NOT_REVIEWED"
+    },
+    {
+      "id": "heft_official_pdf_current",
+      "url": "https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=993206",
+      "timestamp_utc": "2026-10-18T08:19:12.882332+00:00",
+      "tls_verification": "DEFAULT_ENABLED",
+      "review_status": "NOT_REVIEWED",
+      "outcome": "ACCESS_FAILED",
+      "error": "HTTP Error 418: Unknown"
+    },
+    {
+      "id": "peft_official_pdf_current",
+      "url": "https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=6471969",
+      "timestamp_utc": "2026-10-18T08:19:12.891879+00:00",
+      "tls_verification": "DEFAULT_ENABLED",
+      "review_status": "NOT_REVIEWED",
+      "outcome": "ACCESS_FAILED",
+      "error": "HTTP Error 418: Unknown"
+    }
+  ]
+}

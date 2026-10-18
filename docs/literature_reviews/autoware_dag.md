@@ -33,3 +33,16 @@ Relevance: automotive DAG/deadline modeling and explicit model limitations.
 The source's discussion of safety assumptions does not turn our H/L importance
 labels into a safety-certification model. No source figure or performance number
 is used as new evidence.
+
+## P0 remediation: explicit page map and version checks
+
+Page references below are 1-based PDF viewer pages. They preserve the prior
+scoped review; they do not claim every manuscript page has been reviewed.
+
+| PDF page(s) | Evidence scope |
+|---|---|
+| 1 | title/authors/DOI and abstract |
+| 2, 3 | trigger modeling, problem, multi-deadline DAG and RAD definition |
+| 4 | evaluation design, code footnote and limitations |
+
+Bibliographic/version check: Journal/conference record year 2024; reviewed arXiv v2 is 13 May 2025 and PDF copyright says 2025. No identity change inferred.

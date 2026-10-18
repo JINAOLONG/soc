@@ -1,0 +1,222 @@
+{
+  "attempts": [
+    {
+      "id": "ds3_bibliography_completion",
+      "url": "https://api.crossref.org/works/10.1109/TC.2020.2986963",
+      "timestamp_utc": "2026-10-18T08:21:48.873743+00:00",
+      "purpose": "Existing reviewed source bibliographic metadata, not a new original review",
+      "status": 200,
+      "bytes": 7697,
+      "sha256": "aa77dd29099966445c3d3effde649242729078d5cc4c40b4290712cf4ea62c0f",
+      "bibliography": {
+        "title": [
+          "DS3: A System-Level Domain-Specific System-on-Chip Simulation Framework"
+        ],
+        "author": [
+          {
+            "given": "Samet",
+            "family": "Arda",
+            "sequence": "first",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Anish",
+            "family": "NK",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Ahmet Alper",
+            "family": "Goksoy",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Joshua",
+            "family": "Mack",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Nirmal",
+            "family": "Kumbhare",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Anderson Luiz",
+            "family": "Sartor",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Ali",
+            "family": "Akoglu",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Radu",
+            "family": "Marculescu",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Umit Y.",
+            "family": "Ogras",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "container-title": [
+          "IEEE Transactions on Computers"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2020
+            ]
+          ]
+        },
+        "published-print": {
+          "date-parts": [
+            [
+              2020
+            ]
+          ]
+        },
+        "volume": null,
+        "issue": null,
+        "page": "1-1",
+        "DOI": "10.1109/tc.2020.2986963"
+      }
+    },
+    {
+      "id": "autoware_dag_bibliography_completion",
+      "url": "https://api.crossref.org/works/10.1109/RTSS62706.2024.00049",
+      "timestamp_utc": "2026-10-18T08:21:49.280108+00:00",
+      "purpose": "Existing reviewed source bibliographic metadata, not a new original review",
+      "status": 200,
+      "bytes": 3983,
+      "sha256": "b072b96f3746690d2c2dfcb3b11468524ed965c6c103ccc60db89efef6fb1f66",
+      "bibliography": {
+        "title": [
+          "Work-in-Progress: Multi-Deadline DAG Scheduling Model for Autonomous Driving Systems"
+        ],
+        "author": [
+          {
+            "given": "Atsushi",
+            "family": "Yano",
+            "sequence": "first",
+            "affiliation": [
+              {
+                "name": "Saitama University,Graduate School of Science and Engineering,Japan"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Takuya",
+            "family": "Azumi",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Saitama University,Graduate School of Science and Engineering,Japan"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "container-title": [
+          "2024 IEEE Real-Time Systems Symposium (RTSS)"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2024,
+              12,
+              10
+            ]
+          ]
+        },
+        "published-print": {
+          "date-parts": [
+            [
+              2024,
+              12,
+              10
+            ]
+          ]
+        },
+        "volume": null,
+        "issue": null,
+        "page": "451-454",
+        "DOI": "10.1109/rtss62706.2024.00049"
+      }
+    }
+  ]
+}

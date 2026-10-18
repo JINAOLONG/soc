@@ -1,0 +1,222 @@
+{
+  "verified_at_utc": "2026-10-18T08:24:40.145538+00:00",
+  "scope": "source PDF identity/opening checks, not scientific runs",
+  "sources": [
+    {
+      "id": "heft_cpop",
+      "status": "UNVERIFIED_SOURCE",
+      "original_retrieved": false,
+      "full_text_inspected": false,
+      "primary_file_sha256": null,
+      "primary_file_bytes": null,
+      "file_type": "NOT AVAILABLE",
+      "pdf_open_status": "NOT APPLICABLE: original not acquired",
+      "page_evidence": []
+    },
+    {
+      "id": "peft",
+      "status": "UNVERIFIED_SOURCE",
+      "original_retrieved": false,
+      "full_text_inspected": false,
+      "primary_file_sha256": null,
+      "primary_file_bytes": null,
+      "file_type": "NOT AVAILABLE",
+      "pdf_open_status": "NOT APPLICABLE: original not acquired",
+      "page_evidence": []
+    },
+    {
+      "id": "ds3",
+      "status": "VERIFIED_PRIMARY",
+      "original_retrieved": true,
+      "full_text_inspected": true,
+      "primary_url": "https://arxiv.org/pdf/2003.09016",
+      "artifact_path": ".cache/literature/ds3.pdf",
+      "file_type": "application/pdf",
+      "bytes": 2232519,
+      "sha256": "e025cdcb00a8b50daa3bc9b09fdab799226646a26087a7a37634d826ed7cbb09",
+      "hash_matches": true,
+      "pdfinfo_open_exit": 0,
+      "pdftotext_open_exit": 0,
+      "pdf_page_count": 14,
+      "page_evidence": [
+        {
+          "pdf_pages": [
+            1
+          ],
+          "item": "identity and abstract"
+        },
+        {
+          "pdf_pages": [
+            3,
+            4
+          ],
+          "item": "Sections 3–4.3 model/resource/job/scheduling interfaces"
+        },
+        {
+          "pdf_pages": [
+            4,
+            5,
+            6
+          ],
+          "item": "Section 4.4 task lifecycle/communication and Section 5 policies"
+        },
+        {
+          "pdf_pages": [
+            6
+          ],
+          "item": "Section 6 opening validation design"
+        },
+        {
+          "pdf_pages": [
+            12,
+            13
+          ],
+          "item": "Section 7.6 scalability / Section 8 conclusion"
+        }
+      ],
+      "review_scope": "EXISTING_SCOPED_PRIMARY_REVIEW; no upgrade to complete-page review",
+      "acquisition_date_note": "Existing acquisition/review evidence establishes the date; review timestamp is not asserted to be the download timestamp.",
+      "reviewed_at_utc": "2026-10-18T07:57:54.481224+00:00",
+      "acquisition_date_utc": "2026-10-18",
+      "exact_initial_acquisition_time": "NOT RECORDED"
+    },
+    {
+      "id": "starpu",
+      "status": "VERIFIED_PRIMARY",
+      "original_retrieved": true,
+      "full_text_inspected": true,
+      "primary_url": "https://inria.hal.science/inria-00550877/document",
+      "artifact_path": ".cache/literature/starpu.pdf",
+      "file_type": "application/pdf",
+      "bytes": 344153,
+      "sha256": "1d1277c11847303d315ac8ff11bd5a2faaad0927c50cb32e040ac825778e55af",
+      "hash_matches": true,
+      "pdfinfo_open_exit": 0,
+      "pdftotext_open_exit": 0,
+      "pdf_page_count": 16,
+      "page_evidence": [
+        {
+          "pdf_pages": [
+            1
+          ],
+          "item": "HAL cover bibliography"
+        },
+        {
+          "pdf_pages": [
+            4,
+            5
+          ],
+          "item": "Printed pages 3–4: Section 2 model/data and Section 3.1"
+        },
+        {
+          "pdf_pages": [
+            6,
+            7
+          ],
+          "item": "Printed pages 5–6: ready-task policies, priority, prediction and Table I"
+        },
+        {
+          "pdf_pages": [
+            8
+          ],
+          "item": "Printed page 7: Sections 4.1–4.2 evaluation design"
+        }
+      ],
+      "review_scope": "EXISTING_SCOPED_PRIMARY_REVIEW; no upgrade to complete-page review",
+      "acquisition_date_note": "Existing acquisition/review evidence establishes the date; review timestamp is not asserted to be the download timestamp.",
+      "reviewed_at_utc": "2026-10-18T07:57:54.482066+00:00",
+      "acquisition_date_utc": "2026-10-18",
+      "exact_initial_acquisition_time": "NOT RECORDED"
+    },
+    {
+      "id": "autoware_dag",
+      "status": "VERIFIED_PRIMARY",
+      "original_retrieved": true,
+      "full_text_inspected": true,
+      "primary_url": "https://arxiv.org/pdf/2505.06780v2",
+      "artifact_path": ".cache/literature/autoware_dag.pdf",
+      "file_type": "application/pdf",
+      "bytes": 610341,
+      "sha256": "b743b8fb8fc9fe8f447f3e84dd16e8496403dff6eded6056a6380625709ae465",
+      "hash_matches": true,
+      "pdfinfo_open_exit": 0,
+      "pdftotext_open_exit": 0,
+      "pdf_page_count": 4,
+      "page_evidence": [
+        {
+          "pdf_pages": [
+            1
+          ],
+          "item": "title/authors/DOI and abstract"
+        },
+        {
+          "pdf_pages": [
+            2,
+            3
+          ],
+          "item": "trigger modeling, problem, multi-deadline DAG and RAD definition"
+        },
+        {
+          "pdf_pages": [
+            4
+          ],
+          "item": "evaluation design, code footnote and limitations"
+        }
+      ],
+      "review_scope": "EXISTING_SCOPED_PRIMARY_REVIEW; no upgrade to complete-page review",
+      "acquisition_date_note": "Existing acquisition/review evidence establishes the date; review timestamp is not asserted to be the download timestamp.",
+      "reviewed_at_utc": "2026-10-18T07:57:54.483397+00:00",
+      "acquisition_date_utc": "2026-10-18",
+      "exact_initial_acquisition_time": "NOT RECORDED"
+    },
+    {
+      "id": "federated_limit",
+      "status": "VERIFIED_PRIMARY",
+      "original_retrieved": true,
+      "full_text_inspected": true,
+      "primary_url": "https://arxiv.org/pdf/1510.07254v2",
+      "artifact_path": ".cache/literature/federated_limit.pdf",
+      "file_type": "application/pdf",
+      "bytes": 239840,
+      "sha256": "405cf0a7d5efc2d80bf997686d2257418ee1e67aeb5642deaf4bf0afe11f5f3b",
+      "hash_matches": true,
+      "pdfinfo_open_exit": 0,
+      "pdftotext_open_exit": 0,
+      "pdf_page_count": 6,
+      "page_evidence": [
+        {
+          "pdf_pages": [
+            1,
+            2
+          ],
+          "item": "model, comparator scope and definitions"
+        },
+        {
+          "pdf_pages": [
+            3,
+            4,
+            5
+          ],
+          "item": "construction, Lemmas 1–2 and Theorem 1"
+        },
+        {
+          "pdf_pages": [
+            5
+          ],
+          "item": "Section 3 interpretation and limitations"
+        }
+      ],
+      "review_scope": "EXISTING_SCOPED_PRIMARY_REVIEW; no upgrade to complete-page review",
+      "acquisition_date_note": "Existing acquisition/review evidence establishes the date; review timestamp is not asserted to be the download timestamp.",
+      "reviewed_at_utc": "2026-10-18T07:57:54.483907+00:00",
+      "acquisition_date_utc": "2026-10-18",
+      "exact_initial_acquisition_time": "NOT RECORDED"
+    }
+  ],
+  "accepted_primary_files": 4,
+  "unavailable_mandatory_originals": [
+    "heft_cpop",
+    "peft"
+  ],
+  "unauthorized_pdf_redistribution": false
+}

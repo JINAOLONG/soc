@@ -1,0 +1,62 @@
+{
+  "purpose": "User-directed P0 primary-source remediation; acquisition is not verification",
+  "attempts": [
+    {
+      "id": "heft_institution_record",
+      "url": "https://openaccess.marmara.edu.tr/entities/publication/feba5344-0457-405a-8cb2-1d26f8963e33",
+      "timestamp_utc": "2026-10-18T08:18:38.678468+00:00",
+      "tls_verification": "DEFAULT_ENABLED",
+      "review_status": "NOT_REVIEWED",
+      "outcome": "ACCESS_FAILED",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "id": "heft_institution_pdf",
+      "url": "https://openaccess.marmara.edu.tr/bitstreams/d1584f1e-5066-47a6-8c04-15607a53960f/download",
+      "timestamp_utc": "2026-10-18T08:18:38.679312+00:00",
+      "tls_verification": "DEFAULT_ENABLED",
+      "review_status": "NOT_REVIEWED",
+      "outcome": "ACCESS_FAILED",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "id": "heft_publisher_record",
+      "url": "https://ieeexplore.ieee.org/document/993206/",
+      "timestamp_utc": "2026-10-18T08:18:38.680095+00:00",
+      "tls_verification": "DEFAULT_ENABLED",
+      "review_status": "NOT_REVIEWED",
+      "status": 202,
+      "final_url": "https://ieeexplore.ieee.org/document/993206/",
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "local_cache": ".cache/literature/acquisition/heft_publisher_record.response",
+      "is_pdf": false,
+      "outcome": "EMPTY_RESPONSE"
+    },
+    {
+      "id": "peft_author_listing",
+      "url": "https://www.researchgate.net/publication/245032173_List_Scheduling_Algorithm_for_Heterogeneous_Systems_by_an_Optimistic_Cost_Table",
+      "timestamp_utc": "2026-10-18T08:18:38.701298+00:00",
+      "tls_verification": "DEFAULT_ENABLED",
+      "review_status": "NOT_REVIEWED",
+      "outcome": "ACCESS_FAILED",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "id": "peft_publisher_record",
+      "url": "https://ieeexplore.ieee.org/document/6471969/",
+      "timestamp_utc": "2026-10-18T08:18:38.706844+00:00",
+      "tls_verification": "DEFAULT_ENABLED",
+      "review_status": "NOT_REVIEWED",
+      "status": 202,
+      "final_url": "https://ieeexplore.ieee.org/document/6471969/",
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "local_cache": ".cache/literature/acquisition/peft_publisher_record.response",
+      "is_pdf": false,
+      "outcome": "EMPTY_RESPONSE"
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "papers": [
+    {
+      "id": "heft_cpop",
+      "title": "Performance-Effective and Low-Complexity Task Scheduling for Heterogeneous Computing",
+      "title_provenance": "user request",
+      "status": "UNVERIFIED_SOURCE",
+      "required": true,
+      "reviewed_at_utc": null,
+      "review_notes_path": null,
+      "bibliography_status": "CROSSREF_METADATA_CONFIRMED; ORIGINAL_NOT_REVIEWED",
+      "doi": "10.1109/71.993206",
+      "source_blocker": "IEEE PDF HTTP 418; landing HTML HTTP 202 with zero bytes; institutional alternative not retrieved"
+    },
+    {
+      "id": "peft",
+      "title": "List Scheduling Algorithm for Heterogeneous Systems by an Optimistic Cost Table",
+      "title_provenance": "user request",
+      "status": "UNVERIFIED_SOURCE",
+      "required": true,
+      "reviewed_at_utc": null,
+      "review_notes_path": null,
+      "bibliography_status": "CROSSREF_METADATA_CONFIRMED; ORIGINAL_NOT_REVIEWED",
+      "doi": "10.1109/TPDS.2013.57",
+      "source_blocker": "IEEE PDF HTTP 418; landing HTML HTTP 202 with zero bytes; institutional alternative not retrieved"
+    },
+    {
+      "id": "ds3",
+      "title": "DS3: A System-Level Domain-Specific System-on-Chip Simulation Framework",
+      "status": "VERIFIED_PRIMARY",
+      "primary_url": "https://arxiv.org/pdf/2003.09016",
+      "artifact_path": ".cache/literature/ds3.pdf",
+      "sha256": "e025cdcb00a8b50daa3bc9b09fdab799226646a26087a7a37634d826ed7cbb09",
+      "bytes": 2232519,
+      "review_notes_path": "docs/literature_reviews/ds3.md",
+      "reviewed_at_utc": "2026-10-18T07:57:54.481224+00:00",
+      "reviewer": "Codex, this clean-room task",
+      "required": true,
+      "scope": "Primary-source model and method review only; no experimental replication. See notes for exact reviewed sections."
+    },
+    {
+      "id": "starpu",
+      "title": "StarPU: a unified platform for task scheduling on heterogeneous multicore architectures",
+      "status": "VERIFIED_PRIMARY",
+      "primary_url": "https://inria.hal.science/inria-00550877/document",
+      "artifact_path": ".cache/literature/starpu.pdf",
+      "sha256": "1d1277c11847303d315ac8ff11bd5a2faaad0927c50cb32e040ac825778e55af",
+      "bytes": 344153,
+      "review_notes_path": "docs/literature_reviews/starpu.md",
+      "reviewed_at_utc": "2026-10-18T07:57:54.482066+00:00",
+      "reviewer": "Codex, this clean-room task",
+      "required": false,
+      "scope": "Primary-source model and method review only; no experimental replication. See notes for exact reviewed sections."
+    },
+    {
+      "id": "autoware_dag",
+      "title": "Work-in-Progress: Multi-Deadline DAG Scheduling Model for Autonomous Driving Systems",
+      "status": "VERIFIED_PRIMARY",
+      "primary_url": "https://arxiv.org/pdf/2505.06780v2",
+      "artifact_path": ".cache/literature/autoware_dag.pdf",
+      "sha256": "b743b8fb8fc9fe8f447f3e84dd16e8496403dff6eded6056a6380625709ae465",
+      "bytes": 610341,
+      "review_notes_path": "docs/literature_reviews/autoware_dag.md",
+      "reviewed_at_utc": "2026-10-18T07:57:54.483397+00:00",
+      "reviewer": "Codex, this clean-room task",
+      "required": false,
+      "scope": "Primary-source model and method review only; no experimental replication. See notes for exact reviewed sections."
+    },
+    {
+      "id": "federated_limit",
+      "title": "Federated Scheduling Admits No Constant Speedup Factors for Constrained-Deadline DAG Task Systems",
+      "status": "VERIFIED_PRIMARY",
+      "primary_url": "https://arxiv.org/pdf/1510.07254v2",
+      "artifact_path": ".cache/literature/federated_limit.pdf",
+      "sha256": "405cf0a7d5efc2d80bf997686d2257418ee1e67aeb5642deaf4bf0afe11f5f3b",
+      "bytes": 239840,
+      "review_notes_path": "docs/literature_reviews/federated_limit.md",
+      "reviewed_at_utc": "2026-10-18T07:57:54.483907+00:00",
+      "reviewer": "Codex, this clean-room task",
+      "required": false,
+      "scope": "Primary-source model and method review only; no experimental replication. See notes for exact reviewed sections."
+    }
+  ],
+  "verified_primary_count": 4,
+  "note": "Four primary manuscript reviews; required HEFT/CPOP and PEFT originals remain unverified. Source PDFs remain in ignored cache; recorded URL/SHA256 and fetch script restore them after a new clone."
+}

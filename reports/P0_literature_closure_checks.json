@@ -1,0 +1,49 @@
+{
+  "timestamp_utc": "2026-10-18T08:25:15.439308+00:00",
+  "base_git_head": "ebab07e008745aa4200f2f7ac156275400532c36",
+  "literature_inventory_errors": [
+    "original studies verified: 4; required: at least 6",
+    "required originals unverified: heft_cpop, peft"
+  ],
+  "commands": [
+    {
+      "command": [
+        ".venv/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_build_metadata_does_not_change_scientific_source_identity (test_governance.AuditTests.test_build_metadata_does_not_change_scientific_source_identity) ... ok\ntest_corrupted_primary_evidence_is_rejected (test_governance.AuditTests.test_corrupted_primary_evidence_is_rejected) ... ok\ntest_p0_block_is_explicit_and_missing_files_are_reported (test_governance.AuditTests.test_p0_block_is_explicit_and_missing_files_are_reported) ... ok\ntest_source_hash_changes_when_source_changes (test_governance.AuditTests.test_source_hash_changes_when_source_changes) ... ok\ntest_unverified_literature_is_not_treated_as_pass (test_governance.AuditTests.test_unverified_literature_is_not_treated_as_pass) ... ok\ntest_calibration_metadata_authorization_does_not_run_workload (test_governance.GuardTests.test_calibration_metadata_authorization_does_not_run_workload) ... ok\ntest_cross_partition_and_unknown_stage_rejected_before_seed_read (test_governance.GuardTests.test_cross_partition_and_unknown_stage_rejected_before_seed_read) ... ok\ntest_fake_pass_gate_without_freeze_rejected (test_governance.GuardTests.test_fake_pass_gate_without_freeze_rejected) ... ok\ntest_forged_unlock_file_is_insufficient (test_governance.GuardTests.test_forged_unlock_file_is_insufficient) ... ok\ntest_invalid_indices_rejected (test_governance.GuardTests.test_invalid_indices_rejected) ... ok\ntest_reserved_partition_without_gate_never_reads_seed (test_governance.GuardTests.test_reserved_partition_without_gate_never_reads_seed) ... ok\ntest_science_blocked_by_unreviewed_literature (test_governance.GuardTests.test_science_blocked_by_unreviewed_literature) ... ok\ntest_exact_prescribed_derivation_and_metadata (test_governance.SeedMetadataTests.test_exact_prescribed_derivation_and_metadata) ... ok\ntest_independent_first_seed_calculation (test_governance.SeedMetadataTests.test_independent_first_seed_calculation) ... ok\ntest_partition_counts_ranges_disjointness_and_split (test_governance.SeedMetadataTests.test_partition_counts_ranges_disjointness_and_split) ... ok\ntest_seed_generation_repeats_without_rewriting (test_governance.SeedMetadataTests.test_seed_generation_repeats_without_rewriting) ... ok\ntest_tampered_seed_metadata_rejected (test_governance.SeedMetadataTests.test_tampered_seed_metadata_rejected) ... ok\n\n----------------------------------------------------------------------\nRan 17 tests in 0.052s\n\nOK\n"
+    },
+    {
+      "command": [
+        ".venv/bin/python",
+        "scripts/run_pipeline.py",
+        "--stage",
+        "p0"
+      ],
+      "exit_code": 2,
+      "stdout": "{\n  \"stage\": \"P0\",\n  \"status\": \"BLOCKED\",\n  \"errors\": [\n    \"original studies verified: 4; required: at least 6\",\n    \"required originals unverified: heft_cpop, peft\"\n  ],\n  \"partition_counts\": {\n    \"CALIBRATION\": 10,\n    \"DEVELOPMENT\": 20,\n    \"INDEPENDENT_VALIDATION\": 10,\n    \"FORMAL_EVALUATION\": 30\n  },\n  \"seed_sha256\": \"e5ded56e2fbe1ba2ed992a3026f3c5780d90afb50aaab4d1d8b75b8c014f4f31\",\n  \"source_sha256\": \"d222e1dae96743c890bba98abb28acea5321c0a5a4d504e0e8d458476d6add0d\",\n  \"scientific_partitions_executed\": [],\n  \"legacy_results_used_as_new_evidence\": false\n}\n",
+      "stderr": ""
+    }
+  ],
+  "boundary_checks": {
+    "protected_file_changes": [],
+    "protected_file_count": 25,
+    "seed_partitions_sha256": "e5ded56e2fbe1ba2ed992a3026f3c5780d90afb50aaab4d1d8b75b8c014f4f31",
+    "source_sha256": "d222e1dae96743c890bba98abb28acea5321c0a5a4d504e0e8d458476d6add0d",
+    "scientific_workload_artifacts": [],
+    "scientific_workloads_run": 0,
+    "simulator_implementation_started": false,
+    "reserved_partitions_accessed": false,
+    "seed_partitions_changed": false,
+    "validation_unlocked": false,
+    "formal_unlocked": false,
+    "commands_limited_to_existing_tests_and_p0_audit": true
+  }
+}

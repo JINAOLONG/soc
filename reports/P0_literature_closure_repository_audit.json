@@ -1,0 +1,120 @@
+{
+  "timestamp_utc": "2026-10-18T08:18:38.053903+00:00",
+  "head": "ebab07e008745aa4200f2f7ac156275400532c36",
+  "branch": "work",
+  "remote": "https://github.com/JINAOLONG/soc.git",
+  "initial_worktree": "CLEAN",
+  "protected_files": {
+    "src/soc/__init__.py": "0465cdf1411249fcac339fb7419ca32ec9654117883ed3094bcc6d384ef29e1c",
+    "src/soc/workload/__init__.py": "0465cdf1411249fcac339fb7419ca32ec9654117883ed3094bcc6d384ef29e1c",
+    "src/soc/scheduler/__init__.py": "0465cdf1411249fcac339fb7419ca32ec9654117883ed3094bcc6d384ef29e1c",
+    "src/soc/validation/__init__.py": "0465cdf1411249fcac339fb7419ca32ec9654117883ed3094bcc6d384ef29e1c",
+    "src/soc/validation/governance.py": "6241f913c8c384e0d1bc9cf9632c1880fd6de4d5406facca114f0c59825c065b",
+    "src/soc/analysis/__init__.py": "0465cdf1411249fcac339fb7419ca32ec9654117883ed3094bcc6d384ef29e1c",
+    "src/soc/model/__init__.py": "0465cdf1411249fcac339fb7419ca32ec9654117883ed3094bcc6d384ef29e1c",
+    "src/soc/simulator/__init__.py": "0465cdf1411249fcac339fb7419ca32ec9654117883ed3094bcc6d384ef29e1c",
+    "src/soc/metrics/__init__.py": "0465cdf1411249fcac339fb7419ca32ec9654117883ed3094bcc6d384ef29e1c",
+    "scripts/hash_artifacts.py": "48fa8d22cce201b09ca716712d20a78adfe62963057e802d3e23a6cb00027f3b",
+    "scripts/fetch_primary_sources.py": "8adf577e6d304aa45f2c278aa298564dc1a95227cb4f8f54dfe106760acc54d7",
+    "scripts/probe_literature.py": "ccacdd0814a3068bb18dd34833f1d50feaa50b4bbf5cbef12b6343f37cc5b4af",
+    "scripts/setup_environment.sh": "b377343bbeb18a4fdb9e8afb2f710a6de0aba431869540c21f5f10a271ab1647",
+    "scripts/run_pipeline.py": "03781ec8d186d8d3e945d8a3e02615763370aaba8fe74a4fe63dc8bcddeacce3",
+    "scripts/generate_seeds.py": "9d34c4a44ebf752ad269762929c5f5e55fffeae66cfd766a2365116c02b1664d",
+    "configs/seed_partitions.json": "e5ded56e2fbe1ba2ed992a3026f3c5780d90afb50aaab4d1d8b75b8c014f4f31",
+    "configs/research_protocol.json": "e019b6830b6bf08f39b13a456d6123fca0d634478dae475b989c07617a45cdfc",
+    "configs/workload/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "configs/engineering/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "configs/development/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "configs/validation/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "configs/formal/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "configs/calibration/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "configs/model/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tests/test_governance.py": "47b82208f445bf935b670a0c9404099969a711f1062cefbf5a06177f2431f3ab"
+  },
+  "commands": [
+    {
+      "command": [
+        "git",
+        "rev-parse",
+        "--show-toplevel"
+      ],
+      "exit_code": 0,
+      "stdout": "/workspace/soc\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "remote",
+        "-v"
+      ],
+      "exit_code": 0,
+      "stdout": "origin\thttps://github.com/JINAOLONG/soc.git (fetch)\norigin\thttps://github.com/JINAOLONG/soc.git (push)\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "status",
+        "--short"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "branch",
+        "--show-current"
+      ],
+      "exit_code": 0,
+      "stdout": "work\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "exit_code": 0,
+      "stdout": "ebab07e008745aa4200f2f7ac156275400532c36\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "log",
+        "--oneline",
+        "--decorate",
+        "-10"
+      ],
+      "exit_code": 0,
+      "stdout": "ebab07e (HEAD -> work) P0: record GitHub clone reproduction and preserve blocked-stage evidence\n4d67240 P0: preserve protocol drafts, seed partitions and source-access blocker\n0834f21 (origin/main) Initial commit\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        ".venv/bin/python",
+        "scripts/hash_artifacts.py",
+        "--verify"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"files\": 72, \"missing\": [], \"mismatch\": []}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        ".venv/bin/python",
+        "scripts/run_pipeline.py",
+        "--stage",
+        "p0",
+        "--check-only"
+      ],
+      "exit_code": 2,
+      "stdout": "{\n  \"stage\": \"P0\",\n  \"status\": \"BLOCKED\",\n  \"errors\": [\n    \"original studies verified: 4; required: at least 6\",\n    \"required originals unverified: heft_cpop, peft\"\n  ],\n  \"partition_counts\": {\n    \"CALIBRATION\": 10,\n    \"DEVELOPMENT\": 20,\n    \"INDEPENDENT_VALIDATION\": 10,\n    \"FORMAL_EVALUATION\": 30\n  },\n  \"seed_sha256\": \"e5ded56e2fbe1ba2ed992a3026f3c5780d90afb50aaab4d1d8b75b8c014f4f31\",\n  \"source_sha256\": \"d222e1dae96743c890bba98abb28acea5321c0a5a4d504e0e8d458476d6add0d\",\n  \"scientific_partitions_executed\": [],\n  \"legacy_results_used_as_new_evidence\": false\n}\n",
+      "stderr": ""
+    }
+  ]
+}

@@ -7,10 +7,41 @@
       "status": "UNVERIFIED_SOURCE",
       "required": true,
       "reviewed_at_utc": null,
-      "review_notes_path": null,
+      "review_notes_path": "docs/literature_reviews/heft_cpop.md",
       "bibliography_status": "CROSSREF_METADATA_CONFIRMED; ORIGINAL_NOT_REVIEWED",
       "doi": "10.1109/71.993206",
-      "source_blocker": "IEEE PDF HTTP 418; landing HTML HTTP 202 with zero bytes; institutional alternative not retrieved"
+      "source_blocker": "Current closure: institutional/RG source leads proxy-denied; IEEE empty 202/PDF 418; no accepted original artifact. See reports/P0_source_acquisition_006.json through _012.json.",
+      "bibliography": {
+        "title": "Performance-effective and low-complexity task scheduling for heterogeneous computing",
+        "authors": [
+          "H. Topcuoglu",
+          "S. Hariri",
+          "Min-You Wu"
+        ],
+        "venue": "IEEE Transactions on Parallel and Distributed Systems",
+        "year": 2002,
+        "volume": "13",
+        "issue": "3",
+        "pages": "260-274",
+        "doi": "10.1109/71.993206",
+        "verification_source": "reports/P0_source_acquisition_008.json (Crossref metadata only)"
+      },
+      "primary_source_retrieved": false,
+      "full_text_inspected": false,
+      "full_text_reviewed": false,
+      "source_type": "NOT AVAILABLE",
+      "source_version": "NOT VERIFIED",
+      "page_evidence": [],
+      "page_evidence_complete": false,
+      "acquisition_records": [
+        "reports/P0_source_acquisition_006.json",
+        "reports/P0_source_acquisition_007.json",
+        "reports/P0_source_acquisition_008.json",
+        "reports/P0_source_acquisition_009.json",
+        "reports/P0_source_acquisition_010.json",
+        "reports/P0_source_acquisition_011.json",
+        "reports/P0_source_acquisition_012.json"
+      ]
     },
     {
       "id": "peft",
@@ -19,10 +50,40 @@
       "status": "UNVERIFIED_SOURCE",
       "required": true,
       "reviewed_at_utc": null,
-      "review_notes_path": null,
+      "review_notes_path": "docs/literature_reviews/peft.md",
       "bibliography_status": "CROSSREF_METADATA_CONFIRMED; ORIGINAL_NOT_REVIEWED",
       "doi": "10.1109/TPDS.2013.57",
-      "source_blocker": "IEEE PDF HTTP 418; landing HTML HTTP 202 with zero bytes; institutional alternative not retrieved"
+      "source_blocker": "Current closure: institutional/RG source leads proxy-denied; IEEE empty 202/PDF 418; no accepted original artifact. See reports/P0_source_acquisition_006.json through _012.json.",
+      "bibliography": {
+        "title": "List Scheduling Algorithm for Heterogeneous Systems by an Optimistic Cost Table",
+        "authors": [
+          "Hamid Arabnejad",
+          "Jorge G. Barbosa"
+        ],
+        "venue": "IEEE Transactions on Parallel and Distributed Systems",
+        "year": 2014,
+        "volume": "25",
+        "issue": "3",
+        "pages": "682-694",
+        "doi": "10.1109/tpds.2013.57",
+        "verification_source": "reports/P0_source_acquisition_008.json (Crossref metadata only)"
+      },
+      "primary_source_retrieved": false,
+      "full_text_inspected": false,
+      "full_text_reviewed": false,
+      "source_type": "NOT AVAILABLE",
+      "source_version": "NOT VERIFIED",
+      "page_evidence": [],
+      "page_evidence_complete": false,
+      "acquisition_records": [
+        "reports/P0_source_acquisition_006.json",
+        "reports/P0_source_acquisition_007.json",
+        "reports/P0_source_acquisition_008.json",
+        "reports/P0_source_acquisition_009.json",
+        "reports/P0_source_acquisition_010.json",
+        "reports/P0_source_acquisition_011.json",
+        "reports/P0_source_acquisition_012.json"
+      ]
     },
     {
       "id": "ds3",
@@ -36,7 +97,71 @@
       "reviewed_at_utc": "2026-10-18T07:57:54.481224+00:00",
       "reviewer": "Codex, this clean-room task",
       "required": true,
-      "scope": "Primary-source model and method review only; no experimental replication. See notes for exact reviewed sections."
+      "scope": "Primary-source model and method review only; no experimental replication. See notes for exact reviewed sections.",
+      "bibliography": {
+        "authors": [
+          "Samet E. Arda",
+          "Anish NK",
+          "A. Alper Goksoy",
+          "Nirmal Kumbhare",
+          "Joshua Mack",
+          "Anderson L. Sartor",
+          "Ali Akoglu",
+          "Radu Marculescu",
+          "Umit Y. Ogras"
+        ],
+        "venue": "IEEE Transactions on Computers (Crossref association); reviewed version is arXiv:2003.09016v1",
+        "year": 2020,
+        "volume": "NOT AVAILABLE",
+        "issue": "NOT AVAILABLE",
+        "pages": "Manuscript PDF 1–14; final journal pagination NOT VERIFIED (Crossref placeholder 1-1)",
+        "doi": "10.1109/TC.2020.2986963",
+        "verification_source": "Primary title page and reports/P0_source_acquisition_013.json",
+        "version_discrepancy": "Crossref has placeholder pagination and different ordering of Mack/Kumbhare; reviewed arXiv order is retained."
+      },
+      "source_version": "arXiv:2003.09016v1, 19 March 2020",
+      "source_type": "author preprint",
+      "pdf_page_count": 14,
+      "page_evidence": [
+        {
+          "pdf_pages": [
+            1
+          ],
+          "item": "identity and abstract"
+        },
+        {
+          "pdf_pages": [
+            3,
+            4
+          ],
+          "item": "Sections 3–4.3 model/resource/job/scheduling interfaces"
+        },
+        {
+          "pdf_pages": [
+            4,
+            5,
+            6
+          ],
+          "item": "Section 4.4 task lifecycle/communication and Section 5 policies"
+        },
+        {
+          "pdf_pages": [
+            6
+          ],
+          "item": "Section 6 opening validation design"
+        },
+        {
+          "pdf_pages": [
+            12,
+            13
+          ],
+          "item": "Section 7.6 scalability / Section 8 conclusion"
+        }
+      ],
+      "primary_source_retrieved": true,
+      "full_text_inspected": true,
+      "review_scope": "EXISTING_SCOPED_PRIMARY_REVIEW; no upgrade to complete-page review",
+      "access_status": "LOCAL_PRIMARY_PDF_OPENED_AND_HASH_VERIFIED"
     },
     {
       "id": "starpu",
@@ -50,7 +175,58 @@
       "reviewed_at_utc": "2026-10-18T07:57:54.482066+00:00",
       "reviewer": "Codex, this clean-room task",
       "required": false,
-      "scope": "Primary-source model and method review only; no experimental replication. See notes for exact reviewed sections."
+      "scope": "Primary-source model and method review only; no experimental replication. See notes for exact reviewed sections.",
+      "bibliography": {
+        "authors": [
+          "Cédric Augonnet",
+          "Samuel Thibault",
+          "Raymond Namyst",
+          "Pierre-André Wacrenier"
+        ],
+        "venue": "Concurrency and Computation: Practice and Experience",
+        "year": 2011,
+        "volume": "23",
+        "issue": "2",
+        "pages": "187–198",
+        "doi": "10.1002/cpe.1631",
+        "verification_source": "HAL cover, PDF page 1",
+        "version_discrepancy": "HAL cover cites 2011 publication; deposited manuscript template says 2009, not the same pagination as the journal."
+      },
+      "source_version": "HAL inria-00550877v1, deposited 31 December 2010",
+      "source_type": "author-deposited manuscript",
+      "pdf_page_count": 16,
+      "page_evidence": [
+        {
+          "pdf_pages": [
+            1
+          ],
+          "item": "HAL cover bibliography"
+        },
+        {
+          "pdf_pages": [
+            4,
+            5
+          ],
+          "item": "Printed pages 3–4: Section 2 model/data and Section 3.1"
+        },
+        {
+          "pdf_pages": [
+            6,
+            7
+          ],
+          "item": "Printed pages 5–6: ready-task policies, priority, prediction and Table I"
+        },
+        {
+          "pdf_pages": [
+            8
+          ],
+          "item": "Printed page 7: Sections 4.1–4.2 evaluation design"
+        }
+      ],
+      "primary_source_retrieved": true,
+      "full_text_inspected": true,
+      "review_scope": "EXISTING_SCOPED_PRIMARY_REVIEW; no upgrade to complete-page review",
+      "access_status": "LOCAL_PRIMARY_PDF_OPENED_AND_HASH_VERIFIED"
     },
     {
       "id": "autoware_dag",
@@ -64,7 +240,49 @@
       "reviewed_at_utc": "2026-10-18T07:57:54.483397+00:00",
       "reviewer": "Codex, this clean-room task",
       "required": false,
-      "scope": "Primary-source model and method review only; no experimental replication. See notes for exact reviewed sections."
+      "scope": "Primary-source model and method review only; no experimental replication. See notes for exact reviewed sections.",
+      "bibliography": {
+        "authors": [
+          "Atsushi Yano",
+          "Takuya Azumi"
+        ],
+        "venue": "2024 IEEE Real-Time Systems Symposium (RTSS)",
+        "year": 2024,
+        "volume": "NOT APPLICABLE",
+        "issue": "NOT APPLICABLE",
+        "pages": "451–454",
+        "doi": "10.1109/RTSS62706.2024.00049",
+        "verification_source": "Primary title page and reports/P0_source_acquisition_013.json",
+        "version_discrepancy": "Journal/conference record year 2024; reviewed arXiv v2 is 13 May 2025 and PDF copyright says 2025. No identity change inferred."
+      },
+      "source_version": "arXiv:2505.06780v2, 13 May 2025",
+      "source_type": "author-uploaded work-in-progress manuscript",
+      "pdf_page_count": 4,
+      "page_evidence": [
+        {
+          "pdf_pages": [
+            1
+          ],
+          "item": "title/authors/DOI and abstract"
+        },
+        {
+          "pdf_pages": [
+            2,
+            3
+          ],
+          "item": "trigger modeling, problem, multi-deadline DAG and RAD definition"
+        },
+        {
+          "pdf_pages": [
+            4
+          ],
+          "item": "evaluation design, code footnote and limitations"
+        }
+      ],
+      "primary_source_retrieved": true,
+      "full_text_inspected": true,
+      "review_scope": "EXISTING_SCOPED_PRIMARY_REVIEW; no upgrade to complete-page review",
+      "access_status": "LOCAL_PRIMARY_PDF_OPENED_AND_HASH_VERIFIED"
     },
     {
       "id": "federated_limit",
@@ -78,9 +296,52 @@
       "reviewed_at_utc": "2026-10-18T07:57:54.483907+00:00",
       "reviewer": "Codex, this clean-room task",
       "required": false,
-      "scope": "Primary-source model and method review only; no experimental replication. See notes for exact reviewed sections."
+      "scope": "Primary-source model and method review only; no experimental replication. See notes for exact reviewed sections.",
+      "bibliography": {
+        "authors": [
+          "Jian-Jia Chen"
+        ],
+        "venue": "arXiv:1510.07254v2; publication venue NOT VERIFIED",
+        "year": 2016,
+        "volume": "NOT APPLICABLE to arXiv preprint",
+        "issue": "NOT APPLICABLE to arXiv preprint",
+        "pages": "Manuscript PDF 1–6; publication pagination NOT VERIFIED",
+        "doi": "NOT VERIFIED",
+        "verification_source": "Primary title page and manuscript",
+        "version_discrepancy": "v2 is 22 June 2016; identifier originates in 2015. No journal/publication identity inferred."
+      },
+      "source_version": "arXiv:1510.07254v2, 22 June 2016",
+      "source_type": "author preprint",
+      "pdf_page_count": 6,
+      "page_evidence": [
+        {
+          "pdf_pages": [
+            1,
+            2
+          ],
+          "item": "model, comparator scope and definitions"
+        },
+        {
+          "pdf_pages": [
+            3,
+            4,
+            5
+          ],
+          "item": "construction, Lemmas 1–2 and Theorem 1"
+        },
+        {
+          "pdf_pages": [
+            5
+          ],
+          "item": "Section 3 interpretation and limitations"
+        }
+      ],
+      "primary_source_retrieved": true,
+      "full_text_inspected": true,
+      "review_scope": "EXISTING_SCOPED_PRIMARY_REVIEW; no upgrade to complete-page review",
+      "access_status": "LOCAL_PRIMARY_PDF_OPENED_AND_HASH_VERIFIED"
     }
   ],
   "verified_primary_count": 4,
-  "note": "Four primary manuscript reviews; required HEFT/CPOP and PEFT originals remain unverified. Source PDFs remain in ignored cache; recorded URL/SHA256 and fetch script restore them after a new clone."
+  "note": "P0 remediation remains BLOCKED: four existing scoped primary reviews retained; required HEFT/CPOP and PEFT originals were not acquired. Metadata-only confirmations are not counted. Source PDFs are ignored and are not redistributed in Git."
 }

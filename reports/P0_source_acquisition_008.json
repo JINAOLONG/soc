@@ -1,0 +1,169 @@
+{
+  "attempts": [
+    {
+      "id": "heft_cpop_crossref_metadata",
+      "url": "https://api.crossref.org/works/10.1109/71.993206",
+      "timestamp_utc": "2026-10-18T08:19:38.136299+00:00",
+      "purpose": "bibliographic identity only, not original full text",
+      "status": 200,
+      "bytes": 5377,
+      "sha256": "5d3291823c59b3dd059c5f46f7542464fc5ea724df8db97ccaf3b561cd53b4c7",
+      "bibliography": {
+        "title": [
+          "Performance-effective and low-complexity task scheduling for heterogeneous computing"
+        ],
+        "author": [
+          {
+            "given": "H.",
+            "family": "Topcuoglu",
+            "sequence": "first",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "S.",
+            "family": "Hariri",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "family": "Min-You Wu",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "container-title": [
+          "IEEE Transactions on Parallel and Distributed Systems"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2002,
+              3
+            ]
+          ]
+        },
+        "published-print": {
+          "date-parts": [
+            [
+              2002,
+              3
+            ]
+          ]
+        },
+        "published-online": null,
+        "volume": "13",
+        "issue": "3",
+        "page": "260-274",
+        "DOI": "10.1109/71.993206",
+        "link": [
+          {
+            "URL": "http://xplorestaging.ieee.org/ielx5/71/21417/00993206.pdf?arnumber=993206",
+            "content-type": "unspecified",
+            "content-version": "vor",
+            "intended-application": "similarity-checking"
+          }
+        ],
+        "resource": {
+          "primary": {
+            "URL": "http://ieeexplore.ieee.org/document/993206/"
+          }
+        }
+      }
+    },
+    {
+      "id": "peft_crossref_metadata",
+      "url": "https://api.crossref.org/works/10.1109/TPDS.2013.57",
+      "timestamp_utc": "2026-10-18T08:19:39.053664+00:00",
+      "purpose": "bibliographic identity only, not original full text",
+      "status": 200,
+      "bytes": 5066,
+      "sha256": "6b304041dcff3b05b87abe73801b36506967459443006408fe0f5fa9392a70bb",
+      "bibliography": {
+        "title": [
+          "List Scheduling Algorithm for Heterogeneous Systems by an Optimistic Cost Table"
+        ],
+        "author": [
+          {
+            "given": "Hamid",
+            "family": "Arabnejad",
+            "sequence": "first",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Jorge G.",
+            "family": "Barbosa",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "container-title": [
+          "IEEE Transactions on Parallel and Distributed Systems"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2014,
+              3
+            ]
+          ]
+        },
+        "published-print": {
+          "date-parts": [
+            [
+              2014,
+              3
+            ]
+          ]
+        },
+        "published-online": null,
+        "volume": "25",
+        "issue": "3",
+        "page": "682-694",
+        "DOI": "10.1109/tpds.2013.57",
+        "link": [
+          {
+            "URL": "http://xplorestaging.ieee.org/ielx7/71/6731354/06471969.pdf?arnumber=6471969",
+            "content-type": "unspecified",
+            "content-version": "vor",
+            "intended-application": "similarity-checking"
+          }
+        ],
+        "resource": {
+          "primary": {
+            "URL": "http://ieeexplore.ieee.org/document/6471969/"
+          }
+        }
+      }
+    }
+  ]
+}

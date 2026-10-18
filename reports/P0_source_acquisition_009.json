@@ -1,0 +1,44 @@
+{
+  "attempts": [
+    {
+      "id": "heft_marmara_record_retry",
+      "url": "https://openaccess.marmara.edu.tr/entities/publication/feba5344-0457-405a-8cb2-1d26f8963e33",
+      "timestamp_utc": "2026-10-18T08:20:03.570234+00:00",
+      "tls_verification": "DEFAULT_ENABLED",
+      "reason": "Follow recorded OA discovery and recheck configured source domains after independent diagnostics",
+      "review_status": "NOT_REVIEWED",
+      "outcome": "ACCESS_FAILED",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "id": "heft_marmara_pdf_retry",
+      "url": "https://openaccess.marmara.edu.tr/bitstreams/d1584f1e-5066-47a6-8c04-15607a53960f/download",
+      "timestamp_utc": "2026-10-18T08:20:03.570941+00:00",
+      "tls_verification": "DEFAULT_ENABLED",
+      "reason": "Follow recorded OA discovery and recheck configured source domains after independent diagnostics",
+      "review_status": "NOT_REVIEWED",
+      "outcome": "ACCESS_FAILED",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "id": "peft_researchgate_retry",
+      "url": "https://www.researchgate.net/publication/245032173_List_Scheduling_Algorithm_for_Heterogeneous_Systems_by_an_Optimistic_Cost_Table",
+      "timestamp_utc": "2026-10-18T08:20:03.571524+00:00",
+      "tls_verification": "DEFAULT_ENABLED",
+      "reason": "Follow recorded OA discovery and recheck configured source domains after independent diagnostics",
+      "review_status": "NOT_REVIEWED",
+      "outcome": "ACCESS_FAILED",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "id": "peft_porto_repository",
+      "url": "https://repositorio-aberto.up.pt/handle/10216/97674",
+      "timestamp_utc": "2026-10-18T08:20:03.595269+00:00",
+      "tls_verification": "DEFAULT_ENABLED",
+      "reason": "Follow recorded OA discovery and recheck configured source domains after independent diagnostics",
+      "review_status": "NOT_REVIEWED",
+      "outcome": "ACCESS_FAILED",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    }
+  ]
+}

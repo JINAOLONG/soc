@@ -1,0 +1,40 @@
+{
+  "attempts": [
+    {
+      "id": "heft_rit_institutional_course_copy",
+      "url": "https://meseec.ce.rit.edu/eecc722-fall2002/papers/hc/5/l0260.pdf",
+      "timestamp_utc": "2026-10-18T08:21:03.366253+00:00",
+      "reason": "Locations/links disclosed by OpenAlex or Crossref; normal TLS-verified GET only",
+      "review_status": "NOT_REVIEWED",
+      "outcome": "ACCESS_FAILED",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "id": "heft_crossref_publisher_pdf",
+      "url": "https://xplorestaging.ieee.org/ielx5/71/21417/00993206.pdf?arnumber=993206",
+      "timestamp_utc": "2026-10-18T08:21:03.366977+00:00",
+      "reason": "Locations/links disclosed by OpenAlex or Crossref; normal TLS-verified GET only",
+      "review_status": "NOT_REVIEWED",
+      "outcome": "ACCESS_FAILED",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "id": "peft_crossref_publisher_pdf",
+      "url": "https://xplorestaging.ieee.org/ielx7/71/6731354/06471969.pdf?arnumber=6471969",
+      "timestamp_utc": "2026-10-18T08:21:03.367598+00:00",
+      "reason": "Locations/links disclosed by OpenAlex or Crossref; normal TLS-verified GET only",
+      "review_status": "NOT_REVIEWED",
+      "outcome": "ACCESS_FAILED",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "id": "heft_persistent_institutional_handle",
+      "url": "https://hdl.handle.net/11424/244213",
+      "timestamp_utc": "2026-10-18T08:21:03.392442+00:00",
+      "reason": "Locations/links disclosed by OpenAlex or Crossref; normal TLS-verified GET only",
+      "review_status": "NOT_REVIEWED",
+      "outcome": "ACCESS_FAILED",
+      "error": "HTTP Error 500: Internal Server Error"
+    }
+  ]
+}
