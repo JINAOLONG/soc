@@ -40,3 +40,18 @@ M1 的优点是面向具体 mapping 机制，风险是挑选特定决策/视窗�
 未来输出应逐事件链接 observation/hash、候选合法性和分支控制（若批准 M1）、
 对应 run/seed/condition、每 seed 汇总、全部方法配对、有效性/缺失标记、聚合脚本身份
 及最终判据版本。原始正例、反例和无机会情况均保留；不以机会诊断选择赢家条件。
+
+## 本轮 B3 逐项依据与未定内容
+
+| 要素 | 真实来源 | 仍需批准 |
+|---|---|---|
+| 可观察量 | docs/user_request.txt §43 (1431起) 是机制假设；docs/model_spec.md:48–52 限制信息 | D07定义机会量，不得将假设当实测事实 |
+| 基线/反事实 | docs/baseline_spec.md:14–20；本文件:9–11为未批准M1/M2方案 | D05方法子集、D07控制/视窗；不产生新正式baseline |
+| 分析单位 | docs/metric_spec.md:3–11；docs/statistical_protocol.md:3–16 | D07/D08的seed内summary/分母；决策事件不是独立推断单位 |
+| 跨seed/场景聚合 | docs/statistical_protocol.md:10–16；docs/metric_spec.md:13–30 | D08机会量的具体范围/聚合，不自动借用H的12条件或L的18条件规则 |
+| 稳定性/不确定性 | docs/statistical_protocol.md:3–16,34–36；docs/user_request.txt §100 | D08稳定性、充分证据、具体参数/contrast；原CI方法保持 |
+| 无效/不可行/缺失 | docs/workload_spec.md:18–20；docs/statistical_protocol.md:38–47 | D06/D08区分天然不可行、trace错误、缺pair及有效分母，不静默删样本 |
+| 三向判定 | 本文件:26–38只为提案，原协议未定义P2数值判据 | D08的SUPPORTED/明确NOT_SUPPORTED/INCONCLUSIVE；不把“不显著”当否定 |
+| 证据/审计 | docs/user_request.txt §§90–92；docs/statistical_protocol.md:44–47 | D07/D08诊断记录字段与版本，D09/D10身份/完整性落实 |
+
+无科学观察或判据计算发生；未借此改变候选、H/L门槛、统计方法或seed分区。

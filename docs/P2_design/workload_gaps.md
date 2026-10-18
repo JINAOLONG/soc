@@ -31,3 +31,20 @@
 关闭证据：人工批准上述字段的完整定义/值及来源；有限配置可展开；另行授权的实现通过
 模板计数、DAG、兼容、正值、因果、扰动独立、确定性和身份/哈希验证。随后实际 H 可行性
 仍需在未来执行中核验，文档批准不能冒充可行性结果。
+
+## 本轮 B1 定义存在性核对（直接来源，不新增决定编号）
+
+| 项目 | 定义是否存在 | 真实来源与行/节 | 仍未定义，关联决定 |
+|---|---|---|---|
+| 三场景与8/16节点 | 场景角色/计数已定，实际拓扑不存在 | docs/workload_spec.md:3–12；docs/user_request.txt §§33–34 | 完整模板、尺寸关系、H/L归属：D01 |
+| 执行时长与异构代价 | 正值/兼容约束已定，数值/规则不存在 | docs/model_spec.md:10–14；docs/workload_spec.md:10–12 | 代价、来源、估计/实际关系：D02/D04 |
+| 任务资源兼容 | 类型覆盖已定，per-node集合未定 | docs/model_spec.md:10–14 | 集合/频率：D02 |
+| 边数据/通信 | 物理公式和副本语义已定，参数未定 | docs/model_spec.md:20–31；docs/workload_spec.md:10–12 | 边MiB、type-pair值/来源：D03 |
+| 扰动规则 | keyed独立性与同artifact已定，实现/分布未定 | docs/model_spec.md:54–58 | PRNG、键编码/版本、所有分布参数：D04 |
+| 到达过程 | 在线边界已定，过程未定 | docs/model_spec.md:4–8,48–52；docs/user_request.txt §36 | 到达/突发/组成：D04 |
+| deadline与观察窗口 | 相对deadline>0及绝对关系已定，参数/窗口未定 | docs/model_spec.md:4–8；docs/metric_spec.md:3–6；docs/user_request.txt §36 | deadline构造、服务数/arrival窗口和停止边界：D04/D06 |
+| 窗口结束后排空 | 已明确，直接沿用，不重新审批 | docs/model_spec.md:43–46；docs/user_request.txt §25 | 尚无科学实现/运行证据，不表示D04全部已解决 |
+| H基础可行性 | 必须先独占或低竞争检查已定，具体对照/标准未定 | docs/workload_spec.md:14–18；docs/user_request.txt §37 | 对照、方法、条件和判断：D06 |
+| 输入身份/确定性 | 身份构成与同输入已定，科学编码/产物适配未定 | docs/workload_spec.md:22–25；docs/model_spec.md:54–58；src/soc/model/schema.py:175–189 | 来源/canonicalization/格式：D04/D10 |
+
+“某字段约束已确定”不等于整项D决定RESOLVED；没有数值/模板被补写为正式值。

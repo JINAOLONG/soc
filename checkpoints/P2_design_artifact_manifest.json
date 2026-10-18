@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "scope": "P2 design DRAFT documentation inventory only; no approved experiment, executable schema or scientific result",
-  "source_checkpoint": "d016ad8d8b2be6fbeb80fadfee6194d9aa9bd0ae",
+  "scope": "DRAFT P2 human-decision review documentation only; not approved science or executable preregistration",
+  "source_checkpoint": "a585c5bba0215c1ac4b2f126f5a752ae443b56b4",
   "files": [
     {
       "path": ".github/workflows/tests.yml",
@@ -25,7 +25,7 @@
     },
     {
       "path": "STATUS.md",
-      "sha256": "a0812f0c6018aaa72572f84c98131254a811958103a05934cbe39a409cd40c15"
+      "sha256": "d88cefd7ba65324efa6afe17ef4e2e6509bae6cc63cfff82d6ee8ec3f2304ce2"
     },
     {
       "path": "checkpoints/.gitkeep",
@@ -108,8 +108,20 @@
       "sha256": "9d2a6b024af11cf51e60cbb69fe0ef9674519141214d1a00751610d63c8fcb94"
     },
     {
+      "path": "docs/P2_design/P2_D01_D10_traceability.csv",
+      "sha256": "1498ced9637b74152699ead6a442b17f7c8e41ca7a31fca29ee8ebce911b4893"
+    },
+    {
+      "path": "docs/P2_design/P2_decision_dependency_map.md",
+      "sha256": "174f3883b53d05c7312eabc4d39e3260886867b01be7c2574e342e1bacfdc069"
+    },
+    {
+      "path": "docs/P2_design/P2_human_approval_checklist.md",
+      "sha256": "ef23b368503efb8a8ddee4137662d7caed639c23a2bb825a400a10a7164603e8"
+    },
+    {
       "path": "docs/P2_design/README.md",
-      "sha256": "ec4cb181fb3375461f9813c67ebfaa1acb1180f2c0fb6c224e7bcdeb2f041942"
+      "sha256": "422d7d9488f3c194af02b8c786904a5c1fd23a184b5928e5442d65f44926440a"
     },
     {
       "path": "docs/P2_design/authorization_request.txt",
@@ -125,11 +137,11 @@
     },
     {
       "path": "docs/P2_design/calibration_options.md",
-      "sha256": "05d62089943ee9617d9677b07bb28a8afa77da4cd764c6c47f976f93a3e35c03"
+      "sha256": "58daa228062c97fb28b744133cfafb9d66dcb0af90a462d15a2f8148bac26833"
     },
     {
       "path": "docs/P2_design/decisions.draft.json",
-      "sha256": "85f1d6545dd9769fa85d22b3afefc1935c73aa6c3965f72800d28b920f8c5401"
+      "sha256": "5cc0905c73c8dc1d980efb80c0fc9f2276f049ccd5761fd92e25cb25c0b21bf7"
     },
     {
       "path": "docs/P2_design/evidence_and_traceability.md",
@@ -137,15 +149,15 @@
     },
     {
       "path": "docs/P2_design/human_decisions.md",
-      "sha256": "d0034ae007860433980cfa7eb79f8f36721468783d485d4ece939952fee480b9"
+      "sha256": "791d6efc468bcb6d1fa37692d11de2d046fa3ea37f05d6030656f0d50e52eb55"
     },
     {
       "path": "docs/P2_design/mapping_criterion_options.md",
-      "sha256": "05291af751089690d5dfc2b743d9ce2931e1d5e4620bdbb24a77b561e55b9fda"
+      "sha256": "2c63c2e3968eb8a365081b8ce65a7e53101a05b80865b36f4059f6361a56f388"
     },
     {
       "path": "docs/P2_design/runner_and_schema.md",
-      "sha256": "b6f627eb1966200e23404fbf5af4c3248db4f933e2a258bf47ed7de87cbbbc73"
+      "sha256": "9c5512667fd81038531e44e8771f5f245f03b10f8d86ba74bd4f2224296ce8e2"
     },
     {
       "path": "docs/P2_design/scientific_artifacts.schema.draft.json",
@@ -153,7 +165,7 @@
     },
     {
       "path": "docs/P2_design/workload_gaps.md",
-      "sha256": "5ffb9e3ce6f89c336feede441aef6a5fd2a1da8afa376b193346b6c6e70ebea9"
+      "sha256": "8c6f6f770ae1134fff25d6872d8d529e312f170a24b9212138edcb43dbdb2a4b"
     },
     {
       "path": "docs/baseline_spec.md",
@@ -785,11 +797,11 @@
     },
     {
       "path": "reports/P2_design/delivery_index.json",
-      "sha256": "4bd7d3b1427271ea76c089b0002503c90652e15794bae95e896befa36635f331"
+      "sha256": "42fa60c948561dc0ace7775c5986db0112d8c0e1d1daf444e1a7f914c614b382"
     },
     {
       "path": "reports/P2_design/design_status.json",
-      "sha256": "0b2d160574822e53e9cffb3c2acc183e89ad107185fbd4cc5d04263da15a838a"
+      "sha256": "e8c97c13cee90d4519b9553482cfcb7ee3047a440f522404ac8f082a0e77e446"
     },
     {
       "path": "reports/P2_design/document_checks.json",
@@ -801,7 +813,7 @@
     },
     {
       "path": "reports/P2_design/final_audit.md",
-      "sha256": "6690602a4307cc08d520733a6209aa5373b323870a8b2f3067c9fa10bf3fffd3"
+      "sha256": "d5f96ccd0ed33754598d11c83d617d645f657c9d247b9c875cad23f43021ed19"
     },
     {
       "path": "reports/P2_design/git_checkpoint.json",
@@ -814,6 +826,26 @@
     {
       "path": "reports/P2_design/repository_audit.json",
       "sha256": "53d00d52ea5bca7c7dd61dc107791d72717c999fc5af84b8807dba143619ba25"
+    },
+    {
+      "path": "reports/P2_design/review/document_checks.json",
+      "sha256": "9f9a93d0a5d8de3b6b0bce4e042e2a644f48856e0b6b230bbb47172fddb20248"
+    },
+    {
+      "path": "reports/P2_design/review/original_decision_catalog.json",
+      "sha256": "85f1d6545dd9769fa85d22b3afefc1935c73aa6c3965f72800d28b920f8c5401"
+    },
+    {
+      "path": "reports/P2_design/review/original_human_decisions.md",
+      "sha256": "d0034ae007860433980cfa7eb79f8f36721468783d485d4ece939952fee480b9"
+    },
+    {
+      "path": "reports/P2_design/review/previous_STATUS.md",
+      "sha256": "a0812f0c6018aaa72572f84c98131254a811958103a05934cbe39a409cd40c15"
+    },
+    {
+      "path": "reports/P2_design/review/repository_audit.json",
+      "sha256": "ec299832c37388f04a9c156193daec4c91adf707ec57e0dde798523a6e9514f3"
     },
     {
       "path": "reports/P2_engineering_timing_protocol.md",

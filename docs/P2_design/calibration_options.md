@@ -21,3 +21,19 @@
 而非“允许做一些校准”。这只是审计组织建议，不批准矩阵、不指定预算，也不新增指标。
 若仍有 null，未来 runner 应拒绝作为 executable manifest；若只有空 trial 列表，也
 不得以零 missing/failed 伪造科学完成。
+
+## 本轮 B2 逐项来源与剩余缺口
+
+| 项目 | 已确立依据 | 当前缺口 |
+|---|---|---|
+| 3×3×2主条件 | docs/metric_spec.md:13–14；docs/workload_spec.md:3–6 | 不含trial/config、实际参数、控制、方法或预算；不能代替完整矩阵 |
+| 轴与合法值 | docs/user_request.txt §36；docs/P2_design/calibration_matrix.draft.json 的 parameter_axes | 仅允许调整类别；参与轴、全部值/单位与组合未批，D04/D05 |
+| 完整组合 | docs/statistical_protocol.md:44–47要求完整身份覆盖 | 没有finite trials，矩阵draft.full_finite_trials.value=null，D05 |
+| 每组方法/B2/子集 | docs/workload_spec.md:14；docs/baseline_spec.md:14–20 | B2 focal是事实，完整方法范围与子集/理由未批，D05 |
+| 顺序/总预算 | docs/workload_spec.md:19–20要求保留所有尝试，不给具体预算 | trial顺序、总预算、控制/replay计数均未批，D05 |
+| selection/ties | docs/workload_spec.md:15–20；scheduler tie只见docs/model_spec.md:42 | 配置选择不是调度tie；准则/平局未定，D06 |
+| 失败/无效/不可行/不完整 | docs/statistical_protocol.md:38–47；docs/user_request.txt §§37,92 | 不删除证据为事实；具体分类/继续/停止/重试未批，D06/D09 |
+| seed/scene/condition/config映射 | docs/workload_spec.md:22–25；configs/seed_partitions.json partitions.CALIBRATION | 来源与同artifact要求已知，实际每trial映射未定，D05/D10 |
+
+本轮未选择方法子集、未扩轴、未填预算。即便180个condition/seed标签可算，仍不能
+推出实际校准试验或方法调用集合，更不能当作已经批准的180个工作负载。

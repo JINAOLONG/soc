@@ -15,12 +15,81 @@
         "E03"
       ],
       "question": "选择显式角色 DAG 还是确定性 grammar，并提供三场景的完整8/16节点拓扑、角色/H-L归属及尺寸规则。",
-      "status": "UNRESOLVED",
+      "status": "HUMAN_DECISION_REQUIRED",
       "approval_required": true,
       "answer": null,
       "scientific_parameter_values": null,
       "implementation_validation": "PENDING_NOT_AUTHORIZED",
-      "scientific_execution": "PENDING_NOT_AUTHORIZED"
+      "scientific_execution": "PENDING_NOT_AUTHORIZED",
+      "definition_status": "UNRESOLVED",
+      "review": {
+        "id": "D01",
+        "sources": [
+          {
+            "file": "docs/user_request.txt",
+            "locator": "§§33–34 (1159–1197)",
+            "establishes": "场景角色与8/16节点"
+          },
+          {
+            "file": "docs/workload_spec.md",
+            "locator": "3–12",
+            "establishes": "计数与参数缺失"
+          },
+          {
+            "file": "docs/model_spec.md",
+            "locator": "4–14",
+            "establishes": "DAG、资源与兼容约束"
+          },
+          {
+            "file": "docs/P2_design/workload_gaps.md",
+            "locator": "8–11;26–33",
+            "establishes": "原有拓扑选项与局限"
+          }
+        ],
+        "facts": "COCKPIT/ADAS/FUSION及其业务角色已注册；每服务8或16个实际可执行节点，无隐藏dummy。",
+        "unknown": "每场景实际节点/边、并行与汇合、H/L归属、两个尺寸的语义对应均UNRESOLVED。",
+        "options": [
+          {
+            "label": "A 显式角色模板",
+            "technical_meaning": "逐场景列出节点、边和尺寸版本",
+            "fairness": "便于所有方法共享，但人为选拓扑可能放大特定映射机会",
+            "reproducibility": "显式文件可hash和人工复查",
+            "runtime_cost": "生成和人工校验成本较直观；实际预算未知",
+            "statistical_interpretation": "覆盖面有限，不能泛化为真实车辆分布"
+          },
+          {
+            "label": "B 确定性grammar",
+            "technical_meaning": "先登记完整生成/尺寸变换规则",
+            "fairness": "覆盖可宽，但更多自由度也增加选择偏差",
+            "reproducibility": "必须固定grammar、键编码和版本",
+            "runtime_cost": "规则实现/验证成本较高；实际运行数未知",
+            "statistical_interpretation": "拓扑分布与依赖结构可能影响机会频率"
+          }
+        ],
+        "recommendation": "优先审查A的可追踪性；不选择具体拓扑，也不声称A科学上优于B。",
+        "kind": "ENGINEERING_SUGGESTION",
+        "basis": "workload_gaps.md:26–29给出相同审计建议；原规格只确定场景与节点约束。",
+        "blocked": "D02角色参数、D03边参数、D04实例定义及最终矩阵不能完整落地。",
+        "question": "D01：采用显式模板还是确定性grammar？请提供三场景8/16节点的完整拓扑、角色/H-L归属和尺寸变换定义。",
+        "closure": "明确批准选项及完整模板/规则与来源；未来另行验证DAG/计数/生成身份，不以文字批准代替运行验证。",
+        "status": "HUMAN_DECISION_REQUIRED",
+        "original_question": "选择显式角色 DAG 还是确定性 grammar，并提供三场景的完整8/16节点拓扑、角色/H-L归属及尺寸规则。",
+        "contract_change": "不需改变现有研究契约、H/L科学门槛、统计方法、候选定义或seed分区；当前只补未定设计。若选项/数值会改变这些冻结规则，应拒绝该变更或另行处理冲突，本任务不得批准或实施。",
+        "original_source_revision": "a585c5bba0215c1ac4b2f126f5a752ae443b56b4",
+        "original_question_source": {
+          "file": "docs/P2_design/human_decisions.md",
+          "lines": "8–10",
+          "revision": "a585c5bba0215c1ac4b2f126f5a752ae443b56b4"
+        }
+      },
+      "approval_record": {
+        "action": null,
+        "approved_option": null,
+        "approved_values": null,
+        "reviewer": null,
+        "evidence_refs": [],
+        "reason": null
+      }
     },
     {
       "id": "D02",
@@ -32,12 +101,76 @@
         "E03"
       ],
       "question": "选择有来源的profile表或批准的合成规则，提供兼容集合、各资源估计/实际代价及全部参数/来源。",
-      "status": "UNRESOLVED",
+      "status": "HUMAN_DECISION_REQUIRED",
       "approval_required": true,
       "answer": null,
       "scientific_parameter_values": null,
       "implementation_validation": "PENDING_NOT_AUTHORIZED",
-      "scientific_execution": "PENDING_NOT_AUTHORIZED"
+      "scientific_execution": "PENDING_NOT_AUTHORIZED",
+      "definition_status": "UNRESOLVED",
+      "review": {
+        "id": "D02",
+        "sources": [
+          {
+            "file": "docs/model_spec.md",
+            "locator": "10–14;48–58",
+            "establishes": "固定资源、正值、兼容覆盖、可见性与独立扰动"
+          },
+          {
+            "file": "docs/workload_spec.md",
+            "locator": "10–12",
+            "establishes": "代价/兼容值未给"
+          },
+          {
+            "file": "docs/P2_design/workload_gaps.md",
+            "locator": "12–14",
+            "establishes": "既有代价来源选项"
+          }
+        ],
+        "facts": "六个资源单元、兼容类型覆盖、每个合法资源的估计/实际时长正且有限已确定；真实未来时长不给scheduler。",
+        "unknown": "各角色兼容集合、资源代价、CPU核间关系、估计/实际关系、出现频率和来源均UNRESOLVED。",
+        "options": [
+          {
+            "label": "A 可追踪profile表",
+            "technical_meaning": "使用有授权和出处的资源代价/兼容表",
+            "fairness": "来源一致有利于公平；局部设备profile也可能偏置资源相对优势",
+            "reproducibility": "需记录版本、单位、提取过程及hash",
+            "runtime_cost": "需要取得/核验数据；无现成数据可假定",
+            "statistical_interpretation": "只代表表的范围，不能自动当作目标车辆实测"
+          },
+          {
+            "label": "B 批准的合成表或规则",
+            "technical_meaning": "完整登记合成代价和兼容关系",
+            "fairness": "可控覆盖类型，但任意speedup/兼容比例可能人为制造机会",
+            "reproducibility": "全部规则/参数固定后才可复现",
+            "runtime_cost": "实施便利性不能替代来源审查；预算未知",
+            "statistical_interpretation": "结论限定于批准的合成模型"
+          }
+        ],
+        "recommendation": "不在缺数据时推荐数值或A/B胜者；优先要求完整显式来源与表/规则。",
+        "kind": "ENGINEERING_SUGGESTION",
+        "basis": "workload_spec.md:10–12未给值，不能据此推荐资源speedup；model_spec明确的正值/兼容约束属于SOURCE_REQUIREMENT。",
+        "blocked": "真实输入分布、EFT/OCT代价和H可行性均无法定义。",
+        "question": "D02：选可追踪profile还是合成规则？请给每角色/节点的兼容集合、各资源估计/实际代价或全部生成参数、来源与正值保障。",
+        "closure": "批准完整值/规则与来源；未来校验兼容、正值、估计/真值隔离及扰动关系。",
+        "status": "HUMAN_DECISION_REQUIRED",
+        "original_question": "选择有来源的profile表或批准的合成规则，提供兼容集合、各资源估计/实际代价及全部参数/来源。",
+        "contract_change": "不需改变现有研究契约、H/L科学门槛、统计方法、候选定义或seed分区；当前只补未定设计。若选项/数值会改变这些冻结规则，应拒绝该变更或另行处理冲突，本任务不得批准或实施。",
+        "original_source_revision": "a585c5bba0215c1ac4b2f126f5a752ae443b56b4",
+        "original_question_source": {
+          "file": "docs/P2_design/human_decisions.md",
+          "lines": "11–13",
+          "revision": "a585c5bba0215c1ac4b2f126f5a752ae443b56b4"
+        }
+      },
+      "approval_record": {
+        "action": null,
+        "approved_option": null,
+        "approved_values": null,
+        "reviewer": null,
+        "evidence_refs": [],
+        "reason": null
+      }
     },
     {
       "id": "D03",
@@ -49,12 +182,76 @@
         "E03"
       ],
       "question": "提供边MiB与type-pair latency/bandwidth的完整表或有来源规则，保留既有通信语义。",
-      "status": "UNRESOLVED",
+      "status": "HUMAN_DECISION_REQUIRED",
       "approval_required": true,
       "answer": null,
       "scientific_parameter_values": null,
       "implementation_validation": "PENDING_NOT_AUTHORIZED",
-      "scientific_execution": "PENDING_NOT_AUTHORIZED"
+      "scientific_execution": "PENDING_NOT_AUTHORIZED",
+      "definition_status": "UNRESOLVED",
+      "review": {
+        "id": "D03",
+        "sources": [
+          {
+            "file": "docs/model_spec.md",
+            "locator": "3;20–31",
+            "establishes": "通信单位、公式、重映射与副本"
+          },
+          {
+            "file": "docs/workload_spec.md",
+            "locator": "10–12",
+            "establishes": "边参数未提供"
+          },
+          {
+            "file": "docs/P2_design/workload_gaps.md",
+            "locator": "15–17",
+            "establishes": "显式边/type-pair表方案"
+          }
+        ],
+        "facts": "同单元零代价，跨单元latency+size/bandwidth，传输不早于前驱完成、可重叠、无共享总线竞争、目的地副本与remapping语义均为已定事实。",
+        "unknown": "每条边MiB、各type-pair延迟和带宽的具体值/来源或完整生成规则UNRESOLVED。",
+        "options": [
+          {
+            "label": "A 明确的合成边/网络参数表",
+            "technical_meaning": "人工审批固定边表和type-pair表",
+            "fairness": "共享同一表公平，但通信强弱可影响排序/映射偏好",
+            "reproducibility": "表和单位易hash/复查",
+            "runtime_cost": "表管理成本有限；实际运行开销未测",
+            "statistical_interpretation": "外部有效性受合成假设限制"
+          },
+          {
+            "label": "B 有出处的profile映射",
+            "technical_meaning": "以合法可追踪数据映射角色边与网络参数",
+            "fairness": "可减任意性，仍有设备/场景选择偏差",
+            "reproducibility": "需冻结映射、提取与源版本",
+            "runtime_cost": "来源取得与转换验证成本较高",
+            "statistical_interpretation": "profile不等于所有SoC的代表性"
+          }
+        ],
+        "recommendation": "采用可复查的参数表表示；表内容与来源仍由人工决定，不推荐任何数值。",
+        "kind": "ENGINEERING_SUGGESTION",
+        "basis": "model_spec.md:20–31的物理语义是SOURCE_REQUIREMENT；显式表只是表示建议。",
+        "blocked": "数据就绪、资源选择和通信敏感性均未定，不能物化科学输入。",
+        "question": "D03：选哪种有出处的边/type-pair参数表或映射规则？请填数据MiB、时延ms、带宽MiB/ms及全部来源。",
+        "closure": "批准完整参数与单位；未来同/跨单元、重映射、因果与独立验证器回归。",
+        "status": "HUMAN_DECISION_REQUIRED",
+        "original_question": "提供边MiB与type-pair latency/bandwidth的完整表或有来源规则，保留既有通信语义。",
+        "contract_change": "不需改变现有研究契约、H/L科学门槛、统计方法、候选定义或seed分区；当前只补未定设计。若选项/数值会改变这些冻结规则，应拒绝该变更或另行处理冲突，本任务不得批准或实施。",
+        "original_source_revision": "a585c5bba0215c1ac4b2f126f5a752ae443b56b4",
+        "original_question_source": {
+          "file": "docs/P2_design/human_decisions.md",
+          "lines": "14–16",
+          "revision": "a585c5bba0215c1ac4b2f126f5a752ae443b56b4"
+        }
+      },
+      "approval_record": {
+        "action": null,
+        "approved_option": null,
+        "approved_values": null,
+        "reviewer": null,
+        "evidence_refs": [],
+        "reason": null
+      }
     },
     {
       "id": "D04",
@@ -68,12 +265,76 @@
         "E08"
       ],
       "question": "确定keyed扰动/PRNG/版本、到达/突发、H-L组成、deadline、服务数或窗口及停止边界的完整定义/值。",
-      "status": "UNRESOLVED",
+      "status": "HUMAN_DECISION_REQUIRED",
       "approval_required": true,
       "answer": null,
       "scientific_parameter_values": null,
       "implementation_validation": "PENDING_NOT_AUTHORIZED",
-      "scientific_execution": "PENDING_NOT_AUTHORIZED"
+      "scientific_execution": "PENDING_NOT_AUTHORIZED",
+      "definition_status": "UNRESOLVED",
+      "review": {
+        "id": "D04",
+        "sources": [
+          {
+            "file": "docs/model_spec.md",
+            "locator": "4–8;39–58",
+            "establishes": "deadline、事件、排空、在线边界与keyed扰动"
+          },
+          {
+            "file": "docs/user_request.txt",
+            "locator": "§§24–25 (854–894);§36 (1224–1260)",
+            "establishes": "方法无关随机性、drain与允许校准轴"
+          },
+          {
+            "file": "docs/P2_design/workload_gaps.md",
+            "locator": "18–21",
+            "establishes": "扰动/到达/窗口选项"
+          }
+        ],
+        "facts": "key必须包括既有seed、service/node/resource及扰动版本，不能依赖scheduler RNG调用顺序；deadline相对值为正，停止到达后全部排空；未到达信息不可见。",
+        "unknown": "PRNG/键编码/舍入/版本、扰动分布及参数、到达/突发、H-L组成、deadline构造、有限服务数或窗口和边界UNRESOLVED。",
+        "options": [
+          {
+            "label": "A 冻结keyed PRNG物化",
+            "technical_meaning": "事先登记算法/映射与全部参数，按独立键物化",
+            "fairness": "方法共用artifact可公平；分布选择本身仍可能偏置竞争",
+            "reproducibility": "必须固定PRNG/编码/舍入版本，seed一样不足以证明同输入",
+            "runtime_cost": "实现与验证成本；实际materialization成本未知",
+            "statistical_interpretation": "相关性与突发形态影响有效信息量，不能按节点当独立样本"
+          },
+          {
+            "label": "B 版本化表驱动keyed lookup",
+            "technical_meaning": "按批准seed和身份映射到完整已登记表",
+            "fairness": "表不能按方法变化，来源及选表偏好需披露",
+            "reproducibility": "需保存精确表、key规则与hash",
+            "runtime_cost": "存储/来源审核成本可能更高，未实测",
+            "statistical_interpretation": "有限表覆盖范围限定推断，仍不能替换seed分区"
+          }
+        ],
+        "recommendation": "方法无关key与预物化为SOURCE_REQUIREMENT；不推荐具体PRNG、分布或到达律。建议分开登记扰动、到达、deadline与窗口。",
+        "kind": "SOURCE_REQUIREMENT + ENGINEERING_SUGGESTION",
+        "basis": "model_spec.md:54–58直接要求独立扰动/同artifact；分模块登记是便于复核的工程建议。",
+        "blocked": "样本分布、结束条件与可复现输入均缺定义，校准不能启动。",
+        "question": "D04：选哪种keyed物化方式？请逐项给PRNG/编码/舍入/版本、分布参数、到达/突发、H-L组成、deadline、服务数或arrival窗口及停止边界。",
+        "closure": "批准全部定义；未来确定性/调度无关性、正值、截止期边界和full-drain测试。",
+        "status": "HUMAN_DECISION_REQUIRED",
+        "original_question": "确定keyed扰动/PRNG/版本、到达/突发、H-L组成、deadline、服务数或窗口及停止边界的完整定义/值。",
+        "contract_change": "不需改变现有研究契约、H/L科学门槛、统计方法、候选定义或seed分区；当前只补未定设计。若选项/数值会改变这些冻结规则，应拒绝该变更或另行处理冲突，本任务不得批准或实施。",
+        "original_source_revision": "a585c5bba0215c1ac4b2f126f5a752ae443b56b4",
+        "original_question_source": {
+          "file": "docs/P2_design/human_decisions.md",
+          "lines": "17–19",
+          "revision": "a585c5bba0215c1ac4b2f126f5a752ae443b56b4"
+        }
+      },
+      "approval_record": {
+        "action": null,
+        "approved_option": null,
+        "approved_values": null,
+        "reviewer": null,
+        "evidence_refs": [],
+        "reason": null
+      }
     },
     {
       "id": "D05",
@@ -87,12 +348,81 @@
         "E08"
       ],
       "question": "确定枚举或有限轴展开，提供所有值/方法子集及理由/顺序/预算/seed到trial-condition-workload的精确映射。",
-      "status": "UNRESOLVED",
+      "status": "HUMAN_DECISION_REQUIRED",
       "approval_required": true,
       "answer": null,
       "scientific_parameter_values": null,
       "implementation_validation": "PENDING_NOT_AUTHORIZED",
-      "scientific_execution": "PENDING_NOT_AUTHORIZED"
+      "scientific_execution": "PENDING_NOT_AUTHORIZED",
+      "definition_status": "UNRESOLVED",
+      "review": {
+        "id": "D05",
+        "sources": [
+          {
+            "file": "docs/user_request.txt",
+            "locator": "§§35–37 (1198–1274);§§41–42 (1385–1430)",
+            "establishes": "校准轴、B2焦点、身份与主条件"
+          },
+          {
+            "file": "docs/workload_spec.md",
+            "locator": "14–24",
+            "establishes": "baseline校准、同物化artifact"
+          },
+          {
+            "file": "docs/baseline_spec.md",
+            "locator": "14–20",
+            "establishes": "正式基线编号"
+          },
+          {
+            "file": "docs/P2_design/calibration_options.md",
+            "locator": "8–16",
+            "establishes": "有限列表、方法、顺序、预算、seed缺口"
+          }
+        ],
+        "facts": "3场景×3负载×2尺寸是主条件标签；只能用既有10个calibration identities，baseline-only，B2为焦点；没有完整校准trial。",
+        "unknown": "参与轴及全部合法值、finite trials/configs、方法子集和理由、顺序、预算、seed/scene/condition/config映射均UNRESOLVED。",
+        "options": [
+          {
+            "label": "A 逐行枚举完整试验",
+            "technical_meaning": "审批完整列表及每行方法/seed/config",
+            "fairness": "容易人工查遗漏，仍需论证子集不偏向赢家",
+            "reproducibility": "固定列表和hash可重放",
+            "runtime_cost": "计划复核成本随列表长度增长；预算必须先填",
+            "statistical_interpretation": "不完整列表不能当全网格；同seed多trial不增加独立seed数"
+          },
+          {
+            "label": "B 有限轴机械展开",
+            "technical_meaning": "批准全部轴和值/展开顺序，再得到完整列表",
+            "fairness": "覆盖检查容易，但默认全组合可能无意扩大范围",
+            "reproducibility": "需要固定编译规则和最终展开list hash",
+            "runtime_cost": "组合膨胀，先批准预算，不能先运行再缩小",
+            "statistical_interpretation": "交互与条件覆盖须预先解释，禁止有利条件选择"
+          }
+        ],
+        "recommendation": "最终审批对象应包括完整展开列表；不推荐具体方法子集或参数值。",
+        "kind": "LOGICAL_INFERENCE + ENGINEERING_SUGGESTION",
+        "basis": "workload与run identity要求完整匹配，18个标签不含数值/控制/方法，逻辑上不足以定义运行集合；list hash是工程建议。",
+        "blocked": "无法列expected runs、估预算、校验缺失或统一方法比较。",
+        "question": "D05：选枚举还是有限轴展开？请给全部轴值、方法子集及理由、B2具体角色、顺序/预算和10个seed的精确映射。",
+        "closure": "完整有限list/批准/hash与未来展开/重复/缺seed检查；主条件标签本身不构成执行授权。",
+        "status": "HUMAN_DECISION_REQUIRED",
+        "original_question": "确定枚举或有限轴展开，提供所有值/方法子集及理由/顺序/预算/seed到trial-condition-workload的精确映射。",
+        "contract_change": "不需改变现有研究契约、H/L科学门槛、统计方法、候选定义或seed分区；当前只补未定设计。若选项/数值会改变这些冻结规则，应拒绝该变更或另行处理冲突，本任务不得批准或实施。",
+        "original_source_revision": "a585c5bba0215c1ac4b2f126f5a752ae443b56b4",
+        "original_question_source": {
+          "file": "docs/P2_design/human_decisions.md",
+          "lines": "20–22",
+          "revision": "a585c5bba0215c1ac4b2f126f5a752ae443b56b4"
+        }
+      },
+      "approval_record": {
+        "action": null,
+        "approved_option": null,
+        "approved_values": null,
+        "reviewer": null,
+        "evidence_refs": [],
+        "reason": null
+      }
     },
     {
       "id": "D06",
@@ -107,12 +437,97 @@
         "E06"
       ],
       "question": "确定H可行性对照、压力/负载分类、配置选择/平局以及不达标、不可行、无效、失败、不完整的处置规则。",
-      "status": "UNRESOLVED",
+      "status": "HUMAN_DECISION_REQUIRED",
       "approval_required": true,
       "answer": null,
       "scientific_parameter_values": null,
       "implementation_validation": "PENDING_NOT_AUTHORIZED",
-      "scientific_execution": "PENDING_NOT_AUTHORIZED"
+      "scientific_execution": "PENDING_NOT_AUTHORIZED",
+      "definition_status": "UNRESOLVED",
+      "review": {
+        "id": "D06",
+        "sources": [
+          {
+            "file": "docs/user_request.txt",
+            "locator": "§§35–37 (1198–1274)",
+            "establishes": "压力、H可行性与允许校准"
+          },
+          {
+            "file": "docs/workload_spec.md",
+            "locator": "14–20",
+            "establishes": "保留所有trial、禁止候选优势选择"
+          },
+          {
+            "file": "docs/statistical_protocol.md",
+            "locator": "34–47",
+            "establishes": "完整性与失败保留"
+          },
+          {
+            "file": "docs/P2_design/calibration_options.md",
+            "locator": "14–18",
+            "establishes": "selection/ties/invalid处理选项"
+          }
+        ],
+        "facts": "H须先独占或低竞争可行，负载按CPU/GPU/NPU压力且非arrival rate独自命名；所有试验/失败保留，不按candidate advantage调workload。",
+        "unknown": "具体对照、可行/负载阈值、选择准则、平局、天然不可行/合法离目标/错误/不完整的继续或停止规则UNRESOLVED。",
+        "options": [
+          {
+            "label": "A 独占H可行性对照",
+            "technical_meaning": "逐已定义H业务在独占资源条件核对",
+            "fairness": "减少把天然不可行误归因scheduler，仍不代表竞争条件可行",
+            "reproducibility": "需冻结隔离输入/方法与判定",
+            "runtime_cost": "额外对照预算待定",
+            "statistical_interpretation": "排除固有不可行的依据须预注册，不可事后只留有利seed"
+          },
+          {
+            "label": "B 明定低竞争对照",
+            "technical_meaning": "在审批的低竞争输入下检查H",
+            "fairness": "更接近共享系统但受其他业务构成影响",
+            "reproducibility": "必须定义低竞争而非主观标注",
+            "runtime_cost": "额外对照预算待定",
+            "statistical_interpretation": "基线压力和Hfeasibility可能混杂，需明确解释"
+          },
+          {
+            "label": "C 首个预定合格配置",
+            "technical_meaning": "按批准顺序取首个满足预定要求者",
+            "fairness": "顺序可编码偏好，不能结果后改",
+            "reproducibility": "需要完整顺序和合格判据",
+            "runtime_cost": "全部应执行的trial仍须明确，不承诺节省",
+            "statistical_interpretation": "结论受选择程序限制，不能视为无选择的独立验证"
+          },
+          {
+            "label": "D 预定目标匹配",
+            "technical_meaning": "按已有可行性/pressure/miss目标做已批准比较",
+            "fairness": "灵活但易事后造目标/新权重",
+            "reproducibility": "需完整比较与tie规则",
+            "runtime_cost": "比较和审查成本未知",
+            "statistical_interpretation": "不允许引入未批准新评分或按候选优劣选条件"
+          }
+        ],
+        "recommendation": "先明确H可行性及无效分类，再批准selection/ties；不选对照或数值门槛。保留失败/禁止候选选择为原始要求。",
+        "kind": "SOURCE_REQUIREMENT + LOGICAL_INFERENCE",
+        "basis": "workload_spec.md:18–20、statistical_protocol.md:34–47直接要求先行可行性及完整记录；执行前必须定义分类是逻辑推导。",
+        "blocked": "负载标签、最终workload冻结、无效/缺失处置和机会判据有效分母无法审定。",
+        "question": "D06：选独占还是明定低竞争对照？请给可行/负载标准、selection/tie及各失败类别的记录、继续/停止规则；不填数字或事后选择不能解阻。",
+        "closure": "批准规则与所有缺失值，未来正/负/边界故障测试及实际可行性证据；文字批准不等于科学结果。",
+        "status": "HUMAN_DECISION_REQUIRED",
+        "original_question": "确定H可行性对照、压力/负载分类、配置选择/平局以及不达标、不可行、无效、失败、不完整的处置规则。",
+        "contract_change": "不需改变现有研究契约、H/L科学门槛、统计方法、候选定义或seed分区；当前只补未定设计。若选项/数值会改变这些冻结规则，应拒绝该变更或另行处理冲突，本任务不得批准或实施。",
+        "original_source_revision": "a585c5bba0215c1ac4b2f126f5a752ae443b56b4",
+        "original_question_source": {
+          "file": "docs/P2_design/human_decisions.md",
+          "lines": "23–26",
+          "revision": "a585c5bba0215c1ac4b2f126f5a752ae443b56b4"
+        }
+      },
+      "approval_record": {
+        "action": null,
+        "approved_option": null,
+        "approved_values": null,
+        "reviewer": null,
+        "evidence_refs": [],
+        "reason": null
+      }
     },
     {
       "id": "D07",
@@ -126,12 +541,84 @@
         "E07"
       ],
       "question": "选择M1机制诊断、M2基线描述或组合，确定观察量、反事实控制/视窗、信息边界和每seed/condition汇总。",
-      "status": "UNRESOLVED",
+      "status": "HUMAN_DECISION_REQUIRED",
       "approval_required": true,
       "answer": null,
       "scientific_parameter_values": null,
       "implementation_validation": "PENDING_NOT_AUTHORIZED",
-      "scientific_execution": "PENDING_NOT_AUTHORIZED"
+      "scientific_execution": "PENDING_NOT_AUTHORIZED",
+      "definition_status": "UNRESOLVED",
+      "review": {
+        "id": "D07",
+        "sources": [
+          {
+            "file": "docs/user_request.txt",
+            "locator": "§32 (1115–1157);§43开头 (1431起);§100 (2730起)",
+            "establishes": "解释例非科学证据与机制假设"
+          },
+          {
+            "file": "docs/model_spec.md",
+            "locator": "48–58",
+            "establishes": "可观测边界与同输入"
+          },
+          {
+            "file": "docs/P2_design/mapping_criterion_options.md",
+            "locator": "7–24",
+            "establishes": "M1/M2原始方案与混杂风险"
+          }
+        ],
+        "facts": "局部EFT可能占用其他已到达H依赖的稀缺资源仅是假设；手例不能作主科学证据；B1–B5未增新baseline。",
+        "unknown": "机会观察量、合法比较/反事实控制/视窗、单位/分母、offline真值使用边界及每seed/condition摘要UNRESOLVED。",
+        "options": [
+          {
+            "label": "M1 同公开状态机制诊断",
+            "technical_meaning": "固定同一observation，对EFT放置和合法替代作预注册诊断",
+            "fairness": "较贴近mapping，但挑事件/视窗或改变后续排序会偏置",
+            "reproducibility": "分支/控制/视窗与身份必须固定",
+            "runtime_cost": "诊断/replay可能增加开销，尚未定量",
+            "statistical_interpretation": "事件是机制记录，不是独立seed；反事实不是候选收益证明"
+          },
+          {
+            "label": "M2 基线配对描述",
+            "technical_meaning": "使用现有获批方法子集、同输入和既有指标",
+            "fairness": "排序和映射同时变化，不能作mapping单因果归因",
+            "reproducibility": "保存配对inputs与全结果可复查",
+            "runtime_cost": "复用现有方法但仍有未批trial成本",
+            "statistical_interpretation": "只能描述差异；baseline赢家不能自动证明机会"
+          },
+          {
+            "label": "M1+M2 组合",
+            "technical_meaning": "机制诊断加描述性交叉核对",
+            "fairness": "可解释性更充分，但须避免只呈现一致结果",
+            "reproducibility": "两条链和分歧处置均须事先定义",
+            "runtime_cost": "通常需要两套诊断证据，预算未定",
+            "statistical_interpretation": "组合不是双倍独立样本，也不能补充未注册检验"
+          }
+        ],
+        "recommendation": "条件性建议优先审定M1，M2作描述性交叉核对；该方法偏好是设计建议，没有实验优越性证据。",
+        "kind": "ENGINEERING_SUGGESTION",
+        "basis": "原假设针对mapping机制；mapping_criterion_options.md:18–24已明确M2混杂与原建议，不构成已批准判据。",
+        "blocked": "无法定义“观察到机会”、分母或合法反事实，D08无法完成。",
+        "question": "D07：选M1、M2还是明确组合？请给观察量、控制/视窗、信息边界、单位/分母和seed/condition摘要；不新增正式scheduler。",
+        "closure": "观察前批准完整诊断定义，未来已知机制正负例验证及全事件审计链；本轮不计算。",
+        "status": "HUMAN_DECISION_REQUIRED",
+        "original_question": "选择M1机制诊断、M2基线描述或组合，确定观察量、反事实控制/视窗、信息边界和每seed/condition汇总。",
+        "contract_change": "不需改变现有研究契约、H/L科学门槛、统计方法、候选定义或seed分区；当前只补未定设计。若选项/数值会改变这些冻结规则，应拒绝该变更或另行处理冲突，本任务不得批准或实施。",
+        "original_source_revision": "a585c5bba0215c1ac4b2f126f5a752ae443b56b4",
+        "original_question_source": {
+          "file": "docs/P2_design/human_decisions.md",
+          "lines": "27–29",
+          "revision": "a585c5bba0215c1ac4b2f126f5a752ae443b56b4"
+        }
+      },
+      "approval_record": {
+        "action": null,
+        "approved_option": null,
+        "approved_values": null,
+        "reviewer": null,
+        "evidence_refs": [],
+        "reason": null
+      }
     },
     {
       "id": "D08",
@@ -144,12 +631,76 @@
         "E07"
       ],
       "question": "确定跨seed/条件聚合、稳定性、不确定性和三向结论的全部条件/参数及缺失无效处置，保持既有CI方法。",
-      "status": "UNRESOLVED",
+      "status": "HUMAN_DECISION_REQUIRED",
       "approval_required": true,
       "answer": null,
       "scientific_parameter_values": null,
       "implementation_validation": "PENDING_NOT_AUTHORIZED",
-      "scientific_execution": "PENDING_NOT_AUTHORIZED"
+      "scientific_execution": "PENDING_NOT_AUTHORIZED",
+      "definition_status": "UNRESOLVED",
+      "review": {
+        "id": "D08",
+        "sources": [
+          {
+            "file": "docs/statistical_protocol.md",
+            "locator": "3–16;34–47",
+            "establishes": "paired seed、判据先登记、完整性"
+          },
+          {
+            "file": "docs/metric_spec.md",
+            "locator": "13–39",
+            "establishes": "固定H/L/映射贡献阈值及各自范围"
+          },
+          {
+            "file": "docs/P2_design/mapping_criterion_options.md",
+            "locator": "26–42",
+            "establishes": "未批准三向模板"
+          }
+        ],
+        "facts": "seed为独立重采样单位；若用CI沿用既有paired-seed bootstrap及固定设置；稳定映射判据须在诊断选择前登记。H/L与P3映射贡献不能移作P2机会判据。",
+        "unknown": "机会量聚合范围、跨seed/场景稳定性、支持/否定充分条件、区间解释、invalid/不可行/缺失分母均UNRESOLVED。",
+        "options": [
+          {
+            "label": "A 仅描述性诊断",
+            "technical_meaning": "先描述机制与跨条件变化，不冒称已通过机会gate",
+            "fairness": "不选择显著结果，但不能用描述替代阶段证明",
+            "reproducibility": "仍需固定完整记录与聚合定义",
+            "runtime_cost": "可避免未授权推断计算；实际成本未测",
+            "statistical_interpretation": "不能仅据此输出科学SUPPORTED或解除P2阻断"
+          },
+          {
+            "label": "B 预注册三向判据",
+            "technical_meaning": "先定支持S/否定N/不足条件，若推断则用既定CI方法",
+            "fairness": "防止把不显著当否定或跨条件择优",
+            "reproducibility": "须保存所有参数、聚合与完整性规则版本",
+            "runtime_cost": "推断/审计有额外成本，不能现在造预算",
+            "statistical_interpretation": "需先明定contrast与分母，不能节点伪重复或改CI方法"
+          }
+        ],
+        "recommendation": "推荐先完整批准规则再观察；不推荐任何数值或未经批准的S/N模板。不能证明支持不等于证明无机会。",
+        "kind": "SOURCE_REQUIREMENT + LOGICAL_INFERENCE",
+        "basis": "statistical_protocol.md:34–36的时间顺序是原始要求；不支持不等于明确否定是逻辑解释，三向模板仍是提案。",
+        "blocked": "无法输出有可审计意义的SUPPORTED/NOT_SUPPORTED/INCONCLUSIVE，也不能判P2 PASS。",
+        "question": "D08：批准哪种完整机会判据？请填seed/条件聚合、稳定性和不确定性、支持/明确否定/不足规则及invalid/缺失处置，保持既有统计方法和H/L门槛。",
+        "closure": "在科学观察前批准完整规则/参数/范围，未来正负/不确定/invalid例验证；任何科学结论仍须实际结果。",
+        "status": "HUMAN_DECISION_REQUIRED",
+        "original_question": "确定跨seed/条件聚合、稳定性、不确定性和三向结论的全部条件/参数及缺失无效处置，保持既有CI方法。",
+        "contract_change": "不需改变现有研究契约、H/L科学门槛、统计方法、候选定义或seed分区；当前只补未定设计。若选项/数值会改变这些冻结规则，应拒绝该变更或另行处理冲突，本任务不得批准或实施。",
+        "original_source_revision": "a585c5bba0215c1ac4b2f126f5a752ae443b56b4",
+        "original_question_source": {
+          "file": "docs/P2_design/human_decisions.md",
+          "lines": "30–32",
+          "revision": "a585c5bba0215c1ac4b2f126f5a752ae443b56b4"
+        }
+      },
+      "approval_record": {
+        "action": null,
+        "approved_option": null,
+        "approved_values": null,
+        "reviewer": null,
+        "evidence_refs": [],
+        "reason": null
+      }
     },
     {
       "id": "D09",
@@ -163,12 +714,86 @@
         "E14"
       ],
       "question": "选择runner架构，裁决完成产物精确复用、失败/不完整默认停止、重试登记和P2源码dirty控制。",
-      "status": "UNRESOLVED",
+      "status": "HUMAN_DECISION_REQUIRED",
       "approval_required": true,
       "answer": null,
       "scientific_parameter_values": null,
       "implementation_validation": "PENDING_NOT_AUTHORIZED",
-      "scientific_execution": "PENDING_NOT_AUTHORIZED"
+      "scientific_execution": "PENDING_NOT_AUTHORIZED",
+      "definition_status": "UNRESOLVED",
+      "review": {
+        "id": "D09",
+        "sources": [
+          {
+            "file": "scripts/run_pipeline.py",
+            "locator": "26–39",
+            "establishes": "当前calibration未实现"
+          },
+          {
+            "file": "src/soc/validation/governance.py",
+            "locator": "181–208",
+            "establishes": "阶段/partition守卫"
+          },
+          {
+            "file": "docs/user_request.txt",
+            "locator": "§§90–92 (2506起)",
+            "establishes": "run身份与完整性"
+          },
+          {
+            "file": "docs/P2_design/runner_and_schema.md",
+            "locator": "6–44",
+            "establishes": "R1/R2、状态机与恢复提案"
+          },
+          {
+            "file": "docs/P2_design/scientific_artifacts.schema.draft.json",
+            "locator": "267–330",
+            "establishes": "仅一个timestamp的invocation草案"
+          }
+        ],
+        "facts": "只有未实现入口和已有seed/gate守卫；runner身份/状态机/幂等/错误处置均为未批准文档设计，未运行P2。",
+        "unknown": "R1/R2、完成复用与不完整恢复、retry条件/预算、dirty控制、明确开始/结束/中断字段和COMPLETE原子语义尚未批准或验证。",
+        "options": [
+          {
+            "label": "R1 单一正式入口扩展",
+            "technical_meaning": "在原calibration入口读取已批准manifest并执行同一守卫",
+            "fairness": "较少旁路；不能因为接口存在就假设gate正确",
+            "reproducibility": "统一来源链/命令利于复现",
+            "runtime_cost": "实现/回归开销未知，不实施本轮",
+            "statistical_interpretation": "重复复用不能增加样本数，失败仍保留"
+          },
+          {
+            "label": "R2 共守卫薄launcher",
+            "technical_meaning": "单独launcher调用同一正式守卫与计划",
+            "fairness": "易隔离组件，但双来源/漂移风险更高",
+            "reproducibility": "需证明接口与身份约束完全一致",
+            "runtime_cost": "另有launcher维护/一致性测试开销",
+            "statistical_interpretation": "同一计划不因两个入口变为两组独立样本"
+          }
+        ],
+        "recommendation": "条件性建议R1、只复用全部身份/hash/验证匹配的已完成产物、失败/不完整停止且无未注册retry；新增P2洁净控制是待批工程建议而非原已定要求。",
+        "kind": "ENGINEERING_SUGGESTION",
+        "basis": "runner_and_schema.md:8–21,33–40已有建议；现行强制洁净阶段与P2区别须保留，不能冒充科学契约。",
+        "blocked": "无科学入口、可靠恢复/重复检测或实际退出码/生命周期记录，不能执行P2。",
+        "question": "D09：选R1还是R2？请明确复用/不完整/失败与retry政策、P2源码dirty控制，以及start/end/中断/未启动的记录与原子完成规则。",
+        "closure": "批准完整接口/生命周期/策略，未来实现守卫、中断、损坏、幂等及故障测试；本轮不实现。",
+        "status": "HUMAN_DECISION_REQUIRED",
+        "original_question": "选择runner架构，裁决完成产物精确复用、失败/不完整默认停止、重试登记和P2源码dirty控制。",
+        "contract_change": "不需改变现有研究契约、H/L科学门槛、统计方法、候选定义或seed分区；当前只补未定设计。若选项/数值会改变这些冻结规则，应拒绝该变更或另行处理冲突，本任务不得批准或实施。",
+        "original_source_revision": "a585c5bba0215c1ac4b2f126f5a752ae443b56b4",
+        "original_question_source": {
+          "file": "docs/P2_design/human_decisions.md",
+          "lines": "33–36",
+          "revision": "a585c5bba0215c1ac4b2f126f5a752ae443b56b4"
+        }
+      },
+      "approval_record": {
+        "action": null,
+        "approved_option": null,
+        "approved_values": null,
+        "reviewer": null,
+        "evidence_refs": [],
+        "reason": null
+      }
     },
     {
       "id": "D10",
@@ -182,12 +807,90 @@
         "E11"
       ],
       "question": "选择可验证的科学envelope或新schema+adapter，批准namespace、规范化、ID、provenance、引用与旧P1兼容验证范围。",
-      "status": "UNRESOLVED",
+      "status": "HUMAN_DECISION_REQUIRED",
       "approval_required": true,
       "answer": null,
       "scientific_parameter_values": null,
       "implementation_validation": "PENDING_NOT_AUTHORIZED",
-      "scientific_execution": "PENDING_NOT_AUTHORIZED"
+      "scientific_execution": "PENDING_NOT_AUTHORIZED",
+      "definition_status": "UNRESOLVED",
+      "review": {
+        "id": "D10",
+        "sources": [
+          {
+            "file": "src/soc/model/schema.py",
+            "locator": "175–189",
+            "establishes": "fixture输入身份"
+          },
+          {
+            "file": "src/soc/simulator/engine.py",
+            "locator": "100–102",
+            "establishes": "fixture trace标签"
+          },
+          {
+            "file": "src/soc/validation/trace.py",
+            "locator": "71–79",
+            "establishes": "只接收fixture身份"
+          },
+          {
+            "file": "docs/P2_design/runner_and_schema.md",
+            "locator": "46–79",
+            "establishes": "S1/S2及验证待办"
+          },
+          {
+            "file": "docs/P2_design/scientific_artifacts.schema.draft.json",
+            "locator": "267–330;570–617",
+            "establishes": "生命周期与COMPLETE约束缺口"
+          }
+        ],
+        "facts": "科学结构JSON未获批/未作语义验证；现有P1序列化/validator固定fixture origin；改标签不能建立科学血缘。",
+        "unknown": "S1/S2兼容路线、科学namespace、canonicalization、workload/run/attempt身份与引用、完整语义/生命周期约束、P1兼容证明均待决定。",
+        "options": [
+          {
+            "label": "S1 envelope",
+            "technical_meaning": "原payload和标签保留，外层加可验证科学出生链",
+            "fairness": "原样保存不意味着旧fixture可变样本；当前硬编码标签冲突未验证",
+            "reproducibility": "需明确内外身份及真实generator引用链",
+            "runtime_cost": "核心改动也许较少但不能承诺；血缘验证成本未知",
+            "statistical_interpretation": "来源未证实的数据不能纳入任何科学样本"
+          },
+          {
+            "label": "S2 版本化科学schema+adapter",
+            "technical_meaning": "另设科学input/trace family，旧P1字节/ID保持",
+            "fairness": "语义较清楚，但需证明adapter不改物理/信息边界",
+            "reproducibility": "规范化、版本、引用与P1回归必须固定",
+            "runtime_cost": "新接口与回归成本未知，须另行授权",
+            "statistical_interpretation": "适配引入的差异必须先验证，不能与方法效应混淆"
+          }
+        ],
+        "recommendation": "不选S1/S2，先审兼容可行性；要求独立科学来源链、拒绝fixture改标签，并补充生命周期/COMPLETE语义验证。",
+        "kind": "SOURCE_REQUIREMENT + ENGINEERING_SUGGESTION",
+        "basis": "run来源要求和信息边界为原规格；S1可行性未证实，JSON注释不是验证约束，故没有证据优选架构。",
+        "blocked": "不能证明输入/结果的科学身份、完整性或P1兼容，P2仍不能执行。",
+        "question": "D10：选择S1还是S2并给兼容论证？请审定namespace、规范化/ID、来源/引用、start/end与完成状态语义及正反例/P1回归范围；不准只改fixture标签。",
+        "closure": "人工批准字段及语义，未来adapter来源、hash/ref、伪标签、COMPLETE反例、旧P1兼容测试；parse不是schema正确证明。",
+        "status": "HUMAN_DECISION_REQUIRED",
+        "original_question": "选择可验证的科学envelope或新schema+adapter，批准namespace、规范化、ID、provenance、引用与旧P1兼容验证范围。",
+        "contract_change": "不需改变现有研究契约、H/L科学门槛、统计方法、候选定义或seed分区；当前只补未定设计。若选项/数值会改变这些冻结规则，应拒绝该变更或另行处理冲突，本任务不得批准或实施。",
+        "original_source_revision": "a585c5bba0215c1ac4b2f126f5a752ae443b56b4",
+        "original_question_source": {
+          "file": "docs/P2_design/human_decisions.md",
+          "lines": "37–40",
+          "revision": "a585c5bba0215c1ac4b2f126f5a752ae443b56b4"
+        }
+      },
+      "approval_record": {
+        "action": null,
+        "approved_option": null,
+        "approved_values": null,
+        "reviewer": null,
+        "evidence_refs": [],
+        "reason": null
+      }
     }
-  ]
+  ],
+  "review_revision": "a585c5bba0215c1ac4b2f126f5a752ae443b56b4",
+  "decisions_resolved": 0,
+  "decisions_blocked": 0,
+  "review_status": "DRAFT_HUMAN_REVIEW_PENDING"
 }

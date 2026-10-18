@@ -38,3 +38,34 @@ artifact manifest 对应前次提交，不重写它来覆盖新状态；本包�
 
 本轮停止。请先裁决 D01–D10，并在任何以后工作前提供完整参数/判据与明确的实现授权；
 本包不因自动默认、JSON 通过或推荐措辞而变成已批准预注册。
+
+## 本轮 D01–D10 Human Decision Review（起始 a585c5b）
+
+实际起始 HEAD 为 a585c5bba0215c1ac4b2f126f5a752ae443b56b4，work分支，origin/work
+相同，工作树干净。新的原始命令记录保存在 review/repository_audit.json；P0/P1只读
+门禁均退出0，初始设计287项清单和P1的122项清单匹配。没有重跑科学过程或P2入口。
+
+原定义10项全部找到；原始完整问句和目录快照保存在review/中。复用human_decisions.md
+作为十二字段完整brief，原清单原文保留；同一D01–D10目录加入审查字段，不设第二套编号。
+逐来源CSV有47行；另备依赖图和未勾选人工审批记录。
+
+三分类互斥计数为 RESOLVED=0、HUMAN_DECISION_REQUIRED=10、BLOCKED=0。BLOCKED在此
+指缺原始定义/来源或无法形成合规审查材料，不是P2执行阻断计数。全部10项未经人工决定，
+P2 preflight和原科学gate仍BLOCKED，没有READY/PASS。B1/B2/B3仍UNRESOLVED；
+B4/B5的DESIGNED仅为不完整、未批准、未实施/验证的文档设计。
+
+本轮特别发现：schema invocation只有单个timestamp而非明确开始/结束/中断记录，
+COMPLETE对exit/trace/metrics/replay的语义依赖仅在注释中，来源/兼容适配也未证实。
+静态发现已交回D09/D10，不修改schema或任何实现，不用伪科学实例“验证”。
+各选项都明确分析公平、复现、成本和统计解释；推荐区分SOURCE_REQUIREMENT、
+LOGICAL_INFERENCE与ENGINEERING_SUGGESTION，不代填分布、概率、门槛、范围或预算。
+
+审批记录中批准/拒绝/暂缓/待补证据均0，未记录10。允许用户随后明确记录动作、
+版本和完整值/规则，但本轮不自动接纳推荐、补全参数或启动实现/实验。只要冻结规则
+会被改变，就不能在本任务中采纳该改变。输出的文档完整性不等于schema/runner正确。
+
+本轮检查结果在review/document_checks.json，记录本次修改白名单和保护边界；旧audit/
+checks保留为历史。本轮只有决策审查文档、状态和文档hash清单更新。P0/P1证据、旧P2
+科学前置BLOCKED记录、源码/scripts/tests/configs、原协议和不可执行matrix/schema均保留。
+本轮0科学workload、0新seed，无保留分区realization/outcome访问及解锁。完成正常文档
+交付后停止，等待用户审阅D01–D10。

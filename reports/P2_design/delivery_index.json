@@ -19,9 +19,18 @@
   "previous_preflight_index": "reports/P2_delivery_index.json",
   "previous_gate": "reports/P2_mapping_opportunity.json",
   "artifact_manifest": "checkpoints/P2_design_artifact_manifest.json",
-  "document_check_report": "reports/P2_design/document_checks.json",
+  "document_check_report": "reports/P2_design/review/document_checks.json",
   "final_audit": "reports/P2_design/final_audit.md",
   "final_enclosing_git_head_command": "git rev-parse HEAD",
   "git_receipt": "reports/P2_design/git_checkpoint.json",
-  "audited_draft_checkpoint": "9b57bfdf893091fcb25f72f9a503347454233492"
+  "audited_draft_checkpoint": "9b57bfdf893091fcb25f72f9a503347454233492",
+  "human_decision_brief": "docs/P2_design/human_decisions.md",
+  "human_approval_checklist": "docs/P2_design/P2_human_approval_checklist.md",
+  "decision_dependency_map": "docs/P2_design/P2_decision_dependency_map.md",
+  "decision_traceability_csv": "docs/P2_design/P2_D01_D10_traceability.csv",
+  "human_review_audit": "reports/P2_design/review/repository_audit.json",
+  "human_review_original_catalog": "reports/P2_design/review/original_decision_catalog.json",
+  "human_review_original_questions": "reports/P2_design/review/original_human_decisions.md",
+  "previous_document_check_report": "reports/P2_design/document_checks.json",
+  "review_starting_head": "a585c5bba0215c1ac4b2f126f5a752ae443b56b4"
 }

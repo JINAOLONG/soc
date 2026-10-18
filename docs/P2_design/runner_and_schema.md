@@ -77,3 +77,21 @@ S2 新版本 schema：独立 scientific input/trace family 与显式 adapter，�
 generator 证据、跨方法不同输入；回归：旧 P0/P1 原始文件不改，批准适配器不泄漏未来信息。
 之后还需要未来科学 execution 验证真实 plan 与完整输出吻合。本轮只做文档一致性和
 JSON 结构审阅，绝不宣称以上行为验证通过。
+
+## 本轮 B4/B5 设计充分性审查（未实现、未作行为验证）
+
+| 检查项 | 当前文档/结构已经描述什么 | 尚未明确或验证 | 来源 / 关联决定 |
+|---|---|---|---|
+| run/input身份 | run_id/attempt_id、workload_identity_ref、hash字段有草案 | ID编码/canonicalization、冲突语义未批；无真实身份检查实现 | schema草案472–565；D09/D10 |
+| source/model/config/workload hash | sourceIdentity及各ref/hash已有结构 | 实际文件解析、hash/link一致性和源码脏状态政策未验证 | schema草案53–85,194–265；D09/D10 |
+| seed/partition | CALIBRATION和现有seed枚举有结构 | 没有科学runner运行前/恢复时守卫证明 | schema草案219–236,504–521；governance.py:181–208；D05/D09 |
+| 开始/结束/exit/失败 | invocation有process_started、exit_code、stdout/stderr/error | 只有单个timestamp，未分别规定started_at/ended_at或等价字段；spawn失败/中断时哪些字段可缺、时间先后语义未明确 | schema草案267–330；D09/D10。字段名是待审补充建议，不已注册 |
+| trace验证/指标派生 | traceValidation/metricDerivation有ref和状态 | ref对应的真实验证、独立复算、可用样本条件未实现验证 | schema草案331–471；D09/D10 |
+| 中断恢复/重复执行 | 文档建议身份完整匹配才复用、失败/不完整停 | 无恢复代码或已批重试政策；部分写入、锁/并发、attempt链接和中断记录的精确规则未批 | 本文件31–40；D09/D10 |
+| 重复产物/失败关闭 | 文档要求冲突拒绝、阶段完整身份集 | 原子完成/重复检测未实现或故障测试 | 本文件38–44；D09 |
+| fixture与科学隔离 | S1/S2、generator lineage、fixture_derivation=false有提案 | false只是声明；envelope是否能解决硬编码origin未证实，不能改标签计为样本 | schema草案136–192；schema.py:175–189、engine.py:100、trace.py:75；D10 |
+| 完整P2判定 | expected identities和criterion_ref有草案 | COMPLETE依赖exit=0、合法trace、metrics/replay的条件仅写在注释，未编码或验证；P2支持判据仍未批 | schema草案570–617,619起；本文件42–44；D08–D10 |
+
+静态审阅发现“描述存在”与“语义落实”有差距，不能用DESIGNED或JSON解析成功关闭B4/B5。
+本轮保留schema草案原件不改，不创建科学样本或测试实例；仅把缺口交回D09/D10审定。
+原P1正确性PASS并非对未来科学适配/恢复/P2门禁的验证。发现草案缺口也不倒推P1失败。

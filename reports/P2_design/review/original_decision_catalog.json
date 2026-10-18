@@ -1,0 +1,193 @@
+{
+  "document_kind": "HUMAN_DECISION_CATALOG",
+  "status": "DRAFT_UNAPPROVED",
+  "human_decisions_required": 10,
+  "approved_decisions": [],
+  "decisions": [
+    {
+      "id": "D01",
+      "blockers": [
+        "P2-B1"
+      ],
+      "source_refs": [
+        "E01",
+        "E02",
+        "E03"
+      ],
+      "question": "选择显式角色 DAG 还是确定性 grammar，并提供三场景的完整8/16节点拓扑、角色/H-L归属及尺寸规则。",
+      "status": "UNRESOLVED",
+      "approval_required": true,
+      "answer": null,
+      "scientific_parameter_values": null,
+      "implementation_validation": "PENDING_NOT_AUTHORIZED",
+      "scientific_execution": "PENDING_NOT_AUTHORIZED"
+    },
+    {
+      "id": "D02",
+      "blockers": [
+        "P2-B1"
+      ],
+      "source_refs": [
+        "E02",
+        "E03"
+      ],
+      "question": "选择有来源的profile表或批准的合成规则，提供兼容集合、各资源估计/实际代价及全部参数/来源。",
+      "status": "UNRESOLVED",
+      "approval_required": true,
+      "answer": null,
+      "scientific_parameter_values": null,
+      "implementation_validation": "PENDING_NOT_AUTHORIZED",
+      "scientific_execution": "PENDING_NOT_AUTHORIZED"
+    },
+    {
+      "id": "D03",
+      "blockers": [
+        "P2-B1"
+      ],
+      "source_refs": [
+        "E02",
+        "E03"
+      ],
+      "question": "提供边MiB与type-pair latency/bandwidth的完整表或有来源规则，保留既有通信语义。",
+      "status": "UNRESOLVED",
+      "approval_required": true,
+      "answer": null,
+      "scientific_parameter_values": null,
+      "implementation_validation": "PENDING_NOT_AUTHORIZED",
+      "scientific_execution": "PENDING_NOT_AUTHORIZED"
+    },
+    {
+      "id": "D04",
+      "blockers": [
+        "P2-B1"
+      ],
+      "source_refs": [
+        "E01",
+        "E02",
+        "E03",
+        "E08"
+      ],
+      "question": "确定keyed扰动/PRNG/版本、到达/突发、H-L组成、deadline、服务数或窗口及停止边界的完整定义/值。",
+      "status": "UNRESOLVED",
+      "approval_required": true,
+      "answer": null,
+      "scientific_parameter_values": null,
+      "implementation_validation": "PENDING_NOT_AUTHORIZED",
+      "scientific_execution": "PENDING_NOT_AUTHORIZED"
+    },
+    {
+      "id": "D05",
+      "blockers": [
+        "P2-B2"
+      ],
+      "source_refs": [
+        "E01",
+        "E02",
+        "E04",
+        "E08"
+      ],
+      "question": "确定枚举或有限轴展开，提供所有值/方法子集及理由/顺序/预算/seed到trial-condition-workload的精确映射。",
+      "status": "UNRESOLVED",
+      "approval_required": true,
+      "answer": null,
+      "scientific_parameter_values": null,
+      "implementation_validation": "PENDING_NOT_AUTHORIZED",
+      "scientific_execution": "PENDING_NOT_AUTHORIZED"
+    },
+    {
+      "id": "D06",
+      "blockers": [
+        "P2-B1",
+        "P2-B2"
+      ],
+      "source_refs": [
+        "E01",
+        "E02",
+        "E05",
+        "E06"
+      ],
+      "question": "确定H可行性对照、压力/负载分类、配置选择/平局以及不达标、不可行、无效、失败、不完整的处置规则。",
+      "status": "UNRESOLVED",
+      "approval_required": true,
+      "answer": null,
+      "scientific_parameter_values": null,
+      "implementation_validation": "PENDING_NOT_AUTHORIZED",
+      "scientific_execution": "PENDING_NOT_AUTHORIZED"
+    },
+    {
+      "id": "D07",
+      "blockers": [
+        "P2-B3"
+      ],
+      "source_refs": [
+        "E01",
+        "E03",
+        "E04",
+        "E07"
+      ],
+      "question": "选择M1机制诊断、M2基线描述或组合，确定观察量、反事实控制/视窗、信息边界和每seed/condition汇总。",
+      "status": "UNRESOLVED",
+      "approval_required": true,
+      "answer": null,
+      "scientific_parameter_values": null,
+      "implementation_validation": "PENDING_NOT_AUTHORIZED",
+      "scientific_execution": "PENDING_NOT_AUTHORIZED"
+    },
+    {
+      "id": "D08",
+      "blockers": [
+        "P2-B3"
+      ],
+      "source_refs": [
+        "E05",
+        "E06",
+        "E07"
+      ],
+      "question": "确定跨seed/条件聚合、稳定性、不确定性和三向结论的全部条件/参数及缺失无效处置，保持既有CI方法。",
+      "status": "UNRESOLVED",
+      "approval_required": true,
+      "answer": null,
+      "scientific_parameter_values": null,
+      "implementation_validation": "PENDING_NOT_AUTHORIZED",
+      "scientific_execution": "PENDING_NOT_AUTHORIZED"
+    },
+    {
+      "id": "D09",
+      "blockers": [
+        "P2-B4"
+      ],
+      "source_refs": [
+        "E07",
+        "E09",
+        "E11",
+        "E14"
+      ],
+      "question": "选择runner架构，裁决完成产物精确复用、失败/不完整默认停止、重试登记和P2源码dirty控制。",
+      "status": "UNRESOLVED",
+      "approval_required": true,
+      "answer": null,
+      "scientific_parameter_values": null,
+      "implementation_validation": "PENDING_NOT_AUTHORIZED",
+      "scientific_execution": "PENDING_NOT_AUTHORIZED"
+    },
+    {
+      "id": "D10",
+      "blockers": [
+        "P2-B5"
+      ],
+      "source_refs": [
+        "E03",
+        "E07",
+        "E10",
+        "E11"
+      ],
+      "question": "选择可验证的科学envelope或新schema+adapter，批准namespace、规范化、ID、provenance、引用与旧P1兼容验证范围。",
+      "status": "UNRESOLVED",
+      "approval_required": true,
+      "answer": null,
+      "scientific_parameter_values": null,
+      "implementation_validation": "PENDING_NOT_AUTHORIZED",
+      "scientific_execution": "PENDING_NOT_AUTHORIZED"
+    }
+  ]
+}

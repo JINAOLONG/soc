@@ -12,8 +12,11 @@
 4. calibration_options.md、calibration_matrix.draft.json：选项及有明确 null/UNRESOLVED 的 NON_EXECUTABLE 矩阵。
 5. mapping_criterion_options.md：映射机会定义的备选方案及未决定的判定规则。
 6. runner_and_schema.md、scientific_artifacts.schema.draft.json：未来 runner 和科学产物设计。
-7. human_decisions.md：D01–D10 共十个待人工裁决的决定组；每组必须同时补齐其值/规则，
-   不能仅回答“同意开展 P2”。
+7. human_decisions.md：复用原文件作为完整十二字段决策说明（等价于
+   P2_D01_D10_human_decision_brief.md），保留原清单原文。每组须补齐值/规则，
+   不能仅回答“同意开展 P2”。P2_D01_D10_traceability.csv 提供逐来源行追踪；
+   P2_decision_dependency_map.md 说明依赖与可并行讨论项；
+   P2_human_approval_checklist.md 分开记录批准/拒绝/暂缓/待补证据，均不预选。
 8. ../../reports/P2_design/design_status.json 与 delivery_index.json：机器状态与交付索引。
 
 本包用以下类别区分陈述：`SOURCE_SUPPORTED` 已有协议明确；`PROPOSED_REQUIRES_APPROVAL`
