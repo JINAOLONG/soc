@@ -1,0 +1,264 @@
+# SOC P2 — Calibration and Mapping-Opportunity Experiment
+
+## 1. Objective and authorization
+
+Project: `soc`
+
+Repository: `https://github.com/JINAOLONG/soc.git`
+
+P0 literature/protocol audit: PASS.
+
+P1 simulator and baseline correctness: PASS.
+
+The committed-source verification checkpoint reported by the previous task is:
+
+`d60b94a791580af09fc0b40827eb57de439f1916`
+
+This is an audit checkpoint, not an assumption about the current HEAD. Resolve the live Git state before acting.
+
+**This task authorizes P2 only: calibration and mapping-opportunity investigation.**
+
+It does not authorize P3 development experiments, independent validation, formal evaluation, threshold changes, or changes to the frozen scientific protocol.
+
+## 2. Establish the actual starting state
+
+Inspect:
+
+- `AGENTS.md`
+- `docs/user_request.txt`
+- `docs/model_spec.md`
+- `docs/baseline_spec.md`
+- `docs/metric_spec.md`
+- `docs/research_contract.md`
+- `configs/research_protocol.json`
+- The committed seed partition metadata
+- P0 audit outputs and literature evidence
+- P1 correctness reports and artifact manifests
+- Existing P2 requirements, gate definitions, and pipeline entry points
+- Current source, tests, scripts, reports, and Git history
+
+Run:
+
+```bash
+git rev-parse --show-toplevel
+git remote -v
+git branch --show-current
+git rev-parse HEAD
+git status --short
+git log --oneline --decorate -10
+git ls-remote origin refs/heads/work
+```
+
+Do not assume the reported P1 checkpoint is the current HEAD.
+
+Confirm that the remote is the intended `soc` repository and that the existing P1 commit is present in the history.
+
+If there are uncommitted changes, preserve them. Do not reset, clean, overwrite, or force-push.
+
+## 3. Revalidate prerequisites
+
+Before any scientific workload is generated:
+
+1. Verify the actual P0 formal audit status.
+2. Verify the P1 correctness gate and its committed-source evidence.
+3. Verify the source, configuration, and test identities required by the current protocol.
+4. Confirm that the P1 implementation has not changed since its passing verification.
+5. Check the six required literature inputs and their recorded SHA-256 values if the formal prerequisite requires the PDFs to be available.
+6. Confirm that the existing P2 specification and experiment matrix are complete enough to execute without inventing rules.
+
+The two user-supplied PDFs are private inputs in the ignored literature cache. Do not assume they exist in every Cloud task. Do not fabricate missing evidence or commit copyrighted PDFs.
+
+If a mandatory prerequisite is missing or invalid, record the precise blocker and stop before running scientific workloads.
+
+## 4. Freeze the P2 execution scope
+
+Use the existing approved P2 specification, experiment matrix, metrics, and exit criteria.
+
+Before running workloads, create or update a P2 execution manifest that records:
+
+- The exact source commit and source hash.
+- The model and configuration hashes.
+- The exact calibration seed list.
+- The workload and experiment matrix.
+- The permitted algorithms and baseline identifiers.
+- The required outputs and metric definitions.
+- The existing P2 acceptance criteria.
+- The exact command to execute.
+- The output directories and expected artifact schema.
+- The conditions that require stopping.
+
+Do not introduce a new candidate, new threshold, new metric definition, new statistical method, or alternative seed partition.
+
+If a material P2 design choice is not uniquely determined by the existing specification, stop and report the decision required from the user.
+
+Do not substitute an improvised experiment for a missing preregistered experiment.
+
+## 5. Strict seed isolation
+
+The project's registered partitions include calibration, development, independent validation, and formal evaluation.
+
+For this task, use **only the 10 seed identities already registered for calibration**.
+
+Read the exact values from the committed seed metadata. Do not generate replacements.
+
+Before execution, assert that every planned workload uses a registered calibration seed and that no other partition is selected.
+
+During execution:
+
+- Do not read or generate development realizations.
+- Do not access independent-validation realizations or outcomes.
+- Do not access formal-evaluation realizations or outcomes.
+- Do not unlock later stages.
+- Do not generate new seed identities.
+- Do not reuse legacy scientific outputs as new P2 results.
+
+If seed isolation cannot be established, stop before execution.
+
+## 6. Execute P2 only
+
+If and only if all prerequisites and the P2 specification are valid, run the exact existing P2 pipeline entry point.
+
+Follow the registered experiment matrix and metric definitions.
+
+Investigate the mapping opportunity specified by the project, using only the permitted calibration workloads.
+
+Record the actual evidence needed to understand:
+
+- Workload structure and DAG characteristics.
+- Heterogeneous resource compatibility.
+- Execution-cost variation across resources.
+- Communication and data-transfer costs.
+- Resource availability and contention.
+- The mapping opportunities identified by the registered methodology.
+- Differences between the registered baselines, where the P2 protocol requires them.
+- Invalid, infeasible, or incomplete schedules.
+- Any calibration failure, simulator error, or missing output.
+
+Distinguish measured observations from interpretation.
+
+Do not treat mapping opportunity as proof that a proposed scheduling algorithm will achieve the intended H/L performance improvements.
+
+Do not claim scientific performance benefits unless the existing P2 protocol explicitly defines and supports such a conclusion.
+
+Do not tune parameters against future development, validation, or formal outcomes.
+
+## 7. Preserve correctness and reproducibility
+
+For every generated P2 workload and trace:
+
+1. Record the actual seed identity.
+2. Record source and configuration hashes.
+3. Record the exact command and exit code.
+4. Validate the trace with the independent offline validator.
+5. Verify the expected invariants.
+6. Recompute the required metrics according to the frozen metric specification.
+7. Preserve raw outputs, logs, and error records.
+8. Verify that identical inputs produce the required deterministic outputs.
+
+A failed workload or invalid trace must remain visible in the evidence. Do not silently delete or rerun failures to manufacture a PASS.
+
+Any retry must be explicitly allowed by the existing protocol and fully recorded. If retries are prohibited or unspecified, stop and report the failure.
+
+Do not modify the simulator or scheduler implementation during this experiment. If a correctness defect is discovered, stop the affected experiment and report the defect for a separately scoped repair.
+
+## 8. Required deliverables
+
+Use the repository's existing directory structure and artifact schemas.
+
+Produce, or update equivalent existing artifacts for:
+
+- P2 execution manifest.
+- P2 workload and mapping-opportunity report.
+- Per-run execution records.
+- Trace validation results.
+- Metric and output integrity checks.
+- Source/configuration/input hash manifest.
+- A machine-readable P2 gate decision.
+- A final audit report and delivery index.
+
+Every conclusion must link to the corresponding raw evidence.
+
+The report must clearly distinguish:
+
+- Successfully completed calibration runs.
+- Failed or invalid runs.
+- Missing outputs.
+- Mapping-opportunity observations.
+- Findings that are only suggestive.
+- Claims that remain untested.
+
+Do not claim that P2 proves H benefit, L budget compliance, a final scheduling advantage, or readiness for publication unless the registered P2 protocol explicitly supports that conclusion.
+
+## 9. GitHub preservation
+
+The repository is the project's authoritative versioned source.
+
+Before committing:
+
+- Inspect `git diff` and `git status`.
+- Confirm that P0 and P1 historical evidence remains preserved.
+- Confirm that scientific thresholds, CI methods, seed partitions, and candidate definitions are unchanged.
+- Confirm that private PDFs and temporary environments are not tracked.
+- Confirm that no validation or formal unlock artifact was created.
+
+Commit and normally push the P2 results and audit documents to `origin/work` only if the artifacts are internally consistent and the remote can be updated without overwriting unrelated work.
+
+If the remote has advanced, fetch and inspect the changes before integrating.
+
+Do not force-push or rewrite history.
+
+After pushing, verify the remote SHA against the intended commit.
+
+## 10. Mandatory stop conditions
+
+Stop without starting P2 workloads if:
+
+- P0 or P1 prerequisites fail.
+- Required P2 specifications or experiment definitions are missing.
+- Calibration seed isolation cannot be established.
+- Required inputs or configurations are unavailable.
+- The registered gate cannot be executed without changing its logic.
+
+Stop P2 immediately if a correctness failure invalidates the run.
+
+After P2 finishes, do not automatically enter P3.
+
+P3 requires a separate authorization and must use its own registered development partition.
+
+## 11. Final status
+
+Report actual results using:
+
+```text
+PROJECT_NAME=soc
+P0_STATUS=<actual>
+P1_CORRECTNESS_STATUS=<actual>
+P2_SPECIFICATION_STATUS=<FROZEN/BLOCKED>
+P2_PREREQUISITES_PASS=<YES/NO>
+CALIBRATION_SEED_COUNT_REGISTERED=<actual>
+CALIBRATION_SEED_COUNT_USED=<actual>
+NON_CALIBRATION_PARTITIONS_ACCESSED=NO
+NEW_SEEDS_GENERATED=NO
+P2_WORKLOADS_PLANNED=<actual>
+P2_WORKLOADS_COMPLETED=<actual>
+P2_WORKLOADS_FAILED=<actual>
+INVALID_TRACES=<actual>
+INDEPENDENT_TRACE_VALIDATION_PASS=<YES/NO/NOT_RUN>
+MAPPING_OPPORTUNITY_STATUS=<SUPPORTED/NOT_SUPPORTED/INCONCLUSIVE/NOT_RUN>
+P2_GATE_STATUS=<PASS/FAIL/BLOCKED/NOT_RUN>
+SCIENTIFIC_THRESHOLDS_CHANGED=NO
+CI_METHOD_CHANGED=NO
+SEED_PARTITIONS_CHANGED=NO
+SCHEDULER_SOURCE_CHANGED=NO
+INDEPENDENT_VALIDATION_ACCESSED=NO
+FORMAL_EVALUATION_ACCESSED=NO
+VALIDATION_UNLOCKED=NO
+FORMAL_UNLOCKED=NO
+GIT_COMMIT=<actual hash or NONE>
+GITHUB_PUSH_STATUS=<actual status>
+WORKTREE=<actual status>
+NEXT_SAFE_ACTION=<specific action>
+STOP=YES
+```
+
+Begin with prerequisite and specification verification. Execute P2 only if all existing requirements are satisfied. Stop after P2 and await separate authorization for P3.

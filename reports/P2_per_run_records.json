@@ -1,0 +1,9 @@
+{
+  "stage": "P2",
+  "status": "NOT_RUN",
+  "planned_runs": [],
+  "runs": [],
+  "completed": 0,
+  "failed": 0,
+  "reason": "Mandatory pre-execution stop; absence of a runnable plan is not a successful empty experiment"
+}

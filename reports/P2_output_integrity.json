@@ -1,0 +1,11 @@
+{
+  "stage": "P2",
+  "scientific_integrity_status": "NOT_APPLICABLE_NOT_RUN",
+  "generated_workloads": 0,
+  "scientific_metrics_computed": false,
+  "missing_scientific_outputs": "NOT_APPLICABLE_NO_EXECUTABLE_PLAN; required capabilities and definitions are missing as listed in P2_calibration.md",
+  "p1_manifest_files_verified": 122,
+  "p1_manifest_missing": [],
+  "p1_manifest_mismatch": [],
+  "prohibition": "Zero runs cannot satisfy P2 scientific completeness or mapping-opportunity requirements"
+}

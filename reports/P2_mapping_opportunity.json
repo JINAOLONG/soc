@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "stage": "P2",
+  "status": "BLOCKED",
+  "decision_type": "PRE_EXECUTION_PREREQUISITE_STOP_RECORD_NOT_A_NEW_GATE_IMPLEMENTATION",
+  "p0_status": "PASS",
+  "p1_correctness_status": "PASS",
+  "p2_specification_status": "BLOCKED",
+  "p2_prerequisites_pass": false,
+  "blocker_ids": [
+    "P2-B1",
+    "P2-B2",
+    "P2-B3",
+    "P2-B4",
+    "P2-B5"
+  ],
+  "mapping_opportunity_status": "NOT_RUN",
+  "scientific_workloads_run": 0,
+  "formal_p2_gate_executed": false,
+  "p2_pipeline_executed": false,
+  "p2_audit_exit_code": null,
+  "exit_code_explanation": "NOT_RUN: no existing executable P2 gate/pipeline; static return 3 was not executed",
+  "evidence_paths": [
+    "reports/P2_preflight.json",
+    "reports/P2_execution_manifest.json",
+    "reports/P2_calibration.md"
+  ],
+  "next_safe_action": "Resolve and preregister the missing P2 definitions and separately scoped scientific runner before any workload generation",
+  "stop": true
+}

@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "stage": "P2",
+  "status": "BLOCKED",
+  "scope": "Non-executed P2 task; audit documentation only",
+  "starting_head": "5310208b141e66ab6e3e6dbf002d16237e81b9e7",
+  "preflight": "reports/P2_preflight.json",
+  "execution_manifest": "reports/P2_execution_manifest.json",
+  "calibration_report": "reports/P2_calibration.md",
+  "mapping_report": "reports/P2_mapping_opportunity.md",
+  "runtime_budget": "reports/P2_runtime_budget.md",
+  "timing_protocol_status": "reports/P2_engineering_timing_protocol.md",
+  "per_run_records": "reports/P2_per_run_records.json",
+  "trace_validation": "reports/P2_trace_validation_results.json",
+  "output_integrity": "reports/P2_output_integrity.json",
+  "gate": "reports/P2_mapping_opportunity.json",
+  "machine_status": "reports/P2_delivery_status.json",
+  "source_input_evidence_manifest": "checkpoints/P2_artifact_manifest.json",
+  "prior_status_snapshot": "reports/P2_previous_STATUS.md",
+  "final_enclosing_git_head_command": "git rev-parse HEAD",
+  "final_audit_report": "reports/P2_final_audit.md"
+}

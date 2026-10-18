@@ -1,0 +1,109 @@
+{
+  "schema_version": 1,
+  "stage": "P2",
+  "status": "BLOCKED_NOT_EXECUTABLE",
+  "scope": "Pre-execution evidence only; not a frozen or improvised experiment",
+  "source_commit": "5310208b141e66ab6e3e6dbf002d16237e81b9e7",
+  "source_sha256": "32860d432e7fef62f03fef64be3118c2ba260de6850d8f88a447fb7589cf412b",
+  "p1_implementation_commit": "d60b94a791580af09fc0b40827eb57de439f1916",
+  "model_and_configuration_sha256": {
+    "docs/model_spec.md": "3f74116fa6cb85e4f2db1c96d246ac830a282be28847a0af21184fde2e17197b",
+    "docs/baseline_spec.md": "54a1cdb86d0235671a7d1ece31e489289c026bf083f33388580b6f3fdbb42e12",
+    "docs/workload_spec.md": "a098008f3abe47f4cfb830685009b19bf4d3555a8e370ad242a2fce1debea606",
+    "docs/metric_spec.md": "c4b912fc672979ddc763d882e546b7a92bf53090e5b5dddd5777e2e867df182a",
+    "docs/statistical_protocol.md": "f9c0eeb6e76f68330ba3e5d8d90e58d175c3947a1948bb41b26ad50dbc041e8a",
+    "configs/research_protocol.json": "e019b6830b6bf08f39b13a456d6123fca0d634478dae475b989c07617a45cdfc",
+    "configs/seed_partitions.json": "e5ded56e2fbe1ba2ed992a3026f3c5780d90afb50aaab4d1d8b75b8c014f4f31"
+  },
+  "calibration_seed_partition": "CALIBRATION",
+  "calibration_seed_list": [
+    1677814459331049,
+    328864591381281,
+    336367723740484,
+    3743487258850314,
+    2011277673915613,
+    4276916424184236,
+    265049119938611,
+    2453465547245351,
+    2784239167199445,
+    3512531139176427
+  ],
+  "calibration_seed_count_registered": 10,
+  "calibration_seeds_used": [],
+  "seed_isolation": "Only committed CALIBRATION identities may be used; no workload materialized",
+  "permitted_baseline_ids": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5"
+  ],
+  "focal_reference": "B2",
+  "candidate_methods_allowed": false,
+  "main_grid_constraints": {
+    "scene": [
+      "COCKPIT",
+      "ADAS",
+      "FUSION"
+    ],
+    "load": [
+      "light",
+      "medium",
+      "near-saturation"
+    ],
+    "size": [
+      8,
+      16
+    ]
+  },
+  "calibration_trial_matrix": null,
+  "planned_runs": [],
+  "executable_workloads_planned": 0,
+  "workload_parameter_specification": null,
+  "registered_mapping_opportunity_criterion": null,
+  "registered_p2_gate_command": null,
+  "execution_command": null,
+  "inspected_unimplemented_entry": [
+    ".venv/bin/python",
+    "scripts/run_pipeline.py",
+    "--stage",
+    "calibration"
+  ],
+  "entry_invoked": false,
+  "required_outputs": [
+    "workload materialization and identity",
+    "per-run source/config/input hashes, command, exit code and raw logs",
+    "independent trace validation and metric recomputation",
+    "deterministic replay",
+    "mapping-opportunity diagnostics under preregistered criterion",
+    "complete stage integrity checks"
+  ],
+  "scientific_output_schema": "NOT_REGISTERED_OR_IMPLEMENTED; current runtime schema identifies hand-authored P1 fixtures",
+  "existing_acceptance_sources": [
+    "docs/user_request.txt sections 35-37,80,100",
+    "docs/workload_spec.md",
+    "docs/statistical_protocol.md lines 34-36"
+  ],
+  "existing_acceptance_summary": "Baseline-only CALIBRATION, B2 focal; H feasibility first; stable mapping criterion must precede diagnostic selection; numeric execution details absent",
+  "output_directories": {
+    "existing_calibration_results": "results/calibration",
+    "audit_reports": "reports",
+    "scientific_subdirectory": null
+  },
+  "stop_conditions": [
+    "Missing or invalid P0/P1 evidence",
+    "Missing scientific inputs or complete approved trial matrix",
+    "Unregistered stable mapping-opportunity criterion",
+    "No executable existing P2 pipeline/gate",
+    "Any correctness failure; no unregistered retries",
+    "No later-stage authorization"
+  ],
+  "blocker_ids": [
+    "P2-B1",
+    "P2-B2",
+    "P2-B3",
+    "P2-B4",
+    "P2-B5"
+  ],
+  "authorization_sha256": "9d2a6b024af11cf51e60cbb69fe0ef9674519141214d1a00751610d63c8fcb94"
+}

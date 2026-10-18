@@ -1,0 +1,8 @@
+{
+  "stage": "P2",
+  "status": "NOT_RUN",
+  "traces": [],
+  "validated": 0,
+  "invalid": 0,
+  "explanation": "P1 prerequisite replay is synthetic correctness verification and is not a P2 trace"
+}
