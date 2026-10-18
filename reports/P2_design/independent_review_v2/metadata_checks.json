@@ -1,0 +1,376 @@
+{
+  "command_id": "CMD-068",
+  "exit_code": 0,
+  "output": {
+    "scope": "INDEPENDENT_STATIC_METADATA_AND_ABSTRACT_PREDICATE_CHECKS_ONLY",
+    "check_count": 60,
+    "passed": 60,
+    "failed": [],
+    "checks": [
+      {
+        "id": "META-001",
+        "name": "six and only six scene/size templates",
+        "status": "PASS",
+        "evidence": "templates[*].scene,size,template_id"
+      },
+      {
+        "id": "META-002",
+        "name": "COCKPIT-8-v1 exact executable identity and inheritance",
+        "status": "PASS",
+        "evidence": "COCKPIT-8-v1 /nodes,/hidden_nodes,/implicit_dummy"
+      },
+      {
+        "id": "META-003",
+        "name": "COCKPIT-8-v1 independent topological traversal",
+        "status": "PASS",
+        "evidence": "indegree-style traversal and predecessor closure; IDs need not be topological"
+      },
+      {
+        "id": "META-004",
+        "name": "COCKPIT-8-v1 complete explicit edges and nonnegative finite MiB",
+        "status": "PASS",
+        "evidence": "COCKPIT-8-v1 /edge_tables; exact decimal parsing"
+      },
+      {
+        "id": "META-005",
+        "name": "COCKPIT-8-v1 profile coverage and scale",
+        "status": "PASS",
+        "evidence": "COCKPIT-8-v1 /nodes/*/role,cost_scale"
+      },
+      {
+        "id": "META-006",
+        "name": "COCKPIT-16-v1 exact executable identity and inheritance",
+        "status": "PASS",
+        "evidence": "COCKPIT-16-v1 /nodes,/hidden_nodes,/implicit_dummy"
+      },
+      {
+        "id": "META-007",
+        "name": "COCKPIT-16-v1 independent topological traversal",
+        "status": "PASS",
+        "evidence": "indegree-style traversal and predecessor closure; IDs need not be topological"
+      },
+      {
+        "id": "META-008",
+        "name": "COCKPIT-16-v1 complete explicit edges and nonnegative finite MiB",
+        "status": "PASS",
+        "evidence": "COCKPIT-16-v1 /edge_tables; exact decimal parsing"
+      },
+      {
+        "id": "META-009",
+        "name": "COCKPIT-16-v1 profile coverage and scale",
+        "status": "PASS",
+        "evidence": "COCKPIT-16-v1 /nodes/*/role,cost_scale"
+      },
+      {
+        "id": "META-010",
+        "name": "COCKPIT-16-v1 expansion preserves parent edges/roles",
+        "status": "PASS",
+        "evidence": "COCKPIT-16-v1 split contraction check"
+      },
+      {
+        "id": "META-011",
+        "name": "ADAS-8-v1 exact executable identity and inheritance",
+        "status": "PASS",
+        "evidence": "ADAS-8-v1 /nodes,/hidden_nodes,/implicit_dummy"
+      },
+      {
+        "id": "META-012",
+        "name": "ADAS-8-v1 independent topological traversal",
+        "status": "PASS",
+        "evidence": "indegree-style traversal and predecessor closure; IDs need not be topological"
+      },
+      {
+        "id": "META-013",
+        "name": "ADAS-8-v1 complete explicit edges and nonnegative finite MiB",
+        "status": "PASS",
+        "evidence": "ADAS-8-v1 /edge_tables; exact decimal parsing"
+      },
+      {
+        "id": "META-014",
+        "name": "ADAS-8-v1 profile coverage and scale",
+        "status": "PASS",
+        "evidence": "ADAS-8-v1 /nodes/*/role,cost_scale"
+      },
+      {
+        "id": "META-015",
+        "name": "ADAS-16-v1 exact executable identity and inheritance",
+        "status": "PASS",
+        "evidence": "ADAS-16-v1 /nodes,/hidden_nodes,/implicit_dummy"
+      },
+      {
+        "id": "META-016",
+        "name": "ADAS-16-v1 independent topological traversal",
+        "status": "PASS",
+        "evidence": "indegree-style traversal and predecessor closure; IDs need not be topological"
+      },
+      {
+        "id": "META-017",
+        "name": "ADAS-16-v1 complete explicit edges and nonnegative finite MiB",
+        "status": "PASS",
+        "evidence": "ADAS-16-v1 /edge_tables; exact decimal parsing"
+      },
+      {
+        "id": "META-018",
+        "name": "ADAS-16-v1 profile coverage and scale",
+        "status": "PASS",
+        "evidence": "ADAS-16-v1 /nodes/*/role,cost_scale"
+      },
+      {
+        "id": "META-019",
+        "name": "ADAS-16-v1 expansion preserves parent edges/roles",
+        "status": "PASS",
+        "evidence": "ADAS-16-v1 split contraction check"
+      },
+      {
+        "id": "META-020",
+        "name": "FUSION-8-v1 exact executable identity and inheritance",
+        "status": "PASS",
+        "evidence": "FUSION-8-v1 /nodes,/hidden_nodes,/implicit_dummy"
+      },
+      {
+        "id": "META-021",
+        "name": "FUSION-8-v1 independent topological traversal",
+        "status": "PASS",
+        "evidence": "indegree-style traversal and predecessor closure; IDs need not be topological"
+      },
+      {
+        "id": "META-022",
+        "name": "FUSION-8-v1 complete explicit edges and nonnegative finite MiB",
+        "status": "PASS",
+        "evidence": "FUSION-8-v1 /edge_tables; exact decimal parsing"
+      },
+      {
+        "id": "META-023",
+        "name": "FUSION-8-v1 profile coverage and scale",
+        "status": "PASS",
+        "evidence": "FUSION-8-v1 /nodes/*/role,cost_scale"
+      },
+      {
+        "id": "META-024",
+        "name": "FUSION-16-v1 exact executable identity and inheritance",
+        "status": "PASS",
+        "evidence": "FUSION-16-v1 /nodes,/hidden_nodes,/implicit_dummy"
+      },
+      {
+        "id": "META-025",
+        "name": "FUSION-16-v1 independent topological traversal",
+        "status": "PASS",
+        "evidence": "indegree-style traversal and predecessor closure; IDs need not be topological"
+      },
+      {
+        "id": "META-026",
+        "name": "FUSION-16-v1 complete explicit edges and nonnegative finite MiB",
+        "status": "PASS",
+        "evidence": "FUSION-16-v1 /edge_tables; exact decimal parsing"
+      },
+      {
+        "id": "META-027",
+        "name": "FUSION-16-v1 profile coverage and scale",
+        "status": "PASS",
+        "evidence": "FUSION-16-v1 /nodes/*/role,cost_scale"
+      },
+      {
+        "id": "META-028",
+        "name": "FUSION-16-v1 expansion preserves parent edges/roles",
+        "status": "PASS",
+        "evidence": "FUSION-16-v1 split contraction check"
+      },
+      {
+        "id": "META-029",
+        "name": "74 edges in six complete tables",
+        "status": "PASS",
+        "evidence": "communication /edge_tables"
+      },
+      {
+        "id": "META-030",
+        "name": "all six resource columns, compatibility exact/null positive",
+        "status": "PASS",
+        "evidence": "resource /profiles"
+      },
+      {
+        "id": "META-031",
+        "name": "compatibility categories and symmetric CPU cores",
+        "status": "PASS",
+        "evidence": "profile sets; not all roles universally compatible"
+      },
+      {
+        "id": "META-032",
+        "name": "symbolic duration lower/upper bounds",
+        "status": "PASS",
+        "evidence": "exact rational interval algebra; no keyed samples drawn"
+      },
+      {
+        "id": "META-033",
+        "name": "nine type pairs and dimension/positivity",
+        "status": "PASS",
+        "evidence": "communication /links and unit fields"
+      },
+      {
+        "id": "META-034",
+        "name": "communication hand identities",
+        "status": "PASS",
+        "evidence": "CPU/GPU .55ms; CPU0/CPU1 .0725ms; same-unit override"
+      },
+      {
+        "id": "META-035",
+        "name": "all new numeric tables classified synthetic proposals",
+        "status": "PASS",
+        "evidence": "root classification + per-role source"
+      },
+      {
+        "id": "META-036",
+        "name": "symbolic arrival upper bound below W",
+        "status": "PASS",
+        "evidence": "largest possible slot+jitter <46.1P<50P; no U_j sampled"
+      },
+      {
+        "id": "META-037",
+        "name": "declared random field namespace includes no undeclared distribution",
+        "status": "PASS",
+        "evidence": "rules enumerate exactly three random draw fields; exact key encoding still reviewed separately"
+      },
+      {
+        "id": "META-038",
+        "name": "36 configurations /18 registered conditions /A+B each",
+        "status": "PASS",
+        "evidence": "independent Cartesian enumeration"
+      },
+      {
+        "id": "META-039",
+        "name": "all period/template axes exact",
+        "status": "PASS",
+        "evidence": "configs period/template fields"
+      },
+      {
+        "id": "META-040",
+        "name": "ten exact existing calibration seeds",
+        "status": "PASS",
+        "evidence": "seed metadata only; no other partition realizations/outcomes read"
+      },
+      {
+        "id": "META-041",
+        "name": "exact Cartesian 2520 trial roster, no missing/duplicate identity",
+        "status": "PASS",
+        "evidence": "not just total-row check: exact four-axis identity set equality"
+      },
+      {
+        "id": "META-042",
+        "name": "1800+360+360 exact counts",
+        "status": "PASS",
+        "evidence": "variant counter"
+      },
+      {
+        "id": "META-043",
+        "name": "unique trial IDs and field relationships",
+        "status": "PASS",
+        "evidence": "all rows checked"
+      },
+      {
+        "id": "META-044",
+        "name": "exact declared execution ordering",
+        "status": "PASS",
+        "evidence": "independent lexicographic reconstruction"
+      },
+      {
+        "id": "META-045",
+        "name": "budget fields/rule references present on every row",
+        "status": "PASS",
+        "evidence": "all 2520 rows"
+      },
+      {
+        "id": "META-046",
+        "name": "1080 input plans /360 shared-main plans /720 controls",
+        "status": "PASS",
+        "evidence": "workload references only; no actual input generated"
+      },
+      {
+        "id": "META-047",
+        "name": "every workload ref exact config/index/variant and hash/command absent",
+        "status": "PASS",
+        "evidence": "symbolic IDs are not content hashes"
+      },
+      {
+        "id": "META-048",
+        "name": "5040 replay-inclusive invocations and all counts recomputed",
+        "status": "PASS",
+        "evidence": "plan upper bounds only, not spent budget"
+      },
+      {
+        "id": "META-049",
+        "name": "A/B all accounted independently of future choice",
+        "status": "PASS",
+        "evidence": "36 candidate configs each have 10*(5+2) rows"
+      },
+      {
+        "id": "META-050",
+        "name": "B2 focal role and all five methods preserved",
+        "status": "PASS",
+        "evidence": "MAIN B2 role fields; controls B2 only"
+      },
+      {
+        "id": "META-051",
+        "name": "32 unresolved named groups and ten untouched human approvals",
+        "status": "PASS",
+        "evidence": "count is groups, not scalar cells; no approvals inferred"
+      },
+      {
+        "id": "META-052",
+        "name": "all draft numeric artifacts are nonexecutable",
+        "status": "PASS",
+        "evidence": "explicit flags; behavioral guard enforcement NOT_VERIFIED"
+      },
+      {
+        "id": "META-053",
+        "name": "58 traceability rows and existing source references",
+        "status": "PASS",
+        "evidence": "CSV metadata/reference existence, not truth of every claim"
+      },
+      {
+        "id": "META-054",
+        "name": "pressure intervals disjoint with total valid-domain coverage",
+        "status": "PASS",
+        "evidence": "abstract scalar boundaries only; miss/contending/feasibility filters yield VALID_OFF_TARGET, not a fourth scientific load"
+      },
+      {
+        "id": "META-055",
+        "name": "light and loaded miss boundaries explicit",
+        "status": "PASS",
+        "evidence": "1/100 light endpoint and loaded lower endpoint share a number, but pressure intervals disjoint"
+      },
+      {
+        "id": "META-056",
+        "name": "FINE/COARSE/seed bootstrap constants/pointwise disclosed",
+        "status": "PASS",
+        "evidence": "literal constraints plus separate predicate truth checks; bootstrap not executed"
+      },
+      {
+        "id": "META-057",
+        "name": "three-state Boolean branches total and disjoint on valid predicates",
+        "status": "PASS",
+        "evidence": "12 abstract approved/V/S/N combinations with S&N excluded; no scientific outcome calculated"
+      },
+      {
+        "id": "META-058",
+        "name": "no simultaneous S and N for ordered intervals f>0",
+        "status": "PASS",
+        "evidence": "algebra lo<=hi makes lo>=f & hi<f impossible; K>=8 and K<=2 also disjoint"
+      },
+      {
+        "id": "META-059",
+        "name": "every starting tracked file preserved",
+        "status": "PASS",
+        "evidence": []
+      },
+      {
+        "id": "META-060",
+        "name": "no unlock tokens",
+        "status": "PASS",
+        "evidence": "existence check only; no reserved workload paths accessed"
+      }
+    ],
+    "scientific_workloads_generated": 0,
+    "scientific_workloads_run": 0,
+    "p2_entrypoint_executed": false
+  },
+  "stderr": ""
+}

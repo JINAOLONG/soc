@@ -1,0 +1,111 @@
+{
+  "command_id": "CMD-069",
+  "exit_code": 2,
+  "output": {
+    "scope": "NONSCIENTIFIC_EXPLANATION_AND_SPECIFICATION_LOGIC_ONLY",
+    "proof_checks_passed": 7,
+    "proof_checks_failed": 0,
+    "proofs": [
+      {
+        "name": "M1 current-H objective unchanged by later L placement",
+        "verified": true,
+        "rationale": "With one ready H first in fixed B2 order, its greedy EFT is already minimum; later L assignments cannot improve that H prefix objective."
+      },
+      {
+        "name": "same explanation admits a later H deadline reversal",
+        "verified": true,
+        "rationale": "6+4=10>9 versus 2+4=6<=9. This demonstrates operational scope, not a scientific outcome."
+      },
+      {
+        "name": "strict local L constraint excludes a within-budget point tradeoff",
+        "verified": true,
+        "rationale": "6.5>6 is rejected locally although 6.5/6=13/12<1.10 and both meet L deadline12. Not a CI or population L-budget pass."
+      },
+      {
+        "name": "first-materialization dependency cycle exists as written",
+        "verified": true,
+        "rationale": "D04 hashes require materialization; D09 requires resolved inputs/run lock before materialization. A blueprint authorization and provisional input lock are not specified."
+      },
+      {
+        "name": "record-ID uniqueness is insufficient for repeated-state dedup",
+        "verified": true,
+        "rationale": "D07 needs a separately specified canonical state key and dedup scope; using the named full triple as dedup key gives two denominator entries."
+      },
+      {
+        "name": "key field typing changes canonical bytes",
+        "verified": true,
+        "rationale": "The field-type/filled-key table must pin one representation. Hashing is not sampling; no workload key is evaluated."
+      },
+      {
+        "name": "all proof arithmetic is bounded and exact",
+        "verified": true,
+        "rationale": "Fractions used only for explanation constants."
+      }
+    ],
+    "dependency_edges": [
+      [
+        "payload_hash",
+        "workload_identity"
+      ],
+      [
+        "workload_identity",
+        "resolved_input_guard"
+      ],
+      [
+        "resolved_input_guard",
+        "generation"
+      ],
+      [
+        "generation",
+        "payload_hash"
+      ],
+      [
+        "payload_hash",
+        "run_identity"
+      ],
+      [
+        "run_identity",
+        "run_lock"
+      ],
+      [
+        "run_lock",
+        "generation"
+      ]
+    ],
+    "cycle_nodes": [
+      "generation",
+      "payload_hash",
+      "resolved_input_guard",
+      "run_identity",
+      "run_lock",
+      "workload_identity"
+    ],
+    "design_acceptance_failures": [
+      {
+        "id": "ADV-01",
+        "status": "FAIL",
+        "finding": "V2-F01",
+        "claim": "M1 absence can establish absence of the registered scarce-resource/remaining-H-path mechanism",
+        "reason": "Counterexample leaves the M1 current-ready-H objective unchanged while exposing exactly the registered later-H blocking mechanism."
+      },
+      {
+        "id": "ADV-02",
+        "status": "FAIL",
+        "finding": "V2-F02",
+        "claim": "The written first-materialization/guard/run-lock sequence has an acyclic prerequisite order",
+        "reason": "Required content hash/run identity precede the operation that first produces that content."
+      },
+      {
+        "id": "ADV-03",
+        "status": "FAIL",
+        "finding": "V2-F04",
+        "claim": "The specified record identity alone suffices to make the M1 denominator invariant to duplicate records",
+        "reason": "Different decision_seq values defeat full-triple dedup; an explicit state-equivalence contract is needed."
+      }
+    ],
+    "exit_code_meaning": "2=design revision required, expected audit finding; not an execution crash or scientific comparison",
+    "scientific_workloads_generated": 0,
+    "scientific_workloads_run": 0
+  },
+  "stderr": ""
+}

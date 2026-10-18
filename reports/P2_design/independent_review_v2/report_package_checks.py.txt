@@ -1,0 +1,33 @@
+"""Report-only integrity/coverage check; no project implementation invoked."""
+from pathlib import Path
+import json,csv,hashlib,subprocess
+R=Path('.');O=R/'reports/P2_design/independent_review_v2';results=[]
+def check(n,ok):results.append(dict(name=n,pass_=bool(ok)))
+for name in ['executive_decision.md','D01_D10_review_matrix.csv','critical_findings.md','cross_decision_consistency.json','required_changes.md','human_decision_packet.md','actual_commands_and_exit_codes.json']:
+ check('required report '+name,(O/name).is_file())
+with (O/'D01_D10_review_matrix.csv').open(newline='') as f: rows=list(csv.DictReader(f))
+check('ten IDs exactly once',len(rows)==10 and {x['decision_id'] for x in rows}=={f'D{i:02}' for i in range(1,11)})
+check('all required decision fields substantive',all(all(x.get(k) for k in ['proposal_version_and_hashes','source_supported_requirements','static_checks_and_evidence','scientific_interpretation_risks','missing_or_ambiguous_definitions','recommendation','exact_suggested_changes','human_approval_required']) for x in rows))
+check('recommendations 4 accept/6 revise/0 reject',sum(x['recommendation']=='ACCEPT AS PROPOSED' for x in rows)==4 and sum(x['recommendation']=='REVISE BEFORE APPROVAL' for x in rows)==6)
+check('all approvals remain UNAPPROVED',all(x['approval']=='UNAPPROVED' and x['human_approval_required']=='YES' for x in rows))
+check('exact proposal artifact SHA matches',all(hashlib.sha256((R/p['path']).read_bytes()).hexdigest()==p['sha256'] for x in rows for p in json.loads(x['proposal_version_and_hashes'])))
+findings=json.loads((O/'findings.json').read_text())['findings']
+check('eight stable findings and evidence classes',len(findings)==len({f['id'] for f in findings})==8 and all(f['classification'] in {'SOURCE_SUPPORTED','PROPOSAL_ONLY','STATICALLY_VERIFIED','NOT_VERIFIED','BLOCKING'} for f in findings))
+check('every finding has required evidence/disposition',all(all(f[k] for k in ['severity','evidence','check','rationale','consequence','disposition','change','closure']) for f in findings))
+check('review verdict not P2 readiness',json.loads((O/'cross_decision_consistency.json').read_text())['review_result']=='DESIGN_REVIEW_REVISE_REQUIRED' and json.loads((O/'cross_decision_consistency.json').read_text())['p2_status']=='BLOCKED')
+check('human packet ten explicit approval fields',(O/'human_decision_packet.md').read_text().count('Human approval: **UNAPPROVED**')==10)
+check('initial overstatement/correction history preserved',all((O/n).is_file() for n in ['adversarial_checks_initial.py.txt','adversarial_checks_initial.json','review_method_notes.md']))
+final=json.loads((O/'adversarial_checks.json').read_text());check('final failures two not three, nonzero genuine',final['exit_code']==2 and len(final['output']['design_acceptance_failures'])==2 and final['output']['contract_gaps'][0]['status']=='NOT_VERIFIED')
+meta=json.loads((O/'metadata_checks.json').read_text());check('independent checks actually passed',meta['exit_code']==0 and meta['output']['passed']==60 and meta['output']['failed']==[])
+ledger=json.loads((O/'actual_commands_and_exit_codes.json').read_text())
+ids={c['id']:c for c in ledger['commands']};check('executed command IDs unique with exit codes',len(ids)==len(ledger['commands']) and all(isinstance(c['exit_code'],int) for c in ids.values()))
+check('P0 P1 manifest real command exits',all(ids[n]['exit_code']==0 for n in ['CMD-064','CMD-065','CMD-066','CMD-067']))
+baseline=json.loads((O/'protected_baseline.json').read_text());bad=[f['path'] for f in baseline['files'] if not (R/f['path']).is_file() or hashlib.sha256((R/f['path']).read_bytes()).hexdigest()!=f['sha256']]
+check('every original tracked path unchanged',not bad)
+changed=subprocess.check_output(['git','diff','--name-only','892ce2b71fd0c89f1b241c950b597eafab894e23'],text=True).splitlines()
+new=subprocess.check_output(['git','ls-files','--others','--exclude-standard'],text=True).splitlines()
+check('all changed/new files within audit report directory',all(p.startswith('reports/P2_design/independent_review_v2/') for p in changed+new))
+check('no new implementation extensions',not any(p.endswith(('.py','.pdf')) for p in changed+new))
+failed=[x['name'] for x in results if not x['pass_']]
+print(json.dumps(dict(scope='REPORT_PACKAGE_ONLY_NOT_RUNTIME_OR_SCIENTIFIC_VALIDATION',passed=len(results)-len(failed),failed=failed,checks=results,original_tracked_files_checked=len(baseline['files']),changed_protected_paths=bad,report_scope_ok=not failed),ensure_ascii=False,indent=2))
+raise SystemExit(1 if failed else 0)

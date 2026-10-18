@@ -1,0 +1,94 @@
+"""Independent read-only audit of committed proposal metadata, NOT a generator.
+No soc imports, simulation, PRNG/hash-to-random draws, workload realization, CI
+or scientific measurement. Stdout is a report of static specification checks.
+"""
+from pathlib import Path
+from fractions import Fraction as Q
+from decimal import Decimal
+from collections import Counter,defaultdict
+from itertools import product
+import json,hashlib,csv
+R=Path('.');D=R/'docs/P2_design'; checks=[]
+def load(name):return json.loads((D/name).read_text(),parse_float=Decimal)
+def add(name,ok,evidence):checks.append(dict(id=f'META-{len(checks)+1:03}',name=name,status='PASS' if ok else 'FAIL',evidence=evidence))
+T=load('P2_workload_templates_v1.json');P=load('P2_resource_profiles_v1.json');C=load('P2_communication_profiles_v1.json');G=load('P2_generation_spec_v1.json');M=load('P2_trial_matrix_draft_v1.json')
+roles={x['role']:x for x in P['profiles']}; templates={x['template_id']:x for x in T['templates']}; edge_tables={x['template_id']:x['edges'] for x in C['edge_tables']}
+add('six and only six scene/size templates',len(templates)==6 and {(x['scene'],x['size']) for x in templates.values()}==set(product(['COCKPIT','ADAS','FUSION'],[8,16])),'templates[*].scene,size,template_id')
+for tid,t in templates.items():
+ n={x['id']:x for x in t['nodes']}; es=edge_tables[tid]; predecessor_pairs={(u,v['id']) for v in n.values() for u in v['predecessors']}
+ add(tid+' exact executable identity and inheritance',len(n)==len(t['nodes'])==t['size']==t['node_count'] and all(x['group']=='INHERIT_SERVICE_GROUP' and set(x['allowed_group_variants'])=={'H','L'} for x in n.values()) and not t['hidden_nodes'] and t['implicit_dummy'] is False,tid+' /nodes,/hidden_nodes,/implicit_dummy')
+ incoming={v:set(x['predecessors']) for v,x in n.items()}; queue=sorted(v for v in n if not incoming[v]); ordered=[]
+ while queue:
+  v=queue.pop(0);ordered.append(v)
+  for w in n:
+   if v in incoming[w]:
+    incoming[w].remove(v)
+    if not incoming[w]:queue.append(w);queue.sort()
+ add(tid+' independent topological traversal',len(ordered)==len(n) and all(u in n and u!=v for u,v in predecessor_pairs) and all(len(x['predecessors'])==len(set(x['predecessors'])) for x in n.values()),'indegree-style traversal and predecessor closure; IDs need not be topological')
+ add(tid+' complete explicit edges and nonnegative finite MiB',len(es)==len({x['id'] for x in es})==len({(x['source'],x['destination']) for x in es})==t['edge_count'] and {(x['source'],x['destination']) for x in es}==predecessor_pairs and all(Q(x['size_mib'])>=0 for x in es),tid+' /edge_tables; exact decimal parsing')
+ add(tid+' profile coverage and scale',all(x['role'] in roles and x['cost_scale']==('1' if t['size']==8 else '1/2') for x in n.values()),tid+' /nodes/*/role,cost_scale')
+ if t['size']==16:
+  parent=templates[tid.replace('-16-','-8-')]; expected={(x['id']+'.a',x['id']+'.b') for x in parent['nodes']} | {(u+'.b',x['id']+'.a') for x in parent['nodes'] for u in x['predecessors']}
+  add(tid+' expansion preserves parent edges/roles',predecessor_pairs==expected and len(es)==parent['edge_count']+8 and all(x['role']==next(y['role'] for y in parent['nodes'] if y['id']==x['parent_8_node']) for x in n.values()) and all(Q(e['size_mib'])==Q(1,16) for e in es if e['kind']=='SPLIT_INTERNAL'),tid+' split contraction check')
+add('74 edges in six complete tables',set(edge_tables)==set(templates) and sum(len(x) for x in edge_tables.values())==74,'communication /edge_tables')
+units=['CPU0','CPU1','CPU2','CPU3','GPU0','NPU0']
+add('all six resource columns, compatibility exact/null positive',P['resources']==units and len(roles)==16 and all(set(p['estimated_base_ms'])==set(units) and set(p['compatible_resources'])=={k for k,v in p['estimated_base_ms'].items() if v is not None} and p['compatible_resources'] and all(v is None or Q(v)>0 for v in p['estimated_base_ms'].values()) for p in roles.values()),'resource /profiles')
+add('compatibility categories and symmetric CPU cores',any(p['compatible_resources']==units[:4] for p in roles.values()) and any(p['compatible_resources']==['GPU0'] for p in roles.values()) and any(p['compatible_resources']==['NPU0'] for p in roles.values()) and any(len(p['compatible_resources'])==6 for p in roles.values()) and all(len({p['estimated_base_ms'][f'CPU{i}'] for i in range(4)})==1 for p in roles.values()),'profile sets; not all roles universally compatible')
+add('symbolic duration lower/upper bounds',min(Q(v) for p in roles.values() for v in p['estimated_base_ms'].values() if v is not None)*Q(1,2)*Q(9,10)**2==Q(81,200) and Q(9,10)<Q(11,10),'exact rational interval algebra; no keyed samples drawn')
+links={(x['source_type'],x['destination_type']):x for x in C['links']}
+add('nine type pairs and dimension/positivity',len(C['links'])==len(links)==9 and set(links)==set(product(['CPU','GPU','NPU'],repeat=2)) and all(Q(x['latency_ms'])>=0 and Q(x['bandwidth_mib_per_ms'])>0 for x in links.values()) and (C['data_unit'],C['latency_unit'],C['bandwidth_unit'])==('MiB','ms','MiB/ms'),'communication /links and unit fields')
+add('communication hand identities',Q(links['CPU','GPU']['latency_ms'])+Q(4)/Q(links['CPU','GPU']['bandwidth_mib_per_ms'])==Q(11,20) and Q(links['CPU','CPU']['latency_ms'])+1/Q(links['CPU','CPU']['bandwidth_mib_per_ms'])==Q(29,400) and C['semantics']['same_unit_delay_ms']==0,'CPU/GPU .55ms; CPU0/CPU1 .0725ms; same-unit override')
+add('all new numeric tables classified synthetic proposals',all(x['classification']=='PROPOSED' for x in [T,P,C,G,M]) and all('SYNTHETIC' in p['source'] for p in roles.values()),'root classification + per-role source')
+add('symbolic arrival upper bound below W',Q(5*(49//5))+Q(49%5,4)+Q(1,10)<50 and G['arrivals']['slots']==50 and G['arrivals']['H']==G['arrivals']['L']==50,'largest possible slot+jitter <46.1P<50P; no U_j sampled')
+add('declared random field namespace includes no undeclared distribution',set(G['key']['identity_namespaces']['field'])=={'arrival_jitter','service_role_factor','duration_factor','deadline','edge_size'} and 'NOT sampled' in G['rules']['edge_size'] and 'no random draw' in G['rules']['deadline'],'rules enumerate exactly three random draw fields; exact key encoding still reviewed separately')
+seeds=json.loads((R/'configs/seed_partitions.json').read_text())['partitions']['CALIBRATION']
+cfg={x['config_id']:x for x in M['configs']}; trials=M['trials']; conditions={(s,l,z) for s,l,z in product(['COCKPIT','ADAS','FUSION'],['light','medium','near-saturation'],[8,16])}
+add('36 configurations /18 registered conditions /A+B each',len(cfg)==len(M['configs'])==36 and {(x['scenario'],x['load'],x['size']) for x in cfg.values()}==conditions and all({x['arrival_candidate'] for x in cfg.values() if (x['scenario'],x['load'],x['size'])==c}=={'A','B'} for c in conditions),'independent Cartesian enumeration')
+period={'light':{'A':80,'B':64},'medium':{'A':24,'B':20},'near-saturation':{'A':12,'B':10}}
+add('all period/template axes exact',all(x['period_ms']==period[x['load']][x['arrival_candidate']] and x['template_id']==f'{x["scenario"]}-{x["size"]}-v1' for x in cfg.values()),'configs period/template fields')
+add('ten exact existing calibration seeds',len(seeds)==len(set(seeds))==10 and M['registered_seeds']==seeds and {t['calibration_seed'] for t in trials}==set(seeds) and all(t['partition']=='CALIBRATION' and t['calibration_seed']==seeds[t['seed_index']] for t in trials),'seed metadata only; no other partition realizations/outcomes read')
+expected=set()
+for cid in cfg:
+ for i in range(10):
+  for variant,methods in [('MAIN',['B1','B2','B3','B4','B5']),('H_ISOLATED',['B2']),('LOW_COMPETITION',['B2'])]:
+   for m in methods:expected.add((cid,i,variant,m))
+observed=[(t['config_id'],t['seed_index'],t['variant'],t['method']) for t in trials]
+add('exact Cartesian 2520 trial roster, no missing/duplicate identity',len(observed)==len(set(observed))==len(expected)==2520 and set(observed)==expected,'not just total-row check: exact four-axis identity set equality')
+add('1800+360+360 exact counts',Counter(t['variant'] for t in trials)=={'MAIN':1800,'H_ISOLATED':360,'LOW_COMPETITION':360},'variant counter')
+add('unique trial IDs and field relationships',len({t['trial_id'] for t in trials})==2520 and all(all(t[k]==cfg[t['config_id']][k] for k in ['scenario','condition_id','load','size']) for t in trials),'all rows checked')
+key=lambda t:(['COCKPIT','ADAS','FUSION'].index(t['scenario']),['light','medium','near-saturation'].index(t['load']),t['size'],cfg[t['config_id']]['arrival_candidate'],t['seed_index'],['H_ISOLATED','LOW_COMPETITION','MAIN'].index(t['variant']),t['method'])
+add('exact declared execution ordering',sorted(trials,key=key)==trials and [t['execution_order'] for t in trials]==list(range(1,2521)),'independent lexicographic reconstruction')
+add('budget fields/rule references present on every row',all(t['budget_count']==1 and t['selection_rule']=='SEL-v1' and t['tie_rule']=='TIE-v1' and t['failure_rule']=='FAIL-v1' and all(t[k] in M['rules'] for k in ['selection_rule','tie_rule','failure_rule']) for t in trials),'all 2520 rows')
+work=defaultdict(list)
+for t in trials:work[t['workload_id']].append(t)
+add('1080 input plans /360 shared-main plans /720 controls',len(work)==1080 and sum(v[0]['variant']=='MAIN' for v in work.values())==360 and all(len(v)==5 and {t['method'] for t in v}==set(M['methods']) if v[0]['variant']=='MAIN' else len(v)==1 for v in work.values()),'workload references only; no actual input generated')
+add('every workload ref exact config/index/variant and hash/command absent',all(t['workload_id']==f'wlref:v1:{t["config_id"]}:s{t["seed_index"]:02}:{t["variant"]}' and t['workload_sha256'] is None and t['command'] is None for t in trials),'symbolic IDs are not content hashes')
+b=M['budget'];add('5040 replay-inclusive invocations and all counts recomputed',b['configurations']==36 and b['seeds']==10 and b['main_methods']==5 and b['total_trial_slots']==36*10*7 and b['physical_engine_invocations_including_replay_max']==2*len(trials) and b['workload_artifacts_if_all_materialized']==36*10*3 and b['selected_main_workloads_after_calibration']==18*10 and b['automatic_retries']==b['engineering_timing_runs']==0,'plan upper bounds only, not spent budget')
+add('A/B all accounted independently of future choice',all(sum(t['config_id']==cid for t in trials)==70 for cid in cfg),'36 candidate configs each have 10*(5+2) rows')
+add('B2 focal role and all five methods preserved',M['methods']==['B1','B2','B3','B4','B5'] and all(t['comparison_role']=='FOCAL_REFERENCE' for t in trials if t['method']=='B2' and t['variant']=='MAIN'),'MAIN B2 role fields; controls B2 only')
+registry=load('P2_scientific_parameter_registry_v1.json');catalog=load('decisions.draft.json')
+add('32 unresolved named groups and ten untouched human approvals',len(registry['parameters'])==registry['unresolved_scientific_parameters']==len({x['id'] for x in registry['parameters']})==32 and all(x['approval'] is None and x['status']=='UNRESOLVED' for x in registry['parameters']) and len(catalog['decisions'])==10 and all(x['answer'] is None and x['approval_record']['action'] is None for x in catalog['decisions']),'count is groups, not scalar cells; no approvals inferred')
+add('all draft numeric artifacts are nonexecutable',all(x.get('status')=='DRAFT_UNAPPROVED_NONEXECUTABLE' and all(x.get(k) is False for k in ['approved','frozen','executable','execution_authorized','read_by_pipeline']) for x in [T,P,C,G,M,registry]),'explicit flags; behavioral guard enforcement NOT_VERIFIED')
+with (D/'P2_D01_D10_traceability.csv').open(newline='') as f: trace=list(csv.DictReader(f))
+add('58 traceability rows and existing source references',len(trace)==58 and {x['decision_id'] for x in trace}=={f'D{i:02}' for i in range(1,11)} and all((R/x['source_file']).is_file() for x in trace),'CSV metadata/reference existence, not truth of every claim')
+def pressure_bin(p):
+ return 'light' if 0<=p<Q(1,2) else 'medium' if Q(1,2)<=p<Q(4,5) else 'near-saturation' if Q(4,5)<=p<=1 else 'OUT_OF_DOMAIN'
+probes=[Q(0),Q(49,100),Q(1,2),Q(79,100),Q(4,5),Q(1),Q(-1,100),Q(101,100)]
+add('pressure intervals disjoint with total valid-domain coverage',all(sum([0<=p<Q(1,2),Q(1,2)<=p<Q(4,5),Q(4,5)<=p<=1])==1 for p in probes if 0<=p<=1) and pressure_bin(Q(1,2))=='medium' and pressure_bin(Q(4,5))=='near-saturation','abstract scalar boundaries only; miss/contending/feasibility filters yield VALID_OFF_TARGET, not a fourth scientific load')
+add('light and loaded miss boundaries explicit',Q(0)<=Q(1,100)<=Q(1) and Q(1,100)<=Q(4,5)<1,'1/100 light endpoint and loaded lower endpoint share a number, but pressure intervals disjoint')
+table=(D/'P2_mapping_opportunity_decision_table_v1.md').read_text()
+add('FINE/COARSE/seed bootstrap constants/pointwise disclosed',all(s in table for s in ['.01','.05','8/10','10,000','20261018','type-7','pointwise','N>0','U_c<f','L_c≥f']),'literal constraints plus separate predicate truth checks; bootstrap not executed')
+statuses=[]
+for approved,valid,s,n in product([False,True],repeat=4):
+ if s and n:continue
+ label='INCONCLUSIVE' if not approved or not valid else 'SUPPORTED' if s else 'NOT_SUPPORTED' if n else 'INCONCLUSIVE'
+ statuses.append(label)
+add('three-state Boolean branches total and disjoint on valid predicates',len(statuses)==12 and set(statuses)=={'INCONCLUSIVE','SUPPORTED','NOT_SUPPORTED'},'12 abstract approved/V/S/N combinations with S&N excluded; no scientific outcome calculated')
+add('no simultaneous S and N for ordered intervals f>0',all(not(lo>=f and hi<f) for lo,hi,f in [(Q(0),Q(0),Q(1,100)),(Q(1,100),Q(1,100),Q(1,100)),(Q(0),Q(1,100),Q(1,100)),(Q(1,20),Q(1,10),Q(1,20))]),'algebra lo<=hi makes lo>=f & hi<f impossible; K>=8 and K<=2 also disjoint')
+base=json.loads((R/'reports/P2_design/independent_review_v2/protected_baseline.json').read_text())
+bad=[x['path'] for x in base['files'] if not (R/x['path']).is_file() or hashlib.sha256((R/x['path']).read_bytes()).hexdigest()!=x['sha256']]
+add('every starting tracked file preserved',not bad,bad)
+add('no unlock tokens',not (R/'checkpoints/VALIDATION_UNLOCKED').exists() and not (R/'checkpoints/FORMAL_UNLOCKED').exists(),'existence check only; no reserved workload paths accessed')
+failed=[x['id'] for x in checks if x['status']=='FAIL']
+print(json.dumps(dict(scope='INDEPENDENT_STATIC_METADATA_AND_ABSTRACT_PREDICATE_CHECKS_ONLY',check_count=len(checks),passed=len(checks)-len(failed),failed=failed,checks=checks,scientific_workloads_generated=0,scientific_workloads_run=0,p2_entrypoint_executed=False),ensure_ascii=False,indent=2))
+raise SystemExit(1 if failed else 0)

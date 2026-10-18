@@ -1,0 +1,49 @@
+"""Design-logic counterexamples only: arithmetic, dependency graph, metadata IDs.
+Never imports the simulator/scheduler, draws a seed, creates a Workload/Service,
+generates a trace, runs bootstrap or computes a scientific criterion.
+The values in the first proof are the explicitly non-scientific explanation
+example in docs/user_request.txt section 32. Outputs are review evidence only.
+Exit 2 denotes demonstrated v1 design acceptance failures, not P1 failure.
+"""
+from fractions import Fraction as F
+import json,hashlib
+proofs=[]
+def proof(name,ok,rationale):
+ proofs.append(dict(name=name,verified=bool(ok),rationale=rationale))
+
+# Closed-form explanation, NOT a simulated or materialized task graph.
+prefix=F(2);suffix=F(4);occupancy=F(6);alternative=F(13,2);h_deadline=F(9);l_deadline=F(12)
+focal_objective_before=prefix; focal_objective_after=prefix
+blocking_finish=max(prefix,occupancy)+suffix
+released_finish=prefix+suffix
+proof('M1 current-H objective unchanged by later L placement',focal_objective_before==focal_objective_after,'With one ready H first in fixed B2 order, its greedy EFT is already minimum; later L assignments cannot improve that H prefix objective.')
+proof('same explanation admits a later H deadline reversal',blocking_finish>h_deadline and released_finish<=h_deadline,'6+4=10>9 versus 2+4=6<=9. This demonstrates operational scope, not a scientific outcome.')
+proof('strict local L constraint excludes a within-budget point tradeoff',alternative>occupancy and alternative/occupancy<F(11,10) and alternative<=l_deadline,'6.5>6 is rejected locally although 6.5/6=13/12<1.10 and both meet L deadline12. Not a CI or population L-budget pass.')
+
+# Each edge means "left is required before right", transcribed from v1.
+edges=[('payload_hash','workload_identity'),('workload_identity','resolved_input_guard'),('resolved_input_guard','generation'),('generation','payload_hash'),('payload_hash','run_identity'),('run_identity','run_lock'),('run_lock','generation')]
+nodes={n for e in edges for n in e};remaining=set(nodes);removed=[]
+while remaining:
+ ready=sorted(n for n in remaining if not any(v==n and u in remaining for u,v in edges))
+ if not ready:break
+ removed+=ready;remaining.difference_update(ready)
+proof('first-materialization dependency cycle exists as written',bool(remaining),'D04 hashes require materialization; D09 requires resolved inputs/run lock before materialization. A blueprint authorization and provisional input lock are not specified.')
+
+# Identity record != state-equivalence key. No observation contents instantiated.
+ids=[('same-run',1,'same-public-digest'),('same-run',2,'same-public-digest')]
+tuple_count=len(set(ids));state_count=len({(r,d) for r,seq,d in ids})
+proof('record-ID uniqueness is insufficient for repeated-state dedup',tuple_count==2 and state_count==1,'D07 needs a separately specified canonical state key and dedup scope; using the named full triple as dedup key gives two denominator entries.')
+
+# Harmless generic canonical encodings, without any real calibration seed/key.
+def encoded(x):return (json.dumps(x,sort_keys=True,separators=(',',':'))+'\n').encode()
+proof('key field typing changes canonical bytes',encoded({'service_slot':0})!=encoded({'service_slot':'0'}),'The field-type/filled-key table must pin one representation. Hashing is not sampling; no workload key is evaluated.')
+proof('all proof arithmetic is bounded and exact',F(10)>F(9) and F(6)<=F(9) and F(13,12)<F(11,10),'Fractions used only for explanation constants.')
+
+acceptance=[
+ dict(id='ADV-01',status='FAIL',finding='V2-F01',claim='M1 absence can establish absence of the registered scarce-resource/remaining-H-path mechanism',reason='Counterexample leaves the M1 current-ready-H objective unchanged while exposing exactly the registered later-H blocking mechanism.'),
+ dict(id='ADV-02',status='FAIL',finding='V2-F02',claim='The written first-materialization/guard/run-lock sequence has an acyclic prerequisite order',reason='Required content hash/run identity precede the operation that first produces that content.'),
+ dict(id='ADV-03',status='FAIL',finding='V2-F04',claim='The specified record identity alone suffices to make the M1 denominator invariant to duplicate records',reason='Different decision_seq values defeat full-triple dedup; an explicit state-equivalence contract is needed.'),
+]
+assert all(x['verified'] for x in proofs)
+print(json.dumps(dict(scope='NONSCIENTIFIC_EXPLANATION_AND_SPECIFICATION_LOGIC_ONLY',proof_checks_passed=len(proofs),proof_checks_failed=0,proofs=proofs,dependency_edges=edges,cycle_nodes=sorted(remaining),design_acceptance_failures=acceptance,exit_code_meaning='2=design revision required, expected audit finding; not an execution crash or scientific comparison',scientific_workloads_generated=0,scientific_workloads_run=0),ensure_ascii=False,indent=2))
+raise SystemExit(2)

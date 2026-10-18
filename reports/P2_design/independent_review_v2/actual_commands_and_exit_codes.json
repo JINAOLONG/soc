@@ -1,0 +1,1330 @@
+{
+  "scope": "Recorded substantive review/publication subprocess commands; excludes attachment transfer, preliminary discovery reads, outer shell wrappers and report-authoring tool operations. Each command listed was actually executed.",
+  "commands": [
+    {
+      "id": "CMD-001",
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_AUDIT",
+      "started_at_utc": "2026-10-18T11:53:11.387731+00:00",
+      "ended_at_utc": "2026-10-18T11:53:11.391238+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout": "892ce2b71fd0c89f1b241c950b597eafab894e23\n",
+      "stderr": ""
+    },
+    {
+      "id": "CMD-002",
+      "argv": [
+        "git",
+        "branch",
+        "--show-current"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_AUDIT",
+      "started_at_utc": "2026-10-18T11:53:11.391625+00:00",
+      "ended_at_utc": "2026-10-18T11:53:11.398998+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout": "work\n",
+      "stderr": ""
+    },
+    {
+      "id": "CMD-003",
+      "argv": [
+        "git",
+        "remote",
+        "-v"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_AUDIT",
+      "started_at_utc": "2026-10-18T11:53:11.399191+00:00",
+      "ended_at_utc": "2026-10-18T11:53:11.402078+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout": "origin\thttps://github.com/JINAOLONG/soc.git (fetch)\norigin\thttps://github.com/JINAOLONG/soc.git (push)\n",
+      "stderr": ""
+    },
+    {
+      "id": "CMD-004",
+      "argv": [
+        "git",
+        "ls-remote",
+        "origin",
+        "refs/heads/work"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_AUDIT",
+      "started_at_utc": "2026-10-18T11:53:11.403216+00:00",
+      "ended_at_utc": "2026-10-18T11:53:11.867101+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout": "892ce2b71fd0c89f1b241c950b597eafab894e23\trefs/heads/work\n",
+      "stderr": ""
+    },
+    {
+      "id": "CMD-005",
+      "argv": [
+        "git",
+        "status",
+        "--porcelain"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_AUDIT",
+      "started_at_utc": "2026-10-18T11:53:11.867372+00:00",
+      "ended_at_utc": "2026-10-18T11:53:11.879542+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout": "?? reports/P2_design/independent_review_v2/\n",
+      "stderr": ""
+    },
+    {
+      "id": "CMD-006",
+      "argv": [
+        "git",
+        "ls-files"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_AUDIT",
+      "started_at_utc": "2026-10-18T11:53:11.879769+00:00",
+      "ended_at_utc": "2026-10-18T11:53:11.884630+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout": ".github/workflows/tests.yml\n.gitignore\nAGENTS.md\nLICENSE\nREADME.md\nSTATUS.md\ncheckpoints/.gitkeep\ncheckpoints/P0_artifact_manifest.json\ncheckpoints/P0_source_checkpoint_inventory.json\ncheckpoints/P1_artifact_manifest.json\ncheckpoints/P2_artifact_manifest.json\ncheckpoints/P2_design_artifact_manifest.json\nconfigs/calibration/.gitkeep\nconfigs/development/.gitkeep\nconfigs/engineering/.gitkeep\nconfigs/formal/.gitkeep\nconfigs/model/.gitkeep\nconfigs/research_protocol.json\nconfigs/seed_partitions.json\nconfigs/validation/.gitkeep\nconfigs/workload/.gitkeep\ndocs/P0_literature_closure_request.txt\ndocs/P1_acceptance_matrix.md\ndocs/P1_authorization_request.txt\ndocs/P1_decisions.json\ndocs/P1_implementation_spec.md\ndocs/P2_authorization_request.txt\ndocs/P2_design/P2_D01_D10_approval_checklist_v1.md\ndocs/P2_design/P2_D01_D10_traceability.csv\ndocs/P2_design/P2_communication_profiles_v1.json\ndocs/P2_design/P2_complete_design_proposal_v1.md\ndocs/P2_design/P2_decision_dependency_map.md\ndocs/P2_design/P2_generation_spec_v1.json\ndocs/P2_design/P2_human_approval_checklist.md\ndocs/P2_design/P2_mapping_opportunity_decision_table_v1.md\ndocs/P2_design/P2_resource_profiles_v1.json\ndocs/P2_design/P2_runner_schema_review_v1.md\ndocs/P2_design/P2_scientific_parameter_registry_v1.json\ndocs/P2_design/P2_trial_matrix_draft_v1.json\ndocs/P2_design/P2_workload_templates_v1.json\ndocs/P2_design/README.md\ndocs/P2_design/authorization_request.txt\ndocs/P2_design/blocker_decisions.md\ndocs/P2_design/calibration_matrix.draft.json\ndocs/P2_design/calibration_options.md\ndocs/P2_design/decisions.draft.json\ndocs/P2_design/evidence_and_traceability.md\ndocs/P2_design/human_decisions.md\ndocs/P2_design/mapping_criterion_options.md\ndocs/P2_design/runner_and_schema.md\ndocs/P2_design/scientific_artifacts.schema.draft.json\ndocs/P2_design/workload_gaps.md\ndocs/baseline_spec.md\ndocs/development_search_protocol.md\ndocs/literature_evidence.json\ndocs/literature_matrix.md\ndocs/literature_reviews/autoware_dag.md\ndocs/literature_reviews/ds3.md\ndocs/literature_reviews/federated_limit.md\ndocs/literature_reviews/heft_cpop.md\ndocs/literature_reviews/peft.md\ndocs/literature_reviews/starpu.md\ndocs/method_spec.md\ndocs/metric_spec.md\ndocs/model_spec.md\ndocs/research_contract.md\ndocs/statistical_protocol.md\ndocs/user_request.txt\ndocs/workload_spec.md\npyproject.toml\nreports/P0_checks_001.json\nreports/P0_checks_002.json\nreports/P0_clean_clone_reproduction.json\nreports/P0_configuration_status.json\nreports/P0_environment.json\nreports/P0_environment.md\nreports/P0_final_git_audit.json\nreports/P0_heft_crossref.json\nreports/P0_literature_closure_checks.json\nreports/P0_literature_closure_git_checkpoint.json\nreports/P0_literature_closure_repository_audit.json\nreports/P0_literature_gap_closure.md\nreports/P0_literature_network_requirements.json\nreports/P0_literature_source_hashes.json\nreports/P0_local_pdf_checks.json\nreports/P0_local_pdf_decision.json\nreports/P0_local_pdf_git_checkpoint.json\nreports/P0_local_pdf_prior_sources_recheck.json\nreports/P0_local_pdf_repository_audit.json\nreports/P0_protocol_audit.json\nreports/P0_protocol_audit.md\nreports/P0_push_checkpoint.json\nreports/P0_repository_audit.txt\nreports/P0_source_acquisition_001.json\nreports/P0_source_acquisition_002.json\nreports/P0_source_acquisition_003.json\nreports/P0_source_acquisition_004.json\nreports/P0_source_acquisition_005.json\nreports/P0_source_acquisition_006.json\nreports/P0_source_acquisition_007.json\nreports/P0_source_acquisition_008.json\nreports/P0_source_acquisition_009.json\nreports/P0_source_acquisition_010.json\nreports/P0_source_acquisition_011.json\nreports/P0_source_acquisition_012.json\nreports/P0_source_acquisition_013.json\nreports/P0_source_acquisition_014.json\nreports/P0_test_history.json\nreports/P1_acceptance_matrix.md\nreports/P1_artifacts/index.json\nreports/P1_artifacts/inputs/empty.json\nreports/P1_artifacts/inputs/hand_dag.json\nreports/P1_artifacts/inputs/minimal.json\nreports/P1_artifacts/inputs/oeft_choice.json\nreports/P1_artifacts/inputs/overrun.json\nreports/P1_artifacts/inputs/priority.json\nreports/P1_artifacts/inputs/remapping.json\nreports/P1_artifacts/inputs/simultaneous.json\nreports/P1_artifacts/inputs/wait_scan.json\nreports/P1_artifacts/negative/assignment_event_mismatch.json\nreports/P1_artifacts/negative/data_not_arrived.json\nreports/P1_artifacts/negative/duplicate_execution.json\nreports/P1_artifacts/negative/duplicate_start_preemption.json\nreports/P1_artifacts/negative/false_deadline_equality_miss.json\nreports/P1_artifacts/negative/false_group_metric.json\nreports/P1_artifacts/negative/incompatible_resource.json\nreports/P1_artifacts/negative/invalid_interval.json\nreports/P1_artifacts/negative/malformed_events.json\nreports/P1_artifacts/negative/migration_event.json\nreports/P1_artifacts/negative/missing_node_no_drain.json\nreports/P1_artifacts/negative/nonnumeric_nan_interval.json\nreports/P1_artifacts/negative/out_of_order_event.json\nreports/P1_artifacts/negative/predecessor_not_finished.json\nreports/P1_artifacts/negative/resource_overlap.json\nreports/P1_artifacts/negative/split_execution.json\nreports/P1_artifacts/negative/unaccounted_arrival.json\nreports/P1_artifacts/negative/unknown_node.json\nreports/P1_artifacts/negative/unknown_resource.json\nreports/P1_artifacts/negative/wrong_duration.json\nreports/P1_artifacts/negative_results.json\nreports/P1_artifacts/traces/empty_B1.json\nreports/P1_artifacts/traces/empty_B2.json\nreports/P1_artifacts/traces/empty_B3.json\nreports/P1_artifacts/traces/empty_B4.json\nreports/P1_artifacts/traces/empty_B5.json\nreports/P1_artifacts/traces/hand_dag_B1.json\nreports/P1_artifacts/traces/hand_dag_B2.json\nreports/P1_artifacts/traces/hand_dag_B3.json\nreports/P1_artifacts/traces/hand_dag_B4.json\nreports/P1_artifacts/traces/hand_dag_B5.json\nreports/P1_artifacts/traces/minimal_B1.json\nreports/P1_artifacts/traces/minimal_B2.json\nreports/P1_artifacts/traces/minimal_B3.json\nreports/P1_artifacts/traces/minimal_B4.json\nreports/P1_artifacts/traces/minimal_B5.json\nreports/P1_artifacts/traces/oeft_choice_B1.json\nreports/P1_artifacts/traces/oeft_choice_B2.json\nreports/P1_artifacts/traces/oeft_choice_B3.json\nreports/P1_artifacts/traces/oeft_choice_B4.json\nreports/P1_artifacts/traces/oeft_choice_B5.json\nreports/P1_artifacts/traces/overrun_B1.json\nreports/P1_artifacts/traces/overrun_B2.json\nreports/P1_artifacts/traces/overrun_B3.json\nreports/P1_artifacts/traces/overrun_B4.json\nreports/P1_artifacts/traces/overrun_B5.json\nreports/P1_artifacts/traces/priority_B1.json\nreports/P1_artifacts/traces/priority_B2.json\nreports/P1_artifacts/traces/priority_B3.json\nreports/P1_artifacts/traces/priority_B4.json\nreports/P1_artifacts/traces/priority_B5.json\nreports/P1_artifacts/traces/remapping_B1.json\nreports/P1_artifacts/traces/remapping_B2.json\nreports/P1_artifacts/traces/remapping_B3.json\nreports/P1_artifacts/traces/remapping_B4.json\nreports/P1_artifacts/traces/remapping_B5.json\nreports/P1_artifacts/traces/simultaneous_B1.json\nreports/P1_artifacts/traces/simultaneous_B2.json\nreports/P1_artifacts/traces/simultaneous_B3.json\nreports/P1_artifacts/traces/simultaneous_B4.json\nreports/P1_artifacts/traces/simultaneous_B5.json\nreports/P1_artifacts/traces/wait_scan_B1.json\nreports/P1_artifacts/traces/wait_scan_B2.json\nreports/P1_artifacts/traces/wait_scan_B3.json\nreports/P1_artifacts/traces/wait_scan_B4.json\nreports/P1_artifacts/traces/wait_scan_B5.json\nreports/P1_audit_runs/run_001.json\nreports/P1_audit_runs/run_002.json\nreports/P1_audit_runs/run_003.json\nreports/P1_baseline_implementation_report.md\nreports/P1_committed_source_verification.json\nreports/P1_correctness.json\nreports/P1_correctness_report.md\nreports/P1_delivery_status.json\nreports/P1_git_check_history.json\nreports/P1_git_checkpoint.json\nreports/P1_preflight.json\nreports/P1_test_history.json\nreports/P1_test_run.json\nreports/P1_test_runs/run_001.json\nreports/P1_test_runs/run_002.json\nreports/P1_test_runs/run_003.json\nreports/P1_test_runs/run_004.json\nreports/P1_test_runs/run_005.json\nreports/P1_test_runs/run_006.json\nreports/P1_test_runs/run_007.json\nreports/P1_trace_validation_report.md\nreports/P2_calibration.md\nreports/P2_delivery_index.json\nreports/P2_delivery_status.json\nreports/P2_design/delivery_index.json\nreports/P2_design/design_status.json\nreports/P2_design/document_checks.json\nreports/P2_design/evidence_recovery/soc-p2-final-delivery.json\nreports/P2_design/final_audit.md\nreports/P2_design/git_checkpoint.json\nreports/P2_design/previous_STATUS.md\nreports/P2_design/proposal_v1/authorization_request.txt\nreports/P2_design/proposal_v1/diff_review.json\nreports/P2_design/proposal_v1/git_checkpoint.json\nreports/P2_design/proposal_v1/previous_STATUS.md\nreports/P2_design/proposal_v1/previous_design_status.json\nreports/P2_design/proposal_v1/previous_traceability.csv\nreports/P2_design/proposal_v1/repository_audit.json\nreports/P2_design/proposal_v1/static_check.py.txt\nreports/P2_design/proposal_v1/static_checks.json\nreports/P2_design/repository_audit.json\nreports/P2_design/review/document_checks.json\nreports/P2_design/review/git_checkpoint.json\nreports/P2_design/review/original_decision_catalog.json\nreports/P2_design/review/original_human_decisions.md\nreports/P2_design/review/previous_STATUS.md\nreports/P2_design/review/repository_audit.json\nreports/P2_engineering_timing_protocol.md\nreports/P2_evidence_checks.json\nreports/P2_execution_manifest.json\nreports/P2_final_audit.md\nreports/P2_git_checkpoint.json\nreports/P2_mapping_opportunity.json\nreports/P2_mapping_opportunity.md\nreports/P2_output_integrity.json\nreports/P2_per_run_records.json\nreports/P2_preflight.json\nreports/P2_previous_STATUS.md\nreports/P2_runtime_budget.md\nreports/P2_trace_validation_results.json\nreports/blocker_or_failure_report.md\nreports/evidence_matrix.md\nreports/failure_analysis.md\nreports/final_report.md\nreports/history/p0_before_literature_closure_ebab07e/STATUS.md\nreports/history/p0_before_literature_closure_ebab07e/checkpoints/P0_artifact_manifest.json\nreports/history/p0_before_literature_closure_ebab07e/docs/literature_evidence.json\nreports/history/p0_before_literature_closure_ebab07e/docs/literature_matrix.md\nreports/history/p0_before_literature_closure_ebab07e/reports/P0_protocol_audit.json\nreports/history/p0_before_literature_closure_ebab07e/reports/P0_protocol_audit.md\nreports/history/p0_before_literature_closure_ebab07e/reports/blocker_or_failure_report.md\nreports/history/p0_before_local_pdf_review_1b36f39/README.md\nreports/history/p0_before_local_pdf_review_1b36f39/STATUS.md\nreports/history/p0_before_local_pdf_review_1b36f39/checkpoints/P0_artifact_manifest.json\nreports/history/p0_before_local_pdf_review_1b36f39/docs/baseline_spec.md\nreports/history/p0_before_local_pdf_review_1b36f39/docs/literature_evidence.json\nreports/history/p0_before_local_pdf_review_1b36f39/docs/literature_matrix.md\nreports/history/p0_before_local_pdf_review_1b36f39/docs/literature_reviews/heft_cpop.md\nreports/history/p0_before_local_pdf_review_1b36f39/docs/literature_reviews/peft.md\nreports/history/p0_before_local_pdf_review_1b36f39/reports/P0_literature_gap_closure.md\nreports/history/p0_before_local_pdf_review_1b36f39/reports/P0_literature_source_hashes.json\nreports/history/p0_before_local_pdf_review_1b36f39/reports/P0_protocol_audit.json\nreports/history/p0_before_local_pdf_review_1b36f39/reports/P0_protocol_audit.md\nreports/history/p0_before_local_pdf_review_1b36f39/reports/blocker_or_failure_report.md\nreports/history/p0_before_local_pdf_review_1b36f39/reports/evidence_matrix.md\nreports/history/p0_before_local_pdf_review_1b36f39/reports/failure_analysis.md\nreports/history/p0_before_local_pdf_review_1b36f39/reports/final_report.md\nreports/history/p0_before_local_pdf_review_1b36f39/reports/limitations.md\nreports/history/p0_before_local_pdf_review_1b36f39/reports/reproducibility_report.md\nreports/limitations.md\nreports/paper_materials.md\nreports/reproducibility_report.md\nresults/calibration/.gitkeep\nresults/development/.gitkeep\nresults/engineering/.gitkeep\nresults/formal/.gitkeep\nresults/validation/.gitkeep\nscripts/fetch_primary_sources.py\nscripts/generate_seeds.py\nscripts/hash_artifacts.py\nscripts/probe_literature.py\nscripts/run_p1_correctness.py\nscripts/run_pipeline.py\nscripts/setup_environment.sh\nsrc/soc/__init__.py\nsrc/soc/analysis/__init__.py\nsrc/soc/metrics/__init__.py\nsrc/soc/metrics/fixture.py\nsrc/soc/model/__init__.py\nsrc/soc/model/observation.py\nsrc/soc/model/schema.py\nsrc/soc/scheduler/__init__.py\nsrc/soc/scheduler/kernels.py\nsrc/soc/simulator/__init__.py\nsrc/soc/simulator/engine.py\nsrc/soc/validation/__init__.py\nsrc/soc/validation/governance.py\nsrc/soc/validation/p1.py\nsrc/soc/validation/trace.py\nsrc/soc/workload/__init__.py\ntests/p1_fixtures.py\ntests/p1_negative_cases.py\ntests/p1_source_examples.py\ntests/test_governance.py\ntests/test_p1_engine.py\ntests/test_p1_gate.py\ntests/test_p1_kernels.py\ntests/test_p1_metrics.py\ntests/test_p1_model.py\ntests/test_p1_observation.py\ntests/test_p1_trace.py\n",
+      "stderr": ""
+    },
+    {
+      "id": "CMD-007",
+      "argv": [
+        "git",
+        "ls-files",
+        "-z"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_AUDIT",
+      "started_at_utc": "2026-10-18T11:53:11.885255+00:00",
+      "ended_at_utc": "2026-10-18T11:53:11.889466+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout": ".github/workflows/tests.yml\u0000.gitignore\u0000AGENTS.md\u0000LICENSE\u0000README.md\u0000STATUS.md\u0000checkpoints/.gitkeep\u0000checkpoints/P0_artifact_manifest.json\u0000checkpoints/P0_source_checkpoint_inventory.json\u0000checkpoints/P1_artifact_manifest.json\u0000checkpoints/P2_artifact_manifest.json\u0000checkpoints/P2_design_artifact_manifest.json\u0000configs/calibration/.gitkeep\u0000configs/development/.gitkeep\u0000configs/engineering/.gitkeep\u0000configs/formal/.gitkeep\u0000configs/model/.gitkeep\u0000configs/research_protocol.json\u0000configs/seed_partitions.json\u0000configs/validation/.gitkeep\u0000configs/workload/.gitkeep\u0000docs/P0_literature_closure_request.txt\u0000docs/P1_acceptance_matrix.md\u0000docs/P1_authorization_request.txt\u0000docs/P1_decisions.json\u0000docs/P1_implementation_spec.md\u0000docs/P2_authorization_request.txt\u0000docs/P2_design/P2_D01_D10_approval_checklist_v1.md\u0000docs/P2_design/P2_D01_D10_traceability.csv\u0000docs/P2_design/P2_communication_profiles_v1.json\u0000docs/P2_design/P2_complete_design_proposal_v1.md\u0000docs/P2_design/P2_decision_dependency_map.md\u0000docs/P2_design/P2_generation_spec_v1.json\u0000docs/P2_design/P2_human_approval_checklist.md\u0000docs/P2_design/P2_mapping_opportunity_decision_table_v1.md\u0000docs/P2_design/P2_resource_profiles_v1.json\u0000docs/P2_design/P2_runner_schema_review_v1.md\u0000docs/P2_design/P2_scientific_parameter_registry_v1.json\u0000docs/P2_design/P2_trial_matrix_draft_v1.json\u0000docs/P2_design/P2_workload_templates_v1.json\u0000docs/P2_design/README.md\u0000docs/P2_design/authorization_request.txt\u0000docs/P2_design/blocker_decisions.md\u0000docs/P2_design/calibration_matrix.draft.json\u0000docs/P2_design/calibration_options.md\u0000docs/P2_design/decisions.draft.json\u0000docs/P2_design/evidence_and_traceability.md\u0000docs/P2_design/human_decisions.md\u0000docs/P2_design/mapping_criterion_options.md\u0000docs/P2_design/runner_and_schema.md\u0000docs/P2_design/scientific_artifacts.schema.draft.json\u0000docs/P2_design/workload_gaps.md\u0000docs/baseline_spec.md\u0000docs/development_search_protocol.md\u0000docs/literature_evidence.json\u0000docs/literature_matrix.md\u0000docs/literature_reviews/autoware_dag.md\u0000docs/literature_reviews/ds3.md\u0000docs/literature_reviews/federated_limit.md\u0000docs/literature_reviews/heft_cpop.md\u0000docs/literature_reviews/peft.md\u0000docs/literature_reviews/starpu.md\u0000docs/method_spec.md\u0000docs/metric_spec.md\u0000docs/model_spec.md\u0000docs/research_contract.md\u0000docs/statistical_protocol.md\u0000docs/user_request.txt\u0000docs/workload_spec.md\u0000pyproject.toml\u0000reports/P0_checks_001.json\u0000reports/P0_checks_002.json\u0000reports/P0_clean_clone_reproduction.json\u0000reports/P0_configuration_status.json\u0000reports/P0_environment.json\u0000reports/P0_environment.md\u0000reports/P0_final_git_audit.json\u0000reports/P0_heft_crossref.json\u0000reports/P0_literature_closure_checks.json\u0000reports/P0_literature_closure_git_checkpoint.json\u0000reports/P0_literature_closure_repository_audit.json\u0000reports/P0_literature_gap_closure.md\u0000reports/P0_literature_network_requirements.json\u0000reports/P0_literature_source_hashes.json\u0000reports/P0_local_pdf_checks.json\u0000reports/P0_local_pdf_decision.json\u0000reports/P0_local_pdf_git_checkpoint.json\u0000reports/P0_local_pdf_prior_sources_recheck.json\u0000reports/P0_local_pdf_repository_audit.json\u0000reports/P0_protocol_audit.json\u0000reports/P0_protocol_audit.md\u0000reports/P0_push_checkpoint.json\u0000reports/P0_repository_audit.txt\u0000reports/P0_source_acquisition_001.json\u0000reports/P0_source_acquisition_002.json\u0000reports/P0_source_acquisition_003.json\u0000reports/P0_source_acquisition_004.json\u0000reports/P0_source_acquisition_005.json\u0000reports/P0_source_acquisition_006.json\u0000reports/P0_source_acquisition_007.json\u0000reports/P0_source_acquisition_008.json\u0000reports/P0_source_acquisition_009.json\u0000reports/P0_source_acquisition_010.json\u0000reports/P0_source_acquisition_011.json\u0000reports/P0_source_acquisition_012.json\u0000reports/P0_source_acquisition_013.json\u0000reports/P0_source_acquisition_014.json\u0000reports/P0_test_history.json\u0000reports/P1_acceptance_matrix.md\u0000reports/P1_artifacts/index.json\u0000reports/P1_artifacts/inputs/empty.json\u0000reports/P1_artifacts/inputs/hand_dag.json\u0000reports/P1_artifacts/inputs/minimal.json\u0000reports/P1_artifacts/inputs/oeft_choice.json\u0000reports/P1_artifacts/inputs/overrun.json\u0000reports/P1_artifacts/inputs/priority.json\u0000reports/P1_artifacts/inputs/remapping.json\u0000reports/P1_artifacts/inputs/simultaneous.json\u0000reports/P1_artifacts/inputs/wait_scan.json\u0000reports/P1_artifacts/negative/assignment_event_mismatch.json\u0000reports/P1_artifacts/negative/data_not_arrived.json\u0000reports/P1_artifacts/negative/duplicate_execution.json\u0000reports/P1_artifacts/negative/duplicate_start_preemption.json\u0000reports/P1_artifacts/negative/false_deadline_equality_miss.json\u0000reports/P1_artifacts/negative/false_group_metric.json\u0000reports/P1_artifacts/negative/incompatible_resource.json\u0000reports/P1_artifacts/negative/invalid_interval.json\u0000reports/P1_artifacts/negative/malformed_events.json\u0000reports/P1_artifacts/negative/migration_event.json\u0000reports/P1_artifacts/negative/missing_node_no_drain.json\u0000reports/P1_artifacts/negative/nonnumeric_nan_interval.json\u0000reports/P1_artifacts/negative/out_of_order_event.json\u0000reports/P1_artifacts/negative/predecessor_not_finished.json\u0000reports/P1_artifacts/negative/resource_overlap.json\u0000reports/P1_artifacts/negative/split_execution.json\u0000reports/P1_artifacts/negative/unaccounted_arrival.json\u0000reports/P1_artifacts/negative/unknown_node.json\u0000reports/P1_artifacts/negative/unknown_resource.json\u0000reports/P1_artifacts/negative/wrong_duration.json\u0000reports/P1_artifacts/negative_results.json\u0000reports/P1_artifacts/traces/empty_B1.json\u0000reports/P1_artifacts/traces/empty_B2.json\u0000reports/P1_artifacts/traces/empty_B3.json\u0000reports/P1_artifacts/traces/empty_B4.json\u0000reports/P1_artifacts/traces/empty_B5.json\u0000reports/P1_artifacts/traces/hand_dag_B1.json\u0000reports/P1_artifacts/traces/hand_dag_B2.json\u0000reports/P1_artifacts/traces/hand_dag_B3.json\u0000reports/P1_artifacts/traces/hand_dag_B4.json\u0000reports/P1_artifacts/traces/hand_dag_B5.json\u0000reports/P1_artifacts/traces/minimal_B1.json\u0000reports/P1_artifacts/traces/minimal_B2.json\u0000reports/P1_artifacts/traces/minimal_B3.json\u0000reports/P1_artifacts/traces/minimal_B4.json\u0000reports/P1_artifacts/traces/minimal_B5.json\u0000reports/P1_artifacts/traces/oeft_choice_B1.json\u0000reports/P1_artifacts/traces/oeft_choice_B2.json\u0000reports/P1_artifacts/traces/oeft_choice_B3.json\u0000reports/P1_artifacts/traces/oeft_choice_B4.json\u0000reports/P1_artifacts/traces/oeft_choice_B5.json\u0000reports/P1_artifacts/traces/overrun_B1.json\u0000reports/P1_artifacts/traces/overrun_B2.json\u0000reports/P1_artifacts/traces/overrun_B3.json\u0000reports/P1_artifacts/traces/overrun_B4.json\u0000reports/P1_artifacts/traces/overrun_B5.json\u0000reports/P1_artifacts/traces/priority_B1.json\u0000reports/P1_artifacts/traces/priority_B2.json\u0000reports/P1_artifacts/traces/priority_B3.json\u0000reports/P1_artifacts/traces/priority_B4.json\u0000reports/P1_artifacts/traces/priority_B5.json\u0000reports/P1_artifacts/traces/remapping_B1.json\u0000reports/P1_artifacts/traces/remapping_B2.json\u0000reports/P1_artifacts/traces/remapping_B3.json\u0000reports/P1_artifacts/traces/remapping_B4.json\u0000reports/P1_artifacts/traces/remapping_B5.json\u0000reports/P1_artifacts/traces/simultaneous_B1.json\u0000reports/P1_artifacts/traces/simultaneous_B2.json\u0000reports/P1_artifacts/traces/simultaneous_B3.json\u0000reports/P1_artifacts/traces/simultaneous_B4.json\u0000reports/P1_artifacts/traces/simultaneous_B5.json\u0000reports/P1_artifacts/traces/wait_scan_B1.json\u0000reports/P1_artifacts/traces/wait_scan_B2.json\u0000reports/P1_artifacts/traces/wait_scan_B3.json\u0000reports/P1_artifacts/traces/wait_scan_B4.json\u0000reports/P1_artifacts/traces/wait_scan_B5.json\u0000reports/P1_audit_runs/run_001.json\u0000reports/P1_audit_runs/run_002.json\u0000reports/P1_audit_runs/run_003.json\u0000reports/P1_baseline_implementation_report.md\u0000reports/P1_committed_source_verification.json\u0000reports/P1_correctness.json\u0000reports/P1_correctness_report.md\u0000reports/P1_delivery_status.json\u0000reports/P1_git_check_history.json\u0000reports/P1_git_checkpoint.json\u0000reports/P1_preflight.json\u0000reports/P1_test_history.json\u0000reports/P1_test_run.json\u0000reports/P1_test_runs/run_001.json\u0000reports/P1_test_runs/run_002.json\u0000reports/P1_test_runs/run_003.json\u0000reports/P1_test_runs/run_004.json\u0000reports/P1_test_runs/run_005.json\u0000reports/P1_test_runs/run_006.json\u0000reports/P1_test_runs/run_007.json\u0000reports/P1_trace_validation_report.md\u0000reports/P2_calibration.md\u0000reports/P2_delivery_index.json\u0000reports/P2_delivery_status.json\u0000reports/P2_design/delivery_index.json\u0000reports/P2_design/design_status.json\u0000reports/P2_design/document_checks.json\u0000reports/P2_design/evidence_recovery/soc-p2-final-delivery.json\u0000reports/P2_design/final_audit.md\u0000reports/P2_design/git_checkpoint.json\u0000reports/P2_design/previous_STATUS.md\u0000reports/P2_design/proposal_v1/authorization_request.txt\u0000reports/P2_design/proposal_v1/diff_review.json\u0000reports/P2_design/proposal_v1/git_checkpoint.json\u0000reports/P2_design/proposal_v1/previous_STATUS.md\u0000reports/P2_design/proposal_v1/previous_design_status.json\u0000reports/P2_design/proposal_v1/previous_traceability.csv\u0000reports/P2_design/proposal_v1/repository_audit.json\u0000reports/P2_design/proposal_v1/static_check.py.txt\u0000reports/P2_design/proposal_v1/static_checks.json\u0000reports/P2_design/repository_audit.json\u0000reports/P2_design/review/document_checks.json\u0000reports/P2_design/review/git_checkpoint.json\u0000reports/P2_design/review/original_decision_catalog.json\u0000reports/P2_design/review/original_human_decisions.md\u0000reports/P2_design/review/previous_STATUS.md\u0000reports/P2_design/review/repository_audit.json\u0000reports/P2_engineering_timing_protocol.md\u0000reports/P2_evidence_checks.json\u0000reports/P2_execution_manifest.json\u0000reports/P2_final_audit.md\u0000reports/P2_git_checkpoint.json\u0000reports/P2_mapping_opportunity.json\u0000reports/P2_mapping_opportunity.md\u0000reports/P2_output_integrity.json\u0000reports/P2_per_run_records.json\u0000reports/P2_preflight.json\u0000reports/P2_previous_STATUS.md\u0000reports/P2_runtime_budget.md\u0000reports/P2_trace_validation_results.json\u0000reports/blocker_or_failure_report.md\u0000reports/evidence_matrix.md\u0000reports/failure_analysis.md\u0000reports/final_report.md\u0000reports/history/p0_before_literature_closure_ebab07e/STATUS.md\u0000reports/history/p0_before_literature_closure_ebab07e/checkpoints/P0_artifact_manifest.json\u0000reports/history/p0_before_literature_closure_ebab07e/docs/literature_evidence.json\u0000reports/history/p0_before_literature_closure_ebab07e/docs/literature_matrix.md\u0000reports/history/p0_before_literature_closure_ebab07e/reports/P0_protocol_audit.json\u0000reports/history/p0_before_literature_closure_ebab07e/reports/P0_protocol_audit.md\u0000reports/history/p0_before_literature_closure_ebab07e/reports/blocker_or_failure_report.md\u0000reports/history/p0_before_local_pdf_review_1b36f39/README.md\u0000reports/history/p0_before_local_pdf_review_1b36f39/STATUS.md\u0000reports/history/p0_before_local_pdf_review_1b36f39/checkpoints/P0_artifact_manifest.json\u0000reports/history/p0_before_local_pdf_review_1b36f39/docs/baseline_spec.md\u0000reports/history/p0_before_local_pdf_review_1b36f39/docs/literature_evidence.json\u0000reports/history/p0_before_local_pdf_review_1b36f39/docs/literature_matrix.md\u0000reports/history/p0_before_local_pdf_review_1b36f39/docs/literature_reviews/heft_cpop.md\u0000reports/history/p0_before_local_pdf_review_1b36f39/docs/literature_reviews/peft.md\u0000reports/history/p0_before_local_pdf_review_1b36f39/reports/P0_literature_gap_closure.md\u0000reports/history/p0_before_local_pdf_review_1b36f39/reports/P0_literature_source_hashes.json\u0000reports/history/p0_before_local_pdf_review_1b36f39/reports/P0_protocol_audit.json\u0000reports/history/p0_before_local_pdf_review_1b36f39/reports/P0_protocol_audit.md\u0000reports/history/p0_before_local_pdf_review_1b36f39/reports/blocker_or_failure_report.md\u0000reports/history/p0_before_local_pdf_review_1b36f39/reports/evidence_matrix.md\u0000reports/history/p0_before_local_pdf_review_1b36f39/reports/failure_analysis.md\u0000reports/history/p0_before_local_pdf_review_1b36f39/reports/final_report.md\u0000reports/history/p0_before_local_pdf_review_1b36f39/reports/limitations.md\u0000reports/history/p0_before_local_pdf_review_1b36f39/reports/reproducibility_report.md\u0000reports/limitations.md\u0000reports/paper_materials.md\u0000reports/reproducibility_report.md\u0000results/calibration/.gitkeep\u0000results/development/.gitkeep\u0000results/engineering/.gitkeep\u0000results/formal/.gitkeep\u0000results/validation/.gitkeep\u0000scripts/fetch_primary_sources.py\u0000scripts/generate_seeds.py\u0000scripts/hash_artifacts.py\u0000scripts/probe_literature.py\u0000scripts/run_p1_correctness.py\u0000scripts/run_pipeline.py\u0000scripts/setup_environment.sh\u0000src/soc/__init__.py\u0000src/soc/analysis/__init__.py\u0000src/soc/metrics/__init__.py\u0000src/soc/metrics/fixture.py\u0000src/soc/model/__init__.py\u0000src/soc/model/observation.py\u0000src/soc/model/schema.py\u0000src/soc/scheduler/__init__.py\u0000src/soc/scheduler/kernels.py\u0000src/soc/simulator/__init__.py\u0000src/soc/simulator/engine.py\u0000src/soc/validation/__init__.py\u0000src/soc/validation/governance.py\u0000src/soc/validation/p1.py\u0000src/soc/validation/trace.py\u0000src/soc/workload/__init__.py\u0000tests/p1_fixtures.py\u0000tests/p1_negative_cases.py\u0000tests/p1_source_examples.py\u0000tests/test_governance.py\u0000tests/test_p1_engine.py\u0000tests/test_p1_gate.py\u0000tests/test_p1_kernels.py\u0000tests/test_p1_metrics.py\u0000tests/test_p1_model.py\u0000tests/test_p1_observation.py\u0000tests/test_p1_trace.py\u0000",
+      "stderr": ""
+    },
+    {
+      "id": "CMD-008",
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_AUDIT",
+      "started_at_utc": "2026-10-18T11:53:11.889840+00:00",
+      "ended_at_utc": "2026-10-18T11:53:11.893602+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout": "892ce2b71fd0c89f1b241c950b597eafab894e23\n",
+      "stderr": ""
+    },
+    {
+      "id": "CMD-009",
+      "argv": [
+        "sed",
+        "-n",
+        "196,339p",
+        "docs/P2_design/P2_complete_design_proposal_v1.md"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_AUDIT",
+      "started_at_utc": "2026-10-18T11:53:25.650942+00:00",
+      "ended_at_utc": "2026-10-18T11:53:25.653339+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout": "## D06 — 可行性、负载和失败分类（PROPOSED / UNRESOLVED）\n\n原始问题：H基础可行性、负载标签、试验选择/平局/失败继续停止规则。\n推荐同时做H_ISOLATED与LOW_COMPETITION。控制从父主输入派生，保留原service/node/key/\nduration/deadline，只有删L或改到达；不得复用不同内容hash。G在generation JSON中用\n保守串行上界计算，各服务完全隔离；两个控制分别50/100服务、每份仍为单一trial，\n不隐藏额外独占运行。H-only不要求有L，L指标为NOT_APPLICABLE_CONTROL，不能进入主统计。\n\n| 类别 | 预先规定的证据/判定 | 继续、停止与保留 |\n|---|---|---|\n| H基础可行见证 | 合法H_ISOLATED控制内每个H完成≤自身原deadline，无服务重叠 | 这是注册deadline的直接比较，无新增容忍阈值；保留逐服务见证 |\n| 天然不可行的充分证据 | 每个H的乐观路径LB：min兼容真实代价 + max前驱(LB+边最小合法通信)；若任一个LB>D | 即使允许不一致最优资源仍超期，是下界证据；保留，不归为调度器正确性失败；配置不准入 |\n| 未证明可行/不可行 | B2独占miss但LB≤D，或无独占有效见证 | 不宣称天然不可行，不调deadline补救；不准入，可继续既定负面诊断 |\n| 低竞争对照 | 全100服务串行隔离、来源有效，记录每个H/L deadline结果 | 不以低竞争标签自动断言可行；B2 miss单列，主配置不准入 |\n| 合法但未达负载目标 | trace合法、完整，但以下压力/miss bands不符 | 保留并继续剩余既定trial；不可换标签或删seed |\n| invalid | 输入/trace/血缘/配对不合法，或独立复算不一致 | 全计划停止，保留原件和诊断，缺格阻断完整性 |\n| failed | 进程启动失败、非零、引擎deadlock或未完成命令 | 全计划停止；spawn未开始exit=null，不填0 |\n| incomplete | 中断、缺文件/校验/重放、终结标记缺失 | 全计划停止；不续写、不自动重试，不与合法负结果混合 |\n\n上述LB是真值的离线控制审计，不能传给scheduler。LB≤D不证明可行；独占B2 miss也不证明\n全算法不可行（DERIVED）。这种区分遵循user_request §37和federated review的比较器限制。\n\n以下是**新的待批准负载分箱数值，绝不是现行H可行性阈值或科学收益门槛**：对B2主运行，\n逐seed计算p_s=max_r(busy_r∩[0,W])/W，再对10seed取均值p；不使用full-drain利用率来冒充\n到达窗口压力，同时保留每资源、每seed、队列/就绪等待和窗口末backlog。Hmiss也先逐seed\n再均值。light要求0≤p<.50且H/L平均DMR均≤.01；medium要求.50≤p<.80；near要求.80≤p≤1；\n后两类H平均DMR在[.01,.80]且每seed至少存在一次ready-node资源等待。全部10seed控制必须\n有效且H/低竞争见证满足deadline才可准入。未定数值均须批准；.80 miss上界用于排除接近\n全miss，本提案没有把它变成H收益或mapping阈值。样本少时分箱可能拒绝全部配置，这是\n预先允许的BLOCKED结局。额外severe-overload仅敏感性，未纳入本版trial。\n\n按每条件A优先、B次之选第一个合格配置，不按miss最低或映射收益最高。一个条件无合格即\n全P2 BLOCKED；不重新解释自然不可行/有效负结果、不静默增加试验。合法但不可行试验\n可以按已列清单完成用于诊断，但绝不可选作“合理压力且基本可行”的正式条件。\n待答：是否批准两个控制、充分/未证明区分、候选负载分箱和A/B选择/停止政策？\n\n## D07 — M1机制观察与M2描述（PROPOSED / UNRESOLVED）\n\n原始问题：M1/M2、可观察量、对照边界、单位、条件/seed分母。\n推荐M1作为局部机制证据、M2作为补充描述，两者不能作为候选算法。\nSOURCE_SUPPORTED：原始需求§44允许2–4 ready任务的局部枚举diagnostic oracle；\n原需求§23禁止未来信息。下述具体目标/截断/记录点都是新增提案。\n\nM1在B2主运行每次公共view刷新、派发调用前记录（包括一次派发后的新view），以\n(run_id,decision_seq,public_view_digest)标识，纯重复无状态改变的view只记一次；记录全部\n已到达公共图、ready集合、估计、可见running elapsed、已完成数据及闲忙状态。\n用既有B2 ready次序前min(4,ready_count)个组成K；K≥2且至少含一个H即eligible，\n不因没有替代资源删掉此状态。分母N_cs是该条件/seed主B2的全部eligible独特view数，\n另记总view数、截断次数、K分布；N=0是缺乏观察而非机会率0。\n\n固定K和顺序，只枚举兼容mapping（最多6^4=1296），不排列任务顺序。以同一公共估计\nbusy release=now+max(0,estimate−elapsed)、真实已完成前驱的目的地就绪，串行追加每个\nresource上K任务的预计占用，允许预测等待但不执行/不保留资源。基准是同固定序的局部\ngreedy EFT追加；枚举集合包含此基准。反事实只允许每个L局部预计finish≤基准相应finish，\n目标为最小K内H预计finish均值，平局按resource ID元组。不存在未来到达、未ready节点或\n后继运行；不会反馈到实际B2调度。这是离线局部比较，非新online policy或真实反事实轨迹。\n\n记b=基准H预计finish均值−now>0，o=可行枚举最优对应值，Δ=b−o≥0（ms），g=Δ/b（无量纲）。\n比较使用binary64输入值对应的精确有理数，不加未注册epsilon；枚举的具体传输/预计排队\n也用这些公共有理数进行，保持内部基准与反事实完全同一算术。不能声称与浮点runtime\n局部预测逐bit相同，未来须报告差异；无真实收益担保。记录最优assignment/基准/约束/\n成本/截断，审计者可独立复算。M1只证明当前K/估计/约束下有局部映射余量；看不到尚未\nready的稀缺H需求，估计误差和选择B2轨迹都限制解释。\n\n辅助离线trace描述：逐服务以最长实际依赖/通信路径标识H critical path（同长按node ID），\n逐节点记录CPU/GPU/NPU等待、完成前驱后data-ready等待、实际资源/兼容数、替代预计代价，\n单位ms/计数，参考trace与公共view。完成后的关键路径不能喂给scheduler或用于调选trial。\n具体定义为：dep=max(arrival,各前驱finish)，data=max(arrival,各前驱finish+实际目的地delay)，\ndata_wait=data−dep，post_wait=start−data；assigned_busy_wait为[data,start)内已分配单元\n被其他节点占用的区间测度，policy_idle_wait=post_wait−assigned_busy_wait，均ms且不重叠。\npost_wait包含策略选择的空闲等待，不能全称为物理资源阻塞。CPU/GPU/NPU等待分项按实际\n目的单元类型累加assigned_busy_wait，逐服务分母为1、跨服务分母为该组50，注明node-ms求和\n可能在并行分支上重叠。关键路径采用node权重duration+post_wait、edge权重实际delay，根从\narrival起，最长路径长度应等于服务response；同长按完整node-ID路径字典序。H critical-path\nblocking为这条事后路径的assigned_busy_wait之和(ms)，另报policy_idle_wait/compute/transfer，\n不得与全图节点wait和混为同一个端到端分解。每次实际start同时引用最近公共view，记录\ncompatible数以及每个替代资源的预测EFT−实际所选资源在同view的预测EFT（ms，可为负；无\n替代记NONE），不拿私有真值比较替代资源。以上恒等式/区间测度需未来独立复算验证。\n\nM2用同workload的B1/B3/B4/B5逐一配对B2；每seed/condition报告H-DMR差（比例点）、\nL-P95差(ms)、每服务资源等待均值差(ms)、M1机会率及eligible数（只B2）和兼容性分布。\n主服务分母每类50；控制不混入；实际trace等待分解须先验证恒等式，零/缺失不可编0。\n可用既有paired-seed CI，不能按100个服务或数千view重采样。B3/B4或B2/B5同时改变\nordering/lookahead/mapping，M2**不能单独支持映射独立因果贡献**，也不替代P3 A3–A1检验。\n待答：是否批准K/截断/基准/局部L约束/目标、分母及M1+M2解释边界？\n\n## D08 — 三态判据（PROPOSED / UNRESOLVED）\n\n原始问题：可观察量聚合、稳定性、不确定性、三态条件、无效/缺失处理。\n完整三态表、两套有限候选和精确边界在 `P2_mapping_opportunity_decision_table_v1.md`。\n推荐讨论FINE方案，理由为不要求5%局部估计收益才能观察弱机会；这不是来源证明，也不能\n保证稳健。COARSE更保守；两者必须**在看结果前二选一**，不能逐结果挑最容易通过者。\ntau/frequency/stability及bootstrap实现pin全部UNRESOLVED，32组参数登记中单列。\n所有既有H/L、P3 mapping阈值和CI算法保持原件不变；不把统计门槛从它们挪来。\n任何方案通过只能支持所定义局部机会，不等于H收益/L合规/候选成功。待答：选FINE、COARSE，\n还是拒绝并给另一套完整规则？批准条件覆盖/缺失/稳定性/paired-seed实现pin吗？\n\n## D09 — 唯一runner与恢复（PROPOSED / UNRESOLVED）\n\n原始问题：唯一入口或同守卫薄launcher，身份/源码/恢复/重试/退出等。\n推荐扩展现有 `scripts/run_pipeline.py --stage calibration` 为未来唯一正式入口；\n完整比较、复用等值条件、状态机、attempt链和洁净策略在 `P2_runner_schema_review_v1.md`。\n此命令仅为未来接口定位，本轮没调用。R2可作为无独立权力的薄launcher，当前不需要。\n自动重试预算0；不完整不续写、重新执行必须新的审批和新attempt而不能救统计结果。\nP2相关源码/配置已提交且洁净是新增工程推荐，**不是现行已批准P2规则**；现合同明确强制\n洁净的是precheck/validation/formal。待答：是否批准R1、精确复用、零自动重试和P2洁净政策？\n\n## D10 — 科学schema/adapter（PROPOSED / UNRESOLVED）\n\n原始问题：envelope或新版本schema+adapter，以及血缘、COMPLETE、P1兼容。\n推荐S2新scientific v1+显式adapter，理由为现代码硬编码fixture origin，外包envelope本身\n无法证明科学来源。S1保留为经未来兼容性证据支持的备选。本版给完整规范字段表和不变量，\n不修改现有schema草案/模型、engine或validator。见 `P2_runner_schema_review_v1.md` D10。\nstatic字段/规范检查不等于运行时hash/血缘/恢复已验证；科学输入原始字节、generator出生\n证明和P1负例回归都需未来实现验证。待答：是否批准S2、ID/canonicalization/引用规范及\nCOMPLETE必须同时成立的条件？\n\n## 跨决策一致性、已知风险与停止\n\n| 核对项 | 结论/仍待验证 |\n|---|---|\n| D01↔D02身份 | 六模板角色均存在profile；所有节点兼容集非空；两尺寸比例明确，未来实例ID须唯一 |\n| D01↔D03 | 六模板前驱与74边一一对应；9类型对完整；单位同引擎，未生成网络实例 |\n| D04↔D10 hash | 参数精确有理身份与运行binary64 payload分开hash；控制变体不同hash但扰动key保留；无自引用hash |\n| D05 seeds/budget | 只引用既有10 CALIBRATION值；36配置/18条件/2520条/1080输入；5040含重放；无新seed |\n| D06公平性 | B2和独占见证决定选型；不按候选/机会结果挑选；独占miss不冒充不可行证明 |\n| D07↔D08 | per-seed机会率、共同重采样索引；非节点/view独立CI，全部12 loaded条件检查 |\n| D09↔D10复用 | 全语义身份及raw refs/hash/validator/metrics/replay/COMPLETE核对；receipt不增样本 |\n| P1隔离 | 旧origin拒绝当前科学输入；S2未实现；P1字节/测试/审计不改，不能改标签充样本 |\n| 封存 | 不创建unlock、不生成非calibration realization/outcome；元数据校验不是访问结果 |\n| 设计≠证据 | B1–B3仍UNRESOLVED；B4/B5仍DESIGNED_UNAPPROVED，代码/行为与科学检验均待做 |\n\n明确保留的冲突/不足：旧draft矩阵与schema只是历史选项；本v1是它们的**具体提案层**，\n未取代生效文件。旧schema缺开始/结束与COMPLETE行为，本版补设计，未修实现。现P1\n硬编码origin与科学读取不兼容，须先S2及P1回归，不能直接运行。source代码/配置哈希为\nP1已验证身份；任何未来adapter会改变它，必须重新验证，不继承当前PASS作为新代码保证。\ntiming不在本矩阵，不能宣称P2所有未来输出均已可冻结。多条件CI为pointwise，三态表没有\n同时置信覆盖保证。FUSION/硬兼容/合成speedup和固定突发都可能人为塑造机会。\n\n`P2_scientific_parameter_registry_v1.json` 枚举**32个未批准科学参数组**（不是32个标量或\n10个决定）；全部有明确提案或有限选项，批准值仍null。工程runner/schema另由D09/D10\n审批，不混计科学参数。D01–D10提案覆盖完整不等于已解决：resolved=0、human=10。\n人工应在v1 checklist逐项选择并记录版本/文件hash/批准值或修改意见，不能仅回答“同意P2”。\n随后只能启动另行授权的实现验证任务；P2保持BLOCKED，当前science=0，STOP=YES。\n",
+      "stderr": ""
+    },
+    {
+      "id": "CMD-010",
+      "argv": [
+        "cat",
+        "docs/P2_design/P2_generation_spec_v1.json"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_AUDIT",
+      "started_at_utc": "2026-10-18T11:53:25.654106+00:00",
+      "ended_at_utc": "2026-10-18T11:53:25.657741+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout": "{\n  \"document_kind\": \"DETERMINISTIC_GENERATION_SPEC_PROPOSAL\",\n  \"version\": \"v1\",\n  \"status\": \"DRAFT_UNAPPROVED_NONEXECUTABLE\",\n  \"classification\": \"PROPOSED\",\n  \"approved\": false,\n  \"frozen\": false,\n  \"executable\": false,\n  \"execution_authorized\": false,\n  \"read_by_pipeline\": false,\n  \"source_checkpoint\": \"160800d9b136e953c6415cd5229ded87eae72a0f\",\n  \"generator_version\": \"soc-p2-synthetic-v1-PROPOSED\",\n  \"algorithm\": \"SHA-256 keyed counter mapping, no mutable PRNG state\",\n  \"canonicalization\": {\n    \"encoding\": \"UTF-8 ASCII-only identifiers; reject non-ASCII identifiers and duplicate keys\",\n    \"json\": \"sort_keys=True,separators=(comma,colon),ensure_ascii=True,allow_nan=False; exactly one LF; arrays ordered by specified stable IDs\",\n    \"numbers\": \"Parse proposal decimal numeric lexemes exactly (e.g. JSON parse_float=Decimal), normalize to reduced rational {numerator,denominator}; retain integers, reject booleans as numeric. Identity preimages have no floats. Raw config file SHA is separate. Only engine payload gets one correctly rounded Python 3.12 binary64 conversion.\",\n    \"hash\": \"SHA-256 over exact canonical bytes; identity preimage excludes its own ID/hash and timestamps; hash raw files as raw bytes independently\"\n  },\n  \"key\": {\n    \"domain\": \"soc.p2.gen.v1\",\n    \"fields\": [\n      \"domain\",\n      \"version\",\n      \"actual_seed_decimal_string\",\n      \"scenario\",\n      \"condition_id\",\n      \"config_id\",\n      \"service_slot\",\n      \"service_group\",\n      \"template_node_id\",\n      \"resource_id\",\n      \"edge_id\",\n      \"field\",\n      \"counter\"\n    ],\n    \"unused\": \"empty string, never omitted; counter integer 0 except rejection sampling\",\n    \"exclusions\": [\n      \"method\",\n      \"trial_id\",\n      \"attempt_id\",\n      \"host\",\n      \"current_time\",\n      \"scheduler_calls\",\n      \"control_variant\"\n    ],\n    \"identity_namespaces\": {\n      \"template\": \"scene.nNN[.a|.b]\",\n      \"service\": \"scene/load/size/config/sSSS/H-or-L\",\n      \"field\": [\n        \"arrival_jitter\",\n        \"service_role_factor\",\n        \"duration_factor\",\n        \"deadline\",\n        \"edge_size\"\n      ]\n    },\n    \"seed\": \"existing CALIBRATION value only; this design never derives a new seed\"\n  },\n  \"uniform_mapping\": \"first 8 digest bytes unsigned big-endian q; U=q/2^64 in [0,1), exact rational, one domain-separated hash per field/key\",\n  \"rules\": {\n    \"service_role_factor\": \"9/10+U/5; field=service_role_factor; resource_id empty, node-specific, shared by all resources for that node\",\n    \"duration_factor\": \"9/10+U/5; field=duration_factor; node and resource present; resource-specific private realized durations\",\n    \"arrival_jitter\": \"U/10 dimensionless; service_slot j, service_group empty; other IDs empty; shared by H/L pair\",\n    \"edge_size\": \"explicit D03 size, no random perturbation in v1; edge_id exists in namespace but edge_size keys NOT sampled\",\n    \"deadline\": \"no random draw; formula below\",\n    \"rounding\": \"Exact rationals through estimates/realized/arrivals/deadlines; single correctly-rounded nearest ties-to-even binary64 conversion for engine payload; assert positive finite, normalize negative zero to +0; no incremental float RNG arithmetic\",\n    \"node_scaling\": \"16-node a/b each base/2; independent node keys, so total realized compute need not equal 8-node service\"\n  },\n  \"arrivals\": {\n    \"slots\": 50,\n    \"services_per_slot\": 2,\n    \"total_services\": 100,\n    \"H\": 50,\n    \"L\": 50,\n    \"burst_block_slots\": 5,\n    \"burst_compression\": \"1/4\",\n    \"formula\": \"for j=0..49: q=j//5,k=j%5; a_H=a_L=P*(5*q+k/4+U_j/10); P is config period_ms\",\n    \"arrival_window\": \"[0,W) with W=50*P ms; no service at W; no arrivals after last slot, observation continues to W and full drain; completion may precede W but run_end=max(W,last_completion)\",\n    \"no_warmup_exclusion\": true\n  },\n  \"deadlines\": {\n    \"reference\": \"C_est = max_root_to_sink sum_node(min_compatible estimated_duration_ms); excludes communication; DAG dynamic program, no scheduling outcome\",\n    \"H_multiplier\": \"5/2\",\n    \"L_multiplier\": \"4\",\n    \"formula\": \"D_g = multiplier(group) * C_est(service); positive, relative to each admitted arrival\",\n    \"risk\": \"C_est is optimistic and not a feasibility certificate; D06 independent controls mandatory\"\n  },\n  \"controls\": {\n    \"H_ISOLATED\": \"retain the same 50 H services, keys, graph, durations, deadlines; remove L; place kth H at k*G\",\n    \"LOW_COMPETITION\": \"retain all 100 services and private keyed values; order slot then group H,L; kth service at k*G\",\n    \"gap\": \"G = ceil( max_service[sum_node(max_resource(estimate*11/10)) + sum_edge(max_typepair delay(edge)) + relative_deadline] ) +1 ms; a serial topological schedule is bounded by G, but actual control must verify no overlap of services\",\n    \"control_window\": \"W_control=N_control*G; drain all; missing L metrics in H-only are NOT_APPLICABLE_CONTROL, never a main sample\",\n    \"lineage\": \"all controls reference parent-main generation identity and independently hashed derived input; changed arrivals cannot reuse main workload hash\"\n  },\n  \"workload_identity\": {\n    \"plan\": \"symbolic wlref:v1:<config_id>:s<seed_index>:<MAIN|H_ISOLATED|LOW_COMPETITION>; not a materialized workload or content hash\",\n    \"actual\": \"urn:soc:workload:v1:<SHA256(canonical identity preimage)>\",\n    \"preimage\": [\n      \"namespace/version\",\n      \"seed/partition\",\n      \"scene/load/size/config_id\",\n      \"generator source SHA256\",\n      \"approved parameter content SHA256\",\n      \"template/profile/network SHA256\",\n      \"control variant\",\n      \"canonical numeric payload SHA256\"\n    ],\n    \"payload\": \"ordered services/nodes/edges/compatible resources; binary64 numeric payload independently canonicalized using unchanged model canonical_bytes convention; future scientific-origin adapter required\",\n    \"hashes\": \"artifact SHA256 computed only after future authorized generation; currently all artifact hashes null\"\n  },\n  \"parameter_provenance\": \"All algorithms/distributions/values here are PROPOSED except fixed model units, method-independent keys, CALIBRATION partition and full drain.\",\n  \"source_refs\": [\n    \"docs/model_spec.md:39–58\",\n    \"docs/workload_spec.md:22–25\",\n    \"docs/user_request.txt:§§24–25,36,41\"\n  ],\n  \"positive_guarantee\": \"Exact preconversion duration >=81/200 ms; final binary64 must be finite and strictly positive.\"\n}\n",
+      "stderr": ""
+    },
+    {
+      "id": "CMD-011",
+      "argv": [
+        "cat",
+        "docs/P2_design/P2_D01_D10_approval_checklist_v1.md",
+        "docs/P2_design/README.md"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_AUDIT",
+      "started_at_utc": "2026-10-18T11:53:25.658229+00:00",
+      "ended_at_utc": "2026-10-18T11:53:25.660781+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout": "# D01–D10 v1 approval checklist\n\nDRAFT，全部UNRECORDED。原目录`decisions.draft.json`仍是编号/审批记录的唯一目录；\n本表是其v1提案审批视图，不建立第二套编号/审批权。没有预先勾选任何动作。\n依据`P2_complete_design_proposal_v1.md` D01–D10及列出的JSON/附件；审批前须记录\n本次实际commit与`checkpoints/P2_design_artifact_manifest.json`中对应文件SHA。\n\n| ID | 明确批准 | 拒绝 | 暂缓 | 待补证据 | 必须回答的具体范围（不能只批方向） |\n|---|---|---|---|---|---|\n| D01 | [ ] | [ ] | [ ] | [ ] | 六个显式8/16模板、全部ID/角色/前驱/H-L继承、二分尺寸/真实内部边；接受合成外部有效性限制吗？ |\n| D02 | [ ] | [ ] | [ ] | [ ] | 批准16角色×六资源合成兼容/代价表、CPU对称、半代价及估计/实际两级因子吗？ |\n| D03 | [ ] | [ ] | [ ] | [ ] | 批准74条边MiB及9对latency/bandwidth数值吗？同单元零、目的地副本/无总线等已定语义不重批。 |\n| D04 | [ ] | [ ] | [ ] | [ ] | 批准SHA256 key/canonical/有理数转换、[.9,1.1)扰动、50×H/L、突发/到达、deadline2.5/4及全窗口规则吗？ |\n| D05 | [ ] | [ ] | [ ] | [ ] | 批准A/B周期、36配置、B1–B5、2520 slots/5040含重放调用、控制和顺序；明确本版timing预算0且协议仍未定吗？ |\n| D06 | [ ] | [ ] | [ ] | [ ] | 批准H隔离/全低竞争控制、LB与见证区分、候选压力/miss bands、A优先选择及失败停/合法负面保留吗？ |\n| D07 | [ ] | [ ] | [ ] | [ ] | 批准B2公共view、固定前4 ready、局部greedy/枚举/L约束/H均值目标、eligible分母及M2非因果解释吗？ |\n| D08 | [ ] | [ ] | [ ] | [ ] | 选择FINE还是COARSE（或拒绝并给完整替代）；批准tau/f/k、12条件规则、缺失三态和bootstrap实现pin吗？ |\n| D09 | [ ] | [ ] | [ ] | [ ] | 批准R1唯一正式入口、全身份复用、0自动retry、失败停、attempt链/原子发布及新增P2相关源码洁净政策吗？ |\n| D10 | [ ] | [ ] | [ ] | [ ] | 批准S2科学schema+adapter、完整字段/ID/规范hash/COMPLETE合取、P1来源隔离和未来验证范围吗？ |\n\n每项动作原始答复需要保存：decision_id、action、selected_option、approved_values（或\n逐字段修改）、提案version/commit/文件SHA、reviewer、明确带时区的时间、reason/evidence refs、\n依赖决定、影响分析。批准方向却漏数值/规则不能关闭决定；修改后须重出内容hash并核对矩阵。\n批准0、拒绝0、暂缓0、待补证据0、未记录10。不得把本文件的“推荐”当作人工答复。\n\n依赖沿用`P2_decision_dependency_map.md`：D01–D04→D05/D06联合→D07→D08；D09/D10联合\n依赖全部科学身份/规则。可并行审阅，最终必须一致。参数注册表32个科学参数组目前均\nUNRESOLVED/approval=null；工程选择单独在D09/D10，不与科学参数数量混淆。\n全部审批之后仍待IMPLEMENTATION_VALIDATION_PENDING，不自动运行P2、不解锁任何保留分区。\n# P2 设计决定包：DRAFT，未批准、未冻结、不可执行\n\n本包是对既有 P2-B1–P2-B5 的文档性设计分析，不替代已批准模型、基线、指标或统计协议。\n本轮授权原文为 authorization_request.txt。P0/P1 仍 PASS；P2 preflight 仍 BLOCKED。\n没有生成工作负载、运行 P2、计算映射机会或改动任何实现。\n\n阅读顺序：\n\n1. evidence_and_traceability.md：已有依据、原始证据可恢复性和需求追踪。\n2. blocker_decisions.md：逐个阻断的事实、选项、风险、建议与关闭证据。\n3. workload_gaps.md：科学工作负载逐字段缺口及可考虑的替代方案。\n4. calibration_options.md、calibration_matrix.draft.json：选项及有明确 null/UNRESOLVED 的 NON_EXECUTABLE 矩阵。\n5. mapping_criterion_options.md：映射机会定义的备选方案及未决定的判定规则。\n6. runner_and_schema.md、scientific_artifacts.schema.draft.json：未来 runner 和科学产物设计。\n7. human_decisions.md：复用原文件作为完整十二字段决策说明（等价于\n   P2_D01_D10_human_decision_brief.md），保留原清单原文。每组须补齐值/规则，\n   不能仅回答“同意开展 P2”。P2_D01_D10_traceability.csv 提供逐来源行追踪；\n   P2_decision_dependency_map.md 说明依赖与可并行讨论项；\n   P2_human_approval_checklist.md 分开记录批准/拒绝/暂缓/待补证据，均不预选。\n8. ../../reports/P2_design/design_status.json 与 delivery_index.json：机器状态与交付索引。\n\n本包用以下类别区分陈述：`SOURCE_SUPPORTED` 已有协议明确；`PROPOSED_REQUIRES_APPROVAL`\n是本次建议；`UNRESOLVED_BLOCKING` 缺定义；`IMPLEMENTATION_VALIDATION_PENDING` 是未来\n实现与测试；`SCIENTIFIC_EXECUTION_PENDING` 是未来科学观察。存在 JSON/文档不意味着已批准，\nJSON 可解析也不证明 schema 正确。未提供数值的科学字段一律为 null/UNRESOLVED，无隐式默认值。\n\n人工决定并登记具体定义后，仍须另行授权实现、验证以及最终执行；本包不批准任何这些步骤。\n后续必须保持既有 seed、H/L 门槛、CI 方法、B1–B5 编号和信息边界。若拟议方案需要改变\n这些固定规则，应拒绝该方案或停下来单独处理冲突，不能把批准草案解释为批准变更冻结规则。\n\n当前结论：B1/B2/B3 的科学定义仍 UNRESOLVED；B4/B5 已有 **未批准的文档设计**，可标为\nDESIGNED，但依然没有实现、语义验证或执行准入。历史 P2 gate 继续为 BLOCKED。\n\n## Complete proposal v1（当前人工审批层）\n\n本轮授权已允许提出具体合成值；旧“无数值/不推荐数值”的段落描述此前审查范围，\n不是对本轮提案的禁止。入口为[P2_complete_design_proposal_v1.md](P2_complete_design_proposal_v1.md)。\n新增六模板/profile/通信/generation/2520条matrix及三态/runner-schema/approval材料，\n完整路径见reports/P2_design/delivery_index.json。32个科学参数组全部未批准，D01–D10\n仍待人工决定。v1不取代原模型/基线/指标/统计规格，也没有成为可执行配置。\n旧matrix/schema保留为历史选项，当前具体提议由v1索引明确关联；DRAFT不是scientific PASS。\n",
+      "stderr": ""
+    },
+    {
+      "id": "CMD-012",
+      "argv": [
+        "cat",
+        "docs/model_spec.md",
+        "docs/baseline_spec.md",
+        "docs/metric_spec.md",
+        "docs/statistical_protocol.md"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_AUDIT",
+      "started_at_utc": "2026-10-18T11:53:25.661650+00:00",
+      "ended_at_utc": "2026-10-18T11:53:25.665460+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout": "# System model — P0 definitions with user-approved P1 event order\n\nVirtual time uses milliseconds, data sizes MiB, bandwidth MiB/ms and power W.\nService g has arrival a_g >= 0, relative deadline D_g > 0, absolute deadline\nd_g = a_g + D_g, importance H or L and a finite acyclic task graph. Completion\nF_g is the last node completion. Nodes inherit service importance. Instance,\nnode and resource IDs are unique stable strings. Reject cycles, empty compatible\nsets, nonfinite/negative timing inputs and missing predecessor identities.\n\nResources are CPU0, CPU1, CPU2, CPU3, GPU0, NPU0. Each unit executes at most one\nnode. GPU/NPU internal parallelism is abstracted by execution time. Compatible\nsets must include CPU-only, GPU-oriented, NPU-oriented, multi-compatible and\nlimited-alternative types; universal compatibility is not an acceptable workload.\nEvery resource-specific node has positive estimated and realized durations.\n\nExecution is non-preemptive: a started node keeps its resource and contiguous\nexecution interval until completion. No migration, replication or replanning of\nthat interval is allowed. Pending nodes may be reordered/remapped.\n\nCommunication version 1 has no shared-bus contention. For edge u→v with size b,\ntransfer to destination r can start at u's completion C_u. Same unit: delay 0.\nDifferent units: latency(type(u),type(r)) + b / bandwidth(type(u),type(r)); all\nparameters nonnegative with strictly positive bandwidth. Independent transfers\noverlap with each other and with compute. Data readiness on r is\nmax over predecessors of C_u + delay(u,r); a root is ready at service arrival.\nThese logical copies are destination-specific and retained after transfer.\nRemapping a pending node recomputes readiness for the new destination; it cannot\nreuse a copy at another unit or backdate transfer before predecessor completion.\nThe implementation may calculate copy readiness lazily from immutable completed\noutputs; this is not a reservation or a started execution. No future predecessor\ncompletion is treated as an actual completed output.\n\nStates are distinct: dependency_ready (all predecessors completed), data_ready\n(copies arrived on a specified destination), planned (nonbinding proposal),\nresource_ready (destination idle), started, running, completed. A proposal may\nwait or be replaced. Actual start >= arrival, all predecessor completions,\ndestination-specific data readiness and resource availability.\n\nDeterministic event ordering approved by the user in the P1 task (D1): at virtual time t,\nprocess all completions, expose all arrivals at t, then refresh the immutable\nscheduler view and dispatch only feasible starts; repeat zero-time dispatch\nuntil no start is chosen. Ties use stable (service_id,node_id,resource_id).\nNo positive-length execution interval overlaps another on the same unit; touching\nendpoints are legal. When no start is possible, advance to the next true event\nor feasible data-readiness wakeup. Detect a deadlock rather than silently dropping\njobs. After stopping arrivals, drain all admitted work, even after deadline miss.\n\nScheduler boundary: only arrived public DAGs, estimates, deadlines, H/L, completed\noutputs, running task start/elapsed observations, idle/busy state and observable\ndata readiness. Never disclose the private event queue, future arrivals, true\nremaining running durations or future disturbances. Busy-unit release prediction\nmust use estimates and elapsed time, never actual queued completion timestamps.\n\nExecution disturbances must be scheduler-independent deterministic functions of\n(workload seed, service ID, node ID, resource ID, disturbance version). The\ngenerator materializes the same workload artifact for every compared method.\nNo RNG call sequence may depend on scheduler decisions. Exact event, trace and\nmetric reproducibility is required for identical code/config/workload identities.\n\nP1 must independently validate legal traces and reject crafted violations of\nprecedence, data readiness, compatibility, overlaps, duration, unique execution,\nnon-preemption, assignment, completion and full arrival accounting. It must include\na 6–8-node hand-checkable DAG, simultaneous events, equality at deadline and drain.\nImplementation and test evidence are tracked in P1_implementation_spec.md and\nreports/P1_correctness.json; this model does not itself assert correctness PASS.\n# Baselines — original sources reviewed; P1 online adaptation implemented\n\nAll methods share one immutable observation boundary, workload, compatibility,\ncommunication semantics and deterministic tie rule. Root/ready eligibility never\nuses future arrivals or unfinished predecessor truth. Estimated finish prediction\non a busy unit must use observable elapsed execution and estimates. A processor\nselection proposal is revocable until the task starts; dispatch must recheck\nactual feasibility and may not reserve an idle unit indefinitely by accident.\nThe user approved the precise online adaptation rules D1–D5 during the P1 task.\nTheir authoritative definition and acceptance dependencies are in\n[P1_implementation_spec.md](P1_implementation_spec.md). They must be tested\nbefore P1 is marked complete.\n\n| ID | Ready-node ordering | Mapping | Status |\n|---|---|---|---|\n| B1 | ascending service absolute deadline | minimum estimated finish among compatible units | implemented; P1 report provides actual correctness evidence |\n| B2 | H before L, then ascending service absolute deadline | same EFT rule as B1 | fixed L-budget reference; implemented |\n| B3 | Online-HEFT adaptation; original upward rank source-verified | insertion/EFT with approved D1–D5 online dispatch | implemented; original static method distinguished |\n| B4 | Online-PEFT adaptation; original OCT/rank source-verified | insertion/OEFT with approved D1–D5 online dispatch | implemented; original static method distinguished |\n| B5 | H-priority Online-PEFT adaptation | same mapping requirement as B4 | implemented; source and adaptation kept separate |\n\nThe actual user-provided originals are now reviewed in\n[heft_cpop.md](literature_reviews/heft_cpop.md) and\n[peft.md](literature_reviews/peft.md), with equations, figures, page numbers and\nversion/provenance limits. This is an evidence-status update, not a change to any\nbaseline requirement or an implementation. Original HEFT rank ties are random;\nPEFT OCT excludes availability while EFT includes partial-schedule availability.\nOnline adaptation still must explicitly specify visible DAG set, ready filtering,\ncompatibility, busy-resource handling, rank/OCT refresh, idle/wait behavior, ties\nand boundary cases before P1 can be complete. The previous local-PDF task did\nnot authorize implementation; the separate P1 task and explicit D1–D5 replies\nnow authorize the documented adaptation. Online adaptations must never be presented\nas the original static algorithms.\n\nRequired P1 evidence: distinguish B1/B2 by hand fixture; verify ranks/OCT against\nsource-derived worked examples; exercise incompatible/busy resources and ties;\ndeterministic replay; and have an independent validator reject invalid traces.\nNo custom candidate may replace a missing baseline or serve as its own control.\n# Metrics — user thresholds retained; P0 draft\n\nStatistical observation is a service instance, not a node. Response T_g = F_g-a_g.\nA miss is F_g > a_g+D_g; equality is on time. H-DMR and L-DMR are the miss count\ndivided by the number of arrived instances in the respective group, including\nall drained work. An absent group is invalid/undefined, never zero by default.\n\nWithin each run, calculate L P50/P95/P99/max over all L service responses,\nincluding missed services. Use linear-interpolated quantiles (Hyndman–Fan type 7):\nsorted x[0:n], h=(n-1)p, interpolate floor(h) and ceil(h); n=1 returns x[0].\nDo not pool L responses across seeds to replace the prescribed ratio of means.\n\nThere are 18 main conditions: {COCKPIT,ADAS,FUSION} ×\n{light,medium,near-saturation} × {8,16} nodes per service DAG.\nFor H primary benefit, first average each method's H-DMR across seeds within\neach condition, then take the equal-weight condition macro mean over the 12\nmedium/near-saturation conditions. Let these means be M_B2 and M_F.\nG=(M_B2-M_F)/M_B2 must be >=0.10 and paired seed-bootstrap CI for\nDelta_B2=M_B2-M_F must have lower endpoint strictly >0. M_B2=0 makes relative\nbenefit undefined and cannot pass. Do not substitute task- or service-weighting.\n\nFor L, Q_m(c,s)=within-run L P95. For each of all 18 main conditions,\nR_c=mean_s Q_F(c,s)/mean_s Q_B2(c,s). Point >1.10 is FAIL;\npoint <=1.10 and paired-bootstrap upper endpoint <=1.10 is SUPPORTED;\notherwise it is INCONCLUSIVE. A zero/nonfinite denominator or missing run is\ninvalid; do not clip or add arbitrary epsilons to manufacture a ratio.\n\nMapping contribution is Delta_A1=M_A1-M_A3 on the same 12-condition H macro;\npoint >0 and CI lower >0 are required to claim support. A3 is full urgency and\nmapping; A1 uses new urgency with EFT; A2 uses B2 ordering with new mapping.\nNo positive mapping claim from A3 vs B2 alone.\n\nStrong-baseline contrast is Delta_B5=M_B5-M_F with paired seed CI:\nlower >0 => SUPPORTED_SUPERIOR; upper <0 => B5_SUPERIOR;\notherwise NO_CONFIRMED_DIFFERENCE. Equality is not superiority. Report every\ncondition as well as the macro estimate. The proposed progression rule blocks\nconfirmed B5 superiority; absence of confirmed difference is explicitly not a\nclaim of equivalence/noninferiority. This rule is a disclosed P0 design choice,\nnot a user-supplied B5 effect-size target, and remains draft until P0 passes.\n\nSecondary outputs: group DMR, L P50/P95/P99/max, group/overall mean response,\nper-resource busy time divided by full-drain makespan, transfer totals and\nwaiting breakdowns. No undocumented warm-up exclusion in scientific metrics.\nIf energy is later implemented: sum active_power*busy_duration plus\nidle_power*idle_duration with explicit ms→s conversion and declared power inputs;\nlabel model-estimated energy, never a hardware measurement.\n\nEngineering decision latency is host wall computation covering preprocessing,\npath updates, urgency, candidate generation/sorting, scoring, mapping and selection;\nvirtual execution/communication time is separate. P95 <=2 ms is a host target,\nnot automotive hardware evidence. Exact warmup/repetitions/inputs must be frozen\nat P2 before candidate timing; no timing has been measured in this project.\n# Statistical protocol — P0 draft\n\nSeeds are the independent resampling units. Every method within a condition/seed\nuses the exact same materialized workload, not merely the same arrival seed.\nPair methods and workloads. Use 10,000 bootstrap replicates, analysis PRNG seed\n20261018, percentile 95% intervals using the type-7 0.025 and 0.975 quantiles.\nWhen implemented, pin the PRNG implementation/version and save resampling indices\nor their reproducible digest. No statistical result is currently available.\n\nTo preserve seed effects across conditions, sample the seed indices once per\nreplicate and use the same vector in all compared methods and conditions. Within\neach replicate compute condition seed means followed by equal-weight condition\nmacro means, then the registered contrasts. For L resample paired Q values and\nrecompute each ratio of means. Do not average individual ratios or treat nodes\nas independent replicates. Report descriptive per-condition contrasts as well\nas primary macro estimates. No unregistered p-value filtering.\n\nUser constraints: H relative gain >=10% with positive Delta_B2 CI; L upper CI\n<=1.10 in every main condition; positive mapping contribution CI; B5 comparison\nclassification; correctness and decision P95 <=2 ms. Proposed all-gates progression\nrequires all these criteria and no confirmed B5 superiority. A boundary-crossing\nCI is INCONCLUSIVE, not PASS. Macro gain cannot compensate for L condition failure.\nThe intersection of all L conditions is required; individual CIs are pointwise,\nnot simultaneous-coverage claims. Report this limitation explicitly.\n\nDevelopment seeds [0:10] are parameter-search data. Seeds [10:20] are development\nprecheck only and cannot be used for choosing a search trial. No expansion of a\nregistered search space after observing results. A permitted one-time mechanism\nrevision must be preregistered first, preserve thresholds/partitions, and be\nreported as further development rather than independent validation. If revision\naddresses L/engineering after a previous H gain, enforce the user's strict\nnon-degradation test: M_revision-M_previous point <=0 and CI upper <=0 (delta=0).\n\nP2 workload tuning uses baselines, especially B2, and CALIBRATION only, never\ncandidate advantage. P2 must publish a stable mapping-opportunity criterion before\ndiagnostic selection is used to pass the stage. No candidate formula at P0.\n\nIndependent validation has 180 workloads (18×10); formal has 540 (18×30).\nNo tuning, new baselines, threshold/statistic changes, unfavorable-seed removal\nor selective conditions. Every run needs independent trace validity. Invalid runs\nare preserved and diagnosed; any rerun receives a new ID and a supersession link.\nMissing/invalid pairings block a complete stage; do not silently drop them.\n\nAll scientific stages require SHA256 manifests plus missing=0, mismatch=0,\nduplicate identity=0, unexpected seed/method=0 and missing expected condition=0.\nThis project has zero scientific runs; those scientific completeness checks are\nNOT APPLICABLE yet, not a passing experiment.\n",
+      "stderr": ""
+    },
+    {
+      "id": "CMD-013",
+      "argv": [
+        "sed",
+        "-n",
+        "1115,1274p",
+        "docs/user_request.txt"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_AUDIT",
+      "started_at_utc": "2026-10-18T11:54:00.139086+00:00",
+      "ended_at_utc": "2026-10-18T11:54:00.143606+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout": "32. Mapping diagnostic example\n============================================================\n\n构建：\n\nH service：\n\nCPU predecessor = 2\n\n后续 NPU node = 4\n\ndeadline = 9\n\n同时：\n\nL service：\n\nNPU execution = 6\n\n或者：\n\nidle CPU = 6.5\n\ndeadline = 12\n\ncommunication = 0。\n\n比较：\n\nL→NPU\n\n与：\n\nL→CPU\n\n的合法 timeline。\n\n仅用于：\n\ncorrectness / explanation。\n\n不得成为 main scientific evidence。\n\n============================================================\n33. Scene templates\n============================================================\n\nCOCKPIT：\n\nspeech\ndisplay\nnavigation\ninteraction\n\nADAS：\n\npreprocessing\nperception\nfusion\noutput\n\nFUSION：\n\ncockpit\n+\nADAS\n\n形成 cross-service competition。\n\n============================================================\n34. DAG size\n============================================================\n\n主实验两档：\n\n8-node\n\n16-node\n\n必须写明 generator\n如何定义 size。\n\n============================================================\n35. Load\n============================================================\n\n主实验：\n\nlight\nmedium\nnear-saturation\n\n额外：\n\nsevere-overload\n\n仅 sensitivity。\n\nload 不得仅按 arrival rate 命名。\n\n应参考：\n\nCPU\nGPU\nNPU\n\n瓶颈压力。\n\n============================================================\n36. P2 calibration\n============================================================\n\nCalibration：\n\n只用 baseline，\n重点 B2。\n\n不得使用 candidate advantage\n调整 workload。\n\n允许调整：\n\narrival intensity\ndeadline tightness\nburst\nnumber services\nsimulation window。\n\n目标：\n\nlight：\n\n接近低 miss。\n\nmedium / near-saturation：\n\n存在：\n\ndeadline miss\ncontention\nmapping opportunity\n\n但不能：\n\n几乎全部 100% miss。\n\n============================================================\n37. H 基础可行性\n============================================================\n\n重要业务 deadline：\n\n先在独占资源或低竞争条件下\n确认基本可行。\n\n否则：\n\n不要把天然不可完成 workload\n当 scheduler failure。\n\n",
+      "stderr": ""
+    },
+    {
+      "id": "CMD-014",
+      "argv": [
+        "sed",
+        "-n",
+        "1431,1508p",
+        "docs/user_request.txt"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_AUDIT",
+      "started_at_utc": "2026-10-18T11:54:00.145052+00:00",
+      "ended_at_utc": "2026-10-18T11:54:00.149067+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout": "43. Candidate hypothesis\n============================================================\n\n候选假设：\n\n当前 node 的 EFT 最优 resource，\n\n可能具有较高 cross-service opportunity cost。\n\n特别当：\n\n其他 H node\nresource alternatives 少\n\n或：\n\nalternative execution penalty 高\n\n时，\n\n抢占稀缺 resource\n可能增加 H end-to-end miss。\n\ncandidate 尝试利用：\n\ndeadline\nremaining path\nresource alternatives\ncontention\nL waiting\n\n联合排序与 mapping。\n\n============================================================\n44. P2 mapping opportunity diagnosis\n============================================================\n\n只用 CALIBRATION。\n\n记录：\n\nH critical-path blocking\nCPU wait\nGPU wait\nNPU wait\nresource alternatives\nsubstitution cost\nmapping decision reason。\n\n允许少量：\n\n2–4 ready task\n\n局部 enumerated assignment\n\n作为 diagnostic oracle。\n\n不得作为 online method performance。\n\n如果没有稳定 mapping opportunity：\n\nMAPPING_HYPOTHESIS_SUPPORTED=NO\n\n停止这一科学主线。\n\n============================================================\n45. Candidate method\n============================================================\n\nP2 完成后才正式定义公式。\n\n候选至少考虑：\n\n1. service urgency；\n2. remaining DAG path；\n3. compatible resource finish prediction；\n4. communication；\n5. alternative resource penalty；\n",
+      "stderr": ""
+    },
+    {
+      "id": "CMD-015",
+      "argv": [
+        "sed",
+        "-n",
+        "2506,2630p",
+        "docs/user_request.txt"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_AUDIT",
+      "started_at_utc": "2026-10-18T11:54:00.150823+00:00",
+      "ended_at_utc": "2026-10-18T11:54:00.153822+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout": "90. 每次 scientific run manifest\n============================================================\n\n每个 run 至少记录：\n\nrun id\ntimestamp\nGit commit\ndirty status\nsource SHA256\nconfig SHA256\nworkload SHA256\npartition\nseed\nscene\nload\nsize\nmethod\nhost\ncommand\nresult\nvalidity。\n\n============================================================\n91. 科学 run 与 Git\n============================================================\n\ndevelopment precheck\nvalidation\nformal\n\n必须运行在：\n\n已经 commit 的 source state。\n\n正式冻结阶段禁止：\n\n无法解释的 dirty scheduler source。\n\n如果 dirty：\n\nSTOP。\n\n先确认变化。\n\n============================================================\n92. 数据完整性\n============================================================\n\n阶段结束：\n\n生成 SHA256 manifest。\n\n核验：\n\nmissing=0\nmismatch=0\nduplicate identity=0\nunexpected seed=0\nunexpected method=0\nmissing expected condition=0\n\n否则：\n\n阶段不能标记 COMPLETE。\n\n============================================================\n93. Decision trace\n============================================================\n\n至少在：\n\ncorrectness\ndiagnostics\nengineering equivalence\nselected scientific audit\n\n保存 decision trace。\n\n包括：\n\ntime\ndecision id\nready set digest\ncandidate count\nnode\nresource\nkey components\nscore\nreason\nstate digest。\n\n============================================================\n94. Resume\n============================================================\n\n支持断点续跑。\n\n结果复用前核验：\n\ncode hash\nconfig hash\nworkload hash\nmethod identity。\n\n如果受修改影响：\n\n重跑。\n\n禁止新旧结果静默混合。\n\n============================================================\n95. 一键运行入口\n============================================================\n\n实现类似：\n\npython scripts/run_pipeline.py --stage p0\npython scripts/run_pipeline.py --stage p1\npython scripts/run_pipeline.py --stage calibration\npython scripts/run_pipeline.py --stage development\npython scripts/run_pipeline.py --stage validation\npython scripts/run_pipeline.py --stage formal\npython scripts/run_pipeline.py --stage report\n\n",
+      "stderr": ""
+    },
+    {
+      "id": "CMD-016",
+      "argv": [
+        "cat",
+        "src/soc/metrics/fixture.py",
+        "scripts/run_pipeline.py"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_AUDIT",
+      "started_at_utc": "2026-10-18T11:54:00.154727+00:00",
+      "ended_at_utc": "2026-10-18T11:54:00.157026+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout": "\"\"\"Service metrics for hand-authored correctness inputs; no scientific aggregation.\"\"\"\nimport math\n\nfrom soc.model.schema import Workload, ModelError, communication\n\n\ndef quantile(values: list[float], p: float) -> float | None:\n    if not 0 <= p <= 1 or isinstance(p, bool):\n        raise ValueError(\"invalid probability\")\n    if not values:\n        return None\n    if any(isinstance(x, bool) or not math.isfinite(x) or x < 0 for x in values):\n        raise ValueError(\"invalid response\")\n    ordered = sorted(values)\n    h = (len(ordered) - 1) * p\n    lo, hi = math.floor(h), math.ceil(h)\n    return ordered[lo] + (h-lo)*(ordered[hi]-ordered[lo])\n\n\ndef summarize(workload: Workload, executions: list[dict]) -> dict:\n    expected = {(s.id, n.id) for s in workload.services for n in s.nodes}\n    rows = {(r[\"service\"], r[\"node\"]): r for r in executions}\n    if len(rows) != len(executions) or rows.keys() != expected:\n        raise ModelError(\"metrics require exactly one execution per admitted node\")\n    services = []\n    for s in sorted(workload.services, key=lambda s: s.id):\n        finishes = [rows[s.id, n.id][\"finish\"] for n in s.nodes]\n        if any(isinstance(f, bool) or not math.isfinite(f) or f < s.arrival for f in finishes):\n            raise ModelError(\"invalid completion for metrics\")\n        finish = max(finishes)\n        services.append(dict(service=s.id, group=s.group, finish=finish,\n                             response=finish-s.arrival, missed=finish > s.deadline))\n    groups = {}\n    for g in (\"H\", \"L\"):\n        group = [r for r in services if r[\"group\"] == g]\n        responses = [r[\"response\"] for r in group]\n        groups[g] = dict(count=len(group), dmr=sum(r[\"missed\"] for r in group)/len(group) if group else None,\n                         p50=quantile(responses, .50), p95=quantile(responses, .95),\n                         p99=quantile(responses, .99), maximum=max(responses) if responses else None)\n    makespan = max((r[\"finish\"] for r in executions), default=0)\n    resources = {}\n    for resource in workload.resources:\n        busy = sum(r[\"finish\"]-r[\"start\"] for r in executions if r.get(\"resource\") == resource.id)\n        resources[resource.id] = dict(busy=busy, utilization=busy/makespan if makespan else None)\n    transfers, waiting = [], []\n    for s in sorted(workload.services, key=lambda s: s.id):\n        for n in sorted(s.nodes, key=lambda n: n.id):\n            row = rows[s.id, n.id]\n            dependency_time = max((rows[s.id, e.node][\"finish\"] for e in n.predecessors), default=s.arrival)\n            data_time = dependency_time\n            for edge in n.predecessors:\n                pred = rows[s.id, edge.node]\n                delay = communication(workload, pred[\"resource\"], row[\"resource\"], edge.size)\n                ready = pred[\"finish\"]+delay\n                data_time = max(data_time, ready)\n                transfers.append(dict(service=s.id, predecessor=edge.node, node=n.id,\n                                      source=pred[\"resource\"], destination=row[\"resource\"], size=edge.size,\n                                      start=pred[\"finish\"], ready=ready, delay=delay))\n            waiting.append(dict(service=s.id, node=n.id, dependency_ready=dependency_time, data_ready=data_time,\n                                dependency_wait=dependency_time-s.arrival, communication_wait=data_time-dependency_time,\n                                ready_wait=row[\"start\"]-data_time))\n    return dict(services=services, groups=groups, makespan=makespan,\n                overall_mean_response=sum(r[\"response\"] for r in services)/len(services) if services else None,\n                resources=resources, transfers=transfers, waiting=waiting,\n                cross_unit_data_total=sum(t[\"size\"] for t in transfers if t[\"source\"] != t[\"destination\"]))\n\"\"\"P0/P1 correctness audits and fail-closed scientific stage entry.\"\"\"\nfrom pathlib import Path\nimport argparse\nimport json\nimport sys\nfrom soc.validation.governance import audit_p0, authorize, ProtocolError\n\n\ndef main() -> int:\n    parser = argparse.ArgumentParser(description=__doc__)\n    parser.add_argument(\"--stage\", required=True, choices=[\n        \"p0\", \"p1\", \"calibration\", \"development\", \"validation\", \"formal\", \"report\"])\n    parser.add_argument(\"--check-only\", action=\"store_true\")\n    args = parser.parse_args()\n    root = Path(__file__).resolve().parents[1]\n    if args.stage == \"report\":\n        print(\"Evidence closure is in reports/final_report.md; no scientific result generated.\")\n        return 0\n    if args.stage == \"p1\":\n        from soc.validation.p1 import audit_p1\n        result = audit_p1(root)\n        if not args.check_only:\n            (root / \"reports/P1_correctness.json\").write_text(json.dumps(result, indent=2) + \"\\n\")\n        print(json.dumps(result, indent=2))\n        return 0 if result[\"status\"] == \"PASS\" else 2\n    if args.stage != \"p0\":\n        if args.stage in {\"validation\", \"formal\"}:\n            partition = \"INDEPENDENT_VALIDATION\" if args.stage == \"validation\" else \"FORMAL_EVALUATION\"\n            try:\n                authorize(root, args.stage, partition, 0)\n            except ProtocolError as error:\n                print(\"BLOCKED: \" + str(error), file=sys.stderr)\n                return 2\n        result = audit_p0(root)\n        if result[\"status\"] != \"PASS\":\n            print(\"BLOCKED: P0 has not passed; \" + \"; \".join(result[\"errors\"]), file=sys.stderr)\n            return 2\n        print(\"NOT IMPLEMENTED: stage \" + args.stage + \"; no workload executed\", file=sys.stderr)\n        return 3\n    result = audit_p0(root)\n    if not args.check_only:\n        (root / \"reports/P0_protocol_audit.json\").write_text(json.dumps(result, indent=2) + \"\\n\")\n        (root / \"reports/P0_protocol_audit.md\").write_text(\n            \"# P0 protocol audit\\n\\nStatus: \" + result[\"status\"] +\n            \"\\n\\n\" + \"\\n\".join(\"- \" + item for item in result[\"errors\"]) +\n            \"\\n\\nSeed counts/derivation are audited as metadata only. No scientific workload has run.\\n\"\n            \"\\nSee P0_protocol_audit.json for source and seed hashes.\\n\")\n    print(json.dumps(result, indent=2))\n    return 0 if result[\"status\"] == \"PASS\" else 2\n\n\nif __name__ == \"__main__\":\n    raise SystemExit(main())\n",
+      "stderr": ""
+    },
+    {
+      "id": "CMD-017",
+      "argv": [
+        "sed",
+        "-n",
+        "145,215p",
+        "src/soc/model/schema.py"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_AUDIT",
+      "started_at_utc": "2026-10-18T11:54:00.157937+00:00",
+      "ended_at_utc": "2026-10-18T11:54:00.160988+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout": "class Workload:\n    services: tuple[Service, ...]\n    links: tuple[Link, ...]\n    resources: tuple[Resource, ...] = DEFAULT_RESOURCES\n\n    def __post_init__(self):\n        for field in (\"services\", \"links\", \"resources\"):\n            object.__setattr__(self, field, tuple(getattr(self, field)))\n        if any(not isinstance(x, Service) for x in self.services):\n            raise ModelError(\"invalid service\")\n        if any(not isinstance(x, Resource) for x in self.resources):\n            raise ModelError(\"invalid resource\")\n        if len(set(r.id for r in self.resources)) != len(self.resources):\n            raise ModelError(\"duplicate resource identity\")\n        if set(self.resources) != set(DEFAULT_RESOURCES):\n            raise ModelError(\"model requires CPU0..3, GPU0, NPU0\")\n        if len({s.id for s in self.services}) != len(self.services):\n            raise ModelError(\"duplicate service identity\")\n        nodes = [n for s in self.services for n in s.nodes]\n        if len({n.id for n in nodes}) != len(nodes):\n            raise ModelError(\"node identities must be globally unique\")\n        ids = {r.id for r in self.resources}\n        if any(d.resource not in ids for n in nodes for d in n.durations):\n            raise ModelError(\"duration references unknown resource\")\n        if any(not isinstance(x, Link) for x in self.links):\n            raise ModelError(\"invalid link\")\n        pairs = {(x.source, x.destination) for x in self.links}\n        if len(pairs) != len(self.links) or pairs != {(a, b) for a in (\"CPU\", \"GPU\", \"NPU\") for b in (\"CPU\", \"GPU\", \"NPU\")}:\n            raise ModelError(\"network requires exactly nine directed type pairs\")\n\n    def to_dict(self) -> dict:\n        return {\"schema_version\": 1, \"origin\": \"HAND_AUTHORED_CORRECTNESS_FIXTURE\", **asdict(self)}\n\n    @classmethod\n    def from_dict(cls, value: dict) -> Workload:\n        if value.get(\"schema_version\") != 1 or value.get(\"origin\") != \"HAND_AUTHORED_CORRECTNESS_FIXTURE\":\n            raise ModelError(\"unsupported input identity\")\n        services = tuple(Service(s[\"id\"], s[\"arrival\"], s[\"relative_deadline\"], s[\"group\"],\n                                 tuple(Node(n[\"id\"], tuple(Duration(**d) for d in n[\"durations\"]),\n                                            tuple(Dependency(**e) for e in n[\"predecessors\"])) for n in s[\"nodes\"]))\n                         for s in value[\"services\"])\n        return cls(services, tuple(Link(**x) for x in value[\"links\"]),\n                   tuple(Resource(**x) for x in value[\"resources\"]))\n\n\ndef canonical_bytes(value: dict) -> bytes:\n    return (json.dumps(value, sort_keys=True, separators=(\",\", \":\"), allow_nan=False) + \"\\n\").encode()\n\n\ndef communication(workload: Workload, source: str, destination: str, size: float) -> float:\n    number(size, \"edge size\")\n    kinds = {r.id: r.kind for r in workload.resources}\n    if source not in kinds or destination not in kinds:\n        raise ModelError(\"unknown transfer resource\")\n    if source == destination:\n        return 0.0\n    link = next(x for x in workload.links if (x.source, x.destination) == (kinds[source], kinds[destination]))\n    delay = link.latency + size / link.bandwidth\n    number(delay, \"transfer duration\")\n    return delay\n",
+      "stderr": ""
+    },
+    {
+      "id": "CMD-018",
+      "argv": [
+        "cat",
+        "src/soc/simulator/engine.py"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_AUDIT",
+      "started_at_utc": "2026-10-18T11:54:00.162132+00:00",
+      "ended_at_utc": "2026-10-18T11:54:00.166010+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout": "\"\"\"D1 event engine. The only scheduler call argument is an immutable Observation.\"\"\"\nfrom __future__ import annotations\n\nfrom dataclasses import asdict\nimport heapq\nfrom typing import Callable\n\nfrom soc.model.schema import Workload, ModelError, communication, number\nfrom soc.model.observation import Observation, Running, Completed, observe, dependency_ready\nfrom soc.scheduler.kernels import Proposal, choose\nfrom soc.metrics.fixture import summarize\n\n\nclass DeadlockError(RuntimeError):\n    pass\n\n\ndef simulate(workload: Workload, method: str,\n             policy: Callable[[Observation], Proposal | None] | None = None) -> dict:\n    \"\"\"Execute only the supplied input; never derive a seed or materialize a job.\n\n    Optional policies are for synthetic negative tests. Normal B1–B5 accept only\n    public observations. This function exposes no queue or realized duration to\n    the policy, and makes no performance/host-timing claims.\n    \"\"\"\n    if method not in {\"B1\", \"B2\", \"B3\", \"B4\", \"B5\"}:\n        raise ValueError(\"unknown baseline\")\n    queue = [(s.arrival, 1, s.id, \"\", \"\") for s in workload.services]\n    heapq.heapify(queue)\n    services = {s.id: s for s in workload.services}\n    nodes = {(s.id, n.id): n for s in workload.services for n in s.nodes}\n    running: dict[tuple[str, str], dict] = {}\n    completed: dict[tuple[str, str], Completed] = {}\n    events, executions, decisions = [], [], []\n    now = 0.0\n    controller = policy if policy is not None else lambda view: choose(view, method)\n    while queue or running or len(completed) < len(nodes):\n        # Full batches are drained before the first observation at this time.\n        while queue and queue[0][0] == now:\n            at, phase, service, node, resource = heapq.heappop(queue)\n            if phase == 0:\n                row = running.pop((service, node))\n                completed[service, node] = Completed(service, node, resource, at)\n                events.append(dict(time=at, kind=\"complete\", service=service, node=node, resource=resource))\n            else:\n                events.append(dict(time=at, kind=\"arrival\", service=service, node=\"\", resource=\"\"))\n        while True:\n            view = observe(workload, now,\n                           tuple(Running(s, n, r[\"resource\"], r[\"start\"], now-r[\"start\"])\n                                 for (s, n), r in running.items()), tuple(completed.values()))\n            proposal = controller(view)\n            decisions.append(dict(time=now, observation=asdict(view),\n                                  proposal=asdict(proposal) if proposal is not None else None))\n            if proposal is None:\n                break\n            key = proposal.service, proposal.node\n            if key not in dependency_ready(view):\n                raise ModelError(\"policy attempted non-ready/duplicate task\")\n            node = nodes[key]\n            cost = node.cost(proposal.resource)\n            if any(r[\"resource\"] == proposal.resource for r in running.values()):\n                raise ModelError(\"policy attempted occupied resource\")\n            for edge in node.predecessors:\n                pred = completed[proposal.service, edge.node]\n                if now < pred.finish + communication(workload, pred.resource, proposal.resource, edge.size):\n                    raise ModelError(\"policy attempted start before data ready\")\n            finish = now + cost.realized\n            number(finish, \"actual completion\", positive=True)\n            if finish <= now:\n                raise ModelError(\"duration below representable virtual-time resolution\")\n            row = dict(service=proposal.service, node=proposal.node, resource=proposal.resource,\n                       start=now, finish=finish)\n            running[key] = row\n            executions.append(row.copy())\n            events.append(dict(time=now, kind=\"start\", service=proposal.service,\n                               node=proposal.node, resource=proposal.resource))\n            heapq.heappush(queue, (finish, 0, proposal.service, proposal.node, proposal.resource))\n        if len(completed) == len(nodes) and not queue:\n            break\n        # Data arrival is a wakeup, not a fabricated resource reservation.\n        wakeups = []\n        busy = {r[\"resource\"] for r in running.values()}\n        for service, node_id in dependency_ready(view):\n            node = nodes[service, node_id]\n            for cost in node.durations:\n                if cost.resource in busy:\n                    continue\n                ready = max((completed[service, e.node].finish + communication(\n                    workload, completed[service, e.node].resource, cost.resource, e.size)\n                    for e in node.predecessors), default=services[service].arrival)\n                if ready > now:\n                    wakeups.append(ready)\n        candidates = ([queue[0][0]] if queue else []) + wakeups\n        if not candidates:\n            raise DeadlockError(\"unfinished admitted nodes, no legal start or future event/data wakeup\")\n        next_time = min(candidates)\n        if next_time <= now:\n            raise DeadlockError(\"event progression failed\")\n        now = next_time\n    return dict(schema_version=1, origin=\"HAND_AUTHORED_CORRECTNESS_FIXTURE\", method=method,\n                executions=executions, events=events, decisions=decisions,\n                metrics=summarize(workload, executions))\n",
+      "stderr": ""
+    },
+    {
+      "id": "CMD-019",
+      "argv": [
+        "sed",
+        "-n",
+        "70,100p",
+        "src/soc/validation/trace.py"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_AUDIT",
+      "started_at_utc": "2026-10-18T11:54:00.178973+00:00",
+      "ended_at_utc": "2026-10-18T11:54:00.185381+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout": "\ndef validate_trace(workload: Workload, trace: dict) -> dict:\n    errors = []\n    def error(code, detail):\n        errors.append({\"code\": code, \"detail\": str(detail)})\n    if not isinstance(trace, dict) or trace.get(\"schema_version\") != 1 or trace.get(\"origin\") != \"HAND_AUTHORED_CORRECTNESS_FIXTURE\":\n        return {\"status\": \"FAIL\", \"errors\": [{\"code\": \"SCHEMA\", \"detail\": \"unsupported trace\"}], \"metrics\": None}\n    executions, events = trace.get(\"executions\"), trace.get(\"events\")\n    if not isinstance(executions, list) or not isinstance(events, list):\n        return {\"status\": \"FAIL\", \"errors\": [{\"code\": \"SCHEMA\", \"detail\": \"executions/events must be lists\"}], \"metrics\": None}\n    nodes = {(s.id, n.id): (s, n) for s in workload.services for n in s.nodes}\n    resources = {r.id: r.kind for r in workload.resources}\n    links = {(x.source, x.destination): x for x in workload.links}\n    rows = {}\n    for row in executions:\n        if (not isinstance(row, dict) or set(row) != {\"service\", \"node\", \"resource\", \"start\", \"finish\"} or\n                any(not isinstance(row[k], str) for k in (\"service\", \"node\", \"resource\")) or\n                not _numeric(row[\"start\"]) or not _numeric(row[\"finish\"]) or row[\"finish\"] <= row[\"start\"]):\n            error(\"INTERVAL\", row)\n            continue\n        key = row[\"service\"], row[\"node\"]\n        if key in rows:\n            error(\"DUPLICATE_EXECUTION\", key)\n            continue\n        if key not in nodes:\n            error(\"UNKNOWN_TASK\", key)\n            continue\n        rows[key] = row\n        service, node = nodes[key]\n        duration = next((d for d in node.durations if d.resource == row[\"resource\"]), None)\n        if row[\"resource\"] not in resources or duration is None:\n",
+      "stderr": ""
+    },
+    {
+      "id": "CMD-020",
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD:docs/P2_design/P2_complete_design_proposal_v1.md"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_AUDIT",
+      "started_at_utc": "2026-10-18T11:56:16.526780+00:00",
+      "ended_at_utc": "2026-10-18T11:56:16.531843+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout": "7460493c5c632194d03d1f978f7c3738851d67d2\n",
+      "stderr": ""
+    },
+    {
+      "id": "CMD-021",
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD:docs/P2_design/P2_workload_templates_v1.json"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_AUDIT",
+      "started_at_utc": "2026-10-18T11:56:16.535146+00:00",
+      "ended_at_utc": "2026-10-18T11:56:16.539585+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout": "d74938fd2b97c75e0cf56046142471a904527138\n",
+      "stderr": ""
+    },
+    {
+      "id": "CMD-022",
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD:docs/P2_design/P2_resource_profiles_v1.json"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_AUDIT",
+      "started_at_utc": "2026-10-18T11:56:16.542239+00:00",
+      "ended_at_utc": "2026-10-18T11:56:16.546015+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout": "dba17a0f32131691678957d5028e25c47fd7b95b\n",
+      "stderr": ""
+    },
+    {
+      "id": "CMD-023",
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD:docs/P2_design/P2_communication_profiles_v1.json"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_AUDIT",
+      "started_at_utc": "2026-10-18T11:56:16.547200+00:00",
+      "ended_at_utc": "2026-10-18T11:56:16.550742+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout": "347113ea3bb890685023263708ad0f6499daa248\n",
+      "stderr": ""
+    },
+    {
+      "id": "CMD-024",
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD:docs/P2_design/P2_generation_spec_v1.json"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_AUDIT",
+      "started_at_utc": "2026-10-18T11:56:16.554432+00:00",
+      "ended_at_utc": "2026-10-18T11:56:16.589647+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout": "51c97ed556554ad10fb6aca252c6666df7737e8a\n",
+      "stderr": ""
+    },
+    {
+      "id": "CMD-025",
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD:docs/P2_design/P2_trial_matrix_draft_v1.json"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_AUDIT",
+      "started_at_utc": "2026-10-18T11:56:16.598902+00:00",
+      "ended_at_utc": "2026-10-18T11:56:16.608811+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout": "3f25a55c02b5283f1383b9e72ed68c852b9ac460\n",
+      "stderr": ""
+    },
+    {
+      "id": "CMD-026",
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD:docs/P2_design/P2_mapping_opportunity_decision_table_v1.md"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_AUDIT",
+      "started_at_utc": "2026-10-18T11:56:16.639015+00:00",
+      "ended_at_utc": "2026-10-18T11:56:16.650213+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout": "3bb69c483e007ff99137745c84ad753ccfa8aaaa\n",
+      "stderr": ""
+    },
+    {
+      "id": "CMD-027",
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD:docs/P2_design/P2_runner_schema_review_v1.md"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_AUDIT",
+      "started_at_utc": "2026-10-18T11:56:16.651600+00:00",
+      "ended_at_utc": "2026-10-18T11:56:16.655139+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout": "afbde8c2c625f8eec55524efc9ea89b176dd68ba\n",
+      "stderr": ""
+    },
+    {
+      "id": "CMD-028",
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD:docs/P2_design/P2_D01_D10_approval_checklist_v1.md"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_AUDIT",
+      "started_at_utc": "2026-10-18T11:56:16.657771+00:00",
+      "ended_at_utc": "2026-10-18T11:56:16.662174+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout": "4a3ec993b0ff084021b5e627464d60565cf3b508\n",
+      "stderr": ""
+    },
+    {
+      "id": "CMD-029",
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD:docs/P2_design/P2_scientific_parameter_registry_v1.json"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_AUDIT",
+      "started_at_utc": "2026-10-18T11:56:16.663182+00:00",
+      "ended_at_utc": "2026-10-18T11:56:16.733289+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout": "e171bb0e3941513106178edbdb6ddd2c035f00df\n",
+      "stderr": ""
+    },
+    {
+      "id": "CMD-030",
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD:docs/P2_design/P2_D01_D10_traceability.csv"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_AUDIT",
+      "started_at_utc": "2026-10-18T11:56:16.734605+00:00",
+      "ended_at_utc": "2026-10-18T11:56:16.738715+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout": "5d835ae6932c78c644593071641a2c4db88f2363\n",
+      "stderr": ""
+    },
+    {
+      "id": "CMD-031",
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD:docs/P2_design/decisions.draft.json"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_AUDIT",
+      "started_at_utc": "2026-10-18T11:56:16.740900+00:00",
+      "ended_at_utc": "2026-10-18T11:56:16.744537+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout": "14191d425b26477190c7ffefdc4f1e183c7a7d2d\n",
+      "stderr": ""
+    },
+    {
+      "id": "CMD-032",
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD:docs/P2_design/README.md"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_AUDIT",
+      "started_at_utc": "2026-10-18T11:56:16.746777+00:00",
+      "ended_at_utc": "2026-10-18T11:56:16.750066+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout": "04858f84e007ffde8d11d3139460d050d44f96bb\n",
+      "stderr": ""
+    },
+    {
+      "id": "CMD-033",
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD:reports/P2_design/design_status.json"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_AUDIT",
+      "started_at_utc": "2026-10-18T11:56:16.751118+00:00",
+      "ended_at_utc": "2026-10-18T11:56:16.755758+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout": "afab3286da3881c3a8c1fb34551228d04583074d\n",
+      "stderr": ""
+    },
+    {
+      "id": "CMD-034",
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD:reports/P2_design/final_audit.md"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_AUDIT",
+      "started_at_utc": "2026-10-18T11:56:16.756946+00:00",
+      "ended_at_utc": "2026-10-18T11:56:16.760493+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout": "83dc37d2f545d49982f9e3dfa56f521d72b7a589\n",
+      "stderr": ""
+    },
+    {
+      "id": "CMD-035",
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD:docs/user_request.txt"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_AUDIT",
+      "started_at_utc": "2026-10-18T11:56:16.761882+00:00",
+      "ended_at_utc": "2026-10-18T11:56:16.802182+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout": "879103b030d00025a4c938f2c3567d99f46a38f2\n",
+      "stderr": ""
+    },
+    {
+      "id": "CMD-036",
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD:docs/model_spec.md"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_AUDIT",
+      "started_at_utc": "2026-10-18T11:56:16.810912+00:00",
+      "ended_at_utc": "2026-10-18T11:56:16.823674+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout": "9f6396211e91dee615ecd5092dfe4ec5900e33d2\n",
+      "stderr": ""
+    },
+    {
+      "id": "CMD-037",
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD:docs/baseline_spec.md"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_AUDIT",
+      "started_at_utc": "2026-10-18T11:56:16.825059+00:00",
+      "ended_at_utc": "2026-10-18T11:56:16.838688+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout": "586b39b38cea03b718f4d59b576d70dc192f2a2f\n",
+      "stderr": ""
+    },
+    {
+      "id": "CMD-038",
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD:docs/metric_spec.md"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_AUDIT",
+      "started_at_utc": "2026-10-18T11:56:16.840224+00:00",
+      "ended_at_utc": "2026-10-18T11:56:16.859296+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout": "42a79f2c97bc4354e73377d71b6206b506f97b66\n",
+      "stderr": ""
+    },
+    {
+      "id": "CMD-039",
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD:docs/statistical_protocol.md"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_AUDIT",
+      "started_at_utc": "2026-10-18T11:56:16.861903+00:00",
+      "ended_at_utc": "2026-10-18T11:56:16.886249+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout": "68b8cd775433e4d6c45d0ae4fca49fd0ddd58564\n",
+      "stderr": ""
+    },
+    {
+      "id": "CMD-040",
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD:AGENTS.md"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_AUDIT",
+      "started_at_utc": "2026-10-18T11:56:16.887844+00:00",
+      "ended_at_utc": "2026-10-18T11:56:16.893803+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout": "21fd2c268b3eb14ca1bc6a984b2a1f4afc79f6cf\n",
+      "stderr": ""
+    },
+    {
+      "id": "CMD-041",
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD:docs/workload_spec.md"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_AUDIT",
+      "started_at_utc": "2026-10-18T11:56:16.895144+00:00",
+      "ended_at_utc": "2026-10-18T11:56:16.899742+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout": "2438da0c809b3c6fb62caf0f5d097f666ce26043\n",
+      "stderr": ""
+    },
+    {
+      "id": "CMD-042",
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD:docs/research_contract.md"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_AUDIT",
+      "started_at_utc": "2026-10-18T11:56:16.901644+00:00",
+      "ended_at_utc": "2026-10-18T11:56:16.905936+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout": "41dd387ba81d595eebe2fab91d8032102568bbf5\n",
+      "stderr": ""
+    },
+    {
+      "id": "CMD-043",
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD:configs/research_protocol.json"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_AUDIT",
+      "started_at_utc": "2026-10-18T11:56:16.907629+00:00",
+      "ended_at_utc": "2026-10-18T11:56:16.914547+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout": "3e1e6dbb14817ac334cf8b62338ccc00a7899252\n",
+      "stderr": ""
+    },
+    {
+      "id": "CMD-044",
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD:configs/seed_partitions.json"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_AUDIT",
+      "started_at_utc": "2026-10-18T11:56:16.917098+00:00",
+      "ended_at_utc": "2026-10-18T11:56:16.922765+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout": "10ee05bc1b9be813aee992297ec6a06b683f5d91\n",
+      "stderr": ""
+    },
+    {
+      "id": "CMD-045",
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD:docs/P1_implementation_spec.md"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_AUDIT",
+      "started_at_utc": "2026-10-18T11:56:16.924580+00:00",
+      "ended_at_utc": "2026-10-18T11:56:16.929727+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout": "170dcbc8d361de40099e18e2edaf1771f3ae4b2a\n",
+      "stderr": ""
+    },
+    {
+      "id": "CMD-046",
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD:src/soc/model/schema.py"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_AUDIT",
+      "started_at_utc": "2026-10-18T11:56:16.931982+00:00",
+      "ended_at_utc": "2026-10-18T11:56:16.936381+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout": "4e5c4395504dfcf71d21ed090dc01f4719a5aa8e\n",
+      "stderr": ""
+    },
+    {
+      "id": "CMD-047",
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD:src/soc/model/observation.py"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_AUDIT",
+      "started_at_utc": "2026-10-18T11:56:16.938379+00:00",
+      "ended_at_utc": "2026-10-18T11:56:16.942840+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout": "ee90a63e26396ad75a8a5b77829c1d51382cdaeb\n",
+      "stderr": ""
+    },
+    {
+      "id": "CMD-048",
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD:src/soc/scheduler/kernels.py"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_AUDIT",
+      "started_at_utc": "2026-10-18T11:56:16.943925+00:00",
+      "ended_at_utc": "2026-10-18T11:56:16.947596+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout": "fec74c5ba92a1a91056b26320a6364de4fa7091e\n",
+      "stderr": ""
+    },
+    {
+      "id": "CMD-049",
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD:src/soc/simulator/engine.py"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_AUDIT",
+      "started_at_utc": "2026-10-18T11:56:16.950868+00:00",
+      "ended_at_utc": "2026-10-18T11:56:16.955307+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout": "82bb89d6d437add1a88e2f34624b28ecfee8b209\n",
+      "stderr": ""
+    },
+    {
+      "id": "CMD-050",
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD:src/soc/metrics/fixture.py"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_AUDIT",
+      "started_at_utc": "2026-10-18T11:56:16.957192+00:00",
+      "ended_at_utc": "2026-10-18T11:56:16.963133+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout": "8d41539b8364c71662f65b80016d8094d6cbfd10\n",
+      "stderr": ""
+    },
+    {
+      "id": "CMD-051",
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD:src/soc/validation/trace.py"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_AUDIT",
+      "started_at_utc": "2026-10-18T11:56:16.964833+00:00",
+      "ended_at_utc": "2026-10-18T11:56:16.967784+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout": "8e46a2eec89380d559114868d3e2ceddbf49541d\n",
+      "stderr": ""
+    },
+    {
+      "id": "CMD-052",
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD:src/soc/validation/governance.py"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_AUDIT",
+      "started_at_utc": "2026-10-18T11:56:16.969004+00:00",
+      "ended_at_utc": "2026-10-18T11:56:16.983127+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout": "d0fe1ad51121fea08b700dd346fee16a9971626f\n",
+      "stderr": ""
+    },
+    {
+      "id": "CMD-053",
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD:src/soc/validation/p1.py"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_AUDIT",
+      "started_at_utc": "2026-10-18T11:56:16.984936+00:00",
+      "ended_at_utc": "2026-10-18T11:56:17.013860+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout": "251eb91bf8c8eef1bdad2887905e37e7f3550ef3\n",
+      "stderr": ""
+    },
+    {
+      "id": "CMD-054",
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD:scripts/run_pipeline.py"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_AUDIT",
+      "started_at_utc": "2026-10-18T11:56:17.015251+00:00",
+      "ended_at_utc": "2026-10-18T11:56:17.019400+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout": "66c16f1d36268affe917c7486fb661d5f37dbdd4\n",
+      "stderr": ""
+    },
+    {
+      "id": "CMD-055",
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD:reports/P0_protocol_audit.json"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_AUDIT",
+      "started_at_utc": "2026-10-18T11:56:17.021090+00:00",
+      "ended_at_utc": "2026-10-18T11:56:17.037004+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout": "d084524d4db6464f4102b0e513ee8d68ec7b9233\n",
+      "stderr": ""
+    },
+    {
+      "id": "CMD-056",
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD:reports/P1_correctness.json"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_AUDIT",
+      "started_at_utc": "2026-10-18T11:56:17.038754+00:00",
+      "ended_at_utc": "2026-10-18T11:56:17.041949+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout": "3ee2c07c32e9aeb251428c849a6d8d34b2745365\n",
+      "stderr": ""
+    },
+    {
+      "id": "CMD-057",
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD:reports/P1_committed_source_verification.json"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_AUDIT",
+      "started_at_utc": "2026-10-18T11:56:17.043254+00:00",
+      "ended_at_utc": "2026-10-18T11:56:17.047546+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout": "d6b9142f00373b5d5af9c7e034c65344c528e57c\n",
+      "stderr": ""
+    },
+    {
+      "id": "CMD-058",
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD:reports/P2_mapping_opportunity.json"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_AUDIT",
+      "started_at_utc": "2026-10-18T11:56:17.048826+00:00",
+      "ended_at_utc": "2026-10-18T11:56:17.051998+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout": "8dcb2b218b00a5ae48c44b494ff2e8e997e68c8a\n",
+      "stderr": ""
+    },
+    {
+      "id": "CMD-059",
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD:reports/P2_preflight.json"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_AUDIT",
+      "started_at_utc": "2026-10-18T11:56:17.054068+00:00",
+      "ended_at_utc": "2026-10-18T11:56:17.057852+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout": "c1b2f48bf3c42c81573a9bf91d1682a866328ffa\n",
+      "stderr": ""
+    },
+    {
+      "id": "CMD-060",
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD:reports/P2_design/proposal_v1/static_check.py.txt"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_AUDIT",
+      "started_at_utc": "2026-10-18T11:56:17.059041+00:00",
+      "ended_at_utc": "2026-10-18T11:56:17.063105+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout": "03c8fc49f0636e1df7566b7364386710221ac360\n",
+      "stderr": ""
+    },
+    {
+      "id": "CMD-061",
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD:reports/P2_design/proposal_v1/static_checks.json"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_AUDIT",
+      "started_at_utc": "2026-10-18T11:56:17.064790+00:00",
+      "ended_at_utc": "2026-10-18T11:56:17.073041+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout": "eae676c6b5f0b435f09b6b2031af8ac7520d98b5\n",
+      "stderr": ""
+    },
+    {
+      "id": "CMD-062",
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD:docs/literature_matrix.md"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_AUDIT",
+      "started_at_utc": "2026-10-18T11:56:17.074133+00:00",
+      "ended_at_utc": "2026-10-18T11:56:17.088874+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout": "f92f3982ec15755200293f866a77d8c4ff6b80a0\n",
+      "stderr": ""
+    },
+    {
+      "id": "CMD-063",
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD:docs/literature_evidence.json"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_AUDIT",
+      "started_at_utc": "2026-10-18T11:56:17.089994+00:00",
+      "ended_at_utc": "2026-10-18T11:56:17.136811+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout": "4fb63c7dbb97a63dd10989ec67bbb7bb7cf63ae5\n",
+      "stderr": ""
+    },
+    {
+      "id": "CMD-064",
+      "argv": [
+        ".venv/bin/python",
+        "scripts/run_pipeline.py",
+        "--stage",
+        "p0",
+        "--check-only"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_AUDIT",
+      "started_at_utc": "2026-10-18T11:56:17.206559+00:00",
+      "ended_at_utc": "2026-10-18T11:56:17.384598+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout": "{\n  \"stage\": \"P0\",\n  \"status\": \"PASS\",\n  \"errors\": [],\n  \"partition_counts\": {\n    \"CALIBRATION\": 10,\n    \"DEVELOPMENT\": 20,\n    \"INDEPENDENT_VALIDATION\": 10,\n    \"FORMAL_EVALUATION\": 30\n  },\n  \"seed_sha256\": \"e5ded56e2fbe1ba2ed992a3026f3c5780d90afb50aaab4d1d8b75b8c014f4f31\",\n  \"source_sha256\": \"32860d432e7fef62f03fef64be3118c2ba260de6850d8f88a447fb7589cf412b\",\n  \"scientific_partitions_executed\": [],\n  \"legacy_results_used_as_new_evidence\": false\n}\n",
+      "stderr": ""
+    },
+    {
+      "id": "CMD-065",
+      "argv": [
+        ".venv/bin/python",
+        "scripts/run_pipeline.py",
+        "--stage",
+        "p1",
+        "--check-only"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_AUDIT",
+      "started_at_utc": "2026-10-18T11:56:17.386734+00:00",
+      "ended_at_utc": "2026-10-18T11:56:18.045988+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout": "{\n  \"stage\": \"P1\",\n  \"status\": \"PASS\",\n  \"errors\": [],\n  \"scientific_workloads_run\": 0,\n  \"P2_started\": false,\n  \"source_sha256\": \"32860d432e7fef62f03fef64be3118c2ba260de6850d8f88a447fb7589cf412b\",\n  \"governance_and_p1_tests\": 64,\n  \"p1_tests\": 47,\n  \"tests_failed\": 0,\n  \"tests_blocked\": 0,\n  \"positive_traces\": 45,\n  \"negative_traces\": 20,\n  \"deterministic_replay_pass\": true,\n  \"independent_metric_recomputation_pass\": true,\n  \"tested_git_head\": \"d60b94a791580af09fc0b40827eb57de439f1916\",\n  \"tested_worktree\": \" M reports/P1_test_run.json\\n?? reports/P1_test_runs/run_007.json\\n\",\n  \"seed_sha256\": \"e5ded56e2fbe1ba2ed992a3026f3c5780d90afb50aaab4d1d8b75b8c014f4f31\",\n  \"specification_status\": \"FROZEN\",\n  \"baseline_status\": {\n    \"B1\": \"PASS\",\n    \"B2\": \"PASS\",\n    \"B3\": \"PASS\",\n    \"B4\": \"PASS\",\n    \"B5\": \"PASS\"\n  }\n}\n",
+      "stderr": ""
+    },
+    {
+      "id": "CMD-066",
+      "argv": [
+        ".venv/bin/python",
+        "scripts/hash_artifacts.py",
+        "--verify",
+        "--output",
+        "checkpoints/P1_artifact_manifest.json"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_AUDIT",
+      "started_at_utc": "2026-10-18T11:56:18.049101+00:00",
+      "ended_at_utc": "2026-10-18T11:56:18.225141+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout": "{\"files\": 122, \"missing\": [], \"mismatch\": []}\n",
+      "stderr": ""
+    },
+    {
+      "id": "CMD-067",
+      "argv": [
+        ".venv/bin/python",
+        "scripts/hash_artifacts.py",
+        "--verify",
+        "--output",
+        "checkpoints/P2_design_artifact_manifest.json"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_AUDIT",
+      "started_at_utc": "2026-10-18T11:56:18.228508+00:00",
+      "ended_at_utc": "2026-10-18T11:56:18.394683+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout": "{\"files\": 315, \"missing\": [], \"mismatch\": []}\n",
+      "stderr": ""
+    },
+    {
+      "id": "CMD-068",
+      "argv": [
+        ".venv/bin/python",
+        "reports/P2_design/independent_review_v2/metadata_checks.py.txt"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_AUDIT",
+      "started_at_utc": "2026-10-18T11:58:36.159605+00:00",
+      "ended_at_utc": "2026-10-18T11:58:36.276956+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout": "{\n  \"scope\": \"INDEPENDENT_STATIC_METADATA_AND_ABSTRACT_PREDICATE_CHECKS_ONLY\",\n  \"check_count\": 60,\n  \"passed\": 60,\n  \"failed\": [],\n  \"checks\": [\n    {\n      \"id\": \"META-001\",\n      \"name\": \"six and only six scene/size templates\",\n      \"status\": \"PASS\",\n      \"evidence\": \"templates[*].scene,size,template_id\"\n    },\n    {\n      \"id\": \"META-002\",\n      \"name\": \"COCKPIT-8-v1 exact executable identity and inheritance\",\n      \"status\": \"PASS\",\n      \"evidence\": \"COCKPIT-8-v1 /nodes,/hidden_nodes,/implicit_dummy\"\n    },\n    {\n      \"id\": \"META-003\",\n      \"name\": \"COCKPIT-8-v1 independent topological traversal\",\n      \"status\": \"PASS\",\n      \"evidence\": \"indegree-style traversal and predecessor closure; IDs need not be topological\"\n    },\n    {\n      \"id\": \"META-004\",\n      \"name\": \"COCKPIT-8-v1 complete explicit edges and nonnegative finite MiB\",\n      \"status\": \"PASS\",\n      \"evidence\": \"COCKPIT-8-v1 /edge_tables; exact decimal parsing\"\n    },\n    {\n      \"id\": \"META-005\",\n      \"name\": \"COCKPIT-8-v1 profile coverage and scale\",\n      \"status\": \"PASS\",\n      \"evidence\": \"COCKPIT-8-v1 /nodes/*/role,cost_scale\"\n    },\n    {\n      \"id\": \"META-006\",\n      \"name\": \"COCKPIT-16-v1 exact executable identity and inheritance\",\n      \"status\": \"PASS\",\n      \"evidence\": \"COCKPIT-16-v1 /nodes,/hidden_nodes,/implicit_dummy\"\n    },\n    {\n      \"id\": \"META-007\",\n      \"name\": \"COCKPIT-16-v1 independent topological traversal\",\n      \"status\": \"PASS\",\n      \"evidence\": \"indegree-style traversal and predecessor closure; IDs need not be topological\"\n    },\n    {\n      \"id\": \"META-008\",\n      \"name\": \"COCKPIT-16-v1 complete explicit edges and nonnegative finite MiB\",\n      \"status\": \"PASS\",\n      \"evidence\": \"COCKPIT-16-v1 /edge_tables; exact decimal parsing\"\n    },\n    {\n      \"id\": \"META-009\",\n      \"name\": \"COCKPIT-16-v1 profile coverage and scale\",\n      \"status\": \"PASS\",\n      \"evidence\": \"COCKPIT-16-v1 /nodes/*/role,cost_scale\"\n    },\n    {\n      \"id\": \"META-010\",\n      \"name\": \"COCKPIT-16-v1 expansion preserves parent edges/roles\",\n      \"status\": \"PASS\",\n      \"evidence\": \"COCKPIT-16-v1 split contraction check\"\n    },\n    {\n      \"id\": \"META-011\",\n      \"name\": \"ADAS-8-v1 exact executable identity and inheritance\",\n      \"status\": \"PASS\",\n      \"evidence\": \"ADAS-8-v1 /nodes,/hidden_nodes,/implicit_dummy\"\n    },\n    {\n      \"id\": \"META-012\",\n      \"name\": \"ADAS-8-v1 independent topological traversal\",\n      \"status\": \"PASS\",\n      \"evidence\": \"indegree-style traversal and predecessor closure; IDs need not be topological\"\n    },\n    {\n      \"id\": \"META-013\",\n      \"name\": \"ADAS-8-v1 complete explicit edges and nonnegative finite MiB\",\n      \"status\": \"PASS\",\n      \"evidence\": \"ADAS-8-v1 /edge_tables; exact decimal parsing\"\n    },\n    {\n      \"id\": \"META-014\",\n      \"name\": \"ADAS-8-v1 profile coverage and scale\",\n      \"status\": \"PASS\",\n      \"evidence\": \"ADAS-8-v1 /nodes/*/role,cost_scale\"\n    },\n    {\n      \"id\": \"META-015\",\n      \"name\": \"ADAS-16-v1 exact executable identity and inheritance\",\n      \"status\": \"PASS\",\n      \"evidence\": \"ADAS-16-v1 /nodes,/hidden_nodes,/implicit_dummy\"\n    },\n    {\n      \"id\": \"META-016\",\n      \"name\": \"ADAS-16-v1 independent topological traversal\",\n      \"status\": \"PASS\",\n      \"evidence\": \"indegree-style traversal and predecessor closure; IDs need not be topological\"\n    },\n    {\n      \"id\": \"META-017\",\n      \"name\": \"ADAS-16-v1 complete explicit edges and nonnegative finite MiB\",\n      \"status\": \"PASS\",\n      \"evidence\": \"ADAS-16-v1 /edge_tables; exact decimal parsing\"\n    },\n    {\n      \"id\": \"META-018\",\n      \"name\": \"ADAS-16-v1 profile coverage and scale\",\n      \"status\": \"PASS\",\n      \"evidence\": \"ADAS-16-v1 /nodes/*/role,cost_scale\"\n    },\n    {\n      \"id\": \"META-019\",\n      \"name\": \"ADAS-16-v1 expansion preserves parent edges/roles\",\n      \"status\": \"PASS\",\n      \"evidence\": \"ADAS-16-v1 split contraction check\"\n    },\n    {\n      \"id\": \"META-020\",\n      \"name\": \"FUSION-8-v1 exact executable identity and inheritance\",\n      \"status\": \"PASS\",\n      \"evidence\": \"FUSION-8-v1 /nodes,/hidden_nodes,/implicit_dummy\"\n    },\n    {\n      \"id\": \"META-021\",\n      \"name\": \"FUSION-8-v1 independent topological traversal\",\n      \"status\": \"PASS\",\n      \"evidence\": \"indegree-style traversal and predecessor closure; IDs need not be topological\"\n    },\n    {\n      \"id\": \"META-022\",\n      \"name\": \"FUSION-8-v1 complete explicit edges and nonnegative finite MiB\",\n      \"status\": \"PASS\",\n      \"evidence\": \"FUSION-8-v1 /edge_tables; exact decimal parsing\"\n    },\n    {\n      \"id\": \"META-023\",\n      \"name\": \"FUSION-8-v1 profile coverage and scale\",\n      \"status\": \"PASS\",\n      \"evidence\": \"FUSION-8-v1 /nodes/*/role,cost_scale\"\n    },\n    {\n      \"id\": \"META-024\",\n      \"name\": \"FUSION-16-v1 exact executable identity and inheritance\",\n      \"status\": \"PASS\",\n      \"evidence\": \"FUSION-16-v1 /nodes,/hidden_nodes,/implicit_dummy\"\n    },\n    {\n      \"id\": \"META-025\",\n      \"name\": \"FUSION-16-v1 independent topological traversal\",\n      \"status\": \"PASS\",\n      \"evidence\": \"indegree-style traversal and predecessor closure; IDs need not be topological\"\n    },\n    {\n      \"id\": \"META-026\",\n      \"name\": \"FUSION-16-v1 complete explicit edges and nonnegative finite MiB\",\n      \"status\": \"PASS\",\n      \"evidence\": \"FUSION-16-v1 /edge_tables; exact decimal parsing\"\n    },\n    {\n      \"id\": \"META-027\",\n      \"name\": \"FUSION-16-v1 profile coverage and scale\",\n      \"status\": \"PASS\",\n      \"evidence\": \"FUSION-16-v1 /nodes/*/role,cost_scale\"\n    },\n    {\n      \"id\": \"META-028\",\n      \"name\": \"FUSION-16-v1 expansion preserves parent edges/roles\",\n      \"status\": \"PASS\",\n      \"evidence\": \"FUSION-16-v1 split contraction check\"\n    },\n    {\n      \"id\": \"META-029\",\n      \"name\": \"74 edges in six complete tables\",\n      \"status\": \"PASS\",\n      \"evidence\": \"communication /edge_tables\"\n    },\n    {\n      \"id\": \"META-030\",\n      \"name\": \"all six resource columns, compatibility exact/null positive\",\n      \"status\": \"PASS\",\n      \"evidence\": \"resource /profiles\"\n    },\n    {\n      \"id\": \"META-031\",\n      \"name\": \"compatibility categories and symmetric CPU cores\",\n      \"status\": \"PASS\",\n      \"evidence\": \"profile sets; not all roles universally compatible\"\n    },\n    {\n      \"id\": \"META-032\",\n      \"name\": \"symbolic duration lower/upper bounds\",\n      \"status\": \"PASS\",\n      \"evidence\": \"exact rational interval algebra; no keyed samples drawn\"\n    },\n    {\n      \"id\": \"META-033\",\n      \"name\": \"nine type pairs and dimension/positivity\",\n      \"status\": \"PASS\",\n      \"evidence\": \"communication /links and unit fields\"\n    },\n    {\n      \"id\": \"META-034\",\n      \"name\": \"communication hand identities\",\n      \"status\": \"PASS\",\n      \"evidence\": \"CPU/GPU .55ms; CPU0/CPU1 .0725ms; same-unit override\"\n    },\n    {\n      \"id\": \"META-035\",\n      \"name\": \"all new numeric tables classified synthetic proposals\",\n      \"status\": \"PASS\",\n      \"evidence\": \"root classification + per-role source\"\n    },\n    {\n      \"id\": \"META-036\",\n      \"name\": \"symbolic arrival upper bound below W\",\n      \"status\": \"PASS\",\n      \"evidence\": \"largest possible slot+jitter <46.1P<50P; no U_j sampled\"\n    },\n    {\n      \"id\": \"META-037\",\n      \"name\": \"declared random field namespace includes no undeclared distribution\",\n      \"status\": \"PASS\",\n      \"evidence\": \"rules enumerate exactly three random draw fields; exact key encoding still reviewed separately\"\n    },\n    {\n      \"id\": \"META-038\",\n      \"name\": \"36 configurations /18 registered conditions /A+B each\",\n      \"status\": \"PASS\",\n      \"evidence\": \"independent Cartesian enumeration\"\n    },\n    {\n      \"id\": \"META-039\",\n      \"name\": \"all period/template axes exact\",\n      \"status\": \"PASS\",\n      \"evidence\": \"configs period/template fields\"\n    },\n    {\n      \"id\": \"META-040\",\n      \"name\": \"ten exact existing calibration seeds\",\n      \"status\": \"PASS\",\n      \"evidence\": \"seed metadata only; no other partition realizations/outcomes read\"\n    },\n    {\n      \"id\": \"META-041\",\n      \"name\": \"exact Cartesian 2520 trial roster, no missing/duplicate identity\",\n      \"status\": \"PASS\",\n      \"evidence\": \"not just total-row check: exact four-axis identity set equality\"\n    },\n    {\n      \"id\": \"META-042\",\n      \"name\": \"1800+360+360 exact counts\",\n      \"status\": \"PASS\",\n      \"evidence\": \"variant counter\"\n    },\n    {\n      \"id\": \"META-043\",\n      \"name\": \"unique trial IDs and field relationships\",\n      \"status\": \"PASS\",\n      \"evidence\": \"all rows checked\"\n    },\n    {\n      \"id\": \"META-044\",\n      \"name\": \"exact declared execution ordering\",\n      \"status\": \"PASS\",\n      \"evidence\": \"independent lexicographic reconstruction\"\n    },\n    {\n      \"id\": \"META-045\",\n      \"name\": \"budget fields/rule references present on every row\",\n      \"status\": \"PASS\",\n      \"evidence\": \"all 2520 rows\"\n    },\n    {\n      \"id\": \"META-046\",\n      \"name\": \"1080 input plans /360 shared-main plans /720 controls\",\n      \"status\": \"PASS\",\n      \"evidence\": \"workload references only; no actual input generated\"\n    },\n    {\n      \"id\": \"META-047\",\n      \"name\": \"every workload ref exact config/index/variant and hash/command absent\",\n      \"status\": \"PASS\",\n      \"evidence\": \"symbolic IDs are not content hashes\"\n    },\n    {\n      \"id\": \"META-048\",\n      \"name\": \"5040 replay-inclusive invocations and all counts recomputed\",\n      \"status\": \"PASS\",\n      \"evidence\": \"plan upper bounds only, not spent budget\"\n    },\n    {\n      \"id\": \"META-049\",\n      \"name\": \"A/B all accounted independently of future choice\",\n      \"status\": \"PASS\",\n      \"evidence\": \"36 candidate configs each have 10*(5+2) rows\"\n    },\n    {\n      \"id\": \"META-050\",\n      \"name\": \"B2 focal role and all five methods preserved\",\n      \"status\": \"PASS\",\n      \"evidence\": \"MAIN B2 role fields; controls B2 only\"\n    },\n    {\n      \"id\": \"META-051\",\n      \"name\": \"32 unresolved named groups and ten untouched human approvals\",\n      \"status\": \"PASS\",\n      \"evidence\": \"count is groups, not scalar cells; no approvals inferred\"\n    },\n    {\n      \"id\": \"META-052\",\n      \"name\": \"all draft numeric artifacts are nonexecutable\",\n      \"status\": \"PASS\",\n      \"evidence\": \"explicit flags; behavioral guard enforcement NOT_VERIFIED\"\n    },\n    {\n      \"id\": \"META-053\",\n      \"name\": \"58 traceability rows and existing source references\",\n      \"status\": \"PASS\",\n      \"evidence\": \"CSV metadata/reference existence, not truth of every claim\"\n    },\n    {\n      \"id\": \"META-054\",\n      \"name\": \"pressure intervals disjoint with total valid-domain coverage\",\n      \"status\": \"PASS\",\n      \"evidence\": \"abstract scalar boundaries only; miss/contending/feasibility filters yield VALID_OFF_TARGET, not a fourth scientific load\"\n    },\n    {\n      \"id\": \"META-055\",\n      \"name\": \"light and loaded miss boundaries explicit\",\n      \"status\": \"PASS\",\n      \"evidence\": \"1/100 light endpoint and loaded lower endpoint share a number, but pressure intervals disjoint\"\n    },\n    {\n      \"id\": \"META-056\",\n      \"name\": \"FINE/COARSE/seed bootstrap constants/pointwise disclosed\",\n      \"status\": \"PASS\",\n      \"evidence\": \"literal constraints plus separate predicate truth checks; bootstrap not executed\"\n    },\n    {\n      \"id\": \"META-057\",\n      \"name\": \"three-state Boolean branches total and disjoint on valid predicates\",\n      \"status\": \"PASS\",\n      \"evidence\": \"12 abstract approved/V/S/N combinations with S&N excluded; no scientific outcome calculated\"\n    },\n    {\n      \"id\": \"META-058\",\n      \"name\": \"no simultaneous S and N for ordered intervals f>0\",\n      \"status\": \"PASS\",\n      \"evidence\": \"algebra lo<=hi makes lo>=f & hi<f impossible; K>=8 and K<=2 also disjoint\"\n    },\n    {\n      \"id\": \"META-059\",\n      \"name\": \"every starting tracked file preserved\",\n      \"status\": \"PASS\",\n      \"evidence\": []\n    },\n    {\n      \"id\": \"META-060\",\n      \"name\": \"no unlock tokens\",\n      \"status\": \"PASS\",\n      \"evidence\": \"existence check only; no reserved workload paths accessed\"\n    }\n  ],\n  \"scientific_workloads_generated\": 0,\n  \"scientific_workloads_run\": 0,\n  \"p2_entrypoint_executed\": false\n}\n",
+      "stderr": ""
+    },
+    {
+      "id": "CMD-069",
+      "argv": [
+        ".venv/bin/python",
+        "reports/P2_design/independent_review_v2/adversarial_checks.py.txt"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "NONSCIENTIFIC_ADVERSARIAL_DESIGN_LOGIC",
+      "started_at_utc": "2026-10-18T12:00:20.175585+00:00",
+      "ended_at_utc": "2026-10-18T12:00:20.219902+00:00",
+      "exit_code": 2,
+      "expected_exit_code": 2,
+      "stdout": "{\n  \"scope\": \"NONSCIENTIFIC_EXPLANATION_AND_SPECIFICATION_LOGIC_ONLY\",\n  \"proof_checks_passed\": 7,\n  \"proof_checks_failed\": 0,\n  \"proofs\": [\n    {\n      \"name\": \"M1 current-H objective unchanged by later L placement\",\n      \"verified\": true,\n      \"rationale\": \"With one ready H first in fixed B2 order, its greedy EFT is already minimum; later L assignments cannot improve that H prefix objective.\"\n    },\n    {\n      \"name\": \"same explanation admits a later H deadline reversal\",\n      \"verified\": true,\n      \"rationale\": \"6+4=10>9 versus 2+4=6<=9. This demonstrates operational scope, not a scientific outcome.\"\n    },\n    {\n      \"name\": \"strict local L constraint excludes a within-budget point tradeoff\",\n      \"verified\": true,\n      \"rationale\": \"6.5>6 is rejected locally although 6.5/6=13/12<1.10 and both meet L deadline12. Not a CI or population L-budget pass.\"\n    },\n    {\n      \"name\": \"first-materialization dependency cycle exists as written\",\n      \"verified\": true,\n      \"rationale\": \"D04 hashes require materialization; D09 requires resolved inputs/run lock before materialization. A blueprint authorization and provisional input lock are not specified.\"\n    },\n    {\n      \"name\": \"record-ID uniqueness is insufficient for repeated-state dedup\",\n      \"verified\": true,\n      \"rationale\": \"D07 needs a separately specified canonical state key and dedup scope; using the named full triple as dedup key gives two denominator entries.\"\n    },\n    {\n      \"name\": \"key field typing changes canonical bytes\",\n      \"verified\": true,\n      \"rationale\": \"The field-type/filled-key table must pin one representation. Hashing is not sampling; no workload key is evaluated.\"\n    },\n    {\n      \"name\": \"all proof arithmetic is bounded and exact\",\n      \"verified\": true,\n      \"rationale\": \"Fractions used only for explanation constants.\"\n    }\n  ],\n  \"dependency_edges\": [\n    [\n      \"payload_hash\",\n      \"workload_identity\"\n    ],\n    [\n      \"workload_identity\",\n      \"resolved_input_guard\"\n    ],\n    [\n      \"resolved_input_guard\",\n      \"generation\"\n    ],\n    [\n      \"generation\",\n      \"payload_hash\"\n    ],\n    [\n      \"payload_hash\",\n      \"run_identity\"\n    ],\n    [\n      \"run_identity\",\n      \"run_lock\"\n    ],\n    [\n      \"run_lock\",\n      \"generation\"\n    ]\n  ],\n  \"cycle_nodes\": [\n    \"generation\",\n    \"payload_hash\",\n    \"resolved_input_guard\",\n    \"run_identity\",\n    \"run_lock\",\n    \"workload_identity\"\n  ],\n  \"design_acceptance_failures\": [\n    {\n      \"id\": \"ADV-01\",\n      \"status\": \"FAIL\",\n      \"finding\": \"V2-F01\",\n      \"claim\": \"M1 absence can establish absence of the registered scarce-resource/remaining-H-path mechanism\",\n      \"reason\": \"Counterexample leaves the M1 current-ready-H objective unchanged while exposing exactly the registered later-H blocking mechanism.\"\n    },\n    {\n      \"id\": \"ADV-02\",\n      \"status\": \"FAIL\",\n      \"finding\": \"V2-F02\",\n      \"claim\": \"The written first-materialization/guard/run-lock sequence has an acyclic prerequisite order\",\n      \"reason\": \"Required content hash/run identity precede the operation that first produces that content.\"\n    },\n    {\n      \"id\": \"ADV-03\",\n      \"status\": \"FAIL\",\n      \"finding\": \"V2-F04\",\n      \"claim\": \"The specified record identity alone suffices to make the M1 denominator invariant to duplicate records\",\n      \"reason\": \"Different decision_seq values defeat full-triple dedup; an explicit state-equivalence contract is needed.\"\n    }\n  ],\n  \"exit_code_meaning\": \"2=design revision required, expected audit finding; not an execution crash or scientific comparison\",\n  \"scientific_workloads_generated\": 0,\n  \"scientific_workloads_run\": 0\n}\n",
+      "stderr": ""
+    },
+    {
+      "id": "CMD-070",
+      "argv": [
+        "rg",
+        "-n",
+        "canonicalization|service_slot|arrival_jitter|gap|preimage|estimated_base_ms|source|SYNTHETIC|PROPOSED",
+        "docs/P2_design/P2_generation_spec_v1.json",
+        "docs/P2_design/P2_resource_profiles_v1.json"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_AUDIT",
+      "started_at_utc": "2026-10-18T12:01:05.520370+00:00",
+      "ended_at_utc": "2026-10-18T12:01:05.532450+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout": "docs/P2_design/P2_generation_spec_v1.json:5:  \"classification\": \"PROPOSED\",\ndocs/P2_design/P2_generation_spec_v1.json:11:  \"source_checkpoint\": \"160800d9b136e953c6415cd5229ded87eae72a0f\",\ndocs/P2_design/P2_generation_spec_v1.json:12:  \"generator_version\": \"soc-p2-synthetic-v1-PROPOSED\",\ndocs/P2_design/P2_generation_spec_v1.json:14:  \"canonicalization\": {\ndocs/P2_design/P2_generation_spec_v1.json:17:    \"numbers\": \"Parse proposal decimal numeric lexemes exactly (e.g. JSON parse_float=Decimal), normalize to reduced rational {numerator,denominator}; retain integers, reject booleans as numeric. Identity preimages have no floats. Raw config file SHA is separate. Only engine payload gets one correctly rounded Python 3.12 binary64 conversion.\",\ndocs/P2_design/P2_generation_spec_v1.json:18:    \"hash\": \"SHA-256 over exact canonical bytes; identity preimage excludes its own ID/hash and timestamps; hash raw files as raw bytes independently\"\ndocs/P2_design/P2_generation_spec_v1.json:29:      \"service_slot\",\ndocs/P2_design/P2_generation_spec_v1.json:32:      \"resource_id\",\ndocs/P2_design/P2_generation_spec_v1.json:51:        \"arrival_jitter\",\ndocs/P2_design/P2_generation_spec_v1.json:62:    \"service_role_factor\": \"9/10+U/5; field=service_role_factor; resource_id empty, node-specific, shared by all resources for that node\",\ndocs/P2_design/P2_generation_spec_v1.json:63:    \"duration_factor\": \"9/10+U/5; field=duration_factor; node and resource present; resource-specific private realized durations\",\ndocs/P2_design/P2_generation_spec_v1.json:64:    \"arrival_jitter\": \"U/10 dimensionless; service_slot j, service_group empty; other IDs empty; shared by H/L pair\",\ndocs/P2_design/P2_generation_spec_v1.json:92:    \"gap\": \"G = ceil( max_service[sum_node(max_resource(estimate*11/10)) + sum_edge(max_typepair delay(edge)) + relative_deadline] ) +1 ms; a serial topological schedule is bounded by G, but actual control must verify no overlap of services\",\ndocs/P2_design/P2_generation_spec_v1.json:98:    \"actual\": \"urn:soc:workload:v1:<SHA256(canonical identity preimage)>\",\ndocs/P2_design/P2_generation_spec_v1.json:99:    \"preimage\": [\ndocs/P2_design/P2_generation_spec_v1.json:103:      \"generator source SHA256\",\ndocs/P2_design/P2_generation_spec_v1.json:109:    \"payload\": \"ordered services/nodes/edges/compatible resources; binary64 numeric payload independently canonicalized using unchanged model canonical_bytes convention; future scientific-origin adapter required\",\ndocs/P2_design/P2_generation_spec_v1.json:112:  \"parameter_provenance\": \"All algorithms/distributions/values here are PROPOSED except fixed model units, method-independent keys, CALIBRATION partition and full drain.\",\ndocs/P2_design/P2_generation_spec_v1.json:113:  \"source_refs\": [\ndocs/P2_design/P2_resource_profiles_v1.json:5:  \"classification\": \"PROPOSED\",\ndocs/P2_design/P2_resource_profiles_v1.json:11:  \"source_checkpoint\": \"160800d9b136e953c6415cd5229ded87eae72a0f\",\ndocs/P2_design/P2_resource_profiles_v1.json:12:  \"resources\": [\ndocs/P2_design/P2_resource_profiles_v1.json:21:  \"incompatible\": \"JSON null and excluded from compatible_resources; never infinity or zero duration\",\ndocs/P2_design/P2_resource_profiles_v1.json:26:      \"compatible_resources\": [\ndocs/P2_design/P2_resource_profiles_v1.json:32:      \"estimated_base_ms\": {\ndocs/P2_design/P2_resource_profiles_v1.json:40:      \"source\": \"PROPOSED_SYNTHETIC_NOT_MEASURED_NOT_PAPER_VALUES\",\ndocs/P2_design/P2_resource_profiles_v1.json:46:      \"compatible_resources\": [\ndocs/P2_design/P2_resource_profiles_v1.json:53:      \"estimated_base_ms\": {\ndocs/P2_design/P2_resource_profiles_v1.json:61:      \"source\": \"PROPOSED_SYNTHETIC_NOT_MEASURED_NOT_PAPER_VALUES\",\ndocs/P2_design/P2_resource_profiles_v1.json:67:      \"compatible_resources\": [\ndocs/P2_design/P2_resource_profiles_v1.json:73:      \"estimated_base_ms\": {\ndocs/P2_design/P2_resource_profiles_v1.json:81:      \"source\": \"PROPOSED_SYNTHETIC_NOT_MEASURED_NOT_PAPER_VALUES\",\ndocs/P2_design/P2_resource_profiles_v1.json:87:      \"compatible_resources\": [\ndocs/P2_design/P2_resource_profiles_v1.json:94:      \"estimated_base_ms\": {\ndocs/P2_design/P2_resource_profiles_v1.json:102:      \"source\": \"PROPOSED_SYNTHETIC_NOT_MEASURED_NOT_PAPER_VALUES\",\ndocs/P2_design/P2_resource_profiles_v1.json:108:      \"compatible_resources\": [\ndocs/P2_design/P2_resource_profiles_v1.json:114:      \"estimated_base_ms\": {\ndocs/P2_design/P2_resource_profiles_v1.json:122:      \"source\": \"PROPOSED_SYNTHETIC_NOT_MEASURED_NOT_PAPER_VALUES\",\ndocs/P2_design/P2_resource_profiles_v1.json:128:      \"compatible_resources\": [\ndocs/P2_design/P2_resource_profiles_v1.json:135:      \"estimated_base_ms\": {\ndocs/P2_design/P2_resource_profiles_v1.json:143:      \"source\": \"PROPOSED_SYNTHETIC_NOT_MEASURED_NOT_PAPER_VALUES\",\ndocs/P2_design/P2_resource_profiles_v1.json:149:      \"compatible_resources\": [\ndocs/P2_design/P2_resource_profiles_v1.json:157:      \"estimated_base_ms\": {\ndocs/P2_design/P2_resource_profiles_v1.json:165:      \"source\": \"PROPOSED_SYNTHETIC_NOT_MEASURED_NOT_PAPER_VALUES\",\ndocs/P2_design/P2_resource_profiles_v1.json:171:      \"compatible_resources\": [\ndocs/P2_design/P2_resource_profiles_v1.json:177:      \"estimated_base_ms\": {\ndocs/P2_design/P2_resource_profiles_v1.json:185:      \"source\": \"PROPOSED_SYNTHETIC_NOT_MEASURED_NOT_PAPER_VALUES\",\ndocs/P2_design/P2_resource_profiles_v1.json:191:      \"compatible_resources\": [\ndocs/P2_design/P2_resource_profiles_v1.json:198:      \"estimated_base_ms\": {\ndocs/P2_design/P2_resource_profiles_v1.json:206:      \"source\": \"PROPOSED_SYNTHETIC_NOT_MEASURED_NOT_PAPER_VALUES\",\ndocs/P2_design/P2_resource_profiles_v1.json:212:      \"compatible_resources\": [\ndocs/P2_design/P2_resource_profiles_v1.json:215:      \"estimated_base_ms\": {\ndocs/P2_design/P2_resource_profiles_v1.json:223:      \"source\": \"PROPOSED_SYNTHETIC_NOT_MEASURED_NOT_PAPER_VALUES\",\ndocs/P2_design/P2_resource_profiles_v1.json:229:      \"compatible_resources\": [\ndocs/P2_design/P2_resource_profiles_v1.json:237:      \"estimated_base_ms\": {\ndocs/P2_design/P2_resource_profiles_v1.json:245:      \"source\": \"PROPOSED_SYNTHETIC_NOT_MEASURED_NOT_PAPER_VALUES\",\ndocs/P2_design/P2_resource_profiles_v1.json:251:      \"compatible_resources\": [\ndocs/P2_design/P2_resource_profiles_v1.json:257:      \"estimated_base_ms\": {\ndocs/P2_design/P2_resource_profiles_v1.json:265:      \"source\": \"PROPOSED_SYNTHETIC_NOT_MEASURED_NOT_PAPER_VALUES\",\ndocs/P2_design/P2_resource_profiles_v1.json:271:      \"compatible_resources\": [\ndocs/P2_design/P2_resource_profiles_v1.json:278:      \"estimated_base_ms\": {\ndocs/P2_design/P2_resource_profiles_v1.json:286:      \"source\": \"PROPOSED_SYNTHETIC_NOT_MEASURED_NOT_PAPER_VALUES\",\ndocs/P2_design/P2_resource_profiles_v1.json:292:      \"compatible_resources\": [\ndocs/P2_design/P2_resource_profiles_v1.json:298:      \"estimated_base_ms\": {\ndocs/P2_design/P2_resource_profiles_v1.json:306:      \"source\": \"PROPOSED_SYNTHETIC_NOT_MEASURED_NOT_PAPER_VALUES\",\ndocs/P2_design/P2_resource_profiles_v1.json:312:      \"compatible_resources\": [\ndocs/P2_design/P2_resource_profiles_v1.json:315:      \"estimated_base_ms\": {\ndocs/P2_design/P2_resource_profiles_v1.json:323:      \"source\": \"PROPOSED_SYNTHETIC_NOT_MEASURED_NOT_PAPER_VALUES\",\ndocs/P2_design/P2_resource_profiles_v1.json:329:      \"compatible_resources\": [\ndocs/P2_design/P2_resource_profiles_v1.json:335:      \"estimated_base_ms\": {\ndocs/P2_design/P2_resource_profiles_v1.json:343:      \"source\": \"PROPOSED_SYNTHETIC_NOT_MEASURED_NOT_PAPER_VALUES\",\ndocs/P2_design/P2_resource_profiles_v1.json:353:  \"realized\": \"estimate_ms * resource_duration_factor\",\ndocs/P2_design/P2_resource_profiles_v1.json:355:  \"source_refs\": [\ndocs/P2_design/P2_resource_profiles_v1.json:360:  \"risk\": \"synthetic speedups and hard accelerator affinity can create mapping opportunities; not automotive measurements; no source speedup borrowed\"\n",
+      "stderr": ""
+    },
+    {
+      "id": "CMD-071",
+      "argv": [
+        "rg",
+        "-n",
+        "def |ordered_ready|mean_transfer|realized|HAND_AUTHORED|canonical_bytes|makespan|utilization",
+        "src/soc/model/schema.py",
+        "src/soc/scheduler/kernels.py",
+        "src/soc/metrics/fixture.py",
+        "src/soc/validation/trace.py",
+        "src/soc/model/observation.py"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_AUDIT",
+      "started_at_utc": "2026-10-18T12:01:05.534081+00:00",
+      "ended_at_utc": "2026-10-18T12:01:05.543901+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout": "src/soc/model/schema.py:13:def number(value: float, name: str, *, positive: bool = False) -> None:\nsrc/soc/model/schema.py:19:def identity(value: str) -> None:\nsrc/soc/model/schema.py:29:    def __post_init__(self):\nsrc/soc/model/schema.py:39:    realized: float\nsrc/soc/model/schema.py:41:    def __post_init__(self):\nsrc/soc/model/schema.py:44:        number(self.realized, \"realized duration\", positive=True)\nsrc/soc/model/schema.py:52:    def __post_init__(self):\nsrc/soc/model/schema.py:63:    def __post_init__(self):\nsrc/soc/model/schema.py:76:    def cost(self, resource: str) -> Duration:\nsrc/soc/model/schema.py:91:    def __post_init__(self):\nsrc/soc/model/schema.py:104:    def deadline(self) -> float:\nsrc/soc/model/schema.py:108:def topological_order(service: Service) -> tuple[str, ...]:\nsrc/soc/model/schema.py:133:    def __post_init__(self):\nsrc/soc/model/schema.py:150:    def __post_init__(self):\nsrc/soc/model/schema.py:175:    def to_dict(self) -> dict:\nsrc/soc/model/schema.py:176:        return {\"schema_version\": 1, \"origin\": \"HAND_AUTHORED_CORRECTNESS_FIXTURE\", **asdict(self)}\nsrc/soc/model/schema.py:179:    def from_dict(cls, value: dict) -> Workload:\nsrc/soc/model/schema.py:180:        if value.get(\"schema_version\") != 1 or value.get(\"origin\") != \"HAND_AUTHORED_CORRECTNESS_FIXTURE\":\nsrc/soc/model/schema.py:190:def canonical_bytes(value: dict) -> bytes:\nsrc/soc/model/schema.py:194:def communication(workload: Workload, source: str, destination: str, size: float) -> float:\nsrc/soc/model/observation.py:50:def observe(workload: Workload, now: float, running: tuple[Running, ...] = (),\nsrc/soc/model/observation.py:88:def dependency_ready(view: Observation) -> tuple[tuple[str, str], ...]:\nsrc/soc/metrics/fixture.py:7:def quantile(values: list[float], p: float) -> float | None:\nsrc/soc/metrics/fixture.py:20:def summarize(workload: Workload, executions: list[dict]) -> dict:\nsrc/soc/metrics/fixture.py:40:    makespan = max((r[\"finish\"] for r in executions), default=0)\nsrc/soc/metrics/fixture.py:44:        resources[resource.id] = dict(busy=busy, utilization=busy/makespan if makespan else None)\nsrc/soc/metrics/fixture.py:62:    return dict(services=services, groups=groups, makespan=makespan,\nsrc/soc/scheduler/kernels.py:10:def _finite_number(value) -> bool:\nsrc/soc/scheduler/kernels.py:14:def insertion_start(ready: float, duration: float, intervals: tuple[tuple[float, float], ...]) -> float:\nsrc/soc/scheduler/kernels.py:37:def source_tables(costs: dict[str, dict[str, float]],\nsrc/soc/scheduler/kernels.py:76:def transfer(view: Observation, source: str, destination: str, size: float) -> float:\nsrc/soc/scheduler/kernels.py:84:def mean_transfer(view: Observation, parent: PublicNode, child: PublicNode, size: float) -> float:\nsrc/soc/scheduler/kernels.py:95:def online_tables(view: Observation) -> tuple[dict, dict, dict]:\nsrc/soc/scheduler/kernels.py:102:        means = {(p, n.id): mean_transfer(view, nodes[p], n, size)\nsrc/soc/scheduler/kernels.py:122:def predictions(view: Observation, service_id: str, node_id: str, oct_row: dict | None = None) -> tuple[Proposal, ...]:\nsrc/soc/scheduler/kernels.py:151:def ordered_ready(view: Observation, method: str) -> tuple[tuple[str, str], ...]:\nsrc/soc/scheduler/kernels.py:156:    def key(pair):\nsrc/soc/scheduler/kernels.py:171:def choose(view: Observation, method: str) -> Proposal | None:\nsrc/soc/scheduler/kernels.py:174:    for service, node in ordered_ready(view, method):\nsrc/soc/validation/trace.py:14:def _numeric(value) -> bool:\nsrc/soc/validation/trace.py:18:def _summary(workload: Workload, rows: dict) -> dict:\nsrc/soc/validation/trace.py:28:        def percentile(p):\nsrc/soc/validation/trace.py:37:    makespan = max((r[\"finish\"] for r in rows.values()), default=0)\nsrc/soc/validation/trace.py:41:        resources[unit.id] = {\"busy\": busy, \"utilization\": busy/makespan if makespan else None}\nsrc/soc/validation/trace.py:65:    return {\"services\": services, \"groups\": groups, \"makespan\": makespan,\nsrc/soc/validation/trace.py:71:def validate_trace(workload: Workload, trace: dict) -> dict:\nsrc/soc/validation/trace.py:73:    def error(code, detail):\nsrc/soc/validation/trace.py:75:    if not isinstance(trace, dict) or trace.get(\"schema_version\") != 1 or trace.get(\"origin\") != \"HAND_AUTHORED_CORRECTNESS_FIXTURE\":\nsrc/soc/validation/trace.py:102:        elif row[\"finish\"] != row[\"start\"] + duration.realized:\n",
+      "stderr": ""
+    },
+    {
+      "id": "CMD-072",
+      "argv": [
+        "sed",
+        "-n",
+        "1,175p",
+        "reports/P2_design/final_audit.md"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_AUDIT",
+      "started_at_utc": "2026-10-18T12:01:05.548993+00:00",
+      "ended_at_utc": "2026-10-18T12:01:05.553844+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout": "# P2 设计草案交付审计\n\n结论：设计包 **DRAFT**，十个决定组 **未批准**；P2 preflight 继续 **BLOCKED**。\n本轮不冻结规则、不实施 runner/schema/generator、不调用 P2、不生成任何科学工作负载。\n\n起始提交 d016ad8d8b2be6fbeb80fadfee6194d9aa9bd0ae 位于 work，远端同 SHA，初始工作树\n干净。本轮只读 P0/P1 正式门禁均实际退出 0；初始 P1 122 项与历史 P2 266 项清单均匹配。\n完整原始命令输出在 repository_audit.json。没有声称本轮重跑全部 64 个独立单测进程；\nP1 gate 复核已有测试身份、实际证据和固定正确性 traces，不计为 P2 科学运行。\n\n旧 P2_preflight.json 的 13 条实际命令输出已在仓库，未从摘要重建。本轮核对三个实际\n/tmp 记录：两个已被原仓库保存，另将真实最终推送回执按原字节补存。路径、大小、hash\n和对应关系均在 repository_audit.json；没有把缺失原始输出虚构为恢复成功。\n\n交付包含五个阻断的逐项事实/缺口/影响/选项/利弊/复现风险/偏差/建议/精确问题/关闭证据，\n工作负载字段表、不可执行矩阵、机会判据备选、runner/产物 schema、追踪矩阵及 D01–D10\n人工清单。所有未定科学值均 UNRESOLVED/null，沒有数值分布、概率或阈值被补填。\nschema 中出现的 8/16、既有 seed 枚举、物理非负和 SHA 格式属于已知约束/结构，\n不是新的科学参数。本轮未创建科学 artifact 实例。\n\nB1/B2/B3 仍 UNRESOLVED。B4/B5 的 DESIGNED 仅指未批准文档已备齐；不等于已实现、\n适配方案已确定、schema 正确或科学运行可准入。科学 namespace/envelope 与当前 P1\nfixture origin 的兼容路线仍需要 D10 裁决和未来验证，不能借改标签绕过来源要求。\n\n文档检查记录为 document_checks.json：只检查解析、引用、字段/决定编号/明确的禁执行\n标志和文件保护。它不运行科学过程、不验证 schema 行为/语义，也不产生 P2 gate PASS。\n现有 P2_mapping_opportunity.json 的 BLOCKED 原件完全保留，机会结论仍 NOT_RUN。\n\n只有本包新文档/metadata 与 STATUS.md 发生变化；原源码、scripts、tests、configs、\n协议与所有 P0/P1/前次 P2 证据逐字节保持。旧 STATUS 另存 previous_STATUS.md。旧 P2\nartifact manifest 对应前次提交，不重写它来覆盖新状态；本包另有明确作用域的文档清单，\n不是第二套可执行实验规范。没有新增 seed、访问保留 realization/outcome、创建解锁文件、\n跟踪 PDF/临时环境或改环境配置。\n\n交付入口：delivery_index.json；人工审批入口：docs/P2_design/human_decisions.md。\n最终实际提交与正常推送记录见本包 Git 回执；包内 checkpoint hash 指已审阅交付检查点，\n最终包含回执的 enclosing HEAD/工作树用 live Git 确认，避免自包含 commit hash 的伪造。\n\n本轮停止。请先裁决 D01–D10，并在任何以后工作前提供完整参数/判据与明确的实现授权；\n本包不因自动默认、JSON 通过或推荐措辞而变成已批准预注册。\n\n## 本轮 D01–D10 Human Decision Review（起始 a585c5b）\n\n实际起始 HEAD 为 a585c5bba0215c1ac4b2f126f5a752ae443b56b4，work分支，origin/work\n相同，工作树干净。新的原始命令记录保存在 review/repository_audit.json；P0/P1只读\n门禁均退出0，初始设计287项清单和P1的122项清单匹配。没有重跑科学过程或P2入口。\n\n原定义10项全部找到；原始完整问句和目录快照保存在review/中。复用human_decisions.md\n作为十二字段完整brief，原清单原文保留；同一D01–D10目录加入审查字段，不设第二套编号。\n逐来源CSV有47行；另备依赖图和未勾选人工审批记录。\n\n三分类互斥计数为 RESOLVED=0、HUMAN_DECISION_REQUIRED=10、BLOCKED=0。BLOCKED在此\n指缺原始定义/来源或无法形成合规审查材料，不是P2执行阻断计数。全部10项未经人工决定，\nP2 preflight和原科学gate仍BLOCKED，没有READY/PASS。B1/B2/B3仍UNRESOLVED；\nB4/B5的DESIGNED仅为不完整、未批准、未实施/验证的文档设计。\n\n本轮特别发现：schema invocation只有单个timestamp而非明确开始/结束/中断记录，\nCOMPLETE对exit/trace/metrics/replay的语义依赖仅在注释中，来源/兼容适配也未证实。\n静态发现已交回D09/D10，不修改schema或任何实现，不用伪科学实例“验证”。\n各选项都明确分析公平、复现、成本和统计解释；推荐区分SOURCE_REQUIREMENT、\nLOGICAL_INFERENCE与ENGINEERING_SUGGESTION，不代填分布、概率、门槛、范围或预算。\n\n审批记录中批准/拒绝/暂缓/待补证据均0，未记录10。允许用户随后明确记录动作、\n版本和完整值/规则，但本轮不自动接纳推荐、补全参数或启动实现/实验。只要冻结规则\n会被改变，就不能在本任务中采纳该改变。输出的文档完整性不等于schema/runner正确。\n\n本轮检查结果在review/document_checks.json，记录本次修改白名单和保护边界；旧audit/\nchecks保留为历史。本轮只有决策审查文档、状态和文档hash清单更新。P0/P1证据、旧P2\n科学前置BLOCKED记录、源码/scripts/tests/configs、原协议和不可执行matrix/schema均保留。\n本轮0科学workload、0新seed，无保留分区realization/outcome访问及解锁。完成正常文档\n交付后停止，等待用户审阅D01–D10。\n\n## Complete proposal v1 task (source 160800d9)\n\nUser authorized concrete synthetic proposals, not execution. Six explicit templates,16 role profiles,\n74 edges,nine type-pair links,keyed generation,36 configurations and2520 explicit draft trial slots\nare now reviewable. All ten decisions and32 named scientific parameter groups remain unapproved.\nP0/P1 read-only audits exit0; P1 manifest122 files matches. No science/P2 entrypoint run.\nNew lifecycle/COMPLETE/origin solutions are documentation proposals only, not implemented fixes.\nTiming explicitly excluded (budget0) and its future protocol unresolved. Full current evidence in\nproposal_v1/; previous audits and old options retained. No threshold/CI/source/seed/unlock changes.\n\nConcrete proposal checkpoint `c7e94e438674bcfbb16ed1281ce0437cb6df3072` was committed, normally pushed (exit0),\nremote verified identical and worktree clean. Exact receipt: proposal_v1/git_checkpoint.json.\n94 read-only specification consistency checks passed; current inventory315 files verified\nmissing=0/mismatch=0. These are document/identity checks, not scientific completeness PASS.\nEnclosing delivery commit is resolved by git rev-parse HEAD; no self-referential SHA claim.\n",
+      "stderr": ""
+    },
+    {
+      "id": "CMD-073",
+      "argv": [
+        ".venv/bin/python",
+        "reports/P2_design/independent_review_v2/adversarial_checks.py.txt"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "NONSCIENTIFIC_ADVERSARIAL_DESIGN_LOGIC_FINAL",
+      "started_at_utc": "2026-10-18T12:01:32.574323+00:00",
+      "ended_at_utc": "2026-10-18T12:01:32.624017+00:00",
+      "exit_code": 2,
+      "expected_exit_code": 2,
+      "stdout": "{\n  \"scope\": \"NONSCIENTIFIC_EXPLANATION_AND_SPECIFICATION_LOGIC_ONLY\",\n  \"proof_checks_passed\": 7,\n  \"proof_checks_failed\": 0,\n  \"proofs\": [\n    {\n      \"name\": \"M1 current-H objective unchanged by later L placement\",\n      \"verified\": true,\n      \"rationale\": \"With one ready H first in fixed B2 order, its greedy EFT is already minimum; later L assignments cannot improve that H prefix objective.\"\n    },\n    {\n      \"name\": \"same explanation admits a later H deadline reversal\",\n      \"verified\": true,\n      \"rationale\": \"6+4=10>9 versus 2+4=6<=9. This demonstrates operational scope, not a scientific outcome.\"\n    },\n    {\n      \"name\": \"strict local L constraint excludes a within-budget point tradeoff\",\n      \"verified\": true,\n      \"rationale\": \"6.5>6 is rejected locally although 6.5/6=13/12<1.10 and both meet L deadline12. Not a CI or population L-budget pass.\"\n    },\n    {\n      \"name\": \"first-materialization dependency cycle exists as written\",\n      \"verified\": true,\n      \"rationale\": \"D04 hashes require materialization; D09 requires resolved inputs/run lock before materialization. A blueprint authorization and provisional input lock are not specified.\"\n    },\n    {\n      \"name\": \"record-ID uniqueness is insufficient for repeated-state dedup\",\n      \"verified\": true,\n      \"rationale\": \"D07 needs a separately specified canonical state key and dedup scope; using the named full triple as dedup key gives two denominator entries.\"\n    },\n    {\n      \"name\": \"key field typing changes canonical bytes\",\n      \"verified\": true,\n      \"rationale\": \"The field-type/filled-key table must pin one representation. Hashing is not sampling; no workload key is evaluated.\"\n    },\n    {\n      \"name\": \"all proof arithmetic is bounded and exact\",\n      \"verified\": true,\n      \"rationale\": \"Fractions used only for explanation constants.\"\n    }\n  ],\n  \"dependency_edges\": [\n    [\n      \"payload_hash\",\n      \"workload_identity\"\n    ],\n    [\n      \"workload_identity\",\n      \"resolved_input_guard\"\n    ],\n    [\n      \"resolved_input_guard\",\n      \"generation\"\n    ],\n    [\n      \"generation\",\n      \"payload_hash\"\n    ],\n    [\n      \"payload_hash\",\n      \"run_identity\"\n    ],\n    [\n      \"run_identity\",\n      \"run_lock\"\n    ],\n    [\n      \"run_lock\",\n      \"generation\"\n    ]\n  ],\n  \"cycle_nodes\": [\n    \"generation\",\n    \"payload_hash\",\n    \"resolved_input_guard\",\n    \"run_identity\",\n    \"run_lock\",\n    \"workload_identity\"\n  ],\n  \"design_acceptance_failures\": [\n    {\n      \"id\": \"ADV-01\",\n      \"status\": \"FAIL\",\n      \"finding\": \"V2-F01\",\n      \"claim\": \"M1 absence can establish absence of the registered scarce-resource/remaining-H-path mechanism\",\n      \"reason\": \"Counterexample leaves the M1 current-ready-H objective unchanged while exposing exactly the registered later-H blocking mechanism.\"\n    },\n    {\n      \"id\": \"ADV-02\",\n      \"status\": \"FAIL\",\n      \"finding\": \"V2-F02\",\n      \"claim\": \"The written first-materialization/guard/run-lock sequence has an acyclic prerequisite order\",\n      \"reason\": \"Required content hash/run identity precede the operation that first produces that content.\"\n    }\n  ],\n  \"contract_gaps\": [\n    {\n      \"id\": \"ADV-03\",\n      \"status\": \"NOT_VERIFIED\",\n      \"finding\": \"V2-F04\",\n      \"reason\": \"V1 explicitly requires repeated-state dedup; record-ID proof only shows why a separate canonical state key/scope is needed. This is not proof that an implemented deduplicator is wrong.\"\n    }\n  ],\n  \"exit_code_meaning\": \"2=design revision required, expected audit finding; not an execution crash or scientific comparison\",\n  \"scientific_workloads_generated\": 0,\n  \"scientific_workloads_run\": 0\n}\n",
+      "stderr": ""
+    },
+    {
+      "id": "CMD-074",
+      "argv": [
+        "nl",
+        "-ba",
+        "docs/P2_design/P2_complete_design_proposal_v1.md"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_AUDIT",
+      "started_at_utc": "2026-10-18T12:07:17.921368+00:00",
+      "ended_at_utc": "2026-10-18T12:07:17.930635+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout": "     1\t# P2 Complete Experimental Design Proposal v1\n     2\t\n     3\t状态：**DRAFT / UNAPPROVED / NONEXECUTABLE**。这是人工审批对象，非生效规格或实验结果。\n     4\t依据提交 `160800d9b136e953c6415cd5229ded87eae72a0f`；本轮授权原文归档于\n     5\t`reports/P2_design/proposal_v1/authorization_request.txt`。全部 D01–D10 仍需人工决定。\n     6\t\n     7\t## 证据与声明类型\n     8\t\n     9\t| 标记 | 本提案中的含义 |\n    10\t|---|---|\n    11\t| SOURCE_SUPPORTED | 已有文件明确支持，后附具体定位；文献只支持所审查的概念范围 |\n    12\t| DERIVED | 从已登记约束严格推导，例如 18 个主条件、预算乘积和无环性 |\n    13\t| PROPOSED | 新的拓扑、合成数值、分布、选择和工程政策，全部未批准 |\n    14\t| UNRESOLVED | 人工未裁决，含已有具体推荐但未获批的参数；不设隐式默认 |\n    15\t| IMPLEMENTATION_VALIDATION_PENDING | 生成器、科学 adapter、runner、诊断、schema、恢复行为均未实现验证 |\n    16\t| SCIENTIFIC_EXECUTION_PENDING | 可行性、负载分类、机会频率、置信区间、成本均未计算 |\n    17\t\n    18\tJSON 中 `classification=PROPOSED` 覆盖未另行标记的新增值。每份 JSON 均标明 DRAFT、\n    19\tapproved/frozen/executable/execution_authorized/read_by_pipeline=false。它们位于文档目录，\n    20\t没有任何现行 pipeline 的读取接线，也不具备现行 Workload 所要求的 fixture origin。\n    21\t批准提案仍不授权执行：还须单独授权实现、验证、冻结和科学运行。\n    22\t\n    23\t| 依据 | 实际定位及支持范围 |\n    24\t|---|---|\n    25\t| 原始需求 | `docs/user_request.txt` §§17–25、32–37、41–44、80、90–93、100；§32 数字仅为手工正确性例子，禁止作为科学 profile |\n    26\t| 工作负载 | `docs/workload_spec.md:3–25`：三场景、8/16 实节点、负载诊断、B2/10 CALIBRATION、同输入和排空 |\n    27\t| 模型 | `docs/model_spec.md:3–58`：单位、六资源、兼容性、非抢占、副本通信、已批准事件序和信息边界 |\n    28\t| 基线 | `docs/baseline_spec.md:3–20`，`docs/P1_implementation_spec.md` D1–D5：B1–B5 既有语义不改 |\n    29\t| 指标/统计 | `docs/metric_spec.md:3–52`、`docs/statistical_protocol.md:3–47`：seed 单位、10,000 paired bootstrap、固定分析 seed、type-7、H/L 及 P3 mapping 门槛 |\n    30\t| 合同/配置 | `docs/research_contract.md:3–9,32–48`；`configs/research_protocol.json` 的 main_grid、resources、bootstrap_*、scientific_executions：历史 DRAFT_P0_BLOCKED 字串不代表当前 gate 失败，保留原件 |\n    31\t| 原始决策 | `docs/P2_design/decisions.draft.json` 各 id/question；`human_decisions.md` 原始前49行及十二字段审查；原编号/问题不改 |\n    32\t| 原文证据 | `docs/literature_matrix.md` Original technical models、Identity/version；`docs/literature_evidence.json` 各 source/review_notes；`docs/literature_reviews/heft_cpop.md:35–49`（印刷262/264/266页）、`peft.md:33–46`（683/684/687/688页）、`ds3.md:12–29`（PDF3–6）、`starpu.md:12–24`（PDF4–7） |\n    33\t| 其余已审查文献 | `literature_reviews/autoware_dag.md` §IV/§V、PDF2–4；`federated_limit.md` §2、PDF3–5：汽车 DAG 和比较器限制，均未提供本提案的六资源数值 |\n    34\t| 实际门禁 | `reports/P2_design/proposal_v1/repository_audit.json`：当前 P0/P1 check-only exit=0，P1 122文件 missing/mismatch=0；`reports/P1_correctness.json` 保留既有64测试、45合法/20非法 trace 证据 |\n    35\t| P2 阻断 | `reports/P2_mapping_opportunity.json` status=BLOCKED / NOT_RUN；`scripts/run_pipeline.py:26–39` 科学入口未实现（本轮未调用） |\n    36\t\n    37\t文献仅支持异构代价表、DAG、EFT/OCT 和 profile 建模的概念。本轮没有重新开展原文审查，\n    38\t没有将任何新数值归给作者。六篇审查范围及出处限制沿用原证据；DS3/StarPU 的数据不能\n    39\t直接代替本项目 profile，HEFT/PEFT 的静态假设也不是本项目在线规则的来源。\n    40\t\n    41\t## D01 — 显式六模板（PROPOSED / UNRESOLVED）\n    42\t\n    43\t原始问题沿用目录 D01：显式角色 DAG 或 grammar，以及三场景完整8/16节点、角色/H-L/尺寸规则。\n    44\t推荐显式模板，见 `P2_workload_templates_v1.json#/templates`；每个节点逐一列出唯一局部 ID、\n    45\t角色、完整前驱、代价比例和 H/L 继承。服务实例必须整体 H 或整体 L，两个变体均存在；\n    46\t实际节点 ID=`service_id/template_node_id`，故跨实例不冲突。没有节点被隐去或免计数。\n    47\t\n    48\t| 场景 | 8节点/边 | 16节点/边 | 拟表达的机制 |\n    49\t|---|---|---|---|\n    50\t| COCKPIT | 8 / 9 | 16 / 17 | 语音意图链和导航分支，显示/路线并行后合成、交互输出 |\n    51\t| ADAS | 8 / 9 | 16 / 17 | 检测/分割分叉、跟踪融合、规划/显示汇合；稀缺加速器 |\n    52\t| FUSION | 8 / 7 | 16 / 15 | 语音和感知融合并与导航合成；多实例共享 CPU/GPU/NPU |\n    53\t\n    54\t尺寸规则：每个 v 明确拆为同角色 v.a→v.b，各承担基代价的一半，原 u→v 改为 u.b→v.a，\n    55\t内部边为1/16 MiB。增加8个真实执行节点和8条真实边（DERIVED），不增加 dummy。\n    56\tKahn 遍历核对全部节点被取出，拒绝缺前驱、自环、重复 ID/边；FUSION 中 n04 的前驱 n05\n    57\t说明 ID 不是拓扑次序，禁止用 ID 大小替代无环验证。\n    58\t\n    59\t理由：显式模板便于审计，成本较低；grammar 是原清单的可行替代，但当前没有批准其规则。\n    60\t本方案范围有限、不是车辆任务分布；16节点维持基计算总量但增加通信/流水级，不能把尺寸\n    61\t差异解释为纯计算规模效应。该偏差须在未来报告披露，不按效果换拓扑。\n    62\t待答：是否批准六个显式模板、全部节点继承服务 H/L 和二分尺寸规则？\n    63\t\n    64\t## D02 — 六资源合成 profile（PROPOSED / UNRESOLVED）\n    65\t\n    66\t原始问题：选择可追踪 profile 或批准合成规则并给兼容集、估计/实际代价、全部来源。\n    67\t推荐明确合成模型，不冒充没有取得的硬件数据；`P2_resource_profiles_v1.json` 给出16角色的\n    68\t**六列完整资源表**，CPU0–CPU3同值，GPU0/NPU0分别列值。null 唯一表示不兼容；对应资源\n    69\t不进入 compatible_resources，禁止把0或 infinity 当可执行时长。\n    70\t\n    71\t| 角色 | CPU0/1/2/3 各自 ms | GPU0 ms | NPU0 ms |\n    72\t|---|---:|---:|---:|\n    73\t| audio | 2 | — | — |\n    74\t| speech | 12 | — | 3 |\n    75\t| intent | 1 | — | — |\n    76\t| display | 8 | 2 | — |\n    77\t| navigation | 3 | — | — |\n    78\t| route | 8 | 3 | — |\n    79\t| compose | 6 | 2 | 3 |\n    80\t| interaction | 1 | — | — |\n    81\t| preprocess | 6 | 2 | — |\n    82\t| detect | — | — | 4 |\n    83\t| segment | 16 | 4 | 5 |\n    84\t| track | 3 | — | — |\n    85\t| fusion | 6 | — | 2 |\n    86\t| plan | 2 | — | — |\n    87\t| render | — | 2 | — |\n    88\t| output | 1 | — | — |\n    89\t\n    90\t这些数值全部是工程合成提议：CPU基代价1–16ms给出可手算的时标；加速器优势与专属角色\n    91\t用于覆盖合同要求的 CPU-only、GPU/NPU-oriented、multi-compatible、limited-alternative。\n    92\t不是测量、文献原值或已验证现实比例。对称 CPU 避免人为核优势，但省略缓存和频率差异。\n    93\tGPU/NPU优势及专属任务可能人为增加机会，外部有效性有限；不另加未预算的敏感性扫描。\n    94\t\n    95\testimated=base×节点比例×[0.9,1.1) keyed因子；realized=estimated×独立资源[0.9,1.1)因子。\n    96\t最小实际代价≥0.405ms（DERIVED）。全部兼容资源的私有真值在未来生成时固化，只有 estimates\n    97\t进入 scheduler。角色表、版本、原始字节/hash及生成代码身份均进入血缘（D04/D10）。\n    98\t替代：取得经授权 profile 后形成另一完整提案，不能无版本替换本表。\n    99\t待答：是否批准合成模型、全部16×6单元、CPU对称性和估计/实际关系？\n   100\t\n   101\t## D03 — 完整边表和九类通信（PROPOSED / UNRESOLVED）\n   102\t\n   103\t原始问题：边MiB和type-pair latency/bandwidth完整表，保留现行通信语义。\n   104\t`P2_communication_profiles_v1.json` 逐一列出六模板 **74条边** 的 ID/源/目的/数据MiB；\n   105\t8节点外部边取源角色输出量，16节点保留外部边，新增内部边1/16MiB，无未指定边。\n   106\t每个角色的输出量不同是新合成提案；多后继各自传相同量而非自动分摊。\n   107\t\n   108\t| 源→目的类型 | latency ms | bandwidth MiB/ms |\n   109\t|---|---:|---:|\n   110\t| CPU→CPU | .01 | 16 |\n   111\t| CPU→GPU | .05 | 8 |\n   112\t| CPU→NPU | .05 | 4 |\n   113\t| GPU→CPU | .05 | 8 |\n   114\t| GPU→GPU | .01 | 16 |\n   115\t| GPU→NPU | .08 | 4 |\n   116\t| NPU→CPU | .05 | 4 |\n   117\t| NPU→GPU | .08 | 4 |\n   118\t| NPU→NPU | .01 | 16 |\n   119\t\n   120\t不同单元：delay=L+b/B，MiB/(MiB/ms)=ms；同一单元覆盖为0（SOURCE_SUPPORTED）。\n   121\t例：CPU0→GPU0传4MiB：.05+4/8=.55ms；CPU0→CPU1传1MiB：.01+1/16=.0725ms；\n   122\tNPU0→NPU0即使1MiB仍为0。类型对角不等于相同单元，不能把 CPU 跨核通信清零。\n   123\t\n   124\t目的地副本从前驱实际完成才可传输并保留；pending remap重新计算目的地就绪，不复用别处\n   125\t副本，不修改已开始节点。无共享总线竞争，传输彼此及与计算重叠（model_spec:20–31）。\n   126\t大边/低带宽强化局部性、加速器互传较慢可能抑制卸载，这些是敏感性风险而非已见结果。\n   127\t二进制友好的尺寸/带宽便于复核，不代表SoC实测。待答：是否批准完整74边及九对参数？\n   128\t\n   129\t## D04 — keyed 物化规范（PROPOSED / UNRESOLVED）\n   130\t\n   131\t原始问题：key/PRNG/版本、扰动、到达、H-L、deadline、服务数/窗口和停止边界全部确定。\n   132\t完整提议在 `P2_generation_spec_v1.json`。本轮只写规范，**没有实现生成器或取任何科学随机样本**。\n   133\t\n   134\t使用 domain-separated SHA-256，字段固定且无歧义 canonical JSON，包含已登记 actual seed、\n   135\tscenario、condition、config、slot/group/node/resource/edge/field/counter/version；不用字段为空串。\n   136\tseed以十进制字符串编码；标识ASCII；UTF-8，键排序、紧凑分隔、尾单LF、无NaN/重复键。\n   137\tdigest前8字节大端 q，U=q/2^64。没有顺序PRNG状态，method/attempt/调度次数不进入key。\n   138\t不同字段分别取hash。节点估计因子对资源共用；实际因子按资源独立；控制变体沿用父输入key。\n   139\t所有生成计算先用精确有理数，最终一次round-to-nearest ties-to-even转binary64；正值/有限检查。\n   140\t身份参数用整数或规范分数，不用浮点序列化决定参数身份；运行payload沿用模型的独立字节hash。\n   141\t提案JSON为便于阅读写出的decimal数值必须先按十进制词法精确解析（如parse_float=Decimal），\n   142\t转换最简有理数再形成身份preimage，禁止先转binary64再反推参数。.05对应1/20，.01对应1/100；\n   143\t原提案/配置文件本身另存raw-byte SHA，不把“规范语义hash”与“文件原始hash”混称。\n   144\t\n   145\t| 新参数组 | 具体候选值/规则 | 理由与影响（均未批准） |\n   146\t|---|---|---|\n   147\t| 估计/实际扰动 | 两级独立[.9,1.1)均匀，具体key见JSON | 有界且严格正；不是误差实测，分布/相关性会影响鲁棒性 |\n   148\t| 到达扰动 | 每slot共享U/10 | 保持H/L配对，避免方法相关RNG；同步到达可能夸大竞争 |\n   149\t| 组成/样本量 | 50 slots，每slot H+L各1，共100服务 | H/L均有50个；不当作100独立seed，L尾分位仍噪声大 |\n   150\t| 突发 | 5 slots为块，压缩系数1/4 | a=P*(5*(j//5)+(j%5)/4+U_j/10)，轻量周期突发而非泊松；限制外推 |\n   151\t| 周期 | light 80/64ms；medium 24/20；near 12/10；两尺寸相同 | 两个有限候选，不保证实际压力或miss符合标签，D06可拒绝全部 |\n   152\t| deadline | C_est为min-compatible估计路径下界；H=2.5 C_est，L=4 C_est | 方法无关且正；忽略通信不构成可行性证明，须先控验 |\n   153\t| 窗口 | W=50P，半开[0,W)，全量排空 | 没有warmup剔除；未来运行结束=max(W,last_finish)，利用率分母需区分 |\n   154\t| 边扰动 | 无，边值固定D03 | 避免额外自由度；不覆盖数据尺寸随机性 |\n   155\t\n   156\tH/L deadline差异也属于PROPOSED，不是重要性定义自带。alternative为另行提供有出处到达/\n   157\tprofile规则，或修改上述具体候选后重出完整版本；本轮不悄然使用。未来workload ID由参数/\n   158\tgenerator/seed/条件/variant/内容hash决定，独立method；矩阵中的wlref只是未物化计划引用，\n   159\t其hash仍null。替换wlref必须保存解析收据，不能将符号字符串冒充实际内容SHA256。\n   160\t待答：是否批准JSON所有编码、字段、数值、分布、构造及窗口？\n   161\t\n   162\t## D05 — 有限矩阵、方法职责与预算（PROPOSED / UNRESOLVED）\n   163\t\n   164\t原始问题：完整轴/值、方法集合/理由、顺序/预算、seed到trial映射。\n   165\t推荐 `P2_trial_matrix_draft_v1.json`，**2520条显式trial**，每条含实际CALIBRATION seed、\n   166\tscene/condition/config/method/variant/workload计划ID、角色、顺序、预算和选择/平局/失败规则引用。\n   167\t每条command/hash=null，因为没有执行命令或科学输入；这些不是缺失的已运行证据。\n   168\t\n   169\t注册3×3×2只定义18个最终主条件（SOURCE_SUPPORTED）。本提案每条件有A/B两个arrival候选，\n   170\t共36配置；每个10seed做5方法主运行+2个B2控制。故\n   171\t36×10×(5+1+1)=2520 trial slots（DERIVED），主1800、H独占360、低竞争360；\n   172\t输入1080份，主360份、控制720份；最终选择18条件×10=180主输入，所有尝试保留。\n   173\t每trial需1次严格重放且不增加样本数，最大全引擎调用5040。暂停/失败后的未启动格保持\n   174\tNOT_STARTED，2520是完整成功执行时的计划数/上界，不是已花成本或达到时间预算。\n   175\t\n   176\tB1是重要性排序对照；B2为全部配置/控制的焦点参考、负载选型及固定L预算参照；B3为\n   177\trank/EFT；B4为OCT前瞻；B5为H-priority OCT强基线。主网格全纳入，避免预期胜负筛选。\n   178\t控制仅B2用于获得可行性见证和基准诊断，B2失败不能证明其他方法皆失败。无候选、消融\n   179\tA1–A3、severe-overload、保留分区实验。基线比较仍有排序/映射混杂，D07另界定。\n   180\t\n   181\t执行顺序：COCKPIT→ADAS→FUSION；light→medium→near；8→16；A→B；seed索引0..9；\n   182\tH_ISOLATED B2→LOW_COMPETITION B2→MAIN B1..B5。trial记录execution_order唯一连续。\n   183\t主方法顺序固定便于审计；主仿真无host timing结论，因此不将顺序当timing随机化。\n   184\t选择规则SEL-v1只按D06 B2负载/可行性，先A后B；不以M1/M2效果挑配置，选后机会失败不回退\n   185\t另一个配置救结论。保留全部seed/失败。若某条件无合格配置，P2 BLOCKED，不扩轴。\n   186\t\n   187\t有限预算替代SMALL=2160（去B1，会损失重要性排序对照），不推荐；WIDE=3780是再加一候选\n   188\t的预算说明，第三周期数值UNRESOLVED，未列为本版trial，不授权扩大。推荐全基线2520，\n   189\t属于工程/研究设计建议，无文献能证明其最优或计算时间可承受。实际运行时长未知。\n   190\t\n   191\t**工程timing不纳入本版矩阵**，预算0，inputs/warmup/repetitions/timer/aggregation全部\n   192\tUNRESOLVED，不取默认，也不冻结为“不测”。固定P95≤2ms目标保留。需未来另行审批的\n   193\ttiming登记并在candidate timing前冻结；不影响当前明确不做timing的校准提案完整性。\n   194\t待答：是否批准36配置/2520 slots/5040最大调用、全B1–B5、两个控制和固定顺序/选择？\n   195\t\n   196\t## D06 — 可行性、负载和失败分类（PROPOSED / UNRESOLVED）\n   197\t\n   198\t原始问题：H基础可行性、负载标签、试验选择/平局/失败继续停止规则。\n   199\t推荐同时做H_ISOLATED与LOW_COMPETITION。控制从父主输入派生，保留原service/node/key/\n   200\tduration/deadline，只有删L或改到达；不得复用不同内容hash。G在generation JSON中用\n   201\t保守串行上界计算，各服务完全隔离；两个控制分别50/100服务、每份仍为单一trial，\n   202\t不隐藏额外独占运行。H-only不要求有L，L指标为NOT_APPLICABLE_CONTROL，不能进入主统计。\n   203\t\n   204\t| 类别 | 预先规定的证据/判定 | 继续、停止与保留 |\n   205\t|---|---|---|\n   206\t| H基础可行见证 | 合法H_ISOLATED控制内每个H完成≤自身原deadline，无服务重叠 | 这是注册deadline的直接比较，无新增容忍阈值；保留逐服务见证 |\n   207\t| 天然不可行的充分证据 | 每个H的乐观路径LB：min兼容真实代价 + max前驱(LB+边最小合法通信)；若任一个LB>D | 即使允许不一致最优资源仍超期，是下界证据；保留，不归为调度器正确性失败；配置不准入 |\n   208\t| 未证明可行/不可行 | B2独占miss但LB≤D，或无独占有效见证 | 不宣称天然不可行，不调deadline补救；不准入，可继续既定负面诊断 |\n   209\t| 低竞争对照 | 全100服务串行隔离、来源有效，记录每个H/L deadline结果 | 不以低竞争标签自动断言可行；B2 miss单列，主配置不准入 |\n   210\t| 合法但未达负载目标 | trace合法、完整，但以下压力/miss bands不符 | 保留并继续剩余既定trial；不可换标签或删seed |\n   211\t| invalid | 输入/trace/血缘/配对不合法，或独立复算不一致 | 全计划停止，保留原件和诊断，缺格阻断完整性 |\n   212\t| failed | 进程启动失败、非零、引擎deadlock或未完成命令 | 全计划停止；spawn未开始exit=null，不填0 |\n   213\t| incomplete | 中断、缺文件/校验/重放、终结标记缺失 | 全计划停止；不续写、不自动重试，不与合法负结果混合 |\n   214\t\n   215\t上述LB是真值的离线控制审计，不能传给scheduler。LB≤D不证明可行；独占B2 miss也不证明\n   216\t全算法不可行（DERIVED）。这种区分遵循user_request §37和federated review的比较器限制。\n   217\t\n   218\t以下是**新的待批准负载分箱数值，绝不是现行H可行性阈值或科学收益门槛**：对B2主运行，\n   219\t逐seed计算p_s=max_r(busy_r∩[0,W])/W，再对10seed取均值p；不使用full-drain利用率来冒充\n   220\t到达窗口压力，同时保留每资源、每seed、队列/就绪等待和窗口末backlog。Hmiss也先逐seed\n   221\t再均值。light要求0≤p<.50且H/L平均DMR均≤.01；medium要求.50≤p<.80；near要求.80≤p≤1；\n   222\t后两类H平均DMR在[.01,.80]且每seed至少存在一次ready-node资源等待。全部10seed控制必须\n   223\t有效且H/低竞争见证满足deadline才可准入。未定数值均须批准；.80 miss上界用于排除接近\n   224\t全miss，本提案没有把它变成H收益或mapping阈值。样本少时分箱可能拒绝全部配置，这是\n   225\t预先允许的BLOCKED结局。额外severe-overload仅敏感性，未纳入本版trial。\n   226\t\n   227\t按每条件A优先、B次之选第一个合格配置，不按miss最低或映射收益最高。一个条件无合格即\n   228\t全P2 BLOCKED；不重新解释自然不可行/有效负结果、不静默增加试验。合法但不可行试验\n   229\t可以按已列清单完成用于诊断，但绝不可选作“合理压力且基本可行”的正式条件。\n   230\t待答：是否批准两个控制、充分/未证明区分、候选负载分箱和A/B选择/停止政策？\n   231\t\n   232\t## D07 — M1机制观察与M2描述（PROPOSED / UNRESOLVED）\n   233\t\n   234\t原始问题：M1/M2、可观察量、对照边界、单位、条件/seed分母。\n   235\t推荐M1作为局部机制证据、M2作为补充描述，两者不能作为候选算法。\n   236\tSOURCE_SUPPORTED：原始需求§44允许2–4 ready任务的局部枚举diagnostic oracle；\n   237\t原需求§23禁止未来信息。下述具体目标/截断/记录点都是新增提案。\n   238\t\n   239\tM1在B2主运行每次公共view刷新、派发调用前记录（包括一次派发后的新view），以\n   240\t(run_id,decision_seq,public_view_digest)标识，纯重复无状态改变的view只记一次；记录全部\n   241\t已到达公共图、ready集合、估计、可见running elapsed、已完成数据及闲忙状态。\n   242\t用既有B2 ready次序前min(4,ready_count)个组成K；K≥2且至少含一个H即eligible，\n   243\t不因没有替代资源删掉此状态。分母N_cs是该条件/seed主B2的全部eligible独特view数，\n   244\t另记总view数、截断次数、K分布；N=0是缺乏观察而非机会率0。\n   245\t\n   246\t固定K和顺序，只枚举兼容mapping（最多6^4=1296），不排列任务顺序。以同一公共估计\n   247\tbusy release=now+max(0,estimate−elapsed)、真实已完成前驱的目的地就绪，串行追加每个\n   248\tresource上K任务的预计占用，允许预测等待但不执行/不保留资源。基准是同固定序的局部\n   249\tgreedy EFT追加；枚举集合包含此基准。反事实只允许每个L局部预计finish≤基准相应finish，\n   250\t目标为最小K内H预计finish均值，平局按resource ID元组。不存在未来到达、未ready节点或\n   251\t后继运行；不会反馈到实际B2调度。这是离线局部比较，非新online policy或真实反事实轨迹。\n   252\t\n   253\t记b=基准H预计finish均值−now>0，o=可行枚举最优对应值，Δ=b−o≥0（ms），g=Δ/b（无量纲）。\n   254\t比较使用binary64输入值对应的精确有理数，不加未注册epsilon；枚举的具体传输/预计排队\n   255\t也用这些公共有理数进行，保持内部基准与反事实完全同一算术。不能声称与浮点runtime\n   256\t局部预测逐bit相同，未来须报告差异；无真实收益担保。记录最优assignment/基准/约束/\n   257\t成本/截断，审计者可独立复算。M1只证明当前K/估计/约束下有局部映射余量；看不到尚未\n   258\tready的稀缺H需求，估计误差和选择B2轨迹都限制解释。\n   259\t\n   260\t辅助离线trace描述：逐服务以最长实际依赖/通信路径标识H critical path（同长按node ID），\n   261\t逐节点记录CPU/GPU/NPU等待、完成前驱后data-ready等待、实际资源/兼容数、替代预计代价，\n   262\t单位ms/计数，参考trace与公共view。完成后的关键路径不能喂给scheduler或用于调选trial。\n   263\t具体定义为：dep=max(arrival,各前驱finish)，data=max(arrival,各前驱finish+实际目的地delay)，\n   264\tdata_wait=data−dep，post_wait=start−data；assigned_busy_wait为[data,start)内已分配单元\n   265\t被其他节点占用的区间测度，policy_idle_wait=post_wait−assigned_busy_wait，均ms且不重叠。\n   266\tpost_wait包含策略选择的空闲等待，不能全称为物理资源阻塞。CPU/GPU/NPU等待分项按实际\n   267\t目的单元类型累加assigned_busy_wait，逐服务分母为1、跨服务分母为该组50，注明node-ms求和\n   268\t可能在并行分支上重叠。关键路径采用node权重duration+post_wait、edge权重实际delay，根从\n   269\tarrival起，最长路径长度应等于服务response；同长按完整node-ID路径字典序。H critical-path\n   270\tblocking为这条事后路径的assigned_busy_wait之和(ms)，另报policy_idle_wait/compute/transfer，\n   271\t不得与全图节点wait和混为同一个端到端分解。每次实际start同时引用最近公共view，记录\n   272\tcompatible数以及每个替代资源的预测EFT−实际所选资源在同view的预测EFT（ms，可为负；无\n   273\t替代记NONE），不拿私有真值比较替代资源。以上恒等式/区间测度需未来独立复算验证。\n   274\t\n   275\tM2用同workload的B1/B3/B4/B5逐一配对B2；每seed/condition报告H-DMR差（比例点）、\n   276\tL-P95差(ms)、每服务资源等待均值差(ms)、M1机会率及eligible数（只B2）和兼容性分布。\n   277\t主服务分母每类50；控制不混入；实际trace等待分解须先验证恒等式，零/缺失不可编0。\n   278\t可用既有paired-seed CI，不能按100个服务或数千view重采样。B3/B4或B2/B5同时改变\n   279\tordering/lookahead/mapping，M2**不能单独支持映射独立因果贡献**，也不替代P3 A3–A1检验。\n   280\t待答：是否批准K/截断/基准/局部L约束/目标、分母及M1+M2解释边界？\n   281\t\n   282\t## D08 — 三态判据（PROPOSED / UNRESOLVED）\n   283\t\n   284\t原始问题：可观察量聚合、稳定性、不确定性、三态条件、无效/缺失处理。\n   285\t完整三态表、两套有限候选和精确边界在 `P2_mapping_opportunity_decision_table_v1.md`。\n   286\t推荐讨论FINE方案，理由为不要求5%局部估计收益才能观察弱机会；这不是来源证明，也不能\n   287\t保证稳健。COARSE更保守；两者必须**在看结果前二选一**，不能逐结果挑最容易通过者。\n   288\ttau/frequency/stability及bootstrap实现pin全部UNRESOLVED，32组参数登记中单列。\n   289\t所有既有H/L、P3 mapping阈值和CI算法保持原件不变；不把统计门槛从它们挪来。\n   290\t任何方案通过只能支持所定义局部机会，不等于H收益/L合规/候选成功。待答：选FINE、COARSE，\n   291\t还是拒绝并给另一套完整规则？批准条件覆盖/缺失/稳定性/paired-seed实现pin吗？\n   292\t\n   293\t## D09 — 唯一runner与恢复（PROPOSED / UNRESOLVED）\n   294\t\n   295\t原始问题：唯一入口或同守卫薄launcher，身份/源码/恢复/重试/退出等。\n   296\t推荐扩展现有 `scripts/run_pipeline.py --stage calibration` 为未来唯一正式入口；\n   297\t完整比较、复用等值条件、状态机、attempt链和洁净策略在 `P2_runner_schema_review_v1.md`。\n   298\t此命令仅为未来接口定位，本轮没调用。R2可作为无独立权力的薄launcher，当前不需要。\n   299\t自动重试预算0；不完整不续写、重新执行必须新的审批和新attempt而不能救统计结果。\n   300\tP2相关源码/配置已提交且洁净是新增工程推荐，**不是现行已批准P2规则**；现合同明确强制\n   301\t洁净的是precheck/validation/formal。待答：是否批准R1、精确复用、零自动重试和P2洁净政策？\n   302\t\n   303\t## D10 — 科学schema/adapter（PROPOSED / UNRESOLVED）\n   304\t\n   305\t原始问题：envelope或新版本schema+adapter，以及血缘、COMPLETE、P1兼容。\n   306\t推荐S2新scientific v1+显式adapter，理由为现代码硬编码fixture origin，外包envelope本身\n   307\t无法证明科学来源。S1保留为经未来兼容性证据支持的备选。本版给完整规范字段表和不变量，\n   308\t不修改现有schema草案/模型、engine或validator。见 `P2_runner_schema_review_v1.md` D10。\n   309\tstatic字段/规范检查不等于运行时hash/血缘/恢复已验证；科学输入原始字节、generator出生\n   310\t证明和P1负例回归都需未来实现验证。待答：是否批准S2、ID/canonicalization/引用规范及\n   311\tCOMPLETE必须同时成立的条件？\n   312\t\n   313\t## 跨决策一致性、已知风险与停止\n   314\t\n   315\t| 核对项 | 结论/仍待验证 |\n   316\t|---|---|\n   317\t| D01↔D02身份 | 六模板角色均存在profile；所有节点兼容集非空；两尺寸比例明确，未来实例ID须唯一 |\n   318\t| D01↔D03 | 六模板前驱与74边一一对应；9类型对完整；单位同引擎，未生成网络实例 |\n   319\t| D04↔D10 hash | 参数精确有理身份与运行binary64 payload分开hash；控制变体不同hash但扰动key保留；无自引用hash |\n   320\t| D05 seeds/budget | 只引用既有10 CALIBRATION值；36配置/18条件/2520条/1080输入；5040含重放；无新seed |\n   321\t| D06公平性 | B2和独占见证决定选型；不按候选/机会结果挑选；独占miss不冒充不可行证明 |\n   322\t| D07↔D08 | per-seed机会率、共同重采样索引；非节点/view独立CI，全部12 loaded条件检查 |\n   323\t| D09↔D10复用 | 全语义身份及raw refs/hash/validator/metrics/replay/COMPLETE核对；receipt不增样本 |\n   324\t| P1隔离 | 旧origin拒绝当前科学输入；S2未实现；P1字节/测试/审计不改，不能改标签充样本 |\n   325\t| 封存 | 不创建unlock、不生成非calibration realization/outcome；元数据校验不是访问结果 |\n   326\t| 设计≠证据 | B1–B3仍UNRESOLVED；B4/B5仍DESIGNED_UNAPPROVED，代码/行为与科学检验均待做 |\n   327\t\n   328\t明确保留的冲突/不足：旧draft矩阵与schema只是历史选项；本v1是它们的**具体提案层**，\n   329\t未取代生效文件。旧schema缺开始/结束与COMPLETE行为，本版补设计，未修实现。现P1\n   330\t硬编码origin与科学读取不兼容，须先S2及P1回归，不能直接运行。source代码/配置哈希为\n   331\tP1已验证身份；任何未来adapter会改变它，必须重新验证，不继承当前PASS作为新代码保证。\n   332\ttiming不在本矩阵，不能宣称P2所有未来输出均已可冻结。多条件CI为pointwise，三态表没有\n   333\t同时置信覆盖保证。FUSION/硬兼容/合成speedup和固定突发都可能人为塑造机会。\n   334\t\n   335\t`P2_scientific_parameter_registry_v1.json` 枚举**32个未批准科学参数组**（不是32个标量或\n   336\t10个决定）；全部有明确提案或有限选项，批准值仍null。工程runner/schema另由D09/D10\n   337\t审批，不混计科学参数。D01–D10提案覆盖完整不等于已解决：resolved=0、human=10。\n   338\t人工应在v1 checklist逐项选择并记录版本/文件hash/批准值或修改意见，不能仅回答“同意P2”。\n   339\t随后只能启动另行授权的实现验证任务；P2保持BLOCKED，当前science=0，STOP=YES。\n",
+      "stderr": ""
+    },
+    {
+      "id": "CMD-075",
+      "argv": [
+        "nl",
+        "-ba",
+        "docs/P2_design/P2_generation_spec_v1.json"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_AUDIT",
+      "started_at_utc": "2026-10-18T12:07:17.936904+00:00",
+      "ended_at_utc": "2026-10-18T12:07:17.944161+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout": "     1\t{\n     2\t  \"document_kind\": \"DETERMINISTIC_GENERATION_SPEC_PROPOSAL\",\n     3\t  \"version\": \"v1\",\n     4\t  \"status\": \"DRAFT_UNAPPROVED_NONEXECUTABLE\",\n     5\t  \"classification\": \"PROPOSED\",\n     6\t  \"approved\": false,\n     7\t  \"frozen\": false,\n     8\t  \"executable\": false,\n     9\t  \"execution_authorized\": false,\n    10\t  \"read_by_pipeline\": false,\n    11\t  \"source_checkpoint\": \"160800d9b136e953c6415cd5229ded87eae72a0f\",\n    12\t  \"generator_version\": \"soc-p2-synthetic-v1-PROPOSED\",\n    13\t  \"algorithm\": \"SHA-256 keyed counter mapping, no mutable PRNG state\",\n    14\t  \"canonicalization\": {\n    15\t    \"encoding\": \"UTF-8 ASCII-only identifiers; reject non-ASCII identifiers and duplicate keys\",\n    16\t    \"json\": \"sort_keys=True,separators=(comma,colon),ensure_ascii=True,allow_nan=False; exactly one LF; arrays ordered by specified stable IDs\",\n    17\t    \"numbers\": \"Parse proposal decimal numeric lexemes exactly (e.g. JSON parse_float=Decimal), normalize to reduced rational {numerator,denominator}; retain integers, reject booleans as numeric. Identity preimages have no floats. Raw config file SHA is separate. Only engine payload gets one correctly rounded Python 3.12 binary64 conversion.\",\n    18\t    \"hash\": \"SHA-256 over exact canonical bytes; identity preimage excludes its own ID/hash and timestamps; hash raw files as raw bytes independently\"\n    19\t  },\n    20\t  \"key\": {\n    21\t    \"domain\": \"soc.p2.gen.v1\",\n    22\t    \"fields\": [\n    23\t      \"domain\",\n    24\t      \"version\",\n    25\t      \"actual_seed_decimal_string\",\n    26\t      \"scenario\",\n    27\t      \"condition_id\",\n    28\t      \"config_id\",\n    29\t      \"service_slot\",\n    30\t      \"service_group\",\n    31\t      \"template_node_id\",\n    32\t      \"resource_id\",\n    33\t      \"edge_id\",\n    34\t      \"field\",\n    35\t      \"counter\"\n    36\t    ],\n    37\t    \"unused\": \"empty string, never omitted; counter integer 0 except rejection sampling\",\n    38\t    \"exclusions\": [\n    39\t      \"method\",\n    40\t      \"trial_id\",\n    41\t      \"attempt_id\",\n    42\t      \"host\",\n    43\t      \"current_time\",\n    44\t      \"scheduler_calls\",\n    45\t      \"control_variant\"\n    46\t    ],\n    47\t    \"identity_namespaces\": {\n    48\t      \"template\": \"scene.nNN[.a|.b]\",\n    49\t      \"service\": \"scene/load/size/config/sSSS/H-or-L\",\n    50\t      \"field\": [\n    51\t        \"arrival_jitter\",\n    52\t        \"service_role_factor\",\n    53\t        \"duration_factor\",\n    54\t        \"deadline\",\n    55\t        \"edge_size\"\n    56\t      ]\n    57\t    },\n    58\t    \"seed\": \"existing CALIBRATION value only; this design never derives a new seed\"\n    59\t  },\n    60\t  \"uniform_mapping\": \"first 8 digest bytes unsigned big-endian q; U=q/2^64 in [0,1), exact rational, one domain-separated hash per field/key\",\n    61\t  \"rules\": {\n    62\t    \"service_role_factor\": \"9/10+U/5; field=service_role_factor; resource_id empty, node-specific, shared by all resources for that node\",\n    63\t    \"duration_factor\": \"9/10+U/5; field=duration_factor; node and resource present; resource-specific private realized durations\",\n    64\t    \"arrival_jitter\": \"U/10 dimensionless; service_slot j, service_group empty; other IDs empty; shared by H/L pair\",\n    65\t    \"edge_size\": \"explicit D03 size, no random perturbation in v1; edge_id exists in namespace but edge_size keys NOT sampled\",\n    66\t    \"deadline\": \"no random draw; formula below\",\n    67\t    \"rounding\": \"Exact rationals through estimates/realized/arrivals/deadlines; single correctly-rounded nearest ties-to-even binary64 conversion for engine payload; assert positive finite, normalize negative zero to +0; no incremental float RNG arithmetic\",\n    68\t    \"node_scaling\": \"16-node a/b each base/2; independent node keys, so total realized compute need not equal 8-node service\"\n    69\t  },\n    70\t  \"arrivals\": {\n    71\t    \"slots\": 50,\n    72\t    \"services_per_slot\": 2,\n    73\t    \"total_services\": 100,\n    74\t    \"H\": 50,\n    75\t    \"L\": 50,\n    76\t    \"burst_block_slots\": 5,\n    77\t    \"burst_compression\": \"1/4\",\n    78\t    \"formula\": \"for j=0..49: q=j//5,k=j%5; a_H=a_L=P*(5*q+k/4+U_j/10); P is config period_ms\",\n    79\t    \"arrival_window\": \"[0,W) with W=50*P ms; no service at W; no arrivals after last slot, observation continues to W and full drain; completion may precede W but run_end=max(W,last_completion)\",\n    80\t    \"no_warmup_exclusion\": true\n    81\t  },\n    82\t  \"deadlines\": {\n    83\t    \"reference\": \"C_est = max_root_to_sink sum_node(min_compatible estimated_duration_ms); excludes communication; DAG dynamic program, no scheduling outcome\",\n    84\t    \"H_multiplier\": \"5/2\",\n    85\t    \"L_multiplier\": \"4\",\n    86\t    \"formula\": \"D_g = multiplier(group) * C_est(service); positive, relative to each admitted arrival\",\n    87\t    \"risk\": \"C_est is optimistic and not a feasibility certificate; D06 independent controls mandatory\"\n    88\t  },\n    89\t  \"controls\": {\n    90\t    \"H_ISOLATED\": \"retain the same 50 H services, keys, graph, durations, deadlines; remove L; place kth H at k*G\",\n    91\t    \"LOW_COMPETITION\": \"retain all 100 services and private keyed values; order slot then group H,L; kth service at k*G\",\n    92\t    \"gap\": \"G = ceil( max_service[sum_node(max_resource(estimate*11/10)) + sum_edge(max_typepair delay(edge)) + relative_deadline] ) +1 ms; a serial topological schedule is bounded by G, but actual control must verify no overlap of services\",\n    93\t    \"control_window\": \"W_control=N_control*G; drain all; missing L metrics in H-only are NOT_APPLICABLE_CONTROL, never a main sample\",\n    94\t    \"lineage\": \"all controls reference parent-main generation identity and independently hashed derived input; changed arrivals cannot reuse main workload hash\"\n    95\t  },\n    96\t  \"workload_identity\": {\n    97\t    \"plan\": \"symbolic wlref:v1:<config_id>:s<seed_index>:<MAIN|H_ISOLATED|LOW_COMPETITION>; not a materialized workload or content hash\",\n    98\t    \"actual\": \"urn:soc:workload:v1:<SHA256(canonical identity preimage)>\",\n    99\t    \"preimage\": [\n   100\t      \"namespace/version\",\n   101\t      \"seed/partition\",\n   102\t      \"scene/load/size/config_id\",\n   103\t      \"generator source SHA256\",\n   104\t      \"approved parameter content SHA256\",\n   105\t      \"template/profile/network SHA256\",\n   106\t      \"control variant\",\n   107\t      \"canonical numeric payload SHA256\"\n   108\t    ],\n   109\t    \"payload\": \"ordered services/nodes/edges/compatible resources; binary64 numeric payload independently canonicalized using unchanged model canonical_bytes convention; future scientific-origin adapter required\",\n   110\t    \"hashes\": \"artifact SHA256 computed only after future authorized generation; currently all artifact hashes null\"\n   111\t  },\n   112\t  \"parameter_provenance\": \"All algorithms/distributions/values here are PROPOSED except fixed model units, method-independent keys, CALIBRATION partition and full drain.\",\n   113\t  \"source_refs\": [\n   114\t    \"docs/model_spec.md:39–58\",\n   115\t    \"docs/workload_spec.md:22–25\",\n   116\t    \"docs/user_request.txt:§§24–25,36,41\"\n   117\t  ],\n   118\t  \"positive_guarantee\": \"Exact preconversion duration >=81/200 ms; final binary64 must be finite and strictly positive.\"\n   119\t}\n",
+      "stderr": ""
+    },
+    {
+      "id": "CMD-076",
+      "argv": [
+        "nl",
+        "-ba",
+        "docs/P2_design/P2_mapping_opportunity_decision_table_v1.md"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_AUDIT",
+      "started_at_utc": "2026-10-18T12:07:17.946761+00:00",
+      "ended_at_utc": "2026-10-18T12:07:17.952767+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout": "     1\t# P2 Mapping-opportunity decision table v1\n     2\t\n     3\tDRAFT / UNAPPROVED / NOT COMPUTED。D07观察按complete proposal同名章节；本文件为D08\n     4\t具体候选。SOURCE_SUPPORTED：`docs/statistical_protocol.md:3–16,34–47`、\n     5\t`docs/user_request.txt` §44、§100；源文件没有给出以下机会阈值，不冒充注册值。\n     6\t\n     7\t## 参数\n     8\t\n     9\t| 参数 | FINE（建议供讨论） | COARSE（有限替代） | 状态/含义 |\n    10\t|---|---:|---:|---|\n    11\t| tau，单view实质预计相对收益 | .01 | .05 | PROPOSED，g≥tau是hit；并非H收益门槛 |\n    12\t| f，最低hit频率 | .01 | .05 | PROPOSED，每seed/condition p=hits/N，N为D07 eligible view |\n    13\t| 稳定seed数k | 8/10 | 8/10 | PROPOSED，每条件至少k seed有p≥f |\n    14\t| 观察范围 | 每个选定medium/near条件，共12 | 同左 | 12范围由注册主条件推导；要求全覆盖为新增提案 |\n    15\t| 宏聚合 | seed内等权12条件平均，再跨seed平均 | 同左 | 描述用，不补偿任何条件不支持 |\n    16\t| CI | 每条件p的seed均值及宏均值的95% percentile CI | 同左 | 沿用paired-seed 10,000/type-7/分析seed20261018，不另创算法 |\n    17\t| 额外最低N | 无 | 无 | 只要求每个seed/condition N>0；小N稳定性/区间限制须报告 |\n    18\t\n    19\ttau/f/k/覆盖仍UNRESOLVED；FINE能捕捉弱局部机会、也可能使合成微小差异看似实质；\n    20\tCOARSE要求更大的局部收益/频率，保守但可能拒绝弱效应。不存在来源证明哪组正确。\n    21\t不得运行两套后选通过者；人工必须在任何结果生成前选定一套或拒绝本版。\n    22\t没有从10% H收益、1.10 L预算、P3 A3–A1 CI>0推导这些参数。\n    23\t\n    24\tbootstrap具体实现pin为**PROPOSED**：不改变既定resampling方法，只固定索引产生。\n    25\t对replicate=0..9999、position=0..9，用domain=`soc.p2.analysis.bootstrap.v1`和\n    26\tanalysis_seed（整数）=20261018、replicate/position/counter（整数），依D04的canonical JSON取\n    27\tSHA-256前8字节q。令limit=floor(2^64/10)*10；q≥limit时counter递增重取，否则index=q mod10。\n    28\t每replicate的同一10索引向量复用于全部条件、方法和seed配对统计，保存索引文件/digest。\n    29\t这些是分析索引，不生成/替换workload seed。现统计协议要求pin实现但未指定PRNG；\n    30\t本实现pin仍待人工批准和未来统计验证，不能假称已有实现完成。\n    31\t\n    32\t## 决策表\n    33\t\n    34\t先决V：18条件均有按D06预选的配置；所有2520计划trial完整有效（若提前停止则V=false）；\n    35\t输入/运行/重放/验证/指标/预选收据身份匹配；每个选定12条件×10seed的M1 N>0、g与hit可\n    36\t独立复算，全部M2配对完整。不得临时缩条件、删零机会seed或用剩余样本继续。\n    37\t\n    38\t对每个loaded条件c，定义L_c/U_c为seed机会率均值CI端点，K_c=#seed(p_cs≥f)。\n    39\tS：**每个**12条件 L_c≥f 且K_c≥8。\n    40\tN：**每个**12条件 U_c<f 且K_c≤2。\n    41\tf>0且CI有序，因此S/N不可能同时成立（DERIVED）；出现同时成立为实现/数据错误。\n    42\t\n    43\t| 优先级 | 条件 | 三态输出 | 协议处置 |\n    44\t|---:|---|---|---|\n    45\t| 1 | 设计未批准/未实施/本任务 | INCONCLUSIVE，reason=NOT_RUN | P2 BLOCKED；本文件不创建实际判据结果 |\n    46\t| 2 | V=false，任何missing/invalid/failed/incomplete或N=0 | INCONCLUSIVE，reason=EVIDENCE_INCOMPLETE | P2 BLOCKED，不把缺失当0或负面机会证据 |\n    47\t| 3 | V=true，S=true | SUPPORTED | 仅支持所定义局部机制，仍须其他P2冻结/准入条件，不自动进P3 |\n    48\t| 4 | V=true，N=true | NOT_SUPPORTED | 保留阴性并停止mapping主线，不按结果扩预算 |\n    49\t| 5 | V=true，S/N都false（混合场景、跨界、seed不稳等） | INCONCLUSIVE | 不能PASS；停止推进，不按观察结果另选阈值 |\n    50\t\n    51\t临界L=f允许支持，U=f不能归N；K=7不能归S、K=3不能归N。宏均值即使漂亮也不能覆盖\n    52\t单条件缺口。NOT_SUPPORTED要求明确的低机会证据，不等于“没有通过S”。这套负面边界\n    53\t和跨条件严格性都是PROPOSED，需批准；其他定义不能默认为同义。\n    54\t\n    55\t每条件保存10个N/hits/p、CI/seed计数、每view理由/assignment/ref、截断覆盖率、全量\n    56\tbootstrap索引digest、M2原始配对/描述、条件与宏结果、缺失诊断、选择收据、规则及输入hash。\n    57\t不做node/view bootstrap、不跨seedpooling、不p值过滤、不改CI。所有CI是pointwise，\n    58\t12条件共同判断没有同时覆盖保证；本设计的局部预计量不推出实际deadline收益或因果贡献。\n    59\t本轮不计算上述任何数值，实际gate仍为既有BLOCKED/NOT_RUN。\n",
+      "stderr": ""
+    },
+    {
+      "id": "CMD-077",
+      "argv": [
+        "rg",
+        "-n",
+        "duration|isclose|tolerance|epsilon|1e-|math|realized|finish.*start",
+        "src/soc/validation/trace.py",
+        "tests/test_p1_metrics.py",
+        "tests/test_p1_engine.py"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_AUDIT",
+      "started_at_utc": "2026-10-18T12:07:28.936007+00:00",
+      "ended_at_utc": "2026-10-18T12:07:28.946658+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout": "tests/test_p1_engine.py:79:    def test_scheduler_never_observes_future_services_or_realized_costs(self):\ntests/test_p1_engine.py:83:            self.assertNotIn(\"realized\", repr(view))\ntests/test_p1_metrics.py:19:        rows = [dict(service=s.id, node=n.id, resource=n.durations[0].resource,\nsrc/soc/validation/trace.py:9:import math\nsrc/soc/validation/trace.py:15:    return not isinstance(value, bool) and isinstance(value, (int, float)) and math.isfinite(value) and value >= 0\nsrc/soc/validation/trace.py:40:        busy = sum(r[\"finish\"]-r[\"start\"] for r in rows.values() if r[\"resource\"] == unit.id)\nsrc/soc/validation/trace.py:87:                not _numeric(row[\"start\"]) or not _numeric(row[\"finish\"]) or row[\"finish\"] <= row[\"start\"]):\nsrc/soc/validation/trace.py:99:        duration = next((d for d in node.durations if d.resource == row[\"resource\"]), None)\nsrc/soc/validation/trace.py:100:        if row[\"resource\"] not in resources or duration is None:\nsrc/soc/validation/trace.py:102:        elif row[\"finish\"] != row[\"start\"] + duration.realized:\n",
+      "stderr": ""
+    },
+    {
+      "id": "CMD-078",
+      "argv": [
+        ".venv/bin/python",
+        "reports/P2_design/independent_review_v2/report_package_checks.py.txt"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_AUDIT",
+      "started_at_utc": "2026-10-18T12:10:18.603565+00:00",
+      "ended_at_utc": "2026-10-18T12:10:18.686199+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout": "{\n  \"scope\": \"REPORT_PACKAGE_ONLY_NOT_RUNTIME_OR_SCIENTIFIC_VALIDATION\",\n  \"passed\": 24,\n  \"failed\": [],\n  \"checks\": [\n    {\n      \"name\": \"required report executive_decision.md\",\n      \"pass_\": true\n    },\n    {\n      \"name\": \"required report D01_D10_review_matrix.csv\",\n      \"pass_\": true\n    },\n    {\n      \"name\": \"required report critical_findings.md\",\n      \"pass_\": true\n    },\n    {\n      \"name\": \"required report cross_decision_consistency.json\",\n      \"pass_\": true\n    },\n    {\n      \"name\": \"required report required_changes.md\",\n      \"pass_\": true\n    },\n    {\n      \"name\": \"required report human_decision_packet.md\",\n      \"pass_\": true\n    },\n    {\n      \"name\": \"required report actual_commands_and_exit_codes.json\",\n      \"pass_\": true\n    },\n    {\n      \"name\": \"ten IDs exactly once\",\n      \"pass_\": true\n    },\n    {\n      \"name\": \"all required decision fields substantive\",\n      \"pass_\": true\n    },\n    {\n      \"name\": \"recommendations 4 accept/6 revise/0 reject\",\n      \"pass_\": true\n    },\n    {\n      \"name\": \"all approvals remain UNAPPROVED\",\n      \"pass_\": true\n    },\n    {\n      \"name\": \"exact proposal artifact SHA matches\",\n      \"pass_\": true\n    },\n    {\n      \"name\": \"eight stable findings and evidence classes\",\n      \"pass_\": true\n    },\n    {\n      \"name\": \"every finding has required evidence/disposition\",\n      \"pass_\": true\n    },\n    {\n      \"name\": \"review verdict not P2 readiness\",\n      \"pass_\": true\n    },\n    {\n      \"name\": \"human packet ten explicit approval fields\",\n      \"pass_\": true\n    },\n    {\n      \"name\": \"initial overstatement/correction history preserved\",\n      \"pass_\": true\n    },\n    {\n      \"name\": \"final failures two not three, nonzero genuine\",\n      \"pass_\": true\n    },\n    {\n      \"name\": \"independent checks actually passed\",\n      \"pass_\": true\n    },\n    {\n      \"name\": \"executed command IDs unique with exit codes\",\n      \"pass_\": true\n    },\n    {\n      \"name\": \"P0 P1 manifest real command exits\",\n      \"pass_\": true\n    },\n    {\n      \"name\": \"every original tracked path unchanged\",\n      \"pass_\": true\n    },\n    {\n      \"name\": \"all changed/new files within audit report directory\",\n      \"pass_\": true\n    },\n    {\n      \"name\": \"no new implementation extensions\",\n      \"pass_\": true\n    }\n  ],\n  \"original_tracked_files_checked\": 316,\n  \"changed_protected_paths\": [],\n  \"report_scope_ok\": true\n}\n",
+      "stderr": ""
+    },
+    {
+      "id": "CMD-079",
+      "argv": [
+        "git",
+        "add",
+        "--",
+        "reports/P2_design/independent_review_v2"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "AUTHORIZED_REPORT_ONLY_STAGING",
+      "started_at_utc": "2026-10-18T12:11:17.687268+00:00",
+      "ended_at_utc": "2026-10-18T12:11:17.726344+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "id": "CMD-080",
+      "argv": [
+        "git",
+        "-c",
+        "core.whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol",
+        "diff",
+        "--cached",
+        "--check"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "DIFF_WHITESPACE_CHECK_PRESERVING_VERBATIM_CRLF",
+      "started_at_utc": "2026-10-18T12:11:17.729963+00:00",
+      "ended_at_utc": "2026-10-18T12:11:17.741504+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "id": "CMD-081",
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--name-only"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "REPORT_SCOPE_CHECK",
+      "started_at_utc": "2026-10-18T12:11:17.743747+00:00",
+      "ended_at_utc": "2026-10-18T12:11:17.748396+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout": "reports/P2_design/independent_review_v2/D01_D10_review_matrix.csv\nreports/P2_design/independent_review_v2/actual_commands_and_exit_codes.json\nreports/P2_design/independent_review_v2/adversarial_checks.json\nreports/P2_design/independent_review_v2/adversarial_checks.py.txt\nreports/P2_design/independent_review_v2/adversarial_checks_initial.json\nreports/P2_design/independent_review_v2/adversarial_checks_initial.py.txt\nreports/P2_design/independent_review_v2/authorization_request.txt\nreports/P2_design/independent_review_v2/critical_findings.md\nreports/P2_design/independent_review_v2/cross_decision_consistency.json\nreports/P2_design/independent_review_v2/delivery_checkpoint.json\nreports/P2_design/independent_review_v2/executive_decision.md\nreports/P2_design/independent_review_v2/feasibility_and_mechanism_analysis.md\nreports/P2_design/independent_review_v2/findings.json\nreports/P2_design/independent_review_v2/human_decision_packet.md\nreports/P2_design/independent_review_v2/metadata_checks.json\nreports/P2_design/independent_review_v2/metadata_checks.py.txt\nreports/P2_design/independent_review_v2/protected_baseline.json\nreports/P2_design/independent_review_v2/report_package_checks.json\nreports/P2_design/independent_review_v2/report_package_checks.py.txt\nreports/P2_design/independent_review_v2/required_changes.md\nreports/P2_design/independent_review_v2/review_method_notes.md\nreports/P2_design/independent_review_v2/reviewed_sources.json\nreports/P2_design/independent_review_v2/scope_preservation.json\n",
+      "stderr": ""
+    }
+  ],
+  "command_count": 81,
+  "nonzero_exit_count": 2,
+  "unexpected_exit_count": 0
+}

@@ -1,0 +1,111 @@
+{
+  "command_id": "CMD-078",
+  "exit_code": 0,
+  "output": {
+    "scope": "REPORT_PACKAGE_ONLY_NOT_RUNTIME_OR_SCIENTIFIC_VALIDATION",
+    "passed": 24,
+    "failed": [],
+    "checks": [
+      {
+        "name": "required report executive_decision.md",
+        "pass_": true
+      },
+      {
+        "name": "required report D01_D10_review_matrix.csv",
+        "pass_": true
+      },
+      {
+        "name": "required report critical_findings.md",
+        "pass_": true
+      },
+      {
+        "name": "required report cross_decision_consistency.json",
+        "pass_": true
+      },
+      {
+        "name": "required report required_changes.md",
+        "pass_": true
+      },
+      {
+        "name": "required report human_decision_packet.md",
+        "pass_": true
+      },
+      {
+        "name": "required report actual_commands_and_exit_codes.json",
+        "pass_": true
+      },
+      {
+        "name": "ten IDs exactly once",
+        "pass_": true
+      },
+      {
+        "name": "all required decision fields substantive",
+        "pass_": true
+      },
+      {
+        "name": "recommendations 4 accept/6 revise/0 reject",
+        "pass_": true
+      },
+      {
+        "name": "all approvals remain UNAPPROVED",
+        "pass_": true
+      },
+      {
+        "name": "exact proposal artifact SHA matches",
+        "pass_": true
+      },
+      {
+        "name": "eight stable findings and evidence classes",
+        "pass_": true
+      },
+      {
+        "name": "every finding has required evidence/disposition",
+        "pass_": true
+      },
+      {
+        "name": "review verdict not P2 readiness",
+        "pass_": true
+      },
+      {
+        "name": "human packet ten explicit approval fields",
+        "pass_": true
+      },
+      {
+        "name": "initial overstatement/correction history preserved",
+        "pass_": true
+      },
+      {
+        "name": "final failures two not three, nonzero genuine",
+        "pass_": true
+      },
+      {
+        "name": "independent checks actually passed",
+        "pass_": true
+      },
+      {
+        "name": "executed command IDs unique with exit codes",
+        "pass_": true
+      },
+      {
+        "name": "P0 P1 manifest real command exits",
+        "pass_": true
+      },
+      {
+        "name": "every original tracked path unchanged",
+        "pass_": true
+      },
+      {
+        "name": "all changed/new files within audit report directory",
+        "pass_": true
+      },
+      {
+        "name": "no new implementation extensions",
+        "pass_": true
+      }
+    ],
+    "original_tracked_files_checked": 316,
+    "changed_protected_paths": [],
+    "report_scope_ok": true
+  },
+  "stderr": ""
+}

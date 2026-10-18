@@ -1,0 +1,25 @@
+{
+  "scope": "Substantive recorded audit subprocess entries; preliminary attachment/discovery reads and authoring wrappers excluded; publication receipts recorded separately or appended with execution provenance",
+  "audit_commands": 81,
+  "nonzero_exit_commands": [
+    {
+      "id": "CMD-069",
+      "exit_code": 2,
+      "expected_exit_code": 2
+    },
+    {
+      "id": "CMD-073",
+      "exit_code": 2,
+      "expected_exit_code": 2
+    }
+  ],
+  "unexpected_exits": 0,
+  "metadata_checks_passed": 60,
+  "report_checks_passed": 24,
+  "final_adversarial_proofs_passed": 7,
+  "final_design_acceptance_failures": 2,
+  "initial_adversarial_classification_corrected": "ADV-03 FAIL -> NOT_VERIFIED; raw record preserved",
+  "scientific_workloads_generated": 0,
+  "scientific_workloads_run": 0,
+  "p2_entrypoint_executed": false
+}

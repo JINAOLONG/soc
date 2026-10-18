@@ -1,0 +1,131 @@
+{
+  "schema_version": 1,
+  "scope": "Report-only independent-method design audit; not scientific run evidence",
+  "audited_commit": "892ce2b71fd0c89f1b241c950b597eafab894e23",
+  "review_result": "DESIGN_REVIEW_REVISE_REQUIRED",
+  "self_excluded": "This inventory cannot hash itself; its Git blob is tracked. No source/protocol or old manifest changed.",
+  "source_hash_inventory": "reports/P2_design/independent_review_v2/reviewed_sources.json",
+  "protected_baseline": "reports/P2_design/independent_review_v2/protected_baseline.json",
+  "files": [
+    {
+      "path": "reports/P2_design/independent_review_v2/D01_D10_review_matrix.csv",
+      "sha256": "750738fec2d2f90e89fe0000a21d55e71ae427b69b5626e90e22c0c4c9450181",
+      "size_bytes": 24889
+    },
+    {
+      "path": "reports/P2_design/independent_review_v2/actual_commands_and_exit_codes.json",
+      "sha256": "48e2df0818b6854c4febe5d252dda253f258218cb6988e05621b9536fe26da0b",
+      "size_bytes": 220676
+    },
+    {
+      "path": "reports/P2_design/independent_review_v2/adversarial_checks.json",
+      "sha256": "5ee5058b1f8eab3899af52ee3077a872161b70b5e79c82228918b4002be38f79",
+      "size_bytes": 3945
+    },
+    {
+      "path": "reports/P2_design/independent_review_v2/adversarial_checks.py.txt",
+      "sha256": "1e9d6d51f625218aa75804b8e1714c79ecd63e9e9e409b783df0939ea6a606a0",
+      "size_bytes": 4855
+    },
+    {
+      "path": "reports/P2_design/independent_review_v2/adversarial_checks_initial.json",
+      "sha256": "e298314396f7a92c9d538d356c659f6846c3b32c22b18968d126908a101e65e5",
+      "size_bytes": 3952
+    },
+    {
+      "path": "reports/P2_design/independent_review_v2/adversarial_checks_initial.py.txt",
+      "sha256": "e9e382a9e72796607f867c41dd04138806e7d1d9faf2b3717bd737191770525d",
+      "size_bytes": 4864
+    },
+    {
+      "path": "reports/P2_design/independent_review_v2/audit_command_summary.json",
+      "sha256": "ab2e84ec3f5910a887f561b7c3db0301812cfadc0d4b33c46dd9c1a1b3d38ade",
+      "size_bytes": 826
+    },
+    {
+      "path": "reports/P2_design/independent_review_v2/authorization_request.txt",
+      "sha256": "328f4e709742dd2e113d81759bee44db796db2cf990c50a9f4123d0236f6b6d3",
+      "size_bytes": 10747
+    },
+    {
+      "path": "reports/P2_design/independent_review_v2/critical_findings.md",
+      "sha256": "77f1435a708e379e760dd1f23ea56a1077913693f21ca4771e0fc7c584b1bd5a",
+      "size_bytes": 14512
+    },
+    {
+      "path": "reports/P2_design/independent_review_v2/cross_decision_consistency.json",
+      "sha256": "5ca6f12ae1ecf670dcb90ae3f9ad366f3715044d836b26c6091d1df07c2c397f",
+      "size_bytes": 4381
+    },
+    {
+      "path": "reports/P2_design/independent_review_v2/delivery_checkpoint.json",
+      "sha256": "ff43ca892294baab841c27ec64d3ea317338af6231084c069c1c973e0d9b4470",
+      "size_bytes": 302
+    },
+    {
+      "path": "reports/P2_design/independent_review_v2/executive_decision.md",
+      "sha256": "37c0fe5b2df1dc2ff64d48ecfd93d3e9b14ca5103368305d1ff95b62888c9e06",
+      "size_bytes": 3769
+    },
+    {
+      "path": "reports/P2_design/independent_review_v2/feasibility_and_mechanism_analysis.md",
+      "sha256": "6b485d5eb4f4f05cadf9c3db732b9d582bb1cec45821eef84b534ed1eb59879f",
+      "size_bytes": 6738
+    },
+    {
+      "path": "reports/P2_design/independent_review_v2/findings.json",
+      "sha256": "a56925d56f431714fbdd334bee5303a3fb58234caf26c12fa98375ce0219933b",
+      "size_bytes": 15080
+    },
+    {
+      "path": "reports/P2_design/independent_review_v2/human_decision_packet.md",
+      "sha256": "780ed0a6852c3d5af4bea331cf0b71a777a133a734e9e9dc2f66e6f3e5a28463",
+      "size_bytes": 26406
+    },
+    {
+      "path": "reports/P2_design/independent_review_v2/metadata_checks.json",
+      "sha256": "fe5b199719738a332c88489535d526ac8b121e13afd5729b1c5d1dc330da6a5e",
+      "size_bytes": 12926
+    },
+    {
+      "path": "reports/P2_design/independent_review_v2/metadata_checks.py.txt",
+      "sha256": "3774aa9388f6b0f02bcaf44853f586e1216a958f00677b1510e7974d67077e98",
+      "size_bytes": 14647
+    },
+    {
+      "path": "reports/P2_design/independent_review_v2/protected_baseline.json",
+      "sha256": "a93cec604a5d5849cc439dda86719e3a147e4d930aa8fee2e84ea98d3485e7e7",
+      "size_bytes": 48834
+    },
+    {
+      "path": "reports/P2_design/independent_review_v2/report_package_checks.json",
+      "sha256": "79463d232e1e5b14b8f7505f97062118fcdee44e3d4f131e943e0410ce8bad04",
+      "size_bytes": 2677
+    },
+    {
+      "path": "reports/P2_design/independent_review_v2/report_package_checks.py.txt",
+      "sha256": "c32b0b430dce65021683fc513a6ea61d936f5da323eb37af66bd473c797bb53a",
+      "size_bytes": 4573
+    },
+    {
+      "path": "reports/P2_design/independent_review_v2/required_changes.md",
+      "sha256": "df05818d4f8c8997a559d2a46ed0e01a1741090528f52277c36f99f1a2f6c0c8",
+      "size_bytes": 7222
+    },
+    {
+      "path": "reports/P2_design/independent_review_v2/review_method_notes.md",
+      "sha256": "31b6737cbe12dbce6328c1161bd3f3a46fab88475e54a58321ead5dfc7a59fc6",
+      "size_bytes": 1105
+    },
+    {
+      "path": "reports/P2_design/independent_review_v2/reviewed_sources.json",
+      "sha256": "3b99ac3ac01daadfbb42a213ba2c89c46c64de74de2f1f6f03f18b8441df4be2",
+      "size_bytes": 23797
+    },
+    {
+      "path": "reports/P2_design/independent_review_v2/scope_preservation.json",
+      "sha256": "5d9e6f92c7f66b6d02c55a8cfc865d0ec99e7df7cc04a8db1f3f88d3009214a7",
+      "size_bytes": 589
+    }
+  ]
+}

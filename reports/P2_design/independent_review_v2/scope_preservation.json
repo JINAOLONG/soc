@@ -1,0 +1,19 @@
+{
+  "scope": "REPORT_ONLY",
+  "audited_commit": "892ce2b71fd0c89f1b241c950b597eafab894e23",
+  "protected_tracked_files": 316,
+  "changed_protected_files": [],
+  "proposal_values_changed": false,
+  "source_changed": false,
+  "tests_changed": false,
+  "thresholds_changed": false,
+  "ci_method_changed": false,
+  "seeds_changed": false,
+  "gates_changed": false,
+  "status_md_changed": false,
+  "scientific_workloads_generated": 0,
+  "scientific_workloads_run": 0,
+  "non_calibration_realizations_accessed": false,
+  "p2_entrypoint_executed": false,
+  "stage_ready_or_pass_claimed": false
+}

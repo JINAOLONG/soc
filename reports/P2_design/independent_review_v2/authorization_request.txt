@@ -1,0 +1,222 @@
+# Codex Task: SOC P2 Independent Design Audit v2
+
+## 1. Project and repository
+
+Project: `soc`
+
+Repository: `https://github.com/JINAOLONG/soc.git`
+
+Expected workspace: `/workspace/soc`
+
+Expected branch: `work`
+
+The last reported HEAD is `892ce2b71fd0c89f1b241c950b597eafab894e23`. Verify the actual HEAD, remote, branch and worktree before proceeding. Do not assume the recorded state is still current.
+
+## 2. Task objective
+
+Conduct an independent, adversarial review of the committed P2 experimental design proposal v1 before human approval.
+
+The objective is to determine whether D01–D10 and their associated scientific parameter groups are sufficiently precise, internally consistent, scientifically interpretable and implementable without changing the existing research contract.
+
+This is a design-review task only.
+
+## 3. Mandatory execution boundaries
+
+- Do NOT execute the P2 pipeline.
+- Do NOT generate or materialize scientific workloads.
+- Do NOT run calibration or any scientific comparison.
+- Do NOT access non-calibration seed realizations or outcomes.
+- Do NOT generate new seeds or change seed partitions.
+- Do NOT create validation/formal unlocks.
+- Do NOT implement the simulator, scheduler, workload generator, runner or schema adapter.
+- Do NOT change scientific thresholds, confidence-interval methods, candidate definitions or the approved research contract.
+- Do NOT mark any D01–D10 decision as human-approved.
+- Do NOT convert proposed synthetic parameters into source-supported facts.
+- Do NOT use performance expectations to select workload configurations or rewrite acceptance criteria.
+
+Preserve the current P0/P1 evidence, historical audit records, source inputs and all existing Git history.
+
+If a necessary review cannot be completed from available evidence, report the missing evidence explicitly instead of guessing.
+
+## 4. Required source files
+
+Review the actual committed contents of:
+
+- `docs/P2_design/P2_complete_design_proposal_v1.md`
+- `docs/P2_design/P2_workload_templates_v1.json`
+- `docs/P2_design/P2_resource_profiles_v1.json`
+- `docs/P2_design/P2_communication_profiles_v1.json`
+- `docs/P2_design/P2_generation_spec_v1.json`
+- `docs/P2_design/P2_trial_matrix_draft_v1.json`
+- `docs/P2_design/P2_mapping_opportunity_decision_table_v1.md`
+- `docs/P2_design/P2_runner_schema_review_v1.md`
+- `docs/P2_design/P2_D01_D10_approval_checklist_v1.md`
+- `docs/P2_design/P2_scientific_parameter_registry_v1.json`
+- `docs/P2_design/P2_D01_D10_traceability.csv`
+- `docs/P2_design/decisions.draft.json`
+- `docs/P2_design/README.md`
+- `reports/P2_design/design_status.json`
+- `reports/P2_design/final_audit.md`
+- `docs/user_request.txt`
+- `docs/model_spec.md`
+- `docs/baseline_spec.md`
+- `docs/metric_spec.md`
+- `docs/statistical_protocol.md`
+- `AGENTS.md`
+
+Read other files when needed to verify a claim. Do not treat filenames, summaries or PASS strings as proof of behavior.
+
+## 5. Review D01–D10
+
+For every decision, provide:
+
+1. Exact current proposal and version/hash.
+2. Source-supported requirements versus new proposed assumptions.
+3. Internal consistency checks and their actual evidence.
+4. Scientific interpretation risks.
+5. Missing definitions or ambiguous edge cases.
+6. A recommendation: ACCEPT AS PROPOSED, REVISE BEFORE APPROVAL, or REJECT.
+7. Exact suggested changes, where necessary.
+8. Whether human approval is still required.
+
+### D01–D04: Workload construction
+
+Verify all six DAG templates, node/edge counts, acyclicity, node identity, role inheritance, size transformation, compatibility sets, positive execution costs, edge data sizes, all nine directed communication-type pairs, units, keyed perturbation identity, arrival windows, deadlines and control transformations.
+
+Check that no hidden nodes, implicit edges or undeclared random inputs exist.
+
+Verify that all proposed numeric values are explicitly labelled synthetic and are not attributed to literature or hardware measurements.
+
+### D05: Trial matrix
+
+Independently recalculate:
+
+- 36 configurations.
+- 10 registered calibration seeds.
+- 2,520 planned trial slots.
+- 1,800 MAIN slots.
+- 360 H_ISOLATED slots.
+- 360 LOW_COMPETITION slots.
+- 1,080 planned workload inputs.
+- At most 5,040 engine invocations including one registered replay per trial.
+
+Check exact seed-to-configuration-to-condition-to-method mappings, uniqueness, execution order, budget fields and selection rules.
+
+Verify that both A/B configurations remain fully accounted for even when only one is selected for final condition-level analysis.
+
+Engineering timing is outside this proposal and must remain explicitly unfrozen.
+
+### D06: Feasibility and load classification
+
+Adversarially examine:
+
+- Whether the H_ISOLATED control can establish only a control-specific feasibility witness.
+- Whether the LOW_COMPETITION control is interpreted without claiming it is identical to the main workload.
+- Whether the optimistic path lower bound is mathematically valid and implemented without scheduler access to hidden truth.
+- Whether load bins are mutually exclusive and exhaustive.
+- Whether all miss-rate and pressure statistics use the declared denominator and seed aggregation.
+- Whether A-before-B selection is deterministic and independent of candidate advantage and mapping-opportunity outcomes.
+- Whether invalid, failed, incomplete, naturally infeasible and valid-but-off-target results remain distinct.
+
+Identify any edge case that could permit an invalid or infeasible configuration to be selected.
+
+### D07: Mapping mechanism
+
+Verify that M1 uses only the frozen public observation boundary, fixed task order, declared ready-set truncation and registered resource constraints.
+
+Check that the baseline is included in the enumerated feasible set, that the local objective and L constraints are unambiguous, and that no future arrivals, unready tasks or private execution truth enter the mechanism diagnostic.
+
+Check denominator handling, zero eligible views, repeated views, deterministic tie-breaking and independent recomputation requirements.
+
+Verify that M2 remains descriptive and is not reported as an independent causal mapping test.
+
+### D08: Three-state criterion
+
+Verify the exact FINE and COARSE definitions, seed-level denominators, condition coverage, paired-seed bootstrap indexing, pointwise confidence-interval interpretation and handling of missing/invalid/incomplete inputs.
+
+Check whether SUPPORTED, NOT_SUPPORTED and INCONCLUSIVE are logically distinct and exhaustively assigned under all valid and invalid input cases.
+
+Do not select FINE or COARSE on the basis of observed scientific outcomes. Recommend a choice only by reference to the predeclared research objective and the limitations of each operational definition.
+
+### D09: Runner and recovery
+
+Check the proposed execution state machine, identity locking, raw-output preservation, actual process exit recording, replay, atomic COMPLETE publication, exact-match reuse and no-automatic-retry policy.
+
+Separate existing contractual requirements from newly proposed clean-worktree requirements.
+
+Identify every condition that must cause the plan to stop.
+
+### D10: Scientific schema and lineage
+
+Check namespace/versioning, canonicalization, workload/run/attempt IDs, actual seed and partition identity, source/config/input hashes, generator lineage, provenance references, trace validation, independent metric derivation, deterministic replay and COMPLETE criteria.
+
+Ensure scientific artifacts cannot be created merely by relabelling P1 fixtures.
+
+Specify the required P1 compatibility and regression tests for a future separately authorized implementation.
+
+## 6. Cross-decision consistency audit
+
+Independently check:
+
+- D01 topology ↔ D02 role/resource profiles.
+- D01 edges ↔ D03 edge data and communication profiles.
+- D02 estimates ↔ D04 keyed actual durations and positive finite values.
+- D04 generation identity ↔ D05 workload references and trial identities.
+- D05 configuration selection ↔ D06 feasibility/load classification.
+- D06 selected conditions ↔ D07/D08 observation and analysis coverage.
+- D08 outcomes ↔ D09 stage completion requirements.
+- D09 run identities ↔ D10 schema and lineage.
+- Existing seed partitions, research thresholds, CI method and baseline definitions.
+
+Identify any mismatch that could invalidate a run, introduce selection bias, make the matrix non-reproducible or permit a false PASS.
+
+## 7. Deliverables
+
+Create a report-only audit package under:
+
+`reports/P2_design/independent_review_v2/`
+
+Include:
+
+1. `executive_decision.md`
+2. `D01_D10_review_matrix.csv`
+3. `critical_findings.md`
+4. `cross_decision_consistency.json`
+5. `required_changes.md`
+6. `human_decision_packet.md`
+7. `review_evidence_manifest.json`
+8. `actual_commands_and_exit_codes.json`
+
+Every finding must have a stable ID, severity, evidence location, reproducible check or explicit rationale, consequence and recommended disposition.
+
+Classify evidence as SOURCE_SUPPORTED, PROPOSAL_ONLY, STATICALLY_VERIFIED, NOT_VERIFIED or BLOCKING.
+
+Do not claim a test passed unless it was actually executed and its exit code recorded. Distinguish a static design audit from runtime implementation validation.
+
+The human decision packet must list each unresolved decision, the exact proposed value/options, the review recommendation, remaining limitations and an explicit approval field. All approval fields must remain UNAPPROVED.
+
+## 8. Git and preservation
+
+Start by verifying the actual repository identity and worktree.
+
+Do not modify existing proposal values, scientific definitions, source code, tests, seeds or gates. Add only the requested audit-report artifacts.
+
+Preserve every original report and failed audit record.
+
+After the audit, verify that no protected file changed and that the report manifest matches the actual files.
+
+If repository policy and available credentials permit, commit and push only the new report artifacts using a normal, non-force push. Do not overwrite or rebase existing history. If publication cannot be verified, report it as NOT VERIFIED.
+
+## 9. Final stop condition
+
+End with one of:
+
+- `DESIGN_REVIEW_READY_FOR_HUMAN_DECISION`
+- `DESIGN_REVIEW_REVISE_REQUIRED`
+- `DESIGN_REVIEW_BLOCKED`
+
+Never return P2 READY or P2 PASS from this task.
+
+Do not proceed to implementation or scientific execution.
+
+Final report must state actual HEAD, branch, remote verification, worktree status, changed-file scope, executed command counts, actual failures, publication status and next safe action.
