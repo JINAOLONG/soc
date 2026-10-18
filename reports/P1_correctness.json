@@ -13,8 +13,8 @@
   "negative_traces": 20,
   "deterministic_replay_pass": true,
   "independent_metric_recomputation_pass": true,
-  "tested_git_head": "27d90bb5cccd990f2b65d7ea48abe98c2af7218c",
-  "tested_worktree": " M README.md\n M STATUS.md\n M docs/baseline_spec.md\n M docs/model_spec.md\n M docs/research_contract.md\n M scripts/run_pipeline.py\n M src/soc/metrics/__init__.py\n M src/soc/model/__init__.py\n M src/soc/scheduler/__init__.py\n M src/soc/simulator/__init__.py\n M src/soc/validation/__init__.py\n?? checkpoints/P1_artifact_manifest.json\n?? docs/P1_acceptance_matrix.md\n?? docs/P1_authorization_request.txt\n?? docs/P1_decisions.json\n?? docs/P1_implementation_spec.md\n?? reports/P1_acceptance_matrix.md\n?? reports/P1_artifacts/\n?? reports/P1_audit_runs/\n?? reports/P1_baseline_implementation_report.md\n?? reports/P1_correctness.json\n?? reports/P1_correctness_report.md\n?? reports/P1_delivery_status.json\n?? reports/P1_preflight.json\n?? reports/P1_test_history.json\n?? reports/P1_test_run.json\n?? reports/P1_test_runs/\n?? reports/P1_trace_validation_report.md\n?? scripts/run_p1_correctness.py\n?? src/soc/metrics/fixture.py\n?? src/soc/model/observation.py\n?? src/soc/model/schema.py\n?? src/soc/scheduler/kernels.py\n?? src/soc/simulator/engine.py\n?? src/soc/validation/p1.py\n?? src/soc/validation/trace.py\n?? tests/p1_fixtures.py\n?? tests/p1_negative_cases.py\n?? tests/p1_source_examples.py\n?? tests/test_p1_engine.py\n?? tests/test_p1_gate.py\n?? tests/test_p1_kernels.py\n?? tests/test_p1_metrics.py\n?? tests/test_p1_model.py\n?? tests/test_p1_observation.py\n?? tests/test_p1_trace.py\n",
+  "tested_git_head": "d60b94a791580af09fc0b40827eb57de439f1916",
+  "tested_worktree": " M reports/P1_test_run.json\n?? reports/P1_test_runs/run_007.json\n",
   "seed_sha256": "e5ded56e2fbe1ba2ed992a3026f3c5780d90afb50aaab4d1d8b75b8c014f4f31",
   "specification_status": "FROZEN",
   "baseline_status": {

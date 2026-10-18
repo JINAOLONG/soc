@@ -1,0 +1,14 @@
+{
+  "timestamp_utc": "2026-10-18T09:54:50.757569+00:00",
+  "git_commit": "d60b94a791580af09fc0b40827eb57de439f1916",
+  "pre_test_worktree": "",
+  "command": [
+    ".venv/bin/python",
+    "scripts/run_p1_correctness.py"
+  ],
+  "exit_code": 0,
+  "stdout": "unit tests=64, failed=0, skipped=0, exit=0\npositive traces=45, negative cases=20, exact replay=PASS\n",
+  "stderr": "",
+  "post_test_relevant_code_config_test_spec_diff": "",
+  "source_files_match_committed_checkpoint": true
+}

@@ -1,0 +1,24 @@
+{
+  "timestamp_utc": "2026-10-18T09:55:54.770364+00:00",
+  "scope": "Committed and tested P1 implementation checkpoint; this receipt is committed subsequently",
+  "git_commit": "d60b94a791580af09fc0b40827eb57de439f1916",
+  "branch": "work",
+  "remote": "https://github.com/JINAOLONG/soc.git",
+  "push_command": [
+    "git",
+    "push",
+    "origin",
+    "HEAD:refs/heads/work"
+  ],
+  "push_exit_code": 0,
+  "push_stdout": "",
+  "push_stderr": "To https://github.com/JINAOLONG/soc.git\n   27d90bb..d60b94a  HEAD -> work\n",
+  "remote_verify_exit_code": 0,
+  "remote_verify_stdout": "d60b94a791580af09fc0b40827eb57de439f1916\trefs/heads/work\n",
+  "remote_head_matches": true,
+  "p1_audit_exit_code": 0,
+  "p1_status": "PASS",
+  "tests_passed": 64,
+  "scientific_workloads_run": 0,
+  "pdfs_tracked": []
+}

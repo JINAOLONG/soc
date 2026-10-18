@@ -80,3 +80,5 @@ P1_trace_validation_report.md for requirement-by-requirement evidence. Delivery
 state is P1_delivery_status.json and the verified Git receipt. **STOP after P1**;
 P2 requires a separate task. Existing later-stage pipeline branches remain
 unimplemented and are not exercised by this task.
+
+Committed-source verification: `d60b94a791580af09fc0b40827eb57de439f1916` started from a clean worktree; all 64 tests and 45/20 trace checks passed again. Code/config/tests/spec remained byte-identical afterward. See P1_committed_source_verification.json. Normal push and matching remote SHA are recorded in P1_git_checkpoint.json; the final receipt-only enclosing commit is resolved live.
