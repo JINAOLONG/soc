@@ -43,15 +43,15 @@
     "SEED_PARTITIONS_CHANGED": "NO",
     "VALIDATION_UNLOCKED": "NO",
     "FORMAL_UNLOCKED": "NO",
-    "GIT_COMMIT": "PENDING_THIS_TASK_COMMIT",
-    "GITHUB_PUSH_STATUS": "PENDING",
-    "WORKTREE": "PROPOSAL_DOCUMENT_CHANGES",
+    "GIT_COMMIT": "c7e94e438674bcfbb16ed1281ce0437cb6df3072",
+    "GITHUB_PUSH_STATUS": "SUCCESS_FOR_RECORDED_PROPOSAL_CHECKPOINT",
+    "WORKTREE": "CLEAN_AT_RECORDED_CHECKPOINT",
     "NEXT_SAFE_ACTION": "Human review and approval of concrete P2 design",
     "STOP": "YES",
     "D01_D10_INVENTORY": 10,
     "DECISIONS_RESOLVED": 0,
     "DECISIONS_BLOCKED": 0,
-    "GIT_COMMIT_SCOPE": "AUDITED_REMOTE_VERIFIED_UNAPPROVED_HUMAN_REVIEW_CHECKPOINT",
+    "GIT_COMMIT_SCOPE": "AUDITED_REMOTE_VERIFIED_UNAPPROVED_CONCRETE_PROPOSAL_CHECKPOINT",
     "FINAL_ENCLOSING_HEAD_COMMAND": "git rev-parse HEAD",
     "FINAL_ENCLOSING_WORKTREE_COMMAND": "git status --short",
     "D01_D10_PROPOSAL_COMPLETE": "YES",
@@ -192,7 +192,10 @@
       "Scientific generator, runner, adapter and lineage validation unimplemented",
       "Timing protocol not frozen; explicitly outside this matrix",
       "No feasibility, load or mapping data exist"
-    ]
+    ],
+    "git_checkpoint": "c7e94e438674bcfbb16ed1281ce0437cb6df3072",
+    "static_checks_passed": 94,
+    "static_checks_scope": "Read-only design consistency, not runtime/scientific validation"
   },
   "review_summary_scope": "Previous human decision review counts remain valid; original report in proposal_v1/previous_design_status.json. v1 now adds concrete proposals, not approvals."
 }

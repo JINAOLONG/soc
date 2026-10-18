@@ -25,7 +25,7 @@
     },
     {
       "path": "STATUS.md",
-      "sha256": "ce4131b5e87f196a7379e05720bfdf7faef98c58e3da8f1a6d6f662fc59f41fc"
+      "sha256": "5f4c9fc321d22010400f260e8ed82a714b4a19453ae7b3102e04db93211f5222"
     },
     {
       "path": "checkpoints/.gitkeep",
@@ -837,11 +837,11 @@
     },
     {
       "path": "reports/P2_design/delivery_index.json",
-      "sha256": "901f9a3758a7c344e2d48eed3719ae96bda34033da2fdf737a14211acfa0182e"
+      "sha256": "ad8cd0f05fca2be789268d3fdab54a6db2510d7111be66142b59c2e0b202640b"
     },
     {
       "path": "reports/P2_design/design_status.json",
-      "sha256": "8dbeab11aafdf2f6cff1fb85eb7d1347b5d9a116ddc0f209b52638185d8b7baa"
+      "sha256": "95f27100ef7e02a883115b1dea2a87e6a94b2a6ddc4920c5a73da955737edcc4"
     },
     {
       "path": "reports/P2_design/document_checks.json",
@@ -853,7 +853,7 @@
     },
     {
       "path": "reports/P2_design/final_audit.md",
-      "sha256": "bad9f3ee50ef101a6300c1a75543bca1b346ccbb0d66720242550f8131bc2107"
+      "sha256": "eb4131be5964a5a0a1e2d724f3c44b860d5298e8c3e1d807ea16866ee9d74074"
     },
     {
       "path": "reports/P2_design/git_checkpoint.json",
@@ -873,7 +873,7 @@
     },
     {
       "path": "reports/P2_design/proposal_v1/git_checkpoint.json",
-      "sha256": "e21c2722118401819e2c8ac2b08992661403ac46a6e85bfc2328c593c4efa3b5"
+      "sha256": "50762eecd82ff08062e7dcb1aa29b9713d0a9e8d7e0227c0fea6fd1755f60d7a"
     },
     {
       "path": "reports/P2_design/proposal_v1/previous_STATUS.md",

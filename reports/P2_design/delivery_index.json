@@ -50,7 +50,8 @@
     "audit": "reports/P2_design/proposal_v1/repository_audit.json",
     "static_checks": "reports/P2_design/proposal_v1/static_checks.json",
     "authorization": "reports/P2_design/proposal_v1/authorization_request.txt",
-    "checkpoint_receipt": "reports/P2_design/proposal_v1/git_checkpoint.json"
+    "checkpoint_receipt": "reports/P2_design/proposal_v1/git_checkpoint.json",
+    "audited_checkpoint": "c7e94e438674bcfbb16ed1281ce0437cb6df3072"
   },
   "current_approval_entry": "docs/P2_design/P2_D01_D10_approval_checklist_v1.md"
 }

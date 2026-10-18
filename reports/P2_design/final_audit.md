@@ -79,3 +79,9 @@ P0/P1 read-only audits exit0; P1 manifest122 files matches. No science/P2 entryp
 New lifecycle/COMPLETE/origin solutions are documentation proposals only, not implemented fixes.
 Timing explicitly excluded (budget0) and its future protocol unresolved. Full current evidence in
 proposal_v1/; previous audits and old options retained. No threshold/CI/source/seed/unlock changes.
+
+Concrete proposal checkpoint `c7e94e438674bcfbb16ed1281ce0437cb6df3072` was committed, normally pushed (exit0),
+remote verified identical and worktree clean. Exact receipt: proposal_v1/git_checkpoint.json.
+94 read-only specification consistency checks passed; current inventory315 files verified
+missing=0/mismatch=0. These are document/identity checks, not scientific completeness PASS.
+Enclosing delivery commit is resolved by git rev-parse HEAD; no self-referential SHA claim.
