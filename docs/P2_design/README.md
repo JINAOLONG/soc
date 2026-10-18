@@ -30,3 +30,12 @@ JSON 可解析也不证明 schema 正确。未提供数值的科学字段一律�
 
 当前结论：B1/B2/B3 的科学定义仍 UNRESOLVED；B4/B5 已有 **未批准的文档设计**，可标为
 DESIGNED，但依然没有实现、语义验证或执行准入。历史 P2 gate 继续为 BLOCKED。
+
+## Complete proposal v1（当前人工审批层）
+
+本轮授权已允许提出具体合成值；旧“无数值/不推荐数值”的段落描述此前审查范围，
+不是对本轮提案的禁止。入口为[P2_complete_design_proposal_v1.md](P2_complete_design_proposal_v1.md)。
+新增六模板/profile/通信/generation/2520条matrix及三态/runner-schema/approval材料，
+完整路径见reports/P2_design/delivery_index.json。32个科学参数组全部未批准，D01–D10
+仍待人工决定。v1不取代原模型/基线/指标/统计规格，也没有成为可执行配置。
+旧matrix/schema保留为历史选项，当前具体提议由v1索引明确关联；DRAFT不是scientific PASS。

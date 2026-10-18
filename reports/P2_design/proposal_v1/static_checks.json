@@ -1,0 +1,488 @@
+{
+  "command": [
+    ".venv/bin/python",
+    "reports/P2_design/proposal_v1/static_check.py.txt"
+  ],
+  "exit_code": 0,
+  "stdout": {
+    "scope": "PURE_DESIGN_SPECIFICATION_CONSISTENCY_ONLY_NOT_SCIENTIFIC_OR_RUNTIME_VALIDATION",
+    "checks": [
+      {
+        "name": "only six explicit scenario/size templates",
+        "pass_": true,
+        "detail": null
+      },
+      {
+        "name": "COCKPIT-8-v1 explicit identity/count/no dummy",
+        "pass_": true,
+        "detail": null
+      },
+      {
+        "name": "COCKPIT-8-v1 complete acyclic predecessors",
+        "pass_": true,
+        "detail": null
+      },
+      {
+        "name": "COCKPIT-8-v1 exact edge table",
+        "pass_": true,
+        "detail": null
+      },
+      {
+        "name": "COCKPIT-8-v1 roles/group/scale",
+        "pass_": true,
+        "detail": null
+      },
+      {
+        "name": "COCKPIT-16-v1 explicit identity/count/no dummy",
+        "pass_": true,
+        "detail": null
+      },
+      {
+        "name": "COCKPIT-16-v1 complete acyclic predecessors",
+        "pass_": true,
+        "detail": null
+      },
+      {
+        "name": "COCKPIT-16-v1 exact edge table",
+        "pass_": true,
+        "detail": null
+      },
+      {
+        "name": "COCKPIT-16-v1 roles/group/scale",
+        "pass_": true,
+        "detail": null
+      },
+      {
+        "name": "COCKPIT-16-v1 deterministic expansion",
+        "pass_": true,
+        "detail": null
+      },
+      {
+        "name": "ADAS-8-v1 explicit identity/count/no dummy",
+        "pass_": true,
+        "detail": null
+      },
+      {
+        "name": "ADAS-8-v1 complete acyclic predecessors",
+        "pass_": true,
+        "detail": null
+      },
+      {
+        "name": "ADAS-8-v1 exact edge table",
+        "pass_": true,
+        "detail": null
+      },
+      {
+        "name": "ADAS-8-v1 roles/group/scale",
+        "pass_": true,
+        "detail": null
+      },
+      {
+        "name": "ADAS-16-v1 explicit identity/count/no dummy",
+        "pass_": true,
+        "detail": null
+      },
+      {
+        "name": "ADAS-16-v1 complete acyclic predecessors",
+        "pass_": true,
+        "detail": null
+      },
+      {
+        "name": "ADAS-16-v1 exact edge table",
+        "pass_": true,
+        "detail": null
+      },
+      {
+        "name": "ADAS-16-v1 roles/group/scale",
+        "pass_": true,
+        "detail": null
+      },
+      {
+        "name": "ADAS-16-v1 deterministic expansion",
+        "pass_": true,
+        "detail": null
+      },
+      {
+        "name": "FUSION-8-v1 explicit identity/count/no dummy",
+        "pass_": true,
+        "detail": null
+      },
+      {
+        "name": "FUSION-8-v1 complete acyclic predecessors",
+        "pass_": true,
+        "detail": null
+      },
+      {
+        "name": "FUSION-8-v1 exact edge table",
+        "pass_": true,
+        "detail": null
+      },
+      {
+        "name": "FUSION-8-v1 roles/group/scale",
+        "pass_": true,
+        "detail": null
+      },
+      {
+        "name": "FUSION-16-v1 explicit identity/count/no dummy",
+        "pass_": true,
+        "detail": null
+      },
+      {
+        "name": "FUSION-16-v1 complete acyclic predecessors",
+        "pass_": true,
+        "detail": null
+      },
+      {
+        "name": "FUSION-16-v1 exact edge table",
+        "pass_": true,
+        "detail": null
+      },
+      {
+        "name": "FUSION-16-v1 roles/group/scale",
+        "pass_": true,
+        "detail": null
+      },
+      {
+        "name": "FUSION-16-v1 deterministic expansion",
+        "pass_": true,
+        "detail": null
+      },
+      {
+        "name": "74 explicit edges",
+        "pass_": true,
+        "detail": null
+      },
+      {
+        "name": "six resources/16 role profiles/nonempty compatibility",
+        "pass_": true,
+        "detail": null
+      },
+      {
+        "name": "coverage CPU-only/GPU-only/NPU-only/multikind",
+        "pass_": true,
+        "detail": null
+      },
+      {
+        "name": "CPU symmetry/null incompatible",
+        "pass_": true,
+        "detail": null
+      },
+      {
+        "name": "nine directed links/positive bandwidth/units",
+        "pass_": true,
+        "detail": null
+      },
+      {
+        "name": "hand arithmetic CPU GPU/CPU CPU/same unit",
+        "pass_": true,
+        "detail": null
+      },
+      {
+        "name": "positive bound symbolic",
+        "pass_": true,
+        "detail": null
+      },
+      {
+        "name": "generation bounded slots/window without random sampling",
+        "pass_": true,
+        "detail": null
+      },
+      {
+        "name": "method/control-independent keyed fields",
+        "pass_": true,
+        "detail": null
+      },
+      {
+        "name": "36 configs/18 conditions/two candidates",
+        "pass_": true,
+        "detail": null
+      },
+      {
+        "name": "actual seeds exactly unchanged calibration allowlist",
+        "pass_": true,
+        "detail": null
+      },
+      {
+        "name": "2520 unique consecutive trials",
+        "pass_": true,
+        "detail": null
+      },
+      {
+        "name": "all trial metadata rule references/config consistency",
+        "pass_": true,
+        "detail": null
+      },
+      {
+        "name": "five main methods/two B2 controls budget",
+        "pass_": true,
+        "detail": null
+      },
+      {
+        "name": "1080 symbolic inputs/360 identical-across-method main inputs",
+        "pass_": true,
+        "detail": null
+      },
+      {
+        "name": "no materialized artifacts/commands/hashes manufactured",
+        "pass_": true,
+        "detail": null
+      },
+      {
+        "name": "budget independently recomputed",
+        "pass_": true,
+        "detail": null
+      },
+      {
+        "name": "32 uniquely registered unresolved scientific groups",
+        "pass_": true,
+        "detail": null
+      },
+      {
+        "name": "SP01 parameter location",
+        "pass_": true,
+        "detail": null
+      },
+      {
+        "name": "SP02 parameter location",
+        "pass_": true,
+        "detail": null
+      },
+      {
+        "name": "SP03 parameter location",
+        "pass_": true,
+        "detail": null
+      },
+      {
+        "name": "SP04 parameter location",
+        "pass_": true,
+        "detail": null
+      },
+      {
+        "name": "SP05 parameter location",
+        "pass_": true,
+        "detail": null
+      },
+      {
+        "name": "SP06 parameter location",
+        "pass_": true,
+        "detail": null
+      },
+      {
+        "name": "SP07 parameter location",
+        "pass_": true,
+        "detail": null
+      },
+      {
+        "name": "SP08 parameter location",
+        "pass_": true,
+        "detail": null
+      },
+      {
+        "name": "SP09 parameter location",
+        "pass_": true,
+        "detail": null
+      },
+      {
+        "name": "SP10 parameter location",
+        "pass_": true,
+        "detail": null
+      },
+      {
+        "name": "SP11 parameter location",
+        "pass_": true,
+        "detail": null
+      },
+      {
+        "name": "SP12 parameter location",
+        "pass_": true,
+        "detail": null
+      },
+      {
+        "name": "SP13 parameter location",
+        "pass_": true,
+        "detail": null
+      },
+      {
+        "name": "SP14 parameter location",
+        "pass_": true,
+        "detail": null
+      },
+      {
+        "name": "SP15 parameter location",
+        "pass_": true,
+        "detail": null
+      },
+      {
+        "name": "SP16 parameter location",
+        "pass_": true,
+        "detail": null
+      },
+      {
+        "name": "SP17 parameter location",
+        "pass_": true,
+        "detail": null
+      },
+      {
+        "name": "SP18 parameter location",
+        "pass_": true,
+        "detail": null
+      },
+      {
+        "name": "SP19 parameter location",
+        "pass_": true,
+        "detail": null
+      },
+      {
+        "name": "SP20 parameter location",
+        "pass_": true,
+        "detail": null
+      },
+      {
+        "name": "SP21 parameter location",
+        "pass_": true,
+        "detail": null
+      },
+      {
+        "name": "SP22 parameter location",
+        "pass_": true,
+        "detail": null
+      },
+      {
+        "name": "SP23 parameter location",
+        "pass_": true,
+        "detail": null
+      },
+      {
+        "name": "SP24 parameter location",
+        "pass_": true,
+        "detail": null
+      },
+      {
+        "name": "SP25 parameter location",
+        "pass_": true,
+        "detail": null
+      },
+      {
+        "name": "SP26 parameter location",
+        "pass_": true,
+        "detail": null
+      },
+      {
+        "name": "SP27 parameter location",
+        "pass_": true,
+        "detail": null
+      },
+      {
+        "name": "SP28 parameter location",
+        "pass_": true,
+        "detail": null
+      },
+      {
+        "name": "SP29 parameter location",
+        "pass_": true,
+        "detail": null
+      },
+      {
+        "name": "SP30 parameter location",
+        "pass_": true,
+        "detail": null
+      },
+      {
+        "name": "SP31 parameter location",
+        "pass_": true,
+        "detail": null
+      },
+      {
+        "name": "SP32 parameter location",
+        "pass_": true,
+        "detail": null
+      },
+      {
+        "name": "P2_communication_profiles_v1.json nonexecutable flags",
+        "pass_": true,
+        "detail": null
+      },
+      {
+        "name": "P2_generation_spec_v1.json nonexecutable flags",
+        "pass_": true,
+        "detail": null
+      },
+      {
+        "name": "P2_resource_profiles_v1.json nonexecutable flags",
+        "pass_": true,
+        "detail": null
+      },
+      {
+        "name": "P2_scientific_parameter_registry_v1.json nonexecutable flags",
+        "pass_": true,
+        "detail": null
+      },
+      {
+        "name": "P2_trial_matrix_draft_v1.json nonexecutable flags",
+        "pass_": true,
+        "detail": null
+      },
+      {
+        "name": "P2_workload_templates_v1.json nonexecutable flags",
+        "pass_": true,
+        "detail": null
+      },
+      {
+        "name": "original ten IDs/questions/approvals preserved",
+        "pass_": true,
+        "detail": null
+      },
+      {
+        "name": "approval all 40 actions unchecked",
+        "pass_": true,
+        "detail": null
+      },
+      {
+        "name": "traceability 47 original rows +11 concrete proposal links",
+        "pass_": true,
+        "detail": null
+      },
+      {
+        "name": "current pipeline has no proposal read wiring",
+        "pass_": true,
+        "detail": null
+      },
+      {
+        "name": "P1 fixture identities remain hardcoded/separate",
+        "pass_": true,
+        "detail": null
+      },
+      {
+        "name": "P2 gate still BLOCKED NOT_RUN",
+        "pass_": true,
+        "detail": null
+      },
+      {
+        "name": "no unlock files",
+        "pass_": true,
+        "detail": null
+      },
+      {
+        "name": "all protected tracked code/config/tests/specs/history unchanged",
+        "pass_": true,
+        "detail": []
+      },
+      {
+        "name": "mapping protocol constants/three states/fixed paired seed",
+        "pass_": true,
+        "detail": null
+      },
+      {
+        "name": "design status does not approve/unlock/execute",
+        "pass_": true,
+        "detail": null
+      }
+    ],
+    "passed": 94,
+    "failed": [],
+    "scientific_workloads_generated": 0,
+    "scientific_workloads_run": 0,
+    "p2_entrypoint_executed": false
+  },
+  "stderr": ""
+}

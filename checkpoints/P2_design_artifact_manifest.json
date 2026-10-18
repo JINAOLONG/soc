@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "scope": "DRAFT P2 human-decision review documentation only; not approved science or executable preregistration",
-  "source_checkpoint": "a585c5bba0215c1ac4b2f126f5a752ae443b56b4",
+  "scope": "Unapproved P2 complete design proposal v1 metadata; no scientific samples or executable configuration",
+  "source_checkpoint": "160800d9b136e953c6415cd5229ded87eae72a0f",
   "files": [
     {
       "path": ".github/workflows/tests.yml",
@@ -25,7 +25,7 @@
     },
     {
       "path": "STATUS.md",
-      "sha256": "96f04afb202f94fd717b9f8bb73374c6fe2b77d99f443ffd173f42dcc471860c"
+      "sha256": "ce4131b5e87f196a7379e05720bfdf7faef98c58e3da8f1a6d6f662fc59f41fc"
     },
     {
       "path": "checkpoints/.gitkeep",
@@ -108,20 +108,60 @@
       "sha256": "9d2a6b024af11cf51e60cbb69fe0ef9674519141214d1a00751610d63c8fcb94"
     },
     {
+      "path": "docs/P2_design/P2_D01_D10_approval_checklist_v1.md",
+      "sha256": "707d080cac2ac9f3d4bd7b014b8f7aeb2050e25063c787a18918b24f188cf46a"
+    },
+    {
       "path": "docs/P2_design/P2_D01_D10_traceability.csv",
-      "sha256": "1498ced9637b74152699ead6a442b17f7c8e41ca7a31fca29ee8ebce911b4893"
+      "sha256": "09666e8da442162923a61145445b127844e7c26a68bcd3b2f5d701a3281a7757"
+    },
+    {
+      "path": "docs/P2_design/P2_communication_profiles_v1.json",
+      "sha256": "c3671a75ec593f1f48f731812bfbfe74f4728d48f1db419ea36605407900ebad"
+    },
+    {
+      "path": "docs/P2_design/P2_complete_design_proposal_v1.md",
+      "sha256": "e378e85071d6c97fb6cd5801d9449eef176a90baddcd786181c6685eaa29feac"
     },
     {
       "path": "docs/P2_design/P2_decision_dependency_map.md",
       "sha256": "174f3883b53d05c7312eabc4d39e3260886867b01be7c2574e342e1bacfdc069"
     },
     {
+      "path": "docs/P2_design/P2_generation_spec_v1.json",
+      "sha256": "e67c6d884f61b771c7a90b3d72e75e1e6c0787eb7376c7575cbd63354de60ff3"
+    },
+    {
       "path": "docs/P2_design/P2_human_approval_checklist.md",
       "sha256": "ef23b368503efb8a8ddee4137662d7caed639c23a2bb825a400a10a7164603e8"
     },
     {
+      "path": "docs/P2_design/P2_mapping_opportunity_decision_table_v1.md",
+      "sha256": "4c981f2f2303e1b1535168dd320e3c11151ea86ad35a502513893370a5906ea2"
+    },
+    {
+      "path": "docs/P2_design/P2_resource_profiles_v1.json",
+      "sha256": "5e303a5b5f0c096fbc38ce1d762bc1cbf3d8e09472d2c460160bb8b88993b0a4"
+    },
+    {
+      "path": "docs/P2_design/P2_runner_schema_review_v1.md",
+      "sha256": "21c4ccb2fbb608131ff28903fc90a60feb70111c9888d444e43165dbf3241f04"
+    },
+    {
+      "path": "docs/P2_design/P2_scientific_parameter_registry_v1.json",
+      "sha256": "67c6f074504646e12e370dbe89c93941346707856ba327ab10e25731cc53b1a9"
+    },
+    {
+      "path": "docs/P2_design/P2_trial_matrix_draft_v1.json",
+      "sha256": "a68ef6b61f0e604dfebf1500b9a36fd7db1097938ae5abf321b1bf39aac23f2f"
+    },
+    {
+      "path": "docs/P2_design/P2_workload_templates_v1.json",
+      "sha256": "97762849c9fd4d6e715d197b553fe157a091ce2a09bce8270b8e5eba7dcbff04"
+    },
+    {
       "path": "docs/P2_design/README.md",
-      "sha256": "422d7d9488f3c194af02b8c786904a5c1fd23a184b5928e5442d65f44926440a"
+      "sha256": "003fc73bafb750e316ecb6ce30593d7dbf58d723083487089ad46dd1e17a83a6"
     },
     {
       "path": "docs/P2_design/authorization_request.txt",
@@ -141,7 +181,7 @@
     },
     {
       "path": "docs/P2_design/decisions.draft.json",
-      "sha256": "5cc0905c73c8dc1d980efb80c0fc9f2276f049ccd5761fd92e25cb25c0b21bf7"
+      "sha256": "047c4e1d0643795d96a42dc1c3089e3c94667c56c3a6d2a1d3ff364ea04c4cbf"
     },
     {
       "path": "docs/P2_design/evidence_and_traceability.md",
@@ -797,11 +837,11 @@
     },
     {
       "path": "reports/P2_design/delivery_index.json",
-      "sha256": "d00720b95affe55aa8d647f8d2e0666a39d2dbeddeff782632360bea5a34585b"
+      "sha256": "901f9a3758a7c344e2d48eed3719ae96bda34033da2fdf737a14211acfa0182e"
     },
     {
       "path": "reports/P2_design/design_status.json",
-      "sha256": "3b6d9f0d359a24a135451768d3ad5a6541838aea8f6f8d519fb7bb1f3edf2254"
+      "sha256": "8dbeab11aafdf2f6cff1fb85eb7d1347b5d9a116ddc0f209b52638185d8b7baa"
     },
     {
       "path": "reports/P2_design/document_checks.json",
@@ -813,7 +853,7 @@
     },
     {
       "path": "reports/P2_design/final_audit.md",
-      "sha256": "d5f96ccd0ed33754598d11c83d617d645f657c9d247b9c875cad23f43021ed19"
+      "sha256": "bad9f3ee50ef101a6300c1a75543bca1b346ccbb0d66720242550f8131bc2107"
     },
     {
       "path": "reports/P2_design/git_checkpoint.json",
@@ -822,6 +862,42 @@
     {
       "path": "reports/P2_design/previous_STATUS.md",
       "sha256": "2820f602c78f2a9f7c37e7669e5cadd40a18a35f1877d72a6a408667cc065f33"
+    },
+    {
+      "path": "reports/P2_design/proposal_v1/authorization_request.txt",
+      "sha256": "674c928feda9fd67df7ea2eb027a4c5423da13ab493e794edad21c3e68561734"
+    },
+    {
+      "path": "reports/P2_design/proposal_v1/diff_review.json",
+      "sha256": "288dcea3a00adacd0822fc81fd6d55494e38fdbcb878953dfa0ba4e039f1f28f"
+    },
+    {
+      "path": "reports/P2_design/proposal_v1/git_checkpoint.json",
+      "sha256": "e21c2722118401819e2c8ac2b08992661403ac46a6e85bfc2328c593c4efa3b5"
+    },
+    {
+      "path": "reports/P2_design/proposal_v1/previous_STATUS.md",
+      "sha256": "96f04afb202f94fd717b9f8bb73374c6fe2b77d99f443ffd173f42dcc471860c"
+    },
+    {
+      "path": "reports/P2_design/proposal_v1/previous_design_status.json",
+      "sha256": "3b6d9f0d359a24a135451768d3ad5a6541838aea8f6f8d519fb7bb1f3edf2254"
+    },
+    {
+      "path": "reports/P2_design/proposal_v1/previous_traceability.csv",
+      "sha256": "1498ced9637b74152699ead6a442b17f7c8e41ca7a31fca29ee8ebce911b4893"
+    },
+    {
+      "path": "reports/P2_design/proposal_v1/repository_audit.json",
+      "sha256": "4c91adf51bc35e73fd1bb0e4db29b584a0bb552c3df4e0973d1ce2c0aaa4f1a2"
+    },
+    {
+      "path": "reports/P2_design/proposal_v1/static_check.py.txt",
+      "sha256": "add648059a13ab47b650f1905d92ccb72db5fd84e845fbbbdfd666839e6f05aa"
+    },
+    {
+      "path": "reports/P2_design/proposal_v1/static_checks.json",
+      "sha256": "0474ff1e88b7cbeab8201347ba35bbed5fbef19bb6b363461e59e4642317147a"
     },
     {
       "path": "reports/P2_design/repository_audit.json",

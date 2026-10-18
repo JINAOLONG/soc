@@ -1,0 +1,91 @@
+"""Read-only proposal checks. No soc imports, RNG, generator or pipeline invocation.
+Run from repo root: .venv/bin/python reports/P2_design/proposal_v1/static_check.py.txt
+Does not write scientific inputs, run records, metrics or results. JSON stdout is a design check only.
+"""
+from pathlib import Path
+import json, hashlib, collections, csv
+
+r=Path('.'); d=r/'docs/P2_design'; checks=[]
+def read(name): return json.loads((d/name).read_text())
+def check(name, condition, detail=None):
+    checks.append(dict(name=name,pass_=bool(condition),detail=detail))
+def sha(p): return hashlib.sha256(p.read_bytes()).hexdigest()
+templates=read('P2_workload_templates_v1.json')['templates']
+profiles=read('P2_resource_profiles_v1.json'); byrole={p['role']:p for p in profiles['profiles']}
+comm=read('P2_communication_profiles_v1.json'); edges={x['template_id']:x['edges'] for x in comm['edge_tables']}
+gen=read('P2_generation_spec_v1.json'); matrix=read('P2_trial_matrix_draft_v1.json'); trials=matrix['trials']
+registry=read('P2_scientific_parameter_registry_v1.json')
+seeds=json.loads((r/'configs/seed_partitions.json').read_text())['partitions']['CALIBRATION']
+check('only six explicit scenario/size templates', {(t['scene'],t['size']) for t in templates}=={(s,n) for s in ['COCKPIT','ADAS','FUSION'] for n in [8,16]} and len(templates)==6)
+for t in templates:
+    ns={n['id']:n for n in t['nodes']}; es=edges[t['template_id']]
+    check(t['template_id']+' explicit identity/count/no dummy',len(ns)==len(t['nodes'])==t['size']==t['node_count'] and not t['hidden_nodes'] and t['implicit_dummy'] is False)
+    pending=set(ns); done=set()
+    while pending:
+        ready={n for n in pending if set(ns[n]['predecessors'])<=done}
+        if not ready: break
+        done|=ready; pending-=ready
+    check(t['template_id']+' complete acyclic predecessors',not pending and all(len(n['predecessors'])==len(set(n['predecessors'])) for n in ns.values()))
+    pairs={(e['source'],e['destination']) for e in es}
+    check(t['template_id']+' exact edge table',pairs=={(p,n['id']) for n in ns.values() for p in n['predecessors']} and len(pairs)==len(es)==t['edge_count'] and all(e['size_mib']>=0 for e in es))
+    check(t['template_id']+' roles/group/scale',all(n['role'] in byrole and n['group']=='INHERIT_SERVICE_GROUP' and n['allowed_group_variants']==['H','L'] and n['cost_scale']==('1' if t['size']==8 else '1/2') for n in ns.values()))
+    if t['size']==16:
+        eight=next(x for x in templates if x['scene']==t['scene'] and x['size']==8)
+        expected={(n['id']+'.a',n['id']+'.b') for n in eight['nodes']} | {(p+'.b',n['id']+'.a') for n in eight['nodes'] for p in n['predecessors']}
+        check(t['template_id']+' deterministic expansion',pairs==expected and len(es)==eight['edge_count']+8)
+check('74 explicit edges',sum(map(len,edges.values()))==74)
+check('six resources/16 role profiles/nonempty compatibility',profiles['resources']==['CPU0','CPU1','CPU2','CPU3','GPU0','NPU0'] and len(byrole)==16 and all(set(p['estimated_base_ms'])==set(profiles['resources']) and p['compatible_resources']==[k for k,v in p['estimated_base_ms'].items() if v is not None] and p['compatible_resources'] and all(v is None or v>0 for v in p['estimated_base_ms'].values()) for p in byrole.values()))
+check('coverage CPU-only/GPU-only/NPU-only/multikind',any(p['compatible_resources']==['NPU0'] for p in byrole.values()) and any(p['compatible_resources']==['GPU0'] for p in byrole.values()) and any(p['compatible_resources']==profiles['resources'][:4] for p in byrole.values()) and any(len(p['compatible_resources'])==6 for p in byrole.values()))
+check('CPU symmetry/null incompatible',all(len({p['estimated_base_ms'][f'CPU{i}'] for i in range(4)})==1 for p in byrole.values()))
+check('nine directed links/positive bandwidth/units',len(comm['links'])==9 and {(x['source_type'],x['destination_type']) for x in comm['links']}=={(a,b) for a in ['CPU','GPU','NPU'] for b in ['CPU','GPU','NPU']} and all(x['latency_ms']>=0 and x['bandwidth_mib_per_ms']>0 for x in comm['links']) and (comm['data_unit'],comm['latency_unit'],comm['bandwidth_unit'])==('MiB','ms','MiB/ms'))
+check('hand arithmetic CPU GPU/CPU CPU/same unit',.05+4/8==.55 and .01+1/16==.0725 and comm['semantics']['same_unit_delay_ms']==0)
+check('positive bound symbolic',1*.5*.9*.9==.405)
+check('generation bounded slots/window without random sampling',gen['arrivals']['slots']==50 and gen['arrivals']['total_services']==gen['arrivals']['H']+gen['arrivals']['L']==100 and gen['arrivals']['H']==gen['arrivals']['L']==50 and 5*(49//5)+(49%5)/4+.1<50)
+check('method/control-independent keyed fields',{'method','control_variant','scheduler_calls','attempt_id'}<=set(gen['key']['exclusions']) and all(x in gen['key']['fields'] for x in ['actual_seed_decimal_string','scenario','condition_id','config_id','template_node_id','resource_id','edge_id','field','version']))
+check('36 configs/18 conditions/two candidates',len(matrix['configs'])==36 and len({c['condition_id'] for c in matrix['configs']})==18 and set(collections.Counter(c['condition_id'] for c in matrix['configs']).values())=={2})
+configs={c['config_id']:c for c in matrix['configs']}
+check('actual seeds exactly unchanged calibration allowlist',matrix['registered_seeds']==seeds and len(seeds)==len(set(seeds))==10 and {t['calibration_seed'] for t in trials}==set(seeds) and all(t['calibration_seed']==seeds[t['seed_index']] and t['partition']=='CALIBRATION' for t in trials))
+check('2520 unique consecutive trials',len(trials)==len({t['trial_id'] for t in trials})==2520 and [t['execution_order'] for t in trials]==list(range(1,2521)) and all(t['budget_count']==1 for t in trials))
+check('all trial metadata rule references/config consistency',all(t['selection_rule'] in matrix['rules'] and t['tie_rule'] in matrix['rules'] and t['failure_rule'] in matrix['rules'] and all(t[k]==configs[t['config_id']][k] for k in ['scenario','condition_id','load','size']) for t in trials))
+check('five main methods/two B2 controls budget',collections.Counter(t['variant'] for t in trials)=={'MAIN':1800,'H_ISOLATED':360,'LOW_COMPETITION':360} and all(t['method']=='B2' for t in trials if t['variant']!='MAIN') and matrix['methods']==['B1','B2','B3','B4','B5'])
+groups=collections.defaultdict(list)
+for t in trials: groups[t['workload_id']].append(t)
+check('1080 symbolic inputs/360 identical-across-method main inputs',len(groups)==1080 and sum(ts[0]['variant']=='MAIN' for ts in groups.values())==360 and all(len(ts)==5 and {t['method'] for t in ts}==set(matrix['methods']) if ts[0]['variant']=='MAIN' else len(ts)==1 for ts in groups.values()))
+check('no materialized artifacts/commands/hashes manufactured',all(t['workload_id'].startswith('wlref:') and t['workload_sha256'] is None and t['command'] is None for t in trials))
+b=matrix['budget'];check('budget independently recomputed',36*10*(5+1+1)==b['total_trial_slots']==len(trials) and 2*len(trials)==b['physical_engine_invocations_including_replay_max'] and b['automatic_retries']==b['engineering_timing_runs']==0 and b['selected_main_workloads_after_calibration']==18*10)
+check('32 uniquely registered unresolved scientific groups',registry['unresolved_scientific_parameters']==len(registry['parameters'])==len({p['id'] for p in registry['parameters']})==32 and all(p['status']=='UNRESOLVED' and p['approval'] is None for p in registry['parameters']))
+for p in registry['parameters']:
+    filename,frag=p['proposal_ref'].split('#',1); path=d/filename
+    valid=path.is_file()
+    if valid and path.suffix=='.json':
+        try:
+            v=json.loads(path.read_text())
+            for part in frag.lstrip('/').split('/'): v=v[part]
+        except (KeyError,TypeError): valid=False
+    elif valid: valid=frag in path.read_text()
+    check(p['id']+' parameter location',valid)
+for path in sorted(d.glob('*_v1.json')):
+    obj=json.loads(path.read_text()); check(path.name+' nonexecutable flags',obj['status']=='DRAFT_UNAPPROVED_NONEXECUTABLE' and all(obj[k] is False for k in ['approved','frozen','executable','execution_authorized','read_by_pipeline']))
+catalog=read('decisions.draft.json'); original=json.loads((r/'reports/P2_design/review/original_decision_catalog.json').read_text())
+check('original ten IDs/questions/approvals preserved',[(x['id'],x['question']) for x in catalog['decisions']]==[(x['id'],x['question']) for x in original['decisions']] and all(x['status']=='HUMAN_DECISION_REQUIRED' and x['answer'] is None and x['approval_record']['action'] is None and x['scientific_parameter_values'] is None for x in catalog['decisions']))
+approval=(d/'P2_D01_D10_approval_checklist_v1.md').read_text()
+check('approval all 40 actions unchecked',approval.count('[ ]')==40 and '[x]' not in approval.lower())
+with (d/'P2_D01_D10_traceability.csv').open(newline='') as f: rows=list(csv.DictReader(f))
+with (r/'reports/P2_design/proposal_v1/previous_traceability.csv').open(newline='') as f: oldrows=list(csv.DictReader(f))
+check('traceability 47 original rows +11 concrete proposal links',rows[:len(oldrows)]==oldrows and len(rows)==58 and all((r/x['source_file']).is_file() for x in rows))
+source=(r/'scripts/run_pipeline.py').read_text()
+check('current pipeline has no proposal read wiring',all(x.name not in source for x in d.glob('*_v1.*')) and 'NOT IMPLEMENTED: stage' in source)
+check('P1 fixture identities remain hardcoded/separate',all('HAND_AUTHORED_CORRECTNESS_FIXTURE' in (r/p).read_text() for p in ['src/soc/model/schema.py','src/soc/simulator/engine.py','src/soc/validation/trace.py']))
+check('P2 gate still BLOCKED NOT_RUN',json.loads((r/'reports/P2_mapping_opportunity.json').read_text())['status']=='BLOCKED' and json.loads((r/'reports/P2_mapping_opportunity.json').read_text())['mapping_opportunity_status']=='NOT_RUN')
+check('no unlock files',not (r/'checkpoints/VALIDATION_UNLOCKED').exists() and not (r/'checkpoints/FORMAL_UNLOCKED').exists())
+baseline=json.loads((r/'reports/P2_design/proposal_v1/repository_audit.json').read_text())['baseline_sha256']
+allowed={'STATUS.md','docs/P2_design/README.md','docs/P2_design/decisions.draft.json','docs/P2_design/P2_D01_D10_traceability.csv','reports/P2_design/design_status.json','reports/P2_design/delivery_index.json','reports/P2_design/final_audit.md','checkpoints/P2_design_artifact_manifest.json'}
+unexpected=[p for p,h in baseline.items() if p not in allowed and (not (r/p).is_file() or sha(r/p)!=h)]
+check('all protected tracked code/config/tests/specs/history unchanged',not unexpected,unexpected)
+table=(d/'P2_mapping_opportunity_decision_table_v1.md').read_text()
+check('mapping protocol constants/three states/fixed paired seed',all(s in table for s in ['SUPPORTED','NOT_SUPPORTED','INCONCLUSIVE','10,000','20261018','type-7','N>0','U_c<f','L_c≥f']))
+state=json.loads((r/'reports/P2_design/design_status.json').read_text())
+check('design status does not approve/unlock/execute',state['status']=='DRAFT' and not state['approved'] and not state['executable'] and state['machine_status']['P2_PREFLIGHT_STATUS']=='BLOCKED' and state['machine_status']['SCIENTIFIC_WORKLOADS_RUN']==0)
+failed=[c['name'] for c in checks if not c['pass_']]
+print(json.dumps(dict(scope='PURE_DESIGN_SPECIFICATION_CONSISTENCY_ONLY_NOT_SCIENTIFIC_OR_RUNTIME_VALIDATION',checks=checks,passed=len(checks)-len(failed),failed=failed,scientific_workloads_generated=0,scientific_workloads_run=0,p2_entrypoint_executed=False),ensure_ascii=False,indent=2))
+raise SystemExit(1 if failed else 0)

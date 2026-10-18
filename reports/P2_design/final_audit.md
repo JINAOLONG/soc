@@ -69,3 +69,13 @@ checks保留为历史。本轮只有决策审查文档、状态和文档hash清�
 科学前置BLOCKED记录、源码/scripts/tests/configs、原协议和不可执行matrix/schema均保留。
 本轮0科学workload、0新seed，无保留分区realization/outcome访问及解锁。完成正常文档
 交付后停止，等待用户审阅D01–D10。
+
+## Complete proposal v1 task (source 160800d9)
+
+User authorized concrete synthetic proposals, not execution. Six explicit templates,16 role profiles,
+74 edges,nine type-pair links,keyed generation,36 configurations and2520 explicit draft trial slots
+are now reviewable. All ten decisions and32 named scientific parameter groups remain unapproved.
+P0/P1 read-only audits exit0; P1 manifest122 files matches. No science/P2 entrypoint run.
+New lifecycle/COMPLETE/origin solutions are documentation proposals only, not implemented fixes.
+Timing explicitly excluded (budget0) and its future protocol unresolved. Full current evidence in
+proposal_v1/; previous audits and old options retained. No threshold/CI/source/seed/unlock changes.

@@ -89,6 +89,15 @@
         "reviewer": null,
         "evidence_refs": [],
         "reason": null
+      },
+      "proposal_v1": {
+        "document": "docs/P2_design/P2_complete_design_proposal_v1.md",
+        "section": "D01",
+        "classification": "PROPOSED",
+        "approval_status": "UNRESOLVED",
+        "approved_values": null,
+        "implementation_validation": "IMPLEMENTATION_VALIDATION_PENDING",
+        "scientific_execution": "SCIENTIFIC_EXECUTION_PENDING"
       }
     },
     {
@@ -170,6 +179,15 @@
         "reviewer": null,
         "evidence_refs": [],
         "reason": null
+      },
+      "proposal_v1": {
+        "document": "docs/P2_design/P2_complete_design_proposal_v1.md",
+        "section": "D02",
+        "classification": "PROPOSED",
+        "approval_status": "UNRESOLVED",
+        "approved_values": null,
+        "implementation_validation": "IMPLEMENTATION_VALIDATION_PENDING",
+        "scientific_execution": "SCIENTIFIC_EXECUTION_PENDING"
       }
     },
     {
@@ -251,6 +269,15 @@
         "reviewer": null,
         "evidence_refs": [],
         "reason": null
+      },
+      "proposal_v1": {
+        "document": "docs/P2_design/P2_complete_design_proposal_v1.md",
+        "section": "D03",
+        "classification": "PROPOSED",
+        "approval_status": "UNRESOLVED",
+        "approved_values": null,
+        "implementation_validation": "IMPLEMENTATION_VALIDATION_PENDING",
+        "scientific_execution": "SCIENTIFIC_EXECUTION_PENDING"
       }
     },
     {
@@ -334,6 +361,15 @@
         "reviewer": null,
         "evidence_refs": [],
         "reason": null
+      },
+      "proposal_v1": {
+        "document": "docs/P2_design/P2_complete_design_proposal_v1.md",
+        "section": "D04",
+        "classification": "PROPOSED",
+        "approval_status": "UNRESOLVED",
+        "approved_values": null,
+        "implementation_validation": "IMPLEMENTATION_VALIDATION_PENDING",
+        "scientific_execution": "SCIENTIFIC_EXECUTION_PENDING"
       }
     },
     {
@@ -422,6 +458,15 @@
         "reviewer": null,
         "evidence_refs": [],
         "reason": null
+      },
+      "proposal_v1": {
+        "document": "docs/P2_design/P2_complete_design_proposal_v1.md",
+        "section": "D05",
+        "classification": "PROPOSED",
+        "approval_status": "UNRESOLVED",
+        "approved_values": null,
+        "implementation_validation": "IMPLEMENTATION_VALIDATION_PENDING",
+        "scientific_execution": "SCIENTIFIC_EXECUTION_PENDING"
       }
     },
     {
@@ -527,6 +572,15 @@
         "reviewer": null,
         "evidence_refs": [],
         "reason": null
+      },
+      "proposal_v1": {
+        "document": "docs/P2_design/P2_complete_design_proposal_v1.md",
+        "section": "D06",
+        "classification": "PROPOSED",
+        "approval_status": "UNRESOLVED",
+        "approved_values": null,
+        "implementation_validation": "IMPLEMENTATION_VALIDATION_PENDING",
+        "scientific_execution": "SCIENTIFIC_EXECUTION_PENDING"
       }
     },
     {
@@ -618,6 +672,15 @@
         "reviewer": null,
         "evidence_refs": [],
         "reason": null
+      },
+      "proposal_v1": {
+        "document": "docs/P2_design/P2_complete_design_proposal_v1.md",
+        "section": "D07",
+        "classification": "PROPOSED",
+        "approval_status": "UNRESOLVED",
+        "approved_values": null,
+        "implementation_validation": "IMPLEMENTATION_VALIDATION_PENDING",
+        "scientific_execution": "SCIENTIFIC_EXECUTION_PENDING"
       }
     },
     {
@@ -700,6 +763,15 @@
         "reviewer": null,
         "evidence_refs": [],
         "reason": null
+      },
+      "proposal_v1": {
+        "document": "docs/P2_design/P2_complete_design_proposal_v1.md",
+        "section": "D08",
+        "classification": "PROPOSED",
+        "approval_status": "UNRESOLVED",
+        "approved_values": null,
+        "implementation_validation": "IMPLEMENTATION_VALIDATION_PENDING",
+        "scientific_execution": "SCIENTIFIC_EXECUTION_PENDING"
       }
     },
     {
@@ -793,6 +865,15 @@
         "reviewer": null,
         "evidence_refs": [],
         "reason": null
+      },
+      "proposal_v1": {
+        "document": "docs/P2_design/P2_complete_design_proposal_v1.md",
+        "section": "D09",
+        "classification": "PROPOSED",
+        "approval_status": "UNRESOLVED",
+        "approved_values": null,
+        "implementation_validation": "IMPLEMENTATION_VALIDATION_PENDING",
+        "scientific_execution": "SCIENTIFIC_EXECUTION_PENDING"
       }
     },
     {
@@ -886,6 +967,15 @@
         "reviewer": null,
         "evidence_refs": [],
         "reason": null
+      },
+      "proposal_v1": {
+        "document": "docs/P2_design/P2_complete_design_proposal_v1.md",
+        "section": "D10",
+        "classification": "PROPOSED",
+        "approval_status": "UNRESOLVED",
+        "approved_values": null,
+        "implementation_validation": "IMPLEMENTATION_VALIDATION_PENDING",
+        "scientific_execution": "SCIENTIFIC_EXECUTION_PENDING"
       }
     }
   ],

@@ -1,0 +1,119 @@
+{
+  "document_kind": "DETERMINISTIC_GENERATION_SPEC_PROPOSAL",
+  "version": "v1",
+  "status": "DRAFT_UNAPPROVED_NONEXECUTABLE",
+  "classification": "PROPOSED",
+  "approved": false,
+  "frozen": false,
+  "executable": false,
+  "execution_authorized": false,
+  "read_by_pipeline": false,
+  "source_checkpoint": "160800d9b136e953c6415cd5229ded87eae72a0f",
+  "generator_version": "soc-p2-synthetic-v1-PROPOSED",
+  "algorithm": "SHA-256 keyed counter mapping, no mutable PRNG state",
+  "canonicalization": {
+    "encoding": "UTF-8 ASCII-only identifiers; reject non-ASCII identifiers and duplicate keys",
+    "json": "sort_keys=True,separators=(comma,colon),ensure_ascii=True,allow_nan=False; exactly one LF; arrays ordered by specified stable IDs",
+    "numbers": "Parse proposal decimal numeric lexemes exactly (e.g. JSON parse_float=Decimal), normalize to reduced rational {numerator,denominator}; retain integers, reject booleans as numeric. Identity preimages have no floats. Raw config file SHA is separate. Only engine payload gets one correctly rounded Python 3.12 binary64 conversion.",
+    "hash": "SHA-256 over exact canonical bytes; identity preimage excludes its own ID/hash and timestamps; hash raw files as raw bytes independently"
+  },
+  "key": {
+    "domain": "soc.p2.gen.v1",
+    "fields": [
+      "domain",
+      "version",
+      "actual_seed_decimal_string",
+      "scenario",
+      "condition_id",
+      "config_id",
+      "service_slot",
+      "service_group",
+      "template_node_id",
+      "resource_id",
+      "edge_id",
+      "field",
+      "counter"
+    ],
+    "unused": "empty string, never omitted; counter integer 0 except rejection sampling",
+    "exclusions": [
+      "method",
+      "trial_id",
+      "attempt_id",
+      "host",
+      "current_time",
+      "scheduler_calls",
+      "control_variant"
+    ],
+    "identity_namespaces": {
+      "template": "scene.nNN[.a|.b]",
+      "service": "scene/load/size/config/sSSS/H-or-L",
+      "field": [
+        "arrival_jitter",
+        "service_role_factor",
+        "duration_factor",
+        "deadline",
+        "edge_size"
+      ]
+    },
+    "seed": "existing CALIBRATION value only; this design never derives a new seed"
+  },
+  "uniform_mapping": "first 8 digest bytes unsigned big-endian q; U=q/2^64 in [0,1), exact rational, one domain-separated hash per field/key",
+  "rules": {
+    "service_role_factor": "9/10+U/5; field=service_role_factor; resource_id empty, node-specific, shared by all resources for that node",
+    "duration_factor": "9/10+U/5; field=duration_factor; node and resource present; resource-specific private realized durations",
+    "arrival_jitter": "U/10 dimensionless; service_slot j, service_group empty; other IDs empty; shared by H/L pair",
+    "edge_size": "explicit D03 size, no random perturbation in v1; edge_id exists in namespace but edge_size keys NOT sampled",
+    "deadline": "no random draw; formula below",
+    "rounding": "Exact rationals through estimates/realized/arrivals/deadlines; single correctly-rounded nearest ties-to-even binary64 conversion for engine payload; assert positive finite, normalize negative zero to +0; no incremental float RNG arithmetic",
+    "node_scaling": "16-node a/b each base/2; independent node keys, so total realized compute need not equal 8-node service"
+  },
+  "arrivals": {
+    "slots": 50,
+    "services_per_slot": 2,
+    "total_services": 100,
+    "H": 50,
+    "L": 50,
+    "burst_block_slots": 5,
+    "burst_compression": "1/4",
+    "formula": "for j=0..49: q=j//5,k=j%5; a_H=a_L=P*(5*q+k/4+U_j/10); P is config period_ms",
+    "arrival_window": "[0,W) with W=50*P ms; no service at W; no arrivals after last slot, observation continues to W and full drain; completion may precede W but run_end=max(W,last_completion)",
+    "no_warmup_exclusion": true
+  },
+  "deadlines": {
+    "reference": "C_est = max_root_to_sink sum_node(min_compatible estimated_duration_ms); excludes communication; DAG dynamic program, no scheduling outcome",
+    "H_multiplier": "5/2",
+    "L_multiplier": "4",
+    "formula": "D_g = multiplier(group) * C_est(service); positive, relative to each admitted arrival",
+    "risk": "C_est is optimistic and not a feasibility certificate; D06 independent controls mandatory"
+  },
+  "controls": {
+    "H_ISOLATED": "retain the same 50 H services, keys, graph, durations, deadlines; remove L; place kth H at k*G",
+    "LOW_COMPETITION": "retain all 100 services and private keyed values; order slot then group H,L; kth service at k*G",
+    "gap": "G = ceil( max_service[sum_node(max_resource(estimate*11/10)) + sum_edge(max_typepair delay(edge)) + relative_deadline] ) +1 ms; a serial topological schedule is bounded by G, but actual control must verify no overlap of services",
+    "control_window": "W_control=N_control*G; drain all; missing L metrics in H-only are NOT_APPLICABLE_CONTROL, never a main sample",
+    "lineage": "all controls reference parent-main generation identity and independently hashed derived input; changed arrivals cannot reuse main workload hash"
+  },
+  "workload_identity": {
+    "plan": "symbolic wlref:v1:<config_id>:s<seed_index>:<MAIN|H_ISOLATED|LOW_COMPETITION>; not a materialized workload or content hash",
+    "actual": "urn:soc:workload:v1:<SHA256(canonical identity preimage)>",
+    "preimage": [
+      "namespace/version",
+      "seed/partition",
+      "scene/load/size/config_id",
+      "generator source SHA256",
+      "approved parameter content SHA256",
+      "template/profile/network SHA256",
+      "control variant",
+      "canonical numeric payload SHA256"
+    ],
+    "payload": "ordered services/nodes/edges/compatible resources; binary64 numeric payload independently canonicalized using unchanged model canonical_bytes convention; future scientific-origin adapter required",
+    "hashes": "artifact SHA256 computed only after future authorized generation; currently all artifact hashes null"
+  },
+  "parameter_provenance": "All algorithms/distributions/values here are PROPOSED except fixed model units, method-independent keys, CALIBRATION partition and full drain.",
+  "source_refs": [
+    "docs/model_spec.md:39–58",
+    "docs/workload_spec.md:22–25",
+    "docs/user_request.txt:§§24–25,36,41"
+  ],
+  "positive_guarantee": "Exact preconversion duration >=81/200 ms; final binary64 must be finite and strictly positive."
+}

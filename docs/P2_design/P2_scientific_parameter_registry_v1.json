@@ -1,0 +1,304 @@
+{
+  "document_kind": "UNAPPROVED_SCIENTIFIC_PARAMETER_GROUP_REGISTRY",
+  "version": "v1",
+  "status": "DRAFT_UNAPPROVED_NONEXECUTABLE",
+  "classification": "PROPOSED",
+  "approved": false,
+  "frozen": false,
+  "executable": false,
+  "execution_authorized": false,
+  "read_by_pipeline": false,
+  "source_checkpoint": "160800d9b136e953c6415cd5229ded87eae72a0f",
+  "count_scope": "Named scientific parameter groups, not individual numeric/categorical cells and not the 10 decision groups. All concrete proposals remain unapproved. Fixed existing thresholds/CI/seeds excluded; engineering-only runner/schema choices excluded.",
+  "unresolved_scientific_parameters": 32,
+  "parameters": [
+    {
+      "id": "SP01",
+      "decision_id": "D01",
+      "name": "six_topologies",
+      "proposal_ref": "P2_workload_templates_v1.json#/templates",
+      "status": "UNRESOLVED",
+      "proposal_classification": "PROPOSED",
+      "approval": null
+    },
+    {
+      "id": "SP02",
+      "decision_id": "D01",
+      "name": "importance_assignment",
+      "proposal_ref": "P2_workload_templates_v1.json#/group_rule",
+      "status": "UNRESOLVED",
+      "proposal_classification": "PROPOSED",
+      "approval": null
+    },
+    {
+      "id": "SP03",
+      "decision_id": "D01",
+      "name": "size_expansion",
+      "proposal_ref": "P2_workload_templates_v1.json#/expansion",
+      "status": "UNRESOLVED",
+      "proposal_classification": "PROPOSED",
+      "approval": null
+    },
+    {
+      "id": "SP04",
+      "decision_id": "D02",
+      "name": "role_compatibility",
+      "proposal_ref": "P2_resource_profiles_v1.json#/profiles",
+      "status": "UNRESOLVED",
+      "proposal_classification": "PROPOSED",
+      "approval": null
+    },
+    {
+      "id": "SP05",
+      "decision_id": "D02",
+      "name": "role_execution_costs",
+      "proposal_ref": "P2_resource_profiles_v1.json#/profiles",
+      "status": "UNRESOLVED",
+      "proposal_classification": "PROPOSED",
+      "approval": null
+    },
+    {
+      "id": "SP06",
+      "decision_id": "D02",
+      "name": "cpu_symmetry",
+      "proposal_ref": "P2_resource_profiles_v1.json#/profiles",
+      "status": "UNRESOLVED",
+      "proposal_classification": "PROPOSED",
+      "approval": null
+    },
+    {
+      "id": "SP07",
+      "decision_id": "D03",
+      "name": "edge_sizes",
+      "proposal_ref": "P2_communication_profiles_v1.json#/edge_tables",
+      "status": "UNRESOLVED",
+      "proposal_classification": "PROPOSED",
+      "approval": null
+    },
+    {
+      "id": "SP08",
+      "decision_id": "D03",
+      "name": "link_latencies",
+      "proposal_ref": "P2_communication_profiles_v1.json#/links",
+      "status": "UNRESOLVED",
+      "proposal_classification": "PROPOSED",
+      "approval": null
+    },
+    {
+      "id": "SP09",
+      "decision_id": "D03",
+      "name": "link_bandwidths",
+      "proposal_ref": "P2_communication_profiles_v1.json#/links",
+      "status": "UNRESOLVED",
+      "proposal_classification": "PROPOSED",
+      "approval": null
+    },
+    {
+      "id": "SP10",
+      "decision_id": "D04",
+      "name": "key_encoding_hash_mapping",
+      "proposal_ref": "P2_generation_spec_v1.json#/key",
+      "status": "UNRESOLVED",
+      "proposal_classification": "PROPOSED",
+      "approval": null
+    },
+    {
+      "id": "SP11",
+      "decision_id": "D04",
+      "name": "estimate_distribution",
+      "proposal_ref": "P2_generation_spec_v1.json#/rules/service_role_factor",
+      "status": "UNRESOLVED",
+      "proposal_classification": "PROPOSED",
+      "approval": null
+    },
+    {
+      "id": "SP12",
+      "decision_id": "D04",
+      "name": "realized_distribution",
+      "proposal_ref": "P2_generation_spec_v1.json#/rules/duration_factor",
+      "status": "UNRESOLVED",
+      "proposal_classification": "PROPOSED",
+      "approval": null
+    },
+    {
+      "id": "SP13",
+      "decision_id": "D04",
+      "name": "arrival_jitter",
+      "proposal_ref": "P2_generation_spec_v1.json#/rules/arrival_jitter",
+      "status": "UNRESOLVED",
+      "proposal_classification": "PROPOSED",
+      "approval": null
+    },
+    {
+      "id": "SP14",
+      "decision_id": "D04",
+      "name": "arrival_burst",
+      "proposal_ref": "P2_generation_spec_v1.json#/arrivals",
+      "status": "UNRESOLVED",
+      "proposal_classification": "PROPOSED",
+      "approval": null
+    },
+    {
+      "id": "SP15",
+      "decision_id": "D04",
+      "name": "service_count_and_group_mix",
+      "proposal_ref": "P2_generation_spec_v1.json#/arrivals",
+      "status": "UNRESOLVED",
+      "proposal_classification": "PROPOSED",
+      "approval": null
+    },
+    {
+      "id": "SP16",
+      "decision_id": "D04",
+      "name": "deadline_multipliers",
+      "proposal_ref": "P2_generation_spec_v1.json#/deadlines",
+      "status": "UNRESOLVED",
+      "proposal_classification": "PROPOSED",
+      "approval": null
+    },
+    {
+      "id": "SP17",
+      "decision_id": "D04",
+      "name": "arrival_window",
+      "proposal_ref": "P2_generation_spec_v1.json#/arrivals/arrival_window",
+      "status": "UNRESOLVED",
+      "proposal_classification": "PROPOSED",
+      "approval": null
+    },
+    {
+      "id": "SP18",
+      "decision_id": "D05",
+      "name": "period_axis",
+      "proposal_ref": "P2_trial_matrix_draft_v1.json#/configs",
+      "status": "UNRESOLVED",
+      "proposal_classification": "PROPOSED",
+      "approval": null
+    },
+    {
+      "id": "SP19",
+      "decision_id": "D05",
+      "name": "main_method_set",
+      "proposal_ref": "P2_trial_matrix_draft_v1.json#/methods",
+      "status": "UNRESOLVED",
+      "proposal_classification": "PROPOSED",
+      "approval": null
+    },
+    {
+      "id": "SP20",
+      "decision_id": "D05",
+      "name": "finite_order_budget",
+      "proposal_ref": "P2_trial_matrix_draft_v1.json#/budget",
+      "status": "UNRESOLVED",
+      "proposal_classification": "PROPOSED",
+      "approval": null
+    },
+    {
+      "id": "SP21",
+      "decision_id": "D06",
+      "name": "control_input_transform",
+      "proposal_ref": "P2_generation_spec_v1.json#/controls",
+      "status": "UNRESOLVED",
+      "proposal_classification": "PROPOSED",
+      "approval": null
+    },
+    {
+      "id": "SP22",
+      "decision_id": "D06",
+      "name": "load_pressure_bands",
+      "proposal_ref": "P2_complete_design_proposal_v1.md#D06",
+      "status": "UNRESOLVED",
+      "proposal_classification": "PROPOSED",
+      "approval": null
+    },
+    {
+      "id": "SP23",
+      "decision_id": "D06",
+      "name": "load_miss_bands",
+      "proposal_ref": "P2_complete_design_proposal_v1.md#D06",
+      "status": "UNRESOLVED",
+      "proposal_classification": "PROPOSED",
+      "approval": null
+    },
+    {
+      "id": "SP24",
+      "decision_id": "D06",
+      "name": "configuration_selection",
+      "proposal_ref": "P2_trial_matrix_draft_v1.json#/rules/SEL-v1",
+      "status": "UNRESOLVED",
+      "proposal_classification": "PROPOSED",
+      "approval": null
+    },
+    {
+      "id": "SP25",
+      "decision_id": "D07",
+      "name": "M1_snapshot_subset",
+      "proposal_ref": "P2_complete_design_proposal_v1.md#D07",
+      "status": "UNRESOLVED",
+      "proposal_classification": "PROPOSED",
+      "approval": null
+    },
+    {
+      "id": "SP26",
+      "decision_id": "D07",
+      "name": "M1_counterfactual_objective",
+      "proposal_ref": "P2_complete_design_proposal_v1.md#D07",
+      "status": "UNRESOLVED",
+      "proposal_classification": "PROPOSED",
+      "approval": null
+    },
+    {
+      "id": "SP27",
+      "decision_id": "D07",
+      "name": "M2_measurements",
+      "proposal_ref": "P2_complete_design_proposal_v1.md#D07",
+      "status": "UNRESOLVED",
+      "proposal_classification": "PROPOSED",
+      "approval": null
+    },
+    {
+      "id": "SP28",
+      "decision_id": "D08",
+      "name": "material_gain_cutoff",
+      "proposal_ref": "P2_mapping_opportunity_decision_table_v1.md#参数",
+      "status": "UNRESOLVED",
+      "proposal_classification": "PROPOSED",
+      "approval": null
+    },
+    {
+      "id": "SP29",
+      "decision_id": "D08",
+      "name": "frequency_cutoff",
+      "proposal_ref": "P2_mapping_opportunity_decision_table_v1.md#参数",
+      "status": "UNRESOLVED",
+      "proposal_classification": "PROPOSED",
+      "approval": null
+    },
+    {
+      "id": "SP30",
+      "decision_id": "D08",
+      "name": "stability_requirement",
+      "proposal_ref": "P2_mapping_opportunity_decision_table_v1.md#参数",
+      "status": "UNRESOLVED",
+      "proposal_classification": "PROPOSED",
+      "approval": null
+    },
+    {
+      "id": "SP31",
+      "decision_id": "D08",
+      "name": "condition_aggregation",
+      "proposal_ref": "P2_mapping_opportunity_decision_table_v1.md#决策表",
+      "status": "UNRESOLVED",
+      "proposal_classification": "PROPOSED",
+      "approval": null
+    },
+    {
+      "id": "SP32",
+      "decision_id": "D08",
+      "name": "bootstrap_implementation_pin",
+      "proposal_ref": "P2_mapping_opportunity_decision_table_v1.md#参数",
+      "status": "UNRESOLVED",
+      "proposal_classification": "PROPOSED",
+      "approval": null
+    }
+  ]
+}

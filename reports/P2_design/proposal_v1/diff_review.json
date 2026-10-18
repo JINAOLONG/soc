@@ -1,0 +1,61 @@
+{
+  "scope": "DOCUMENT_ONLY_DIFF_REVIEW",
+  "allowed_existing_paths": [
+    "STATUS.md",
+    "checkpoints/P2_design_artifact_manifest.json",
+    "docs/P2_design/P2_D01_D10_traceability.csv",
+    "docs/P2_design/README.md",
+    "docs/P2_design/decisions.draft.json",
+    "reports/P2_design/delivery_index.json",
+    "reports/P2_design/design_status.json",
+    "reports/P2_design/final_audit.md"
+  ],
+  "changed_existing_paths": [
+    "STATUS.md",
+    "docs/P2_design/P2_D01_D10_traceability.csv",
+    "docs/P2_design/README.md",
+    "docs/P2_design/decisions.draft.json",
+    "reports/P2_design/delivery_index.json",
+    "reports/P2_design/design_status.json",
+    "reports/P2_design/final_audit.md"
+  ],
+  "new_paths": [
+    "docs/P2_design/P2_D01_D10_approval_checklist_v1.md",
+    "docs/P2_design/P2_communication_profiles_v1.json",
+    "docs/P2_design/P2_complete_design_proposal_v1.md",
+    "docs/P2_design/P2_generation_spec_v1.json",
+    "docs/P2_design/P2_mapping_opportunity_decision_table_v1.md",
+    "docs/P2_design/P2_resource_profiles_v1.json",
+    "docs/P2_design/P2_runner_schema_review_v1.md",
+    "docs/P2_design/P2_scientific_parameter_registry_v1.json",
+    "docs/P2_design/P2_trial_matrix_draft_v1.json",
+    "docs/P2_design/P2_workload_templates_v1.json",
+    "reports/P2_design/proposal_v1/authorization_request.txt",
+    "reports/P2_design/proposal_v1/git_checkpoint.json",
+    "reports/P2_design/proposal_v1/previous_STATUS.md",
+    "reports/P2_design/proposal_v1/previous_design_status.json",
+    "reports/P2_design/proposal_v1/previous_traceability.csv",
+    "reports/P2_design/proposal_v1/repository_audit.json",
+    "reports/P2_design/proposal_v1/static_check.py.txt",
+    "reports/P2_design/proposal_v1/static_checks.json"
+  ],
+  "checks": [
+    {
+      "command": [
+        "git",
+        "-c",
+        "core.whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol",
+        "diff",
+        "--check"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "line_endings": "Existing CSV and verbatim authorization use CRLF; default diff check flagged CRs. Explicit cr-at-eol check preserves original bytes and passes.",
+  "all_new_paths_authorized_documents": true,
+  "protected_files_checked_in_static_report": true,
+  "p2_entrypoint_executed": false,
+  "scientific_workloads_generated": 0
+}

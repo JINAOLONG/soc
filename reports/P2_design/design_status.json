@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "task": "P2_DESIGN_RESOLUTION_PREPARATION",
+  "task": "P2_COMPLETE_EXPERIMENTAL_DESIGN_PROPOSAL_V1",
   "status": "DRAFT",
   "approved": false,
   "frozen": false,
@@ -43,17 +43,21 @@
     "SEED_PARTITIONS_CHANGED": "NO",
     "VALIDATION_UNLOCKED": "NO",
     "FORMAL_UNLOCKED": "NO",
-    "GIT_COMMIT": "f53120f2b88803504f63d500d24a5eae95646679",
-    "GITHUB_PUSH_STATUS": "SUCCESS_FOR_RECORDED_HUMAN_REVIEW_CHECKPOINT",
-    "WORKTREE": "CLEAN_AT_RECORDED_CHECKPOINT",
-    "NEXT_SAFE_ACTION": "用户审阅human_decisions.md并在P2_human_approval_checklist.md明确记录D01–D10动作及完整规则；本轮停止",
+    "GIT_COMMIT": "PENDING_THIS_TASK_COMMIT",
+    "GITHUB_PUSH_STATUS": "PENDING",
+    "WORKTREE": "PROPOSAL_DOCUMENT_CHANGES",
+    "NEXT_SAFE_ACTION": "Human review and approval of concrete P2 design",
     "STOP": "YES",
     "D01_D10_INVENTORY": 10,
     "DECISIONS_RESOLVED": 0,
     "DECISIONS_BLOCKED": 0,
     "GIT_COMMIT_SCOPE": "AUDITED_REMOTE_VERIFIED_UNAPPROVED_HUMAN_REVIEW_CHECKPOINT",
     "FINAL_ENCLOSING_HEAD_COMMAND": "git rev-parse HEAD",
-    "FINAL_ENCLOSING_WORKTREE_COMMAND": "git status --short"
+    "FINAL_ENCLOSING_WORKTREE_COMMAND": "git status --short",
+    "D01_D10_PROPOSAL_COMPLETE": "YES",
+    "DRAFT_FILES_EXECUTABLE": "NO",
+    "UNRESOLVED_SCIENTIFIC_PARAMETERS": 32,
+    "UNRESOLVED_SCIENTIFIC_PARAMETERS_SCOPE": "Named unapproved scientific parameter groups; see registry, not scalar cells"
   },
   "blockers": {
     "P2-B1": {
@@ -91,7 +95,7 @@
         "D09"
       ],
       "review_findings": [
-        "Explicit start/end/interruption lifecycle fields unresolved",
+        "v1 proposes start/end/interruption lifecycle; approval pending",
         "No recovery/idempotency implementation or behavioral validation"
       ]
     },
@@ -103,8 +107,8 @@
         "D10"
       ],
       "review_findings": [
-        "Hard-coded P1 fixture origin compatibility unresolved",
-        "COMPLETE validity conditions are comments, not enforced/validated semantics"
+        "v1 recommends S2 scientific adapter; approval and P1 compatibility validation pending",
+        "v1 specifies COMPLETE conjunction; not implemented or behaviorally validated"
       ]
     }
   },
@@ -159,9 +163,36 @@
         "D10"
       ]
     },
-    "B4_B5_review": "DESIGNED only as incomplete unapproved drafts; lifecycle and COMPLETE semantics unresolved",
+    "B4_B5_review": "DESIGNED unapproved; v1 proposes explicit lifecycle/COMPLETE/origin rules, all implementation/behavioral validation pending.",
     "P2_ready": false,
     "implementation_authorized": false,
     "execution_authorized": false
-  }
+  },
+  "proposal_v1": {
+    "status": "DRAFT_UNAPPROVED_NONEXECUTABLE",
+    "source_checkpoint": "160800d9b136e953c6415cd5229ded87eae72a0f",
+    "proposal_complete": true,
+    "proposal_complete_scope": "All ten decisions have concrete proposals/finite alternatives; approvals, implementation and scientific validation remain pending; timing explicitly excluded and unresolved.",
+    "approved": false,
+    "frozen": false,
+    "executable": false,
+    "entry": "docs/P2_design/P2_complete_design_proposal_v1.md",
+    "scientific_parameter_registry": "docs/P2_design/P2_scientific_parameter_registry_v1.json",
+    "unresolved_scientific_parameter_groups": 32,
+    "human_decisions_required": 10,
+    "trials_proposed": 2520,
+    "trials_executed": 0,
+    "implementation_validation": "IMPLEMENTATION_VALIDATION_PENDING",
+    "scientific_execution": "SCIENTIFIC_EXECUTION_PENDING",
+    "B1_B3": "UNRESOLVED_PENDING_APPROVAL",
+    "B4_B5": "DESIGNED_UNAPPROVED_IMPLEMENTATION_VALIDATION_PENDING",
+    "remaining_gaps": [
+      "No approved D01-D10 values",
+      "D08 threshold bundle not selected",
+      "Scientific generator, runner, adapter and lineage validation unimplemented",
+      "Timing protocol not frozen; explicitly outside this matrix",
+      "No feasibility, load or mapping data exist"
+    ]
+  },
+  "review_summary_scope": "Previous human decision review counts remain valid; original report in proposal_v1/previous_design_status.json. v1 now adds concrete proposals, not approvals."
 }

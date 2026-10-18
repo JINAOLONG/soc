@@ -1,0 +1,359 @@
+# SOC — P2 Complete Experimental Design Proposal v1
+
+## 任务目标
+
+基于仓库现有证据，完成一套供人工审批的、完整且有限的 P2 校准实验设计提案。
+
+当前已知状态：
+
+- P0 = PASS
+- P1 = PASS
+- P2 preflight = BLOCKED
+- D01–D10 = 均未批准
+- P2 科学工作负载执行数 = 0
+
+本任务仅授权研究设计、文档分析、必要的静态审计及提案文件生成。
+
+不得启动 P2，不得生成科学工作负载，不得修改模拟器或调度算法，不得改变既有科学阈值、CI 方法、候选定义或 seed 分区。
+
+## 一、恢复并核验依据
+
+从实际 Git 仓库读取：
+
+- D01–D10 原始决策清单
+- `docs/user_request.txt`
+- `docs/workload_spec.md`
+- `docs/model_spec.md`
+- `docs/baseline_spec.md`
+- `docs/metric_spec.md`
+- `docs/statistical_protocol.md`
+- `docs/research_contract.md`
+- `configs/research_protocol.json`
+- `docs/literature_matrix.md`
+- `docs/literature_evidence.json`
+- `docs/literature_reviews/`
+- 现有 P0/P1 实现、测试、报告及 P2 阻断证据
+
+核验当前 HEAD、工作树、分支及远程状态。
+
+所有事实必须引用实际文件及行号、章节或已有审计记录。原文没有规定的参数，不得伪装为文献原始参数。
+
+## 二、形成完整的提案版本
+
+交付 `P2_complete_design_proposal_v1.md`，逐项处理 D01–D10。
+
+保留原始编号和已有决策语义。每项必须区分：
+
+- SOURCE_SUPPORTED：现有来源直接支持。
+- DERIVED：从已有规则严格推导。
+- PROPOSED：本项目拟新增的设计决定。
+- UNRESOLVED：当前证据不足，仍需人工决定。
+- IMPLEMENTATION_VALIDATION_PENDING：只能在后续实现中验证。
+- SCIENTIFIC_EXECUTION_PENDING：必须由后续实验验证。
+
+不得将 PROPOSED 自动转换为已批准规则。
+
+### D01：完整 DAG 模板
+
+为三个已登记场景分别提出 8 节点和 16 节点模板。
+
+每个模板必须明确列出：
+
+- 唯一节点 ID
+- 每个节点的任务角色
+- H/L 归属
+- 完整前驱集合
+- 节点总数与边总数
+- DAG 无环验证方法
+- 规模扩展时的确定性映射规则
+- 是否存在隐藏节点或隐式 dummy
+
+不得引入隐藏 dummy。
+
+拓扑没有现有来源时，明确标为新设计提案，解释其代表的工作负载机制，不得声称拓扑来自原论文。
+
+### D02：资源 profile
+
+提出完整的六资源 profile 表。
+
+逐项列出任务角色、兼容资源集合、各资源执行代价及其单位。
+
+同时说明：
+
+- 数据来源
+- 正值保证
+- 不兼容资源的表示
+- 实际执行时间与调度估计时间的区别
+- 确定性生成和身份记录方式
+
+没有现有来源的数值必须明确标为 PROPOSED。
+
+不得自行把未批准的数值直接写入生效配置。
+
+### D03：通信 profile
+
+给出完整边数据量表及任务类型对的通信参数表。
+
+明确：
+
+- 数据量单位
+- latency 单位
+- bandwidth 单位
+- 跨资源通信计算式
+- 同资源通信零代价规则
+- 目的地数据副本
+- remapping 语义
+- 网络竞争假设
+
+检查所有量纲一致性，列出手算例子。
+
+任何新数值必须附设计理由和敏感性风险，不得冒称文献原始值。
+
+### D04：确定性工作负载物化
+
+提出完整的 keyed deterministic generation 规范。
+
+必须确定提案中的：
+
+- PRNG 或确定性哈希算法
+- key 编码与字段命名空间
+- seed、scenario、condition、node、edge 和字段身份
+- 整数及浮点转换规则
+- 分布及参数
+- 任务到达与突发规则
+- H/L 组成
+- relative deadline 构造
+- arrival window、停止边界和完全排空
+- workload identity 与内容哈希
+
+对每一个没有现有来源的参数给出候选值、设计理由、影响和待批准标记。
+
+不能只写“采用确定性随机扰动”。
+
+### D05：完整有限校准矩阵
+
+建立机器可读的 DRAFT trial matrix。
+
+每一条 trial 必须显式包含：
+
+- trial ID
+- 场景、条件和配置 ID
+- 所用方法
+- 校准 seed
+- workload ID
+- 配置 ID
+- 方法比较角色
+- 执行顺序
+- 预算计数
+- 选择规则
+- 平局规则
+- 失败及不完整处理
+
+解释注册的 3×3×2 主条件与完整校准矩阵的区别。
+
+B2 必须保留现有焦点参考角色。方法子集必须按现有研究目的论证，不得只因为某方法在预期中表现较好而将其纳入或排除。
+
+完整列出每种方法的职责、纳入理由及不纳入理由。
+
+如果某个参数轴、方法集合或预算没有证据支持，提供有限候选方案并标为 PROPOSED，而不是擅自冻结。
+
+若涉及工程 timing，单独列出 inputs、warmup、repetitions、timer、aggregation 和预算；现有 timing 协议尚未冻结，不能假定默认值。
+
+### D06：H 可行性与负载分类
+
+提出实验前可执行的分类规则。
+
+必须区分：
+
+- H-only 基础可行性
+- 低竞争对照
+- 其他已登记负载类别
+- 合法但未达到目标的运行
+- 天然不可行的配置
+- invalid
+- failed
+- incomplete
+
+明确每类的继续、停止和保留规则。
+
+所有分类必须由预先定义的输入或运行有效性证据决定，不得根据候选算法的最终优势反向分类。
+
+不得自行发明未经批准的可行性阈值。
+
+### D07：Mapping-opportunity 观察设计
+
+分别定义：
+
+- M1：同状态机制诊断
+- M2：基线配对描述
+
+说明每个观察量的单位、比较对象、反事实边界、记录时点及每个 seed/condition 的分母。
+
+M2 不得单独用于宣称映射具有独立因果贡献。
+
+不得将 H 改善、L 合规或候选成功直接等同于 mapping opportunity。
+
+### D08：Mapping-opportunity 判定
+
+建立完整的三态决策表：
+
+- SUPPORTED
+- NOT_SUPPORTED
+- INCONCLUSIVE
+
+列明所有需要的阈值、聚合、稳定性、不确定性和缺失值处理参数。
+
+若使用置信区间，只能沿用现有登记的 paired-seed 方法，不得另创 CI 算法。
+
+不能从 H/L 门槛推导或挪用 mapping-opportunity 阈值。
+
+如果当前证据不能唯一决定阈值，提供有限候选和选择后果，保持 UNRESOLVED，直到人工批准。
+
+本任务不得计算 mapping-opportunity 结果。
+
+### D09：Runner 设计
+
+比较：
+
+- 单一正式 runner 扩展
+- 共用同一守卫的薄 launcher
+
+推荐唯一正式入口，并说明理由。
+
+完整规定：
+
+- 身份与哈希匹配条件
+- 完整产物复用条件
+- 失败与不完整处理
+- attempt 链与恢复策略
+- 自动重试规则
+- 源码 dirty 策略
+- 日志和退出码
+- fail-closed 行为
+
+不得把未经批准的洁净工作树要求写成现行规则。
+
+任何 retry 条件与预算必须预先登记。
+
+### D10：科学产物 schema
+
+比较：
+
+- 已验证 envelope 的扩展
+- 新版本 scientific schema + adapter
+
+给出完整字段表及规范化设计提案：
+
+- namespace/version
+- canonicalization
+- workload ID
+- run ID
+- attempt ID
+- actual seed 和 partition
+- scenario/condition/method/config IDs
+- source/config/input hashes
+- invocation 与 exit status
+- trace validation
+- metrics 与派生关系
+- provenance references
+- completeness/error status
+- raw output 和 log references
+
+P1 correctness fixtures 必须继续保持其原始身份，禁止通过重命名变成科学样本。
+
+将 schema 静态验证与后续运行时血缘验证明确分开。
+
+## 三、跨决策一致性审查
+
+检查 D01–D10 的依赖和冲突。
+
+特别核对：
+
+1. DAG 模板与 profile 表的节点身份一致。
+2. 通信表与执行引擎单位一致。
+3. 生成规则与 workload hash 规则一致。
+4. trial matrix 与已注册 calibration seed 数一致。
+5. trial 数量、方法数与运行预算能准确复算。
+6. H 可行性规则不依赖候选最终结果。
+7. Mapping-opportunity 判据与既有统计协议一致。
+8. Runner 复用规则与 schema 身份匹配规则一致。
+9. P1 fixtures 不会混入科学数据。
+10. validation 和 formal 分区保持封存。
+
+任何冲突都必须在提案中列明，不能静默选择其中一条。
+
+## 四、交付文件
+
+优先复用现有文件结构，避免建立竞争性正式规格。
+
+至少交付：
+
+- `P2_complete_design_proposal_v1.md`
+- `P2_workload_templates_v1.json`
+- `P2_resource_profiles_v1.json`
+- `P2_communication_profiles_v1.json`
+- `P2_generation_spec_v1.json`
+- `P2_trial_matrix_draft_v1.json`
+- `P2_mapping_opportunity_decision_table_v1.md`
+- `P2_runner_schema_review_v1.md`
+- `P2_D01_D10_approval_checklist_v1.md`
+- 更新后的 traceability matrix 和设计状态 manifest
+
+所有未批准的 JSON 必须有明确的 DRAFT 状态，且不能被现有 pipeline 当作可执行正式配置读取。
+
+如果不能基于现有证据生成某个完整文件，记录具体缺失字段，不要填入伪造值。
+
+## 五、执行限制
+
+- 不运行 P2 pipeline。
+- 不生成 workload realization。
+- 不生成 seed。
+- 不访问非 calibration 分区的 workload realization 或 outcome。
+- 不运行任何科学比较。
+- 不修改模拟器或调度算法。
+- 不修改科学阈值、CI 方法、候选定义或 seed 分区。
+- 不创建 validation/formal unlock。
+- 不将设计通过表述为科学实验通过。
+
+允许运行只读审计与不生成科学数据的纯合成规格一致性测试；若任何测试可能物化科学 workload，必须跳过并记录。
+
+## 六、Git 与最终停止
+
+先检查当前 Git 状态并保留所有现有改动。
+
+提交前审查完整 diff，确认只含授权的提案与文档材料。
+
+在仓库安全的前提下正常提交并推送，不得 force-push。
+
+最终报告实际提交、远程 SHA、工作树状态和全部交付文件。
+
+完成后立即停止，等待人工批准。不得自动启动 P2。
+
+## 七、最终状态
+
+```text
+PROJECT_NAME=soc
+P0_STATUS=<actual>
+P1_STATUS=<actual>
+P2_PREFLIGHT_STATUS=BLOCKED
+D01_D10_PROPOSAL_COMPLETE=<YES/NO>
+DRAFT_FILES_EXECUTABLE=NO
+UNRESOLVED_SCIENTIFIC_PARAMETERS=<actual count>
+HUMAN_DECISIONS_REQUIRED=<actual count>
+SCIENTIFIC_WORKLOADS_RUN=0
+NEW_SEEDS_GENERATED=NO
+NON_CALIBRATION_PARTITIONS_ACCESSED=NO
+P2_ENTRYPOINT_EXECUTED=NO
+SIMULATOR_SOURCE_CHANGED=NO
+SCHEDULER_SOURCE_CHANGED=NO
+SCIENTIFIC_THRESHOLDS_CHANGED=NO
+CI_METHOD_CHANGED=NO
+SEED_PARTITIONS_CHANGED=NO
+VALIDATION_UNLOCKED=NO
+FORMAL_UNLOCKED=NO
+GIT_COMMIT=<actual or NONE>
+GITHUB_PUSH_STATUS=<actual>
+WORKTREE=<actual>
+NEXT_SAFE_ACTION=Human review and approval of concrete P2 design
+STOP=YES
+```

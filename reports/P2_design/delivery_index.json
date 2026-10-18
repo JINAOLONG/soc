@@ -34,5 +34,23 @@
   "previous_document_check_report": "reports/P2_design/document_checks.json",
   "review_starting_head": "a585c5bba0215c1ac4b2f126f5a752ae443b56b4",
   "human_review_git_receipt": "reports/P2_design/review/git_checkpoint.json",
-  "audited_human_review_checkpoint": "f53120f2b88803504f63d500d24a5eae95646679"
+  "audited_human_review_checkpoint": "f53120f2b88803504f63d500d24a5eae95646679",
+  "proposal_v1": {
+    "entry": "docs/P2_design/P2_complete_design_proposal_v1.md",
+    "templates": "docs/P2_design/P2_workload_templates_v1.json",
+    "resource_profiles": "docs/P2_design/P2_resource_profiles_v1.json",
+    "communication_profiles": "docs/P2_design/P2_communication_profiles_v1.json",
+    "generation_spec": "docs/P2_design/P2_generation_spec_v1.json",
+    "trial_matrix": "docs/P2_design/P2_trial_matrix_draft_v1.json",
+    "decision_table": "docs/P2_design/P2_mapping_opportunity_decision_table_v1.md",
+    "runner_schema_review": "docs/P2_design/P2_runner_schema_review_v1.md",
+    "approval_checklist": "docs/P2_design/P2_D01_D10_approval_checklist_v1.md",
+    "scientific_parameters": "docs/P2_design/P2_scientific_parameter_registry_v1.json",
+    "traceability": "docs/P2_design/P2_D01_D10_traceability.csv",
+    "audit": "reports/P2_design/proposal_v1/repository_audit.json",
+    "static_checks": "reports/P2_design/proposal_v1/static_checks.json",
+    "authorization": "reports/P2_design/proposal_v1/authorization_request.txt",
+    "checkpoint_receipt": "reports/P2_design/proposal_v1/git_checkpoint.json"
+  },
+  "current_approval_entry": "docs/P2_design/P2_D01_D10_approval_checklist_v1.md"
 }
