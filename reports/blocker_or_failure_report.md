@@ -1,3 +1,15 @@
+# Current disposition: P0 literature blocker CLOSED by actual local inputs
+
+Current official P0 audit: exit 0 / PASS; existing tests: 17 passed. Both supplied
+originals were identified and fully reviewed, and four previous primary reviews
+were requalified. See P0_literature_gap_closure.md, P0_source_acquisition_014.json
+and P0_local_pdf_checks.json. This is P0 only; no science or P1 was started.
+The earlier report below is retained as historical failure evidence. Its prior
+missing-paper statements do not describe the current inventory. The exact old
+file is also archived under history/p0_before_local_pdf_review_1b36f39/.
+
+---
+
 # P0 blocker / preserved failure record
 
 STOP_STAGE=P0

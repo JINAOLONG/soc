@@ -1,15 +1,18 @@
-# Evidence matrix
+# Current evidence matrix
 
-| Claim | Evidence stage | Comparison | Config / partition | Raw or direct evidence | Summary / statistic / CI | Status | Limitation |
-|---|---|---|---|---|---|---|---|
-| Checkout matches JINAOLONG/soc and original LICENSE retained | P0 engineering audit | NOT APPLICABLE | original work branch | P0_repository_audit.txt, P0_environment.json, Git diff | direct Git observations; CI NOT APPLICABLE | VERIFIED | final live HEAD must be queried with Git |
-| Seeds follow the prescribed deterministic rule, 10/20/10/30 and disjoint | P0 metadata audit | independent derivation test | configs/seed_partitions.json | seed metadata and tests/test_governance.py | 70 unique metadata values; no workloads | VERIFIED | seed metadata auditing does not validate a generator |
-| Tooling rejects invalid partition/stage entry and forged empty unlocks | P0 engineering tests | synthetic fixtures | no scientific workload | P0_checks_001.json, tests | 17 tests passed in final run (includes other governance tests); no CI | VERIFIED_FOR_TESTED_CASES | no simulator or production scientific runner yet |
-| Four source manuscripts support scoped literature descriptions | P0 source review | NOT APPLICABLE | docs/literature_evidence.json | source URL/SHA256 and literature_reviews notes | four reviewed; no quantitative soc comparison | PARTIAL | required HEFT/CPOP and PEFT originals missing |
-| P0 prerequisites pass | P0 audit | required minimum vs current | research_protocol.json | P0_protocol_audit.json | 4 < 6; 2 required originals unverified | BLOCKED | no P0 freeze claimed |
-| H main benefit / mapping contribution / L budget / B5 comparison | P2–P5 NOT RUN | B2/B5/A1/A2/A3 NOT RUN | all scientific execution partitions untouched | NONE | estimates and 95% CI NOT AVAILABLE | NOT RUN | cannot infer a scientific outcome from tooling tests or literature |
-| Decision P95 <=2 ms | engineering NOT RUN | NOT RUN | timing protocol not frozen | NONE | NOT AVAILABLE | NOT RUN | cloud host metadata is not latency evidence |
-| Independent/formal evaluation supports hypothesis | P4/P5 NOT RUN | NOT RUN | reserved workload partitions locked | NONE | NOT AVAILABLE | NOT RUN | development and prior gates did not run |
+| Claim | Stage and scope | Direct evidence | Result | Limitation |
+|---|---|---|---|---|
+| Current repository matches soc and starts at actual 1b36f39 | P0 repository audit | P0_local_pdf_repository_audit.json | Verified; work branch initially clean | Final live delivery HEAD resolves through Git |
+| User HEFT/CPOP original matches intended article | P0 actual local source | P0_source_acquisition_014.json, heft_cpop review | Identity, 15 pages, actual file SHA256, full-paper/page evidence verified | Original download provenance/unmodified publisher binary not authenticated |
+| User PEFT original matches intended article | P0 actual local source | Same acquisition record, peft review | Identity, 13 pages, actual file SHA256, full-paper/page evidence verified | Same provenance limitation; issue 2014 vs online 2013 recorded |
+| Six original studies meet existing literature rule | P0 primary review | literature_evidence.json, literature_matrix.md, P0_local_pdf_prior_sources_recheck.json | Two new full-paper reviews plus four requalified scoped original reviews | No secondary metadata counted; four scopes not upgraded |
+| Existing P0 audit passes | P0, current instance with six source files | P0_protocol_audit.json/.md and P0_local_pdf_checks.json | Actual exit 0/PASS, no errors | Not P1 or scientific validation; cache is needed |
+| Existing lightweight tooling tests pass | P0 governance | P0_local_pdf_checks.json | 17 passed, zero failed/skipped | No simulator correctness inferred |
+| Scientific definitions/source/config/seed unchanged | P0 scope audit | 35 initial hashes and boundary checks | No protected-file changes; source and seed digests match | Documentation status/source references updated separately |
+| H benefit, mapping contribution, L budget, B5 comparison | Scientific stages NOT RUN | No scientific data | NOT RUN; point estimates and 95% CI NOT AVAILABLE | Literature results are not soc samples |
+| Decision latency and hardware claims | Engineering NOT RUN | No timing/hardware dataset | NOT RUN | Host/profiling/safety claims unsupported |
+| Validation/formal results | P4/P5 NOT RUN | No unlocks or reserved workload artifacts | LOCKED / NOT RUN | No progression allowed by this task |
 
-No chart is generated because no performance dataset exists. A placeholder plot
-would not be evidence. Hypothesis status is BLOCKED, not NOT_SUPPORTED.
+No performance plots are generated. The scientific hypothesis remains
+INCONCLUSIVE because no scientific workload has run. P0's source blocker is
+closed without changing acceptance criteria. Historical matrix is archived.

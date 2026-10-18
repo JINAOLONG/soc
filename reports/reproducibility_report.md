@@ -1,3 +1,22 @@
+# Current P0 reproduction scope with user-provided originals
+
+The current instance has six actual primary files with matching SHA256 and notes.
+The original audit returns 0/PASS and the original 17 governance tests pass.
+P0_local_pdf_checks.json contains the actual commands and outputs.
+
+Two files are user-supplied, not redistributed on GitHub. A fresh checkout must
+receive them again at the cache paths in literature_evidence.json and validate
+SHA256 before installation/audit. Their sediment primary_url entries identify
+actual attachments, not urllib endpoints; the unchanged helper cannot fetch
+missing private copies. It verified all six existing files in this task without
+network access. No six-file fresh-clone or new-cloud-task restoration is claimed.
+
+The older clean-clone result below is specifically for the earlier four-source
+P0 tooling checkpoint; it is historical and does not establish new private-source
+restoration. Scientific source/config hash remains unchanged. No P1 was run.
+
+---
+
 # Reproducibility report
 
 **PASS FOR P0 TOOLING ONLY.** Tested GitHub source checkpoint:

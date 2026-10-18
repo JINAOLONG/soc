@@ -1,0 +1,68 @@
+{
+  "timestamp_utc": "2026-10-18T08:46:34.669387+00:00",
+  "head": "1b36f391224d64f9f477bfb0d4c1a0948aa81baf",
+  "branch": "work",
+  "remote": "https://github.com/JINAOLONG/soc.git",
+  "initial_worktree": "CLEAN",
+  "protected_files": {
+    "src/soc/__init__.py": "0465cdf1411249fcac339fb7419ca32ec9654117883ed3094bcc6d384ef29e1c",
+    "src/soc/workload/__init__.py": "0465cdf1411249fcac339fb7419ca32ec9654117883ed3094bcc6d384ef29e1c",
+    "src/soc/scheduler/__init__.py": "0465cdf1411249fcac339fb7419ca32ec9654117883ed3094bcc6d384ef29e1c",
+    "src/soc/validation/__init__.py": "0465cdf1411249fcac339fb7419ca32ec9654117883ed3094bcc6d384ef29e1c",
+    "src/soc/validation/governance.py": "6241f913c8c384e0d1bc9cf9632c1880fd6de4d5406facca114f0c59825c065b",
+    "src/soc/analysis/__init__.py": "0465cdf1411249fcac339fb7419ca32ec9654117883ed3094bcc6d384ef29e1c",
+    "src/soc/model/__init__.py": "0465cdf1411249fcac339fb7419ca32ec9654117883ed3094bcc6d384ef29e1c",
+    "src/soc/simulator/__init__.py": "0465cdf1411249fcac339fb7419ca32ec9654117883ed3094bcc6d384ef29e1c",
+    "src/soc/metrics/__init__.py": "0465cdf1411249fcac339fb7419ca32ec9654117883ed3094bcc6d384ef29e1c",
+    "scripts/hash_artifacts.py": "48fa8d22cce201b09ca716712d20a78adfe62963057e802d3e23a6cb00027f3b",
+    "scripts/fetch_primary_sources.py": "8adf577e6d304aa45f2c278aa298564dc1a95227cb4f8f54dfe106760acc54d7",
+    "scripts/probe_literature.py": "ccacdd0814a3068bb18dd34833f1d50feaa50b4bbf5cbef12b6343f37cc5b4af",
+    "scripts/setup_environment.sh": "b377343bbeb18a4fdb9e8afb2f710a6de0aba431869540c21f5f10a271ab1647",
+    "scripts/run_pipeline.py": "03781ec8d186d8d3e945d8a3e02615763370aaba8fe74a4fe63dc8bcddeacce3",
+    "scripts/generate_seeds.py": "9d34c4a44ebf752ad269762929c5f5e55fffeae66cfd766a2365116c02b1664d",
+    "configs/seed_partitions.json": "e5ded56e2fbe1ba2ed992a3026f3c5780d90afb50aaab4d1d8b75b8c014f4f31",
+    "configs/research_protocol.json": "e019b6830b6bf08f39b13a456d6123fca0d634478dae475b989c07617a45cdfc",
+    "configs/workload/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "configs/engineering/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "configs/development/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "configs/validation/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "configs/formal/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "configs/calibration/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "configs/model/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tests/test_governance.py": "47b82208f445bf935b670a0c9404099969a711f1062cefbf5a06177f2431f3ab",
+    "AGENTS.md": "5435e5e690a64e0e7f432bae22b8f459f646e12233d99a7a4b1a70266d8c9a22",
+    "LICENSE": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+    "pyproject.toml": "568a7e5084faa08ffabf07268dc7ec0b1d93e99411001e613909f432eb58028f",
+    "docs/model_spec.md": "d7c06e9dc2c2812b87e875480d213f3c3aa7c6528ba6ede796065aad8d6af931",
+    "docs/research_contract.md": "9016aca3fc4c73cb86deca65b6c6d5f57e1b4230fa607fc6b53fa0bb075de665",
+    "docs/metric_spec.md": "c4b912fc672979ddc763d882e546b7a92bf53090e5b5dddd5777e2e867df182a",
+    "docs/statistical_protocol.md": "f9c0eeb6e76f68330ba3e5d8d90e58d175c3947a1948bb41b26ad50dbc041e8a",
+    "docs/method_spec.md": "c29862a891a866d38dfee2e958c58646973f8c77a37f11f8ab17d9f319f15925",
+    "docs/development_search_protocol.md": "09569563ac1b7d5647d1cf399404656a8e3951f0f92c9131e2df41be68cb5df8",
+    "docs/workload_spec.md": "a098008f3abe47f4cfb830685009b19bf4d3555a8e370ad242a2fce1debea606"
+  },
+  "baseline_checks": [
+    {
+      "command": [
+        ".venv/bin/python",
+        "scripts/hash_artifacts.py",
+        "--verify"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"files\": 96, \"missing\": [], \"mismatch\": []}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        ".venv/bin/python",
+        "scripts/run_pipeline.py",
+        "--stage",
+        "p0",
+        "--check-only"
+      ],
+      "exit_code": 2,
+      "stdout": "{\n  \"stage\": \"P0\",\n  \"status\": \"BLOCKED\",\n  \"errors\": [\n    \"original studies verified: 4; required: at least 6\",\n    \"required originals unverified: heft_cpop, peft\"\n  ],\n  \"partition_counts\": {\n    \"CALIBRATION\": 10,\n    \"DEVELOPMENT\": 20,\n    \"INDEPENDENT_VALIDATION\": 10,\n    \"FORMAL_EVALUATION\": 30\n  },\n  \"seed_sha256\": \"e5ded56e2fbe1ba2ed992a3026f3c5780d90afb50aaab4d1d8b75b8c014f4f31\",\n  \"source_sha256\": \"d222e1dae96743c890bba98abb28acea5321c0a5a4d504e0e8d458476d6add0d\",\n  \"scientific_partitions_executed\": [],\n  \"legacy_results_used_as_new_evidence\": false\n}\n",
+      "stderr": ""
+    }
+  ]
+}

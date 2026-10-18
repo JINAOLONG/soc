@@ -1,0 +1,88 @@
+{
+  "scope": "Requalify existing four primary studies against current protocol, rather than count matrix rows",
+  "minimum_required_count": 6,
+  "required_original_ids": [
+    "heft_cpop",
+    "peft",
+    "ds3"
+  ],
+  "existing_sources": [
+    {
+      "id": "ds3",
+      "sha256": "e025cdcb00a8b50daa3bc9b09fdab799226646a26087a7a37634d826ed7cbb09",
+      "hash_matches": true,
+      "actual_page_count": 14,
+      "notes_path": "docs/literature_reviews/ds3.md",
+      "notes_sha256": "90ebcdc54699764533bd5280ee3f31c2f63af8a6f83ad83c244bba46270d1a7f",
+      "source_type": "author preprint",
+      "original_scope": "EXISTING_SCOPED_PRIMARY_REVIEW; no upgrade to complete-page review",
+      "page_references_valid": true,
+      "rechecked_pdf_pages": [
+        3,
+        5
+      ],
+      "eligible_under_existing_protocol": true,
+      "qualification_reason": "Original research manuscript available and identity/hash/page references/primary-model notes rechecked. Existing scoped primary review qualifies; no unsupported upgrade to full-paper coverage or experimental replication.",
+      "rechecked_at_utc": "2026-10-18T08:53:59.447386+00:00",
+      "page_ref_validation_scope": "All stored page references checked for existence/range; listed rechecked_pdf_pages are the selected substantive pages inspected again in this task."
+    },
+    {
+      "id": "starpu",
+      "sha256": "1d1277c11847303d315ac8ff11bd5a2faaad0927c50cb32e040ac825778e55af",
+      "hash_matches": true,
+      "actual_page_count": 16,
+      "notes_path": "docs/literature_reviews/starpu.md",
+      "notes_sha256": "92615f4eb536f139295fa2c71d25ae2b66ba9ea1a8c1a0eb6d80c0b5c5f7ad9b",
+      "source_type": "author-deposited manuscript",
+      "original_scope": "EXISTING_SCOPED_PRIMARY_REVIEW; no upgrade to complete-page review",
+      "page_references_valid": true,
+      "rechecked_pdf_pages": [
+        4,
+        6
+      ],
+      "eligible_under_existing_protocol": true,
+      "qualification_reason": "Original research manuscript available and identity/hash/page references/primary-model notes rechecked. Existing scoped primary review qualifies; no unsupported upgrade to full-paper coverage or experimental replication.",
+      "rechecked_at_utc": "2026-10-18T08:53:59.447386+00:00",
+      "page_ref_validation_scope": "All stored page references checked for existence/range; listed rechecked_pdf_pages are the selected substantive pages inspected again in this task."
+    },
+    {
+      "id": "autoware_dag",
+      "sha256": "b743b8fb8fc9fe8f447f3e84dd16e8496403dff6eded6056a6380625709ae465",
+      "hash_matches": true,
+      "actual_page_count": 4,
+      "notes_path": "docs/literature_reviews/autoware_dag.md",
+      "notes_sha256": "4ca7da9cec0f9067b67809e7f4aa069588e301f28c61262c1c8c16e492490be4",
+      "source_type": "author-uploaded work-in-progress manuscript",
+      "original_scope": "EXISTING_SCOPED_PRIMARY_REVIEW; no upgrade to complete-page review",
+      "page_references_valid": true,
+      "rechecked_pdf_pages": [
+        3
+      ],
+      "eligible_under_existing_protocol": true,
+      "qualification_reason": "Original research manuscript available and identity/hash/page references/primary-model notes rechecked. Existing scoped primary review qualifies; no unsupported upgrade to full-paper coverage or experimental replication.",
+      "rechecked_at_utc": "2026-10-18T08:53:59.447386+00:00",
+      "page_ref_validation_scope": "All stored page references checked for existence/range; listed rechecked_pdf_pages are the selected substantive pages inspected again in this task."
+    },
+    {
+      "id": "federated_limit",
+      "sha256": "405cf0a7d5efc2d80bf997686d2257418ee1e67aeb5642deaf4bf0afe11f5f3b",
+      "hash_matches": true,
+      "actual_page_count": 6,
+      "notes_path": "docs/literature_reviews/federated_limit.md",
+      "notes_sha256": "6824f068c48d8bc67f4580769832d43efb80ed0b2a766b6d4ddb46edbfec5267",
+      "source_type": "author preprint",
+      "original_scope": "EXISTING_SCOPED_PRIMARY_REVIEW; no upgrade to complete-page review",
+      "page_references_valid": true,
+      "rechecked_pdf_pages": [
+        1,
+        5
+      ],
+      "eligible_under_existing_protocol": true,
+      "qualification_reason": "Original research manuscript available and identity/hash/page references/primary-model notes rechecked. Existing scoped primary review qualifies; no unsupported upgrade to full-paper coverage or experimental replication.",
+      "rechecked_at_utc": "2026-10-18T08:53:59.447386+00:00",
+      "page_ref_validation_scope": "All stored page references checked for existence/range; listed rechecked_pdf_pages are the selected substantive pages inspected again in this task."
+    }
+  ],
+  "accepted_existing_count": 4,
+  "no_scoped_to_full_paper_upgrade": true
+}

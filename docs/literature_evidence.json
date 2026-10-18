@@ -4,18 +4,18 @@
       "id": "heft_cpop",
       "title": "Performance-Effective and Low-Complexity Task Scheduling for Heterogeneous Computing",
       "title_provenance": "user request",
-      "status": "UNVERIFIED_SOURCE",
+      "status": "VERIFIED_PRIMARY",
       "required": true,
-      "reviewed_at_utc": null,
+      "reviewed_at_utc": "2026-10-18T08:53:59.447386+00:00",
       "review_notes_path": "docs/literature_reviews/heft_cpop.md",
-      "bibliography_status": "CROSSREF_METADATA_CONFIRMED; ORIGINAL_NOT_REVIEWED",
+      "bibliography_status": "VERIFIED_AGAINST_ACTUAL_PDF_AND_PREVIOUS_CROSSREF_RECORD",
       "doi": "10.1109/71.993206",
-      "source_blocker": "Current closure: institutional/RG source leads proxy-denied; IEEE empty 202/PDF 418; no accepted original artifact. See reports/P0_source_acquisition_006.json through _012.json.",
+      "source_blocker": null,
       "bibliography": {
         "title": "Performance-effective and low-complexity task scheduling for heterogeneous computing",
         "authors": [
-          "H. Topcuoglu",
-          "S. Hariri",
+          "Haluk Topcuoglu",
+          "Salim Hariri",
           "Min-You Wu"
         ],
         "venue": "IEEE Transactions on Parallel and Distributed Systems",
@@ -24,15 +24,93 @@
         "issue": "3",
         "pages": "260-274",
         "doi": "10.1109/71.993206",
-        "verification_source": "reports/P0_source_acquisition_008.json (Crossref metadata only)"
+        "verification_source": "Actual PDF header/title/pages; PEFT printed DOI, HEFT PDF Subject DOI; earlier Crossref record confirms publication identity",
+        "version_discrepancy": "Publisher-formatted copy with later iText modification; exact original download URL unknown; input bytes are the recorded identity."
       },
-      "primary_source_retrieved": false,
-      "full_text_inspected": false,
-      "full_text_reviewed": false,
-      "source_type": "NOT AVAILABLE",
-      "source_version": "NOT VERIFIED",
-      "page_evidence": [],
-      "page_evidence_complete": false,
+      "primary_source_retrieved": true,
+      "full_text_inspected": true,
+      "full_text_reviewed": true,
+      "source_type": "publisher-formatted journal copy supplied by user",
+      "source_version": "Journal-issue formatted copy; later 2018 iText modification recorded; untouched publisher binary authenticity unverified",
+      "page_evidence": [
+        {
+          "pdf_pages": [
+            1
+          ],
+          "printed_pages": [
+            260
+          ],
+          "item": "Title, authors, journal/issue/page; DOI in PDF Subject metadata",
+          "conclusion": "IDENTITY_VERIFIED"
+        },
+        {
+          "pdf_pages": [
+            2,
+            3
+          ],
+          "printed_pages": [
+            261,
+            262
+          ],
+          "item": "Static heterogeneous platform, non-preemption, overlap/no contention, costs and availability",
+          "equations": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7"
+          ],
+          "conclusion": "VERIFIED"
+        },
+        {
+          "pdf_pages": [
+            5
+          ],
+          "printed_pages": [
+            264
+          ],
+          "item": "Upward/downward rank, HEFT priority/EFT insertion, authors complexity",
+          "equations": [
+            "8",
+            "9",
+            "10"
+          ],
+          "figures": [
+            "2"
+          ],
+          "conclusion": "VERIFIED"
+        },
+        {
+          "pdf_pages": [
+            6,
+            7
+          ],
+          "printed_pages": [
+            265,
+            266
+          ],
+          "item": "CPOP priorities, connected critical path/processor, ready queue, insertion and authors complexity",
+          "figures": [
+            "5"
+          ],
+          "conclusion": "VERIFIED"
+        },
+        {
+          "pdf_pages": [
+            13,
+            14
+          ],
+          "printed_pages": [
+            272,
+            273
+          ],
+          "item": "Alternate-policy labels and scope/future-work limitations",
+          "conclusion": "VERIFIED"
+        }
+      ],
+      "page_evidence_complete": true,
       "acquisition_records": [
         "reports/P0_source_acquisition_006.json",
         "reports/P0_source_acquisition_007.json",
@@ -40,20 +118,39 @@
         "reports/P0_source_acquisition_009.json",
         "reports/P0_source_acquisition_010.json",
         "reports/P0_source_acquisition_011.json",
-        "reports/P0_source_acquisition_012.json"
-      ]
+        "reports/P0_source_acquisition_012.json",
+        "reports/P0_source_acquisition_014.json"
+      ],
+      "primary_url": "sediment://file_0000000083fc8207bc8eb1d928f7ae6c",
+      "primary_url_kind": "ACTUAL_USER_ATTACHMENT_LOCATOR_NOT_PUBLISHER_DOWNLOAD_URL",
+      "artifact_path": ".cache/literature/HEFT_CPOP_Topcuoglu_2002.pdf",
+      "sha256": "186bcf6a9fefb25c99cfd4d247e92f3fabc91cef5c3555ccb4d2d04ba6fec694",
+      "bytes": 652304,
+      "pdf_page_count": 15,
+      "actual_input_path": "/workspace/attachments/b3bdf00a-9211-4180-a198-d2b3c7a28d17/Performance-effective_and_low-complexity_task_scheduling_for_heterogeneous_computing.pdf",
+      "input_attachment_uri": "sediment://file_0000000083fc8207bc8eb1d928f7ae6c",
+      "download_url": null,
+      "source_status": "USER_PROVIDED_LOCAL_COPY_SOURCE_UNVERIFIED",
+      "identity_verified": true,
+      "review_scope": "FULL_PAPER_PDF_PAGES_1_TO_15; enlarged algorithm/equation pages also visually inspected",
+      "reviewer": "Codex, current user-provided-local-PDF P0 review",
+      "previous_source_blocker": "Current closure: institutional/RG source leads proxy-denied; IEEE empty 202/PDF 418; no accepted original artifact. See reports/P0_source_acquisition_006.json through _012.json.",
+      "access_status": "USER_INPUT_PDF_OPENED_ALL_PAGES_AND_HASH_VERIFIED",
+      "redistribution_permission": "NOT ESTABLISHED; PDF ignored and not redistributed",
+      "manual_restore_required_without_cache": true,
+      "restore_instruction": "Re-supply this exact user input and copy to artifact_path after checking recorded SHA256; sediment locator is not an urllib download endpoint."
     },
     {
       "id": "peft",
       "title": "List Scheduling Algorithm for Heterogeneous Systems by an Optimistic Cost Table",
       "title_provenance": "user request",
-      "status": "UNVERIFIED_SOURCE",
+      "status": "VERIFIED_PRIMARY",
       "required": true,
-      "reviewed_at_utc": null,
+      "reviewed_at_utc": "2026-10-18T08:53:59.447386+00:00",
       "review_notes_path": "docs/literature_reviews/peft.md",
-      "bibliography_status": "CROSSREF_METADATA_CONFIRMED; ORIGINAL_NOT_REVIEWED",
+      "bibliography_status": "VERIFIED_AGAINST_ACTUAL_PDF_AND_PREVIOUS_CROSSREF_RECORD",
       "doi": "10.1109/TPDS.2013.57",
-      "source_blocker": "Current closure: institutional/RG source leads proxy-denied; IEEE empty 202/PDF 418; no accepted original artifact. See reports/P0_source_acquisition_006.json through _012.json.",
+      "source_blocker": null,
       "bibliography": {
         "title": "List Scheduling Algorithm for Heterogeneous Systems by an Optimistic Cost Table",
         "authors": [
@@ -66,15 +163,89 @@
         "issue": "3",
         "pages": "682-694",
         "doi": "10.1109/tpds.2013.57",
-        "verification_source": "reports/P0_source_acquisition_008.json (Crossref metadata only)"
+        "verification_source": "Actual PDF header/title/pages; PEFT printed DOI, HEFT PDF Subject DOI; earlier Crossref record confirms publication identity",
+        "version_discrepancy": "Publisher-formatted copy with later iText modification; exact original download URL unknown; input bytes are the recorded identity.",
+        "online_publication_date": "2013-02-27 (PDF page 1); journal issue March 2014"
       },
-      "primary_source_retrieved": false,
-      "full_text_inspected": false,
-      "full_text_reviewed": false,
-      "source_type": "NOT AVAILABLE",
-      "source_version": "NOT VERIFIED",
-      "page_evidence": [],
-      "page_evidence_complete": false,
+      "primary_source_retrieved": true,
+      "full_text_inspected": true,
+      "full_text_reviewed": true,
+      "source_type": "publisher-formatted journal copy supplied by user",
+      "source_version": "Journal-issue formatted copy; later 2018 iText modification recorded; untouched publisher binary authenticity unverified",
+      "page_evidence": [
+        {
+          "pdf_pages": [
+            1
+          ],
+          "printed_pages": [
+            682
+          ],
+          "item": "Title, authors, journal issue, DOI and 2013-online/2014-issue dates",
+          "conclusion": "IDENTITY_VERIFIED"
+        },
+        {
+          "pdf_pages": [
+            2,
+            3
+          ],
+          "printed_pages": [
+            683,
+            684
+          ],
+          "item": "Single-job static nonshared resources, communication model, EST/EFT availability",
+          "equations": [
+            "1",
+            "2",
+            "3",
+            "5",
+            "6"
+          ],
+          "conclusion": "VERIFIED"
+        },
+        {
+          "pdf_pages": [
+            6
+          ],
+          "printed_pages": [
+            687
+          ],
+          "item": "OCT recurrence/base and availability exclusion, rank, OEFT and insertion processor choice",
+          "equations": [
+            "7",
+            "8",
+            "9"
+          ],
+          "algorithms": [
+            "1"
+          ],
+          "conclusion": "VERIFIED"
+        },
+        {
+          "pdf_pages": [
+            7
+          ],
+          "printed_pages": [
+            688
+          ],
+          "item": "Worked example and authors stated table/total complexity",
+          "conclusion": "VERIFIED"
+        },
+        {
+          "pdf_pages": [
+            10,
+            11,
+            12
+          ],
+          "printed_pages": [
+            691,
+            692,
+            693
+          ],
+          "item": "Worse cases, FFT/all-critical-path limitation and conclusion",
+          "conclusion": "VERIFIED"
+        }
+      ],
+      "page_evidence_complete": true,
       "acquisition_records": [
         "reports/P0_source_acquisition_006.json",
         "reports/P0_source_acquisition_007.json",
@@ -82,8 +253,27 @@
         "reports/P0_source_acquisition_009.json",
         "reports/P0_source_acquisition_010.json",
         "reports/P0_source_acquisition_011.json",
-        "reports/P0_source_acquisition_012.json"
-      ]
+        "reports/P0_source_acquisition_012.json",
+        "reports/P0_source_acquisition_014.json"
+      ],
+      "primary_url": "sediment://file_000000004a808211b0e2e492db0ac541",
+      "primary_url_kind": "ACTUAL_USER_ATTACHMENT_LOCATOR_NOT_PUBLISHER_DOWNLOAD_URL",
+      "artifact_path": ".cache/literature/PEFT_Arabnejad_Barbosa_2014.pdf",
+      "sha256": "51c5036310ea4f4deb9f2e6c65730fc1b2321dd1e2975bc3940285b03ede5fc8",
+      "bytes": 1492291,
+      "pdf_page_count": 13,
+      "actual_input_path": "/workspace/attachments/a587bb22-0000-435f-af70-ab3c8f3325eb/List_Scheduling_Algorithm_for_Heterogeneous_Systems_by_an_Optimistic_Cost_Table.pdf",
+      "input_attachment_uri": "sediment://file_000000004a808211b0e2e492db0ac541",
+      "download_url": null,
+      "source_status": "USER_PROVIDED_LOCAL_COPY_SOURCE_UNVERIFIED",
+      "identity_verified": true,
+      "review_scope": "FULL_PAPER_PDF_PAGES_1_TO_13; enlarged algorithm/equation pages also visually inspected",
+      "reviewer": "Codex, current user-provided-local-PDF P0 review",
+      "previous_source_blocker": "Current closure: institutional/RG source leads proxy-denied; IEEE empty 202/PDF 418; no accepted original artifact. See reports/P0_source_acquisition_006.json through _012.json.",
+      "access_status": "USER_INPUT_PDF_OPENED_ALL_PAGES_AND_HASH_VERIFIED",
+      "redistribution_permission": "NOT ESTABLISHED; PDF ignored and not redistributed",
+      "manual_restore_required_without_cache": true,
+      "restore_instruction": "Re-supply this exact user input and copy to artifact_path after checking recorded SHA256; sediment locator is not an urllib download endpoint."
     },
     {
       "id": "ds3",
@@ -161,7 +351,13 @@
       "primary_source_retrieved": true,
       "full_text_inspected": true,
       "review_scope": "EXISTING_SCOPED_PRIMARY_REVIEW; no upgrade to complete-page review",
-      "access_status": "LOCAL_PRIMARY_PDF_OPENED_AND_HASH_VERIFIED"
+      "access_status": "LOCAL_PRIMARY_PDF_OPENED_AND_HASH_VERIFIED",
+      "eligibility_recheck": {
+        "eligible": true,
+        "checked_at_utc": "2026-10-18T08:53:59.447386+00:00",
+        "record_path": "reports/P0_local_pdf_prior_sources_recheck.json",
+        "scope_unchanged": true
+      }
     },
     {
       "id": "starpu",
@@ -226,7 +422,13 @@
       "primary_source_retrieved": true,
       "full_text_inspected": true,
       "review_scope": "EXISTING_SCOPED_PRIMARY_REVIEW; no upgrade to complete-page review",
-      "access_status": "LOCAL_PRIMARY_PDF_OPENED_AND_HASH_VERIFIED"
+      "access_status": "LOCAL_PRIMARY_PDF_OPENED_AND_HASH_VERIFIED",
+      "eligibility_recheck": {
+        "eligible": true,
+        "checked_at_utc": "2026-10-18T08:53:59.447386+00:00",
+        "record_path": "reports/P0_local_pdf_prior_sources_recheck.json",
+        "scope_unchanged": true
+      }
     },
     {
       "id": "autoware_dag",
@@ -282,7 +484,13 @@
       "primary_source_retrieved": true,
       "full_text_inspected": true,
       "review_scope": "EXISTING_SCOPED_PRIMARY_REVIEW; no upgrade to complete-page review",
-      "access_status": "LOCAL_PRIMARY_PDF_OPENED_AND_HASH_VERIFIED"
+      "access_status": "LOCAL_PRIMARY_PDF_OPENED_AND_HASH_VERIFIED",
+      "eligibility_recheck": {
+        "eligible": true,
+        "checked_at_utc": "2026-10-18T08:53:59.447386+00:00",
+        "record_path": "reports/P0_local_pdf_prior_sources_recheck.json",
+        "scope_unchanged": true
+      }
     },
     {
       "id": "federated_limit",
@@ -339,9 +547,15 @@
       "primary_source_retrieved": true,
       "full_text_inspected": true,
       "review_scope": "EXISTING_SCOPED_PRIMARY_REVIEW; no upgrade to complete-page review",
-      "access_status": "LOCAL_PRIMARY_PDF_OPENED_AND_HASH_VERIFIED"
+      "access_status": "LOCAL_PRIMARY_PDF_OPENED_AND_HASH_VERIFIED",
+      "eligibility_recheck": {
+        "eligible": true,
+        "checked_at_utc": "2026-10-18T08:53:59.447386+00:00",
+        "record_path": "reports/P0_local_pdf_prior_sources_recheck.json",
+        "scope_unchanged": true
+      }
     }
   ],
-  "verified_primary_count": 4,
-  "note": "P0 remediation remains BLOCKED: four existing scoped primary reviews retained; required HEFT/CPOP and PEFT originals were not acquired. Metadata-only confirmations are not counted. Source PDFs are ignored and are not redistributed in Git."
+  "verified_primary_count": 6,
+  "note": "Six primary studies: two newly full-paper reviewed actual user-provided originals, plus four existing scoped primary reviews rechecked against files/notes/pages. No PDF redistributed; original download provenance of the two user inputs remains USER_PROVIDED_LOCAL_COPY_SOURCE_UNVERIFIED. Actual P0 audit decides gate status."
 }

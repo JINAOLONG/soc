@@ -1,4 +1,4 @@
-# Baselines — P0 draft, original-source verification pending
+# Baselines — original sources reviewed; online implementation remains pending
 
 All methods share one immutable observation boundary, workload, compatibility,
 communication semantics and deterministic tie rule. Root/ready eligibility never
@@ -13,16 +13,21 @@ the source methods are reviewed and before P1 is marked complete.
 |---|---|---|---|
 | B1 | ascending service absolute deadline | minimum estimated finish among compatible units | definition supplied by user; implementation NOT RUN |
 | B2 | H before L, then ascending service absolute deadline | same EFT rule as B1 | fixed L-budget reference; implementation NOT RUN |
-| B3 | Online-HEFT adaptation, upward-rank rule pending original review | HEFT processor-selection adaptation pending review | UNVERIFIED_SOURCE; NOT IMPLEMENTED |
-| B4 | Online-PEFT adaptation, OCT/rank pending original review | PEFT processor-selection adaptation pending review | UNVERIFIED_SOURCE; NOT IMPLEMENTED |
-| B5 | H-priority Online-PEFT adaptation | same mapping as reviewed B4 | UNVERIFIED_SOURCE; NOT IMPLEMENTED |
+| B3 | Online-HEFT adaptation; original upward rank now source-verified | original insertion/EFT now source-verified; online dispatch pending | ORIGINAL_SOURCE_REVIEWED; NOT IMPLEMENTED |
+| B4 | Online-PEFT adaptation; original OCT/rank now source-verified | original insertion/OEFT now source-verified; online dispatch pending | ORIGINAL_SOURCE_REVIEWED; NOT IMPLEMENTED |
+| B5 | H-priority Online-PEFT adaptation | same mapping requirement as B4 | ORIGINAL_SOURCE_REVIEWED; NOT IMPLEMENTED |
 
-HEFT/CPOP and PEFT formulas, complexity and claimed equivalence are deliberately
-not filled from memory or titles. Once original studies are available, record
-equations/page references and manually verified OCT/rank examples. Then specify
-visible DAG set, ready filtering, compatibility, busy-resource handling, rank/OCT
-refresh, idle/wait behavior, ties and boundary cases for each online adaptation.
-Online adaptations must never be presented as the original static algorithms.
+The actual user-provided originals are now reviewed in
+[heft_cpop.md](literature_reviews/heft_cpop.md) and
+[peft.md](literature_reviews/peft.md), with equations, figures, page numbers and
+version/provenance limits. This is an evidence-status update, not a change to any
+baseline requirement or an implementation. Original HEFT rank ties are random;
+PEFT OCT excludes availability while EFT includes partial-schedule availability.
+Online adaptation still must explicitly specify visible DAG set, ready filtering,
+compatibility, busy-resource handling, rank/OCT refresh, idle/wait behavior, ties
+and boundary cases before P1 can be complete. No such implementation or policy
+is authorized in this local-PDF task. Online adaptations must never be presented
+as the original static algorithms.
 
 Required P1 evidence: distinguish B1/B2 by hand fixture; verify ranks/OCT against
 source-derived worked examples; exercise incompatible/busy resources and ties;

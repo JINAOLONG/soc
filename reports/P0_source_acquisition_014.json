@@ -1,0 +1,410 @@
+{
+  "purpose": "User-provided actual local PDF identity and opening evidence; no network download claimed",
+  "attempts": [
+    {
+      "id": "heft_cpop",
+      "input_attachment_uri": "sediment://file_0000000083fc8207bc8eb1d928f7ae6c",
+      "actual_input_path": "/workspace/attachments/b3bdf00a-9211-4180-a198-d2b3c7a28d17/Performance-effective_and_low-complexity_task_scheduling_for_heterogeneous_computing.pdf",
+      "actual_filename": "Performance-effective_and_low-complexity_task_scheduling_for_heterogeneous_computing.pdf",
+      "expected_alias": "HEFT_CPOP_Topcuoglu_2002.pdf",
+      "artifact_path": ".cache/literature/HEFT_CPOP_Topcuoglu_2002.pdf",
+      "bytes": 652304,
+      "sha256": "186bcf6a9fefb25c99cfd4d247e92f3fabc91cef5c3555ccb4d2d04ba6fec694",
+      "pdf_page_count": 15,
+      "printed_page_range": [
+        260,
+        274
+      ],
+      "source_status": "USER_PROVIDED_LOCAL_COPY_SOURCE_UNVERIFIED",
+      "download_url": null,
+      "input_received_at_utc": "2026-10-18T08:46:34.968032+00:00",
+      "input_received_time_scope": "time recorded in this task; original download time independently unverified",
+      "pdfinfo": "Title:           Performance-effective and low-complexity task scheduling for heterogeneous computing\nSubject:         IEEE Transactions on Parallel and Distributed Systems;2002;13;3;10.1109/71.993206\nAuthor:          H. Topcuoglu;S. Hariri;Min-You Wu\nCreator:         IEEE Copyright\nProducer:        Acrobat PDFWriter 4.05 for Windows NT; modified using iText® 7.1.1 ©2000-2018 iText Group NV (AGPL-version)\nCreationDate:    Tue Jul 31 13:13:59 2001 UTC\nModDate:         Wed Nov  7 23:03:50 2018 UTC\nCustom Metadata: yes\nMetadata Stream: yes\nTagged:          no\nUserProperties:  no\nSuspects:        no\nForm:            AcroForm\nJavaScript:      no\nPages:           15\nEncrypted:       no\nPage size:       612 x 792 pts (letter)\nPage rot:        0\nFile size:       652304 bytes\nOptimized:       no\nPDF version:     1.3\n",
+      "pdfinfo_exit_code": 0,
+      "pdf_text_all_pages_opened": true,
+      "pdf_text_page_count": 15,
+      "identity_status": "MATCHES_TARGET",
+      "version_identification": "Publisher-formatted journal copy; later iText modification in metadata, unchanged publisher binary authenticity NOT VERIFIED",
+      "redistribution_permission": "NOT ESTABLISHED; DO NOT TRACK OR PUSH PDF",
+      "cache_ignored_by_git": true,
+      "page_map": [
+        {
+          "pdf_page": 1,
+          "printed_page": 260,
+          "extracted_text_sha256": "3c5507edf48a38af6c3a4ee8ffd464e3d06fe97e287770279a7ea789535db9c1",
+          "extracted_text_characters": 7616
+        },
+        {
+          "pdf_page": 2,
+          "printed_page": 261,
+          "extracted_text_sha256": "40b7b72d6ce8882542d6de13379754ed69a25c53e630c1bf1b159f9fb537fa7c",
+          "extracted_text_characters": 8606
+        },
+        {
+          "pdf_page": 3,
+          "printed_page": 262,
+          "extracted_text_sha256": "2d0297283c90d9089586abafd825bfe91d78bd2139d52edcfc42c65b7eb05caf",
+          "extracted_text_characters": 8792
+        },
+        {
+          "pdf_page": 4,
+          "printed_page": 263,
+          "extracted_text_sha256": "ae5ade5d74a4089d59152e31536dc40645e2e115f6f18e3cf878bf52508357fc",
+          "extracted_text_characters": 5826
+        },
+        {
+          "pdf_page": 5,
+          "printed_page": 264,
+          "extracted_text_sha256": "1203d480dd966554d74926aec06cbb8c7991b4fb6fb6ec11f547fff49f3af023",
+          "extracted_text_characters": 7775
+        },
+        {
+          "pdf_page": 6,
+          "printed_page": 265,
+          "extracted_text_sha256": "f1e8650c80b2be8decbfd3aa45c400ea94418d7d5d4b1fec73c3ab4701174eea",
+          "extracted_text_characters": 1632
+        },
+        {
+          "pdf_page": 7,
+          "printed_page": 266,
+          "extracted_text_sha256": "0586295c9e30c369c9cbc8a250d8edaf2369625937a2e7e141c273a0297efb2a",
+          "extracted_text_characters": 5096
+        },
+        {
+          "pdf_page": 8,
+          "printed_page": 267,
+          "extracted_text_sha256": "e2f20487e71f92fe500301b8f161e6244c16c4c0a5934899c43308e4be6d2531",
+          "extracted_text_characters": 8894
+        },
+        {
+          "pdf_page": 9,
+          "printed_page": 268,
+          "extracted_text_sha256": "ccafbb02bad4ed909922233e0a41cf0b3f2f8a8ec94c6bfc737df24d88a62ead",
+          "extracted_text_characters": 4967
+        },
+        {
+          "pdf_page": 10,
+          "printed_page": 269,
+          "extracted_text_sha256": "9dc0fc494567ecd929e50558325be4b30fbc3159cc18e0b8a88810d0d89323e3",
+          "extracted_text_characters": 6123
+        },
+        {
+          "pdf_page": 11,
+          "printed_page": 270,
+          "extracted_text_sha256": "09c25a8f13935629b17525c85fce9e8412246990a0008e707258be90d655f41c",
+          "extracted_text_characters": 2858
+        },
+        {
+          "pdf_page": 12,
+          "printed_page": 271,
+          "extracted_text_sha256": "1a830750c3179dc182b0f2c8acb08b6ea8d1fda4df3f9111d93614c6564a9ba7",
+          "extracted_text_characters": 1101
+        },
+        {
+          "pdf_page": 13,
+          "printed_page": 272,
+          "extracted_text_sha256": "02610ccab2ede047616d7502dc3cb75e772564680720aa00ab0b887f59c592e7",
+          "extracted_text_characters": 4301
+        },
+        {
+          "pdf_page": 14,
+          "printed_page": 273,
+          "extracted_text_sha256": "1c7646f2011585ad998a830f2623a942f0e68bfd1a6d24d435c8c8f62a83111d",
+          "extracted_text_characters": 4601
+        },
+        {
+          "pdf_page": 15,
+          "printed_page": 274,
+          "extracted_text_sha256": "5af756c4676c1c7626ce972c7d1e54665cb7c45d99b0c032d9fe040adf4f07b4",
+          "extracted_text_characters": 10682
+        }
+      ],
+      "printed_page_sequence_verified": true,
+      "full_text_reviewed": true,
+      "page_evidence_complete": true,
+      "review_completed_at_utc": "2026-10-18T08:55:05.026421+00:00",
+      "review_notes_path": "docs/literature_reviews/heft_cpop.md",
+      "page_evidence": [
+        {
+          "pdf_pages": [
+            1
+          ],
+          "printed_pages": [
+            260
+          ],
+          "item": "Title, authors, journal/issue/page; DOI in PDF Subject metadata",
+          "conclusion": "IDENTITY_VERIFIED"
+        },
+        {
+          "pdf_pages": [
+            2,
+            3
+          ],
+          "printed_pages": [
+            261,
+            262
+          ],
+          "item": "Static heterogeneous platform, non-preemption, overlap/no contention, costs and availability",
+          "equations": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7"
+          ],
+          "conclusion": "VERIFIED"
+        },
+        {
+          "pdf_pages": [
+            5
+          ],
+          "printed_pages": [
+            264
+          ],
+          "item": "Upward/downward rank, HEFT priority/EFT insertion, authors complexity",
+          "equations": [
+            "8",
+            "9",
+            "10"
+          ],
+          "figures": [
+            "2"
+          ],
+          "conclusion": "VERIFIED"
+        },
+        {
+          "pdf_pages": [
+            6,
+            7
+          ],
+          "printed_pages": [
+            265,
+            266
+          ],
+          "item": "CPOP priorities, connected critical path/processor, ready queue, insertion and authors complexity",
+          "figures": [
+            "5"
+          ],
+          "conclusion": "VERIFIED"
+        },
+        {
+          "pdf_pages": [
+            13,
+            14
+          ],
+          "printed_pages": [
+            272,
+            273
+          ],
+          "item": "Alternate-policy labels and scope/future-work limitations",
+          "conclusion": "VERIFIED"
+        }
+      ],
+      "render_check": {
+        "id": "heft_cpop",
+        "render_exit_code": 0,
+        "all_pages_rendered": 15,
+        "contact_sheet": "/tmp/soc-local-paper-review/heft_cpop-contact.png",
+        "fontconfig_warning_occurrences": 28,
+        "warnings_prevented_render": false
+      },
+      "visual_inspection": "Full-document contact sheet plus enlarged HEFT PDF 5/7 or PEFT PDF 6 algorithm/equation pages. Extracted full text of every page read separately."
+    },
+    {
+      "id": "peft",
+      "input_attachment_uri": "sediment://file_000000004a808211b0e2e492db0ac541",
+      "actual_input_path": "/workspace/attachments/a587bb22-0000-435f-af70-ab3c8f3325eb/List_Scheduling_Algorithm_for_Heterogeneous_Systems_by_an_Optimistic_Cost_Table.pdf",
+      "actual_filename": "List_Scheduling_Algorithm_for_Heterogeneous_Systems_by_an_Optimistic_Cost_Table.pdf",
+      "expected_alias": "PEFT_Arabnejad_Barbosa_2014.pdf",
+      "artifact_path": ".cache/literature/PEFT_Arabnejad_Barbosa_2014.pdf",
+      "bytes": 1492291,
+      "sha256": "51c5036310ea4f4deb9f2e6c65730fc1b2321dd1e2975bc3940285b03ede5fc8",
+      "pdf_page_count": 13,
+      "printed_page_range": [
+        682,
+        694
+      ],
+      "source_status": "USER_PROVIDED_LOCAL_COPY_SOURCE_UNVERIFIED",
+      "download_url": null,
+      "input_received_at_utc": "2026-10-18T08:46:35.207954+00:00",
+      "input_received_time_scope": "time recorded in this task; original download time independently unverified",
+      "pdfinfo": "Title:           List Scheduling Algorithm for Heterogeneous Systems by an Optimistic Cost Table\nSubject:         IEEE Transactions on Parallel and Distributed Systems;2014;25;3;10.1109/TPDS.2013.57\nCreator:         3B2 Total Publishing System 8.07v/W\nProducer:        Acrobat Distiller 9.5.3 (Windows); modified using iText® 7.1.1 ©2000-2018 iText Group NV (AGPL-version)\nCreationDate:    Thu Jan 23 16:49:03 2014 UTC\nModDate:         Thu Dec  6 08:21:29 2018 UTC\nCustom Metadata: yes\nMetadata Stream: yes\nTagged:          no\nUserProperties:  no\nSuspects:        no\nForm:            none\nJavaScript:      no\nPages:           13\nEncrypted:       no\nPage size:       567 x 774 pts\nPage rot:        0\nFile size:       1492291 bytes\nOptimized:       no\nPDF version:     1.6\n",
+      "pdfinfo_exit_code": 0,
+      "pdf_text_all_pages_opened": true,
+      "pdf_text_page_count": 13,
+      "identity_status": "MATCHES_TARGET",
+      "version_identification": "Publisher-formatted journal copy; later iText modification in metadata, unchanged publisher binary authenticity NOT VERIFIED",
+      "redistribution_permission": "NOT ESTABLISHED; DO NOT TRACK OR PUSH PDF",
+      "cache_ignored_by_git": true,
+      "page_map": [
+        {
+          "pdf_page": 1,
+          "printed_page": 682,
+          "extracted_text_sha256": "56d0f8701891afd58fbcf33e6af597b5346666ad6a78bc5c0795f842142fe938",
+          "extracted_text_characters": 8138
+        },
+        {
+          "pdf_page": 2,
+          "printed_page": 683,
+          "extracted_text_sha256": "2541feee54438d1b3b9de00a35de9271c90235667191f014a891bf18a4e4b960",
+          "extracted_text_characters": 7691
+        },
+        {
+          "pdf_page": 3,
+          "printed_page": 684,
+          "extracted_text_sha256": "2e4c929e297dcebbc255f58d53b16f3a0735e4c5c2f091e28af04a557e8fbd5a",
+          "extracted_text_characters": 7384
+        },
+        {
+          "pdf_page": 4,
+          "printed_page": 685,
+          "extracted_text_sha256": "c2a7e2c7187eeb5bf8d2bb01e35ecce123a9bf638c451924b9fe431ec98c80cc",
+          "extracted_text_characters": 8607
+        },
+        {
+          "pdf_page": 5,
+          "printed_page": 686,
+          "extracted_text_sha256": "635f4ea90e306cad7d7018f144c4641eb1a4a1180bda4661a76d3f94e7d5ae73",
+          "extracted_text_characters": 8531
+        },
+        {
+          "pdf_page": 6,
+          "printed_page": 687,
+          "extracted_text_sha256": "2def0a3fa8eab37ad5bd8e946b5a1a9ccfac93cfc8e85b4d24d7ca92f3f4c245",
+          "extracted_text_characters": 8696
+        },
+        {
+          "pdf_page": 7,
+          "printed_page": 688,
+          "extracted_text_sha256": "686311ddda01fcccddac1efba9177a7eaa3939eb256ec9279f98fe4e73360a86",
+          "extracted_text_characters": 2915
+        },
+        {
+          "pdf_page": 8,
+          "printed_page": 689,
+          "extracted_text_sha256": "c7f90cad68ed4f2c264cd626865f560b3b2fbdd3ac81431eff1438e10ac21782",
+          "extracted_text_characters": 8933
+        },
+        {
+          "pdf_page": 9,
+          "printed_page": 690,
+          "extracted_text_sha256": "d97a1d59ee1c84c7f2a2fa75522e6e04a1775b56e4a7cce6d88d4b99f65d8fa6",
+          "extracted_text_characters": 5305
+        },
+        {
+          "pdf_page": 10,
+          "printed_page": 691,
+          "extracted_text_sha256": "691aaaa491b1d868a7ec75042b596daaeac16d16bcd05513ada8f754b0160ddb",
+          "extracted_text_characters": 5535
+        },
+        {
+          "pdf_page": 11,
+          "printed_page": 692,
+          "extracted_text_sha256": "dc3b61bff663fbce57f1dfb35c438821cd2970842ea8da707a0670c32e6fcddc",
+          "extracted_text_characters": 4340
+        },
+        {
+          "pdf_page": 12,
+          "printed_page": 693,
+          "extracted_text_sha256": "13577548ca8cf9c3b1b8985b0579838de0d5d1c7271a6ffcede83e4759af449d",
+          "extracted_text_characters": 9389
+        },
+        {
+          "pdf_page": 13,
+          "printed_page": 694,
+          "extracted_text_sha256": "f1d50ececa4aeb4bd79549907f48111e4a04e3db7ed408023c1b18335b62cfd3",
+          "extracted_text_characters": 6813
+        }
+      ],
+      "printed_page_sequence_verified": true,
+      "full_text_reviewed": true,
+      "page_evidence_complete": true,
+      "review_completed_at_utc": "2026-10-18T08:55:05.027820+00:00",
+      "review_notes_path": "docs/literature_reviews/peft.md",
+      "page_evidence": [
+        {
+          "pdf_pages": [
+            1
+          ],
+          "printed_pages": [
+            682
+          ],
+          "item": "Title, authors, journal issue, DOI and 2013-online/2014-issue dates",
+          "conclusion": "IDENTITY_VERIFIED"
+        },
+        {
+          "pdf_pages": [
+            2,
+            3
+          ],
+          "printed_pages": [
+            683,
+            684
+          ],
+          "item": "Single-job static nonshared resources, communication model, EST/EFT availability",
+          "equations": [
+            "1",
+            "2",
+            "3",
+            "5",
+            "6"
+          ],
+          "conclusion": "VERIFIED"
+        },
+        {
+          "pdf_pages": [
+            6
+          ],
+          "printed_pages": [
+            687
+          ],
+          "item": "OCT recurrence/base and availability exclusion, rank, OEFT and insertion processor choice",
+          "equations": [
+            "7",
+            "8",
+            "9"
+          ],
+          "algorithms": [
+            "1"
+          ],
+          "conclusion": "VERIFIED"
+        },
+        {
+          "pdf_pages": [
+            7
+          ],
+          "printed_pages": [
+            688
+          ],
+          "item": "Worked example and authors stated table/total complexity",
+          "conclusion": "VERIFIED"
+        },
+        {
+          "pdf_pages": [
+            10,
+            11,
+            12
+          ],
+          "printed_pages": [
+            691,
+            692,
+            693
+          ],
+          "item": "Worse cases, FFT/all-critical-path limitation and conclusion",
+          "conclusion": "VERIFIED"
+        }
+      ],
+      "render_check": {
+        "id": "peft",
+        "render_exit_code": 0,
+        "all_pages_rendered": 13,
+        "contact_sheet": "/tmp/soc-local-paper-review/peft-contact.png",
+        "fontconfig_warning_occurrences": 28,
+        "warnings_prevented_render": false
+      },
+      "visual_inspection": "Full-document contact sheet plus enlarged HEFT PDF 5/7 or PEFT PDF 6 algorithm/equation pages. Extracted full text of every page read separately."
+    }
+  ]
+}

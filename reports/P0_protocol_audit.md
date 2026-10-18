@@ -1,9 +1,8 @@
 # P0 protocol audit
 
-Status: BLOCKED
+Status: PASS
 
-- original studies verified: 4; required: at least 6
-- required originals unverified: heft_cpop, peft
+
 
 Seed counts/derivation are audited as metadata only. No scientific workload has run.
 

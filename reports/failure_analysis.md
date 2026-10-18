@@ -17,3 +17,18 @@ The test was isolated from the live repository state instead of weakening a
 scientific criterion. That failure and its correction are retained. The later
 source-identity test also ensures generated packaging metadata cannot contaminate
 scientific source hashes. All these checks are engineering evidence only.
+
+
+## Local-input resolution after 1b36f39
+
+The user supplied actual HEFT/CPOP and PEFT PDFs. Identity, all-page text/render
+opening, full-paper technical review and exact SHA256 checks were completed.
+The unchanged P0 audit now returns 0 / PASS with six qualified original studies;
+the same 17 governance tests pass. Prior network failures and blocked audits
+remain recorded. Resolution came from new input evidence, not altered gate logic.
+
+The scientific hypothesis remains untested. Original download provenance is
+USER_PROVIDED_LOCAL_COPY_SOURCE_UNVERIFIED, and no redistribution or untouched
+publisher-binary authentication is claimed. This is a recorded limitation,
+not a fabricated URL or a substitute for review. No scientific workload,
+scheduler implementation, seed change or unlock resulted from this task.

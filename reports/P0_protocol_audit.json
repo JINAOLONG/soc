@@ -1,10 +1,7 @@
 {
   "stage": "P0",
-  "status": "BLOCKED",
-  "errors": [
-    "original studies verified: 4; required: at least 6",
-    "required originals unverified: heft_cpop, peft"
-  ],
+  "status": "PASS",
+  "errors": [],
   "partition_counts": {
     "CALIBRATION": 10,
     "DEVELOPMENT": 20,

@@ -4,10 +4,11 @@
 目标是降低重要业务 H 的端到端 deadline miss rate，同时使每个主条件下普通业务 L
 的 P95 响应时间相对 B2 的增幅不超过 10%。H/L 不代表 ASIL。
 
-**当前科学状态：BLOCKED，停在 P0 原始文献核验。** 已完成协议草案、固定 seed
-元数据、阶段守卫、审计工具和四篇原始稿的范围明确的核验笔记。没有实现或验证调度算法，没有运行科学实验，不存在
-性能收益、校准成功、独立验证或正式实验结论。详见 [STATUS.md](STATUS.md) 和
-[最终状态报告](reports/final_report.md)。
+**当前 P0 文献与协议审计：PASS（实际退出码 0）。** 两份用户提供的 HEFT/CPOP、PEFT
+原文已完成全文及页码审查，原有四篇原稿也重新核验了计数资格；17 项治理测试通过。
+这仅是 P0 审计通过。科学工作负载运行数为 0，P1 尚未启动，模拟器、调度器与性能结论
+仍为 NOT RUN / NOT IMPLEMENTED。详见 [STATUS.md](STATUS.md)、
+[文献阻断关闭报告](reports/P0_literature_gap_closure.md) 和 [最终报告](reports/final_report.md)。
 
 仓库即项目根目录；保留原有 Apache-2.0 LICENSE。不创建第二层 Git 仓库或 worktree。
 每次任务先读 [AGENTS.md](AGENTS.md)。完整用户要求保存在
@@ -24,9 +25,11 @@ bash scripts/setup_environment.sh
 .venv/bin/python scripts/run_pipeline.py --stage p0 --check-only
 ```
 
-最后一条当前应返回退出码 **2 / BLOCKED**，明确指出原始文献不足；这不是测试通过。
+最后一条在六份原稿均已置于忽略缓存且哈希吻合时，当前应返回 **0 / PASS**。
+缓存缺失或哈希不符会使原有检查失败；不能仅依据文档状态宣告通过。
 seed 命令已存在时只验证，不重写或重抽。生成全部 70 个 seed 元数据不等于访问其工作负载。
-安装脚本可重复执行，并按已记录的 SHA256 恢复四篇已核验原始稿到忽略目录 `.cache/literature/`；不会启动服务。CI 只运行轻量治理测试，不执行任何科学分区。
+安装脚本使用 `.cache/literature/`：四篇既有公开原稿可按 URL/SHA256 恢复；
+两篇用户提供的私有阅读副本必须先手动补入并核对 SHA256（见下文）。当前实例六份均已核验。CI 只运行轻量治理测试，不执行任何科学分区。
 
 ## 系统模型与目录
 
@@ -62,19 +65,24 @@ P0 可生成真实审计报告。P1 及以后尚未实现；当前入口会拒�
 
 ## 文献恢复与复现
 
-初次 DOI、arXiv 和作者站点请求受到代理限制；重试后 arXiv/Crossref/HAL 可用，
-现已核验 DS3、StarPU 和两篇 DAG deadline/理论原始稿。HEFT/CPOP 与 PEFT 原文仍无法取得：
-IEEE 页面为空 202，官方 PDF 返回 418，机构备用入口访问也未成功。这不是缺少 GitHub token 的证据。
-所需域名已保存到云环境配置草稿，需在环境设置中审阅、保存并发布。配置保存不等于
-当前网络已变更；恢复访问后用新文件记录重试：
+两篇本轮原稿的来源记录为 `USER_PROVIDED_LOCAL_COPY_SOURCE_UNVERIFIED`，没有虚构下载 URL。
+现有 schema 的 `primary_url` 保存实际 `sediment://` 附件定位符，`download_url` 为 null；
+附件定位符不代表 HTTP 自动下载接口。身份、版本、实际输入路径与 SHA256 位于
+[源获取记录](reports/P0_source_acquisition_014.json) 和 [证据清单](docs/literature_evidence.json)。
 
-```bash
-.venv/bin/python scripts/probe_literature.py --output reports/P0_source_acquisition_002.json
-```
+PDF 不进入 Git。当前实例的两份副本位于忽略目录：
 
-该命令只做有 TLS 校验的访问诊断，成功下载不会自动将文献标成已核验。
-需补齐至少 6–8 篇原始研究（当前 4 篇），保存出处/笔记和哈希，补齐 HEFT/PEFT 公式与
-online adaptation，再通过 P0 audit。不能因解锁网络而直接进入科学实验。
+- `.cache/literature/HEFT_CPOP_Topcuoglu_2002.pdf`
+- `.cache/literature/PEFT_Arabnejad_Barbosa_2014.pdf`
+
+从新 clone 开始时，先重新提供这两份合法阅读副本，按清单核对实际 SHA256 并放入上述
+路径，再运行安装和审计。现有 fetch helper 对已存在文件会核验哈希；它不能在缺少
+私有副本时解析 `sediment://`。本次未修改该 helper，也未声称六份原稿可以从 GitHub 自动
+恢复。历史网络获取失败和 BLOCKED 审计均保留在 reports/history 与原获取日志中。
+
+原始算法与未来在线扩展的边界、全部必查公式/图号见
+[HEFT/CPOP 原文审查](docs/literature_reviews/heft_cpop.md) 和
+[PEFT 原文审查](docs/literature_reviews/peft.md)。本轮在 P0 决定后停止。
 
 从新 clone 安装后，可重跑上述治理测试、seed 核对和 P0 审计。
 证据清单验证：
@@ -83,6 +91,6 @@ online adaptation，再通过 P0 audit。不能因解锁网络而直接进入科
 .venv/bin/python scripts/hash_artifacts.py --verify
 ```
 
-已执行：仓库审计、seed 元数据生成、源访问诊断、治理测试、P0 audit 和证据哈希检查
+已执行：仓库审计、seed 元数据生成、源访问诊断、本地原文全文审查、治理测试、P0 audit 和证据哈希检查
 （实际结果见 reports）。未执行：P1、P2、P3、独立验证、正式实验、profiling 和性能图表。
 后续论文主张必须来自本次真实运行，不得引用历史结果充当新证据。
