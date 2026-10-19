@@ -2,12 +2,12 @@
   "scope": "ONLY NEW targeted F01-B1 static review artifacts; no copied design package or scientific artifact",
   "source_commit": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
   "F01_B1_REACHABILITY_RESULT": "PROVEN_UNREACHABLE",
-  "artifact_count": 121,
+  "artifact_count": 123,
   "files": [
     {
       "path": "reports/P2_design/predecision_f01_b1/actual_commands_and_exit_codes.json",
-      "sha256": "0231df7799057ea4db2aefbc38adb7ba694f62e065c8a32b7eca24b08fe28ffb",
-      "size_bytes": 65523
+      "sha256": "983ba4fe75ee4d818d2fc76da2586c8902bfc03b088a4a2057c1e7be2f9e85a5",
+      "size_bytes": 65800
     },
     {
       "path": "reports/P2_design/predecision_f01_b1/authoring_history.md",
@@ -45,9 +45,19 @@
       "size_bytes": 20389
     },
     {
+      "path": "reports/P2_design/predecision_f01_b1/final_publication.py.txt",
+      "sha256": "b8ff8fe66bb93691af764c7f6f9805a18a0cb10ec2295a68bed6552969e99122",
+      "size_bytes": 5280
+    },
+    {
       "path": "reports/P2_design/predecision_f01_b1/final_state.json",
-      "sha256": "0596293e86adbd5905fb531ea45037d25cc4e8ee6281085753c2681fd57cd26e",
-      "size_bytes": 2243
+      "sha256": "1722f5e4960047166da4f5aafb109dd9ee0ba038dcee201b86822ace393cfd02",
+      "size_bytes": 2572
+    },
+    {
+      "path": "reports/P2_design/predecision_f01_b1/first_publication_receipt.json",
+      "sha256": "7e891696fa12e30d331ffc1a7164d518543dc2221f976fc0f651baed85b83764",
+      "size_bytes": 48070
     },
     {
       "path": "reports/P2_design/predecision_f01_b1/proof_checks.json",

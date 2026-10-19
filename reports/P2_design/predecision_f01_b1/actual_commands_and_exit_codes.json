@@ -1757,5 +1757,11 @@
         }
       }
     }
+  ],
+  "publication_receipts": [
+    {
+      "path": "reports/P2_design/predecision_f01_b1/first_publication_receipt.json",
+      "scope": "Actual first staging/commit/push/remote checks. Final enclosing receipt commit verified externally to avoid impossible self hash."
+    }
   ]
 }

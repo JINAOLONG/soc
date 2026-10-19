@@ -1,0 +1,373 @@
+{
+  "scope": "First targeted report publication checkpoint; final receipt commit observed later",
+  "commands": [
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "/workspace/soc",
+      "head_before": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "head_after": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "started_at_utc": "2026-10-19T14:49:40.121578+00:00",
+      "ended_at_utc": "2026-10-19T14:49:40.128434+00:00",
+      "exit_code": 0,
+      "stdout": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690\n",
+      "stderr": "",
+      "purpose": "Verify expected start",
+      "input_files": [
+        {
+          "path": "reports/P2_design/predecision_f01_b1/artifact_manifest.json",
+          "sha256": "f4a5515fdc9e8904d0ddcb596304c57ca2af25e2a1a62c3657b79673f37b2540"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false
+    },
+    {
+      "argv": [
+        "git",
+        "branch",
+        "--show-current"
+      ],
+      "cwd": "/workspace/soc",
+      "head_before": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "head_after": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "started_at_utc": "2026-10-19T14:49:40.128888+00:00",
+      "ended_at_utc": "2026-10-19T14:49:40.135361+00:00",
+      "exit_code": 0,
+      "stdout": "work\n",
+      "stderr": "",
+      "purpose": "Verify work branch",
+      "input_files": [
+        {
+          "path": "reports/P2_design/predecision_f01_b1/artifact_manifest.json",
+          "sha256": "f4a5515fdc9e8904d0ddcb596304c57ca2af25e2a1a62c3657b79673f37b2540"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false
+    },
+    {
+      "argv": [
+        "git",
+        "remote",
+        "get-url",
+        "origin"
+      ],
+      "cwd": "/workspace/soc",
+      "head_before": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "head_after": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "started_at_utc": "2026-10-19T14:49:40.135622+00:00",
+      "ended_at_utc": "2026-10-19T14:49:40.140772+00:00",
+      "exit_code": 0,
+      "stdout": "https://github.com/JINAOLONG/soc.git\n",
+      "stderr": "",
+      "purpose": "Verify target repository",
+      "input_files": [
+        {
+          "path": "reports/P2_design/predecision_f01_b1/artifact_manifest.json",
+          "sha256": "f4a5515fdc9e8904d0ddcb596304c57ca2af25e2a1a62c3657b79673f37b2540"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false
+    },
+    {
+      "argv": [
+        "git",
+        "ls-remote",
+        "origin",
+        "refs/heads/work"
+      ],
+      "cwd": "/workspace/soc",
+      "head_before": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "head_after": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "started_at_utc": "2026-10-19T14:49:40.141113+00:00",
+      "ended_at_utc": "2026-10-19T14:49:40.860864+00:00",
+      "exit_code": 0,
+      "stdout": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690\trefs/heads/work\n",
+      "stderr": "",
+      "purpose": "Reject remote advance",
+      "input_files": [
+        {
+          "path": "reports/P2_design/predecision_f01_b1/artifact_manifest.json",
+          "sha256": "f4a5515fdc9e8904d0ddcb596304c57ca2af25e2a1a62c3657b79673f37b2540"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false
+    },
+    {
+      "argv": [
+        "git",
+        "status",
+        "--porcelain=v1",
+        "--untracked-files=all"
+      ],
+      "cwd": "/workspace/soc",
+      "head_before": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "head_after": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "started_at_utc": "2026-10-19T14:49:40.861285+00:00",
+      "ended_at_utc": "2026-10-19T14:49:40.870422+00:00",
+      "exit_code": 0,
+      "stdout": "?? reports/P2_design/predecision_f01_b1/actual_commands_and_exit_codes.json\n?? reports/P2_design/predecision_f01_b1/artifact_manifest.json\n?? reports/P2_design/predecision_f01_b1/authoring_history.md\n?? reports/P2_design/predecision_f01_b1/authorization_request.txt\n?? reports/P2_design/predecision_f01_b1/build_artifact_manifest.py.txt\n?? reports/P2_design/predecision_f01_b1/command_recorder.py.txt\n?? reports/P2_design/predecision_f01_b1/delivery_checks.json\n?? reports/P2_design/predecision_f01_b1/delivery_checks.py.txt\n?? reports/P2_design/predecision_f01_b1/f01_b1_reachability_review.md\n?? reports/P2_design/predecision_f01_b1/final_state.json\n?? reports/P2_design/predecision_f01_b1/proof_checks.json\n?? reports/P2_design/predecision_f01_b1/proof_checks.py.txt\n?? reports/P2_design/predecision_f01_b1/protected_baseline.json\n?? reports/P2_design/predecision_f01_b1/publication.py.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-001.stderr.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-001.stdout.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-002.stderr.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-002.stdout.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-003.stderr.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-003.stdout.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-004.stderr.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-004.stdout.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-005.stderr.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-005.stdout.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-006.stderr.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-006.stdout.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-007.stderr.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-007.stdout.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-008.stderr.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-008.stdout.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-009.stderr.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-009.stdout.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-010.stderr.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-010.stdout.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-011.stderr.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-011.stdout.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-012.stderr.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-012.stdout.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-013.stderr.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-013.stdout.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-014.stderr.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-014.stdout.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-015.stderr.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-015.stdout.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-016.stderr.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-016.stdout.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-017.stderr.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-017.stdout.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-018.stderr.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-018.stdout.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-019.stderr.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-019.stdout.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-020.stderr.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-020.stdout.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-021.stderr.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-021.stdout.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-022.stderr.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-022.stdout.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-023.stderr.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-023.stdout.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-024.stderr.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-024.stdout.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-025.stderr.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-025.stdout.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-026.stderr.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-026.stdout.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-027.stderr.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-027.stdout.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-028.stderr.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-028.stdout.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-029.stderr.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-029.stdout.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-030.stderr.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-030.stdout.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-031.stderr.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-031.stdout.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-032.stderr.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-032.stdout.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-033.stderr.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-033.stdout.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-034.stderr.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-034.stdout.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-035.stderr.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-035.stdout.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-036.stderr.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-036.stdout.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-037.stderr.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-037.stdout.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-038.stderr.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-038.stdout.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-039.stderr.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-039.stdout.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-040.stderr.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-040.stdout.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-041.stderr.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-041.stdout.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-042.stderr.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-042.stdout.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-043.stderr.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-043.stdout.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-044.stderr.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-044.stdout.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-045.stderr.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-045.stdout.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-046.stderr.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-046.stdout.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-047.stderr.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-047.stdout.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-048.stderr.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-048.stdout.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-049.stderr.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-049.stdout.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-050.stderr.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-050.stdout.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-051.stderr.txt\n?? reports/P2_design/predecision_f01_b1/raw_commands/B1-051.stdout.txt\n?? reports/P2_design/predecision_f01_b1/report_builder.py.txt\n?? reports/P2_design/predecision_f01_b1/report_builder_initial.py.txt\n?? reports/P2_design/predecision_f01_b1/residual_blockers.csv\n?? reports/P2_design/predecision_f01_b1/source_manifest.json\n?? reports/P2_design/predecision_f01_b1/source_projection_initial.py.txt\n?? reports/P2_design/predecision_f01_b1/symbolic_proof_constants.json\n",
+      "stderr": "",
+      "purpose": "Verify new report files only",
+      "input_files": [
+        {
+          "path": "reports/P2_design/predecision_f01_b1/artifact_manifest.json",
+          "sha256": "f4a5515fdc9e8904d0ddcb596304c57ca2af25e2a1a62c3657b79673f37b2540"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false
+    },
+    {
+      "argv": [
+        "git",
+        "add",
+        "--",
+        "reports/P2_design/predecision_f01_b1/"
+      ],
+      "cwd": "/workspace/soc",
+      "head_before": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "head_after": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "started_at_utc": "2026-10-19T14:49:40.929378+00:00",
+      "ended_at_utc": "2026-10-19T14:49:40.968005+00:00",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "",
+      "purpose": "Stage only allowed new reports",
+      "input_files": [
+        {
+          "path": "reports/P2_design/predecision_f01_b1/artifact_manifest.json",
+          "sha256": "f4a5515fdc9e8904d0ddcb596304c57ca2af25e2a1a62c3657b79673f37b2540"
+        }
+      ],
+      "files_written": true,
+      "scientific_execution": false
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--name-status"
+      ],
+      "cwd": "/workspace/soc",
+      "head_before": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "head_after": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "started_at_utc": "2026-10-19T14:49:40.968485+00:00",
+      "ended_at_utc": "2026-10-19T14:49:40.975636+00:00",
+      "exit_code": 0,
+      "stdout": "A\treports/P2_design/predecision_f01_b1/actual_commands_and_exit_codes.json\nA\treports/P2_design/predecision_f01_b1/artifact_manifest.json\nA\treports/P2_design/predecision_f01_b1/authoring_history.md\nA\treports/P2_design/predecision_f01_b1/authorization_request.txt\nA\treports/P2_design/predecision_f01_b1/build_artifact_manifest.py.txt\nA\treports/P2_design/predecision_f01_b1/command_recorder.py.txt\nA\treports/P2_design/predecision_f01_b1/delivery_checks.json\nA\treports/P2_design/predecision_f01_b1/delivery_checks.py.txt\nA\treports/P2_design/predecision_f01_b1/f01_b1_reachability_review.md\nA\treports/P2_design/predecision_f01_b1/final_state.json\nA\treports/P2_design/predecision_f01_b1/proof_checks.json\nA\treports/P2_design/predecision_f01_b1/proof_checks.py.txt\nA\treports/P2_design/predecision_f01_b1/protected_baseline.json\nA\treports/P2_design/predecision_f01_b1/publication.py.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-001.stderr.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-001.stdout.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-002.stderr.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-002.stdout.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-003.stderr.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-003.stdout.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-004.stderr.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-004.stdout.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-005.stderr.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-005.stdout.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-006.stderr.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-006.stdout.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-007.stderr.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-007.stdout.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-008.stderr.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-008.stdout.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-009.stderr.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-009.stdout.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-010.stderr.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-010.stdout.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-011.stderr.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-011.stdout.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-012.stderr.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-012.stdout.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-013.stderr.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-013.stdout.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-014.stderr.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-014.stdout.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-015.stderr.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-015.stdout.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-016.stderr.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-016.stdout.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-017.stderr.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-017.stdout.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-018.stderr.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-018.stdout.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-019.stderr.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-019.stdout.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-020.stderr.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-020.stdout.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-021.stderr.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-021.stdout.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-022.stderr.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-022.stdout.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-023.stderr.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-023.stdout.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-024.stderr.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-024.stdout.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-025.stderr.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-025.stdout.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-026.stderr.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-026.stdout.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-027.stderr.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-027.stdout.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-028.stderr.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-028.stdout.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-029.stderr.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-029.stdout.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-030.stderr.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-030.stdout.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-031.stderr.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-031.stdout.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-032.stderr.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-032.stdout.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-033.stderr.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-033.stdout.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-034.stderr.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-034.stdout.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-035.stderr.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-035.stdout.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-036.stderr.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-036.stdout.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-037.stderr.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-037.stdout.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-038.stderr.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-038.stdout.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-039.stderr.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-039.stdout.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-040.stderr.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-040.stdout.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-041.stderr.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-041.stdout.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-042.stderr.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-042.stdout.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-043.stderr.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-043.stdout.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-044.stderr.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-044.stdout.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-045.stderr.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-045.stdout.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-046.stderr.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-046.stdout.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-047.stderr.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-047.stdout.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-048.stderr.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-048.stdout.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-049.stderr.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-049.stdout.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-050.stderr.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-050.stdout.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-051.stderr.txt\nA\treports/P2_design/predecision_f01_b1/raw_commands/B1-051.stdout.txt\nA\treports/P2_design/predecision_f01_b1/report_builder.py.txt\nA\treports/P2_design/predecision_f01_b1/report_builder_initial.py.txt\nA\treports/P2_design/predecision_f01_b1/residual_blockers.csv\nA\treports/P2_design/predecision_f01_b1/source_manifest.json\nA\treports/P2_design/predecision_f01_b1/source_projection_initial.py.txt\nA\treports/P2_design/predecision_f01_b1/symbolic_proof_constants.json\n",
+      "stderr": "",
+      "purpose": "Verify only additions under allowed directory",
+      "input_files": [
+        {
+          "path": "reports/P2_design/predecision_f01_b1/artifact_manifest.json",
+          "sha256": "f4a5515fdc9e8904d0ddcb596304c57ca2af25e2a1a62c3657b79673f37b2540"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--stat"
+      ],
+      "cwd": "/workspace/soc",
+      "head_before": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "head_after": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "started_at_utc": "2026-10-19T14:49:40.976046+00:00",
+      "ended_at_utc": "2026-10-19T14:49:40.989001+00:00",
+      "exit_code": 0,
+      "stdout": " .../actual_commands_and_exit_codes.json            | 1761 +++++++\n .../predecision_f01_b1/artifact_manifest.json      |  615 +++\n .../predecision_f01_b1/authoring_history.md        |    7 +\n .../predecision_f01_b1/authorization_request.txt   |  294 ++\n .../build_artifact_manifest.py.txt                 |    8 +\n .../predecision_f01_b1/command_recorder.py.txt     |   13 +\n .../predecision_f01_b1/delivery_checks.json        |  131 +\n .../predecision_f01_b1/delivery_checks.py.txt      |   59 +\n .../f01_b1_reachability_review.md                  |  137 +\n .../P2_design/predecision_f01_b1/final_state.json  |   44 +\n .../P2_design/predecision_f01_b1/proof_checks.json |  194 +\n .../predecision_f01_b1/proof_checks.py.txt         |   67 +\n .../predecision_f01_b1/protected_baseline.json     | 4347 +++++++++++++++++\n .../predecision_f01_b1/publication.py.txt          |   34 +\n .../raw_commands/B1-001.stderr.txt                 |    0\n .../raw_commands/B1-001.stdout.txt                 |    1 +\n .../raw_commands/B1-002.stderr.txt                 |    0\n .../raw_commands/B1-002.stdout.txt                 |    2 +\n .../raw_commands/B1-003.stderr.txt                 |    0\n .../raw_commands/B1-003.stdout.txt                 |    1 +\n .../raw_commands/B1-004.stderr.txt                 |    0\n .../raw_commands/B1-004.stdout.txt                 |    1 +\n .../raw_commands/B1-005.stderr.txt                 |    0\n .../raw_commands/B1-005.stdout.txt                 |    1 +\n .../raw_commands/B1-006.stderr.txt                 |    0\n .../raw_commands/B1-006.stdout.txt                 |    0\n .../raw_commands/B1-007.stderr.txt                 |    0\n .../raw_commands/B1-007.stdout.txt                 |    1 +\n .../raw_commands/B1-008.stderr.txt                 |    0\n .../raw_commands/B1-008.stdout.txt                 |    0\n .../raw_commands/B1-009.stderr.txt                 |    0\n .../raw_commands/B1-009.stdout.txt                 |    0\n .../raw_commands/B1-010.stderr.txt                 |    0\n .../raw_commands/B1-010.stdout.txt                 |   63 +\n .../raw_commands/B1-011.stderr.txt                 |    0\n .../raw_commands/B1-011.stdout.txt                 |   56 +\n .../raw_commands/B1-012.stderr.txt                 |    0\n .../raw_commands/B1-012.stdout.txt                 | 3302 +++++++++++++\n .../raw_commands/B1-013.stderr.txt                 |    0\n .../raw_commands/B1-013.stdout.txt                 |   65 +\n .../raw_commands/B1-014.stderr.txt                 |    0\n .../raw_commands/B1-014.stdout.txt                 |   38 +\n .../raw_commands/B1-015.stderr.txt                 |    0\n .../raw_commands/B1-015.stdout.txt                 |   52 +\n .../raw_commands/B1-016.stderr.txt                 |    0\n .../raw_commands/B1-016.stdout.txt                 |   47 +\n .../raw_commands/B1-017.stderr.txt                 |    0\n .../raw_commands/B1-017.stdout.txt                 |   25 +\n .../raw_commands/B1-018.stderr.txt                 |    0\n .../raw_commands/B1-018.stdout.txt                 |   94 +\n .../raw_commands/B1-019.stderr.txt                 |    0\n .../raw_commands/B1-019.stdout.txt                 |   59 +\n .../raw_commands/B1-020.stderr.txt                 |    0\n .../raw_commands/B1-020.stdout.txt                 |  291 ++\n .../raw_commands/B1-021.stderr.txt                 |    0\n .../raw_commands/B1-021.stdout.txt                 |  216 +\n .../raw_commands/B1-022.stderr.txt                 |    0\n .../raw_commands/B1-022.stdout.txt                 |   78 +\n .../raw_commands/B1-023.stderr.txt                 |    0\n .../raw_commands/B1-023.stdout.txt                 |  325 ++\n .../raw_commands/B1-024.stderr.txt                 |    0\n .../raw_commands/B1-024.stdout.txt                 | 5107 ++++++++++++++++++++\n .../raw_commands/B1-025.stderr.txt                 |    0\n .../raw_commands/B1-025.stdout.txt                 | 1439 ++++++\n .../raw_commands/B1-026.stderr.txt                 |    0\n .../raw_commands/B1-026.stdout.txt                 |  345 ++\n .../raw_commands/B1-027.stderr.txt                 |    0\n .../raw_commands/B1-027.stdout.txt                 |   45 +\n .../raw_commands/B1-028.stderr.txt                 |    0\n .../raw_commands/B1-028.stdout.txt                 |  129 +\n .../raw_commands/B1-029.stderr.txt                 |    0\n .../raw_commands/B1-029.stdout.txt                 | 1125 +++++\n .../raw_commands/B1-030.stderr.txt                 |    0\n .../raw_commands/B1-030.stdout.txt                 |  370 ++\n .../raw_commands/B1-031.stderr.txt                 |    0\n .../raw_commands/B1-031.stdout.txt                 |  328 ++\n .../raw_commands/B1-032.stderr.txt                 |    0\n .../raw_commands/B1-032.stdout.txt                 | 3110 ++++++++++++\n .../raw_commands/B1-033.stderr.txt                 |    0\n .../raw_commands/B1-033.stdout.txt                 |   65 +\n .../raw_commands/B1-034.stderr.txt                 |    0\n .../raw_commands/B1-034.stdout.txt                 |  237 +\n .../raw_commands/B1-035.stderr.txt                 |    0\n .../raw_commands/B1-035.stdout.txt                 | 1303 +++++\n .../raw_commands/B1-036.stderr.txt                 |    0\n .../raw_commands/B1-036.stdout.txt                 |  380 ++\n .../raw_commands/B1-037.stderr.txt                 |    0\n .../raw_commands/B1-037.stdout.txt                 |  987 ++++\n .../raw_commands/B1-038.stderr.txt                 |    0\n .../raw_commands/B1-038.stdout.txt                 |   72 +\n .../raw_commands/B1-039.stderr.txt                 |    0\n .../raw_commands/B1-039.stdout.txt                 |  102 +\n .../raw_commands/B1-040.stderr.txt                 |    0\n .../raw_commands/B1-040.stdout.txt                 |   92 +\n .../raw_commands/B1-041.stderr.txt                 |    0\n .../raw_commands/B1-041.stdout.txt                 |  204 +\n .../raw_commands/B1-042.stderr.txt                 |    0\n .../raw_commands/B1-042.stdout.txt                 |  178 +\n .../raw_commands/B1-043.stderr.txt                 |    5 +\n .../raw_commands/B1-043.stdout.txt                 |   31 +\n .../raw_commands/B1-044.stderr.txt                 |    0\n .../raw_commands/B1-044.stdout.txt                 |    1 +\n .../raw_commands/B1-045.stderr.txt                 |    0\n .../raw_commands/B1-045.stdout.txt                 |    1 +\n .../raw_commands/B1-046.stderr.txt                 |    0\n .../raw_commands/B1-046.stdout.txt                 |    1 +\n .../raw_commands/B1-047.stderr.txt                 |    0\n .../raw_commands/B1-047.stdout.txt                 |    0\n .../raw_commands/B1-048.stderr.txt                 |    0\n .../raw_commands/B1-048.stdout.txt                 |    1 +\n .../raw_commands/B1-049.stderr.txt                 |    0\n .../raw_commands/B1-049.stdout.txt                 |    0\n .../raw_commands/B1-050.stderr.txt                 |    0\n .../raw_commands/B1-050.stdout.txt                 |    0\n .../raw_commands/B1-051.stderr.txt                 |    0\n .../raw_commands/B1-051.stdout.txt                 |  117 +\n .../predecision_f01_b1/report_builder.py.txt       |  159 +\n .../report_builder_initial.py.txt                  |  159 +\n .../predecision_f01_b1/residual_blockers.csv       |   10 +\n .../predecision_f01_b1/source_manifest.json        |  499 ++\n .../source_projection_initial.py.txt               |   16 +\n .../symbolic_proof_constants.json                  |  117 +\n 122 files changed, 29164 insertions(+)\n",
+      "stderr": "",
+      "purpose": "Record staged scope",
+      "input_files": [
+        {
+          "path": "reports/P2_design/predecision_f01_b1/artifact_manifest.json",
+          "sha256": "f4a5515fdc9e8904d0ddcb596304c57ca2af25e2a1a62c3657b79673f37b2540"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.whitespace=cr-at-eol",
+        "diff",
+        "--cached",
+        "--check"
+      ],
+      "cwd": "/workspace/soc",
+      "head_before": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "head_after": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "started_at_utc": "2026-10-19T14:49:40.989503+00:00",
+      "ended_at_utc": "2026-10-19T14:49:41.004072+00:00",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "",
+      "purpose": "Whitespace check preserving exact attachment CRLF",
+      "input_files": [
+        {
+          "path": "reports/P2_design/predecision_f01_b1/artifact_manifest.json",
+          "sha256": "f4a5515fdc9e8904d0ddcb596304c57ca2af25e2a1a62c3657b79673f37b2540"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false
+    },
+    {
+      "argv": [
+        "git",
+        "ls-remote",
+        "origin",
+        "refs/heads/work"
+      ],
+      "cwd": "/workspace/soc",
+      "head_before": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "head_after": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "started_at_utc": "2026-10-19T14:49:41.004591+00:00",
+      "ended_at_utc": "2026-10-19T14:49:41.734378+00:00",
+      "exit_code": 0,
+      "stdout": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690\trefs/heads/work\n",
+      "stderr": "",
+      "purpose": "Recheck remote before committing",
+      "input_files": [
+        {
+          "path": "reports/P2_design/predecision_f01_b1/artifact_manifest.json",
+          "sha256": "f4a5515fdc9e8904d0ddcb596304c57ca2af25e2a1a62c3657b79673f37b2540"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false
+    },
+    {
+      "argv": [
+        "git",
+        "commit",
+        "-m",
+        "docs: prove residual H-target obstruction for F01 B1"
+      ],
+      "cwd": "/workspace/soc",
+      "head_before": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "head_after": "ce3e6cfe5472b260c0c3beaceb0e99c010e8b7a3",
+      "started_at_utc": "2026-10-19T14:49:41.734841+00:00",
+      "ended_at_utc": "2026-10-19T14:49:41.757485+00:00",
+      "exit_code": 0,
+      "stdout": "[work ce3e6cf] docs: prove residual H-target obstruction for F01 B1\n 122 files changed, 29164 insertions(+)\n create mode 100644 reports/P2_design/predecision_f01_b1/actual_commands_and_exit_codes.json\n create mode 100644 reports/P2_design/predecision_f01_b1/artifact_manifest.json\n create mode 100644 reports/P2_design/predecision_f01_b1/authoring_history.md\n create mode 100644 reports/P2_design/predecision_f01_b1/authorization_request.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/build_artifact_manifest.py.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/command_recorder.py.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/delivery_checks.json\n create mode 100644 reports/P2_design/predecision_f01_b1/delivery_checks.py.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/f01_b1_reachability_review.md\n create mode 100644 reports/P2_design/predecision_f01_b1/final_state.json\n create mode 100644 reports/P2_design/predecision_f01_b1/proof_checks.json\n create mode 100644 reports/P2_design/predecision_f01_b1/proof_checks.py.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/protected_baseline.json\n create mode 100644 reports/P2_design/predecision_f01_b1/publication.py.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-001.stderr.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-001.stdout.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-002.stderr.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-002.stdout.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-003.stderr.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-003.stdout.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-004.stderr.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-004.stdout.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-005.stderr.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-005.stdout.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-006.stderr.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-006.stdout.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-007.stderr.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-007.stdout.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-008.stderr.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-008.stdout.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-009.stderr.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-009.stdout.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-010.stderr.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-010.stdout.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-011.stderr.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-011.stdout.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-012.stderr.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-012.stdout.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-013.stderr.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-013.stdout.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-014.stderr.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-014.stdout.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-015.stderr.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-015.stdout.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-016.stderr.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-016.stdout.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-017.stderr.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-017.stdout.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-018.stderr.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-018.stdout.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-019.stderr.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-019.stdout.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-020.stderr.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-020.stdout.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-021.stderr.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-021.stdout.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-022.stderr.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-022.stdout.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-023.stderr.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-023.stdout.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-024.stderr.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-024.stdout.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-025.stderr.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-025.stdout.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-026.stderr.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-026.stdout.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-027.stderr.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-027.stdout.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-028.stderr.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-028.stdout.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-029.stderr.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-029.stdout.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-030.stderr.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-030.stdout.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-031.stderr.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-031.stdout.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-032.stderr.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-032.stdout.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-033.stderr.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-033.stdout.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-034.stderr.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-034.stdout.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-035.stderr.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-035.stdout.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-036.stderr.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-036.stdout.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-037.stderr.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-037.stdout.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-038.stderr.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-038.stdout.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-039.stderr.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-039.stdout.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-040.stderr.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-040.stdout.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-041.stderr.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-041.stdout.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-042.stderr.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-042.stdout.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-043.stderr.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-043.stdout.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-044.stderr.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-044.stdout.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-045.stderr.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-045.stdout.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-046.stderr.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-046.stdout.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-047.stderr.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-047.stdout.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-048.stderr.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-048.stdout.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-049.stderr.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-049.stdout.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-050.stderr.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-050.stdout.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-051.stderr.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/raw_commands/B1-051.stdout.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/report_builder.py.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/report_builder_initial.py.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/residual_blockers.csv\n create mode 100644 reports/P2_design/predecision_f01_b1/source_manifest.json\n create mode 100644 reports/P2_design/predecision_f01_b1/source_projection_initial.py.txt\n create mode 100644 reports/P2_design/predecision_f01_b1/symbolic_proof_constants.json\n",
+      "stderr": "",
+      "purpose": "Commit targeted static evidence only",
+      "input_files": [
+        {
+          "path": "reports/P2_design/predecision_f01_b1/artifact_manifest.json",
+          "sha256": "f4a5515fdc9e8904d0ddcb596304c57ca2af25e2a1a62c3657b79673f37b2540"
+        }
+      ],
+      "files_written": true,
+      "scientific_execution": false
+    },
+    {
+      "argv": [
+        "git",
+        "push",
+        "origin",
+        "HEAD:refs/heads/work"
+      ],
+      "cwd": "/workspace/soc",
+      "head_before": "ce3e6cfe5472b260c0c3beaceb0e99c010e8b7a3",
+      "head_after": "ce3e6cfe5472b260c0c3beaceb0e99c010e8b7a3",
+      "started_at_utc": "2026-10-19T14:49:41.760023+00:00",
+      "ended_at_utc": "2026-10-19T14:49:45.066699+00:00",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "To https://github.com/JINAOLONG/soc.git\n   ff3db3c..ce3e6cf  HEAD -> work\n",
+      "purpose": "Normal non-force push",
+      "input_files": [
+        {
+          "path": "reports/P2_design/predecision_f01_b1/artifact_manifest.json",
+          "sha256": "f4a5515fdc9e8904d0ddcb596304c57ca2af25e2a1a62c3657b79673f37b2540"
+        }
+      ],
+      "files_written": true,
+      "scientific_execution": false
+    },
+    {
+      "argv": [
+        "git",
+        "ls-remote",
+        "origin",
+        "refs/heads/work"
+      ],
+      "cwd": "/workspace/soc",
+      "head_before": "ce3e6cfe5472b260c0c3beaceb0e99c010e8b7a3",
+      "head_after": "ce3e6cfe5472b260c0c3beaceb0e99c010e8b7a3",
+      "started_at_utc": "2026-10-19T14:49:45.067219+00:00",
+      "ended_at_utc": "2026-10-19T14:49:45.919371+00:00",
+      "exit_code": 0,
+      "stdout": "ce3e6cfe5472b260c0c3beaceb0e99c010e8b7a3\trefs/heads/work\n",
+      "stderr": "",
+      "purpose": "Verify actual pushed work SHA",
+      "input_files": [
+        {
+          "path": "reports/P2_design/predecision_f01_b1/artifact_manifest.json",
+          "sha256": "f4a5515fdc9e8904d0ddcb596304c57ca2af25e2a1a62c3657b79673f37b2540"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false
+    },
+    {
+      "argv": [
+        "git",
+        "status",
+        "--porcelain=v1",
+        "--untracked-files=all"
+      ],
+      "cwd": "/workspace/soc",
+      "head_before": "ce3e6cfe5472b260c0c3beaceb0e99c010e8b7a3",
+      "head_after": "ce3e6cfe5472b260c0c3beaceb0e99c010e8b7a3",
+      "started_at_utc": "2026-10-19T14:49:45.919983+00:00",
+      "ended_at_utc": "2026-10-19T14:49:45.931237+00:00",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "",
+      "purpose": "Verify clean first publication",
+      "input_files": [
+        {
+          "path": "reports/P2_design/predecision_f01_b1/artifact_manifest.json",
+          "sha256": "f4a5515fdc9e8904d0ddcb596304c57ca2af25e2a1a62c3657b79673f37b2540"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false
+    }
+  ],
+  "prepublication_integrity": {
+    "protected_existing_files_unchanged": 868,
+    "new_files": 122,
+    "artifact_manifest_sha256": "f4a5515fdc9e8904d0ddcb596304c57ca2af25e2a1a62c3657b79673f37b2540"
+  },
+  "report_commit": "ce3e6cfe5472b260c0c3beaceb0e99c010e8b7a3",
+  "remote_work_sha": "ce3e6cfe5472b260c0c3beaceb0e99c010e8b7a3",
+  "push_status": "VERIFIED",
+  "worktree": "CLEAN",
+  "integrity_after_push": {
+    "protected_existing_files_unchanged": 868,
+    "new_files": 122,
+    "artifact_manifest_sha256": "f4a5515fdc9e8904d0ddcb596304c57ca2af25e2a1a62c3657b79673f37b2540"
+  },
+  "F01_B1_REACHABILITY_RESULT": "PROVEN_UNREACHABLE",
+  "scientific_workloads_generated": 0,
+  "scientific_workloads_run": 0,
+  "all_approvals": "UNAPPROVED"
+}

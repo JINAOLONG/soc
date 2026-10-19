@@ -1,0 +1,35 @@
+from pathlib import Path
+import json,hashlib,subprocess,datetime
+R=Path('/workspace/soc');O=R/'reports/P2_design/predecision_f01_b1';OUT=Path('/tmp/soc-f01-b1-final-delivery.json')
+x=dict(scope='Actual final enclosing report receipt commit,recorded externally after commit/push to avoid self hash',commands=[])
+def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+def head():return subprocess.check_output(['git','rev-parse','HEAD'],cwd=R,text=True).strip()
+def save():OUT.write_text(json.dumps(x,ensure_ascii=False,indent=2)+'\n')
+def run(a,purpose,writes=False):
+ t=datetime.datetime.now(datetime.timezone.utc).isoformat();before=head();p=subprocess.run(a,cwd=R,text=True,capture_output=True)
+ x['commands'].append(dict(argv=a,cwd=str(R),head_before=before,head_after=head(),started_at_utc=t,ended_at_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),exit_code=p.returncode,stdout=p.stdout,stderr=p.stderr,purpose=purpose,input_files=[dict(path='reports/P2_design/predecision_f01_b1/artifact_manifest.json',sha256=sha(O/'artifact_manifest.json'))],files_written=writes,scientific_execution=False));save();assert p.returncode==0,(a,p.returncode);return p.stdout
+def verify():
+ b=json.loads((O/'protected_baseline.json').read_text());m=json.loads((O/'artifact_manifest.json').read_text());l=json.loads((O/'actual_commands_and_exit_codes.json').read_text())
+ for q in b['files']+m['files']:assert sha(R/q['path'])==q['sha256'] and (R/q['path']).stat().st_size==q['size_bytes'],q['path']
+ assert {str(p.relative_to(R)) for p in O.rglob('*') if p.is_file() and p.name!='artifact_manifest.json'}=={q['path'] for q in m['files']}
+ for c in l['commands']:
+  for q in c['outputs'].values():assert sha(R/q['path'])==q['sha256']
+ return dict(protected_files_unchanged=len(b['files']),new_files=len(m['files'])+1,artifact_manifest_sha256=sha(O/'artifact_manifest.json'),review_command_count=len(l['commands']),review_command_exit_codes={str(k):sum(c['exit_code']==k for c in l['commands']) for k in {c['exit_code'] for c in l['commands']}},all_final_hashes_valid=True)
+first=json.loads((O/'first_publication_receipt.json').read_text())['report_commit']
+assert run(['git','rev-parse','HEAD'],'Verify first report checkpoint').strip()==first
+assert run(['git','ls-remote','origin','refs/heads/work'],'Reject remote advance before receipt publication').split()[0]==first
+x['before_receipt_integrity']=verify();save()
+status=run(['git','status','--porcelain=v1','--untracked-files=all'],'Verify only receipt metadata changed').splitlines();assert all(q[3:].startswith('reports/P2_design/predecision_f01_b1/') for q in status)
+run(['git','add','--','reports/P2_design/predecision_f01_b1/'],'Stage only receipt evidence',True)
+staged=run(['git','diff','--cached','--name-status'],'Check staged receipt path scope').splitlines();assert all(q.split('\t')[1].startswith('reports/P2_design/predecision_f01_b1/') for q in staged)
+run(['git','diff','--cached','--check'],'Check receipt whitespace')
+run(['git','diff','--cached','--stat'],'Record receipt diff size')
+run(['git','commit','-m','docs: record verified F01 B1 evidence publication'],'Commit precise publication receipt',True)
+final=head();run(['git','push','origin','HEAD:refs/heads/work'],'Normal non-force receipt publication',True)
+remote=run(['git','ls-remote','origin','refs/heads/work'],'Verify actual final remote work').split()[0];assert final==remote
+run(['git','fetch','origin','refs/heads/work:refs/remotes/origin/work'],'Refresh local work remote-tracking ref without force',True)
+assert run(['git','rev-parse','origin/work'],'Verify tracking ref matches actual remote').strip()==final
+assert not run(['git','status','--porcelain=v1','--untracked-files=all'],'Verify final clean tree')
+added=run(['git','diff','--name-status','ff3db3ca5dc3a8c8a986e66d093fb3849955b690','HEAD'],'Verify only new report artifacts since starting point').splitlines();assert all(q.startswith('A\treports/P2_design/predecision_f01_b1/') for q in added)
+run(['git','diff','--check'],'Final tracked whitespace check')
+x.update(repository=run(['git','remote','get-url','origin'],'Verify final target repository').strip(),branch=run(['git','branch','--show-current'],'Verify final branch').strip(),start_head='ff3db3ca5dc3a8c8a986e66d093fb3849955b690',report_commit=first,final_commit=final,remote_work_sha=remote,origin_work_equals_head=True,worktree='CLEAN',push_status='VERIFIED',new_file_count=len(added),integrity_after_push=verify(),F01_B1_REACHABILITY_RESULT='PROVEN_UNREACHABLE',result_scope='Global all-condition negative coverage-one branch; mandatory COCKPIT-near-saturation-8 A/B witness',mandatory_residual_root_causes=1,proof_checks=35,delivery_checks=23,scientific_coverage='NOT_EVALUATED',scientific_workloads_generated=0,scientific_workloads_run=0,all10_decisions='UNAPPROVED',all40_groups='UNAPPROVED',F01_route_selected=False,F02_policy_selected=False,implementation_changed=False,new_seeds_generated=False,non_calibration_realizations_accessed=False,validation_unlocked=False,formal_unlocked=False,next_safe_action='Human review targeted B1 residual cap proof; no route selection or implementation/science',stop=True);save();print(json.dumps({k:v for k,v in x.items() if k!='commands'},ensure_ascii=False,indent=2))
