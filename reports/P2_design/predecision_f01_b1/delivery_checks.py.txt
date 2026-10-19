@@ -1,0 +1,59 @@
+from pathlib import Path
+import json,csv,hashlib,subprocess,re
+R=Path('/workspace/soc');O=R/'reports/P2_design/predecision_f01_b1';D=R/'docs/P2_design/v3'
+def j(p):
+ def pairs(a):
+  x={}
+  for k,v in a:
+   if k in x:raise ValueError('duplicate key '+k)
+   x[k]=v
+  return x
+ return json.loads(p.read_text(),object_pairs_hook=pairs,parse_constant=lambda s:(_ for _ in ()).throw(ValueError(s)))
+def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+c=[]
+def ck(n,v,d=None):c.append(dict(id=n,pass_=bool(v),detail=d))
+required=['f01_b1_reachability_review.md','residual_blockers.csv','source_manifest.json','actual_commands_and_exit_codes.json','final_state.json']
+ck('REQUIRED_REPORTS_PRESENT',all((O/x).is_file() for x in required))
+parsed={p.name:j(p) for p in O.glob('*.json') if p.name!='artifact_manifest.json'};ck('ALL_NEW_JSON_STRICT_PARSE',True,dict(files=len(parsed)))
+b=parsed['protected_baseline.json'];bad=[x['path'] for x in b['files'] if sha(R/x['path'])!=x['sha256']];ck('ALL868_ORIGINAL_BYTES_UNCHANGED',b['protected_file_count']==868 and not bad,bad)
+sources=parsed['source_manifest.json']['sources'];lookup={x['path']:x for x in sources};bad=[]
+for x in sources:
+ p=R/x['path'];g=subprocess.run(['git','rev-parse',b['start_head']+':'+x['path']],cwd=R,text=True,capture_output=True)
+ if g.returncode or g.stdout.strip()!=x['git_blob_id'] or sha(p)!=x['sha256'] or p.stat().st_size!=x['size_bytes']:bad.append(x['path'])
+ck('ALL33_SOURCE_SHA_BLOB_SIZE_IDENTITIES',len(sources)==33 and not bad,bad)
+rows=list(csv.DictReader((O/'residual_blockers.csv').open()));ck('NINE_OBSTACLES_UNIQUE_CONSISTENT_FIELDS',[x['id'] for x in rows]==[f'R{i:02}' for i in range(1,10)] and all(None not in x and all(v for v in x.values()) for x in rows))
+ck('ONLY_ONE_PROVEN_MANDATORY_ROOT_CAUSE',sum(x['mandatory_status']=='YES_ROOT_CAUSE_1' for x in rows)==1 and rows[2]['classification']=='PROVEN_MANDATORY_IN_REQUIRED_NEAR8_CONDITION')
+ck('POSSIBLE_READY_AND_EXPIRY_NOT_CALLED_PROVEN',rows[1]['mandatory_status']==rows[4]['mandatory_status']=='NOT_ESTABLISHED_SEPARATELY')
+ck('SUFFIX_NOT_MISLABELED_COVERAGE_GAP',rows[5]['mandatory_status']=='NOT_A_COVERAGE_GAP_BY_DEFINITION')
+refcount=0;ptrcount=0
+for row in rows:
+ for x in json.loads(row['source_refs_json']):
+  y=lookup[x['path']];assert all(x[k]==y[k] for k in ['sha256','git_blob_id','size_bytes','version']);refcount+=1
+  p=R/x['path']
+  if p.suffix=='.json':
+   for pointer in re.findall(r'#(/[A-Za-z0-9_~/.\-$]+)',x['locator']):
+    z=j(p)
+    for k in pointer.strip('/').split('/'):
+     k=k.replace('~1','/').replace('~0','~');z=z[int(k)] if isinstance(z,list) else z[k]
+    ptrcount+=1
+ck('CSV_EXACT_SOURCE_IDENTITIES_AND_JSON_POINTERS',refcount>=20 and ptrcount>=20,dict(source_refs=refcount,json_pointers=ptrcount))
+report=(O/'f01_b1_reachability_review.md').read_text();ck('REPORT_HAS_SOURCE_IDENTITIES_AND_SCOPE',all(x['sha256'] in report and x['git_blob_id'] in report for x in sources) and 'not a claim that every light/medium/other individual stream' in report)
+proof=parsed['proof_checks.json'];k=parsed['symbolic_proof_constants.json'];ck('PROOF35_PASS_ACTUAL_EXIT0',proof['passed']==35 and not proof['failed'] and proof['exit_code']==0)
+ck('BOUND_AND_TARGET_CAP_CONSISTENT',k['prefix_duration_floor_dyadic_ms']=='33/4' and k['third_slot_binary64_safe_upper_ms']=='29/4' and k['minimum_pending_H_at_first_third_arrival_view']==3 and k['retained_full_target_cap']==2)
+ck('NO_COMPLETE_SEQUENCE_CLAIM_FOR_REACHABILITY',proof['reachability_result']=='PROVEN_UNREACHABLE' and 'universal all-condition branch' in report and 'F_B1=0' in report and 'F_B1/E0<1' in report)
+ck('NO_SPEC_GAP_NEEDED_FOR_PROVED_GLOBAL_RESULT',parsed['final_state.json']['UNRESOLVED_SPECIFICATION_ITEMS']==[])
+state=parsed['final_state.json'];ck('ALL_APPROVALS_AND_CHOICES_UNCHANGED',state['D01_D10_APPROVAL_STATUS']=='ALL10_UNAPPROVED' and state['SP01_SP40_APPROVAL_STATUS']=='ALL40_UNAPPROVED' and state['F01_ROUTE_SELECTED'] is False and state['F02_POLICY_SELECTED'] is False)
+ck('SCIENCE_AND_MAPPING_NOT_EVALUATED',state['SCIENTIFIC_COVERAGE']==state['MAPPING_CLASSIFICATION']=='NOT_EVALUATED' and state['SCIENTIFIC_WORKLOADS_GENERATED']==state['SCIENTIFIC_WORKLOADS_RUN']==0)
+ck('NO_IMPL_SEEDS_THRESHOLDS_CI_UNLOCK',all(state[x] is False for x in ['IMPLEMENTATION_CHANGED','P2_ENTRYPOINT_EXECUTED','NEW_SEEDS_GENERATED','NON_CALIBRATION_PARTITIONS_ACCESSED','VALIDATION_UNLOCKED','FORMAL_UNLOCKED','CI_METHOD_CHANGED','SCIENTIFIC_THRESHOLDS_CHANGED','SEED_PARTITIONS_CHANGED']) and state['TIMING_PROTOCOL_STATUS']=='NOT_FROZEN')
+log=parsed['actual_commands_and_exit_codes.json'];ids=[x['id'] for x in log['commands']];ck('COMMAND_IDS_UNIQUE_AND_NO_SCIENCE',len(ids)==len(set(ids)) and all(x['scientific_execution'] is False for x in log['commands']))
+bad=[]
+for x in log['commands']:
+ for q in x['outputs'].values():
+  if sha(R/q['path'])!=q['sha256'] or (R/q['path']).stat().st_size!=q['size_bytes']:bad.append(q['path'])
+ck('ALL_RECORDED_STDOUT_STDERR_HASHES_MATCH',not bad,bad)
+ck('READ_ERROR_AND_CORRECTED_PROOF_RETAINED',any(x['id']=='B1-043' and x['exit_code']==1 for x in log['commands']) and any(x['id']=='B1-044' and x['exit_code']==0 for x in log['commands']) and (O/'source_projection_initial.py.txt').is_file())
+ck('OLD_V3_MANIFEST_AND_MATRIX_UNCHANGED',all(sha(R/q['path'])==q['sha256'] for q in j(R/'reports/P2_design/design_revision_v3/artifact_manifest.json')['files']) and sha(R/'docs/P2_design/v2/P2_trial_matrix_draft_v2.json')=='b58fe4c2eead01fc9b92966d557ed0bb052e7387794fc0d9b58029ffdb90af0e')
+status=subprocess.check_output(['git','status','--porcelain=v1','--untracked-files=all'],cwd=R,text=True).splitlines();ck('ONLY_ALLOWED_NEW_REPORT_DIRECTORY',all(x[3:].startswith('reports/P2_design/predecision_f01_b1/') for x in status) and not subprocess.check_output(['git','diff','--name-only'],cwd=R,text=True))
+ck('NO_UNLOCK_FILES_CREATED',not (R/'checkpoints/VALIDATION_UNLOCKED').exists() and not (R/'checkpoints/FORMAL_UNLOCKED').exists())
+failed=[x for x in c if not x['pass_']];out=dict(scope='Static report/source/receipt integrity; not project validator or scientific audit',passed=len(c)-len(failed),failed=failed,checks=c,exit_code=1 if failed else 0,F01_B1_REACHABILITY_RESULT='PROVEN_UNREACHABLE',scientific_coverage='NOT_EVALUATED',stage='BLOCKED')
+(O/'delivery_checks.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n');print(json.dumps({k:v for k,v in out.items() if k!='checks'},ensure_ascii=False));raise SystemExit(1 if failed else 0)

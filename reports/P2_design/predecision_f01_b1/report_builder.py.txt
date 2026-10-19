@@ -1,0 +1,159 @@
+"""Author report-only proof/traceability artifacts from inspected immutable sources.
+No workload, scheduler, generator, diagnostic, validator or science is invoked.
+"""
+from pathlib import Path
+import json,csv,runpy
+h=runpy.run_path('reports/P2_design/predecision_f01_b1/command_recorder.py.txt');R=h['R'];O=h['O'];dump=h['dump'];BASE=h['BASE']
+m=json.loads((O/'source_manifest.json').read_text());sources={x['path']:x for x in m['sources']}
+loc={
+ 'docs/user_request.txt':['§43–44,lines1431–1494'],
+ 'docs/model_spec.md':['lines3–17 (nonnegative arrival,positive durations,resources)','lines18–45 (precedence,nonpreemption,D1,full drain)'],
+ 'docs/P2_design/P2_mapping_opportunity_decision_table_v1.md':['whole historical v1 table; not the effective B1 criterion'],
+ 'docs/P2_design/v3/P2_diagnostic_spec_v3.json':['#/route_options/B1_EXPAND_SINGLE_READY','#/inherited_v2_contract/scope','#/inherited_v2_contract/coverage','#/inherited_v2_contract/limits','#/inherited_v2_contract/stage_denominators'],
+ 'docs/P2_design/v3/P2_criterion_spec_v3.json':['#/route_options/B1_EXPAND_SINGLE_READY/negative_coverage','#/preconditions','#/bundles','#/coverage_thresholds'],
+ 'docs/P2_design/v3/P2_public_snapshot_spec_v3.json':['#/exact_event_rule','#/counting','#/included_fields','#/dedup_scope','#/missing'],
+ 'docs/P2_design/v3/P2_stage_state_contract_v3.json':['#/load_classification/selection','#/progression_conjunction','#/current_design_values'],
+ 'docs/P2_design/v3/P2_typed_identity_schema_v3.json':['#/$defs/PUBLIC_SNAPSHOT','#/$defs/PUBLIC_SERVICE','#/$defs/PUBLIC_NODE'],
+ 'docs/P2_design/v3/P2_scientific_parameter_registry_v3.json':['#/parameters (all40 approval=UNAPPROVED);SP25/SP33/SP36/SP37'],
+ 'docs/P2_design/v3/P2_generation_spec_v3.json':['#/algorithm','#/arrivals','#/key_bindings','#/service_identity'],
+ 'docs/P2_design/v2/P2_workload_templates_v2.json':['#/templates/0 (COCKPIT-8-v1),nodes n01,n02,n03,n06,n07,n08'],
+ 'docs/P2_design/v2/P2_resource_profiles_v2.json':['#/profiles/0(audio)','#/profiles/1(speech)','#/profiles/2(intent)','#/profiles/5(route)','#/profiles/6(compose)'],
+ 'docs/P2_design/v2/P2_trial_matrix_draft_v2.json':['#/configs/8 and #/configs/9 (scenario field,P12/P10)','#/rules/SEL-v2'],
+ 'docs/P1_implementation_spec.md':['lines20–26,D1–D5 event/mapping semantics'],
+ 'src/soc/simulator/engine.py':['lines36–51(batch/view/call)','lines57–74(precedence/start/finish)','lines78–101(earliest event/data wakeup)'],
+ 'src/soc/model/observation.py':['lines49–58(arrived services/full public graph)','lines88–92(dependency-ready)'],
+ 'src/soc/scheduler/kernels.py':['ordered_ready and choose (static read only)'],
+ 'reports/P2_design/design_revision_v3/F01_observation_domain_options.md':['sections Reproduced source contradiction,Route B1,Common classification rules'],
+}
+for i,x in enumerate(m['sources'],1):
+ x['source_id']=f'S{i:02}';x['locators']=loc.get(x['path'],['Full file identity/context/history check; claim-specific pointers in this report'])
+dump(O/'source_manifest.json',m)
+def refs(*items):
+ out=[]
+ for path,pointer in items:
+  s=sources[path];out.append(dict(source_id=s['source_id'],path=path,version=s['version'],sha256=s['sha256'],git_blob_id=s['git_blob_id'],size_bytes=s['size_bytes'],locator=pointer))
+ return out
+dp='docs/P2_design/v3/P2_diagnostic_spec_v3.json';sp='docs/P2_design/v3/P2_public_snapshot_spec_v3.json';gp='docs/P2_design/v3/P2_generation_spec_v3.json';tp='docs/P2_design/v2/P2_workload_templates_v2.json';rp='docs/P2_design/v2/P2_resource_profiles_v2.json';mp='docs/P2_design/v2/P2_trial_matrix_draft_v2.json';cp='docs/P2_design/v3/P2_criterion_spec_v3.json'
+rows=[
+ dict(id='R01',obstacle='Exactly one ready task',classification='REMOVED_BY_B1_ONLY',mandatory_status='NO_REMAINING_ONE_READY_DISQUALIFIER',derivation='B1 changes lower ready bound2 to1 only; original E0 still includes this state. Complete all other predicates still required.',coverage_effect='One-ready alone no longer excludes F_B1.',sources=refs((dp,'#/route_options/B1_EXPAND_SINGLE_READY/F'))),
+ dict(id='R02',obstacle='More than4 ready tasks',classification='RETAINED_POSSIBLE_NOT_INDEPENDENTLY_PROVEN_MANDATORY',mandatory_status='NOT_ESTABLISHED_SEPARATELY',derivation='Multiple arrived public DAGs and DAG forks are not bounded by4. K truncates at4; FULL requires all ready fit. No additional proof that this occurs in every selected stream is claimed.',coverage_effect='If it occurs in E0,it is partial; not needed for the global proof.',sources=refs((dp,'#/inherited_v2_contract/scope/action_nodes'),(dp,'#/inherited_v2_contract/coverage'),(tp,'#/templates'))),
+ dict(id='R03',obstacle='More than2 arrived H services with not-started nodes',classification='PROVEN_MANDATORY_IN_REQUIRED_NEAR8_CONDITION',mandatory_status='YES_ROOT_CAUSE_1',derivation='At first scheduler view after slot2 pair in COCKPIT-near-saturation-8 A orB,arrival<=29/4ms; path n01->n02->n03->n06->n07 precedes n08 start and forces n08 start>=33/4ms for every H. Thus H0,H1,H2 each retain n08 not-started,regardless of draws/mappings. New H/L roots ensure ready>=1.',coverage_effect='That E0 state is not FULL under retained all-pending-H cap2. Selecting only2 does not erase the third pending H. Global coverage-one negative impossible.',sources=refs((tp,'#/templates/0/nodes'),(rp,'#/profiles'),(gp,'#/algorithm and #/arrivals'),(mp,'#/configs/8; #/configs/9'),(dp,'#/inherited_v2_contract/coverage/FULL'))),
+ dict(id='R04',obstacle='Projection exceeds36 nodes',classification='DERIVED_BOUND_NOT_INDEPENDENT_FORCED_GAP',mandatory_status='NO_INDEPENDENT_GAP_UNDER_OTHER_CAPS',derivation='Selected K<=4 plus at most2 selected target graphs of<=16 nodes gives<=4+2*16=36 even before overlap removal. Other omitted H makes target-cap gap,not a need to actually project all3 targets.',coverage_effect='Do not double-count R03 or invent a >36 projection under the declared selection.',sources=refs((dp,'#/inherited_v2_contract/limits'),(dp,'#/inherited_v2_contract/scope/target_H_services'))),
+ dict(id='R05',obstacle='Running elapsed>=estimate',classification='RETAINED_POSSIBLE_NOT_PROVEN_MANDATORY',mandatory_status='NOT_ESTABLISHED_SEPARATELY',derivation='Source admits resource factors on both sides of1; ongoing task can outlive estimate and a later observable event can expose it. No draws or fixed-seed occurrence evaluated,so no universal overrun claim.',coverage_effect='Eligible state then COVERAGE_INSUFFICIENT; missing/invalid evidence is different. Not needed for proof.',sources=refs((gp,'#/algorithm/duration_factor'),(dp,'#/inherited_v2_contract/scope/visible_running'),(dp,'#/inherited_v2_contract/coverage/PARTIAL'))),
+ dict(id='R06',obstacle='Fixed suffix misses alternative successor mappings',classification='INTERPRETATION_LIMIT_NOT_FULL_DISQUALIFIER',mandatory_status='NOT_A_COVERAGE_GAP_BY_DEFINITION',derivation='FULL is within fixed-suffix/current-K model; suffix optimization not required. Inherited hand counterexample remains explanatory,not a cause of F exclusion and not empirical reachability. No gain recomputed here.',coverage_effect='Even coverage-one would not prove global mapping absence; do not conflate blindness with partial.',sources=refs((dp,'#/inherited_v2_contract/projection/suffix_order'),(dp,'#/inherited_v2_contract/negative_interpretation'),(dp,'#/fixed_suffix_counterexample'))),
+ dict(id='R07',obstacle='Target/public state/estimate missing or malformed',classification='VALIDITY_FAILURE_OR_OTHER_PUBLIC_PREDICATE',mandatory_status='NO_NEW_FORCED_GAP_PROVEN',derivation='Valid generated DAGs/compatibility/positive estimates supplied publicly for arrived services. Missing required bodies/refs or malformed values are INVALID/INCOMPLETE,not legitimate exclusions. No pending H or no ready means NOT_IN_SCOPE; this cannot exclude the forced view,which has both.',coverage_effect='Corruption closes stage; cannot restore a valid negative by discarding it.',sources=refs((dp,'#/inherited_v2_contract/scope/eligible'),(dp,'#/inherited_v2_contract/coverage'),(sp,'#/missing'),('src/soc/model/observation.py','lines49–92'))),
+ dict(id='R08',obstacle='Snapshot/event order and state dedup',classification='FORCES_WITNESS_RECORD_RETENTION',mandatory_status='SUPPORTS_ROOT_CAUSE_1_NOT_SECOND_ROOT_CAUSE',derivation='D1 drains completion/arrival batch before call. Actual queue considers earliest arrival; new slot2 nodes not started at first call. Same-time actions occur only afterward. New H2/L2 public identities differ from every earlier state;duplicate call copies can collapse to1 bad state but cannot remove it.',coverage_effect=r'At least one unique E0\F_B1 member survives; no extra polling or fabricated hook used.',sources=refs(('src/soc/simulator/engine.py','lines37–74 and87–101'),(sp,'#/exact_event_rule'),(sp,'#/counting and #/dedup_scope'))),
+ dict(id='R09',obstacle='Other cardinality/feasibility/record prerequisites',classification='DERIVED_BOUNDS_OR_FAILURE_CLOSURE_NO_EXTRA_UNIVERSAL_PROOF',mandatory_status='NOT_COUNTED_AS_INDEPENDENT_MANDATORY_GAP',derivation='Six nonpreemptive units bound running<=6. Under finite unexpired estimates and caps,finite DAG/rational projections have compatible options; baseline belongs to own L cap. Implementation/enumeration/recomputation loss invalidates evidence. No runtime feasibility claim made.',coverage_effect='Keep validity separate from FULL coverage and scientific support; R03 alone suffices.',sources=refs((dp,'#/inherited_v2_contract/limits'),(dp,'#/inherited_v2_contract/projection/admissible'),(dp,'#/inherited_v2_contract/record_semantics'),('docs/model_spec.md','lines10–18 and39–45')))
+]
+with (O/'residual_blockers.csv').open('w',newline='') as f:
+ fields=['id','obstacle','classification','mandatory_status','derivation','coverage_effect','source_refs_json'];w=csv.DictWriter(f,fieldnames=fields,lineterminator='\n');w.writeheader()
+ for x in rows:w.writerow({**{k:v for k,v in x.items() if k!='sources'},'source_refs_json':json.dumps(x['sources'],ensure_ascii=False,separators=(',',':'))})
+proof=json.loads((O/'proof_checks.json').read_text());assert proof['exit_code']==0
+state=dict(TASK_SCOPE='F01_B1_STATIC_REACHABILITY_ONLY',EXPECTED_BASE_COMMIT=BASE,ACTUAL_START_HEAD=BASE,ACTUAL_REMOTE_WORK_SHA=BASE,WORKTREE_START_STATUS='CLEAN',WORKTREE_END_STATUS='UNKNOWN_UNTIL_PUBLICATION_VERIFIED',F01_B1_REACHABILITY_RESULT='PROVEN_UNREACHABLE',RESULT_SCOPE='Global all12 selected-loaded-condition/all10seed coverage-one negative under unchanged current proposal; mandatory witness condition COCKPIT-near-saturation-8 for either A/B',MANDATORY_RESIDUAL_BLOCKER_COUNT=1,MANDATORY_COUNT_SCOPE='One independently proved root cause:all-pending-H cap2; not a claim all other possible barriers are nonmandatory',UNRESOLVED_SPECIFICATION_ITEMS=[],INDIVIDUAL_OTHER_CONDITION_COVERAGE_REACHABILITY='NOT_PROVEN_NOT_REQUIRED_FOR_GLOBAL_COUNTERPROOF',SCIENTIFIC_COVERAGE='NOT_EVALUATED',MAPPING_CLASSIFICATION='NOT_EVALUATED',D01_D10_APPROVAL_STATUS='ALL10_UNAPPROVED',SP01_SP40_APPROVAL_STATUS='ALL40_UNAPPROVED',F01_ROUTE_SELECTED=False,F02_POLICY_SELECTED=False,SCIENTIFIC_WORKLOADS_GENERATED=0,SCIENTIFIC_WORKLOADS_RUN=0,P2_ENTRYPOINT_EXECUTED=False,NEW_SEEDS_GENERATED=False,NON_CALIBRATION_PARTITIONS_ACCESSED=False,IMPLEMENTATION_CHANGED=False,TIMING_PROTOCOL_STATUS='NOT_FROZEN',VALIDATION_UNLOCKED=False,FORMAL_UNLOCKED=False,CI_METHOD_CHANGED=False,SCIENTIFIC_THRESHOLDS_CHANGED=False,SEED_PARTITIONS_CHANGED=False,STATIC_PROOF_CHECKS_PASSED=proof['passed'],STATIC_PROOF_CHECK_EXIT_CODE=proof['exit_code'],P2_STATUS='BLOCKED',COMMIT_SHA=None,REMOTE_PUSH_STATUS='NOT_YET_ATTEMPTED',NEXT_SAFE_ACTION='Human review B1 residual forced-H-cap evidence; decide whether to accept inference limit or separately request a new F01 proposal; no route selection/implementation/science',STOP=True)
+dump(O/'final_state.json',state)
+report=r'''# F01-B1 targeted structural reachability review
+
+**PROVEN_UNREACHABLE**
+
+Scope: all-condition NOT_SUPPORTED branch under the exact B1_EXPAND_SINGLE_READY proposal,retaining original E0 and all other limits. This is a fresh sequential same-assistant static report,not an external third-party audit. It neither selects nor approves B1/A/B2 nor revises V3. Actual scientific coverage,frequency,gain,CI and mapping classification are NOT_EVALUATED. All10D/40SP remain UNAPPROVED.
+
+## Authority,verified start and source identity
+
+Task attachment preserved as authorization_request.txt. Actual root /workspace/soc,origin https://github.com/JINAOLONG/soc.git,branch work,HEAD and real remote work ff3db3ca5dc3a8c8a986e66d093fb3849955b690,initial worktree CLEAN. Both expected current and prior05a7c528840b9f28f07b41354edf02b5932b87c9 ancestry checks succeeded before writes. All868 old tracked files protected. Only this NEW report directory may change; task-specific prohibition overrides AGENTS general STATUS update. No setup change or subagent invocation was needed.
+
+Git resolves requested v1 path to docs/P2_design/P2_mapping_opportunity_decision_table_v1.md,not a nonexistent v1/ directory. Source manifest records actual bytes,SHA256,Git blob,size,version and exact pointers/line scopes. Main source rules below use actual JSON pointers,not inferred labels. Full-byte reads and prior static PASS are not scientific evidence. Historical V3 artifact manifest is rechecked without editing.
+
+## Exact question and definitions
+
+Counterfactual: evaluate B1 as IF its exact declared ready lower-bound extension were adopted; current draft/nonexecution guards do not supply a trivial reachability answer. Original user_request§43–44 states the hypothesis and2–4-ready oracle range. B1 is an unapproved1–4-ready extension ONLY.
+
+- E0: globally deduplicated eligible public states in one primary MAIN-B2 stream; at least one dependency-ready not-started node anywhere and an arrived H service with a not-started node. Valid partial states remain in E0.
+- F_B1: E0 states passing unchanged FULL predicates except ready count1..4: all ready fit4,all candidate pending H services fit2,complete approved target graphs and calendars,predictable running release,complete independent projection/enumeration.
+- Pending H population is ALL arrived H services with at least one not-started node. Selecting the first min(2,population) does not assert population≤2; truncation remains partial.
+- Negative requires F_B1/E0=1 in EVERY one of10seed×12selected loaded-condition cells,plus other unchanged preconditions. F_B1=0 or E0=0 means undefined rate/insufficient evidence; not zero opportunity.
+
+Sources: V3 diagnostic#/route_options/B1_EXPAND_SINGLE_READY and #/inherited_v2_contract/{scope,coverage,stage_denominators};V3 criterion#/route_options/B1_EXPAND_SINGLE_READY/negative_coverage;V3 snapshot#{/counting,/dedup_scope,/exact_event_rule}. Every source identity is tabulated below. B1 does not change targets,36-node bound,suffix,elapsed expiry,L cap,cutoffs or priorities.
+
+## Mandatory residual obstruction: three pending H services
+
+Witness condition is COCKPIT-near-saturation-8. Registered A/B periods are12/10ms (actual matrix#/configs,scenario key). Any valid all18 selection must pick one of these two for this condition; no eligible option blocks the negative precondition even earlier. This is not a claim that every light/medium/other individual stream has the same obstruction.
+
+Let H^(j),L^(j) denote only logical service symbols for slots j=0,1,2; no service/workload instance is created. Exact arrival rule from V3 generation#/arrivals:
+
+    a_j_exact = P*(j/4+U_j/10), j=0,1,2, with 0<=U_j<1.
+
+Unknown U_j are universally quantified,not calculated from any seed. The first three slots' intervals are strictly ordered (0..0.1P,0.25P..0.35P,0.5P..0.6P); their positive gaps are far above binary64 rounding in P10/P12. Both groups share the slot arrival. For either configuration:
+
+    a_2_exact < 3P/5 <=36/5=7.2ms <29/4=7.25ms.
+    t_2=RN64(a_2_exact) <=29/4,
+
+because RN64 is monotone and29/4 is exactly representable. This is a conservative bound,not an actual arrival time or scientific parameter.
+
+Now inspect the real COCKPIT8 prerequisite chain:
+
+    n01 audio -> n02 speech -> n03 intent -> n06 route -> n07 compose -> n08 interaction.
+
+The first five nodes MUST finish before n08 can start. Their minimum compatible base costs are2,3,1,3,2ms (profile#/profiles indices0,1,2,5,6); all node scales are1. These minima do not assume a jointly attainable fastest mapping. Ignoring communication,resource contention and extra predecessors only weakens a lower bound.
+
+Generation#/algorithm states estimate factor>=9/10 and separate actual factor>=9/10,exact arithmetic before one final RN64 conversion. Therefore exact duration>=81b/100 for a node with compatible base b,so rounded actual duration>=3b/4: 3b/4 is a representable dyadic below81b/100,RN64 monotonicity preserves the floor. Across the chain the conservative dyadic floors are:
+
+|Node|Minimum base b|Duration floor3b/4|Cumulative floor before next node|
+|---|---:|---:|---:|
+|n01|2|3/2|3/2|
+|n02|3|9/4|15/4|
+|n03|1|3/4|9/2|
+|n06|3|9/4|27/4|
+|n07|2|3/2|33/4|
+
+All these sums are small exact binary64 dyadics. Arrival/start times are nonnegative. Inductively if predecessor finish>=B,the successor cannot start before that finish; with duration>=d,its RN64 finish>=RN64(B+d)=B+d for these exact dyadic floors. Actual engine source uses finish=now+realized and predecessor/data-readiness guard; nonnegative communication cannot advance a start. Hence ANY valid schedule of ANY such H service has:
+
+    start(n08) >=33/4=8.25ms >29/4 >=t_2.
+
+This is an ABSOLUTE floor from time0,so it applies simultaneously to H^(0),H^(1),H^(2),without subtracting arrivals or assuming particular resource allocations. It avoids rounding accumulation or epsilon assumptions. The one-ms separation is a proof margin,not a new threshold.
+
+At the first scheduler view after the full t_2 completion/arrival batch:
+
+1. H^(0),H^(1),H^(2) have all arrived. Each retains its not-started n08 by the strict bound. Deadline misses do not drop admitted work under full-drain semantics.
+2. Newly arrived H^(2),L^(2) each have two no-predecessor roots n01,n05. Before their first dispatch call these four roots are not started and dependency-ready. Thus E0's ready predicate holds,regardless of whether earlier services add more ready nodes.
+3. The pending H population is at least3. Retained FULL requires the ENTIRE candidate population fit<=2. B1 only changed ready lower bound,so this state cannot enter F_B1 even if ready count is exactly4,all estimates unexpired and every other predicate ideal.
+
+Required recording: engine drains all completions/arrivals before observe/controller; queue minimum participates in next_time,so it cannot skip this arrival. Snapshot#/exact_event_rule records each actual invocation,including NONE. No synthetic polling or between-batch observation is introduced.
+
+Required retention: the new H^(2)/L^(2) identities and full DAGs appear in this public body and were absent earlier. Original equivalence includes arrived services/status/now; a real arrival changes the canonical state. Duplicate calls with the same body can count once,but cannot remove the one unique bad member. Cross-trial/replay pooling cannot eliminate it under the declared primary-stream scope.
+
+Therefore every valid primary B2 stream in either registered A/B of this REQUIRED selected condition has E0\F_B1 nonempty. If F_B1=0,the negative precondition fails. If F_B1>0,the finite count gives F_B1<E0 and F_B1/E0<1. All12condition×10seed negative requires1 everywhere,so the global NOT_SUPPORTED branch remains unreachable. This proof is uniform over all admitted generation factors/registered seeds without evaluating them and does not depend on B2 tie/mapping choices.
+
+## Failure-closure and quantifier limits
+
+If either no valid selected A/B exists,required run/stream/M2 is invalid/incomplete or another prerequisite fails,the stage is blocked earlier; that is not a valid negative stream. Omitting the forced state,discarding a seed,renaming a condition or treating overflow H as absent violates the unchanged contract. An implementation that fails to export it has incomplete evidence,not a rescued coverage-one negative.
+
+Mandatory root-cause count is1: pending-H cap2. Other possible barriers are reviewed below and are not double-counted. We have not established full-coverage existence/impossibility separately for every other individual condition. That is unnecessary to refute the universal all-condition branch. No specification gap blocks this particular global proof. Current mapping classification remains NOT_EVALUATED; no frequency,gain,CI or actual coverage has been calculated. The proof does not establish impossibility of support coverage4/5.
+
+## Residual obstacle classification
+
+See residual_blockers.csv for exact source identities and per-item derivations. One-ready is removed by B1. >4ready remains a possible disqualifier but no independent universal proof is asserted here. >2pending H is the mandatory witness above.36nodes is a derived bound K<=4 plus2×16,not another independent forced gap; selecting2 of3 never authorizes silently dropping the third. Running expiry remains possible from duration factors but no actual fixed-seed occurrence or mandatory exposure has been inspected/proved. Fixed suffix is a limitation of interpretation inside FULL,not a FULL disqualifier. Missing/illegal public data is INVALID/INCOMPLETE,not legal partial. No ready or no pending H is genuinely out-of-scope but does not describe the forced view. Six-unit running bound,positive estimates,baseline membership in its L cap and finite complete projection are not new independent universal obstacles.
+
+The inherited fixed-suffix hand counterexample continues to limit all tested-space negatives. It is referenced only; this task computes no gain. No obstacle is called mandatory merely because an example is imaginable,and no local FULL state is presented as proof of a complete all-condition state sequence.
+
+## Consequences for A/B1/B2 decision
+
+B1 removes the original single-ready ADAS obstruction but DOES NOT restore global full-population negative reachability with all remaining caps unchanged. It could still yield other registered outcomes; scientific support,coverage prevalence and cost remain NOT_EVALUATED. The user may accept the restricted information/stopping boundary or separately request a new fully specified proposal. This task does not recommend new cap/denominator/threshold values.
+
+A retains its already-known negative limitation. B2 explicitly conditions on a smaller structural domain and changes inference scope; this proof neither approves B2 nor establishes its empirical prevalence or conditional classification. No route is selected. All10D/40SP stay UNAPPROVED,F02 unselected,timing NOT_FROZEN,P2 BLOCKED. No implementation or science authorization follows this report.
+
+## Actual checks and limitations
+
+proof_checks.py.txt checks35 static premises/hand algebra/immutability observations (exit0). It parses existing finite tables and source TEXT,does not import any soc module,construct a workload,simulate events,generate a schedule,run an oracle/validator,draw a seed or compute coverage/gain/CI/bootstrap. It does not prove runtime correctness. A read-only preliminary source projection used the wrong matrix field scene; actual schema uses scenario. Original tool failure exit1 and its recorded reproduction B1-043 are retained in raw_commands; B1-044 correctly reads schema and verifies proof inputs. This reviewer error is not a simulator/design failure. New report structure/reference/manifest checks and publication are separately receipted.
+
+## Source identity table
+
+The following entries provide actual SHA256,Git blob,bytes and locator scopes for every source cited above/CSV. All at the verified starting commit; line ranges are supplementary to exact JSON pointers and named code sections.
+
+|ID|Actual source path|Bytes|SHA256|Git blob|Locators|
+|---|---|---:|---|---|---|
+'''
+for x in m['sources']:
+ report+='|'+x['source_id']+'|'+x['path']+'|'+str(x['size_bytes'])+'|'+x['sha256']+'|'+x['git_blob_id']+'|'+('; '.join(x['locators'])).replace('|','\\|')+'|\n'
+report+='\nSTOP=true. Final Git/remote/worktree resolved from actual publication receipts,not invented as a self-referential commit hash.\n'
+(O/'f01_b1_reachability_review.md').write_text(report)
+print(json.dumps(dict(result=state['F01_B1_REACHABILITY_RESULT'],mandatory_root_causes=1,residual_rows=len(rows),source_count=len(m['sources']),approvals=0,science=0)))

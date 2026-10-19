@@ -1,0 +1,31 @@
+generation algorithm {
+  "name": "SHA256",
+  "input": "SEMANTIC_CANON_V2(exact fully filled KEY object)",
+  "digest_to_U": "q=unsigned big-endian first8 bytes; U=q/2^64 exact Rational in[0,1)",
+  "service_role_factor": "9/10+U/5, independent key per MAIN slot/group/node; same factor for all compatible resources of this node",
+  "duration_factor": "9/10+U/5, separate MAIN slot/group/node/resource key; realized_exact=estimate_exact*factor",
+  "arrival_jitter": "U/10 per MAIN slot with H/L/node/resource/edge fields empty; scenario/condition/config retained",
+  "nonrandom_fields": [
+    "edge sizes fixed D03",
+    "deadline formula no draws"
+  ],
+  "conversion": "All generation arithmetic exact Rational; each estimated/realized/arrival/relative-deadline value converted ONCE with correctly rounded binary64 ties-to-even; normalize -0; reject nonfinite/nonpositive durations, do not silently repair. Save exact estimates/deadlines sidecar for G."
+}
+arrivals {
+  "slots": 50,
+  "services_per_slot": 2,
+  "total_services": 100,
+  "H": 50,
+  "L": 50,
+  "burst_block_slots": 5,
+  "burst_compression": "1/4",
+  "formula": "for j=0..49: q=j//5,k=j%5; a_H=a_L=P*(5*q+k/4+U_j/10); P from unchanged config period_ms",
+  "arrival_window": "[0,W), W=50*P; no admission at W; full drain; observation_end=max(W,last_finish) metadata only; makespan remains last_finish",
+  "no_warmup_exclusion": true
+}
+COCKPIT-8-v1 [('COCKPIT.n01', 'audio', '1', []), ('COCKPIT.n02', 'speech', '1', ['COCKPIT.n01']), ('COCKPIT.n03', 'intent', '1', ['COCKPIT.n02']), ('COCKPIT.n04', 'display', '1', ['COCKPIT.n03', 'COCKPIT.n05']), ('COCKPIT.n05', 'navigation', '1', []), ('COCKPIT.n06', 'route', '1', ['COCKPIT.n03', 'COCKPIT.n05']), ('COCKPIT.n07', 'compose', '1', ['COCKPIT.n04', 'COCKPIT.n06']), ('COCKPIT.n08', 'interaction', '1', ['COCKPIT.n07'])]
+COCKPIT-16-v1 [('COCKPIT.n01.a', 'audio', '1/2', []), ('COCKPIT.n01.b', 'audio', '1/2', ['COCKPIT.n01.a']), ('COCKPIT.n02.a', 'speech', '1/2', ['COCKPIT.n01.b']), ('COCKPIT.n02.b', 'speech', '1/2', ['COCKPIT.n02.a']), ('COCKPIT.n03.a', 'intent', '1/2', ['COCKPIT.n02.b']), ('COCKPIT.n03.b', 'intent', '1/2', ['COCKPIT.n03.a']), ('COCKPIT.n04.a', 'display', '1/2', ['COCKPIT.n03.b', 'COCKPIT.n05.b']), ('COCKPIT.n04.b', 'display', '1/2', ['COCKPIT.n04.a']), ('COCKPIT.n05.a', 'navigation', '1/2', []), ('COCKPIT.n05.b', 'navigation', '1/2', ['COCKPIT.n05.a']), ('COCKPIT.n06.a', 'route', '1/2', ['COCKPIT.n03.b', 'COCKPIT.n05.b']), ('COCKPIT.n06.b', 'route', '1/2', ['COCKPIT.n06.a']), ('COCKPIT.n07.a', 'compose', '1/2', ['COCKPIT.n04.b', 'COCKPIT.n06.b']), ('COCKPIT.n07.b', 'compose', '1/2', ['COCKPIT.n07.a']), ('COCKPIT.n08.a', 'interaction', '1/2', ['COCKPIT.n07.b']), ('COCKPIT.n08.b', 'interaction', '1/2', ['COCKPIT.n08.a'])]
+ADAS-8-v1 [('ADAS.n01', 'preprocess', '1', []), ('ADAS.n02', 'detect', '1', ['ADAS.n01']), ('ADAS.n03', 'segment', '1', ['ADAS.n01']), ('ADAS.n04', 'track', '1', ['ADAS.n02']), ('ADAS.n05', 'fusion', '1', ['ADAS.n03', 'ADAS.n04']), ('ADAS.n06', 'plan', '1', ['ADAS.n05']), ('ADAS.n07', 'render', '1', ['ADAS.n05']), ('ADAS.n08', 'output', '1', ['ADAS.n06', 'ADAS.n07'])]
+ADAS-16-v1 [('ADAS.n01.a', 'preprocess', '1/2', []), ('ADAS.n01.b', 'preprocess', '1/2', ['ADAS.n01.a']), ('ADAS.n02.a', 'detect', '1/2', ['ADAS.n01.b']), ('ADAS.n02.b', 'detect', '1/2', ['ADAS.n02.a']), ('ADAS.n03.a', 'segment', '1/2', ['ADAS.n01.b']), ('ADAS.n03.b', 'segment', '1/2', ['ADAS.n03.a']), ('ADAS.n04.a', 'track', '1/2', ['ADAS.n02.b']), ('ADAS.n04.b', 'track', '1/2', ['ADAS.n04.a']), ('ADAS.n05.a', 'fusion', '1/2', ['ADAS.n03.b', 'ADAS.n04.b']), ('ADAS.n05.b', 'fusion', '1/2', ['ADAS.n05.a']), ('ADAS.n06.a', 'plan', '1/2', ['ADAS.n05.b']), ('ADAS.n06.b', 'plan', '1/2', ['ADAS.n06.a']), ('ADAS.n07.a', 'render', '1/2', ['ADAS.n05.b']), ('ADAS.n07.b', 'render', '1/2', ['ADAS.n07.a']), ('ADAS.n08.a', 'output', '1/2', ['ADAS.n06.b', 'ADAS.n07.b']), ('ADAS.n08.b', 'output', '1/2', ['ADAS.n08.a'])]
+FUSION-8-v1 [('FUSION.n01', 'audio', '1', []), ('FUSION.n02', 'speech', '1', ['FUSION.n01']), ('FUSION.n03', 'navigation', '1', []), ('FUSION.n04', 'detect', '1', ['FUSION.n05']), ('FUSION.n05', 'preprocess', '1', []), ('FUSION.n06', 'fusion', '1', ['FUSION.n02', 'FUSION.n04']), ('FUSION.n07', 'compose', '1', ['FUSION.n03', 'FUSION.n06']), ('FUSION.n08', 'interaction', '1', ['FUSION.n07'])]
+FUSION-16-v1 [('FUSION.n01.a', 'audio', '1/2', []), ('FUSION.n01.b', 'audio', '1/2', ['FUSION.n01.a']), ('FUSION.n02.a', 'speech', '1/2', ['FUSION.n01.b']), ('FUSION.n02.b', 'speech', '1/2', ['FUSION.n02.a']), ('FUSION.n03.a', 'navigation', '1/2', []), ('FUSION.n03.b', 'navigation', '1/2', ['FUSION.n03.a']), ('FUSION.n04.a', 'detect', '1/2', ['FUSION.n05.b']), ('FUSION.n04.b', 'detect', '1/2', ['FUSION.n04.a']), ('FUSION.n05.a', 'preprocess', '1/2', []), ('FUSION.n05.b', 'preprocess', '1/2', ['FUSION.n05.a']), ('FUSION.n06.a', 'fusion', '1/2', ['FUSION.n02.b', 'FUSION.n04.b']), ('FUSION.n06.b', 'fusion', '1/2', ['FUSION.n06.a']), ('FUSION.n07.a', 'compose', '1/2', ['FUSION.n03.b', 'FUSION.n06.b']), ('FUSION.n07.b', 'compose', '1/2', ['FUSION.n07.a']), ('FUSION.n08.a', 'interaction', '1/2', ['FUSION.n07.b']), ('FUSION.n08.b', 'interaction', '1/2', ['FUSION.n08.a'])]

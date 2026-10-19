@@ -1,0 +1,8 @@
+from pathlib import Path
+import json,hashlib
+R=Path('/workspace/soc');O=R/'reports/P2_design/predecision_f01_b1'
+files=[]
+for p in sorted(O.rglob('*')):
+ if p.is_file() and p.name!='artifact_manifest.json':files.append(dict(path=str(p.relative_to(R)),sha256=hashlib.sha256(p.read_bytes()).hexdigest(),size_bytes=p.stat().st_size))
+x=dict(scope='ONLY NEW targeted F01-B1 static review artifacts; no copied design package or scientific artifact',source_commit='ff3db3ca5dc3a8c8a986e66d093fb3849955b690',F01_B1_REACHABILITY_RESULT='PROVEN_UNREACHABLE',artifact_count=len(files),files=files,self_exclusion='This manifest excludes itself. Enclosing Git object binds it; final enclosing commit resolved from live publication evidence.',scientific_artifacts_generated=0)
+(O/'artifact_manifest.json').write_text(json.dumps(x,ensure_ascii=False,indent=2)+'\n');print(json.dumps(dict(artifact_count=len(files),manifest_sha256=hashlib.sha256((O/'artifact_manifest.json').read_bytes()).hexdigest())))

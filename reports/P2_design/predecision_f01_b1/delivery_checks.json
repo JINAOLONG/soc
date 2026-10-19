@@ -1,0 +1,131 @@
+{
+  "scope": "Static report/source/receipt integrity; not project validator or scientific audit",
+  "passed": 23,
+  "failed": [],
+  "checks": [
+    {
+      "id": "REQUIRED_REPORTS_PRESENT",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "ALL_NEW_JSON_STRICT_PARSE",
+      "pass_": true,
+      "detail": {
+        "files": 6
+      }
+    },
+    {
+      "id": "ALL868_ORIGINAL_BYTES_UNCHANGED",
+      "pass_": true,
+      "detail": []
+    },
+    {
+      "id": "ALL33_SOURCE_SHA_BLOB_SIZE_IDENTITIES",
+      "pass_": true,
+      "detail": []
+    },
+    {
+      "id": "NINE_OBSTACLES_UNIQUE_CONSISTENT_FIELDS",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "ONLY_ONE_PROVEN_MANDATORY_ROOT_CAUSE",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "POSSIBLE_READY_AND_EXPIRY_NOT_CALLED_PROVEN",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "SUFFIX_NOT_MISLABELED_COVERAGE_GAP",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "CSV_EXACT_SOURCE_IDENTITIES_AND_JSON_POINTERS",
+      "pass_": true,
+      "detail": {
+        "source_refs": 28,
+        "json_pointers": 28
+      }
+    },
+    {
+      "id": "REPORT_HAS_SOURCE_IDENTITIES_AND_SCOPE",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "PROOF35_PASS_ACTUAL_EXIT0",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "BOUND_AND_TARGET_CAP_CONSISTENT",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "NO_COMPLETE_SEQUENCE_CLAIM_FOR_REACHABILITY",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "NO_SPEC_GAP_NEEDED_FOR_PROVED_GLOBAL_RESULT",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "ALL_APPROVALS_AND_CHOICES_UNCHANGED",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "SCIENCE_AND_MAPPING_NOT_EVALUATED",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "NO_IMPL_SEEDS_THRESHOLDS_CI_UNLOCK",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "COMMAND_IDS_UNIQUE_AND_NO_SCIENCE",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "ALL_RECORDED_STDOUT_STDERR_HASHES_MATCH",
+      "pass_": true,
+      "detail": []
+    },
+    {
+      "id": "READ_ERROR_AND_CORRECTED_PROOF_RETAINED",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "OLD_V3_MANIFEST_AND_MATRIX_UNCHANGED",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "ONLY_ALLOWED_NEW_REPORT_DIRECTORY",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "NO_UNLOCK_FILES_CREATED",
+      "pass_": true,
+      "detail": null
+    }
+  ],
+  "exit_code": 0,
+  "F01_B1_REACHABILITY_RESULT": "PROVEN_UNREACHABLE",
+  "scientific_coverage": "NOT_EVALUATED",
+  "stage": "BLOCKED"
+}

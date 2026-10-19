@@ -1,0 +1,291 @@
+{
+  "document_kind": "M1R_OBSERVATION_ROUTE_OPTIONS",
+  "document_version": "v3",
+  "status": "DRAFT_UNAPPROVED_NONEXECUTABLE",
+  "approval": "UNAPPROVED",
+  "approved": false,
+  "frozen": false,
+  "executable": false,
+  "execution_authorized": false,
+  "read_by_pipeline": false,
+  "starting_commit": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+  "base_source": {
+    "path": "docs/P2_design/v2/P2_diagnostic_spec_v2.json",
+    "version": "v2 DRAFT_UNAPPROVED",
+    "sha256": "9bec37d044f4c7742d931149c195c2c3ec1540d41dc3f0a899a2b29f8c7e3e90",
+    "source_commit": "cae4a396c02b5fa038a771b65dce9aaad449d3a9"
+  },
+  "selected_route": null,
+  "operational_diagnostic": null,
+  "selection_status": "UNRESOLVED_BLOCKING",
+  "inherited_v2_contract": {
+    "document_kind": "BOUNDED_REMAINING_H_PATH_DIAGNOSTIC",
+    "document_version": "v2",
+    "status": "DRAFT_UNAPPROVED_NONEXECUTABLE",
+    "classification": "PROPOSED",
+    "approval": "UNAPPROVED",
+    "approved": false,
+    "frozen": false,
+    "executable": false,
+    "execution_authorized": false,
+    "read_by_pipeline": false,
+    "starting_commit": "79f9c245b23119ce25175d6dc6ff148e9e092461",
+    "diagnostic_id": "M1R_PATH_V2",
+    "historical_M1": {
+      "id": "M1_READY_PREFIX_V1",
+      "source": "docs/P2_design/P2_complete_design_proposal_v1.md#D07",
+      "source_sha256": "e378e85071d6c97fb6cd5801d9449eef176a90baddcd786181c6685eaa29feac",
+      "use": "Historical definition only, not the v2 stage observer; cannot infer absence of remaining-H-path mechanism from its negative result."
+    },
+    "observation_boundary": "Only exact PUBLIC_SNAPSHOT; no future arrivals/private durations/queue/truth; all predictions are offline and cannot change scheduler/actual B2 trace.",
+    "scope": {
+      "eligible": "At least one dependency-ready not-started node anywhere among arrived services AND at least one arrived H service with a not-started node; H running prefix with an unready H descendant qualifies.",
+      "action_nodes": "First min(4,all_dependency_ready_count) in unchanged B2 (H first, absolute deadline, service_id,node_id) order when at least2 ready nodes exist. With exactly1 ready node record COVERAGE_INSUFFICIENT/READY_COUNT_BELOW_TWO and do not enumerate, preserving the original2-4-ready oracle scope.",
+      "target_H_services": "First min(2,number of unfinished arrived H services with >=1 not-started node), ordered absolute deadline then service_id; fixed before any gain calculation.",
+      "suffix": "All still-unplaced nodes of the selected target H services, including public unready descendants; each approved graph has at most16 nodes. Completed/running/current-action target nodes treated as already fixed/forecast placed.",
+      "visible_running": "At most6 units. release_hat=now+max(0,estimate-elapsed). If any busy unit has elapsed>=estimate, future release cannot be placed from public info: mark COVERAGE_INSUFFICIENT, do not invent epsilon or consult true completion.",
+      "unselected_work": "No unselected ready node, unselected H target, L successor or future arrival is projected; report exclusions and truncation. Never interpret result as global optimality."
+    },
+    "limits": {
+      "max_action_nodes": 4,
+      "min_action_nodes": 2,
+      "max_target_H_services": 2,
+      "max_nodes_per_target": 16,
+      "max_projected_nodes": 36,
+      "max_visible_running": 6,
+      "max_assignments": 1296,
+      "max_calendar_intervals": 42,
+      "max_gap_candidates_per_resource": 43,
+      "max_resource_choices_per_node": 6,
+      "max_numeric_gap_checks_per_view": 12037248,
+      "early_stopping": false,
+      "wall_time_measured": false
+    },
+    "projection": {
+      "arithmetic": "Exact Rational values decoded from public binary64 bits. All forecast communication L+b/B and interval algebra use those rationals, not hidden truths. This surrogate need not bit-match runtime floating prediction.",
+      "initial_calendar": "For each busy unit reserve forecast[now,release_hat); idle units have no forecast busy interval. Public completed outputs remain fixed at actual known finish/resource.",
+      "current_actions": "Place K in fixed B2 order. For each assignment, earliest entire idle gap at/after now, service arrival and all completed predecessor copies, using projected running calendars. No preemption/migration/overlap. All chosen action intervals remain fixed for suffix rollout.",
+      "baseline": "Greedy minimum predicted EFT with resource-ID ties for each K action using the same placement arithmetic/calendar; not a claim to reproduce actual future B2 execution.",
+      "suffix_order": "Static Kahn placement of selected target pending nodes after treating completed/running/K as placed; among available nodes choose (service absolute deadline,service_id,node_id). Same order in baseline and every assignment; no suffix search.",
+      "suffix_mapping": "For each suffix node, choose minimum predicted EFT/resource ID among compatible units using earliest entire idle-gap insertion. Parents may have fixed known or projected finishes; projected finish is never an actual completed fact.",
+      "objective": "Minimize arithmetic mean of projected completion times of the fixed selected H services; completion=max projected/known finish over all nodes of each target service. No deadline/miss or true-duration objective substitution.",
+      "L_constraint": "For every L node in K: candidate predicted finish <= max(baseline predicted finish, its service absolute deadline). No claim about full-L-service completion or global L-P95 budget. This is a new diagnostic slack rule, not the registered1.10 threshold.",
+      "admissible": "Enumerate complete Cartesian product of compatible resources for K, <=6^4. No task-order branching, no optimization of suffix mappings, no future tasks. Baseline is included and satisfies its own L cap.",
+      "ties": "Compare H objective exactly; equal objectives choose lexicographic resource-ID tuple in K order. Suffix/greedy resource ties use fixed resource ID order.",
+      "gain": "b=baseline target-H mean finish-now>0; o=best corresponding finish-now; delta=b-o>=0 ms, g=delta/b dimensionless. Persist exact rationals, no arbitrary epsilon."
+    },
+    "coverage": {
+      "FULL": "All ready actions fit2<=K<=4; all candidate pending H services fit<=2; complete approved target DAGs; all running releases predictable from estimates; all enumeration/projection records complete.",
+      "PARTIAL": "Ready count below2 or ready/target cap truncates, or busy estimate exhausted, or bounded model cannot cover target. Record COVERAGE_INSUFFICIENT; optional bounded partial projection is descriptive only, never enter hit/rate denominator or be imputed zero.",
+      "INVALID": "Malformed/nonfinite public state, illegal predecessor/compatibility identity, missing refs, impossible ordering/calendars or independent mismatch. Stop plan; not a negative opportunity.",
+      "MISSING": "Missing required snapshot/stream/record is INCOMPLETE, not PARTIAL coverage."
+    },
+    "view_outcomes": [
+      "NOT_IN_SCOPE",
+      "COVERAGE_INSUFFICIENT",
+      "INVALID",
+      "INCOMPLETE",
+      "NO_IMPROVEMENT_IN_TESTED_SPACE",
+      "SUBTHRESHOLD_IMPROVEMENT",
+      "MATERIAL_IMPROVEMENT_IN_TESTED_SPACE"
+    ],
+    "record_fields": [
+      "namespace",
+      "schema_version",
+      "diagnostic_id",
+      "observer_spec_sha256",
+      "state_key",
+      "representative_event_seq",
+      "scope_hash",
+      "eligibility_reason",
+      "all_ready_count",
+      "all_target_count",
+      "selected_K_IDs",
+      "selected_target_IDs",
+      "truncation_flags",
+      "coverage_status",
+      "baseline_assignment",
+      "baseline_calendar",
+      "baseline_target_finishes",
+      "baseline_L_finishes",
+      "enumeration_count",
+      "feasible_count",
+      "enumeration_digest_sha256",
+      "best_assignment",
+      "best_calendar",
+      "best_target_finishes",
+      "projected_H_path_and_resource_blockers",
+      "b",
+      "o",
+      "delta_ms",
+      "g",
+      "threshold_bundle_id",
+      "view_outcome",
+      "independent_recompute_ref",
+      "independent_recompute_status"
+    ],
+    "stage_denominators": {
+      "E": "all unique IN_SCOPE states from complete primary MAIN-B2 stream, including valid partial-coverage states",
+      "F": "subset of E with VALID_FULL complete diagnostic",
+      "hits": "subset of F with g>=preapproved tau",
+      "p": "hits/F only when F>0; partial states not zero or hits",
+      "coverage": "F/E only when E>0",
+      "zero": "E=0 or F=0 => insufficient evidence; p=null, never0"
+    },
+    "negative_interpretation": "No improvement means none for this exact tested local action/suffix model. Partial coverage cannot yield negative absence evidence. Even complete tested-space negative is an operational failure to support the preregistered bounded diagnostic, not a theorem that all mappings or future workloads lack the registered mechanism.",
+    "independent_recomputation": "Use snapshot+observer spec only; verify fixed target/action/order, baseline membership, all Cartesian assignments and L caps, projection intervals, exact objective/ties/gain, coverage and representative event. No source-private true fields.",
+    "record_schema": "P2_typed_identity_schema_v2.json#/$defs/DIAGNOSTIC_RECORD",
+    "error_schema": "P2_typed_identity_schema_v2.json#/$defs/DIAGNOSTIC_ERROR_RECORD",
+    "record_semantics": "VALID_FULL requires nonnull b/o/delta/g/enumeration digest and all baseline/best projections; counts exact. Other coverage states cannot be filled with zero g: use null if uncomputed. Missing required state data produces ERROR_RECORD, not a fabricated complete diagnostic. PASS independent recomputation required before criterion use."
+  },
+  "route_options": {
+    "A_KEEP_ORIGINAL": {
+      "approval": "UNAPPROVED",
+      "classification": "SOURCE_SUPPORTED_AND_PROPOSED_POLICY_ACCEPTANCE",
+      "original_E": "E0: all unique valid original eligible primary MAIN-B2 states, including one-ready/over-cap/expired estimates",
+      "analysis_domain": "E0",
+      "F": "F0: original valid FULL subset, 2..4 ready, <=2 pending H targets, predictable releases, complete approved graphs/enumeration",
+      "excluded": "All E0 retained; E0-F0 tagged partial, never zero gain",
+      "opportunity_rate": "hits/F0 when F0>0 else null",
+      "support_coverage": "F0/E0 >= 4/5 for every seed/loaded-condition",
+      "negative_coverage": "F0/E0 == 1 for every seed/loaded-condition",
+      "reachability": "ADAS negative impossible: E0-F0>=1; F0=0 fails, F0>0 implies coverage<1",
+      "interpretation": "If complete valid evidence is below support but cannot satisfy negative, INCONCLUSIVE; this is evidence insufficiency, not mechanism refutation. No progression under INCONCLUSIVE.",
+      "contract_effect": "No domain/threshold change. Explicit human acceptance of operational uninformative-negative possibility required; original hypothesis still unproved.",
+      "decision_table": [
+        {
+          "priority": 0,
+          "when": "No evaluation executed",
+          "result": "NOT_EVALUATED"
+        },
+        {
+          "priority": 1,
+          "when": "Evaluation attempted; any approval/identity/stream/M2/missing/invalid/precondition fails OR zero required domain denominator",
+          "result": "INCONCLUSIVE",
+          "evidence_state": "INVALID/INCOMPLETE separately retained; no valid negative"
+        },
+        {
+          "priority": 2,
+          "when": "All prerequisites; support_coverage above holds in120 cells; each12 conditions CI_low>=f and >=8 seeds p>=f",
+          "result": "SUPPORTED"
+        },
+        {
+          "priority": 3,
+          "when": "All prerequisites; negative_coverage above holds in120 cells; each12 conditions CI_high<f and <=2 seeds p>=f",
+          "result": "NOT_SUPPORTED"
+        },
+        {
+          "priority": 4,
+          "when": "All other cases including insufficient valid coverage or CI boundaries",
+          "result": "INCONCLUSIVE"
+        }
+      ],
+      "threshold_bundle": "UNSELECTED; inherited FINE/COARSE, no new values",
+      "missing_policy": "No missing/invalid state excluded to manufacture A0/F; no zero imputation; all stream events preserved."
+    },
+    "B1_EXPAND_SINGLE_READY": {
+      "approval": "UNAPPROVED",
+      "classification": "PROPOSED_REQUIRES_APPROVAL",
+      "original_E": "Same E0; every original state retained",
+      "analysis_domain": "E0",
+      "F": "F1: original FULL predicate except action-ready count is1..4; every1-ready compatible assignment enumerated; all other caps/release/DAG/integrity restrictions unchanged",
+      "excluded": "E0-F1 retains over-cap/expired/uncovered states; no zero imputation",
+      "opportunity_rate": "hits/F1 when F1>0 else null",
+      "support_coverage": "F1/E0 >= 4/5 for every seed/loaded-condition",
+      "negative_coverage": "F1/E0 == 1 for every seed/loaded-condition",
+      "reachability": "Removes the specific1-ready obstruction, NOT a proof global negative reachable. Other partial states can still force coverage<1.",
+      "interpretation": "Same bounded fixed-suffix surrogate but expanded action-count support; no global absence inference.",
+      "contract_effect": "Explicit departure from original user_request §44 2–4 oracle range and SP25; requires human research-scope decision. No active change in this task.",
+      "precise_projection": "With K=1 use same fixed B2 order, exact rational baseline, entire compatible resource Cartesian product, same target/suffix/calendar/L cap/ties/gain. Maximum4 actions/6^4 and36 projected nodes unchanged.",
+      "decision_table": [
+        {
+          "priority": 0,
+          "when": "No evaluation executed",
+          "result": "NOT_EVALUATED"
+        },
+        {
+          "priority": 1,
+          "when": "Evaluation attempted; any approval/identity/stream/M2/missing/invalid/precondition fails OR zero required domain denominator",
+          "result": "INCONCLUSIVE",
+          "evidence_state": "INVALID/INCOMPLETE separately retained; no valid negative"
+        },
+        {
+          "priority": 2,
+          "when": "All prerequisites; support_coverage above holds in120 cells; each12 conditions CI_low>=f and >=8 seeds p>=f",
+          "result": "SUPPORTED"
+        },
+        {
+          "priority": 3,
+          "when": "All prerequisites; negative_coverage above holds in120 cells; each12 conditions CI_high<f and <=2 seeds p>=f",
+          "result": "NOT_SUPPORTED"
+        },
+        {
+          "priority": 4,
+          "when": "All other cases including insufficient valid coverage or CI boundaries",
+          "result": "INCONCLUSIVE"
+        }
+      ],
+      "threshold_bundle": "UNSELECTED; inherited FINE/COARSE, no new values",
+      "missing_policy": "No missing/invalid state excluded to manufacture A0/F; no zero imputation; all stream events preserved."
+    },
+    "B2_CONDITIONAL_DOMAIN": {
+      "approval": "UNAPPROVED",
+      "classification": "PROPOSED_REQUIRES_APPROVAL",
+      "original_E": "E0 remains the complete original audit population",
+      "analysis_domain": "A0={s in E0:2<=ready<=4,1<=pending_H<=2,all running estimates unexpired,all arrived approved DAGs/public calendars structurally complete}; predicate fixed before g or projection results",
+      "F": "FA: states in A0 with fully verified complete original projection; implementation/missing failure inside A0 is INVALID/INCOMPLETE and blocks, never reclassify as excluded",
+      "excluded": "E0-A0 retained with pre-gain reasons and state refs; report per-seed/condition E0,A0,FA,excluded,FA/E0,A0/E0,FA/A0; all actual events retained",
+      "opportunity_rate": "hits/FA conditional on A0, when E0>0,A0>0,FA>0 else null",
+      "support_coverage": "FA/A0 >= 4/5 (explicit changed denominator proposal; with complete valid projections FA=A0 so gate redundant)",
+      "negative_coverage": "FA/A0 == 1 (conditional completeness; NOT full E0 coverage)",
+      "reachability": "A0=0 =>INCONCLUSIVE. FA=A0>0 removes original1-ready obstruction only by explicit conditioning. Does not establish A0 prevalence or any actual outcome.",
+      "interpretation": "Absence/presence of stable opportunity conditional on predeclared original-FULL-capable states only; FA/E0 always reported; cannot infer absence on E0 or original broad mechanism. Operational permanent stop needs explicit human policy approval.",
+      "contract_effect": "Changes estimand/coverage denominator meaning; retains numeric threshold literals but changes their meaning. No population-prevalence cutoff is invented. User may reject/defer this narrow target.",
+      "decision_table": [
+        {
+          "priority": 0,
+          "when": "No evaluation executed",
+          "result": "NOT_EVALUATED"
+        },
+        {
+          "priority": 1,
+          "when": "Evaluation attempted; any approval/identity/stream/M2/missing/invalid/precondition fails OR zero required domain denominator",
+          "result": "INCONCLUSIVE",
+          "evidence_state": "INVALID/INCOMPLETE separately retained; no valid negative"
+        },
+        {
+          "priority": 2,
+          "when": "All prerequisites; support_coverage above holds in120 cells; each12 conditions CI_low>=f and >=8 seeds p>=f",
+          "result": "SUPPORTED"
+        },
+        {
+          "priority": 3,
+          "when": "All prerequisites; negative_coverage above holds in120 cells; each12 conditions CI_high<f and <=2 seeds p>=f",
+          "result": "NOT_SUPPORTED"
+        },
+        {
+          "priority": 4,
+          "when": "All other cases including insufficient valid coverage or CI boundaries",
+          "result": "INCONCLUSIVE"
+        }
+      ],
+      "threshold_bundle": "UNSELECTED; inherited FINE/COARSE, no new values",
+      "missing_policy": "No missing/invalid state excluded to manufacture A0/F; no zero imputation; all stream events preserved."
+    }
+  },
+  "fixed_suffix_counterexample": {
+    "source_path": "reports/P2_design/preapproval_audit_v3/M1R_adversarial_cases.md",
+    "source_sha256": "ed629e4929bd6d3b398f326d4856b62a3a86cb8a18b75db8b97fe72e88bc570b",
+    "section": "Case7 lines70–101",
+    "delta_ms": "111/256",
+    "gain_bound": ">1/20",
+    "classification": "HAND_AUTHORED_LOGIC_NOT_SCIENCE",
+    "scope": "All16 K assignments zero; one suffix mapping improves. Not a claim of B2 reachability or calibration frequency."
+  },
+  "pending": [
+    "Select A/B1/B2 with exact version/hash",
+    "Select complete threshold bundle separately",
+    "Accept/reject fixed-suffix and local-L interpretation; no candidate algorithm"
+  ],
+  "runtime_status": "IMPLEMENTATION_VALIDATION_PENDING"
+}

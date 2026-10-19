@@ -1,0 +1,5107 @@
+{
+  "document_kind": "TYPED_IDENTITY_AND_STATE_DESIGN",
+  "document_version": "v3",
+  "status": "DRAFT_UNAPPROVED_NONEXECUTABLE",
+  "classification": "PROPOSED",
+  "approval": "UNAPPROVED",
+  "approved": false,
+  "frozen": false,
+  "executable": false,
+  "execution_authorized": false,
+  "read_by_pipeline": false,
+  "starting_commit": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:soc:design:typed-identity:v3:DRAFT",
+  "$defs": {
+    "ASCII": {
+      "type": "string",
+      "pattern": "^[\\x20-\\x7e]*$"
+    },
+    "ID": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[\\x21-\\x7e]+$"
+    },
+    "SHA256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "UINT": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "UTC": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d\\d-\\d\\dT\\d\\d:\\d\\d:\\d\\d(?:\\.\\d{1,9})?Z$"
+    },
+    "F64_BITS": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{16}$",
+      "description": "IEEE754 binary64 big-endian hex; decode finite only; timing/nonnegative fields normalized -0 to +0."
+    },
+    "SEED_TEXT": {
+      "type": "string",
+      "pattern": "^(0|[1-9][0-9]*)$",
+      "description": "Production must equal one of the 10 committed CALIBRATION decimal values; membership is additional semantic validation."
+    },
+    "RATIONAL": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "numerator",
+        "denominator"
+      ],
+      "properties": {
+        "numerator": {
+          "type": "string",
+          "pattern": "^-?(0|[1-9][0-9]*)$"
+        },
+        "denominator": {
+          "type": "string",
+          "pattern": "^[1-9][0-9]*$"
+        }
+      }
+    },
+    "METHOD": {
+      "enum": [
+        "B1",
+        "B2",
+        "B3",
+        "B4",
+        "B5"
+      ]
+    },
+    "RESOURCE": {
+      "enum": [
+        "CPU0",
+        "CPU1",
+        "CPU2",
+        "CPU3",
+        "GPU0",
+        "NPU0"
+      ]
+    },
+    "VARIANT": {
+      "enum": [
+        "MAIN",
+        "H_ISOLATED",
+        "LOW_COMPETITION"
+      ]
+    },
+    "ARTIFACT_REF": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256",
+        "size_bytes",
+        "media_type",
+        "kind"
+      ],
+      "properties": {
+        "path": {
+          "$ref": "#/$defs/ID"
+        },
+        "sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "size_bytes": {
+          "$ref": "#/$defs/UINT"
+        },
+        "media_type": {
+          "$ref": "#/$defs/ID"
+        },
+        "kind": {
+          "$ref": "#/$defs/ID"
+        }
+      }
+    },
+    "KEY": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "domain",
+        "schema_version",
+        "generator_version",
+        "actual_seed_decimal_string",
+        "scenario",
+        "condition_id",
+        "config_id",
+        "service_slot",
+        "service_group",
+        "template_node_id",
+        "resource_id",
+        "edge_id",
+        "field",
+        "counter"
+      ],
+      "properties": {
+        "domain": {
+          "const": "soc.p2.gen.v2"
+        },
+        "schema_version": {
+          "const": 2
+        },
+        "generator_version": {
+          "const": "soc-p2-synthetic-v2-PROPOSED"
+        },
+        "actual_seed_decimal_string": {
+          "$ref": "#/$defs/SEED_TEXT"
+        },
+        "scenario": {
+          "enum": [
+            "COCKPIT",
+            "ADAS",
+            "FUSION"
+          ]
+        },
+        "condition_id": {
+          "$ref": "#/$defs/ID"
+        },
+        "config_id": {
+          "$ref": "#/$defs/ID"
+        },
+        "service_slot": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 49
+        },
+        "service_group": {
+          "enum": [
+            "",
+            "H",
+            "L"
+          ]
+        },
+        "template_node_id": {
+          "$ref": "#/$defs/ASCII"
+        },
+        "resource_id": {
+          "enum": [
+            "",
+            "CPU0",
+            "CPU1",
+            "CPU2",
+            "CPU3",
+            "GPU0",
+            "NPU0"
+          ]
+        },
+        "edge_id": {
+          "const": ""
+        },
+        "field": {
+          "enum": [
+            "arrival_jitter",
+            "service_role_factor",
+            "duration_factor"
+          ]
+        },
+        "counter": {
+          "const": 0
+        }
+      }
+    },
+    "ANALYSIS_INDEX_KEY": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "domain",
+        "analysis_seed",
+        "replicate",
+        "position",
+        "counter"
+      ],
+      "properties": {
+        "domain": {
+          "const": "soc.p2.analysis.bootstrap.v1"
+        },
+        "analysis_seed": {
+          "const": 20261018
+        },
+        "replicate": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9999
+        },
+        "position": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9
+        },
+        "counter": {
+          "$ref": "#/$defs/UINT"
+        }
+      }
+    },
+    "BLUEPRINT_PREIMAGE": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "namespace",
+        "schema_version",
+        "generator_version",
+        "generator_source_sha256",
+        "model_contract_sha256",
+        "template_content_sha256",
+        "resource_content_sha256",
+        "communication_content_sha256",
+        "generation_rules_sha256",
+        "config_table_sha256",
+        "seed_metadata_raw_sha256",
+        "calibration_allowlist_semantic_sha256",
+        "allowed_partition"
+      ],
+      "properties": {
+        "namespace": {
+          "const": "soc.p2.blueprint.v2"
+        },
+        "schema_version": {
+          "const": 2
+        },
+        "generator_version": {
+          "const": "soc-p2-synthetic-v2-PROPOSED"
+        },
+        "generator_source_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "model_contract_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "template_content_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "resource_content_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "communication_content_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "generation_rules_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "config_table_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "seed_metadata_raw_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "calibration_allowlist_semantic_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "allowed_partition": {
+          "const": "CALIBRATION"
+        }
+      }
+    },
+    "EXECUTION_PLAN_PREIMAGE": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "namespace",
+        "schema_version",
+        "blueprint_sha256",
+        "symbolic_trial_roster_sha256",
+        "method_source_bindings_sha256",
+        "statistical_protocol_sha256",
+        "metric_spec_sha256",
+        "observer_spec_sha256",
+        "stage_contract_sha256",
+        "definition_approval_evidence_sha256"
+      ],
+      "properties": {
+        "namespace": {
+          "const": "soc.p2.execution-plan.v2"
+        },
+        "schema_version": {
+          "const": 2
+        },
+        "blueprint_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "symbolic_trial_roster_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "method_source_bindings_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "statistical_protocol_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "metric_spec_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "observer_spec_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "stage_contract_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "definition_approval_evidence_sha256": {
+          "$ref": "#/$defs/SHA256"
+        }
+      }
+    },
+    "INPUT_DESCRIPTOR_PREIMAGE": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "namespace",
+        "schema_version",
+        "blueprint_sha256",
+        "partition",
+        "actual_seed_decimal_string",
+        "scenario",
+        "condition_id",
+        "config_id",
+        "load",
+        "size",
+        "control_variant",
+        "parent_main_descriptor_sha256"
+      ],
+      "properties": {
+        "namespace": {
+          "const": "soc.p2.input-descriptor.v2"
+        },
+        "schema_version": {
+          "const": 2
+        },
+        "blueprint_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "partition": {
+          "const": "CALIBRATION"
+        },
+        "actual_seed_decimal_string": {
+          "$ref": "#/$defs/SEED_TEXT"
+        },
+        "scenario": {
+          "enum": [
+            "COCKPIT",
+            "ADAS",
+            "FUSION"
+          ]
+        },
+        "condition_id": {
+          "$ref": "#/$defs/ID"
+        },
+        "config_id": {
+          "$ref": "#/$defs/ID"
+        },
+        "load": {
+          "enum": [
+            "light",
+            "medium",
+            "near-saturation"
+          ]
+        },
+        "size": {
+          "enum": [
+            8,
+            16
+          ]
+        },
+        "control_variant": {
+          "$ref": "#/$defs/VARIANT"
+        },
+        "parent_main_descriptor_sha256": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/SHA256"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "EXECUTION_AUTH_PREIMAGE": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "namespace",
+        "schema_version",
+        "blueprint_sha256",
+        "execution_plan_sha256",
+        "source_bundle_sha256",
+        "authorization_evidence_raw_sha256",
+        "authority_id",
+        "issued_at_utc",
+        "partition",
+        "max_materialization_attempts",
+        "max_primary_engine_invocations",
+        "max_replay_engine_invocations",
+        "automatic_retry_budget"
+      ],
+      "properties": {
+        "namespace": {
+          "const": "soc.p2.execution-authorization.v2"
+        },
+        "schema_version": {
+          "const": 2
+        },
+        "blueprint_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "execution_plan_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "source_bundle_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "authorization_evidence_raw_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "authority_id": {
+          "$ref": "#/$defs/ID"
+        },
+        "issued_at_utc": {
+          "$ref": "#/$defs/UTC"
+        },
+        "partition": {
+          "const": "CALIBRATION"
+        },
+        "max_materialization_attempts": {
+          "const": 1080
+        },
+        "max_primary_engine_invocations": {
+          "const": 2520
+        },
+        "max_replay_engine_invocations": {
+          "const": 2520
+        },
+        "automatic_retry_budget": {
+          "const": 0
+        }
+      }
+    },
+    "GENERATION_AUTH_PREIMAGE": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "namespace",
+        "schema_version",
+        "blueprint_sha256",
+        "execution_plan_sha256",
+        "input_descriptor_sha256",
+        "execution_authorization_sha256",
+        "authorization_evidence_raw_sha256",
+        "max_generation_attempts"
+      ],
+      "properties": {
+        "namespace": {
+          "const": "soc.p2.generation-authorization.v2"
+        },
+        "schema_version": {
+          "const": 2
+        },
+        "blueprint_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "execution_plan_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "input_descriptor_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "execution_authorization_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "authorization_evidence_raw_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "max_generation_attempts": {
+          "const": 1
+        }
+      }
+    },
+    "INPUT_LOCK_PREIMAGE": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "namespace",
+        "schema_version",
+        "blueprint_sha256",
+        "input_descriptor_sha256",
+        "generation_authorization_sha256"
+      ],
+      "properties": {
+        "namespace": {
+          "const": "soc.p2.input-lock.v2"
+        },
+        "schema_version": {
+          "const": 2
+        },
+        "blueprint_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "input_descriptor_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "generation_authorization_sha256": {
+          "$ref": "#/$defs/SHA256"
+        }
+      }
+    },
+    "GENERATION_ATTEMPT_PREIMAGE": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "namespace",
+        "schema_version",
+        "input_descriptor_sha256",
+        "generation_authorization_sha256",
+        "input_lock_sha256",
+        "ordinal"
+      ],
+      "properties": {
+        "namespace": {
+          "const": "soc.p2.generation-attempt.v2"
+        },
+        "schema_version": {
+          "const": 2
+        },
+        "input_descriptor_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "generation_authorization_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "input_lock_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "ordinal": {
+          "const": 1
+        }
+      }
+    },
+    "SUCCESS_PROCESS": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "process_started",
+        "exit_code",
+        "argv_actual",
+        "cwd",
+        "host_identity_sha256",
+        "started_at_utc",
+        "ended_at_utc",
+        "monotonic_elapsed_ns",
+        "stdout",
+        "stderr"
+      ],
+      "properties": {
+        "process_started": {
+          "const": true
+        },
+        "exit_code": {
+          "const": 0
+        },
+        "argv_actual": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ASCII"
+          }
+        },
+        "cwd": {
+          "$ref": "#/$defs/ID"
+        },
+        "host_identity_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "started_at_utc": {
+          "$ref": "#/$defs/UTC"
+        },
+        "ended_at_utc": {
+          "$ref": "#/$defs/UTC"
+        },
+        "monotonic_elapsed_ns": {
+          "$ref": "#/$defs/UINT"
+        },
+        "stdout": {
+          "$ref": "#/$defs/ARTIFACT_REF"
+        },
+        "stderr": {
+          "$ref": "#/$defs/ARTIFACT_REF"
+        }
+      }
+    },
+    "GENERATION_RECEIPT_PREIMAGE": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "namespace",
+        "schema_version",
+        "blueprint_sha256",
+        "input_descriptor_sha256",
+        "generation_authorization_sha256",
+        "generation_attempt_id",
+        "payload_content_sha256",
+        "payload_raw_sha256",
+        "payload_raw_ref",
+        "pre_round_estimates_ref",
+        "process"
+      ],
+      "properties": {
+        "namespace": {
+          "const": "soc.p2.generation-receipt.v2"
+        },
+        "schema_version": {
+          "const": 2
+        },
+        "blueprint_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "input_descriptor_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "generation_authorization_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "generation_attempt_id": {
+          "$ref": "#/$defs/ID"
+        },
+        "payload_content_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "payload_raw_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "payload_raw_ref": {
+          "$ref": "#/$defs/ARTIFACT_REF"
+        },
+        "pre_round_estimates_ref": {
+          "$ref": "#/$defs/ARTIFACT_REF"
+        },
+        "process": {
+          "$ref": "#/$defs/SUCCESS_PROCESS"
+        }
+      }
+    },
+    "MATERIALIZED_INPUT_PREIMAGE": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "namespace",
+        "schema_version",
+        "input_descriptor_sha256",
+        "payload_content_sha256",
+        "parent_main_payload_content_sha256"
+      ],
+      "properties": {
+        "namespace": {
+          "const": "soc.p2.materialized-input.v2"
+        },
+        "schema_version": {
+          "const": 2
+        },
+        "input_descriptor_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "payload_content_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "parent_main_payload_content_sha256": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/SHA256"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "INPUT_RESOLUTION_PREIMAGE": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "namespace",
+        "schema_version",
+        "blueprint_sha256",
+        "input_descriptor_sha256",
+        "materialized_input_id",
+        "payload_content_sha256",
+        "payload_raw_sha256",
+        "generation_receipt_id",
+        "input_validation_report_sha256",
+        "parent_main_resolution_id",
+        "control_transform_report_sha256"
+      ],
+      "properties": {
+        "namespace": {
+          "const": "soc.p2.input-resolution.v2"
+        },
+        "schema_version": {
+          "const": 2
+        },
+        "blueprint_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "input_descriptor_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "materialized_input_id": {
+          "$ref": "#/$defs/ID"
+        },
+        "payload_content_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "payload_raw_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "generation_receipt_id": {
+          "$ref": "#/$defs/ID"
+        },
+        "input_validation_report_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "parent_main_resolution_id": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ID"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "control_transform_report_sha256": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/SHA256"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "WORKLOAD_PREIMAGE": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "namespace",
+        "schema_version",
+        "blueprint_sha256",
+        "input_descriptor_sha256",
+        "materialized_input_id",
+        "payload_content_sha256"
+      ],
+      "properties": {
+        "namespace": {
+          "const": "soc.p2.workload-identity.v2"
+        },
+        "schema_version": {
+          "const": 2
+        },
+        "blueprint_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "input_descriptor_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "materialized_input_id": {
+          "$ref": "#/$defs/ID"
+        },
+        "payload_content_sha256": {
+          "$ref": "#/$defs/SHA256"
+        }
+      }
+    },
+    "SEMANTIC_ARGV_PREIMAGE": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "namespace",
+        "schema_version",
+        "worker_protocol",
+        "worker_source_sha256",
+        "role",
+        "method_id",
+        "workload_id",
+        "semantic_options"
+      ],
+      "properties": {
+        "namespace": {
+          "const": "soc.p2.worker-invocation.v2"
+        },
+        "schema_version": {
+          "const": 2
+        },
+        "worker_protocol": {
+          "const": "soc.worker.v2"
+        },
+        "worker_source_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "role": {
+          "enum": [
+            "ENGINE_PRIMARY",
+            "ENGINE_REPLAY"
+          ]
+        },
+        "method_id": {
+          "$ref": "#/$defs/METHOD"
+        },
+        "workload_id": {
+          "$ref": "#/$defs/ID"
+        },
+        "semantic_options": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "flag",
+              "value"
+            ],
+            "properties": {
+              "flag": {
+                "$ref": "#/$defs/ID"
+              },
+              "value": {
+                "$ref": "#/$defs/ASCII"
+              }
+            }
+          },
+          "maxItems": 0
+        }
+      }
+    },
+    "RUN_PREIMAGE": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "namespace",
+        "schema_version",
+        "execution_plan_sha256",
+        "trial_id",
+        "workload_id",
+        "method_id",
+        "source_bundle_sha256",
+        "environment_semantic_sha256",
+        "primary_semantic_argv_sha256",
+        "observer_spec_sha256",
+        "validator_identity_sha256",
+        "metric_spec_sha256",
+        "replay_protocol_sha256"
+      ],
+      "properties": {
+        "namespace": {
+          "const": "soc.p2.run-identity.v2"
+        },
+        "schema_version": {
+          "const": 2
+        },
+        "execution_plan_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "trial_id": {
+          "$ref": "#/$defs/ID"
+        },
+        "workload_id": {
+          "$ref": "#/$defs/ID"
+        },
+        "method_id": {
+          "$ref": "#/$defs/METHOD"
+        },
+        "source_bundle_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "environment_semantic_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "primary_semantic_argv_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "observer_spec_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "validator_identity_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "metric_spec_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "replay_protocol_sha256": {
+          "$ref": "#/$defs/SHA256"
+        }
+      }
+    },
+    "ATTEMPT_PREIMAGE": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "namespace",
+        "schema_version",
+        "run_id",
+        "execution_authorization_sha256",
+        "ordinal"
+      ],
+      "properties": {
+        "namespace": {
+          "const": "soc.p2.attempt-identity.v2"
+        },
+        "schema_version": {
+          "const": 2
+        },
+        "run_id": {
+          "$ref": "#/$defs/ID"
+        },
+        "execution_authorization_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "ordinal": {
+          "const": 1
+        }
+      }
+    },
+    "RUN_LOCK_PREIMAGE": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "namespace",
+        "schema_version",
+        "run_id",
+        "attempt_id"
+      ],
+      "properties": {
+        "namespace": {
+          "const": "soc.p2.run-lock.v2"
+        },
+        "schema_version": {
+          "const": 2
+        },
+        "run_id": {
+          "$ref": "#/$defs/ID"
+        },
+        "attempt_id": {
+          "$ref": "#/$defs/ID"
+        }
+      }
+    },
+    "PROCESS_RESULT": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "process_started",
+        "exit_code",
+        "termination_kind",
+        "signal",
+        "exception",
+        "argv_actual",
+        "cwd",
+        "host_identity_sha256",
+        "planned_at_utc",
+        "started_at_utc",
+        "ended_at_utc",
+        "monotonic_elapsed_ns",
+        "stdout",
+        "stderr"
+      ],
+      "properties": {
+        "process_started": {
+          "type": "boolean"
+        },
+        "exit_code": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "termination_kind": {
+          "enum": [
+            "NOT_STARTED",
+            "EXITED",
+            "SIGNALLED",
+            "SPAWN_FAILED",
+            "INTERRUPTED",
+            "UNKNOWN"
+          ]
+        },
+        "signal": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ID"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "exception": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ASCII"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "argv_actual": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ASCII"
+          }
+        },
+        "cwd": {
+          "$ref": "#/$defs/ID"
+        },
+        "host_identity_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "planned_at_utc": {
+          "$ref": "#/$defs/UTC"
+        },
+        "started_at_utc": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/UTC"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "ended_at_utc": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/UTC"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "monotonic_elapsed_ns": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/UINT"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "stdout": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ARTIFACT_REF"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "stderr": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ARTIFACT_REF"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "PUBLIC_NODE": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "node_id",
+        "estimates",
+        "predecessors"
+      ],
+      "properties": {
+        "node_id": {
+          "$ref": "#/$defs/ID"
+        },
+        "estimates": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "resource_id",
+              "duration_bits"
+            ],
+            "properties": {
+              "resource_id": {
+                "$ref": "#/$defs/RESOURCE"
+              },
+              "duration_bits": {
+                "$ref": "#/$defs/F64_BITS"
+              }
+            }
+          }
+        },
+        "predecessors": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "node_id",
+              "size_bits"
+            ],
+            "properties": {
+              "node_id": {
+                "$ref": "#/$defs/ID"
+              },
+              "size_bits": {
+                "$ref": "#/$defs/F64_BITS"
+              }
+            }
+          }
+        }
+      }
+    },
+    "PUBLIC_SERVICE": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "service_id",
+        "template_id",
+        "size",
+        "arrival_bits",
+        "absolute_deadline_bits",
+        "group",
+        "nodes"
+      ],
+      "properties": {
+        "service_id": {
+          "$ref": "#/$defs/ID"
+        },
+        "template_id": {
+          "$ref": "#/$defs/ID"
+        },
+        "size": {
+          "enum": [
+            8,
+            16
+          ]
+        },
+        "arrival_bits": {
+          "$ref": "#/$defs/F64_BITS"
+        },
+        "absolute_deadline_bits": {
+          "$ref": "#/$defs/F64_BITS"
+        },
+        "group": {
+          "enum": [
+            "H",
+            "L"
+          ]
+        },
+        "nodes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/PUBLIC_NODE"
+          }
+        }
+      }
+    },
+    "PUBLIC_SNAPSHOT": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "namespace",
+        "schema_version",
+        "now_bits",
+        "services",
+        "running",
+        "completed",
+        "resources",
+        "links"
+      ],
+      "properties": {
+        "namespace": {
+          "const": "soc.p2.public-state.v2"
+        },
+        "schema_version": {
+          "const": 2
+        },
+        "now_bits": {
+          "$ref": "#/$defs/F64_BITS"
+        },
+        "services": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/PUBLIC_SERVICE"
+          }
+        },
+        "running": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "service_id",
+              "node_id",
+              "resource_id",
+              "start_bits",
+              "elapsed_bits"
+            ],
+            "properties": {
+              "service_id": {
+                "$ref": "#/$defs/ID"
+              },
+              "node_id": {
+                "$ref": "#/$defs/ID"
+              },
+              "resource_id": {
+                "$ref": "#/$defs/RESOURCE"
+              },
+              "start_bits": {
+                "$ref": "#/$defs/F64_BITS"
+              },
+              "elapsed_bits": {
+                "$ref": "#/$defs/F64_BITS"
+              }
+            }
+          }
+        },
+        "completed": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "service_id",
+              "node_id",
+              "resource_id",
+              "finish_bits"
+            ],
+            "properties": {
+              "service_id": {
+                "$ref": "#/$defs/ID"
+              },
+              "node_id": {
+                "$ref": "#/$defs/ID"
+              },
+              "resource_id": {
+                "$ref": "#/$defs/RESOURCE"
+              },
+              "finish_bits": {
+                "$ref": "#/$defs/F64_BITS"
+              }
+            }
+          }
+        },
+        "resources": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "resource_id",
+              "resource_type"
+            ],
+            "properties": {
+              "resource_id": {
+                "$ref": "#/$defs/RESOURCE"
+              },
+              "resource_type": {
+                "enum": [
+                  "CPU",
+                  "GPU",
+                  "NPU"
+                ]
+              }
+            }
+          }
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "source_type",
+              "destination_type",
+              "latency_bits",
+              "bandwidth_bits"
+            ],
+            "properties": {
+              "source_type": {
+                "enum": [
+                  "CPU",
+                  "GPU",
+                  "NPU"
+                ]
+              },
+              "destination_type": {
+                "enum": [
+                  "CPU",
+                  "GPU",
+                  "NPU"
+                ]
+              },
+              "latency_bits": {
+                "$ref": "#/$defs/F64_BITS"
+              },
+              "bandwidth_bits": {
+                "$ref": "#/$defs/F64_BITS"
+              }
+            }
+          }
+        }
+      }
+    },
+    "SNAPSHOT_EVENT": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "namespace",
+        "schema_version",
+        "run_id",
+        "attempt_id",
+        "trial_id",
+        "stream_role",
+        "event_seq",
+        "decision_seq",
+        "dispatch_result",
+        "refresh_causes",
+        "state_sha256",
+        "snapshot_ref"
+      ],
+      "properties": {
+        "namespace": {
+          "const": "soc.p2.snapshot-event.v2"
+        },
+        "schema_version": {
+          "const": 2
+        },
+        "run_id": {
+          "$ref": "#/$defs/ID"
+        },
+        "attempt_id": {
+          "$ref": "#/$defs/ID"
+        },
+        "trial_id": {
+          "$ref": "#/$defs/ID"
+        },
+        "stream_role": {
+          "enum": [
+            "PRIMARY",
+            "REPLAY"
+          ]
+        },
+        "event_seq": {
+          "$ref": "#/$defs/UINT"
+        },
+        "decision_seq": {
+          "$ref": "#/$defs/UINT"
+        },
+        "dispatch_result": {
+          "enum": [
+            "START",
+            "NONE"
+          ]
+        },
+        "refresh_causes": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "INITIAL",
+              "TIME_ADVANCE",
+              "COMPLETION_BATCH",
+              "ARRIVAL_BATCH",
+              "POST_START",
+              "EMPTY_DISPATCH",
+              "POST_COMPLETION_REFRESH"
+            ]
+          }
+        },
+        "state_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "snapshot_ref": {
+          "$ref": "#/$defs/ARTIFACT_REF"
+        }
+      }
+    },
+    "DENOMINATOR_SCOPE_PREIMAGE": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "namespace",
+        "schema_version",
+        "run_id",
+        "primary_attempt_id",
+        "observer_spec_sha256"
+      ],
+      "properties": {
+        "namespace": {
+          "const": "soc.p2.denominator-scope.v2"
+        },
+        "schema_version": {
+          "const": 2
+        },
+        "run_id": {
+          "$ref": "#/$defs/ID"
+        },
+        "primary_attempt_id": {
+          "$ref": "#/$defs/ID"
+        },
+        "observer_spec_sha256": {
+          "$ref": "#/$defs/SHA256"
+        }
+      }
+    },
+    "STATE_KEY_PREIMAGE": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "namespace",
+        "schema_version",
+        "denominator_scope_sha256",
+        "state_sha256"
+      ],
+      "properties": {
+        "namespace": {
+          "const": "soc.p2.state-key.v2"
+        },
+        "schema_version": {
+          "const": 2
+        },
+        "denominator_scope_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "state_sha256": {
+          "$ref": "#/$defs/SHA256"
+        }
+      }
+    },
+    "WINDOWS": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "arrival_window_start_bits",
+        "arrival_window_end_bits",
+        "last_admitted_arrival_bits",
+        "last_service_completion_bits",
+        "observation_end_bits",
+        "full_drain_makespan_bits"
+      ],
+      "properties": {
+        "arrival_window_start_bits": {
+          "const": "0000000000000000"
+        },
+        "arrival_window_end_bits": {
+          "$ref": "#/$defs/F64_BITS"
+        },
+        "last_admitted_arrival_bits": {
+          "$ref": "#/$defs/F64_BITS"
+        },
+        "last_service_completion_bits": {
+          "$ref": "#/$defs/F64_BITS"
+        },
+        "observation_end_bits": {
+          "$ref": "#/$defs/F64_BITS"
+        },
+        "full_drain_makespan_bits": {
+          "$ref": "#/$defs/F64_BITS"
+        }
+      }
+    },
+    "GROUP_METRICS": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "group",
+        "status",
+        "count",
+        "dmr",
+        "p50_bits",
+        "p95_bits",
+        "p99_bits",
+        "max_bits",
+        "reason"
+      ],
+      "properties": {
+        "group": {
+          "enum": [
+            "H",
+            "L"
+          ]
+        },
+        "status": {
+          "enum": [
+            "APPLICABLE",
+            "NOT_APPLICABLE_CONTROL",
+            "INVALID"
+          ]
+        },
+        "count": {
+          "$ref": "#/$defs/UINT"
+        },
+        "dmr": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/RATIONAL"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "p50_bits": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/F64_BITS"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "p95_bits": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/F64_BITS"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "p99_bits": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/F64_BITS"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "max_bits": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/F64_BITS"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "reason": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ID"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "GATE_STATE": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "execution_completion",
+        "artifact_integrity",
+        "input_seed_identity",
+        "selection_status",
+        "diagnostic_validity",
+        "mapping_classification",
+        "engineering_timing_prerequisite",
+        "p2_progression_status",
+        "reason_codes"
+      ],
+      "properties": {
+        "execution_completion": {
+          "enum": [
+            "NOT_STARTED",
+            "RUNNING",
+            "COMPLETE",
+            "FAILED",
+            "INCOMPLETE"
+          ]
+        },
+        "artifact_integrity": {
+          "enum": [
+            "NOT_CHECKED",
+            "VALID",
+            "MISSING",
+            "CORRUPT",
+            "INVALID"
+          ]
+        },
+        "input_seed_identity": {
+          "enum": [
+            "NOT_CHECKED",
+            "VALID",
+            "INVALID"
+          ]
+        },
+        "selection_status": {
+          "enum": [
+            "NOT_EVALUATED",
+            "SELECTED_ALL_18",
+            "NO_ELIGIBLE_CONDITION",
+            "INVALID_EVIDENCE"
+          ]
+        },
+        "diagnostic_validity": {
+          "enum": [
+            "NOT_RUN",
+            "VALID",
+            "POSITIVE_COVERAGE_ONLY",
+            "INSUFFICIENT_COVERAGE",
+            "INVALID",
+            "INCOMPLETE"
+          ]
+        },
+        "mapping_classification": {
+          "enum": [
+            "NOT_EVALUATED",
+            "SUPPORTED",
+            "NOT_SUPPORTED",
+            "INCONCLUSIVE"
+          ]
+        },
+        "engineering_timing_prerequisite": {
+          "enum": [
+            "NOT_FROZEN",
+            "FROZEN_PROTOCOL_VERIFIED",
+            "INVALID"
+          ]
+        },
+        "p2_progression_status": {
+          "enum": [
+            "BLOCKED",
+            "REQUIREMENTS_MET_PENDING_EXPLICIT_NEXT_STAGE_AUTHORIZATION"
+          ]
+        },
+        "reason_codes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ID"
+          }
+        }
+      }
+    },
+    "PROJECTION_INTERVAL": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "service_id",
+        "node_id",
+        "resource_id",
+        "start",
+        "finish",
+        "kind"
+      ],
+      "properties": {
+        "service_id": {
+          "$ref": "#/$defs/ID"
+        },
+        "node_id": {
+          "$ref": "#/$defs/ID"
+        },
+        "resource_id": {
+          "$ref": "#/$defs/RESOURCE"
+        },
+        "start": {
+          "$ref": "#/$defs/RATIONAL"
+        },
+        "finish": {
+          "$ref": "#/$defs/RATIONAL"
+        },
+        "kind": {
+          "enum": [
+            "VISIBLE_RUNNING",
+            "CURRENT_ACTION",
+            "TARGET_SUFFIX"
+          ]
+        }
+      }
+    },
+    "ASSIGNMENT": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "node_id",
+        "resource_id"
+      ],
+      "properties": {
+        "node_id": {
+          "$ref": "#/$defs/ID"
+        },
+        "resource_id": {
+          "$ref": "#/$defs/RESOURCE"
+        }
+      }
+    },
+    "TARGET_FINISH": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "service_id",
+        "finish"
+      ],
+      "properties": {
+        "service_id": {
+          "$ref": "#/$defs/ID"
+        },
+        "finish": {
+          "$ref": "#/$defs/RATIONAL"
+        }
+      }
+    },
+    "LOCAL_L_FINISH": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "node_id",
+        "baseline_finish",
+        "cap",
+        "candidate_finish"
+      ],
+      "properties": {
+        "node_id": {
+          "$ref": "#/$defs/ID"
+        },
+        "baseline_finish": {
+          "$ref": "#/$defs/RATIONAL"
+        },
+        "cap": {
+          "$ref": "#/$defs/RATIONAL"
+        },
+        "candidate_finish": {
+          "$ref": "#/$defs/RATIONAL"
+        }
+      }
+    },
+    "DIAGNOSTIC_RECORD": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "namespace",
+        "schema_version",
+        "diagnostic_id",
+        "observer_spec_sha256",
+        "state_key",
+        "representative_event_seq",
+        "scope_hash",
+        "eligibility_reason",
+        "all_ready_count",
+        "all_target_count",
+        "selected_K_IDs",
+        "selected_target_IDs",
+        "truncation_flags",
+        "coverage_status",
+        "baseline_assignment",
+        "baseline_calendar",
+        "baseline_target_finishes",
+        "baseline_L_finishes",
+        "enumeration_count",
+        "feasible_count",
+        "enumeration_digest_sha256",
+        "best_assignment",
+        "best_calendar",
+        "best_target_finishes",
+        "projected_H_path_and_resource_blockers",
+        "b",
+        "o",
+        "delta_ms",
+        "g",
+        "threshold_bundle_id",
+        "view_outcome",
+        "independent_recompute_ref",
+        "independent_recompute_status"
+      ],
+      "properties": {
+        "namespace": {
+          "const": "soc.p2.diagnostic-record.v2"
+        },
+        "schema_version": {
+          "const": 2
+        },
+        "diagnostic_id": {
+          "const": "M1R_PATH_V2"
+        },
+        "observer_spec_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "state_key": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "representative_event_seq": {
+          "$ref": "#/$defs/UINT"
+        },
+        "scope_hash": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "eligibility_reason": {
+          "$ref": "#/$defs/ID"
+        },
+        "all_ready_count": {
+          "$ref": "#/$defs/UINT"
+        },
+        "all_target_count": {
+          "$ref": "#/$defs/UINT"
+        },
+        "selected_K_IDs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ID"
+          }
+        },
+        "selected_target_IDs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ID"
+          }
+        },
+        "truncation_flags": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ID"
+          }
+        },
+        "coverage_status": {
+          "enum": [
+            "NOT_IN_SCOPE",
+            "VALID_FULL",
+            "COVERAGE_INSUFFICIENT",
+            "INVALID",
+            "INCOMPLETE"
+          ]
+        },
+        "baseline_assignment": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ASSIGNMENT"
+          }
+        },
+        "baseline_calendar": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/PROJECTION_INTERVAL"
+          }
+        },
+        "baseline_target_finishes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TARGET_FINISH"
+          }
+        },
+        "baseline_L_finishes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/LOCAL_L_FINISH"
+          }
+        },
+        "enumeration_count": {
+          "$ref": "#/$defs/UINT"
+        },
+        "feasible_count": {
+          "$ref": "#/$defs/UINT"
+        },
+        "enumeration_digest_sha256": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/SHA256"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "best_assignment": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ASSIGNMENT"
+          }
+        },
+        "best_calendar": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/PROJECTION_INTERVAL"
+          }
+        },
+        "best_target_finishes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TARGET_FINISH"
+          }
+        },
+        "projected_H_path_and_resource_blockers": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "target_service_id",
+              "critical_node_path",
+              "blocking_intervals"
+            ],
+            "properties": {
+              "target_service_id": {
+                "$ref": "#/$defs/ID"
+              },
+              "critical_node_path": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/ID"
+                }
+              },
+              "blocking_intervals": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/PROJECTION_INTERVAL"
+                }
+              }
+            }
+          }
+        },
+        "b": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/RATIONAL"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "o": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/RATIONAL"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "delta_ms": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/RATIONAL"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "g": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/RATIONAL"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "threshold_bundle_id": {
+          "enum": [
+            "FINE",
+            "COARSE"
+          ]
+        },
+        "view_outcome": {
+          "enum": [
+            "NOT_IN_SCOPE",
+            "COVERAGE_INSUFFICIENT",
+            "INVALID",
+            "INCOMPLETE",
+            "NO_IMPROVEMENT_IN_TESTED_SPACE",
+            "SUBTHRESHOLD_IMPROVEMENT",
+            "MATERIAL_IMPROVEMENT_IN_TESTED_SPACE"
+          ]
+        },
+        "independent_recompute_ref": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ARTIFACT_REF"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "independent_recompute_status": {
+          "enum": [
+            "NOT_RUN",
+            "PASS",
+            "FAIL"
+          ]
+        }
+      }
+    },
+    "DIAGNOSTIC_ERROR_RECORD": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "namespace",
+        "schema_version",
+        "run_id",
+        "attempt_id",
+        "expected_event_seq",
+        "phase",
+        "reason",
+        "missing_or_corrupt_ref",
+        "diagnostic_validity"
+      ],
+      "properties": {
+        "namespace": {
+          "const": "soc.p2.diagnostic-error.v2"
+        },
+        "schema_version": {
+          "const": 2
+        },
+        "run_id": {
+          "$ref": "#/$defs/ID"
+        },
+        "attempt_id": {
+          "$ref": "#/$defs/ID"
+        },
+        "expected_event_seq": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/UINT"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "phase": {
+          "$ref": "#/$defs/ID"
+        },
+        "reason": {
+          "$ref": "#/$defs/ID"
+        },
+        "missing_or_corrupt_ref": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ARTIFACT_REF"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "diagnostic_validity": {
+          "enum": [
+            "INVALID",
+            "INCOMPLETE"
+          ]
+        }
+      }
+    },
+    "RUNTIME_PAYLOAD": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "resources",
+        "links",
+        "services"
+      ],
+      "properties": {
+        "resources": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "kind"
+            ],
+            "properties": {
+              "id": {
+                "$ref": "#/$defs/RESOURCE"
+              },
+              "kind": {
+                "enum": [
+                  "CPU",
+                  "GPU",
+                  "NPU"
+                ]
+              }
+            }
+          }
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "source",
+              "destination",
+              "latency",
+              "bandwidth"
+            ],
+            "properties": {
+              "source": {
+                "enum": [
+                  "CPU",
+                  "GPU",
+                  "NPU"
+                ]
+              },
+              "destination": {
+                "enum": [
+                  "CPU",
+                  "GPU",
+                  "NPU"
+                ]
+              },
+              "latency": {
+                "type": "number",
+                "minimum": 0
+              },
+              "bandwidth": {
+                "type": "number",
+                "exclusiveMinimum": 0
+              }
+            }
+          }
+        },
+        "services": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "arrival",
+              "relative_deadline",
+              "group",
+              "nodes"
+            ],
+            "properties": {
+              "id": {
+                "$ref": "#/$defs/ID"
+              },
+              "arrival": {
+                "type": "number",
+                "minimum": 0
+              },
+              "relative_deadline": {
+                "type": "number",
+                "exclusiveMinimum": 0
+              },
+              "group": {
+                "enum": [
+                  "H",
+                  "L"
+                ]
+              },
+              "nodes": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "id",
+                    "durations",
+                    "predecessors"
+                  ],
+                  "properties": {
+                    "id": {
+                      "$ref": "#/$defs/ID"
+                    },
+                    "durations": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "resource",
+                          "estimate",
+                          "realized"
+                        ],
+                        "properties": {
+                          "resource": {
+                            "$ref": "#/$defs/RESOURCE"
+                          },
+                          "estimate": {
+                            "type": "number",
+                            "exclusiveMinimum": 0
+                          },
+                          "realized": {
+                            "type": "number",
+                            "exclusiveMinimum": 0
+                          }
+                        }
+                      }
+                    },
+                    "predecessors": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "node",
+                          "size"
+                        ],
+                        "properties": {
+                          "node": {
+                            "$ref": "#/$defs/ID"
+                          },
+                          "size": {
+                            "type": "number",
+                            "minimum": 0
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "SCIENTIFIC_INPUT_ENVELOPE": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "namespace",
+        "schema_version",
+        "origin",
+        "workload_id",
+        "input_descriptor_sha256",
+        "blueprint_sha256",
+        "resolution_receipt_ref",
+        "generation_receipt_ref",
+        "lineage_validation_ref",
+        "payload_ref",
+        "control_variant",
+        "actual_seed_decimal_string",
+        "partition"
+      ],
+      "properties": {
+        "namespace": {
+          "const": "soc.science.p2.input"
+        },
+        "schema_version": {
+          "const": 2
+        },
+        "origin": {
+          "const": "SCIENTIFIC_CALIBRATION"
+        },
+        "workload_id": {
+          "$ref": "#/$defs/ID"
+        },
+        "input_descriptor_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "blueprint_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "resolution_receipt_ref": {
+          "$ref": "#/$defs/ARTIFACT_REF"
+        },
+        "generation_receipt_ref": {
+          "$ref": "#/$defs/ARTIFACT_REF"
+        },
+        "lineage_validation_ref": {
+          "$ref": "#/$defs/ARTIFACT_REF"
+        },
+        "payload_ref": {
+          "$ref": "#/$defs/ARTIFACT_REF"
+        },
+        "control_variant": {
+          "$ref": "#/$defs/VARIANT"
+        },
+        "actual_seed_decimal_string": {
+          "$ref": "#/$defs/SEED_TEXT"
+        },
+        "partition": {
+          "const": "CALIBRATION"
+        }
+      }
+    },
+    "VALIDATION_RESULT": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "implementation_sha256",
+        "report_ref"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "NOT_RUN",
+            "PASS",
+            "FAIL"
+          ]
+        },
+        "implementation_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "report_ref": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ARTIFACT_REF"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "METRIC_DERIVATION": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "metric_protocol_sha256",
+        "runtime_metrics_ref",
+        "independent_metrics_ref",
+        "comparison_ref"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "NOT_RUN",
+            "MATCH",
+            "MISMATCH"
+          ]
+        },
+        "metric_protocol_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "runtime_metrics_ref": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ARTIFACT_REF"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "independent_metrics_ref": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ARTIFACT_REF"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "comparison_ref": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ARTIFACT_REF"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "REPLAY_RESULT": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "replay_protocol_sha256",
+        "child_execution_id",
+        "process",
+        "raw_outputs",
+        "comparison_ref"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "NOT_RUN",
+            "EXACT_MATCH",
+            "MISMATCH",
+            "FAILED",
+            "INCOMPLETE"
+          ]
+        },
+        "replay_protocol_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "child_execution_id": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ID"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "process": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/PROCESS_RESULT"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "raw_outputs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ARTIFACT_REF"
+          }
+        },
+        "comparison_ref": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ARTIFACT_REF"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "SCIENTIFIC_RUN_RECORD": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "namespace",
+        "schema_version",
+        "run_id",
+        "attempt_id",
+        "execution_plan_sha256",
+        "trial_id",
+        "method_id",
+        "workload_id",
+        "actual_seed_decimal_string",
+        "partition",
+        "scenario",
+        "condition_id",
+        "config_id",
+        "control_variant",
+        "source_bundle_sha256",
+        "input_envelope_ref",
+        "process",
+        "raw_artifacts",
+        "trace_validation",
+        "metric_derivation",
+        "replay",
+        "completion_status",
+        "error_records"
+      ],
+      "properties": {
+        "namespace": {
+          "const": "soc.science.p2.run-record"
+        },
+        "schema_version": {
+          "const": 2
+        },
+        "run_id": {
+          "$ref": "#/$defs/ID"
+        },
+        "attempt_id": {
+          "$ref": "#/$defs/ID"
+        },
+        "execution_plan_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "trial_id": {
+          "$ref": "#/$defs/ID"
+        },
+        "method_id": {
+          "$ref": "#/$defs/METHOD"
+        },
+        "workload_id": {
+          "$ref": "#/$defs/ID"
+        },
+        "actual_seed_decimal_string": {
+          "$ref": "#/$defs/SEED_TEXT"
+        },
+        "partition": {
+          "const": "CALIBRATION"
+        },
+        "scenario": {
+          "enum": [
+            "COCKPIT",
+            "ADAS",
+            "FUSION"
+          ]
+        },
+        "condition_id": {
+          "$ref": "#/$defs/ID"
+        },
+        "config_id": {
+          "$ref": "#/$defs/ID"
+        },
+        "control_variant": {
+          "$ref": "#/$defs/VARIANT"
+        },
+        "source_bundle_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "input_envelope_ref": {
+          "$ref": "#/$defs/ARTIFACT_REF"
+        },
+        "process": {
+          "$ref": "#/$defs/PROCESS_RESULT"
+        },
+        "raw_artifacts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ARTIFACT_REF"
+          }
+        },
+        "trace_validation": {
+          "$ref": "#/$defs/VALIDATION_RESULT"
+        },
+        "metric_derivation": {
+          "$ref": "#/$defs/METRIC_DERIVATION"
+        },
+        "replay": {
+          "$ref": "#/$defs/REPLAY_RESULT"
+        },
+        "completion_status": {
+          "enum": [
+            "PREPARED",
+            "RUNNING",
+            "FAILED",
+            "INVALID",
+            "INCOMPLETE",
+            "COMPLETE"
+          ]
+        },
+        "error_records": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ARTIFACT_REF"
+          }
+        }
+      }
+    },
+    "FEASIBILITY_CERTIFICATE": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "namespace",
+        "schema_version",
+        "payload_content_sha256",
+        "implementation_sha256",
+        "numeric_method",
+        "arrival_bits",
+        "relative_deadline_bits",
+        "absolute_deadline_bits",
+        "node_bounds",
+        "service_bound_bits",
+        "classification",
+        "verification_report_ref"
+      ],
+      "properties": {
+        "namespace": {
+          "const": "soc.p2.offline-feasibility"
+        },
+        "schema_version": {
+          "const": 2
+        },
+        "payload_content_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "implementation_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "numeric_method": {
+          "const": "ABS_RN64_MONOTONE_LB_V2"
+        },
+        "arrival_bits": {
+          "$ref": "#/$defs/F64_BITS"
+        },
+        "relative_deadline_bits": {
+          "$ref": "#/$defs/F64_BITS"
+        },
+        "absolute_deadline_bits": {
+          "$ref": "#/$defs/F64_BITS"
+        },
+        "node_bounds": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "node_id",
+              "bound_bits"
+            ],
+            "properties": {
+              "node_id": {
+                "$ref": "#/$defs/ID"
+              },
+              "bound_bits": {
+                "$ref": "#/$defs/F64_BITS"
+              }
+            }
+          }
+        },
+        "service_bound_bits": {
+          "$ref": "#/$defs/F64_BITS"
+        },
+        "classification": {
+          "enum": [
+            "CERTIFIED_NATURALLY_INFEASIBLE",
+            "FEASIBILITY_NOT_ESTABLISHED",
+            "CONTROL_SPECIFIC_FEASIBILITY_WITNESS",
+            "INPUT_OR_TRACE_INVALID"
+          ]
+        },
+        "verification_report_ref": {
+          "$ref": "#/$defs/ARTIFACT_REF"
+        }
+      }
+    },
+    "STAGE_RECORD": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "namespace",
+        "schema_version",
+        "execution_plan_sha256",
+        "source_bundle_sha256",
+        "state",
+        "expected_trial_slots",
+        "attempted_trial_slots",
+        "completed_trial_slots",
+        "reused_trial_slots",
+        "failed_trial_slots",
+        "not_started_trial_slots",
+        "expected_input_count",
+        "selected_condition_ids",
+        "integrity_report_ref",
+        "selection_report_ref",
+        "diagnostic_report_ref",
+        "criterion_report_ref",
+        "timing_freeze_receipt_ref",
+        "prerequisite_evidence"
+      ],
+      "properties": {
+        "namespace": {
+          "const": "soc.science.p2.stage-record"
+        },
+        "schema_version": {
+          "const": 2
+        },
+        "execution_plan_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "source_bundle_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "state": {
+          "$ref": "#/$defs/GATE_STATE"
+        },
+        "expected_trial_slots": {
+          "const": 2520
+        },
+        "attempted_trial_slots": {
+          "$ref": "#/$defs/UINT"
+        },
+        "completed_trial_slots": {
+          "$ref": "#/$defs/UINT"
+        },
+        "reused_trial_slots": {
+          "$ref": "#/$defs/UINT"
+        },
+        "failed_trial_slots": {
+          "$ref": "#/$defs/UINT"
+        },
+        "not_started_trial_slots": {
+          "$ref": "#/$defs/UINT"
+        },
+        "expected_input_count": {
+          "const": 1080
+        },
+        "selected_condition_ids": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ID"
+          }
+        },
+        "integrity_report_ref": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ARTIFACT_REF"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "selection_report_ref": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ARTIFACT_REF"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "diagnostic_report_ref": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ARTIFACT_REF"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "criterion_report_ref": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ARTIFACT_REF"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "timing_freeze_receipt_ref": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ARTIFACT_REF"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "prerequisite_evidence": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ARTIFACT_REF"
+          }
+        }
+      }
+    },
+    "REPLAY_PREIMAGE": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "namespace",
+        "schema_version",
+        "run_id",
+        "primary_attempt_id",
+        "primary_trace_sha256",
+        "replay_protocol_sha256",
+        "ordinal"
+      ],
+      "properties": {
+        "namespace": {
+          "const": "soc.p2.replay-execution.v2"
+        },
+        "schema_version": {
+          "const": 2
+        },
+        "run_id": {
+          "$ref": "#/$defs/ID"
+        },
+        "primary_attempt_id": {
+          "$ref": "#/$defs/ID"
+        },
+        "primary_trace_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "replay_protocol_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "ordinal": {
+          "const": 1
+        }
+      }
+    },
+    "COMPLETION_PREIMAGE": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "namespace",
+        "schema_version",
+        "run_id",
+        "attempt_id",
+        "primary_process_result_raw_sha256",
+        "input_resolution_receipt_sha256",
+        "trace_validation_report_sha256",
+        "metric_comparison_sha256",
+        "replay_comparison_sha256",
+        "artifact_inventory_sha256",
+        "completion_status"
+      ],
+      "properties": {
+        "namespace": {
+          "const": "soc.p2.completion.v2"
+        },
+        "schema_version": {
+          "const": 2
+        },
+        "run_id": {
+          "$ref": "#/$defs/ID"
+        },
+        "attempt_id": {
+          "$ref": "#/$defs/ID"
+        },
+        "primary_process_result_raw_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "input_resolution_receipt_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "trace_validation_report_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "metric_comparison_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "replay_comparison_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "artifact_inventory_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "completion_status": {
+          "const": "COMPLETE"
+        }
+      }
+    },
+    "SOURCE_BUNDLE_PREIMAGE": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "namespace",
+        "schema_version",
+        "source_commit",
+        "source_files",
+        "dependency_manifest_sha256",
+        "model_contract_sha256",
+        "dirty_policy"
+      ],
+      "properties": {
+        "namespace": {
+          "const": "soc.p2.source-bundle.v2"
+        },
+        "schema_version": {
+          "const": 2
+        },
+        "source_commit": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$"
+        },
+        "source_files": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "path",
+              "sha256"
+            ],
+            "properties": {
+              "path": {
+                "$ref": "#/$defs/ID"
+              },
+              "sha256": {
+                "$ref": "#/$defs/SHA256"
+              }
+            }
+          }
+        },
+        "dependency_manifest_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "model_contract_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "dirty_policy": {
+          "const": "REJECT_RELEVANT_DIRTY_OR_UNTRACKED"
+        }
+      }
+    },
+    "ENVIRONMENT_PREIMAGE": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "namespace",
+        "schema_version",
+        "python_implementation",
+        "python_version",
+        "machine",
+        "platform",
+        "numeric_model",
+        "dependency_manifest_sha256",
+        "host_identity_sha256"
+      ],
+      "properties": {
+        "namespace": {
+          "const": "soc.p2.environment.v2"
+        },
+        "schema_version": {
+          "const": 2
+        },
+        "python_implementation": {
+          "const": "CPython"
+        },
+        "python_version": {
+          "$ref": "#/$defs/ID"
+        },
+        "machine": {
+          "$ref": "#/$defs/ID"
+        },
+        "platform": {
+          "$ref": "#/$defs/ID"
+        },
+        "numeric_model": {
+          "const": "IEEE754_BINARY64_RN_TIES_EVEN_NO_FMA"
+        },
+        "dependency_manifest_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "host_identity_sha256": {
+          "$ref": "#/$defs/SHA256"
+        }
+      }
+    },
+    "BINDING_LITERAL": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "value"
+      ],
+      "properties": {
+        "kind": {
+          "const": "LITERAL"
+        },
+        "value": {
+          "type": [
+            "string",
+            "integer",
+            "boolean",
+            "null"
+          ]
+        }
+      }
+    },
+    "BINDING_COPY": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "source"
+      ],
+      "properties": {
+        "kind": {
+          "const": "COPY"
+        },
+        "source": {
+          "enum": [
+            "main_descriptor.actual_seed_decimal_string",
+            "main_descriptor.scenario",
+            "main_descriptor.condition_id",
+            "main_descriptor.config_id",
+            "main_slot",
+            "main_group",
+            "template_node_id",
+            "compatible_resource_id"
+          ]
+        }
+      }
+    },
+    "KEY_BINDING": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/BINDING_LITERAL"
+        },
+        {
+          "$ref": "#/$defs/BINDING_COPY"
+        }
+      ]
+    },
+    "GIT_FILE_OBSERVATION_V3": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256",
+        "git_blob_oid"
+      ],
+      "properties": {
+        "path": {
+          "$ref": "#/$defs/ID"
+        },
+        "sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "git_blob_oid": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[0-9a-f]{40}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "EXECUTION_CONTEXT_PREIMAGE_V3": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "namespace",
+        "schema_version",
+        "repository_url",
+        "git_object_format",
+        "actual_head_oid",
+        "actual_tree_oid",
+        "branch_kind",
+        "branch_name",
+        "frozen_source_commit",
+        "source_bundle_sha256",
+        "source_scope_manifest_sha256",
+        "observed_relevant_files",
+        "observed_relevant_dirty",
+        "observed_relevant_untracked",
+        "observed_repository_dirty",
+        "dirty_scope_policy_sha256",
+        "execution_contract_sha256",
+        "execution_image_manifest_sha256",
+        "source_isolation_mode"
+      ],
+      "properties": {
+        "namespace": {
+          "const": "soc.p2.execution-context.v3"
+        },
+        "schema_version": {
+          "const": 3
+        },
+        "repository_url": {
+          "const": "https://github.com/JINAOLONG/soc.git"
+        },
+        "git_object_format": {
+          "const": "sha1"
+        },
+        "actual_head_oid": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$"
+        },
+        "actual_tree_oid": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$"
+        },
+        "branch_kind": {
+          "enum": [
+            "SYMBOLIC",
+            "DETACHED"
+          ]
+        },
+        "branch_name": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ID"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "frozen_source_commit": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$"
+        },
+        "source_bundle_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "source_scope_manifest_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "observed_relevant_files": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/GIT_FILE_OBSERVATION_V3"
+          }
+        },
+        "observed_relevant_dirty": {
+          "type": "boolean"
+        },
+        "observed_relevant_untracked": {
+          "type": "boolean"
+        },
+        "observed_repository_dirty": {
+          "type": "boolean"
+        },
+        "dirty_scope_policy_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "execution_contract_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "execution_image_manifest_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "source_isolation_mode": {
+          "const": "SEALED_READ_ONLY_SOURCE_AND_DEPENDENCIES"
+        }
+      }
+    },
+    "EXECUTION_PROVENANCE_PREIMAGE_V3": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "namespace",
+        "schema_version",
+        "context_sha256",
+        "context_ref",
+        "subject_id",
+        "process_role",
+        "phase",
+        "collected_at_utc",
+        "host_identity_sha256",
+        "git_observation_refs",
+        "observation_status",
+        "failure_reason"
+      ],
+      "properties": {
+        "namespace": {
+          "const": "soc.p2.execution-provenance.v3"
+        },
+        "schema_version": {
+          "const": 3
+        },
+        "context_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "context_ref": {
+          "$ref": "#/$defs/ARTIFACT_REF"
+        },
+        "subject_id": {
+          "$ref": "#/$defs/ID"
+        },
+        "process_role": {
+          "enum": [
+            "GENERATE_MAIN",
+            "DERIVE_CONTROL",
+            "ENGINE_PRIMARY",
+            "ENGINE_REPLAY",
+            "TRACE_VALIDATE",
+            "METRIC_RECOMPUTE",
+            "DIAGNOSTIC_RECOMPUTE",
+            "M2_ANALYSIS"
+          ]
+        },
+        "phase": {
+          "enum": [
+            "PRE_SPAWN",
+            "POST_EXIT"
+          ]
+        },
+        "collected_at_utc": {
+          "$ref": "#/$defs/UTC"
+        },
+        "host_identity_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "git_observation_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ARTIFACT_REF"
+          },
+          "minItems": 1
+        },
+        "observation_status": {
+          "enum": [
+            "OBSERVED",
+            "FAILED"
+          ]
+        },
+        "failure_reason": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ID"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "BUDGET_SCOPE_PREIMAGE_V3": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "namespace",
+        "schema_version",
+        "blueprint_sha256",
+        "matrix_sha256",
+        "calibration_metadata_sha256",
+        "root_authorization_sha256"
+      ],
+      "properties": {
+        "namespace": {
+          "const": "soc.p2.budget-scope.v3"
+        },
+        "schema_version": {
+          "const": 3
+        },
+        "blueprint_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "matrix_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "calibration_metadata_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "root_authorization_sha256": {
+          "$ref": "#/$defs/SHA256"
+        }
+      }
+    },
+    "COORDINATION_DOMAIN_PREIMAGE_V3": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "namespace",
+        "schema_version",
+        "budget_scope_sha256",
+        "purpose",
+        "semantic_target_id"
+      ],
+      "properties": {
+        "namespace": {
+          "const": "soc.p2.coordination-domain.v3"
+        },
+        "schema_version": {
+          "const": 3
+        },
+        "budget_scope_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "purpose": {
+          "enum": [
+            "INPUT_GENERATION",
+            "PRIMARY_EXECUTION",
+            "REGISTERED_REPLAY"
+          ]
+        },
+        "semantic_target_id": {
+          "$ref": "#/$defs/ID"
+        }
+      }
+    },
+    "COORDINATION_RECORD_V3": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "namespace",
+        "schema_version",
+        "domain_sha256",
+        "policy",
+        "revision",
+        "parent_record_sha256",
+        "active_authorization_sha256",
+        "owner_id",
+        "epoch",
+        "lease_clock_id",
+        "lease_deadline_ticks",
+        "phase",
+        "spawn_reserved_ever",
+        "original_attempt_id",
+        "inventory_sha256",
+        "receipt_sha256",
+        "recovery_authorization_sha256"
+      ],
+      "properties": {
+        "namespace": {
+          "const": "soc.p2.coordination-record.v3"
+        },
+        "schema_version": {
+          "const": 3
+        },
+        "domain_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "policy": {
+          "enum": [
+            "A_NO_TAKEOVER",
+            "B_FENCED"
+          ]
+        },
+        "revision": {
+          "$ref": "#/$defs/UINT"
+        },
+        "parent_record_sha256": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/SHA256"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "active_authorization_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "owner_id": {
+          "$ref": "#/$defs/ID"
+        },
+        "epoch": {
+          "$ref": "#/$defs/UINT"
+        },
+        "lease_clock_id": {
+          "$ref": "#/$defs/ID"
+        },
+        "lease_deadline_ticks": {
+          "$ref": "#/$defs/UINT"
+        },
+        "phase": {
+          "enum": [
+            "PREPARED",
+            "SPAWN_RESERVED",
+            "RUNNING",
+            "OUTPUT_READY",
+            "VERIFIED",
+            "PUBLISHED",
+            "HALTED",
+            "FAILED",
+            "INCOMPLETE"
+          ]
+        },
+        "spawn_reserved_ever": {
+          "type": "boolean"
+        },
+        "original_attempt_id": {
+          "$ref": "#/$defs/ID"
+        },
+        "inventory_sha256": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/SHA256"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "receipt_sha256": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/SHA256"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "recovery_authorization_sha256": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/SHA256"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "RUN_PREIMAGE_V3": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "namespace",
+        "schema_version",
+        "execution_plan_sha256",
+        "trial_id",
+        "workload_id",
+        "method_id",
+        "source_bundle_sha256",
+        "environment_semantic_sha256",
+        "primary_semantic_argv_sha256",
+        "observer_spec_sha256",
+        "validator_identity_sha256",
+        "metric_spec_sha256",
+        "replay_protocol_sha256",
+        "execution_context_sha256",
+        "execution_contract_sha256"
+      ],
+      "properties": {
+        "namespace": {
+          "const": "soc.p2.run-identity.v3"
+        },
+        "schema_version": {
+          "const": 3
+        },
+        "execution_plan_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "trial_id": {
+          "$ref": "#/$defs/ID"
+        },
+        "workload_id": {
+          "$ref": "#/$defs/ID"
+        },
+        "method_id": {
+          "$ref": "#/$defs/METHOD"
+        },
+        "source_bundle_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "environment_semantic_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "primary_semantic_argv_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "observer_spec_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "validator_identity_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "metric_spec_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "replay_protocol_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "execution_context_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "execution_contract_sha256": {
+          "$ref": "#/$defs/SHA256"
+        }
+      }
+    },
+    "PROCESS_RESULT_V3": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "process_started",
+        "exit_code",
+        "termination_kind",
+        "signal",
+        "exception",
+        "argv_actual",
+        "cwd",
+        "host_identity_sha256",
+        "planned_at_utc",
+        "started_at_utc",
+        "ended_at_utc",
+        "monotonic_elapsed_ns",
+        "stdout",
+        "stderr",
+        "execution_context_sha256",
+        "provenance_refs",
+        "coordination_record_ref"
+      ],
+      "properties": {
+        "process_started": {
+          "type": "boolean"
+        },
+        "exit_code": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "termination_kind": {
+          "enum": [
+            "NOT_STARTED",
+            "EXITED",
+            "SIGNALLED",
+            "SPAWN_FAILED",
+            "INTERRUPTED",
+            "UNKNOWN"
+          ]
+        },
+        "signal": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ID"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "exception": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ASCII"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "argv_actual": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ASCII"
+          }
+        },
+        "cwd": {
+          "$ref": "#/$defs/ID"
+        },
+        "host_identity_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "planned_at_utc": {
+          "$ref": "#/$defs/UTC"
+        },
+        "started_at_utc": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/UTC"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "ended_at_utc": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/UTC"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "monotonic_elapsed_ns": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/UINT"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "stdout": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ARTIFACT_REF"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "stderr": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ARTIFACT_REF"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "execution_context_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "provenance_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ARTIFACT_REF"
+          }
+        },
+        "coordination_record_ref": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ARTIFACT_REF"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "GENERATION_RECEIPT_PREIMAGE_V3": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "namespace",
+        "schema_version",
+        "blueprint_sha256",
+        "input_descriptor_sha256",
+        "generation_authorization_sha256",
+        "generation_attempt_id",
+        "payload_content_sha256",
+        "payload_raw_sha256",
+        "payload_raw_ref",
+        "pre_round_estimates_ref",
+        "process",
+        "execution_context_sha256",
+        "provenance_inventory_sha256",
+        "coordination_domain_sha256"
+      ],
+      "properties": {
+        "namespace": {
+          "const": "soc.p2.generation-receipt.v3"
+        },
+        "schema_version": {
+          "const": 3
+        },
+        "blueprint_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "input_descriptor_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "generation_authorization_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "generation_attempt_id": {
+          "$ref": "#/$defs/ID"
+        },
+        "payload_content_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "payload_raw_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "payload_raw_ref": {
+          "$ref": "#/$defs/ARTIFACT_REF"
+        },
+        "pre_round_estimates_ref": {
+          "$ref": "#/$defs/ARTIFACT_REF"
+        },
+        "process": {
+          "$ref": "#/$defs/SUCCESS_PROCESS"
+        },
+        "execution_context_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "provenance_inventory_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "coordination_domain_sha256": {
+          "$ref": "#/$defs/SHA256"
+        }
+      }
+    },
+    "COMPLETION_PREIMAGE_V3": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "namespace",
+        "schema_version",
+        "run_id",
+        "attempt_id",
+        "primary_process_result_raw_sha256",
+        "input_resolution_receipt_sha256",
+        "trace_validation_report_sha256",
+        "metric_comparison_sha256",
+        "replay_comparison_sha256",
+        "artifact_inventory_sha256",
+        "completion_status",
+        "execution_context_sha256",
+        "provenance_inventory_sha256",
+        "coordination_domain_sha256"
+      ],
+      "properties": {
+        "namespace": {
+          "const": "soc.p2.completion.v3"
+        },
+        "schema_version": {
+          "const": 3
+        },
+        "run_id": {
+          "$ref": "#/$defs/ID"
+        },
+        "attempt_id": {
+          "$ref": "#/$defs/ID"
+        },
+        "primary_process_result_raw_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "input_resolution_receipt_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "trace_validation_report_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "metric_comparison_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "replay_comparison_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "artifact_inventory_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "completion_status": {
+          "const": "COMPLETE"
+        },
+        "execution_context_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "provenance_inventory_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "coordination_domain_sha256": {
+          "$ref": "#/$defs/SHA256"
+        }
+      }
+    },
+    "SCIENTIFIC_RUN_RECORD_V3": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "namespace",
+        "schema_version",
+        "run_id",
+        "attempt_id",
+        "execution_plan_sha256",
+        "trial_id",
+        "method_id",
+        "workload_id",
+        "actual_seed_decimal_string",
+        "partition",
+        "scenario",
+        "condition_id",
+        "config_id",
+        "control_variant",
+        "source_bundle_sha256",
+        "input_envelope_ref",
+        "process",
+        "raw_artifacts",
+        "trace_validation",
+        "metric_derivation",
+        "replay",
+        "completion_status",
+        "error_records",
+        "execution_context_sha256",
+        "execution_provenance_refs",
+        "coordination_domain_sha256",
+        "completion_receipt_ref"
+      ],
+      "properties": {
+        "namespace": {
+          "const": "soc.science.p2.run-record.v3"
+        },
+        "schema_version": {
+          "const": 3
+        },
+        "run_id": {
+          "$ref": "#/$defs/ID"
+        },
+        "attempt_id": {
+          "$ref": "#/$defs/ID"
+        },
+        "execution_plan_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "trial_id": {
+          "$ref": "#/$defs/ID"
+        },
+        "method_id": {
+          "$ref": "#/$defs/METHOD"
+        },
+        "workload_id": {
+          "$ref": "#/$defs/ID"
+        },
+        "actual_seed_decimal_string": {
+          "$ref": "#/$defs/SEED_TEXT"
+        },
+        "partition": {
+          "const": "CALIBRATION"
+        },
+        "scenario": {
+          "enum": [
+            "COCKPIT",
+            "ADAS",
+            "FUSION"
+          ]
+        },
+        "condition_id": {
+          "$ref": "#/$defs/ID"
+        },
+        "config_id": {
+          "$ref": "#/$defs/ID"
+        },
+        "control_variant": {
+          "$ref": "#/$defs/VARIANT"
+        },
+        "source_bundle_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "input_envelope_ref": {
+          "$ref": "#/$defs/ARTIFACT_REF"
+        },
+        "process": {
+          "$ref": "#/$defs/PROCESS_RESULT_V3"
+        },
+        "raw_artifacts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ARTIFACT_REF"
+          }
+        },
+        "trace_validation": {
+          "$ref": "#/$defs/VALIDATION_RESULT"
+        },
+        "metric_derivation": {
+          "$ref": "#/$defs/METRIC_DERIVATION"
+        },
+        "replay": {
+          "$ref": "#/$defs/REPLAY_RESULT"
+        },
+        "completion_status": {
+          "enum": [
+            "PREPARED",
+            "RUNNING",
+            "FAILED",
+            "INVALID",
+            "INCOMPLETE",
+            "COMPLETE"
+          ]
+        },
+        "error_records": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ARTIFACT_REF"
+          }
+        },
+        "execution_context_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "execution_provenance_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ARTIFACT_REF"
+          },
+          "minItems": 1
+        },
+        "coordination_domain_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "completion_receipt_ref": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ARTIFACT_REF"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "M2_PAIR_KEY_V3": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "condition_id",
+        "actual_seed_decimal_string",
+        "selected_config_id",
+        "method_id",
+        "reference_method",
+        "workload_id"
+      ],
+      "properties": {
+        "condition_id": {
+          "$ref": "#/$defs/ID"
+        },
+        "actual_seed_decimal_string": {
+          "$ref": "#/$defs/SEED_TEXT"
+        },
+        "selected_config_id": {
+          "$ref": "#/$defs/ID"
+        },
+        "method_id": {
+          "enum": [
+            "B1",
+            "B3",
+            "B4",
+            "B5"
+          ]
+        },
+        "reference_method": {
+          "const": "B2"
+        },
+        "workload_id": {
+          "$ref": "#/$defs/ID"
+        }
+      }
+    },
+    "M2_PAIR_ROW_V3": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "namespace",
+        "schema_version",
+        "pair_key",
+        "method_completion_ref",
+        "reference_completion_ref",
+        "method_independent_metrics_ref",
+        "reference_independent_metrics_ref",
+        "method_wait_decomposition_ref",
+        "reference_wait_decomposition_ref",
+        "contrast_metrics_ref",
+        "compatibility_distribution_ref",
+        "b2_observer_summary_ref",
+        "status",
+        "reason"
+      ],
+      "properties": {
+        "namespace": {
+          "const": "soc.p2.m2.pair-row.v3"
+        },
+        "schema_version": {
+          "const": 3
+        },
+        "pair_key": {
+          "$ref": "#/$defs/M2_PAIR_KEY_V3"
+        },
+        "method_completion_ref": {
+          "$ref": "#/$defs/ARTIFACT_REF"
+        },
+        "reference_completion_ref": {
+          "$ref": "#/$defs/ARTIFACT_REF"
+        },
+        "method_independent_metrics_ref": {
+          "$ref": "#/$defs/ARTIFACT_REF"
+        },
+        "reference_independent_metrics_ref": {
+          "$ref": "#/$defs/ARTIFACT_REF"
+        },
+        "method_wait_decomposition_ref": {
+          "$ref": "#/$defs/ARTIFACT_REF"
+        },
+        "reference_wait_decomposition_ref": {
+          "$ref": "#/$defs/ARTIFACT_REF"
+        },
+        "contrast_metrics_ref": {
+          "$ref": "#/$defs/ARTIFACT_REF"
+        },
+        "compatibility_distribution_ref": {
+          "$ref": "#/$defs/ARTIFACT_REF"
+        },
+        "b2_observer_summary_ref": {
+          "$ref": "#/$defs/ARTIFACT_REF"
+        },
+        "status": {
+          "enum": [
+            "VALID",
+            "MISSING",
+            "DUPLICATE",
+            "MISMATCH",
+            "INVALID"
+          ]
+        },
+        "reason": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ID"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "M2_ROSTER_V3": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "namespace",
+        "schema_version",
+        "execution_plan_sha256",
+        "selection_report_ref",
+        "selected_condition_ids",
+        "seed_metadata_ref",
+        "rows",
+        "expected_pairs"
+      ],
+      "properties": {
+        "namespace": {
+          "const": "soc.p2.m2.roster.v3"
+        },
+        "schema_version": {
+          "const": 3
+        },
+        "execution_plan_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "selection_report_ref": {
+          "$ref": "#/$defs/ARTIFACT_REF"
+        },
+        "selected_condition_ids": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ID"
+          },
+          "minItems": 18,
+          "maxItems": 18
+        },
+        "seed_metadata_ref": {
+          "$ref": "#/$defs/ARTIFACT_REF"
+        },
+        "rows": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/M2_PAIR_KEY_V3"
+          },
+          "minItems": 720,
+          "maxItems": 720
+        },
+        "expected_pairs": {
+          "const": 720
+        }
+      }
+    },
+    "M2_CONTRAST_METRICS_V3": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "namespace",
+        "schema_version",
+        "pair_key",
+        "h_dmr_difference",
+        "l_p95_difference_ms",
+        "h_wait_difference_ms",
+        "l_wait_difference_ms",
+        "source_metric_refs",
+        "status"
+      ],
+      "properties": {
+        "namespace": {
+          "const": "soc.p2.m2.contrast.v3"
+        },
+        "schema_version": {
+          "const": 3
+        },
+        "pair_key": {
+          "$ref": "#/$defs/M2_PAIR_KEY_V3"
+        },
+        "h_dmr_difference": {
+          "$ref": "#/$defs/RATIONAL"
+        },
+        "l_p95_difference_ms": {
+          "$ref": "#/$defs/RATIONAL"
+        },
+        "h_wait_difference_ms": {
+          "$ref": "#/$defs/RATIONAL"
+        },
+        "l_wait_difference_ms": {
+          "$ref": "#/$defs/RATIONAL"
+        },
+        "source_metric_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ARTIFACT_REF"
+          },
+          "minItems": 2
+        },
+        "status": {
+          "enum": [
+            "VALID",
+            "INVALID"
+          ]
+        }
+      }
+    },
+    "M2_ANALYSIS_REPORT_V3": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "namespace",
+        "schema_version",
+        "roster_ref",
+        "pair_rows_ref",
+        "contrast_table_ref",
+        "wait_decomposition_ref",
+        "compatibility_report_ref",
+        "b2_observer_summary_ref",
+        "paired_seed_summary_ref",
+        "resampling_protocol_ref",
+        "resampling_indices_or_digest_ref",
+        "report_inventory_ref",
+        "expected_pairs",
+        "valid_pairs",
+        "missing_pairs",
+        "duplicate_pairs",
+        "mismatched_pairs",
+        "invalid_pairs",
+        "status"
+      ],
+      "properties": {
+        "namespace": {
+          "const": "soc.p2.m2.analysis-report.v3"
+        },
+        "schema_version": {
+          "const": 3
+        },
+        "roster_ref": {
+          "$ref": "#/$defs/ARTIFACT_REF"
+        },
+        "pair_rows_ref": {
+          "$ref": "#/$defs/ARTIFACT_REF"
+        },
+        "contrast_table_ref": {
+          "$ref": "#/$defs/ARTIFACT_REF"
+        },
+        "wait_decomposition_ref": {
+          "$ref": "#/$defs/ARTIFACT_REF"
+        },
+        "compatibility_report_ref": {
+          "$ref": "#/$defs/ARTIFACT_REF"
+        },
+        "b2_observer_summary_ref": {
+          "$ref": "#/$defs/ARTIFACT_REF"
+        },
+        "paired_seed_summary_ref": {
+          "$ref": "#/$defs/ARTIFACT_REF"
+        },
+        "resampling_protocol_ref": {
+          "$ref": "#/$defs/ARTIFACT_REF"
+        },
+        "resampling_indices_or_digest_ref": {
+          "$ref": "#/$defs/ARTIFACT_REF"
+        },
+        "report_inventory_ref": {
+          "$ref": "#/$defs/ARTIFACT_REF"
+        },
+        "expected_pairs": {
+          "const": 720
+        },
+        "valid_pairs": {
+          "$ref": "#/$defs/UINT"
+        },
+        "missing_pairs": {
+          "$ref": "#/$defs/UINT"
+        },
+        "duplicate_pairs": {
+          "$ref": "#/$defs/UINT"
+        },
+        "mismatched_pairs": {
+          "$ref": "#/$defs/UINT"
+        },
+        "invalid_pairs": {
+          "$ref": "#/$defs/UINT"
+        },
+        "status": {
+          "enum": [
+            "NOT_RUN",
+            "INCOMPLETE",
+            "INVALID",
+            "COMPLETE_PENDING_INDEPENDENT_VALIDATION"
+          ]
+        }
+      }
+    },
+    "M2_ANALYSIS_VALIDATION_V3": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "namespace",
+        "schema_version",
+        "analysis_report_ref",
+        "expected_roster_ref",
+        "validator_source_sha256",
+        "validator_process_ref",
+        "verification_status",
+        "missing_count",
+        "duplicate_count",
+        "mismatch_count",
+        "unexpected_count",
+        "invalid_count"
+      ],
+      "properties": {
+        "namespace": {
+          "const": "soc.p2.m2.independent-validation.v3"
+        },
+        "schema_version": {
+          "const": 3
+        },
+        "analysis_report_ref": {
+          "$ref": "#/$defs/ARTIFACT_REF"
+        },
+        "expected_roster_ref": {
+          "$ref": "#/$defs/ARTIFACT_REF"
+        },
+        "validator_source_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "validator_process_ref": {
+          "$ref": "#/$defs/ARTIFACT_REF"
+        },
+        "verification_status": {
+          "enum": [
+            "NOT_RUN",
+            "MATCH",
+            "MISMATCH",
+            "INCOMPLETE"
+          ]
+        },
+        "missing_count": {
+          "$ref": "#/$defs/UINT"
+        },
+        "duplicate_count": {
+          "$ref": "#/$defs/UINT"
+        },
+        "mismatch_count": {
+          "$ref": "#/$defs/UINT"
+        },
+        "unexpected_count": {
+          "$ref": "#/$defs/UINT"
+        },
+        "invalid_count": {
+          "$ref": "#/$defs/UINT"
+        }
+      }
+    },
+    "EXECUTION_PLAN_PREIMAGE_V3": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "namespace",
+        "schema_version",
+        "blueprint_sha256",
+        "symbolic_trial_roster_sha256",
+        "method_source_bindings_sha256",
+        "statistical_protocol_sha256",
+        "metric_spec_sha256",
+        "observer_spec_sha256",
+        "stage_contract_sha256",
+        "definition_approval_evidence_sha256",
+        "execution_contract_sha256",
+        "typed_schema_sha256",
+        "provenance_policy_sha256",
+        "m2_artifact_contract_sha256",
+        "coordination_contract_sha256",
+        "selected_observer_route",
+        "selected_coordination_route",
+        "selected_threshold_bundle"
+      ],
+      "properties": {
+        "namespace": {
+          "const": "soc.p2.execution-plan.v3"
+        },
+        "schema_version": {
+          "const": 3
+        },
+        "blueprint_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "symbolic_trial_roster_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "method_source_bindings_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "statistical_protocol_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "metric_spec_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "observer_spec_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "stage_contract_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "definition_approval_evidence_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "execution_contract_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "typed_schema_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "provenance_policy_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "m2_artifact_contract_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "coordination_contract_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "selected_observer_route": {
+          "enum": [
+            "A_KEEP_ORIGINAL",
+            "B1_EXPAND_SINGLE_READY",
+            "B2_CONDITIONAL_DOMAIN"
+          ]
+        },
+        "selected_coordination_route": {
+          "enum": [
+            "A_NO_TAKEOVER",
+            "B_FENCED"
+          ]
+        },
+        "selected_threshold_bundle": {
+          "$ref": "#/$defs/ID"
+        }
+      }
+    },
+    "GATE_STATE_V3": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "execution_completion",
+        "artifact_integrity",
+        "input_seed_identity",
+        "selection_status",
+        "diagnostic_validity",
+        "mapping_classification",
+        "engineering_timing_prerequisite",
+        "p2_progression_status",
+        "reason_codes",
+        "m2_roster_status",
+        "m2_contrast_status",
+        "m2_report_status",
+        "m2_analysis_validity"
+      ],
+      "properties": {
+        "execution_completion": {
+          "enum": [
+            "NOT_STARTED",
+            "RUNNING",
+            "COMPLETE",
+            "FAILED",
+            "INCOMPLETE"
+          ]
+        },
+        "artifact_integrity": {
+          "enum": [
+            "NOT_CHECKED",
+            "VALID",
+            "MISSING",
+            "CORRUPT",
+            "INVALID"
+          ]
+        },
+        "input_seed_identity": {
+          "enum": [
+            "NOT_CHECKED",
+            "VALID",
+            "INVALID"
+          ]
+        },
+        "selection_status": {
+          "enum": [
+            "NOT_EVALUATED",
+            "SELECTED_ALL_18",
+            "NO_ELIGIBLE_CONDITION",
+            "INVALID_EVIDENCE"
+          ]
+        },
+        "diagnostic_validity": {
+          "enum": [
+            "NOT_RUN",
+            "VALID",
+            "POSITIVE_COVERAGE_ONLY",
+            "INSUFFICIENT_COVERAGE",
+            "INVALID",
+            "INCOMPLETE"
+          ]
+        },
+        "mapping_classification": {
+          "enum": [
+            "NOT_EVALUATED",
+            "SUPPORTED",
+            "NOT_SUPPORTED",
+            "INCONCLUSIVE"
+          ]
+        },
+        "engineering_timing_prerequisite": {
+          "enum": [
+            "NOT_FROZEN",
+            "FROZEN_PROTOCOL_VERIFIED",
+            "INVALID"
+          ]
+        },
+        "p2_progression_status": {
+          "enum": [
+            "BLOCKED",
+            "REQUIREMENTS_MET_PENDING_EXPLICIT_NEXT_STAGE_AUTHORIZATION"
+          ]
+        },
+        "reason_codes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ID"
+          }
+        },
+        "m2_roster_status": {
+          "enum": [
+            "NOT_CHECKED",
+            "COMPLETE",
+            "INCOMPLETE",
+            "INVALID"
+          ]
+        },
+        "m2_contrast_status": {
+          "enum": [
+            "NOT_RUN",
+            "COMPLETE",
+            "INCOMPLETE",
+            "INVALID"
+          ]
+        },
+        "m2_report_status": {
+          "enum": [
+            "NOT_RUN",
+            "COMPLETE",
+            "INCOMPLETE",
+            "INVALID"
+          ]
+        },
+        "m2_analysis_validity": {
+          "enum": [
+            "NOT_CHECKED",
+            "VALID",
+            "INVALID",
+            "INCOMPLETE"
+          ]
+        }
+      }
+    },
+    "STAGE_RECORD_V3": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "namespace",
+        "schema_version",
+        "execution_plan_sha256",
+        "source_bundle_sha256",
+        "state",
+        "expected_trial_slots",
+        "attempted_trial_slots",
+        "completed_trial_slots",
+        "reused_trial_slots",
+        "failed_trial_slots",
+        "not_started_trial_slots",
+        "expected_input_count",
+        "selected_condition_ids",
+        "integrity_report_ref",
+        "selection_report_ref",
+        "diagnostic_report_ref",
+        "criterion_report_ref",
+        "timing_freeze_receipt_ref",
+        "prerequisite_evidence",
+        "m2_roster_ref",
+        "m2_analysis_report_ref",
+        "m2_validation_ref"
+      ],
+      "properties": {
+        "namespace": {
+          "const": "soc.science.p2.stage-record.v3"
+        },
+        "schema_version": {
+          "const": 3
+        },
+        "execution_plan_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "source_bundle_sha256": {
+          "$ref": "#/$defs/SHA256"
+        },
+        "state": {
+          "$ref": "#/$defs/GATE_STATE_V3"
+        },
+        "expected_trial_slots": {
+          "const": 2520
+        },
+        "attempted_trial_slots": {
+          "$ref": "#/$defs/UINT"
+        },
+        "completed_trial_slots": {
+          "$ref": "#/$defs/UINT"
+        },
+        "reused_trial_slots": {
+          "$ref": "#/$defs/UINT"
+        },
+        "failed_trial_slots": {
+          "$ref": "#/$defs/UINT"
+        },
+        "not_started_trial_slots": {
+          "$ref": "#/$defs/UINT"
+        },
+        "expected_input_count": {
+          "const": 1080
+        },
+        "selected_condition_ids": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ID"
+          }
+        },
+        "integrity_report_ref": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ARTIFACT_REF"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "selection_report_ref": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ARTIFACT_REF"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "diagnostic_report_ref": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ARTIFACT_REF"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "criterion_report_ref": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ARTIFACT_REF"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "timing_freeze_receipt_ref": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ARTIFACT_REF"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "prerequisite_evidence": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ARTIFACT_REF"
+          }
+        },
+        "m2_roster_ref": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ARTIFACT_REF"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "m2_analysis_report_ref": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ARTIFACT_REF"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "m2_validation_ref": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ARTIFACT_REF"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "preimage_registry": {
+    "BLUEPRINT_PREIMAGE": {
+      "schema_ref": "#/$defs/BLUEPRINT_PREIMAGE",
+      "id_prefix": "urn:soc:blueprint:v2:",
+      "digest": "SHA256(SEMANTIC_CANON_V2(preimage))",
+      "forbidden_self_reference": [
+        "own ID",
+        "own digest",
+        "future result fields not declared in schema"
+      ],
+      "additional_fields": "REJECT"
+    },
+    "EXECUTION_PLAN_PREIMAGE": {
+      "schema_ref": "#/$defs/EXECUTION_PLAN_PREIMAGE",
+      "id_prefix": "urn:soc:execution-plan:v2:",
+      "digest": "SHA256(SEMANTIC_CANON_V2(preimage))",
+      "forbidden_self_reference": [
+        "own ID",
+        "own digest",
+        "future result fields not declared in schema"
+      ],
+      "additional_fields": "REJECT"
+    },
+    "INPUT_DESCRIPTOR_PREIMAGE": {
+      "schema_ref": "#/$defs/INPUT_DESCRIPTOR_PREIMAGE",
+      "id_prefix": "urn:soc:input-descriptor:v2:",
+      "digest": "SHA256(SEMANTIC_CANON_V2(preimage))",
+      "forbidden_self_reference": [
+        "own ID",
+        "own digest",
+        "future result fields not declared in schema"
+      ],
+      "additional_fields": "REJECT"
+    },
+    "EXECUTION_AUTH_PREIMAGE": {
+      "schema_ref": "#/$defs/EXECUTION_AUTH_PREIMAGE",
+      "id_prefix": "urn:soc:execution-auth:v2:",
+      "digest": "SHA256(SEMANTIC_CANON_V2(preimage))",
+      "forbidden_self_reference": [
+        "own ID",
+        "own digest",
+        "future result fields not declared in schema"
+      ],
+      "additional_fields": "REJECT"
+    },
+    "GENERATION_AUTH_PREIMAGE": {
+      "schema_ref": "#/$defs/GENERATION_AUTH_PREIMAGE",
+      "id_prefix": "urn:soc:generation-auth:v2:",
+      "digest": "SHA256(SEMANTIC_CANON_V2(preimage))",
+      "forbidden_self_reference": [
+        "own ID",
+        "own digest",
+        "future result fields not declared in schema"
+      ],
+      "additional_fields": "REJECT"
+    },
+    "INPUT_LOCK_PREIMAGE": {
+      "schema_ref": "#/$defs/INPUT_LOCK_PREIMAGE",
+      "id_prefix": "urn:soc:input-lock:v2:",
+      "digest": "SHA256(SEMANTIC_CANON_V2(preimage))",
+      "forbidden_self_reference": [
+        "own ID",
+        "own digest",
+        "future result fields not declared in schema"
+      ],
+      "additional_fields": "REJECT"
+    },
+    "GENERATION_ATTEMPT_PREIMAGE": {
+      "schema_ref": "#/$defs/GENERATION_ATTEMPT_PREIMAGE",
+      "id_prefix": "urn:soc:generation-attempt:v2:",
+      "digest": "SHA256(SEMANTIC_CANON_V2(preimage))",
+      "forbidden_self_reference": [
+        "own ID",
+        "own digest",
+        "future result fields not declared in schema"
+      ],
+      "additional_fields": "REJECT"
+    },
+    "GENERATION_RECEIPT_PREIMAGE": {
+      "schema_ref": "#/$defs/GENERATION_RECEIPT_PREIMAGE",
+      "id_prefix": "urn:soc:generation-receipt:v2:",
+      "digest": "SHA256(SEMANTIC_CANON_V2(preimage))",
+      "forbidden_self_reference": [
+        "own ID",
+        "own digest",
+        "future result fields not declared in schema"
+      ],
+      "additional_fields": "REJECT"
+    },
+    "MATERIALIZED_INPUT_PREIMAGE": {
+      "schema_ref": "#/$defs/MATERIALIZED_INPUT_PREIMAGE",
+      "id_prefix": "urn:soc:materialized-input:v2:",
+      "digest": "SHA256(SEMANTIC_CANON_V2(preimage))",
+      "forbidden_self_reference": [
+        "own ID",
+        "own digest",
+        "future result fields not declared in schema"
+      ],
+      "additional_fields": "REJECT"
+    },
+    "INPUT_RESOLUTION_PREIMAGE": {
+      "schema_ref": "#/$defs/INPUT_RESOLUTION_PREIMAGE",
+      "id_prefix": "urn:soc:input-resolution:v2:",
+      "digest": "SHA256(SEMANTIC_CANON_V2(preimage))",
+      "forbidden_self_reference": [
+        "own ID",
+        "own digest",
+        "future result fields not declared in schema"
+      ],
+      "additional_fields": "REJECT"
+    },
+    "WORKLOAD_PREIMAGE": {
+      "schema_ref": "#/$defs/WORKLOAD_PREIMAGE",
+      "id_prefix": "urn:soc:workload:v2:",
+      "digest": "SHA256(SEMANTIC_CANON_V2(preimage))",
+      "forbidden_self_reference": [
+        "own ID",
+        "own digest",
+        "future result fields not declared in schema"
+      ],
+      "additional_fields": "REJECT"
+    },
+    "SEMANTIC_ARGV_PREIMAGE": {
+      "schema_ref": "#/$defs/SEMANTIC_ARGV_PREIMAGE",
+      "id_prefix": "urn:soc:semantic-argv:v2:",
+      "digest": "SHA256(SEMANTIC_CANON_V2(preimage))",
+      "forbidden_self_reference": [
+        "own ID",
+        "own digest",
+        "future result fields not declared in schema"
+      ],
+      "additional_fields": "REJECT"
+    },
+    "RUN_PREIMAGE": {
+      "schema_ref": "#/$defs/RUN_PREIMAGE",
+      "id_prefix": "urn:soc:run:v2:",
+      "digest": "SHA256(SEMANTIC_CANON_V2(preimage))",
+      "forbidden_self_reference": [
+        "own ID",
+        "own digest",
+        "future result fields not declared in schema"
+      ],
+      "additional_fields": "REJECT"
+    },
+    "ATTEMPT_PREIMAGE": {
+      "schema_ref": "#/$defs/ATTEMPT_PREIMAGE",
+      "id_prefix": "urn:soc:attempt:v2:",
+      "digest": "SHA256(SEMANTIC_CANON_V2(preimage))",
+      "forbidden_self_reference": [
+        "own ID",
+        "own digest",
+        "future result fields not declared in schema"
+      ],
+      "additional_fields": "REJECT"
+    },
+    "RUN_LOCK_PREIMAGE": {
+      "schema_ref": "#/$defs/RUN_LOCK_PREIMAGE",
+      "id_prefix": "urn:soc:run-lock:v2:",
+      "digest": "SHA256(SEMANTIC_CANON_V2(preimage))",
+      "forbidden_self_reference": [
+        "own ID",
+        "own digest",
+        "future result fields not declared in schema"
+      ],
+      "additional_fields": "REJECT"
+    },
+    "DENOMINATOR_SCOPE_PREIMAGE": {
+      "schema_ref": "#/$defs/DENOMINATOR_SCOPE_PREIMAGE",
+      "id_prefix": "urn:soc:denominator-scope:v2:",
+      "digest": "SHA256(SEMANTIC_CANON_V2(preimage))",
+      "forbidden_self_reference": [
+        "own ID",
+        "own digest",
+        "future result fields not declared in schema"
+      ],
+      "additional_fields": "REJECT"
+    },
+    "STATE_KEY_PREIMAGE": {
+      "schema_ref": "#/$defs/STATE_KEY_PREIMAGE",
+      "id_prefix": "urn:soc:state-key:v2:",
+      "digest": "SHA256(SEMANTIC_CANON_V2(preimage))",
+      "forbidden_self_reference": [
+        "own ID",
+        "own digest",
+        "future result fields not declared in schema"
+      ],
+      "additional_fields": "REJECT"
+    },
+    "REPLAY_PREIMAGE": {
+      "schema_ref": "#/$defs/REPLAY_PREIMAGE",
+      "id_prefix": "urn:soc:replay:v2:",
+      "digest": "SHA256(SEMANTIC_CANON_V2(preimage))",
+      "forbidden_self_reference": [
+        "own ID",
+        "own digest",
+        "future result fields not declared in schema"
+      ],
+      "additional_fields": "REJECT"
+    },
+    "COMPLETION_PREIMAGE": {
+      "schema_ref": "#/$defs/COMPLETION_PREIMAGE",
+      "id_prefix": "urn:soc:completion:v2:",
+      "digest": "SHA256(SEMANTIC_CANON_V2(preimage))",
+      "forbidden_self_reference": [
+        "own ID",
+        "own digest",
+        "future result fields not declared in schema"
+      ],
+      "additional_fields": "REJECT"
+    },
+    "SOURCE_BUNDLE_PREIMAGE": {
+      "schema_ref": "#/$defs/SOURCE_BUNDLE_PREIMAGE",
+      "id_prefix": "urn:soc:source-bundle:v2:",
+      "digest": "SHA256(SEMANTIC_CANON_V2(preimage))",
+      "forbidden_self_reference": [
+        "own ID",
+        "own digest",
+        "future result fields not declared in schema"
+      ],
+      "additional_fields": "REJECT"
+    },
+    "ENVIRONMENT_PREIMAGE": {
+      "schema_ref": "#/$defs/ENVIRONMENT_PREIMAGE",
+      "id_prefix": "urn:soc:environment:v2:",
+      "digest": "SHA256(SEMANTIC_CANON_V2(preimage))",
+      "forbidden_self_reference": [
+        "own ID",
+        "own digest",
+        "future result fields not declared in schema"
+      ],
+      "additional_fields": "REJECT"
+    }
+  },
+  "canonicalization": {
+    "id": "SEMANTIC_CANON_V2",
+    "allowed_values": [
+      "null",
+      "boolean",
+      "ASCII string",
+      "exact integer",
+      "array",
+      "closed object"
+    ],
+    "encoding": "UTF-8, ASCII keys/IDs/identity strings only; no Unicode normalization; reject any codepoint>127 or control character unless represented as JSON string escape within an explicitly ASCII textual field",
+    "object_order": "ASCII lexicographic keys, no duplicate keys",
+    "separators": "comma and colon, no spaces; json ensure_ascii=true, sort_keys=true, allow_nan=false; exactly one LF",
+    "integers": "base10 without plus/leading zeros; no booleans in integer fields; exact arbitrary-precision parsing; integer-valued fields stay integers",
+    "rational": "object {numerator:canonical signed decimal STRING,denominator:canonical positive decimal STRING}; gcd=1, denominator>0; zero only {numerator:\"0\",denominator:\"1\"}; never -0",
+    "decimals": "parse proposed table decimal lexemes exactly with Decimal then reduced Rational in semantic numeric fields, never via binary64",
+    "arrays": "use per-kind ordering in generation/snapshot specs; never sort chronological event arrays",
+    "raw_hash": "SHA256 exact file bytes, independent of semantic preimage digest",
+    "runtime_payload": "separate RUNTIME_CANON_PY312_F64_V2, Python3.12 json shortest binary64 repr, sort_keys/compact/allow_nan=false/one LF; no header self-ID; normalize -0; only future scientific adapter can emit this family"
+  },
+  "worker_invocation_contract": {
+    "entrypoint_proposed": "python -m soc.execution_worker_v2",
+    "currently_implemented": false,
+    "semantic_options": "Exactly empty array in v2; no extra ignored flags",
+    "engine_argv_template": [
+      "{verified_python}",
+      "-m",
+      "soc.execution_worker_v2",
+      "--role",
+      "{ENGINE_PRIMARY|ENGINE_REPLAY}",
+      "--input-envelope",
+      "{resolved_envelope_path}",
+      "--method",
+      "{method_id}",
+      "--workload-id",
+      "{workload_id}",
+      "--run-id",
+      "{run_id}",
+      "--attempt-id",
+      "{attempt_id}",
+      "--output-dir",
+      "{attempt_dir}"
+    ],
+    "replay_extra": [
+      "--replay-id",
+      "{replay_id}"
+    ],
+    "path_rule": "All paths deterministic within approved CALIBRATION root from already-known IDs, resolved against actual cwd; forbid path traversal/symlinks; all flags exact, reject extras. Actual argv retained independently of semantic hash.",
+    "generation_argv_template": [
+      "{verified_python}",
+      "-m",
+      "soc.execution_worker_v2",
+      "--role",
+      "{GENERATE_MAIN|DERIVE_CONTROL}",
+      "--blueprint",
+      "{approved_blueprint_path}",
+      "--descriptor",
+      "{descriptor_path}",
+      "--authorization",
+      "{generation_authorization_path}",
+      "--generation-attempt-id",
+      "{generation_attempt_id}",
+      "--output-dir",
+      "{generation_attempt_dir}"
+    ],
+    "control_extra": [
+      "--parent-main-resolution",
+      "{verified_parent_main_resolution_path}"
+    ],
+    "guard": "Private worker must apply the same source/approval/seed/descriptor guard even if called directly; absent/invalid authorization rejects before generating/invoking. No bypass CLI. Templates are proposed protocol, module currently absent."
+  },
+  "preimage_scope_notes": [
+    "BLUEPRINT and EXECUTION_PLAN never include actual payload/workload/run/attempt IDs or resolution receipts.",
+    "Generation receipt includes actual invocation/logs/timestamps AFTER materialization.",
+    "WORKLOAD ID excludes generation-attempt/timestamps/receipt hashes; a valid resolution receipt is a prerequisite for publishing it, not a semantic self-reference.",
+    "RUN semantic argv excludes actual output/attempt paths. Exact actual argv is separately recorded and checked against deterministic rendering after attempt ID exists.",
+    "Current schema is an unapproved document, not installed into any pipeline."
+  ],
+  "canonical_array_orders": {
+    "source_files": "ASCII path, unique",
+    "semantic_options": "exactly empty array for v2",
+    "argv_actual": "original argv order, never sort",
+    "runtime_resources": "CPU0..3,GPU0,NPU0",
+    "runtime_services": "service_id ASCII",
+    "runtime_nodes": "node_id ASCII",
+    "runtime_durations": "resource fixed order",
+    "runtime_predecessors": "node_id ASCII",
+    "runtime_links": "(source_type,destination_type) ASCII",
+    "assignments": "K order, never sort by effect",
+    "projection_calendars": "(start exact rational,finish exact rational,resource_id,node_id)",
+    "target_finishes": "fixed selected target order",
+    "raw_artifacts_and_prerequisite_refs": "(kind,path) ASCII unique",
+    "selected_condition_ids": "registered scene COCKPIT/ADAS/FUSION, load light/medium/near-saturation, size8/16 order",
+    "reason_codes": "ASCII unique",
+    "refresh_causes": "declared enum order unique",
+    "event_records": "actual contiguous event_seq order, never sort by state digest"
+  },
+  "conditional_semantics": {
+    "GROUP_METRICS": "Only H_ISOLATED L may be NOT_APPLICABLE_CONTROL/count0/all numeric fields null; applicable groups require prescribed exact counts and nonnull finite values. Wrong absence invalid.",
+    "PROCESS_RESULT": "SPAWN_FAILED/NOT_STARTED=>process_started false,started_at/exit null; unknown interrupted exit stays null; COMPLETE requires started true,actual exit0 and all raw refs.",
+    "DIAGNOSTIC_RECORD": "VALID_FULL=>positive nonnull b,nonnull o/delta/g and enumeration digest, best feasible set includes baseline; eligible incomplete fields use ERROR_RECORD. Partial not computed g=null, never a zero negative.",
+    "SCIENTIFIC_INPUT_ENVELOPE": "Lineage must prove real approved generator/parent MAIN derivation; merely changing origin/seed/fixture_derivation is rejected.",
+    "SCIENTIFIC_RUN_RECORD": "COMPLETE iff all stage contract per_trial_complete conditions proven; false/missing/unknown cannot satisfy.",
+    "STAGE_RECORD": "No COMPLETE or exit0 shortcut to progression; all explicit conjunction fields checked; NOT_FROZEN always blocks."
+  },
+  "base_source": {
+    "path": "docs/P2_design/v2/P2_typed_identity_schema_v2.json",
+    "version": "v2 DRAFT_UNAPPROVED",
+    "sha256": "9b478cf7e96776f6cc69f29426715efed6eec2309270be1efb3dd77985ebfbc9",
+    "source_commit": "cae4a396c02b5fa038a771b65dce9aaad449d3a9"
+  },
+  "v3_preimage_registry": {
+    "EXECUTION_CONTEXT_PREIMAGE_V3": {
+      "schema_ref": "#/$defs/EXECUTION_CONTEXT_PREIMAGE_V3",
+      "id_prefix": "urn:soc:execution-context-preimage-v3:",
+      "digest": "SHA256(SEMANTIC_CANON_V2(exact closed preimage))",
+      "forbidden": [
+        "own ID/hash",
+        "future outputs not declared"
+      ],
+      "approval": "UNAPPROVED"
+    },
+    "EXECUTION_PROVENANCE_PREIMAGE_V3": {
+      "schema_ref": "#/$defs/EXECUTION_PROVENANCE_PREIMAGE_V3",
+      "id_prefix": "urn:soc:execution-provenance-preimage-v3:",
+      "digest": "SHA256(SEMANTIC_CANON_V2(exact closed preimage))",
+      "forbidden": [
+        "own ID/hash",
+        "future outputs not declared"
+      ],
+      "approval": "UNAPPROVED"
+    },
+    "BUDGET_SCOPE_PREIMAGE_V3": {
+      "schema_ref": "#/$defs/BUDGET_SCOPE_PREIMAGE_V3",
+      "id_prefix": "urn:soc:budget-scope-preimage-v3:",
+      "digest": "SHA256(SEMANTIC_CANON_V2(exact closed preimage))",
+      "forbidden": [
+        "own ID/hash",
+        "future outputs not declared"
+      ],
+      "approval": "UNAPPROVED"
+    },
+    "COORDINATION_DOMAIN_PREIMAGE_V3": {
+      "schema_ref": "#/$defs/COORDINATION_DOMAIN_PREIMAGE_V3",
+      "id_prefix": "urn:soc:coordination-domain-preimage-v3:",
+      "digest": "SHA256(SEMANTIC_CANON_V2(exact closed preimage))",
+      "forbidden": [
+        "own ID/hash",
+        "future outputs not declared"
+      ],
+      "approval": "UNAPPROVED"
+    },
+    "RUN_PREIMAGE_V3": {
+      "schema_ref": "#/$defs/RUN_PREIMAGE_V3",
+      "id_prefix": "urn:soc:run-preimage-v3:",
+      "digest": "SHA256(SEMANTIC_CANON_V2(exact closed preimage))",
+      "forbidden": [
+        "own ID/hash",
+        "future outputs not declared"
+      ],
+      "approval": "UNAPPROVED"
+    },
+    "GENERATION_RECEIPT_PREIMAGE_V3": {
+      "schema_ref": "#/$defs/GENERATION_RECEIPT_PREIMAGE_V3",
+      "id_prefix": "urn:soc:generation-receipt-preimage-v3:",
+      "digest": "SHA256(SEMANTIC_CANON_V2(exact closed preimage))",
+      "forbidden": [
+        "own ID/hash",
+        "future outputs not declared"
+      ],
+      "approval": "UNAPPROVED"
+    },
+    "COMPLETION_PREIMAGE_V3": {
+      "schema_ref": "#/$defs/COMPLETION_PREIMAGE_V3",
+      "id_prefix": "urn:soc:completion-preimage-v3:",
+      "digest": "SHA256(SEMANTIC_CANON_V2(exact closed preimage))",
+      "forbidden": [
+        "own ID/hash",
+        "future outputs not declared"
+      ],
+      "approval": "UNAPPROVED"
+    },
+    "EXECUTION_PLAN_PREIMAGE_V3": {
+      "schema_ref": "#/$defs/EXECUTION_PLAN_PREIMAGE_V3",
+      "id_prefix": "urn:soc:execution-plan-preimage-v3:",
+      "digest": "SHA256(SEMANTIC_CANON_V2(exact closed preimage))",
+      "forbidden": [
+        "own ID/hash",
+        "future outputs not declared"
+      ],
+      "approval": "UNAPPROVED"
+    }
+  },
+  "effective_family": {
+    "status": "UNRESOLVED_BLOCKING_NOT_INSTANTIABLE",
+    "legacy_defs": "All61 v2 defs preserved verbatim as reference components; never accept legacy complete records as V3 substitutes",
+    "selected_observer_route": null,
+    "selected_coordination_route": null,
+    "active_run": "#/$defs/SCIENTIFIC_RUN_RECORD_V3",
+    "active_process": "#/$defs/PROCESS_RESULT_V3",
+    "active_stage": "#/$defs/STAGE_RECORD_V3",
+    "active_run_preimage": "#/$defs/RUN_PREIMAGE_V3",
+    "active_generation_receipt_preimage": "#/$defs/GENERATION_RECEIPT_PREIMAGE_V3",
+    "active_completion_preimage": "#/$defs/COMPLETION_PREIMAGE_V3",
+    "activation": "All applicable exact-document approvals plus separate implementation validation and execution authorization required; this document cannot satisfy activation",
+    "active_execution_plan_preimage": "#/$defs/EXECUTION_PLAN_PREIMAGE_V3"
+  },
+  "v3_conditional_semantics": {
+    "context": "Observed relevant files must exactly match frozen source bundle path/hash roster; relevant dirty/untracked must be false. Complete observed fields and matching raw evidence required; actual HEAD may differ in metadata-only commits, with distinct context/run identities.",
+    "provenance": "PRE_SPAWN and POST_EXIT OBSERVED receipts for every actually started required process; identical immutable context across boundary, same subject/role/host and expected repository; failure/null/missing or changed context closes operation. Failed/not-started records may preserve FAILED observations but cannot COMPLETE.",
+    "run": "execution_context_sha256 matches RUN_PREIMAGE_V3, run record, process and complete provenance inventory; inventory includes generation/primary/replay/validator/metric evidence; raw refs and semantic digest both verified.",
+    "m2": "COMPLETE analysis requires exact selected18 x registered10 x B1/B3/B4/B5 roster=720; missing/duplicate/mismatch/invalid all0, valid720; all report refs and independent semantic verification present.",
+    "stage": "New M2 dimensions plus inherited state required; execution COMPLETE never implies M2 analysis VALID. Progression also requires explicitly selected/approved F01/F02, all M2 prerequisites, timing and original stage conjunction.",
+    "identity_adapters": "Existing ATTEMPT/RUN_LOCK/REPLAY wrappers may bind already-known V3 run ID as ID; new typed_family/contract hash fixed in execution plan before generation. Original KEY/random encoding unchanged. Cross-family legacy receipts cannot be silently relabeled."
+  }
+}

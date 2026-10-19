@@ -1,0 +1,294 @@
+# SOC F01-B1 Structural Reachability Review — Targeted Static Evidence Only
+
+## 0. 任务授权
+
+项目：`JINAOLONG/soc`
+
+仓库：`https://github.com/JINAOLONG/soc.git`
+
+目标分支：`work`
+
+预期起始提交：
+
+`ff3db3ca5dc3a8c8a986e66d093fb3849955b690`
+
+上一版设计修订提交：
+
+`05a7c528840b9f28f07b41354edf02b5932b87c9`
+
+本任务仅针对 `B1_EXPAND_SINGLE_READY` 补充一份可审查的静态证据报告，以判断该方案在保留原始观察分母和其余限制的情况下，是否仍存在结构性阴性不可达问题。
+
+**本任务不批准 B1，不选择 F01 路线，不修改 V3 设计契约，不授权实现或科学执行。**
+
+唯一允许写入的路径：
+
+`reports/P2_design/predecision_f01_b1/`
+
+不得修改任何既有文件。不得修改 `docs/`、`src/`、`scripts/`、`tests/`、`configs/`、`STATUS.md`、V1/V2/V3 设计文件、既有审查报告、参数注册表、门禁或运行时配置。
+
+## 1. 起始仓库核验
+
+执行任何写操作前，实际记录：
+
+- 仓库根目录。
+- `git remote -v` 和 `git remote get-url origin`。
+- `git branch --show-current`。
+- `git rev-parse HEAD`。
+- `git status --porcelain=v1 --untracked-files=all`。
+- `git ls-remote origin refs/heads/work`。
+- 预期提交的祖先关系。
+- 本地 HEAD 与远端 `work` 是否均等于预期检查点。
+
+若本地 HEAD、远端 SHA、分支或仓库身份与预期不一致，或工作树不干净：
+
+- 不得 reset、clean、rebase、切换分支或覆盖用户修改。
+- 不得自动合并远端变化。
+- 停止写操作，记录实际状态和阻断原因。
+
+## 2. 必读来源
+
+先读取 `AGENTS.md` 和原始研究需求，再读取以下材料：
+
+1. `docs/user_request.txt` 的 §43–44。
+2. `docs/P2_design/v1/P2_mapping_opportunity_decision_table_v1.md`，如实际路径不同则根据 Git 中的真实文件定位。
+3. V3 的 `P2_diagnostic_spec_v3.json`。
+4. V3 的 `P2_criterion_spec_v3.json`。
+5. V3 的 `P2_public_snapshot_spec_v3.json`。
+6. V3 的 `P2_stage_state_contract_v3.json`。
+7. V3 的 `P2_typed_identity_schema_v3.json`。
+8. V3 的 `P2_scientific_parameter_registry_v3.json`。
+9. `reports/P2_design/design_revision_v3/F01_observation_domain_options.md`。
+10. `reports/P2_design/design_revision_v3/evidence_index.json`。
+11. `reports/P2_design/design_revision_v3/source_evidence_manifest.json`。
+12. `reports/P2_design/design_revision_v3/static_checks.json`。
+13. `reports/P2_design/design_revision_v3/artifact_manifest.json`。
+14. `reports/P2_design/design_revision_v3/final_state.json`。
+15. F01 证据中引用的 P1 事件、ready 集合、snapshot、调度状态与估计有效性规范。
+
+逐项核对来源路径、版本、哈希、行号或 JSON Pointer。不得仅根据报告摘要推断缺失的原始规则。
+
+如果关键规范不存在、不可访问或相互矛盾，报告确切缺口，不得用默认值填补。
+
+## 3. 核心问题
+
+判断以下命题：
+
+在 B1 将局部 oracle 的 ready 集合范围从原来的 2–4 个任务扩大为 1–4 个任务之后，原始观察域 `E0` 和全条件阴性要求 `F/E0 = 1` 是否仍会因其他结构性限制而不可达？
+
+本任务必须区分三个不同问题：
+
+1. **逻辑可达性：** 规格是否允许存在一个符合全部规则的状态序列，使原始 `E0` 中每个必须纳入的公共状态都符合 B1 的 FULL 条件？
+2. **强制障碍：** 是否存在必然出现在每个有效流中的状态，仍因其他限制无法进入 `F_B1`？
+3. **科学覆盖：** 实际 CALIBRATION 运行中是否会得到完整覆盖，以及发生频率如何？
+
+本任务只允许回答前两个问题的静态部分。第三个问题必须标记为 `NOT_EVALUATED`。
+
+不得使用科学工作负载、随机 realization、非 CALIBRATION outcome 或实验结果。
+
+## 4. 必须保持不变的规则
+
+B1 是待批准提案。分析时只能评估其明确变更：
+
+- 将局部 oracle 的 ready 集合范围由 2–4 扩展到 1–4。
+
+其余规则保持 V3 中的原始提案定义，不得修改：
+
+- 原始事件记录与 `E0` 分母。
+- 公共状态的去重语义。
+- 目标 H 业务选择规则。
+- 最多两个目标 H 业务。
+- 36 个投影节点的上限。
+- 固定 suffix 策略。
+- 投影估计有效性和到期限制。
+- 局部 L slack 约束。
+- FINE/COARSE 阈值、覆盖率与稳定性规则。
+- 三态分类的优先级与失败关闭行为。
+- 既有 H/L 科学门槛、统计方法、候选定义和 seed 分区。
+
+不得通过删除单 ready 状态、改变 `E0`、放宽 FULL 条件或重命名阴性结果来解决问题。
+
+## 5. 必须审查的潜在剩余障碍
+
+逐项判断下列障碍是否：
+
+- 被 B1 消除；
+- 仍可能出现；
+- 被原始规格证明为强制出现；
+- 尚无足够静态证据判断。
+
+至少检查：
+
+1. ready 任务数超过 4。
+2. 可用于投影的目标 H 业务超过既定上限。
+3. 超出投影节点上限。
+4. 运行中估计失效或过期。
+5. 固定 suffix 无法覆盖的后继映射。
+6. 目标 H、公共状态或所需估计不满足完整投影前提。
+7. 状态去重、snapshot 记录和事件顺序对 `E0`、`F_B1` 的影响。
+8. 其他由原始规则直接导出的 FULL 资格限制。
+
+对每个问题必须给出具体规范位置、推导过程和结论。不能因为某种状态“可能发生”就宣称阴性必然不可达；也不能因为一个局部状态可以被投影就宣称完整阴性分支可达。
+
+## 6. 可接受的最终结论
+
+最终结论必须且只能属于以下三类之一：
+
+### `PROVEN_UNREACHABLE`
+
+只有在能够给出严格的静态不变量或反证，证明 B1 下仍存在强制覆盖缺口时才能使用。
+
+报告必须指出：
+
+- 强制状态的构造。
+- 该状态必然属于 `E0` 的原因。
+- 该状态无法进入 `F_B1` 的精确规则。
+- 为什么状态等价去重不能消除该缺口。
+- 为什么有效流失败关闭不能使阴性分支恢复可达。
+
+### `STRUCTURALLY_REACHABLE`
+
+只有在能够给出一个完整、符合原始事件和 B1 规则的符号状态序列，并证明该序列中所有必须纳入的 `E0` 状态都能满足 FULL 条件时才能使用。
+
+这只表示规格逻辑允许完整覆盖，不表示：
+
+- 实际 CALIBRATION 流会出现该序列。
+- 该序列有任何已知概率。
+- 全部 seeds/conditions 会得到完整覆盖。
+- 科学假设已得到支持。
+
+必须将这些限制明确写入报告。
+
+### `UNRESOLVED_MISSING_SPECIFICATION`
+
+当原始规则不足以完成上述证明时使用。
+
+必须逐项列出缺失的定义、最小补充证据和阻断的结论。不得自行选择新规则以得到可达或不可达结论。
+
+## 7. 静态证据要求
+
+不得启动 simulator、scheduler、generator、runner、adapter、validator 或任何 P2 入口。
+
+允许：
+
+- 阅读现有源码和文档。
+- 追踪静态控制流与数据契约。
+- 手工构造符号状态序列。
+- 对现有有限集合和既有公式进行纯静态推导。
+- 对新报告运行结构、引用、JSON 和哈希完整性检查。
+
+不允许：
+
+- 生成或物化 workload。
+- 读取非 CALIBRATION realization/outcome。
+- 生成 seed 或随机输入。
+- 执行候选或 M1R/M2 运行。
+- 计算实际 coverage、frequency、gain、CI 或 bootstrap。
+- 根据任何实验结果调整阈值。
+
+## 8. 允许的交付文件
+
+仅在以下新目录中新增文件：
+
+`reports/P2_design/predecision_f01_b1/`
+
+至少交付：
+
+- `f01_b1_reachability_review.md`
+- `residual_blockers.csv`
+- `source_manifest.json`
+- `actual_commands_and_exit_codes.json`
+- `final_state.json`
+- `artifact_manifest.json`
+
+报告必须包含：
+
+- 问题与授权范围。
+- 原始规则和实际源文件身份。
+- B1 精确定义。
+- 对每项潜在障碍的推导。
+- 结论及其严格适用范围。
+- 所有未解决项。
+- 对 A/B1/B2 人工决策的影响。
+- 静态检查结果与局限。
+
+所有引用使用实际路径、SHA-256、Git blob ID、字节数及行号/JSON Pointer。
+
+不得复制整套 V3 设计包，不得更新 V3 的路线选择、审批状态或参数状态。
+
+## 9. 可失败的静态验收
+
+必须检查：
+
+1. `E0` 的定义与原始规则一致。
+2. B1 只改变 ready 集合下限，不改变其他阈值或上限。
+3. 每个强制障碍均有来源依据和完整推导。
+4. 若报告声称可达，必须提供完整符号状态序列，而非单个 FULL 状态。
+5. 若报告声称不可达，必须提供强制不变量，而非只列出一种可能的失败状态。
+6. 未将可能障碍误写为强制障碍。
+7. 未把结构性可达性误写成科学覆盖保证。
+8. 未修改任何 V3 设计文件、原始研究契约或其他既有文件。
+9. 新增 JSON 均可解析，CSV 字段一致，文件清单与哈希正确。
+10. 命令记录包含实际 argv、工作目录、真实退出码、输出存档、输入哈希和是否写文件。
+
+所有失败和修正历史必须保留。不得删除失败输出来制造全绿结果。
+
+## 10. Git 发布约束
+
+检查：
+
+- `git diff --check`
+- `git status --short`
+- `git diff --stat`
+- `git diff --name-status`
+- 新增文件完整清单
+- 变更范围仅限 `reports/P2_design/predecision_f01_b1/`
+- 既有 V3 文件与全部受保护文件哈希保持不变
+- 当前远端 `work` 仍与预期基线一致
+
+仅当所有范围与完整性检查通过时，才允许正常提交并推送新增报告。
+
+若远端已经变化、存在非快进冲突或本地工作树不符合起始条件：
+
+- 不 force-push。
+- 不自动 rebase。
+- 不覆盖远端或用户文件。
+- 停止并报告。
+
+## 11. 最终机器状态与 STOP
+
+`final_state.json` 至少包含：
+
+- `TASK_SCOPE=F01_B1_STATIC_REACHABILITY_ONLY`
+- `EXPECTED_BASE_COMMIT=ff3db3ca5dc3a8c8a986e66d093fb3849955b690`
+- `ACTUAL_START_HEAD`
+- `ACTUAL_REMOTE_WORK_SHA`
+- `WORKTREE_START_STATUS`
+- `WORKTREE_END_STATUS`
+- `F01_B1_REACHABILITY_RESULT`
+- `MANDATORY_RESIDUAL_BLOCKER_COUNT`
+- `UNRESOLVED_SPECIFICATION_ITEMS`
+- `D01_D10_APPROVAL_STATUS=ALL10_UNAPPROVED`
+- `SP01_SP40_APPROVAL_STATUS=ALL40_UNAPPROVED`
+- `F01_ROUTE_SELECTED=false`
+- `F02_POLICY_SELECTED=false`
+- `SCIENTIFIC_WORKLOADS_GENERATED=0`
+- `SCIENTIFIC_WORKLOADS_RUN=0`
+- `P2_ENTRYPOINT_EXECUTED=false`
+- `NEW_SEEDS_GENERATED=false`
+- `NON_CALIBRATION_PARTITIONS_ACCESSED=false`
+- `IMPLEMENTATION_CHANGED=false`
+- `TIMING_PROTOCOL_STATUS=NOT_FROZEN`
+- `VALIDATION_UNLOCKED=false`
+- `FORMAL_UNLOCKED=false`
+- `COMMIT_SHA`
+- `REMOTE_PUSH_STATUS`
+- `NEXT_SAFE_ACTION`
+- `STOP=true`
+
+所有字段必须反映实际证据。无法证明的字段使用 `UNKNOWN`、`NOT_RUN` 或 `UNRESOLVED`，不得默认填 PASS。
+
+完成静态报告、证据清单、命令收据和范围审计后立即停止。
+
+不得选择 F01 路线、修改 D/SP 审批状态、实施 B1、调整科学参数、生成或运行科学工作负载，或推进 P2。
+
+本任务的成功标准是：为人工决策提供严格、有限、可追溯的静态证据，而不是使任何方案变得更容易获得 PASS。

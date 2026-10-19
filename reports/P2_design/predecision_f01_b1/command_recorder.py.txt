@@ -1,0 +1,13 @@
+from pathlib import Path
+import subprocess,json,hashlib,datetime
+R=Path('/workspace/soc');O=R/'reports/P2_design/predecision_f01_b1'
+BASE='ff3db3ca5dc3a8c8a986e66d093fb3849955b690'
+def sha(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
+def dump(p,x):Path(p).write_text(json.dumps(x,ensure_ascii=False,indent=2)+'\n')
+def head():return subprocess.check_output(['git','rev-parse','HEAD'],cwd=R,text=True).strip()
+def run(argv,purpose,inputs=(),writes=False,expected=0):
+ p=O/'actual_commands_and_exit_codes.json';log=json.loads(p.read_text());cid='B1-'+str(len(log['commands'])+1).zfill(3);t=datetime.datetime.now(datetime.timezone.utc).isoformat();before=head();refs=[dict(path=str(Path(q).relative_to(R)),sha256=sha(q)) for q in inputs]
+ result=subprocess.run(argv,cwd=R,text=True,capture_output=True);after=head();outputs={}
+ for k,v in [('stdout',result.stdout),('stderr',result.stderr)]:
+  q=O/'raw_commands'/(cid+'.'+k+'.txt');q.write_text(v);outputs[k]=dict(path=str(q.relative_to(R)),sha256=sha(q),size_bytes=q.stat().st_size)
+ log['commands'].append(dict(id=cid,argv=argv,cwd=str(R),started_at_utc=t,ended_at_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),head_before=before,head_after=after,exit_code=result.returncode,expected_exit_code=expected,purpose=purpose,input_files=refs,files_written=writes,scientific_execution=False,outputs=outputs));dump(p,log);return cid,result

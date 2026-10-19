@@ -1,0 +1,194 @@
+{
+  "scope": "Static table/contract/control-flow and hand dyadic bounds only",
+  "passed": 35,
+  "failed": [],
+  "checks": [
+    {
+      "id": "PATH_IS_EXISTING_PRECEDENCE_CHAIN_TO_TERMINAL",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "TEMPLATE8_COST_SCALES_UNCHANGED_ONE",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "SOURCE_PATH_MINIMA_2_3_1_3_2",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "TWO_FACTOR_FLOORS_SOURCE",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "ONCE_CORRECT_RN64_CONVERSION",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "DYADIC_DURATION_FLOOR_BELOW_EXACT_PRODUCT",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "ALL_BOUND_OPERANDS_AND_SUMS_SMALL_EXACT_DYADICS",
+      "pass_": true,
+      "detail": [
+        "3/2",
+        "15/4",
+        "9/2",
+        "27/4",
+        "33/4"
+      ]
+    },
+    {
+      "id": "BOTH_REGISTERED_NEAR8_CONFIG_PERIODS_12_10",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "FIVE_SLOT_QUARTER_COMPRESSION_RULE",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "THIRD_SLOT_EXACT_UPPER_BOUND",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "STRICT_BINARY64_SAFE_SEPARATION",
+      "pass_": true,
+      "detail": "Dyadic rounded arrival upper7.25 < terminal-start lower8.25; no actual arrival or execution computed"
+    },
+    {
+      "id": "FIRST_THREE_ARRIVALS_STRICTLY_ORDERED",
+      "pass_": true,
+      "detail": "Disjoint source arrival intervals; dyadic separating gaps persist under RN64 in P10/P12 range"
+    },
+    {
+      "id": "NEW_H_L_PAIR_SUPPLIES_READY_ROOTS",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "ORIGINAL_E0_READY_AND_PENDING_H_RULE",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "B1_ONLY_READY_LOWER_BOUND_CHANGE",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "TARGET_CAP_APPLIES_TO_ALL_NOT_ONLY_SELECTED_TWO",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "TARGET_SELECTION_TRUNCATION_DOES_NOT_MAKE_FULL",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "SNAPSHOT_EVERY_ACTUAL_INVOCATION",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "GENUINE_ARRIVAL_CHANGES_STATE_EQUIVALENCE",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "STATIC_ENGINE_BATCH_BEFORE_VIEW_AND_CHOICE",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "STATIC_ENGINE_FINISH_IS_NONNEGATIVE_RN64_ADDITION",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "STATIC_ENGINE_EARLIEST_EVENT_ADVANCE",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "STATIC_ARRIVED_FULL_DAG_PUBLIC_VIEW",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "GLOBAL_NEGATIVE_REQUIRES_COVERAGE_ONE",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "PROJECTION_CAP_IS_DERIVED_NOT_SECOND_FORCED_BLOCKER",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "FIXED_SUFFIX_IS_INTERPRETATION_NOT_FULL_DISQUALIFIER",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "EXPIRED_ESTIMATE_REMains_PARTIAL_NOT_FORCED_PROVEN",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "ALL_CHOICES_AND_SCIENTIFIC_VALUES_UNCHANGED",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "ALL868_PREEXISTING_FILE_HASHES_UNCHANGED",
+      "pass_": true,
+      "detail": []
+    },
+    {
+      "id": "ONLY_REPORT_NAMESPACE_WRITTEN",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "EXISTING_V3_ARTIFACT_MANIFEST_STILL_VALID",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "NEGATIVE_MISSING_PRECEDENCE_EDGE_DETECTED",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "NEGATIVE_WRONG_PERIOD_BOUND_REJECTED",
+      "pass_": true,
+      "detail": "If period were20 the bound fails; report cannot generalize witness to arbitrary periods"
+    },
+    {
+      "id": "NEGATIVE_TRUNCATED_TARGET_LIST_NOT_POPULATION_COUNT",
+      "pass_": true,
+      "detail": "Selected2 does not mean original pending population<=2"
+    },
+    {
+      "id": "NO_REALIZATION_HASH_OR_SEED_DRAW",
+      "pass_": true,
+      "detail": "Checker reads table constants,not evaluating any KEY/digest_to_U or actual seed"
+    }
+  ],
+  "exit_code": 0,
+  "reachability_result": "PROVEN_UNREACHABLE",
+  "mandatory_residual_blocker_count": 1,
+  "scientific_coverage": "NOT_EVALUATED",
+  "scientific_workloads_generated": 0,
+  "scientific_workloads_run": 0
+}

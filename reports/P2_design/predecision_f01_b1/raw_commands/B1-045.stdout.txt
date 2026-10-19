@@ -1,0 +1,1 @@
+{"result": "PROVEN_UNREACHABLE", "mandatory_root_causes": 1, "residual_rows": 9, "source_count": 33, "approvals": 0, "science": 0}

@@ -1,0 +1,16 @@
+"""Preserved failed read-only matrix projection. Reproduces the original tool-read
+KeyError from using scene instead of inspecting the actual matrix schema first.
+No source/project functions imported or invoked.
+"""
+from pathlib import Path
+import json
+V=Path('docs/P2_design/v2')
+G=json.loads((V/'P2_generation_spec_v2.json').read_text())
+T=json.loads((V/'P2_workload_templates_v2.json').read_text())
+M=json.loads((V/'P2_trial_matrix_draft_v2.json').read_text())
+print('generation algorithm',json.dumps(G['algorithm'],ensure_ascii=False,indent=2))
+print('arrivals',json.dumps(G['arrivals'],ensure_ascii=False,indent=2))
+for x in T['templates']:
+ print(x['template_id'],[(n['id'],n['role'],n['cost_scale'],n['predecessors']) for n in x['nodes']])
+print('configs',json.dumps([x for x in M['configs'] if x['scene']=='COCKPIT' and x['size']==8],ensure_ascii=False,indent=2))
+print('matrix keys',list(M));print('config keys',M['configs'][0])

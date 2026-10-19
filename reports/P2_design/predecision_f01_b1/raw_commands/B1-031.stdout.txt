@@ -1,0 +1,328 @@
+{
+  "document_kind": "EXACT_GENERATION_PROPOSAL",
+  "document_version": "v2",
+  "status": "DRAFT_UNAPPROVED_NONEXECUTABLE",
+  "classification": "PROPOSED",
+  "approval": "UNAPPROVED",
+  "approved": false,
+  "frozen": false,
+  "executable": false,
+  "execution_authorized": false,
+  "read_by_pipeline": false,
+  "starting_commit": "79f9c245b23119ce25175d6dc6ff148e9e092461",
+  "schema_version": 2,
+  "generator_version": "soc-p2-synthetic-v2-PROPOSED",
+  "typed_schema_ref": "P2_typed_identity_schema_v2.json#/$defs/KEY",
+  "key_fill_templates": {
+    "arrival_jitter": {
+      "domain": "soc.p2.gen.v2",
+      "schema_version": 2,
+      "generator_version": "soc-p2-synthetic-v2-PROPOSED",
+      "actual_seed_decimal_string": "registered seed rendered as decimal STRING",
+      "scenario": "registered MAIN scenario",
+      "condition_id": "{scenario}-{load}-{size}",
+      "config_id": "unchanged registered A/B config ID",
+      "service_slot": "integer j in0..49",
+      "service_group": "",
+      "template_node_id": "",
+      "resource_id": "",
+      "edge_id": "",
+      "field": "arrival_jitter",
+      "counter": 0
+    },
+    "service_role_factor": {
+      "domain": "soc.p2.gen.v2",
+      "schema_version": 2,
+      "generator_version": "soc-p2-synthetic-v2-PROPOSED",
+      "actual_seed_decimal_string": "registered seed rendered as decimal STRING",
+      "scenario": "registered MAIN scenario",
+      "condition_id": "{scenario}-{load}-{size}",
+      "config_id": "unchanged registered A/B config ID",
+      "service_slot": "integer j in0..49",
+      "service_group": "H or L",
+      "template_node_id": "exact preserved local template node ID",
+      "resource_id": "",
+      "edge_id": "",
+      "field": "service_role_factor",
+      "counter": 0
+    },
+    "duration_factor": {
+      "domain": "soc.p2.gen.v2",
+      "schema_version": 2,
+      "generator_version": "soc-p2-synthetic-v2-PROPOSED",
+      "actual_seed_decimal_string": "registered seed rendered as decimal STRING",
+      "scenario": "registered MAIN scenario",
+      "condition_id": "{scenario}-{load}-{size}",
+      "config_id": "unchanged registered A/B config ID",
+      "service_slot": "integer j in0..49",
+      "service_group": "H or L",
+      "template_node_id": "exact preserved local template node ID",
+      "resource_id": "exact compatible resource ID",
+      "edge_id": "",
+      "field": "duration_factor",
+      "counter": 0
+    }
+  },
+  "key_exclusions": [
+    "method",
+    "trial_id",
+    "run_id",
+    "attempt_id",
+    "host",
+    "wall_time",
+    "scheduler_call_count",
+    "control_variant",
+    "control_arrival_time",
+    "generation_receipt_id"
+  ],
+  "parent_key_rule": "Both controls reuse resolved MAIN numeric bits and original MAIN field keys; controls never draw their own duration/jitter keys.",
+  "algorithm": {
+    "name": "SHA256",
+    "input": "SEMANTIC_CANON_V2(exact fully filled KEY object)",
+    "digest_to_U": "q=unsigned big-endian first8 bytes; U=q/2^64 exact Rational in[0,1)",
+    "service_role_factor": "9/10+U/5, independent key per MAIN slot/group/node; same factor for all compatible resources of this node",
+    "duration_factor": "9/10+U/5, separate MAIN slot/group/node/resource key; realized_exact=estimate_exact*factor",
+    "arrival_jitter": "U/10 per MAIN slot with H/L/node/resource/edge fields empty; scenario/condition/config retained",
+    "nonrandom_fields": [
+      "edge sizes fixed D03",
+      "deadline formula no draws"
+    ],
+    "conversion": "All generation arithmetic exact Rational; each estimated/realized/arrival/relative-deadline value converted ONCE with correctly rounded binary64 ties-to-even; normalize -0; reject nonfinite/nonpositive durations, do not silently repair. Save exact estimates/deadlines sidecar for G."
+  },
+  "service_identity": {
+    "service_id": "{scenario}/{load}/{size}/{config_id}/s{slot:03d}/{H|L}",
+    "node_id": "{service_id}/{preserved_template_node_id}",
+    "condition_id": "{scenario}-{load}-{size}",
+    "preserved_template_ids": "COCKPIT/ADAS/FUSION-{8|16}-v1; semantic templates remain v1 within draft document namespace v2"
+  },
+  "arrivals": {
+    "slots": 50,
+    "services_per_slot": 2,
+    "total_services": 100,
+    "H": 50,
+    "L": 50,
+    "burst_block_slots": 5,
+    "burst_compression": "1/4",
+    "formula": "for j=0..49: q=j//5,k=j%5; a_H=a_L=P*(5*q+k/4+U_j/10); P from unchanged config period_ms",
+    "arrival_window": "[0,W), W=50*P; no admission at W; full drain; observation_end=max(W,last_finish) metadata only; makespan remains last_finish",
+    "no_warmup_exclusion": true
+  },
+  "deadlines": {
+    "reference": "C_est=max_root_to_sink sum_node min_compatible E_exact(g,v,r) before binary64 conversion; no communication. Relative deadline exact multiplier*C_est is converted once; actual absolute deadline RN64(arrival+relative_deadline_bits).",
+    "H_multiplier": "5/2",
+    "L_multiplier": "4",
+    "formula": "D_g = multiplier(group) * C_est(service); positive, relative to each admitted arrival",
+    "risk": "C_est is optimistic and not a feasibility certificate; D06 independent controls mandatory"
+  },
+  "controls": {
+    "service_set_for_G": "ALL 100 services in the resolved parent MAIN input, identically for both controls; never max over only retained H",
+    "G_exact": "ceil(max over parent100 services g of [sum_v max_r(11/10 * E_exact(g,v,r)) + sum_edges max_over_all9_pairs(L_exact+b_exact/B_exact) + D_exact(g)]) +1 ms",
+    "G_inputs": "E_exact and D_exact are pre-binary64 values in parent generation sidecar with hash; edge/network proposed decimals parsed exactly. No new draws and no scheduler truth access.",
+    "G_rounding": "All operations Rational; ceil only once then+1 integer ms. Control arrival k*G is converted exactly to binary64 in the finite registered range; independently verify interval isolation, never assume feasibility from G.",
+    "H_ISOLATED": "retain parent50 H services with identical service/node IDs, complete per-resource estimate/realized bit patterns, edges and relative-deadline bits; remove L; order retained H by original integer slot; kth arrival=k*G, k=0..49",
+    "LOW_COMPETITION": "retain all100 services; order original slot then H before L; kth arrival=k*G,k=0..99; all other retained bytes identical to parent",
+    "parent_materialization_order": "Resolve parent MAIN first without executing its method; then derive/resolve controls. Engine execution order remains H_ISOLATED B2, LOW_COMPETITION B2, MAIN B1..B5.",
+    "no_overlap": "Qualification requires max finish of each control service <= next control arrival and each required group meets original deadlines; failure of this witness is not universal infeasibility or engine correctness failure.",
+    "label": "NOT_APPLICABLE_CONTROL",
+    "parent_identity": "Input descriptor for control references pre-known MAIN descriptor hash; actual derivation references independently verified MAIN resolution receipt after it exists.",
+    "actual_G": "NOT_COMPUTED_NO_REALIZATION"
+  },
+  "windows": {
+    "arrival_admission": "[0,W), W=50P for MAIN; controls[0,N*G)",
+    "last_admitted_arrival": "max actual admitted arrival, separately recorded",
+    "last_service_completion": "max node finish over all admitted services after full drain",
+    "full_drain_makespan": "last_service_completion, preserving existing metric origin t=0",
+    "observation_end": "max(arrival_window_end,last_service_completion), metadata only; never overwrite full_drain_makespan",
+    "pressure": "For each resource, exact measure of execution intervals intersect[0,W), divided by W. p_seed=max_resource; p=arithmetic mean across10 seeds. Existing full-drain utilization retains busy/full_drain_makespan."
+  },
+  "production_artifacts": "NONE. This specifies future generation only; no actual blueprint, input, receipt, source hash or scientific output instance is emitted.",
+  "identity_spec": "P2_typed_identity_schema_v2.json",
+  "scope_change": "Typed version/domain v2 will change future keyed draws relative to v1; distributions remain unchanged; no v1 realizations exist or were compared.",
+  "key_bindings": {
+    "arrival_jitter": {
+      "domain": {
+        "kind": "LITERAL",
+        "value": "soc.p2.gen.v2"
+      },
+      "schema_version": {
+        "kind": "LITERAL",
+        "value": 2
+      },
+      "generator_version": {
+        "kind": "LITERAL",
+        "value": "soc-p2-synthetic-v2-PROPOSED"
+      },
+      "actual_seed_decimal_string": {
+        "kind": "COPY",
+        "source": "main_descriptor.actual_seed_decimal_string"
+      },
+      "scenario": {
+        "kind": "COPY",
+        "source": "main_descriptor.scenario"
+      },
+      "condition_id": {
+        "kind": "COPY",
+        "source": "main_descriptor.condition_id"
+      },
+      "config_id": {
+        "kind": "COPY",
+        "source": "main_descriptor.config_id"
+      },
+      "service_slot": {
+        "kind": "COPY",
+        "source": "main_slot"
+      },
+      "service_group": {
+        "kind": "LITERAL",
+        "value": ""
+      },
+      "template_node_id": {
+        "kind": "LITERAL",
+        "value": ""
+      },
+      "resource_id": {
+        "kind": "LITERAL",
+        "value": ""
+      },
+      "edge_id": {
+        "kind": "LITERAL",
+        "value": ""
+      },
+      "field": {
+        "kind": "LITERAL",
+        "value": "arrival_jitter"
+      },
+      "counter": {
+        "kind": "LITERAL",
+        "value": 0
+      }
+    },
+    "service_role_factor": {
+      "domain": {
+        "kind": "LITERAL",
+        "value": "soc.p2.gen.v2"
+      },
+      "schema_version": {
+        "kind": "LITERAL",
+        "value": 2
+      },
+      "generator_version": {
+        "kind": "LITERAL",
+        "value": "soc-p2-synthetic-v2-PROPOSED"
+      },
+      "actual_seed_decimal_string": {
+        "kind": "COPY",
+        "source": "main_descriptor.actual_seed_decimal_string"
+      },
+      "scenario": {
+        "kind": "COPY",
+        "source": "main_descriptor.scenario"
+      },
+      "condition_id": {
+        "kind": "COPY",
+        "source": "main_descriptor.condition_id"
+      },
+      "config_id": {
+        "kind": "COPY",
+        "source": "main_descriptor.config_id"
+      },
+      "service_slot": {
+        "kind": "COPY",
+        "source": "main_slot"
+      },
+      "service_group": {
+        "kind": "COPY",
+        "source": "main_group"
+      },
+      "template_node_id": {
+        "kind": "COPY",
+        "source": "template_node_id"
+      },
+      "resource_id": {
+        "kind": "LITERAL",
+        "value": ""
+      },
+      "edge_id": {
+        "kind": "LITERAL",
+        "value": ""
+      },
+      "field": {
+        "kind": "LITERAL",
+        "value": "service_role_factor"
+      },
+      "counter": {
+        "kind": "LITERAL",
+        "value": 0
+      }
+    },
+    "duration_factor": {
+      "domain": {
+        "kind": "LITERAL",
+        "value": "soc.p2.gen.v2"
+      },
+      "schema_version": {
+        "kind": "LITERAL",
+        "value": 2
+      },
+      "generator_version": {
+        "kind": "LITERAL",
+        "value": "soc-p2-synthetic-v2-PROPOSED"
+      },
+      "actual_seed_decimal_string": {
+        "kind": "COPY",
+        "source": "main_descriptor.actual_seed_decimal_string"
+      },
+      "scenario": {
+        "kind": "COPY",
+        "source": "main_descriptor.scenario"
+      },
+      "condition_id": {
+        "kind": "COPY",
+        "source": "main_descriptor.condition_id"
+      },
+      "config_id": {
+        "kind": "COPY",
+        "source": "main_descriptor.config_id"
+      },
+      "service_slot": {
+        "kind": "COPY",
+        "source": "main_slot"
+      },
+      "service_group": {
+        "kind": "COPY",
+        "source": "main_group"
+      },
+      "template_node_id": {
+        "kind": "COPY",
+        "source": "template_node_id"
+      },
+      "resource_id": {
+        "kind": "COPY",
+        "source": "compatible_resource_id"
+      },
+      "edge_id": {
+        "kind": "LITERAL",
+        "value": ""
+      },
+      "field": {
+        "kind": "LITERAL",
+        "value": "duration_factor"
+      },
+      "counter": {
+        "kind": "LITERAL",
+        "value": 0
+      }
+    }
+  },
+  "binding_context_types": {
+    "main_descriptor.actual_seed_decimal_string": "SEED_TEXT from verified MAIN descriptor",
+    "main_descriptor.scenario": "registered scene enum",
+    "main_descriptor.condition_id": "ID matching matrix condition",
+    "main_descriptor.config_id": "ID matching matrix A/B config",
+    "main_slot": "integer0..49",
+    "main_group": "H or L",
+    "template_node_id": "exact preserved local node ID of that MAIN service",
+    "compatible_resource_id": "one resource in that node compatible set"
+  },
+  "key_binding_contract": "Normative key_bindings: LITERAL copies value exactly; COPY reads only the named typed parent-MAIN context source. No coercion, omission or other operations. All15 KEY fields produced exactly. key_fill_templates are explanatory glosses, not actual instances. Controls reuse original MAIN bits, never evaluate fresh control keys."
+}

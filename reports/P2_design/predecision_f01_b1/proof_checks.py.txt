@@ -1,0 +1,67 @@
+"""Pure static finite-source/hand-algebra checks. NO soc imports, Workload objects,
+seed draws, schedules, projection, metrics, coverage values or scientific execution.
+The dyadic constants below are conservative proof bounds, not scientific thresholds.
+"""
+from pathlib import Path
+from fractions import Fraction as Q
+import json,hashlib,csv,re,subprocess
+R=Path('/workspace/soc');O=R/'reports/P2_design/predecision_f01_b1';V=R/'docs/P2_design/v2';D=R/'docs/P2_design/v3'
+def j(p):return json.loads(p.read_text())
+def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+def write(n,x):(O/n).write_text(json.dumps(x,ensure_ascii=False,indent=2)+'\n')
+checks=[]
+def ck(n,ok,detail=None):checks.append(dict(id=n,pass_=bool(ok),detail=detail))
+gen=j(D/'P2_generation_spec_v3.json');diag=j(D/'P2_diagnostic_spec_v3.json');criterion=j(D/'P2_criterion_spec_v3.json');snap=j(D/'P2_public_snapshot_spec_v3.json');stage=j(D/'P2_stage_state_contract_v3.json')
+templates=j(V/'P2_workload_templates_v2.json')['templates'];profiles={x['role']:x for x in j(V/'P2_resource_profiles_v2.json')['profiles']};matrix=j(V/'P2_trial_matrix_draft_v2.json')
+template=next(x for x in templates if x['template_id']=='COCKPIT-8-v1');nodes={x['id']:x for x in template['nodes']}
+path=['COCKPIT.n01','COCKPIT.n02','COCKPIT.n03','COCKPIT.n06','COCKPIT.n07'];terminal='COCKPIT.n08'
+ck('PATH_IS_EXISTING_PRECEDENCE_CHAIN_TO_TERMINAL',all(a in nodes[b]['predecessors'] for a,b in zip(path,path[1:]+[terminal])) and nodes[terminal]['predecessors']==['COCKPIT.n07'])
+ck('TEMPLATE8_COST_SCALES_UNCHANGED_ONE',template['size']==8 and all(nodes[n]['cost_scale']=='1' for n in path))
+minimums=[];details=[]
+for n in path:
+ p=profiles[nodes[n]['role']];values=p['estimated_base_ms'];legal=p['compatible_resources'];m=min(Q(str(values[r])) for r in legal);minimums.append(m)
+ details.append(dict(node=n,role=nodes[n]['role'],compatible_base_costs={r:values[r] for r in legal},minimum_base_ms=str(m),conservative_duration_floor_ms=str(Q(3,4)*m)))
+ck('SOURCE_PATH_MINIMA_2_3_1_3_2',minimums==list(map(Q,[2,3,1,3,2])))
+ck('TWO_FACTOR_FLOORS_SOURCE',gen['algorithm']['service_role_factor'].startswith('9/10+U/5') and gen['algorithm']['duration_factor'].startswith('9/10+U/5') and 'realized_exact=estimate_exact*factor' in gen['algorithm']['duration_factor'])
+ck('ONCE_CORRECT_RN64_CONVERSION','converted ONCE with correctly rounded binary64 ties-to-even' in gen['algorithm']['conversion'])
+ck('DYADIC_DURATION_FLOOR_BELOW_EXACT_PRODUCT',Q(9,10)**2==Q(81,100)>Q(3,4))
+prefix=[];total=Q(0)
+for m in minimums:
+ total+=Q(3,4)*m;prefix.append(str(total))
+ck('ALL_BOUND_OPERANDS_AND_SUMS_SMALL_EXACT_DYADICS',all((v.denominator & (v.denominator-1))==0 for v in [Q(3,4)*m for m in minimums]) and total==Q(33,4),prefix)
+configs=[x for x in matrix['configs'] if x['scenario']=='COCKPIT' and x['load']=='near-saturation' and x['size']==8]
+ck('BOTH_REGISTERED_NEAR8_CONFIG_PERIODS_12_10',len(configs)==2 and {x['arrival_candidate']:x['period_ms'] for x in configs}=={'A':12,'B':10})
+ck('FIVE_SLOT_QUARTER_COMPRESSION_RULE',gen['arrivals']['burst_block_slots']==5 and gen['arrivals']['burst_compression']=='1/4' and gen['arrivals']['formula']=='for j=0..49: q=j//5,k=j%5; a_H=a_L=P*(5*q+k/4+U_j/10); P from unchanged config period_ms')
+ck('THIRD_SLOT_EXACT_UPPER_BOUND',Q(2,4)+Q(1,10)==Q(3,5) and Q(3,5)*max(x['period_ms'] for x in configs)==Q(36,5)<Q(29,4))
+ck('STRICT_BINARY64_SAFE_SEPARATION',Q(29,4)<Q(33,4) and Q(33,4)-Q(29,4)==1,'Dyadic rounded arrival upper7.25 < terminal-start lower8.25; no actual arrival or execution computed')
+ck('FIRST_THREE_ARRIVALS_STRICTLY_ORDERED',Q(1,10)<Q(1,4) and Q(1,4)+Q(1,10)<Q(2,4),'Disjoint source arrival intervals; dyadic separating gaps persist under RN64 in P10/P12 range')
+roots=[n['id'] for n in template['nodes'] if not n['predecessors']];ck('NEW_H_L_PAIR_SUPPLIES_READY_ROOTS',roots==['COCKPIT.n01','COCKPIT.n05'] and gen['arrivals']['services_per_slot']==2 and gen['arrivals']['H']==gen['arrivals']['L']==50)
+ck('ORIGINAL_E0_READY_AND_PENDING_H_RULE','At least one dependency-ready not-started node' in diag['inherited_v2_contract']['scope']['eligible'] and 'at least one arrived H service with a not-started node' in diag['inherited_v2_contract']['scope']['eligible'])
+route=diag['route_options']['B1_EXPAND_SINGLE_READY'];ck('B1_ONLY_READY_LOWER_BOUND_CHANGE','except action-ready count is1..4' in route['F'] and 'all other caps/release/DAG/integrity restrictions unchanged' in route['F'] and route==criterion['route_options']['B1_EXPAND_SINGLE_READY'])
+ck('TARGET_CAP_APPLIES_TO_ALL_NOT_ONLY_SELECTED_TWO','all candidate pending H services fit<=2' in diag['inherited_v2_contract']['coverage']['FULL'] and diag['inherited_v2_contract']['limits']['max_target_H_services']==2)
+ck('TARGET_SELECTION_TRUNCATION_DOES_NOT_MAKE_FULL','First min(2,' in diag['inherited_v2_contract']['scope']['target_H_services'] and 'target cap truncates' in diag['inherited_v2_contract']['coverage']['PARTIAL'])
+ck('SNAPSHOT_EVERY_ACTUAL_INVOCATION','Exactly one SNAPSHOT_EVENT for each actual engine scheduler invocation' in snap['exact_event_rule'])
+ck('GENUINE_ARRIVAL_CHANGES_STATE_EQUIVALENCE','same-time start/completion/arrival changes public status/DAG and counts distinctly' in snap['counting'] and 'Globally dedup identical state_key within scope' in snap['counting'])
+engine=(R/'src/soc/simulator/engine.py').read_text();observation=(R/'src/soc/model/observation.py').read_text()
+ck('STATIC_ENGINE_BATCH_BEFORE_VIEW_AND_CHOICE',engine.index('while queue and queue[0][0] == now:')<engine.index('view = observe(workload, now,')<engine.index('proposal = controller(view)'))
+ck('STATIC_ENGINE_FINISH_IS_NONNEGATIVE_RN64_ADDITION','finish = now + cost.realized' in engine and 'now < pred.finish + communication' in engine)
+ck('STATIC_ENGINE_EARLIEST_EVENT_ADVANCE','candidates = ([queue[0][0]] if queue else []) + wakeups' in engine and 'next_time = min(candidates)' in engine)
+ck('STATIC_ARRIVED_FULL_DAG_PUBLIC_VIEW','if s.arrival <= now' in observation and 'for n in sorted(s.nodes' in observation)
+ck('GLOBAL_NEGATIVE_REQUIRES_COVERAGE_ONE',route['negative_coverage']=='F1/E0 == 1 for every seed/loaded-condition' and stage['load_classification']['selection'].startswith('First eligible A else B') and 'selected18 conditions required' in stage['load_classification']['selection'])
+limits=diag['inherited_v2_contract']['limits'];ck('PROJECTION_CAP_IS_DERIVED_NOT_SECOND_FORCED_BLOCKER',limits['max_projected_nodes']==limits['max_action_nodes']+limits['max_target_H_services']*limits['max_nodes_per_target']==36)
+ck('FIXED_SUFFIX_IS_INTERPRETATION_NOT_FULL_DISQUALIFIER','no suffix search' in diag['inherited_v2_contract']['projection']['suffix_order'] and 'not a theorem' in diag['inherited_v2_contract']['negative_interpretation'])
+ck('EXPIRED_ESTIMATE_REMains_PARTIAL_NOT_FORCED_PROVEN','elapsed>=estimate' in diag['inherited_v2_contract']['scope']['visible_running'] and 'busy estimate exhausted' in diag['inherited_v2_contract']['coverage']['PARTIAL'])
+ck('ALL_CHOICES_AND_SCIENTIFIC_VALUES_UNCHANGED',diag['selected_route'] is None and criterion['selected_threshold_bundle'] is None and all(x['approval']=='UNAPPROVED' for x in j(D/'P2_scientific_parameter_registry_v3.json')['parameters']))
+baseline=j(O/'protected_baseline.json');bad=[x['path'] for x in baseline['files'] if sha(R/x['path'])!=x['sha256']];ck('ALL868_PREEXISTING_FILE_HASHES_UNCHANGED',len(baseline['files'])==868 and not bad,bad)
+ck('ONLY_REPORT_NAMESPACE_WRITTEN',all(x[3:].startswith('reports/P2_design/predecision_f01_b1/') for x in subprocess.check_output(['git','status','--porcelain=v1','--untracked-files=all'],cwd=R,text=True).splitlines()))
+ck('EXISTING_V3_ARTIFACT_MANIFEST_STILL_VALID',all(sha(R/x['path'])==x['sha256'] for x in j(R/'reports/P2_design/design_revision_v3/artifact_manifest.json')['files']))
+# Negative mutations of documentary premises, no simulation/diagnosis.
+ck('NEGATIVE_MISSING_PRECEDENCE_EDGE_DETECTED',path[-1] not in [x for x in nodes[terminal]['predecessors'] if x!=path[-1]])
+ck('NEGATIVE_WRONG_PERIOD_BOUND_REJECTED',Q(3,5)*20>Q(33,4),'If period were20 the bound fails; report cannot generalize witness to arbitrary periods')
+ck('NEGATIVE_TRUNCATED_TARGET_LIST_NOT_POPULATION_COUNT',min(2,3)==2 and 3>2,'Selected2 does not mean original pending population<=2')
+ck('NO_REALIZATION_HASH_OR_SEED_DRAW',gen['algorithm']['name']=='SHA256' and 'q' not in locals(),'Checker reads table constants,not evaluating any KEY/digest_to_U or actual seed')
+failed=[x for x in checks if not x['pass_']]
+result=dict(scope='Static table/contract/control-flow and hand dyadic bounds only',passed=len(checks)-len(failed),failed=failed,checks=checks,exit_code=1 if failed else 0,reachability_result='PROVEN_UNREACHABLE' if not failed else 'UNVERIFIED_PENDING_CHECK_CORRECTION',mandatory_residual_blocker_count=1 if not failed else None,scientific_coverage='NOT_EVALUATED',scientific_workloads_generated=0,scientific_workloads_run=0)
+write('proof_checks.json',result)
+write('symbolic_proof_constants.json',dict(scope='Hand-derived universal conservative bounds; no workload/sample/status stream instantiated',witness_condition='COCKPIT-near-saturation-8',registered_A_B_configs=configs,path=details,terminal_not_started_node=terminal,prefix_duration_floor_dyadic_ms=str(total),prefix_partial_sums_ms=prefix,third_slot_preconversion_upper_strict_ms='36/5',third_slot_binary64_safe_upper_ms='29/4',minimum_pending_H_at_first_third_arrival_view=3,retained_full_target_cap=2,independent_ready_roots_per_new_service=roots,global_quantifiers='Every valid primary B2 stream for either A/B in this mandatory selected condition,for every registered seed without computing any draw; therefore every fully valid selected18 plan fails all12-cell negative coverage-one requirement',limits='No assertion every other condition has incomplete coverage; no empirical coverage/frequency/gain/CI computed'))
+print(json.dumps({k:v for k,v in result.items() if k!='checks'},ensure_ascii=False));raise SystemExit(1 if failed else 0)

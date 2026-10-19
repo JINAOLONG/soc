@@ -1,0 +1,117 @@
+{
+  "scope": "Hand-derived universal conservative bounds; no workload/sample/status stream instantiated",
+  "witness_condition": "COCKPIT-near-saturation-8",
+  "registered_A_B_configs": [
+    {
+      "config_id": "COCKPIT-near-saturation-8-A",
+      "scenario": "COCKPIT",
+      "condition_id": "COCKPIT-near-saturation-8",
+      "load": "near-saturation",
+      "size": 8,
+      "arrival_candidate": "A",
+      "period_ms": 12,
+      "template_id": "COCKPIT-8-v1",
+      "source": "PROPOSED",
+      "other_parameters_ref": "P2_generation_spec_v2.json",
+      "selection_priority": 1
+    },
+    {
+      "config_id": "COCKPIT-near-saturation-8-B",
+      "scenario": "COCKPIT",
+      "condition_id": "COCKPIT-near-saturation-8",
+      "load": "near-saturation",
+      "size": 8,
+      "arrival_candidate": "B",
+      "period_ms": 10,
+      "template_id": "COCKPIT-8-v1",
+      "source": "PROPOSED",
+      "other_parameters_ref": "P2_generation_spec_v2.json",
+      "selection_priority": 2
+    }
+  ],
+  "path": [
+    {
+      "node": "COCKPIT.n01",
+      "role": "audio",
+      "compatible_base_costs": {
+        "CPU0": 2,
+        "CPU1": 2,
+        "CPU2": 2,
+        "CPU3": 2
+      },
+      "minimum_base_ms": "2",
+      "conservative_duration_floor_ms": "3/2"
+    },
+    {
+      "node": "COCKPIT.n02",
+      "role": "speech",
+      "compatible_base_costs": {
+        "CPU0": 12,
+        "CPU1": 12,
+        "CPU2": 12,
+        "CPU3": 12,
+        "NPU0": 3
+      },
+      "minimum_base_ms": "3",
+      "conservative_duration_floor_ms": "9/4"
+    },
+    {
+      "node": "COCKPIT.n03",
+      "role": "intent",
+      "compatible_base_costs": {
+        "CPU0": 1,
+        "CPU1": 1,
+        "CPU2": 1,
+        "CPU3": 1
+      },
+      "minimum_base_ms": "1",
+      "conservative_duration_floor_ms": "3/4"
+    },
+    {
+      "node": "COCKPIT.n06",
+      "role": "route",
+      "compatible_base_costs": {
+        "CPU0": 8,
+        "CPU1": 8,
+        "CPU2": 8,
+        "CPU3": 8,
+        "GPU0": 3
+      },
+      "minimum_base_ms": "3",
+      "conservative_duration_floor_ms": "9/4"
+    },
+    {
+      "node": "COCKPIT.n07",
+      "role": "compose",
+      "compatible_base_costs": {
+        "CPU0": 6,
+        "CPU1": 6,
+        "CPU2": 6,
+        "CPU3": 6,
+        "GPU0": 2,
+        "NPU0": 3
+      },
+      "minimum_base_ms": "2",
+      "conservative_duration_floor_ms": "3/2"
+    }
+  ],
+  "terminal_not_started_node": "COCKPIT.n08",
+  "prefix_duration_floor_dyadic_ms": "33/4",
+  "prefix_partial_sums_ms": [
+    "3/2",
+    "15/4",
+    "9/2",
+    "27/4",
+    "33/4"
+  ],
+  "third_slot_preconversion_upper_strict_ms": "36/5",
+  "third_slot_binary64_safe_upper_ms": "29/4",
+  "minimum_pending_H_at_first_third_arrival_view": 3,
+  "retained_full_target_cap": 2,
+  "independent_ready_roots_per_new_service": [
+    "COCKPIT.n01",
+    "COCKPIT.n05"
+  ],
+  "global_quantifiers": "Every valid primary B2 stream for either A/B in this mandatory selected condition,for every registered seed without computing any draw; therefore every fully valid selected18 plan fails all12-cell negative coverage-one requirement",
+  "limits": "No assertion every other condition has incomplete coverage; no empirical coverage/frequency/gain/CI computed"
+}

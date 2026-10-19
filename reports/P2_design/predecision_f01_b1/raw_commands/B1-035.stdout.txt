@@ -1,0 +1,1303 @@
+{
+  "source_commit": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+  "sources": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "5435e5e690a64e0e7f432bae22b8f459f646e12233d99a7a4b1a70266d8c9a22",
+      "size_bytes": 4586,
+      "git_blob_id": "21fd2c268b3eb14ca1bc6a984b2a1f4afc79f6cf",
+      "physical_lines": 63,
+      "read_scope": "Full actual bytes read; semantic evidence locators in evidence_index.json and issue reports",
+      "findings": [
+        "V3-F01",
+        "V3-F02",
+        "V3-F03",
+        "V3-F04",
+        "V3-F05"
+      ],
+      "review_locators": [
+        {
+          "lines": [
+            45,
+            49
+          ]
+        }
+      ]
+    },
+    {
+      "path": "STATUS.md",
+      "sha256": "5f4c9fc321d22010400f260e8ed82a714b4a19453ae7b3102e04db93211f5222",
+      "size_bytes": 2207,
+      "git_blob_id": "1f525196022bbfc07c49a360f8f502ed5df3fd62",
+      "physical_lines": 56,
+      "read_scope": "Full actual bytes read; semantic evidence locators in evidence_index.json and issue reports",
+      "findings": [
+        "V3-F01",
+        "V3-F02",
+        "V3-F03",
+        "V3-F04",
+        "V3-F05"
+      ],
+      "review_locators": [
+        {
+          "lines": [
+            1,
+            56
+          ],
+          "scope": "Full-file source/history/constraint scope; content claims in issue reports,not just hash approval"
+        }
+      ]
+    },
+    {
+      "path": "docs/P2_design/P2_D01_D10_approval_checklist_v1.md",
+      "sha256": "707d080cac2ac9f3d4bd7b014b8f7aeb2050e25063c787a18918b24f188cf46a",
+      "size_bytes": 3057,
+      "git_blob_id": "4a3ec993b0ff084021b5e627464d60565cf3b508",
+      "physical_lines": 29,
+      "read_scope": "Full actual bytes read; semantic evidence locators in evidence_index.json and issue reports",
+      "findings": [
+        "V3-F01",
+        "V3-F02",
+        "V3-F03",
+        "V3-F04",
+        "V3-F05"
+      ],
+      "review_locators": [
+        {
+          "lines": [
+            1,
+            29
+          ],
+          "scope": "Full-file source/history/constraint scope; content claims in issue reports,not just hash approval"
+        }
+      ]
+    },
+    {
+      "path": "docs/P2_design/P2_complete_design_proposal_v1.md",
+      "sha256": "e378e85071d6c97fb6cd5801d9449eef176a90baddcd786181c6685eaa29feac",
+      "size_bytes": 28397,
+      "git_blob_id": "7460493c5c632194d03d1f978f7c3738851d67d2",
+      "physical_lines": 339,
+      "read_scope": "Full actual bytes read; semantic evidence locators in evidence_index.json and issue reports",
+      "findings": [
+        "V3-F01",
+        "V3-F02",
+        "V3-F03",
+        "V3-F04",
+        "V3-F05"
+      ],
+      "review_locators": [
+        {
+          "lines": [
+            275,
+            279
+          ]
+        }
+      ]
+    },
+    {
+      "path": "docs/P2_design/P2_mapping_opportunity_decision_table_v1.md",
+      "sha256": "4c981f2f2303e1b1535168dd320e3c11151ea86ad35a502513893370a5906ea2",
+      "size_bytes": 4533,
+      "git_blob_id": "3bb69c483e007ff99137745c84ad753ccfa8aaaa",
+      "physical_lines": 59,
+      "read_scope": "Full actual bytes read; semantic evidence locators in evidence_index.json and issue reports",
+      "findings": [
+        "V3-F01",
+        "V3-F02",
+        "V3-F03",
+        "V3-F04",
+        "V3-F05"
+      ],
+      "review_locators": [
+        {
+          "lines": [
+            1,
+            59
+          ],
+          "scope": "Full-file source/history/constraint scope; content claims in issue reports,not just hash approval"
+        }
+      ]
+    },
+    {
+      "path": "docs/P2_design/decisions.draft.json",
+      "sha256": "047c4e1d0643795d96a42dc1c3089e3c94667c56c3a6d2a1d3ff364ea04c4cbf",
+      "size_bytes": 50364,
+      "git_blob_id": "14191d425b26477190c7ffefdc4f1e183c7a7d2d",
+      "physical_lines": 986,
+      "read_scope": "Full actual bytes read; semantic evidence locators in evidence_index.json and issue reports",
+      "findings": [
+        "V3-F01",
+        "V3-F02",
+        "V3-F03",
+        "V3-F04",
+        "V3-F05"
+      ],
+      "review_locators": [
+        {
+          "lines": [
+            1,
+            986
+          ],
+          "scope": "Full-file source/history/constraint scope; content claims in issue reports,not just hash approval"
+        }
+      ]
+    },
+    {
+      "path": "docs/P2_design/v2/P2_D01_D10_approval_checklist_v2.md",
+      "sha256": "2bde515669146fe5432118c223c62d41fe37eb848ee525df08b42dc83bbd7c3b",
+      "size_bytes": 3857,
+      "git_blob_id": "ffe9e8b14c9cbe178fafe999189a02c4c1329a48",
+      "physical_lines": 19,
+      "read_scope": "Full actual bytes read; semantic evidence locators in evidence_index.json and issue reports",
+      "findings": [
+        "V3-F01",
+        "V3-F02",
+        "V3-F03",
+        "V3-F04",
+        "V3-F05"
+      ],
+      "review_locators": [
+        {
+          "lines": [
+            1,
+            19
+          ],
+          "scope": "Full-file source/history/constraint scope; content claims in issue reports,not just hash approval"
+        }
+      ]
+    },
+    {
+      "path": "docs/P2_design/v2/P2_D01_D10_traceability_v2.csv",
+      "sha256": "578b0a1b6b3b990b9ae153b485ce0e2d92d3e068b92cd4a5bbc3f67723195c4d",
+      "size_bytes": 15283,
+      "git_blob_id": "8232622a2421df8049de7d5ad21b70ba1351ef48",
+      "physical_lines": 54,
+      "read_scope": "Full actual bytes read; semantic evidence locators in evidence_index.json and issue reports",
+      "findings": [
+        "V3-F01",
+        "V3-F02",
+        "V3-F03",
+        "V3-F04",
+        "V3-F05"
+      ],
+      "review_locators": [
+        {
+          "lines": [
+            1,
+            54
+          ],
+          "scope": "Full-file source/history/constraint scope; content claims in issue reports,not just hash approval"
+        }
+      ]
+    },
+    {
+      "path": "docs/P2_design/v2/P2_canonical_golden_vectors_v2.json",
+      "sha256": "c74cd5a06f0683e28857d07fee2791bbe6c3cf384bbe863f63bcaa6e176b3160",
+      "size_bytes": 13243,
+      "git_blob_id": "5c49f2097ceae137500c5746ffb7cf9f9b2d51ec",
+      "physical_lines": 162,
+      "read_scope": "Full actual bytes read; semantic evidence locators in evidence_index.json and issue reports",
+      "findings": [
+        "V3-F01",
+        "V3-F02",
+        "V3-F03",
+        "V3-F04",
+        "V3-F05"
+      ],
+      "review_locators": [
+        {
+          "lines": [
+            1,
+            162
+          ],
+          "scope": "Full-file source/history/constraint scope; content claims in issue reports,not just hash approval"
+        }
+      ]
+    },
+    {
+      "path": "docs/P2_design/v2/P2_communication_profiles_v2.json",
+      "sha256": "74f7dde644b11d0b459fb68e9f250d9799e34f09652609b63122e0de5bf6e3b8",
+      "size_bytes": 22387,
+      "git_blob_id": "0278e53104685638e5d000521ca77df4c68c3cf0",
+      "physical_lines": 752,
+      "read_scope": "Full actual bytes read; semantic evidence locators in evidence_index.json and issue reports",
+      "findings": [
+        "V3-F01",
+        "V3-F02",
+        "V3-F03",
+        "V3-F04",
+        "V3-F05"
+      ],
+      "review_locators": [
+        {
+          "lines": [
+            1,
+            752
+          ],
+          "scope": "Full-file source/history/constraint scope; content claims in issue reports,not just hash approval"
+        }
+      ]
+    },
+    {
+      "path": "docs/P2_design/v2/P2_complete_design_proposal_v2.md",
+      "sha256": "7f929b85554193ef1256deb3f7cc184e47c362f91e93950896a80450c9eb5fe8",
+      "size_bytes": 17076,
+      "git_blob_id": "e4b8b59b3ddcfa728da0bfa1facf09fef12528de",
+      "physical_lines": 215,
+      "read_scope": "Full actual bytes read; semantic evidence locators in evidence_index.json and issue reports",
+      "findings": [
+        "V3-F01",
+        "V3-F02",
+        "V3-F03",
+        "V3-F04",
+        "V3-F05"
+      ],
+      "review_locators": [
+        {
+          "lines": [
+            156,
+            157
+          ]
+        }
+      ]
+    },
+    {
+      "path": "docs/P2_design/v2/P2_criterion_spec_v2.json",
+      "sha256": "98a578944e7910db933f5b3b02aee4bb03de8005853024b38cc3b02630b04e38",
+      "size_bytes": 4139,
+      "git_blob_id": "a9b8e7ef0961ba692ae61168073bd586392b4abd",
+      "physical_lines": 103,
+      "read_scope": "Full actual bytes read; semantic evidence locators in evidence_index.json and issue reports",
+      "findings": [
+        "V3-F01",
+        "V3-F02",
+        "V3-F03",
+        "V3-F04",
+        "V3-F05"
+      ],
+      "review_locators": [
+        {
+          "lines": "76-82"
+        },
+        {
+          "locator": "#/preconditions, lines49–57"
+        }
+      ]
+    },
+    {
+      "path": "docs/P2_design/v2/P2_diagnostic_spec_v2.json",
+      "sha256": "9bec37d044f4c7742d931149c195c2c3ec1540d41dc3f0a899a2b29f8c7e3e90",
+      "size_bytes": 8809,
+      "git_blob_id": "9cea9cdccaa7fe0a1ea7889377b597360adccc07",
+      "physical_lines": 120,
+      "read_scope": "Full actual bytes read; semantic evidence locators in evidence_index.json and issue reports",
+      "findings": [
+        "V3-F01",
+        "V3-F02",
+        "V3-F03",
+        "V3-F04",
+        "V3-F05"
+      ],
+      "review_locators": [
+        {
+          "lines": "22-26,58-61,107-115"
+        }
+      ]
+    },
+    {
+      "path": "docs/P2_design/v2/P2_generation_spec_v2.json",
+      "sha256": "33e3ccf437510986ffa401eea1ef48e995a1ad08df38a834374d4a1c483a91f2",
+      "size_bytes": 13039,
+      "git_blob_id": "8e0a2c0b527f128415ccc3fa909542c7a13f737a",
+      "physical_lines": 328,
+      "read_scope": "Full actual bytes read; semantic evidence locators in evidence_index.json and issue reports",
+      "findings": [
+        "V3-F01",
+        "V3-F02",
+        "V3-F03",
+        "V3-F04",
+        "V3-F05"
+      ],
+      "review_locators": [
+        {
+          "lines": "79-90,98-108"
+        },
+        {
+          "lines": [
+            141,
+            327
+          ]
+        }
+      ]
+    },
+    {
+      "path": "docs/P2_design/v2/P2_mapping_opportunity_decision_table_v2.md",
+      "sha256": "594863a579ac32fdd980454fe6e0f0d24d165729a60f1c6f6526c8688fd296f4",
+      "size_bytes": 3542,
+      "git_blob_id": "7623f7e480cf180f211dd1b28a8bf4a40b1fd279",
+      "physical_lines": 48,
+      "read_scope": "Full actual bytes read; semantic evidence locators in evidence_index.json and issue reports",
+      "findings": [
+        "V3-F01",
+        "V3-F02",
+        "V3-F03",
+        "V3-F04",
+        "V3-F05"
+      ],
+      "review_locators": [
+        {
+          "locator": "lines21–23"
+        }
+      ]
+    },
+    {
+      "path": "docs/P2_design/v2/P2_public_snapshot_spec_v2.json",
+      "sha256": "fa4ce177c2d4a49a5f8f5b30bfa44e2b0d529f1e735ddfa259ae1811edc2f1af",
+      "size_bytes": 4613,
+      "git_blob_id": "344fff31857ffce0fff2147e35c16fc9415072ad",
+      "physical_lines": 64,
+      "read_scope": "Full actual bytes read; semantic evidence locators in evidence_index.json and issue reports",
+      "findings": [
+        "V3-F01",
+        "V3-F02",
+        "V3-F03",
+        "V3-F04",
+        "V3-F05"
+      ],
+      "review_locators": [
+        {
+          "lines": "53-63"
+        }
+      ]
+    },
+    {
+      "path": "docs/P2_design/v2/P2_resource_profiles_v2.json",
+      "sha256": "9eea5cfd43ce50d796a00d7cac86f9a7ca8798da4a3ea0c2fd9e598d965f13ae",
+      "size_bytes": 8858,
+      "git_blob_id": "ecf51d4abf3c55f6acb555b235829f553161b404",
+      "physical_lines": 370,
+      "read_scope": "Full actual bytes read; semantic evidence locators in evidence_index.json and issue reports",
+      "findings": [
+        "V3-F01",
+        "V3-F02",
+        "V3-F03",
+        "V3-F04",
+        "V3-F05"
+      ],
+      "review_locators": [
+        {
+          "lines": [
+            1,
+            370
+          ],
+          "scope": "Full-file source/history/constraint scope; content claims in issue reports,not just hash approval"
+        }
+      ]
+    },
+    {
+      "path": "docs/P2_design/v2/P2_runner_schema_review_v2.md",
+      "sha256": "fd1a59638bf1754af0a6423b57873a6691af8c3559a1c1d62ceeeffda2da5099",
+      "size_bytes": 10655,
+      "git_blob_id": "08178281269c949a45ae39effd2a70c342513cda",
+      "physical_lines": 118,
+      "read_scope": "Full actual bytes read; semantic evidence locators in evidence_index.json and issue reports",
+      "findings": [
+        "V3-F01",
+        "V3-F02",
+        "V3-F03",
+        "V3-F04",
+        "V3-F05"
+      ],
+      "review_locators": [
+        {
+          "lines": [
+            46,
+            54
+          ]
+        },
+        {
+          "lines": [
+            69,
+            93
+          ]
+        },
+        {
+          "lines": [
+            30,
+            40
+          ]
+        }
+      ]
+    },
+    {
+      "path": "docs/P2_design/v2/P2_scientific_parameter_registry_v2.json",
+      "sha256": "15ee54e75f658d5f66edb00534003d3aed642f86736b2932ae61f0692e4559c2",
+      "size_bytes": 43099,
+      "git_blob_id": "c552a1c59fa281054ac67bdd512299cc648f4dcc",
+      "physical_lines": 1178,
+      "read_scope": "Full actual bytes read; semantic evidence locators in evidence_index.json and issue reports",
+      "findings": [
+        "V3-F01",
+        "V3-F02",
+        "V3-F03",
+        "V3-F04",
+        "V3-F05"
+      ],
+      "review_locators": [
+        {
+          "lines": [
+            1,
+            1178
+          ],
+          "scope": "Full-file source/history/constraint scope; content claims in issue reports,not just hash approval"
+        }
+      ]
+    },
+    {
+      "path": "docs/P2_design/v2/P2_stage_state_contract_v2.json",
+      "sha256": "c64803a93c74ee9dba6a7bc61de2d2e550264f2c5d4a920e1248665fa7e86b93",
+      "size_bytes": 10336,
+      "git_blob_id": "0e0306d1819ec44394738229452c608d1d69694d",
+      "physical_lines": 264,
+      "read_scope": "Full actual bytes read; semantic evidence locators in evidence_index.json and issue reports",
+      "findings": [
+        "V3-F01",
+        "V3-F02",
+        "V3-F03",
+        "V3-F04",
+        "V3-F05"
+      ],
+      "review_locators": [
+        {
+          "locator": "#/stage_execution_complete and progression_conjunction, lines193–206"
+        }
+      ]
+    },
+    {
+      "path": "docs/P2_design/v2/P2_trial_matrix_draft_v2.json",
+      "sha256": "b58fe4c2eead01fc9b92966d557ed0bb052e7387794fc0d9b58029ffdb90af0e",
+      "size_bytes": 1327918,
+      "git_blob_id": "f4c59610b363de1cd79305cd9c5eb9b3de83fda7",
+      "physical_lines": 3110,
+      "read_scope": "Full actual bytes read; semantic evidence locators in evidence_index.json and issue reports",
+      "findings": [
+        "V3-F01",
+        "V3-F02",
+        "V3-F03",
+        "V3-F04",
+        "V3-F05"
+      ],
+      "review_locators": [
+        {
+          "lines": [
+            1,
+            3110
+          ],
+          "scope": "Full-file source/history/constraint scope; content claims in issue reports,not just hash approval"
+        }
+      ]
+    },
+    {
+      "path": "docs/P2_design/v2/P2_typed_identity_schema_v2.json",
+      "sha256": "9b478cf7e96776f6cc69f29426715efed6eec2309270be1efb3dd77985ebfbc9",
+      "size_bytes": 85745,
+      "git_blob_id": "d9da8ff7e6380e710656c65f59bf0c6e1e50c82b",
+      "physical_lines": 3381,
+      "read_scope": "Full actual bytes read; semantic evidence locators in evidence_index.json and issue reports",
+      "findings": [
+        "V3-F01",
+        "V3-F02",
+        "V3-F03",
+        "V3-F04",
+        "V3-F05"
+      ],
+      "review_locators": [
+        {
+          "lines": [
+            419,
+            578
+          ]
+        },
+        {
+          "lines": [
+            933,
+            986
+          ]
+        },
+        {
+          "lines": [
+            988,
+            1117
+          ]
+        },
+        {
+          "lines": [
+            2480,
+            2605
+          ]
+        },
+        {
+          "lines": [
+            2888,
+            2942
+          ]
+        },
+        {
+          "locator": "#/$defs/STAGE_RECORD; lines2674–2800"
+        },
+        {
+          "lines": [
+            119,
+            216
+          ]
+        }
+      ]
+    },
+    {
+      "path": "docs/P2_design/v2/P2_workload_templates_v2.json",
+      "sha256": "f282955ab09d0110f50447269b18d0389231bed9711532853d6cdbda92d9027c",
+      "size_bytes": 28557,
+      "git_blob_id": "5ce74d5e97645066c9a03e80c42a61060eb1c2e8",
+      "physical_lines": 1125,
+      "read_scope": "Full actual bytes read; semantic evidence locators in evidence_index.json and issue reports",
+      "findings": [
+        "V3-F01",
+        "V3-F02",
+        "V3-F03",
+        "V3-F04",
+        "V3-F05"
+      ],
+      "review_locators": [
+        {
+          "lines": "378-500,505-727"
+        }
+      ]
+    },
+    {
+      "path": "docs/P2_design/v2/README.md",
+      "sha256": "bf21a587e3a4e0b11349f16fa11d20af75e64c30f38713383132bc1e40133ed0",
+      "size_bytes": 1416,
+      "git_blob_id": "6570f1a2fdbe3cd029837b87691ceefa6de87433",
+      "physical_lines": 19,
+      "read_scope": "Full actual bytes read; semantic evidence locators in evidence_index.json and issue reports",
+      "findings": [
+        "V3-F01",
+        "V3-F02",
+        "V3-F03",
+        "V3-F04",
+        "V3-F05"
+      ],
+      "review_locators": [
+        {
+          "lines": [
+            1,
+            19
+          ],
+          "scope": "Full-file source/history/constraint scope; content claims in issue reports,not just hash approval"
+        }
+      ]
+    },
+    {
+      "path": "docs/baseline_spec.md",
+      "sha256": "54a1cdb86d0235671a7d1ece31e489289c026bf083f33388580b6f3fdbb42e12",
+      "size_bytes": 2826,
+      "git_blob_id": "586b39b38cea03b718f4d59b576d70dc192f2a2f",
+      "physical_lines": 38,
+      "read_scope": "Full actual bytes read; semantic evidence locators in evidence_index.json and issue reports",
+      "findings": [
+        "V3-F01",
+        "V3-F02",
+        "V3-F03",
+        "V3-F04",
+        "V3-F05"
+      ],
+      "review_locators": [
+        {
+          "lines": [
+            1,
+            38
+          ],
+          "scope": "Full-file source/history/constraint scope; content claims in issue reports,not just hash approval"
+        }
+      ]
+    },
+    {
+      "path": "docs/method_spec.md",
+      "sha256": "c29862a891a866d38dfee2e958c58646973f8c77a37f11f8ab17d9f319f15925",
+      "size_bytes": 677,
+      "git_blob_id": "defc29e526d10b4ee9bd335e2fb2798d90ee1468",
+      "physical_lines": 11,
+      "read_scope": "Full actual bytes read; semantic evidence locators in evidence_index.json and issue reports",
+      "findings": [
+        "V3-F01",
+        "V3-F02",
+        "V3-F03",
+        "V3-F04",
+        "V3-F05"
+      ],
+      "review_locators": [
+        {
+          "lines": [
+            1,
+            11
+          ],
+          "scope": "Full-file source/history/constraint scope; content claims in issue reports,not just hash approval"
+        }
+      ]
+    },
+    {
+      "path": "docs/metric_spec.md",
+      "sha256": "c4b912fc672979ddc763d882e546b7a92bf53090e5b5dddd5777e2e867df182a",
+      "size_bytes": 3242,
+      "git_blob_id": "42a79f2c97bc4354e73377d71b6206b506f97b66",
+      "physical_lines": 52,
+      "read_scope": "Full actual bytes read; semantic evidence locators in evidence_index.json and issue reports",
+      "findings": [
+        "V3-F01",
+        "V3-F02",
+        "V3-F03",
+        "V3-F04",
+        "V3-F05"
+      ],
+      "review_locators": [
+        {
+          "lines": [
+            1,
+            52
+          ],
+          "scope": "Full-file source/history/constraint scope; content claims in issue reports,not just hash approval"
+        }
+      ]
+    },
+    {
+      "path": "docs/model_spec.md",
+      "sha256": "3f74116fa6cb85e4f2db1c96d246ac830a282be28847a0af21184fde2e17197b",
+      "size_bytes": 4381,
+      "git_blob_id": "9f6396211e91dee615ecd5092dfe4ec5900e33d2",
+      "physical_lines": 65,
+      "read_scope": "Full actual bytes read; semantic evidence locators in evidence_index.json and issue reports",
+      "findings": [
+        "V3-F01",
+        "V3-F02",
+        "V3-F03",
+        "V3-F04",
+        "V3-F05"
+      ],
+      "review_locators": [
+        {
+          "lines": [
+            1,
+            65
+          ],
+          "scope": "Full-file source/history/constraint scope; content claims in issue reports,not just hash approval"
+        }
+      ]
+    },
+    {
+      "path": "docs/research_contract.md",
+      "sha256": "8ccd2f6fce470013af89c653eb3ff84a0b66809c56d321993cd973ebc18031e4",
+      "size_bytes": 3119,
+      "git_blob_id": "41dd387ba81d595eebe2fab91d8032102568bbf5",
+      "physical_lines": 48,
+      "read_scope": "Full actual bytes read; semantic evidence locators in evidence_index.json and issue reports",
+      "findings": [
+        "V3-F01",
+        "V3-F02",
+        "V3-F03",
+        "V3-F04",
+        "V3-F05"
+      ],
+      "review_locators": [
+        {
+          "lines": [
+            1,
+            48
+          ],
+          "scope": "Full-file source/history/constraint scope; content claims in issue reports,not just hash approval"
+        }
+      ]
+    },
+    {
+      "path": "docs/statistical_protocol.md",
+      "sha256": "f9c0eeb6e76f68330ba3e5d8d90e58d175c3947a1948bb41b26ad50dbc041e8a",
+      "size_bytes": 3081,
+      "git_blob_id": "68b8cd775433e4d6c45d0ae4fca49fd0ddd58564",
+      "physical_lines": 47,
+      "read_scope": "Full actual bytes read; semantic evidence locators in evidence_index.json and issue reports",
+      "findings": [
+        "V3-F01",
+        "V3-F02",
+        "V3-F03",
+        "V3-F04",
+        "V3-F05"
+      ],
+      "review_locators": [
+        {
+          "lines": [
+            1,
+            47
+          ],
+          "scope": "Full-file source/history/constraint scope; content claims in issue reports,not just hash approval"
+        }
+      ]
+    },
+    {
+      "path": "docs/user_request.txt",
+      "sha256": "4c3481f0c67553eaa6d2dd6f181cc8d3f792e40fdc9586547c1c2e91fb52b461",
+      "size_bytes": 57544,
+      "git_blob_id": "879103b030d00025a4c938f2c3567d99f46a38f2",
+      "physical_lines": 3302,
+      "read_scope": "Full actual bytes read; semantic evidence locators in evidence_index.json and issue reports",
+      "findings": [
+        "V3-F01",
+        "V3-F02",
+        "V3-F03",
+        "V3-F04",
+        "V3-F05"
+      ],
+      "review_locators": [
+        {
+          "lines": [
+            2506,
+            2529
+          ]
+        },
+        {
+          "lines": [
+            1431,
+            1494
+          ]
+        },
+        {
+          "lines": [
+            1833,
+            1860
+          ]
+        }
+      ]
+    },
+    {
+      "path": "docs/workload_spec.md",
+      "sha256": "a098008f3abe47f4cfb830685009b19bf4d3555a8e370ad242a2fce1debea606",
+      "size_bytes": 1574,
+      "git_blob_id": "2438da0c809b3c6fb62caf0f5d097f666ce26043",
+      "physical_lines": 25,
+      "read_scope": "Full actual bytes read; semantic evidence locators in evidence_index.json and issue reports",
+      "findings": [
+        "V3-F01",
+        "V3-F02",
+        "V3-F03",
+        "V3-F04",
+        "V3-F05"
+      ],
+      "review_locators": [
+        {
+          "lines": [
+            1,
+            25
+          ],
+          "scope": "Full-file source/history/constraint scope; content claims in issue reports,not just hash approval"
+        }
+      ]
+    },
+    {
+      "path": "reports/P2_design/design_revision_v2/executive_decision.md",
+      "sha256": "50b8756dfdd5bef56f1d7f792d9adf24765ca30402c96d08c428d52fdb1accc8",
+      "size_bytes": 6389,
+      "git_blob_id": "2b27535f4eaf7101a9c0c9b2aa01fa29e63aa035",
+      "physical_lines": 80,
+      "read_scope": "Full actual bytes read; semantic evidence locators in evidence_index.json and issue reports",
+      "findings": [
+        "V3-F01",
+        "V3-F02",
+        "V3-F03",
+        "V3-F04",
+        "V3-F05"
+      ],
+      "review_locators": [
+        {
+          "lines": [
+            1,
+            80
+          ],
+          "scope": "Full-file source/history/constraint scope; content claims in issue reports,not just hash approval"
+        }
+      ]
+    },
+    {
+      "path": "reports/P2_design/independent_review_v2/executive_decision.md",
+      "sha256": "0344c3d1ec6e0f1729bb758503f03dedf1fb780b00c55cbd9c60261b91d398b7",
+      "size_bytes": 4275,
+      "git_blob_id": "80b372408be70cee5db7c710141f7e4e43398096",
+      "physical_lines": 57,
+      "read_scope": "Full actual bytes read; semantic evidence locators in evidence_index.json and issue reports",
+      "findings": [
+        "V3-F01",
+        "V3-F02",
+        "V3-F03",
+        "V3-F04",
+        "V3-F05"
+      ],
+      "review_locators": [
+        {
+          "lines": [
+            1,
+            57
+          ],
+          "scope": "Full-file source/history/constraint scope; content claims in issue reports,not just hash approval"
+        }
+      ]
+    },
+    {
+      "path": "reports/P2_design/independent_review_v2/findings.json",
+      "sha256": "a56925d56f431714fbdd334bee5303a3fb58234caf26c12fa98375ce0219933b",
+      "size_bytes": 15080,
+      "git_blob_id": "05ad21213fec6b9a84d872277229c336615a42ea",
+      "physical_lines": 185,
+      "read_scope": "Full actual bytes read; semantic evidence locators in evidence_index.json and issue reports",
+      "findings": [
+        "V3-F01",
+        "V3-F02",
+        "V3-F03",
+        "V3-F04",
+        "V3-F05"
+      ],
+      "review_locators": [
+        {
+          "lines": [
+            1,
+            185
+          ],
+          "scope": "Full-file source/history/constraint scope; content claims in issue reports,not just hash approval"
+        }
+      ]
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/D01_D10_decision_readiness.csv",
+      "sha256": "5bf2494abf3c1c373b084fe236c6669cb1d731c76f3240afad419d27ae5595cc",
+      "size_bytes": 40784,
+      "git_blob_id": "a464adac1c382579defcfb04a48d3767dd8dbd95",
+      "physical_lines": 11,
+      "read_scope": "Full actual bytes read; semantic evidence locators in evidence_index.json and issue reports",
+      "findings": [
+        "V3-F01",
+        "V3-F02",
+        "V3-F03",
+        "V3-F04",
+        "V3-F05"
+      ],
+      "review_locators": [
+        {
+          "lines": [
+            1,
+            11
+          ],
+          "scope": "Full-file source/history/constraint scope; content claims in issue reports,not just hash approval"
+        }
+      ]
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/M1R_adversarial_cases.md",
+      "sha256": "ed629e4929bd6d3b398f326d4856b62a3a86cb8a18b75db8b97fe72e88bc570b",
+      "size_bytes": 23398,
+      "git_blob_id": "b286f623c38745519fe1abd38308c65121e1aa2a",
+      "physical_lines": 164,
+      "read_scope": "Full actual bytes read; semantic evidence locators in evidence_index.json and issue reports",
+      "findings": [
+        "V3-F01",
+        "V3-F02",
+        "V3-F03",
+        "V3-F04",
+        "V3-F05"
+      ],
+      "review_locators": [
+        {
+          "lines": [
+            1,
+            164
+          ],
+          "scope": "Full-file source/history/constraint scope; content claims in issue reports,not just hash approval"
+        }
+      ]
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/SP01_SP40_traceability.csv",
+      "sha256": "d7d4e2dfceaaa375f91e47a9334757752ce78e0168ecd1a3fb91b2104069a2ae",
+      "size_bytes": 170411,
+      "git_blob_id": "dd50936eb80cc901da57e5fa09b5469cbc9ef22c",
+      "physical_lines": 41,
+      "read_scope": "Full actual bytes read; semantic evidence locators in evidence_index.json and issue reports",
+      "findings": [
+        "V3-F01",
+        "V3-F02",
+        "V3-F03",
+        "V3-F04",
+        "V3-F05"
+      ],
+      "review_locators": [
+        {
+          "lines": [
+            1,
+            41
+          ],
+          "scope": "Full-file source/history/constraint scope; content claims in issue reports,not just hash approval"
+        }
+      ]
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/actual_commands_and_exit_codes.json",
+      "sha256": "169abd6cce4b422f4603fb0f0f0ce7f2df6e8d1f6b3aa5ecdfe5a39add8c0f2f",
+      "size_bytes": 84453,
+      "git_blob_id": "548c63b517a14127d9e33f9fa477af0c7a89bc06",
+      "physical_lines": 1995,
+      "read_scope": "Full actual bytes read; semantic evidence locators in evidence_index.json and issue reports",
+      "findings": [
+        "V3-F01",
+        "V3-F02",
+        "V3-F03",
+        "V3-F04",
+        "V3-F05"
+      ],
+      "review_locators": [
+        {
+          "lines": [
+            1,
+            1995
+          ],
+          "scope": "Full-file source/history/constraint scope; content claims in issue reports,not just hash approval"
+        }
+      ]
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/coverage_threshold_review.md",
+      "sha256": "558e1377dad11f48ac979c410562dacef24b10ba92f990c86f0dc82d3d558a0e",
+      "size_bytes": 14501,
+      "git_blob_id": "e9899607deea432b38f67ca2c1f911619e886674",
+      "physical_lines": 90,
+      "read_scope": "Full actual bytes read; semantic evidence locators in evidence_index.json and issue reports",
+      "findings": [
+        "V3-F01",
+        "V3-F02",
+        "V3-F03",
+        "V3-F04",
+        "V3-F05"
+      ],
+      "review_locators": [
+        {
+          "lines": [
+            1,
+            90
+          ],
+          "scope": "Full-file source/history/constraint scope; content claims in issue reports,not just hash approval"
+        }
+      ]
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/cross_document_findings.json",
+      "sha256": "8c37f2c8732280cf49e80edbbfc9aa10f769952dc6a1d56a967bc11d51d73a12",
+      "size_bytes": 41864,
+      "git_blob_id": "a8b93da8676f1425e43ff0a3ad535825d560a3b4",
+      "physical_lines": 912,
+      "read_scope": "Full actual bytes read; semantic evidence locators in evidence_index.json and issue reports",
+      "findings": [
+        "V3-F01",
+        "V3-F02",
+        "V3-F03",
+        "V3-F04",
+        "V3-F05"
+      ],
+      "review_locators": [
+        {
+          "lines": [
+            1,
+            912
+          ],
+          "scope": "Full-file source/history/constraint scope; content claims in issue reports,not just hash approval"
+        }
+      ]
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/executive_decision.md",
+      "sha256": "daf155c1c8a97fa6366a357a879e5bce2900a16feb82032a8867fd5f0abed72c",
+      "size_bytes": 9499,
+      "git_blob_id": "395d9d91df106c5bbe51924a32b8583785b1524e",
+      "physical_lines": 64,
+      "read_scope": "Full actual bytes read; semantic evidence locators in evidence_index.json and issue reports",
+      "findings": [
+        "V3-F01",
+        "V3-F02",
+        "V3-F03",
+        "V3-F04",
+        "V3-F05"
+      ],
+      "review_locators": [
+        {
+          "lines": [
+            1,
+            64
+          ],
+          "scope": "Full-file source/history/constraint scope; content claims in issue reports,not just hash approval"
+        }
+      ]
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/first_publication_receipt.json",
+      "sha256": "ea1af38266fbaf3b79a2d7179514309112ee285a9bae90cd2f38453b514b4cb1",
+      "size_bytes": 71045,
+      "git_blob_id": "a1dd8cac8f3848d0eb823b633ce8eef71e8289d2",
+      "physical_lines": 238,
+      "read_scope": "Full actual bytes read; semantic evidence locators in evidence_index.json and issue reports",
+      "findings": [
+        "V3-F01",
+        "V3-F02",
+        "V3-F03",
+        "V3-F04",
+        "V3-F05"
+      ],
+      "review_locators": [
+        {
+          "lines": [
+            1,
+            238
+          ],
+          "scope": "Full-file source/history/constraint scope; content claims in issue reports,not just hash approval"
+        }
+      ]
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/human_decision_packet.md",
+      "sha256": "315b546fca4d95a2514128673f750b2247a03a380821b19029815677c9f0406d",
+      "size_bytes": 44251,
+      "git_blob_id": "ab5987060bb2dd66a07575b30d8959d409846534",
+      "physical_lines": 590,
+      "read_scope": "Full actual bytes read; semantic evidence locators in evidence_index.json and issue reports",
+      "findings": [
+        "V3-F01",
+        "V3-F02",
+        "V3-F03",
+        "V3-F04",
+        "V3-F05"
+      ],
+      "review_locators": [
+        {
+          "lines": [
+            1,
+            590
+          ],
+          "scope": "Full-file source/history/constraint scope; content claims in issue reports,not just hash approval"
+        }
+      ]
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/identity_recovery_review.md",
+      "sha256": "e8046e555117633b620dfdda09da56ca12380b5219e435fd152ac6274cb80dea",
+      "size_bytes": 20322,
+      "git_blob_id": "e7c1bfbd0669f80558c2b8c8084a147730098df7",
+      "physical_lines": 223,
+      "read_scope": "Full actual bytes read; semantic evidence locators in evidence_index.json and issue reports",
+      "findings": [
+        "V3-F01",
+        "V3-F02",
+        "V3-F03",
+        "V3-F04",
+        "V3-F05"
+      ],
+      "review_locators": [
+        {
+          "lines": [
+            1,
+            223
+          ],
+          "scope": "Full-file source/history/constraint scope; content claims in issue reports,not just hash approval"
+        }
+      ]
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/review_evidence_manifest.json",
+      "sha256": "cfd57338c4ee7b0ac97707c7cb15259e6ba4a291d9d72873f25245b3d7447186",
+      "size_bytes": 44422,
+      "git_blob_id": "b1f0f2c8979dc0d92403dcf5b964cdfe9cae629c",
+      "physical_lines": 1056,
+      "read_scope": "Full actual bytes read; semantic evidence locators in evidence_index.json and issue reports",
+      "findings": [
+        "V3-F01",
+        "V3-F02",
+        "V3-F03",
+        "V3-F04",
+        "V3-F05"
+      ],
+      "review_locators": [
+        {
+          "lines": [
+            1,
+            1056
+          ],
+          "scope": "Full-file source/history/constraint scope; content claims in issue reports,not just hash approval"
+        }
+      ]
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/stage_state_timing_review.md",
+      "sha256": "85be14da732b7ee6d5f4d6cabd1e34f0bf47c03dab83de2ccf293cfc3b2d97f4",
+      "size_bytes": 16083,
+      "git_blob_id": "e80be076ba66cdae7dc92d039aad066ee14feff3",
+      "physical_lines": 118,
+      "read_scope": "Full actual bytes read; semantic evidence locators in evidence_index.json and issue reports",
+      "findings": [
+        "V3-F01",
+        "V3-F02",
+        "V3-F03",
+        "V3-F04",
+        "V3-F05"
+      ],
+      "review_locators": [
+        {
+          "lines": [
+            1,
+            118
+          ],
+          "scope": "Full-file source/history/constraint scope; content claims in issue reports,not just hash approval"
+        }
+      ]
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/trial_matrix_row_audit.json",
+      "sha256": "75e7d10dd5339df08cb7dd473fb65e36ccf7d3bdcd9b494276c5e29e69382a7a",
+      "size_bytes": 1139431,
+      "git_blob_id": "9a5a47c3084af79fad01d41f7b11d6993b45b85f",
+      "physical_lines": 28219,
+      "read_scope": "Full actual bytes read; semantic evidence locators in evidence_index.json and issue reports",
+      "findings": [
+        "V3-F01",
+        "V3-F02",
+        "V3-F03",
+        "V3-F04",
+        "V3-F05"
+      ],
+      "review_locators": [
+        {
+          "lines": [
+            1,
+            28219
+          ],
+          "scope": "Full-file source/history/constraint scope; content claims in issue reports,not just hash approval"
+        }
+      ]
+    },
+    {
+      "path": "reports/P2_final_audit.md",
+      "sha256": "04782d2c75dfca564bc27e9fa9f99d4ee6a23c9819848e3996bbe6abfa2703a1",
+      "size_bytes": 1919,
+      "git_blob_id": "df5b76b50ce169cfbf4ce061d84e101e2c3251a8",
+      "physical_lines": 31,
+      "read_scope": "Full actual bytes read; semantic evidence locators in evidence_index.json and issue reports",
+      "findings": [
+        "V3-F01",
+        "V3-F02",
+        "V3-F03",
+        "V3-F04",
+        "V3-F05"
+      ],
+      "review_locators": [
+        {
+          "lines": [
+            1,
+            31
+          ],
+          "scope": "Full-file source/history/constraint scope; content claims in issue reports,not just hash approval"
+        }
+      ]
+    },
+    {
+      "path": "reports/P2_preflight.json",
+      "sha256": "74c906cb6fbf7a1be41bd3a3c54c77c0bfd5637a6e91f5b0551478c264b82c2a",
+      "size_bytes": 45374,
+      "git_blob_id": "c1b2f48bf3c42c81573a9bf91d1682a866328ffa",
+      "physical_lines": 480,
+      "read_scope": "Full actual bytes read; semantic evidence locators in evidence_index.json and issue reports",
+      "findings": [
+        "V3-F01",
+        "V3-F02",
+        "V3-F03",
+        "V3-F04",
+        "V3-F05"
+      ],
+      "review_locators": [
+        {
+          "lines": [
+            1,
+            480
+          ],
+          "scope": "Full-file source/history/constraint scope; content claims in issue reports,not just hash approval"
+        }
+      ]
+    },
+    {
+      "path": "docs/P1_implementation_spec.md",
+      "sha256": "92e9c4d0472f7893f54fc54d302d38bd224092285d78cc85ec7cdb67fef4e972",
+      "size_bytes": 7473,
+      "git_blob_id": "170dcbc8d361de40099e18e2edaf1771f3ae4b2a",
+      "physical_lines": 94,
+      "read_scope": "Actual complete static source bytes, no import or execution",
+      "findings": [
+        "V3-F01",
+        "V3-F02",
+        "V3-F03",
+        "V3-F04",
+        "V3-F05"
+      ],
+      "review_locators": [
+        {
+          "lines": "22-26"
+        }
+      ]
+    },
+    {
+      "path": "src/soc/simulator/engine.py",
+      "sha256": "977d01f3603f516e68e922542322976b813c01aad8d2dd177a5c0ac314399551",
+      "size_bytes": 5398,
+      "git_blob_id": "82bb89d6d437add1a88e2f34624b28ecfee8b209",
+      "physical_lines": 102,
+      "read_scope": "Actual complete static source bytes, no import or execution",
+      "findings": [
+        "V3-F01",
+        "V3-F02",
+        "V3-F03",
+        "V3-F04",
+        "V3-F05"
+      ],
+      "review_locators": [
+        {
+          "lines": "47-77"
+        }
+      ]
+    },
+    {
+      "path": "docs/P2_design/P2_runner_schema_review_v1.md",
+      "sha256": "21c4ccb2fbb608131ff28903fc90a60feb70111c9888d444e43165dbf3241f04",
+      "size_bytes": 12029,
+      "git_blob_id": "afbde8c2c625f8eec55524efc9ea89b176dd68ba",
+      "physical_lines": 128,
+      "read_scope": "Actual complete static source bytes, no import or execution",
+      "findings": [
+        "V3-F01",
+        "V3-F02",
+        "V3-F03",
+        "V3-F04",
+        "V3-F05"
+      ],
+      "review_locators": [
+        {
+          "lines": [
+            1,
+            128
+          ],
+          "scope": "Full-file source/history/constraint scope; content claims in issue reports,not just hash approval"
+        }
+      ]
+    }
+  ],
+  "source_count": 53,
+  "semantic_review_note": "Byte reads/JSON parsing alone are not source-content review or approval; issue-specific paragraphs and pointer evidence are recorded separately."
+}

@@ -1,0 +1,1 @@
+{"scope": "Static report/source/receipt integrity; not project validator or scientific audit", "passed": 23, "failed": [], "exit_code": 0, "F01_B1_REACHABILITY_RESULT": "PROVEN_UNREACHABLE", "scientific_coverage": "NOT_EVALUATED", "stage": "BLOCKED"}

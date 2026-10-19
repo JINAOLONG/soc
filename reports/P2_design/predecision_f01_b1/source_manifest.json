@@ -1,0 +1,499 @@
+{
+  "source_commit": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+  "sources": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "5435e5e690a64e0e7f432bae22b8f459f646e12233d99a7a4b1a70266d8c9a22",
+      "git_blob_id": "21fd2c268b3eb14ca1bc6a984b2a1f4afc79f6cf",
+      "size_bytes": 4586,
+      "line_count": 63,
+      "version": "Exact source at ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "locator": "Whole file read; issue-specific pointers/lines assigned below",
+      "access": "SOURCE_METADATA_AND_DESIGN_ONLY_NOT_REALIZATIONS",
+      "source_id": "S01",
+      "locators": [
+        "Full file identity/context/history check; claim-specific pointers in this report"
+      ]
+    },
+    {
+      "path": "STATUS.md",
+      "sha256": "5f4c9fc321d22010400f260e8ed82a714b4a19453ae7b3102e04db93211f5222",
+      "git_blob_id": "1f525196022bbfc07c49a360f8f502ed5df3fd62",
+      "size_bytes": 2207,
+      "line_count": 56,
+      "version": "Exact source at ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "locator": "Whole file read; issue-specific pointers/lines assigned below",
+      "access": "SOURCE_METADATA_AND_DESIGN_ONLY_NOT_REALIZATIONS",
+      "source_id": "S02",
+      "locators": [
+        "Full file identity/context/history check; claim-specific pointers in this report"
+      ]
+    },
+    {
+      "path": "docs/user_request.txt",
+      "sha256": "4c3481f0c67553eaa6d2dd6f181cc8d3f792e40fdc9586547c1c2e91fb52b461",
+      "git_blob_id": "879103b030d00025a4c938f2c3567d99f46a38f2",
+      "size_bytes": 57544,
+      "line_count": 3302,
+      "version": "Exact source at ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "locator": "Whole file read; issue-specific pointers/lines assigned below",
+      "access": "SOURCE_METADATA_AND_DESIGN_ONLY_NOT_REALIZATIONS",
+      "source_id": "S03",
+      "locators": [
+        "§43–44,lines1431–1494"
+      ]
+    },
+    {
+      "path": "docs/model_spec.md",
+      "sha256": "3f74116fa6cb85e4f2db1c96d246ac830a282be28847a0af21184fde2e17197b",
+      "git_blob_id": "9f6396211e91dee615ecd5092dfe4ec5900e33d2",
+      "size_bytes": 4381,
+      "line_count": 65,
+      "version": "Exact source at ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "locator": "Whole file read; issue-specific pointers/lines assigned below",
+      "access": "SOURCE_METADATA_AND_DESIGN_ONLY_NOT_REALIZATIONS",
+      "source_id": "S04",
+      "locators": [
+        "lines3–17 (nonnegative arrival,positive durations,resources)",
+        "lines18–45 (precedence,nonpreemption,D1,full drain)"
+      ]
+    },
+    {
+      "path": "docs/baseline_spec.md",
+      "sha256": "54a1cdb86d0235671a7d1ece31e489289c026bf083f33388580b6f3fdbb42e12",
+      "git_blob_id": "586b39b38cea03b718f4d59b576d70dc192f2a2f",
+      "size_bytes": 2826,
+      "line_count": 38,
+      "version": "Exact source at ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "locator": "Whole file read; issue-specific pointers/lines assigned below",
+      "access": "SOURCE_METADATA_AND_DESIGN_ONLY_NOT_REALIZATIONS",
+      "source_id": "S05",
+      "locators": [
+        "Full file identity/context/history check; claim-specific pointers in this report"
+      ]
+    },
+    {
+      "path": "docs/metric_spec.md",
+      "sha256": "c4b912fc672979ddc763d882e546b7a92bf53090e5b5dddd5777e2e867df182a",
+      "git_blob_id": "42a79f2c97bc4354e73377d71b6206b506f97b66",
+      "size_bytes": 3242,
+      "line_count": 52,
+      "version": "Exact source at ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "locator": "Whole file read; issue-specific pointers/lines assigned below",
+      "access": "SOURCE_METADATA_AND_DESIGN_ONLY_NOT_REALIZATIONS",
+      "source_id": "S06",
+      "locators": [
+        "Full file identity/context/history check; claim-specific pointers in this report"
+      ]
+    },
+    {
+      "path": "docs/statistical_protocol.md",
+      "sha256": "f9c0eeb6e76f68330ba3e5d8d90e58d175c3947a1948bb41b26ad50dbc041e8a",
+      "git_blob_id": "68b8cd775433e4d6c45d0ae4fca49fd0ddd58564",
+      "size_bytes": 3081,
+      "line_count": 47,
+      "version": "Exact source at ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "locator": "Whole file read; issue-specific pointers/lines assigned below",
+      "access": "SOURCE_METADATA_AND_DESIGN_ONLY_NOT_REALIZATIONS",
+      "source_id": "S07",
+      "locators": [
+        "Full file identity/context/history check; claim-specific pointers in this report"
+      ]
+    },
+    {
+      "path": "docs/workload_spec.md",
+      "sha256": "a098008f3abe47f4cfb830685009b19bf4d3555a8e370ad242a2fce1debea606",
+      "git_blob_id": "2438da0c809b3c6fb62caf0f5d097f666ce26043",
+      "size_bytes": 1574,
+      "line_count": 25,
+      "version": "Exact source at ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "locator": "Whole file read; issue-specific pointers/lines assigned below",
+      "access": "SOURCE_METADATA_AND_DESIGN_ONLY_NOT_REALIZATIONS",
+      "source_id": "S08",
+      "locators": [
+        "Full file identity/context/history check; claim-specific pointers in this report"
+      ]
+    },
+    {
+      "path": "docs/P1_implementation_spec.md",
+      "sha256": "92e9c4d0472f7893f54fc54d302d38bd224092285d78cc85ec7cdb67fef4e972",
+      "git_blob_id": "170dcbc8d361de40099e18e2edaf1771f3ae4b2a",
+      "size_bytes": 7473,
+      "line_count": 94,
+      "version": "Exact source at ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "locator": "Whole file read; issue-specific pointers/lines assigned below",
+      "access": "SOURCE_METADATA_AND_DESIGN_ONLY_NOT_REALIZATIONS",
+      "source_id": "S09",
+      "locators": [
+        "lines20–26,D1–D5 event/mapping semantics"
+      ]
+    },
+    {
+      "path": "docs/P2_design/P2_mapping_opportunity_decision_table_v1.md",
+      "sha256": "4c981f2f2303e1b1535168dd320e3c11151ea86ad35a502513893370a5906ea2",
+      "git_blob_id": "3bb69c483e007ff99137745c84ad753ccfa8aaaa",
+      "size_bytes": 4533,
+      "line_count": 59,
+      "version": "Exact source at ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "locator": "Whole file read; issue-specific pointers/lines assigned below",
+      "access": "SOURCE_METADATA_AND_DESIGN_ONLY_NOT_REALIZATIONS",
+      "source_id": "S10",
+      "locators": [
+        "whole historical v1 table; not the effective B1 criterion"
+      ]
+    },
+    {
+      "path": "docs/P2_design/v3/P2_diagnostic_spec_v3.json",
+      "sha256": "3fe77e0300cd86122aeebe8230cd1221b881498b54fe73f18a8db139830280dd",
+      "git_blob_id": "859bcceec7727b6fff21e3488c90821d23fe0db9",
+      "size_bytes": 18739,
+      "line_count": 291,
+      "version": "Exact source at ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "locator": "Whole file read; issue-specific pointers/lines assigned below",
+      "access": "SOURCE_METADATA_AND_DESIGN_ONLY_NOT_REALIZATIONS",
+      "source_id": "S11",
+      "locators": [
+        "#/route_options/B1_EXPAND_SINGLE_READY",
+        "#/inherited_v2_contract/scope",
+        "#/inherited_v2_contract/coverage",
+        "#/inherited_v2_contract/limits",
+        "#/inherited_v2_contract/stage_denominators"
+      ]
+    },
+    {
+      "path": "docs/P2_design/v3/P2_criterion_spec_v3.json",
+      "sha256": "ba41ec2a576158c701ca96db9f5100d4e7e6a30346708b5490ad56076984b165",
+      "git_blob_id": "8914d0623f96bca8ba4606448c4aa708b5de6ebd",
+      "size_bytes": 11661,
+      "line_count": 216,
+      "version": "Exact source at ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "locator": "Whole file read; issue-specific pointers/lines assigned below",
+      "access": "SOURCE_METADATA_AND_DESIGN_ONLY_NOT_REALIZATIONS",
+      "source_id": "S12",
+      "locators": [
+        "#/route_options/B1_EXPAND_SINGLE_READY/negative_coverage",
+        "#/preconditions",
+        "#/bundles",
+        "#/coverage_thresholds"
+      ]
+    },
+    {
+      "path": "docs/P2_design/v3/P2_public_snapshot_spec_v3.json",
+      "sha256": "4799c0663827b94d56c4dcd0da02a55c0f91dfdf967efe02ace40af40b6e85fd",
+      "git_blob_id": "d71fb07e25c479fbd9b89bea8a9fb4cd89d48d71",
+      "size_bytes": 5274,
+      "line_count": 78,
+      "version": "Exact source at ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "locator": "Whole file read; issue-specific pointers/lines assigned below",
+      "access": "SOURCE_METADATA_AND_DESIGN_ONLY_NOT_REALIZATIONS",
+      "source_id": "S13",
+      "locators": [
+        "#/exact_event_rule",
+        "#/counting",
+        "#/included_fields",
+        "#/dedup_scope",
+        "#/missing"
+      ]
+    },
+    {
+      "path": "docs/P2_design/v3/P2_stage_state_contract_v3.json",
+      "sha256": "032ec0f46018a4004a7d19b55850adf4ae4e2d116ff24d66e029452ebf4f33d7",
+      "git_blob_id": "6f3eb7695ee41daac7f00471f83fc647d1e17558",
+      "size_bytes": 12256,
+      "line_count": 325,
+      "version": "Exact source at ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "locator": "Whole file read; issue-specific pointers/lines assigned below",
+      "access": "SOURCE_METADATA_AND_DESIGN_ONLY_NOT_REALIZATIONS",
+      "source_id": "S14",
+      "locators": [
+        "#/load_classification/selection",
+        "#/progression_conjunction",
+        "#/current_design_values"
+      ]
+    },
+    {
+      "path": "docs/P2_design/v3/P2_typed_identity_schema_v3.json",
+      "sha256": "e8d6bc9b270f0f3ca07626012ef224d9b2fdd30ada4afba8a7f0f57dea916fcd",
+      "git_blob_id": "e6f70fd8e43688e8f55c0784d460e80f19e4ea83",
+      "size_bytes": 130652,
+      "line_count": 5107,
+      "version": "Exact source at ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "locator": "Whole file read; issue-specific pointers/lines assigned below",
+      "access": "SOURCE_METADATA_AND_DESIGN_ONLY_NOT_REALIZATIONS",
+      "source_id": "S15",
+      "locators": [
+        "#/$defs/PUBLIC_SNAPSHOT",
+        "#/$defs/PUBLIC_SERVICE",
+        "#/$defs/PUBLIC_NODE"
+      ]
+    },
+    {
+      "path": "docs/P2_design/v3/P2_scientific_parameter_registry_v3.json",
+      "sha256": "9181c26d149bf640b9e43a6090f92f8b27808382414fd86842370631aec38c77",
+      "git_blob_id": "c56957b507f3bf70345d6d54af1e859451c25b10",
+      "size_bytes": 59359,
+      "line_count": 1439,
+      "version": "Exact source at ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "locator": "Whole file read; issue-specific pointers/lines assigned below",
+      "access": "SOURCE_METADATA_AND_DESIGN_ONLY_NOT_REALIZATIONS",
+      "source_id": "S16",
+      "locators": [
+        "#/parameters (all40 approval=UNAPPROVED);SP25/SP33/SP36/SP37"
+      ]
+    },
+    {
+      "path": "docs/P2_design/v3/P2_generation_spec_v3.json",
+      "sha256": "dd8d9917d32b28376d35e376206bbce2776bf7c42ba50bb7b62de18b37ef26bb",
+      "git_blob_id": "9dfd1721b36fe73b287746152151d4f77ffcbd55",
+      "size_bytes": 13930,
+      "line_count": 345,
+      "version": "Exact source at ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "locator": "Whole file read; issue-specific pointers/lines assigned below",
+      "access": "SOURCE_METADATA_AND_DESIGN_ONLY_NOT_REALIZATIONS",
+      "source_id": "S17",
+      "locators": [
+        "#/algorithm",
+        "#/arrivals",
+        "#/key_bindings",
+        "#/service_identity"
+      ]
+    },
+    {
+      "path": "docs/P2_design/v3/inherited_v2_documents.json",
+      "sha256": "2b3f0224b5a458322642d3cc335bbf304fa07e9e6a94753460971a6966d76545",
+      "git_blob_id": "e55169e15a9210a2172bcb81e412543f2e608a91",
+      "size_bytes": 1986,
+      "line_count": 45,
+      "version": "Exact source at ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "locator": "Whole file read; issue-specific pointers/lines assigned below",
+      "access": "SOURCE_METADATA_AND_DESIGN_ONLY_NOT_REALIZATIONS",
+      "source_id": "S18",
+      "locators": [
+        "Full file identity/context/history check; claim-specific pointers in this report"
+      ]
+    },
+    {
+      "path": "docs/P2_design/v3/reference_bindings.json",
+      "sha256": "c58ab069c1204530317cc4dc2088996e8f86e2058654cdf2a4b8e76e526892c2",
+      "git_blob_id": "431d31f172dc86e037d929c8616e5cae28df9bd8",
+      "size_bytes": 5290,
+      "line_count": 129,
+      "version": "Exact source at ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "locator": "Whole file read; issue-specific pointers/lines assigned below",
+      "access": "SOURCE_METADATA_AND_DESIGN_ONLY_NOT_REALIZATIONS",
+      "source_id": "S19",
+      "locators": [
+        "Full file identity/context/history check; claim-specific pointers in this report"
+      ]
+    },
+    {
+      "path": "docs/P2_design/v2/P2_workload_templates_v2.json",
+      "sha256": "f282955ab09d0110f50447269b18d0389231bed9711532853d6cdbda92d9027c",
+      "git_blob_id": "5ce74d5e97645066c9a03e80c42a61060eb1c2e8",
+      "size_bytes": 28557,
+      "line_count": 1125,
+      "version": "Exact source at ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "locator": "Whole file read; issue-specific pointers/lines assigned below",
+      "access": "SOURCE_METADATA_AND_DESIGN_ONLY_NOT_REALIZATIONS",
+      "source_id": "S20",
+      "locators": [
+        "#/templates/0 (COCKPIT-8-v1),nodes n01,n02,n03,n06,n07,n08"
+      ]
+    },
+    {
+      "path": "docs/P2_design/v2/P2_resource_profiles_v2.json",
+      "sha256": "9eea5cfd43ce50d796a00d7cac86f9a7ca8798da4a3ea0c2fd9e598d965f13ae",
+      "git_blob_id": "ecf51d4abf3c55f6acb555b235829f553161b404",
+      "size_bytes": 8858,
+      "line_count": 370,
+      "version": "Exact source at ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "locator": "Whole file read; issue-specific pointers/lines assigned below",
+      "access": "SOURCE_METADATA_AND_DESIGN_ONLY_NOT_REALIZATIONS",
+      "source_id": "S21",
+      "locators": [
+        "#/profiles/0(audio)",
+        "#/profiles/1(speech)",
+        "#/profiles/2(intent)",
+        "#/profiles/5(route)",
+        "#/profiles/6(compose)"
+      ]
+    },
+    {
+      "path": "docs/P2_design/v2/P2_generation_spec_v2.json",
+      "sha256": "33e3ccf437510986ffa401eea1ef48e995a1ad08df38a834374d4a1c483a91f2",
+      "git_blob_id": "8e0a2c0b527f128415ccc3fa909542c7a13f737a",
+      "size_bytes": 13039,
+      "line_count": 328,
+      "version": "Exact source at ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "locator": "Whole file read; issue-specific pointers/lines assigned below",
+      "access": "SOURCE_METADATA_AND_DESIGN_ONLY_NOT_REALIZATIONS",
+      "source_id": "S22",
+      "locators": [
+        "Full file identity/context/history check; claim-specific pointers in this report"
+      ]
+    },
+    {
+      "path": "docs/P2_design/v2/P2_trial_matrix_draft_v2.json",
+      "sha256": "b58fe4c2eead01fc9b92966d557ed0bb052e7387794fc0d9b58029ffdb90af0e",
+      "git_blob_id": "f4c59610b363de1cd79305cd9c5eb9b3de83fda7",
+      "size_bytes": 1327918,
+      "line_count": 3110,
+      "version": "Exact source at ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "locator": "Whole file read; issue-specific pointers/lines assigned below",
+      "access": "SOURCE_METADATA_AND_DESIGN_ONLY_NOT_REALIZATIONS",
+      "source_id": "S23",
+      "locators": [
+        "#/configs/8 and #/configs/9 (scenario field,P12/P10)",
+        "#/rules/SEL-v2"
+      ]
+    },
+    {
+      "path": "reports/P2_design/design_revision_v3/F01_observation_domain_options.md",
+      "sha256": "c57b37671e2f650eae3c3dfe7224338259c0770ff1a1a71552499b71ca328d9f",
+      "git_blob_id": "bb7ca79e24101d0996bd2aca91dea2cde714a75b",
+      "size_bytes": 10024,
+      "line_count": 65,
+      "version": "Exact source at ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "locator": "Whole file read; issue-specific pointers/lines assigned below",
+      "access": "SOURCE_METADATA_AND_DESIGN_ONLY_NOT_REALIZATIONS",
+      "source_id": "S24",
+      "locators": [
+        "sections Reproduced source contradiction,Route B1,Common classification rules"
+      ]
+    },
+    {
+      "path": "reports/P2_design/design_revision_v3/evidence_index.json",
+      "sha256": "d0fcf77e795abd270d662c91ae2974aea3c91f265514327dd7ad9cd85401f61b",
+      "git_blob_id": "67aa0d9b6ca9c0f1afc51636808d9ce3faae4495",
+      "size_bytes": 7720,
+      "line_count": 237,
+      "version": "Exact source at ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "locator": "Whole file read; issue-specific pointers/lines assigned below",
+      "access": "SOURCE_METADATA_AND_DESIGN_ONLY_NOT_REALIZATIONS",
+      "source_id": "S25",
+      "locators": [
+        "Full file identity/context/history check; claim-specific pointers in this report"
+      ]
+    },
+    {
+      "path": "reports/P2_design/design_revision_v3/source_evidence_manifest.json",
+      "sha256": "e0a3bd55a0b13c90b5daa977dd9e94a80f21cafb9390436bd81c799675a1c3d8",
+      "git_blob_id": "b135a59967922d307f3a1c8a91cfdd2ecb81196d",
+      "size_bytes": 39112,
+      "line_count": 1303,
+      "version": "Exact source at ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "locator": "Whole file read; issue-specific pointers/lines assigned below",
+      "access": "SOURCE_METADATA_AND_DESIGN_ONLY_NOT_REALIZATIONS",
+      "source_id": "S26",
+      "locators": [
+        "Full file identity/context/history check; claim-specific pointers in this report"
+      ]
+    },
+    {
+      "path": "reports/P2_design/design_revision_v3/static_checks.json",
+      "sha256": "b1c869686663dc21b3b9313d33b3426edc4af65e5afcb0305d04f751d4652056",
+      "git_blob_id": "66c0992ee3d7f7d28984f2a2a810aa56535bcb68",
+      "size_bytes": 8609,
+      "line_count": 380,
+      "version": "Exact source at ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "locator": "Whole file read; issue-specific pointers/lines assigned below",
+      "access": "SOURCE_METADATA_AND_DESIGN_ONLY_NOT_REALIZATIONS",
+      "source_id": "S27",
+      "locators": [
+        "Full file identity/context/history check; claim-specific pointers in this report"
+      ]
+    },
+    {
+      "path": "reports/P2_design/design_revision_v3/artifact_manifest.json",
+      "sha256": "641f24705778e83fc3be5a3b4bec1f9b107f20117435c034aa87c5b0d1bb7a5d",
+      "git_blob_id": "75d518c3c2b941e957517acb47e713ccdfdef1b6",
+      "size_bytes": 40389,
+      "line_count": 987,
+      "version": "Exact source at ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "locator": "Whole file read; issue-specific pointers/lines assigned below",
+      "access": "SOURCE_METADATA_AND_DESIGN_ONLY_NOT_REALIZATIONS",
+      "source_id": "S28",
+      "locators": [
+        "Full file identity/context/history check; claim-specific pointers in this report"
+      ]
+    },
+    {
+      "path": "reports/P2_design/design_revision_v3/final_state.json",
+      "sha256": "197648992232c3820cd8790d4958ea279dc52555364f8776d35acbdd7cfeafe5",
+      "git_blob_id": "f41f2dafd1e3d665b6af748428bbd2bba5f02c2c",
+      "size_bytes": 3522,
+      "line_count": 72,
+      "version": "Exact source at ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "locator": "Whole file read; issue-specific pointers/lines assigned below",
+      "access": "SOURCE_METADATA_AND_DESIGN_ONLY_NOT_REALIZATIONS",
+      "source_id": "S29",
+      "locators": [
+        "Full file identity/context/history check; claim-specific pointers in this report"
+      ]
+    },
+    {
+      "path": "src/soc/simulator/engine.py",
+      "sha256": "977d01f3603f516e68e922542322976b813c01aad8d2dd177a5c0ac314399551",
+      "git_blob_id": "82bb89d6d437add1a88e2f34624b28ecfee8b209",
+      "size_bytes": 5398,
+      "line_count": 102,
+      "version": "Exact source at ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "locator": "Whole file read; issue-specific pointers/lines assigned below",
+      "access": "SOURCE_METADATA_AND_DESIGN_ONLY_NOT_REALIZATIONS",
+      "source_id": "S30",
+      "locators": [
+        "lines36–51(batch/view/call)",
+        "lines57–74(precedence/start/finish)",
+        "lines78–101(earliest event/data wakeup)"
+      ]
+    },
+    {
+      "path": "src/soc/model/observation.py",
+      "sha256": "40554e4ba71989223b7ba8362b7d35ae7257db030fd3e1fa04e262fb5002d0cb",
+      "git_blob_id": "ee90a63e26396ad75a8a5b77829c1d51382cdaeb",
+      "size_bytes": 3661,
+      "line_count": 92,
+      "version": "Exact source at ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "locator": "Whole file; precise cited lines in report",
+      "access": "STATIC_SOURCE_READ_NO_IMPORT",
+      "source_id": "S31",
+      "locators": [
+        "lines49–58(arrived services/full public graph)",
+        "lines88–92(dependency-ready)"
+      ]
+    },
+    {
+      "path": "src/soc/model/schema.py",
+      "sha256": "49d4cd0679bc8727ef723c146a62559d482aefd76d5aff8e931da4128a2b5bb6",
+      "git_blob_id": "4e5c4395504dfcf71d21ed090dc01f4719a5aa8e",
+      "size_bytes": 7869,
+      "line_count": 204,
+      "version": "Exact source at ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "locator": "Whole file; precise cited lines in report",
+      "access": "STATIC_SOURCE_READ_NO_IMPORT",
+      "source_id": "S32",
+      "locators": [
+        "Full file identity/context/history check; claim-specific pointers in this report"
+      ]
+    },
+    {
+      "path": "src/soc/scheduler/kernels.py",
+      "sha256": "122264d53f840f2f680150ec1fa0af62710114f4cf51be422f77b07268bb86cb",
+      "git_blob_id": "fec74c5ba92a1a91056b26320a6364de4fa7091e",
+      "size_bytes": 8415,
+      "line_count": 178,
+      "version": "Exact source at ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "locator": "Whole file; precise cited lines in report",
+      "access": "STATIC_SOURCE_READ_NO_IMPORT",
+      "source_id": "S33",
+      "locators": [
+        "ordered_ready and choose (static read only)"
+      ]
+    }
+  ],
+  "path_mapping": {
+    "requested_v1_path": "docs/P2_design/v1/P2_mapping_opportunity_decision_table_v1.md",
+    "actual_tracked_v1_path": "docs/P2_design/P2_mapping_opportunity_decision_table_v1.md"
+  },
+  "byte_read_is_not_semantic_approval": true
+}

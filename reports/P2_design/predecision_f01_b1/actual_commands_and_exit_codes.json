@@ -1,0 +1,1761 @@
+{
+  "scope": "Actual substantive source reads/checks; pre-write Git results captured before any report mutation; publication separately receipted",
+  "commands": [
+    {
+      "id": "B1-001",
+      "cwd": "/workspace/soc",
+      "head_before": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "head_after": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "purpose": "Pre-write repository/remote/clean-state/ancestry verification",
+      "input_files": [],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-001.stdout.txt",
+          "sha256": "cb68db68fcc70d67be575a6e90e6448d6df8b0924ca866e3f43dab3e3093f686",
+          "size_bytes": 15
+        },
+        "stderr": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-001.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      },
+      "argv": [
+        "git",
+        "rev-parse",
+        "--show-toplevel"
+      ],
+      "exit_code": 0,
+      "started_at_utc": "2026-10-19T14:39:05.902897+00:00",
+      "ended_at_utc": "2026-10-19T14:39:05.905376+00:00"
+    },
+    {
+      "id": "B1-002",
+      "cwd": "/workspace/soc",
+      "head_before": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "head_after": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "purpose": "Pre-write repository/remote/clean-state/ancestry verification",
+      "input_files": [],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-002.stdout.txt",
+          "sha256": "cfad3f4760a420c201c5f836e7b4afb2af5bdfa560c7f8977d18cfe0374ffd3d",
+          "size_bytes": 103
+        },
+        "stderr": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-002.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      },
+      "argv": [
+        "git",
+        "remote",
+        "-v"
+      ],
+      "exit_code": 0,
+      "started_at_utc": "2026-10-19T14:39:05.905388+00:00",
+      "ended_at_utc": "2026-10-19T14:39:05.908672+00:00"
+    },
+    {
+      "id": "B1-003",
+      "cwd": "/workspace/soc",
+      "head_before": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "head_after": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "purpose": "Pre-write repository/remote/clean-state/ancestry verification",
+      "input_files": [],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-003.stdout.txt",
+          "sha256": "94dce1ab17686191829c0bd9f51dd775032a3ce224c80cdcffbe2dbb617edf20",
+          "size_bytes": 37
+        },
+        "stderr": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-003.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      },
+      "argv": [
+        "git",
+        "remote",
+        "get-url",
+        "origin"
+      ],
+      "exit_code": 0,
+      "started_at_utc": "2026-10-19T14:39:05.908683+00:00",
+      "ended_at_utc": "2026-10-19T14:39:05.911055+00:00"
+    },
+    {
+      "id": "B1-004",
+      "cwd": "/workspace/soc",
+      "head_before": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "head_after": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "purpose": "Pre-write repository/remote/clean-state/ancestry verification",
+      "input_files": [],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-004.stdout.txt",
+          "sha256": "4c7a03f2c9a663a0678eef8293f7609a609c92a6b3bccb2e556301f8b290c7f2",
+          "size_bytes": 5
+        },
+        "stderr": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-004.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      },
+      "argv": [
+        "git",
+        "branch",
+        "--show-current"
+      ],
+      "exit_code": 0,
+      "started_at_utc": "2026-10-19T14:39:05.911065+00:00",
+      "ended_at_utc": "2026-10-19T14:39:05.913598+00:00"
+    },
+    {
+      "id": "B1-005",
+      "cwd": "/workspace/soc",
+      "head_before": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "head_after": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "purpose": "Pre-write repository/remote/clean-state/ancestry verification",
+      "input_files": [],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-005.stdout.txt",
+          "sha256": "bc16b067011eb7476d3855e3be8477b8a20815c1b27019881fa5db04767fcf54",
+          "size_bytes": 41
+        },
+        "stderr": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-005.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      },
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "exit_code": 0,
+      "started_at_utc": "2026-10-19T14:39:05.913607+00:00",
+      "ended_at_utc": "2026-10-19T14:39:05.915351+00:00"
+    },
+    {
+      "id": "B1-006",
+      "cwd": "/workspace/soc",
+      "head_before": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "head_after": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "purpose": "Pre-write repository/remote/clean-state/ancestry verification",
+      "input_files": [],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-006.stdout.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        },
+        "stderr": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-006.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      },
+      "argv": [
+        "git",
+        "status",
+        "--porcelain=v1",
+        "--untracked-files=all"
+      ],
+      "exit_code": 0,
+      "started_at_utc": "2026-10-19T14:39:05.915361+00:00",
+      "ended_at_utc": "2026-10-19T14:39:05.920896+00:00"
+    },
+    {
+      "id": "B1-007",
+      "cwd": "/workspace/soc",
+      "head_before": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "head_after": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "purpose": "Pre-write repository/remote/clean-state/ancestry verification",
+      "input_files": [],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-007.stdout.txt",
+          "sha256": "b56677d158cfd2187e2ee4e88fa63c944cf01226ccd2315d6e9ed0528668ad74",
+          "size_bytes": 57
+        },
+        "stderr": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-007.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      },
+      "argv": [
+        "git",
+        "ls-remote",
+        "origin",
+        "refs/heads/work"
+      ],
+      "exit_code": 0,
+      "started_at_utc": "2026-10-19T14:39:05.920908+00:00",
+      "ended_at_utc": "2026-10-19T14:39:06.688121+00:00"
+    },
+    {
+      "id": "B1-008",
+      "cwd": "/workspace/soc",
+      "head_before": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "head_after": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "purpose": "Pre-write repository/remote/clean-state/ancestry verification",
+      "input_files": [],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-008.stdout.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        },
+        "stderr": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-008.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      },
+      "argv": [
+        "git",
+        "merge-base",
+        "--is-ancestor",
+        "05a7c528840b9f28f07b41354edf02b5932b87c9",
+        "HEAD"
+      ],
+      "exit_code": 0,
+      "started_at_utc": "2026-10-19T14:39:06.688144+00:00",
+      "ended_at_utc": "2026-10-19T14:39:06.690832+00:00"
+    },
+    {
+      "id": "B1-009",
+      "cwd": "/workspace/soc",
+      "head_before": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "head_after": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "purpose": "Pre-write repository/remote/clean-state/ancestry verification",
+      "input_files": [],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-009.stdout.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        },
+        "stderr": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-009.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      },
+      "argv": [
+        "git",
+        "merge-base",
+        "--is-ancestor",
+        "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+        "HEAD"
+      ],
+      "exit_code": 0,
+      "started_at_utc": "2026-10-19T14:39:06.690847+00:00",
+      "ended_at_utc": "2026-10-19T14:39:06.693442+00:00"
+    },
+    {
+      "id": "B1-010",
+      "argv": [
+        "cat",
+        "AGENTS.md"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T14:39:31.993995+00:00",
+      "ended_at_utc": "2026-10-19T14:39:32.000607+00:00",
+      "head_before": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "head_after": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Full source/design bytes read; static only, no project import",
+      "input_files": [
+        {
+          "path": "AGENTS.md",
+          "sha256": "5435e5e690a64e0e7f432bae22b8f459f646e12233d99a7a4b1a70266d8c9a22"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-010.stdout.txt",
+          "sha256": "5435e5e690a64e0e7f432bae22b8f459f646e12233d99a7a4b1a70266d8c9a22",
+          "size_bytes": 4586
+        },
+        "stderr": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-010.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      }
+    },
+    {
+      "id": "B1-011",
+      "argv": [
+        "cat",
+        "STATUS.md"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T14:39:32.003473+00:00",
+      "ended_at_utc": "2026-10-19T14:39:32.010569+00:00",
+      "head_before": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "head_after": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Full source/design bytes read; static only, no project import",
+      "input_files": [
+        {
+          "path": "STATUS.md",
+          "sha256": "5f4c9fc321d22010400f260e8ed82a714b4a19453ae7b3102e04db93211f5222"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-011.stdout.txt",
+          "sha256": "5f4c9fc321d22010400f260e8ed82a714b4a19453ae7b3102e04db93211f5222",
+          "size_bytes": 2207
+        },
+        "stderr": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-011.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      }
+    },
+    {
+      "id": "B1-012",
+      "argv": [
+        "cat",
+        "docs/user_request.txt"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T14:39:32.013425+00:00",
+      "ended_at_utc": "2026-10-19T14:39:32.019696+00:00",
+      "head_before": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "head_after": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Full source/design bytes read; static only, no project import",
+      "input_files": [
+        {
+          "path": "docs/user_request.txt",
+          "sha256": "4c3481f0c67553eaa6d2dd6f181cc8d3f792e40fdc9586547c1c2e91fb52b461"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-012.stdout.txt",
+          "sha256": "3773d26ba8d1dc1c68ecc70818b79604ce1d20f26c9203b2df7560c2b824c99c",
+          "size_bytes": 54243
+        },
+        "stderr": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-012.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      }
+    },
+    {
+      "id": "B1-013",
+      "argv": [
+        "cat",
+        "docs/model_spec.md"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T14:39:32.023053+00:00",
+      "ended_at_utc": "2026-10-19T14:39:32.028539+00:00",
+      "head_before": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "head_after": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Full source/design bytes read; static only, no project import",
+      "input_files": [
+        {
+          "path": "docs/model_spec.md",
+          "sha256": "3f74116fa6cb85e4f2db1c96d246ac830a282be28847a0af21184fde2e17197b"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-013.stdout.txt",
+          "sha256": "3f74116fa6cb85e4f2db1c96d246ac830a282be28847a0af21184fde2e17197b",
+          "size_bytes": 4381
+        },
+        "stderr": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-013.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      }
+    },
+    {
+      "id": "B1-014",
+      "argv": [
+        "cat",
+        "docs/baseline_spec.md"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T14:39:32.031088+00:00",
+      "ended_at_utc": "2026-10-19T14:39:32.036855+00:00",
+      "head_before": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "head_after": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Full source/design bytes read; static only, no project import",
+      "input_files": [
+        {
+          "path": "docs/baseline_spec.md",
+          "sha256": "54a1cdb86d0235671a7d1ece31e489289c026bf083f33388580b6f3fdbb42e12"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-014.stdout.txt",
+          "sha256": "54a1cdb86d0235671a7d1ece31e489289c026bf083f33388580b6f3fdbb42e12",
+          "size_bytes": 2826
+        },
+        "stderr": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-014.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      }
+    },
+    {
+      "id": "B1-015",
+      "argv": [
+        "cat",
+        "docs/metric_spec.md"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T14:39:32.039651+00:00",
+      "ended_at_utc": "2026-10-19T14:39:32.044875+00:00",
+      "head_before": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "head_after": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Full source/design bytes read; static only, no project import",
+      "input_files": [
+        {
+          "path": "docs/metric_spec.md",
+          "sha256": "c4b912fc672979ddc763d882e546b7a92bf53090e5b5dddd5777e2e867df182a"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-015.stdout.txt",
+          "sha256": "c4b912fc672979ddc763d882e546b7a92bf53090e5b5dddd5777e2e867df182a",
+          "size_bytes": 3242
+        },
+        "stderr": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-015.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      }
+    },
+    {
+      "id": "B1-016",
+      "argv": [
+        "cat",
+        "docs/statistical_protocol.md"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T14:39:32.047510+00:00",
+      "ended_at_utc": "2026-10-19T14:39:32.052952+00:00",
+      "head_before": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "head_after": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Full source/design bytes read; static only, no project import",
+      "input_files": [
+        {
+          "path": "docs/statistical_protocol.md",
+          "sha256": "f9c0eeb6e76f68330ba3e5d8d90e58d175c3947a1948bb41b26ad50dbc041e8a"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-016.stdout.txt",
+          "sha256": "f9c0eeb6e76f68330ba3e5d8d90e58d175c3947a1948bb41b26ad50dbc041e8a",
+          "size_bytes": 3081
+        },
+        "stderr": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-016.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      }
+    },
+    {
+      "id": "B1-017",
+      "argv": [
+        "cat",
+        "docs/workload_spec.md"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T14:39:32.056116+00:00",
+      "ended_at_utc": "2026-10-19T14:39:32.060975+00:00",
+      "head_before": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "head_after": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Full source/design bytes read; static only, no project import",
+      "input_files": [
+        {
+          "path": "docs/workload_spec.md",
+          "sha256": "a098008f3abe47f4cfb830685009b19bf4d3555a8e370ad242a2fce1debea606"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-017.stdout.txt",
+          "sha256": "a098008f3abe47f4cfb830685009b19bf4d3555a8e370ad242a2fce1debea606",
+          "size_bytes": 1574
+        },
+        "stderr": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-017.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      }
+    },
+    {
+      "id": "B1-018",
+      "argv": [
+        "cat",
+        "docs/P1_implementation_spec.md"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T14:39:32.063847+00:00",
+      "ended_at_utc": "2026-10-19T14:39:32.069141+00:00",
+      "head_before": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "head_after": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Full source/design bytes read; static only, no project import",
+      "input_files": [
+        {
+          "path": "docs/P1_implementation_spec.md",
+          "sha256": "92e9c4d0472f7893f54fc54d302d38bd224092285d78cc85ec7cdb67fef4e972"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-018.stdout.txt",
+          "sha256": "92e9c4d0472f7893f54fc54d302d38bd224092285d78cc85ec7cdb67fef4e972",
+          "size_bytes": 7473
+        },
+        "stderr": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-018.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      }
+    },
+    {
+      "id": "B1-019",
+      "argv": [
+        "cat",
+        "docs/P2_design/P2_mapping_opportunity_decision_table_v1.md"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T14:39:32.071839+00:00",
+      "ended_at_utc": "2026-10-19T14:39:32.076927+00:00",
+      "head_before": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "head_after": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Full source/design bytes read; static only, no project import",
+      "input_files": [
+        {
+          "path": "docs/P2_design/P2_mapping_opportunity_decision_table_v1.md",
+          "sha256": "4c981f2f2303e1b1535168dd320e3c11151ea86ad35a502513893370a5906ea2"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-019.stdout.txt",
+          "sha256": "4c981f2f2303e1b1535168dd320e3c11151ea86ad35a502513893370a5906ea2",
+          "size_bytes": 4533
+        },
+        "stderr": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-019.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      }
+    },
+    {
+      "id": "B1-020",
+      "argv": [
+        "cat",
+        "docs/P2_design/v3/P2_diagnostic_spec_v3.json"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T14:39:32.079556+00:00",
+      "ended_at_utc": "2026-10-19T14:39:32.085142+00:00",
+      "head_before": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "head_after": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Full source/design bytes read; static only, no project import",
+      "input_files": [
+        {
+          "path": "docs/P2_design/v3/P2_diagnostic_spec_v3.json",
+          "sha256": "3fe77e0300cd86122aeebe8230cd1221b881498b54fe73f18a8db139830280dd"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-020.stdout.txt",
+          "sha256": "3fe77e0300cd86122aeebe8230cd1221b881498b54fe73f18a8db139830280dd",
+          "size_bytes": 18739
+        },
+        "stderr": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-020.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      }
+    },
+    {
+      "id": "B1-021",
+      "argv": [
+        "cat",
+        "docs/P2_design/v3/P2_criterion_spec_v3.json"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T14:39:32.088183+00:00",
+      "ended_at_utc": "2026-10-19T14:39:32.092980+00:00",
+      "head_before": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "head_after": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Full source/design bytes read; static only, no project import",
+      "input_files": [
+        {
+          "path": "docs/P2_design/v3/P2_criterion_spec_v3.json",
+          "sha256": "ba41ec2a576158c701ca96db9f5100d4e7e6a30346708b5490ad56076984b165"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-021.stdout.txt",
+          "sha256": "ba41ec2a576158c701ca96db9f5100d4e7e6a30346708b5490ad56076984b165",
+          "size_bytes": 11661
+        },
+        "stderr": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-021.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      }
+    },
+    {
+      "id": "B1-022",
+      "argv": [
+        "cat",
+        "docs/P2_design/v3/P2_public_snapshot_spec_v3.json"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T14:39:32.095877+00:00",
+      "ended_at_utc": "2026-10-19T14:39:32.101076+00:00",
+      "head_before": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "head_after": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Full source/design bytes read; static only, no project import",
+      "input_files": [
+        {
+          "path": "docs/P2_design/v3/P2_public_snapshot_spec_v3.json",
+          "sha256": "4799c0663827b94d56c4dcd0da02a55c0f91dfdf967efe02ace40af40b6e85fd"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-022.stdout.txt",
+          "sha256": "4799c0663827b94d56c4dcd0da02a55c0f91dfdf967efe02ace40af40b6e85fd",
+          "size_bytes": 5274
+        },
+        "stderr": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-022.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      }
+    },
+    {
+      "id": "B1-023",
+      "argv": [
+        "cat",
+        "docs/P2_design/v3/P2_stage_state_contract_v3.json"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T14:39:32.103920+00:00",
+      "ended_at_utc": "2026-10-19T14:39:32.109703+00:00",
+      "head_before": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "head_after": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Full source/design bytes read; static only, no project import",
+      "input_files": [
+        {
+          "path": "docs/P2_design/v3/P2_stage_state_contract_v3.json",
+          "sha256": "032ec0f46018a4004a7d19b55850adf4ae4e2d116ff24d66e029452ebf4f33d7"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-023.stdout.txt",
+          "sha256": "032ec0f46018a4004a7d19b55850adf4ae4e2d116ff24d66e029452ebf4f33d7",
+          "size_bytes": 12256
+        },
+        "stderr": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-023.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      }
+    },
+    {
+      "id": "B1-024",
+      "argv": [
+        "cat",
+        "docs/P2_design/v3/P2_typed_identity_schema_v3.json"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T14:39:32.112776+00:00",
+      "ended_at_utc": "2026-10-19T14:39:32.119223+00:00",
+      "head_before": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "head_after": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Full source/design bytes read; static only, no project import",
+      "input_files": [
+        {
+          "path": "docs/P2_design/v3/P2_typed_identity_schema_v3.json",
+          "sha256": "e8d6bc9b270f0f3ca07626012ef224d9b2fdd30ada4afba8a7f0f57dea916fcd"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-024.stdout.txt",
+          "sha256": "e8d6bc9b270f0f3ca07626012ef224d9b2fdd30ada4afba8a7f0f57dea916fcd",
+          "size_bytes": 130652
+        },
+        "stderr": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-024.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      }
+    },
+    {
+      "id": "B1-025",
+      "argv": [
+        "cat",
+        "docs/P2_design/v3/P2_scientific_parameter_registry_v3.json"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T14:39:32.124218+00:00",
+      "ended_at_utc": "2026-10-19T14:39:32.130912+00:00",
+      "head_before": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "head_after": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Full source/design bytes read; static only, no project import",
+      "input_files": [
+        {
+          "path": "docs/P2_design/v3/P2_scientific_parameter_registry_v3.json",
+          "sha256": "9181c26d149bf640b9e43a6090f92f8b27808382414fd86842370631aec38c77"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-025.stdout.txt",
+          "sha256": "9181c26d149bf640b9e43a6090f92f8b27808382414fd86842370631aec38c77",
+          "size_bytes": 59359
+        },
+        "stderr": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-025.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      }
+    },
+    {
+      "id": "B1-026",
+      "argv": [
+        "cat",
+        "docs/P2_design/v3/P2_generation_spec_v3.json"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T14:39:32.134640+00:00",
+      "ended_at_utc": "2026-10-19T14:39:32.139748+00:00",
+      "head_before": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "head_after": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Full source/design bytes read; static only, no project import",
+      "input_files": [
+        {
+          "path": "docs/P2_design/v3/P2_generation_spec_v3.json",
+          "sha256": "dd8d9917d32b28376d35e376206bbce2776bf7c42ba50bb7b62de18b37ef26bb"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-026.stdout.txt",
+          "sha256": "dd8d9917d32b28376d35e376206bbce2776bf7c42ba50bb7b62de18b37ef26bb",
+          "size_bytes": 13930
+        },
+        "stderr": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-026.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      }
+    },
+    {
+      "id": "B1-027",
+      "argv": [
+        "cat",
+        "docs/P2_design/v3/inherited_v2_documents.json"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T14:39:32.142968+00:00",
+      "ended_at_utc": "2026-10-19T14:39:32.148403+00:00",
+      "head_before": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "head_after": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Full source/design bytes read; static only, no project import",
+      "input_files": [
+        {
+          "path": "docs/P2_design/v3/inherited_v2_documents.json",
+          "sha256": "2b3f0224b5a458322642d3cc335bbf304fa07e9e6a94753460971a6966d76545"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-027.stdout.txt",
+          "sha256": "2b3f0224b5a458322642d3cc335bbf304fa07e9e6a94753460971a6966d76545",
+          "size_bytes": 1986
+        },
+        "stderr": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-027.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      }
+    },
+    {
+      "id": "B1-028",
+      "argv": [
+        "cat",
+        "docs/P2_design/v3/reference_bindings.json"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T14:39:32.151392+00:00",
+      "ended_at_utc": "2026-10-19T14:39:32.156480+00:00",
+      "head_before": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "head_after": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Full source/design bytes read; static only, no project import",
+      "input_files": [
+        {
+          "path": "docs/P2_design/v3/reference_bindings.json",
+          "sha256": "c58ab069c1204530317cc4dc2088996e8f86e2058654cdf2a4b8e76e526892c2"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-028.stdout.txt",
+          "sha256": "c58ab069c1204530317cc4dc2088996e8f86e2058654cdf2a4b8e76e526892c2",
+          "size_bytes": 5290
+        },
+        "stderr": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-028.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      }
+    },
+    {
+      "id": "B1-029",
+      "argv": [
+        "cat",
+        "docs/P2_design/v2/P2_workload_templates_v2.json"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T14:39:32.159409+00:00",
+      "ended_at_utc": "2026-10-19T14:39:32.164838+00:00",
+      "head_before": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "head_after": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Full source/design bytes read; static only, no project import",
+      "input_files": [
+        {
+          "path": "docs/P2_design/v2/P2_workload_templates_v2.json",
+          "sha256": "f282955ab09d0110f50447269b18d0389231bed9711532853d6cdbda92d9027c"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-029.stdout.txt",
+          "sha256": "f282955ab09d0110f50447269b18d0389231bed9711532853d6cdbda92d9027c",
+          "size_bytes": 28557
+        },
+        "stderr": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-029.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      }
+    },
+    {
+      "id": "B1-030",
+      "argv": [
+        "cat",
+        "docs/P2_design/v2/P2_resource_profiles_v2.json"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T14:39:32.168790+00:00",
+      "ended_at_utc": "2026-10-19T14:39:32.173927+00:00",
+      "head_before": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "head_after": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Full source/design bytes read; static only, no project import",
+      "input_files": [
+        {
+          "path": "docs/P2_design/v2/P2_resource_profiles_v2.json",
+          "sha256": "9eea5cfd43ce50d796a00d7cac86f9a7ca8798da4a3ea0c2fd9e598d965f13ae"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-030.stdout.txt",
+          "sha256": "9eea5cfd43ce50d796a00d7cac86f9a7ca8798da4a3ea0c2fd9e598d965f13ae",
+          "size_bytes": 8858
+        },
+        "stderr": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-030.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      }
+    },
+    {
+      "id": "B1-031",
+      "argv": [
+        "cat",
+        "docs/P2_design/v2/P2_generation_spec_v2.json"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T14:39:32.177994+00:00",
+      "ended_at_utc": "2026-10-19T14:39:32.183169+00:00",
+      "head_before": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "head_after": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Full source/design bytes read; static only, no project import",
+      "input_files": [
+        {
+          "path": "docs/P2_design/v2/P2_generation_spec_v2.json",
+          "sha256": "33e3ccf437510986ffa401eea1ef48e995a1ad08df38a834374d4a1c483a91f2"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-031.stdout.txt",
+          "sha256": "33e3ccf437510986ffa401eea1ef48e995a1ad08df38a834374d4a1c483a91f2",
+          "size_bytes": 13039
+        },
+        "stderr": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-031.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      }
+    },
+    {
+      "id": "B1-032",
+      "argv": [
+        "cat",
+        "docs/P2_design/v2/P2_trial_matrix_draft_v2.json"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T14:39:32.186771+00:00",
+      "ended_at_utc": "2026-10-19T14:39:32.207917+00:00",
+      "head_before": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "head_after": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Full source/design bytes read; static only, no project import",
+      "input_files": [
+        {
+          "path": "docs/P2_design/v2/P2_trial_matrix_draft_v2.json",
+          "sha256": "b58fe4c2eead01fc9b92966d557ed0bb052e7387794fc0d9b58029ffdb90af0e"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-032.stdout.txt",
+          "sha256": "b58fe4c2eead01fc9b92966d557ed0bb052e7387794fc0d9b58029ffdb90af0e",
+          "size_bytes": 1327918
+        },
+        "stderr": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-032.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      }
+    },
+    {
+      "id": "B1-033",
+      "argv": [
+        "cat",
+        "reports/P2_design/design_revision_v3/F01_observation_domain_options.md"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T14:39:32.229209+00:00",
+      "ended_at_utc": "2026-10-19T14:39:32.235040+00:00",
+      "head_before": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "head_after": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Full source/design bytes read; static only, no project import",
+      "input_files": [
+        {
+          "path": "reports/P2_design/design_revision_v3/F01_observation_domain_options.md",
+          "sha256": "c57b37671e2f650eae3c3dfe7224338259c0770ff1a1a71552499b71ca328d9f"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-033.stdout.txt",
+          "sha256": "c57b37671e2f650eae3c3dfe7224338259c0770ff1a1a71552499b71ca328d9f",
+          "size_bytes": 10024
+        },
+        "stderr": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-033.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      }
+    },
+    {
+      "id": "B1-034",
+      "argv": [
+        "cat",
+        "reports/P2_design/design_revision_v3/evidence_index.json"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T14:39:32.238654+00:00",
+      "ended_at_utc": "2026-10-19T14:39:32.244413+00:00",
+      "head_before": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "head_after": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Full source/design bytes read; static only, no project import",
+      "input_files": [
+        {
+          "path": "reports/P2_design/design_revision_v3/evidence_index.json",
+          "sha256": "d0fcf77e795abd270d662c91ae2974aea3c91f265514327dd7ad9cd85401f61b"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-034.stdout.txt",
+          "sha256": "d0fcf77e795abd270d662c91ae2974aea3c91f265514327dd7ad9cd85401f61b",
+          "size_bytes": 7720
+        },
+        "stderr": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-034.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      }
+    },
+    {
+      "id": "B1-035",
+      "argv": [
+        "cat",
+        "reports/P2_design/design_revision_v3/source_evidence_manifest.json"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T14:39:32.248003+00:00",
+      "ended_at_utc": "2026-10-19T14:39:32.253494+00:00",
+      "head_before": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "head_after": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Full source/design bytes read; static only, no project import",
+      "input_files": [
+        {
+          "path": "reports/P2_design/design_revision_v3/source_evidence_manifest.json",
+          "sha256": "e0a3bd55a0b13c90b5daa977dd9e94a80f21cafb9390436bd81c799675a1c3d8"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-035.stdout.txt",
+          "sha256": "e0a3bd55a0b13c90b5daa977dd9e94a80f21cafb9390436bd81c799675a1c3d8",
+          "size_bytes": 39112
+        },
+        "stderr": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-035.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      }
+    },
+    {
+      "id": "B1-036",
+      "argv": [
+        "cat",
+        "reports/P2_design/design_revision_v3/static_checks.json"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T14:39:32.258416+00:00",
+      "ended_at_utc": "2026-10-19T14:39:32.264969+00:00",
+      "head_before": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "head_after": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Full source/design bytes read; static only, no project import",
+      "input_files": [
+        {
+          "path": "reports/P2_design/design_revision_v3/static_checks.json",
+          "sha256": "b1c869686663dc21b3b9313d33b3426edc4af65e5afcb0305d04f751d4652056"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-036.stdout.txt",
+          "sha256": "b1c869686663dc21b3b9313d33b3426edc4af65e5afcb0305d04f751d4652056",
+          "size_bytes": 8609
+        },
+        "stderr": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-036.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      }
+    },
+    {
+      "id": "B1-037",
+      "argv": [
+        "cat",
+        "reports/P2_design/design_revision_v3/artifact_manifest.json"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T14:39:32.270192+00:00",
+      "ended_at_utc": "2026-10-19T14:39:32.277419+00:00",
+      "head_before": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "head_after": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Full source/design bytes read; static only, no project import",
+      "input_files": [
+        {
+          "path": "reports/P2_design/design_revision_v3/artifact_manifest.json",
+          "sha256": "641f24705778e83fc3be5a3b4bec1f9b107f20117435c034aa87c5b0d1bb7a5d"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-037.stdout.txt",
+          "sha256": "641f24705778e83fc3be5a3b4bec1f9b107f20117435c034aa87c5b0d1bb7a5d",
+          "size_bytes": 40389
+        },
+        "stderr": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-037.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      }
+    },
+    {
+      "id": "B1-038",
+      "argv": [
+        "cat",
+        "reports/P2_design/design_revision_v3/final_state.json"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T14:39:32.281294+00:00",
+      "ended_at_utc": "2026-10-19T14:39:32.286654+00:00",
+      "head_before": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "head_after": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Full source/design bytes read; static only, no project import",
+      "input_files": [
+        {
+          "path": "reports/P2_design/design_revision_v3/final_state.json",
+          "sha256": "197648992232c3820cd8790d4958ea279dc52555364f8776d35acbdd7cfeafe5"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-038.stdout.txt",
+          "sha256": "197648992232c3820cd8790d4958ea279dc52555364f8776d35acbdd7cfeafe5",
+          "size_bytes": 3522
+        },
+        "stderr": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-038.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      }
+    },
+    {
+      "id": "B1-039",
+      "argv": [
+        "cat",
+        "src/soc/simulator/engine.py"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T14:39:32.291190+00:00",
+      "ended_at_utc": "2026-10-19T14:39:32.296813+00:00",
+      "head_before": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "head_after": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Full source/design bytes read; static only, no project import",
+      "input_files": [
+        {
+          "path": "src/soc/simulator/engine.py",
+          "sha256": "977d01f3603f516e68e922542322976b813c01aad8d2dd177a5c0ac314399551"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-039.stdout.txt",
+          "sha256": "977d01f3603f516e68e922542322976b813c01aad8d2dd177a5c0ac314399551",
+          "size_bytes": 5398
+        },
+        "stderr": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-039.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      }
+    },
+    {
+      "id": "B1-040",
+      "argv": [
+        "cat",
+        "src/soc/model/observation.py"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T14:39:54.211555+00:00",
+      "ended_at_utc": "2026-10-19T14:39:54.218069+00:00",
+      "head_before": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "head_after": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Read source control/data definitions only; do not import or invoke project",
+      "input_files": [
+        {
+          "path": "src/soc/model/observation.py",
+          "sha256": "40554e4ba71989223b7ba8362b7d35ae7257db030fd3e1fa04e262fb5002d0cb"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-040.stdout.txt",
+          "sha256": "40554e4ba71989223b7ba8362b7d35ae7257db030fd3e1fa04e262fb5002d0cb",
+          "size_bytes": 3661
+        },
+        "stderr": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-040.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      }
+    },
+    {
+      "id": "B1-041",
+      "argv": [
+        "cat",
+        "src/soc/model/schema.py"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T14:39:54.222664+00:00",
+      "ended_at_utc": "2026-10-19T14:39:54.228918+00:00",
+      "head_before": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "head_after": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Read source control/data definitions only; do not import or invoke project",
+      "input_files": [
+        {
+          "path": "src/soc/model/schema.py",
+          "sha256": "49d4cd0679bc8727ef723c146a62559d482aefd76d5aff8e931da4128a2b5bb6"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-041.stdout.txt",
+          "sha256": "49d4cd0679bc8727ef723c146a62559d482aefd76d5aff8e931da4128a2b5bb6",
+          "size_bytes": 7869
+        },
+        "stderr": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-041.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      }
+    },
+    {
+      "id": "B1-042",
+      "argv": [
+        "cat",
+        "src/soc/scheduler/kernels.py"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T14:39:54.233352+00:00",
+      "ended_at_utc": "2026-10-19T14:39:54.238882+00:00",
+      "head_before": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "head_after": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Read source control/data definitions only; do not import or invoke project",
+      "input_files": [
+        {
+          "path": "src/soc/scheduler/kernels.py",
+          "sha256": "122264d53f840f2f680150ec1fa0af62710114f4cf51be422f77b07268bb86cb"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-042.stdout.txt",
+          "sha256": "122264d53f840f2f680150ec1fa0af62710114f4cf51be422f77b07268bb86cb",
+          "size_bytes": 8415
+        },
+        "stderr": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-042.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      }
+    },
+    {
+      "id": "B1-043",
+      "argv": [
+        "python",
+        "reports/P2_design/predecision_f01_b1/source_projection_initial.py.txt"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T14:40:12.216319+00:00",
+      "ended_at_utc": "2026-10-19T14:40:12.282242+00:00",
+      "head_before": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "head_after": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "exit_code": 1,
+      "expected_exit_code": 1,
+      "purpose": "Reproduce and retain original read-only projection KeyError; no project execution",
+      "input_files": [
+        {
+          "path": "docs/P2_design/v2/P2_trial_matrix_draft_v2.json",
+          "sha256": "b58fe4c2eead01fc9b92966d557ed0bb052e7387794fc0d9b58029ffdb90af0e"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-043.stdout.txt",
+          "sha256": "850f52ce47f0327e698c8b9d7b91ece3b6d46b91456abe40f26e79dd4832719f",
+          "size_bytes": 5221
+        },
+        "stderr": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-043.stderr.txt",
+          "sha256": "7096fa79515e8a1129f8ff8f65a17cefce7ae3ad7c73d2b3ed09ea2962521d09",
+          "size_bytes": 368
+        }
+      }
+    },
+    {
+      "id": "B1-044",
+      "argv": [
+        "python",
+        "reports/P2_design/predecision_f01_b1/proof_checks.py.txt"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T14:42:27.778528+00:00",
+      "ended_at_utc": "2026-10-19T14:42:27.928148+00:00",
+      "head_before": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "head_after": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Static source premises and seed-free binary64-safe bound proof; no project runtime",
+      "input_files": [
+        {
+          "path": "docs/P2_design/v3/P2_generation_spec_v3.json",
+          "sha256": "dd8d9917d32b28376d35e376206bbce2776bf7c42ba50bb7b62de18b37ef26bb"
+        },
+        {
+          "path": "docs/P2_design/v2/P2_workload_templates_v2.json",
+          "sha256": "f282955ab09d0110f50447269b18d0389231bed9711532853d6cdbda92d9027c"
+        },
+        {
+          "path": "docs/P2_design/v2/P2_resource_profiles_v2.json",
+          "sha256": "9eea5cfd43ce50d796a00d7cac86f9a7ca8798da4a3ea0c2fd9e598d965f13ae"
+        },
+        {
+          "path": "docs/P2_design/v2/P2_trial_matrix_draft_v2.json",
+          "sha256": "b58fe4c2eead01fc9b92966d557ed0bb052e7387794fc0d9b58029ffdb90af0e"
+        }
+      ],
+      "files_written": true,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-044.stdout.txt",
+          "sha256": "b97b400105d483efbc694304aedc20c19ae99b8ab0b6c94da1443f5855886349",
+          "size_bytes": 312
+        },
+        "stderr": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-044.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      }
+    },
+    {
+      "id": "B1-045",
+      "argv": [
+        "python",
+        "reports/P2_design/predecision_f01_b1/report_builder.py.txt"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T14:48:35.605527+00:00",
+      "ended_at_utc": "2026-10-19T14:48:35.675098+00:00",
+      "head_before": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "head_after": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Build corrected report/CSV/source-locator/state artifacts from verified existing constants",
+      "input_files": [
+        {
+          "path": "reports/P2_design/predecision_f01_b1/proof_checks.json",
+          "sha256": "df6ce6909d15907b70de52e10e5dd041b6401fe8853d30552379e9990c6c7771"
+        },
+        {
+          "path": "reports/P2_design/predecision_f01_b1/symbolic_proof_constants.json",
+          "sha256": "c5a687a1490d1c96d7cf98c9925b9ae0a24d00ca7bb9b3927acc7282e392746b"
+        }
+      ],
+      "files_written": true,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-045.stdout.txt",
+          "sha256": "321694472b683fa3a21c49de6e83587b4f14004e46b30ed3170b0d3e442278ab",
+          "size_bytes": 131
+        },
+        "stderr": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-045.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      }
+    },
+    {
+      "id": "B1-046",
+      "argv": [
+        "python",
+        "reports/P2_design/predecision_f01_b1/delivery_checks.py.txt"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T14:48:36.767478+00:00",
+      "ended_at_utc": "2026-10-19T14:48:37.085393+00:00",
+      "head_before": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "head_after": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Verify report/source identity,pointers,proof-vs-possible distinctions,approval states and preserved scope",
+      "input_files": [
+        {
+          "path": "reports/P2_design/predecision_f01_b1/f01_b1_reachability_review.md",
+          "sha256": "3adf8702e087d421790cf104d11af1136b393b036f889052029a2256ae378b07"
+        },
+        {
+          "path": "reports/P2_design/predecision_f01_b1/residual_blockers.csv",
+          "sha256": "b877a31bc15f3a618254629ca9366a25b83f54824d86499dd6eb3912806a068d"
+        },
+        {
+          "path": "reports/P2_design/predecision_f01_b1/source_manifest.json",
+          "sha256": "1851ee2895b1d0119054bbf882d3a66fca66bcf8bea28acdda6c2b01479fa6f9"
+        },
+        {
+          "path": "reports/P2_design/predecision_f01_b1/proof_checks.json",
+          "sha256": "df6ce6909d15907b70de52e10e5dd041b6401fe8853d30552379e9990c6c7771"
+        }
+      ],
+      "files_written": true,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-046.stdout.txt",
+          "sha256": "1930f22edda147dc9aff3879aebeb7df9360155738d5154bef12ec63673c143a",
+          "size_bytes": 251
+        },
+        "stderr": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-046.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      }
+    },
+    {
+      "id": "B1-047",
+      "argv": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T14:49:38.317427+00:00",
+      "ended_at_utc": "2026-10-19T14:49:38.326088+00:00",
+      "head_before": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "head_after": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Prepublication scope/whitespace/untracked inventory check",
+      "input_files": [],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-047.stdout.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        },
+        "stderr": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-047.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      }
+    },
+    {
+      "id": "B1-048",
+      "argv": [
+        "git",
+        "status",
+        "--short"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T14:49:38.328570+00:00",
+      "ended_at_utc": "2026-10-19T14:49:38.337581+00:00",
+      "head_before": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "head_after": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Prepublication scope/whitespace/untracked inventory check",
+      "input_files": [],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-048.stdout.txt",
+          "sha256": "b0a83295e3d513556675abed6925e222655868c2b527f7c3195ecf337b02e0fe",
+          "size_bytes": 41
+        },
+        "stderr": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-048.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      }
+    },
+    {
+      "id": "B1-049",
+      "argv": [
+        "git",
+        "diff",
+        "--stat"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T14:49:38.339388+00:00",
+      "ended_at_utc": "2026-10-19T14:49:38.347507+00:00",
+      "head_before": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "head_after": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Prepublication scope/whitespace/untracked inventory check",
+      "input_files": [],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-049.stdout.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        },
+        "stderr": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-049.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      }
+    },
+    {
+      "id": "B1-050",
+      "argv": [
+        "git",
+        "diff",
+        "--name-status"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T14:49:38.349353+00:00",
+      "ended_at_utc": "2026-10-19T14:49:38.357548+00:00",
+      "head_before": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "head_after": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Prepublication scope/whitespace/untracked inventory check",
+      "input_files": [],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-050.stdout.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        },
+        "stderr": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-050.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      }
+    },
+    {
+      "id": "B1-051",
+      "argv": [
+        "git",
+        "ls-files",
+        "--others",
+        "--exclude-standard"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T14:49:38.359312+00:00",
+      "ended_at_utc": "2026-10-19T14:49:38.367149+00:00",
+      "head_before": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "head_after": "ff3db3ca5dc3a8c8a986e66d093fb3849955b690",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Prepublication scope/whitespace/untracked inventory check",
+      "input_files": [],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-051.stdout.txt",
+          "sha256": "0a71adf7adf5c0a387eee8da16bfa06c998e64c6b65cc898ea5a00952875e7a3",
+          "size_bytes": 7847
+        },
+        "stderr": {
+          "path": "reports/P2_design/predecision_f01_b1/raw_commands/B1-051.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      }
+    }
+  ]
+}

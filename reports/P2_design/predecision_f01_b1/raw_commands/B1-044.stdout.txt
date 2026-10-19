@@ -1,0 +1,1 @@
+{"scope": "Static table/contract/control-flow and hand dyadic bounds only", "passed": 35, "failed": [], "exit_code": 0, "reachability_result": "PROVEN_UNREACHABLE", "mandatory_residual_blocker_count": 1, "scientific_coverage": "NOT_EVALUATED", "scientific_workloads_generated": 0, "scientific_workloads_run": 0}
