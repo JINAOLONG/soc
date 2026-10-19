@@ -2646,5 +2646,11 @@
       },
       "result_summary": "EXPECTED_EXIT"
     }
+  ],
+  "publication_receipts": [
+    {
+      "path": "reports/P2_design/design_revision_v3/first_publication_receipt.json",
+      "scope": "Actual staging,whitespace,commit,push,remote and integrity checks; primary publication checkpoint. Final receipt commit verified externally to avoid self-reference."
+    }
   ]
 }

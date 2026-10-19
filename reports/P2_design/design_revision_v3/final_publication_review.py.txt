@@ -1,0 +1,35 @@
+from pathlib import Path
+import subprocess,json,datetime,hashlib
+R=Path('/workspace/soc');O=R/'reports/P2_design/design_revision_v3';OUT=Path('/tmp/soc-r3-final-delivery.json')
+x=dict(scope='Actual final enclosing receipt commit; external file avoids self-commit recursion',commands=[])
+def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+def head():return subprocess.check_output(['git','rev-parse','HEAD'],cwd=R,text=True).strip()
+def save():OUT.write_text(json.dumps(x,ensure_ascii=False,indent=2)+'\n')
+def run(argv,purpose,writes=False):
+ before=head();t=datetime.datetime.now(datetime.timezone.utc).isoformat();p=subprocess.run(argv,cwd=R,text=True,capture_output=True)
+ x['commands'].append(dict(id='FINALPUB-'+str(len(x['commands'])+1).zfill(3),argv=argv,cwd=str(R),head_before=before,head_after=head(),started_at_utc=t,ended_at_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),exit_code=p.returncode,stdout=p.stdout,stderr=p.stderr,purpose=purpose,input_files=[dict(path='reports/P2_design/design_revision_v3/artifact_manifest.json',sha256=sha(O/'artifact_manifest.json'))],files_written=writes,scientific_execution=False));save();assert p.returncode==0,(argv,p.returncode);return p.stdout
+def integrity():
+ b=json.loads((O/'protected_baseline.json').read_text());m=json.loads((O/'artifact_manifest.json').read_text());l=json.loads((O/'actual_commands_and_exit_codes.json').read_text())
+ for q in b['files']+m['files']:assert (R/q['path']).stat().st_size==q['size_bytes'] and sha(R/q['path'])==q['sha256'],q['path']
+ actual={str(p.relative_to(R)) for root in [R/'docs/P2_design/v3',O] for p in root.rglob('*') if p.is_file() and p.name!='artifact_manifest.json'};assert actual=={q['path'] for q in m['files']}
+ for c in l['commands']:
+  for q in c['outputs'].values():assert sha(R/q['path'])==q['sha256']
+ return dict(protected_existing_files=672,protected_unchanged=True,total_new_files=len(actual)+1,manifest_sha256=sha(O/'artifact_manifest.json'),raw_command_records=len(l['commands']),raw_command_exit_codes={str(z):sum(c['exit_code']==z for c in l['commands']) for z in set(c['exit_code'] for c in l['commands'])},all_artifact_and_raw_reference_hashes_valid=True)
+first=json.loads((O/'first_publication_receipt.json').read_text())['report_commit']
+assert run(['git','rev-parse','HEAD'],'Verify known first publication').strip()==first
+assert run(['git','ls-remote','origin','refs/heads/work'],'Reject remote advance before receipt commit').split()[0]==first
+x['pre_receipt_integrity']=integrity();save()
+status=run(['git','status','--porcelain=v1','--untracked-files=all'],'Scope check receipt changes').splitlines();assert all(q[3:].startswith('reports/P2_design/design_revision_v3/') for q in status)
+run(['git','add','--','reports/P2_design/design_revision_v3/'],'Stage only receipt metadata',True)
+names=run(['git','diff','--cached','--name-status'],'Verify staged receipt scope').splitlines();assert all(q.split('\t')[1].startswith('reports/P2_design/design_revision_v3/') for q in names)
+run(['git','diff','--cached','--check'],'Verify receipt whitespace')
+run(['git','diff','--cached','--stat'],'Record receipt diff scope')
+run(['git','commit','-m','docs: record verified V3 document publication checkpoint'],'Commit append-only publication evidence',True)
+final=head();run(['git','push','origin','HEAD:refs/heads/work'],'Normal non-force receipt publication',True)
+remote=run(['git','ls-remote','origin','refs/heads/work'],'Verify actual remote final SHA').split()[0];assert final==remote
+run(['git','fetch','origin','refs/heads/work:refs/remotes/origin/work'],'Refresh only local remote-tracking work ref without force',True)
+assert run(['git','rev-parse','origin/work'],'Verify remote-tracking reference').strip()==final
+assert not run(['git','status','--porcelain=v1','--untracked-files=all'],'Verify final clean worktree')
+diff=run(['git','diff','--name-status','cae4a396c02b5fa038a771b65dce9aaad449d3a9','HEAD'],'Verify only new authorized files since start').splitlines();assert all(q.startswith(('A\tdocs/P2_design/v3/','A\treports/P2_design/design_revision_v3/')) for q in diff)
+run(['git','diff','--check'],'Final tracked whitespace check')
+x.update(repository=run(['git','remote','get-url','origin'],'Verify final repository').strip(),branch=run(['git','branch','--show-current'],'Verify final work branch').strip(),start_head='cae4a396c02b5fa038a771b65dce9aaad449d3a9',document_commit=first,final_commit=final,remote_work_sha=remote,origin_work_equals_head=True,push_status='VERIFIED',worktree='CLEAN',added_files=len(diff),integrity_after_push=integrity(),document_revision_status='DOCUMENT_REVISION_COMPLETE_PENDING_HUMAN_DECISION',static_checks=66,delivery_checks=23,all10_decisions='UNAPPROVED',all40_groups='UNAPPROVED',F01_route=None,F02_policy=None,timing='NOT_FROZEN',p2='BLOCKED',scientific_workloads_generated=0,scientific_workloads_run=0,implementation_changed=False,new_seeds_generated=False,seed_partitions_changed=False,non_calibration_realizations_accessed=False,validation_unlocked=False,formal_unlocked=False,next_safe_action='Human review exact V3 route/contracts and hashes; no implementation/execution',stop=True);save();print(json.dumps({k:v for k,v in x.items() if k!='commands'},ensure_ascii=False,indent=2))

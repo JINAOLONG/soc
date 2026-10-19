@@ -3,10 +3,18 @@
   "TASK_SCOPE": "DOCUMENTATION_REVISION_AND_STATIC_REVIEW",
   "EXPECTED_BASE_COMMIT": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
   "ACTUAL_START_HEAD": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
-  "ACTUAL_END_HEAD": null,
-  "ACTUAL_REMOTE_WORK_SHA": null,
+  "ACTUAL_END_HEAD": {
+    "observed_checkpoint": "05a7c528840b9f28f07b41354edf02b5932b87c9",
+    "scope": "Verified documentation publication before receipt commit",
+    "resolve_final_enclosing_head_with": "git rev-parse HEAD"
+  },
+  "ACTUAL_REMOTE_WORK_SHA": {
+    "observed_checkpoint": "05a7c528840b9f28f07b41354edf02b5932b87c9",
+    "scope": "Verified first documentation publication",
+    "resolve_final_remote_with": "git ls-remote origin refs/heads/work"
+  },
   "WORKTREE_START_STATUS": "CLEAN",
-  "WORKTREE_END_STATUS": "UNKNOWN_UNTIL_FINAL_PUBLICATION",
+  "WORKTREE_END_STATUS": "CLEAN_AT_VERIFIED_DOCUMENT_PUBLICATION_CHECKPOINT",
   "V3_F01_STATUS": "OPTIONS_COMPLETE_PENDING_HUMAN_DECISION",
   "V3_F02_STATUS": "OPTIONS_COMPLETE_PENDING_HUMAN_DECISION",
   "V3_F03_STATUS": "PROPOSED_CONTRACT_REVISED_PENDING_APPROVAL",
@@ -33,8 +41,8 @@
   "NON_CALIBRATION_PARTITIONS_ACCESSED": false,
   "VALIDATION_UNLOCKED": false,
   "FORMAL_UNLOCKED": false,
-  "COMMIT_SHA": null,
-  "REMOTE_PUSH_STATUS": "NOT_YET_ATTEMPTED",
+  "COMMIT_SHA": "05a7c528840b9f28f07b41354edf02b5932b87c9",
+  "REMOTE_PUSH_STATUS": "VERIFIED_FOR_RECORDED_DOCUMENT_CHECKPOINT",
   "NEXT_SAFE_ACTION": "Human review exact V3 routes/contracts and hashes; no implementation/execution",
   "STOP": true,
   "DOCUMENT_REVISION_STATUS": "DOCUMENT_REVISION_COMPLETE_PENDING_HUMAN_DECISION",
@@ -58,5 +66,7 @@
   "SELF_REFERENCE_POLICY": "After publication record exact tested/report checkpoint and live-resolution commands; enclosing final receipt commit is resolved externally,never fabricate its own hash.",
   "DELIVERY_CHECKS_PASSED": 23,
   "DELIVERY_CHECKS_FAILED": 0,
-  "DELIVERY_CHECK_EXIT_CODE": 0
+  "DELIVERY_CHECK_EXIT_CODE": 0,
+  "GIT_OBSERVATION_SCOPE": "Exact observed first-publication checkpoint; final enclosing receipt commit is verified after commit/push and supplied in final delivery receipt/response. No self-commit hash fabricated.",
+  "FINAL_DELIVERY_RECEIPT": "/tmp/soc-r3-final-delivery.json"
 }

@@ -112,8 +112,8 @@
     },
     {
       "path": "reports/P2_design/design_revision_v3/actual_commands_and_exit_codes.json",
-      "sha256": "862be0ca0af10024fc15baa8b48ece805008755421f03c3151eb8ca735fc94f6",
-      "size_bytes": 101370
+      "sha256": "638475c61627885ff6091a8eee65c5d5f015685b7d90185b40e66e346b734a30",
+      "size_bytes": 101682
     },
     {
       "path": "reports/P2_design/design_revision_v3/artifact_manifest_builder.py.txt",
@@ -191,14 +191,24 @@
       "size_bytes": 6405
     },
     {
+      "path": "reports/P2_design/design_revision_v3/final_publication_review.py.txt",
+      "sha256": "73c65dccea78d9291d07bac39463ecdfea2c0d4397a6ac2566f37117bca67f6d",
+      "size_bytes": 5286
+    },
+    {
       "path": "reports/P2_design/design_revision_v3/final_report_builder.py.txt",
       "sha256": "677c96edffb8d3e3b3a07bb04732ba8bec0f92841d02bbf81391cb5104da1968",
       "size_bytes": 9450
     },
     {
       "path": "reports/P2_design/design_revision_v3/final_state.json",
-      "sha256": "3d9978ae557ae51bb62839519dc22a461c2d55d523cced4002105389c4acba6e",
-      "size_bytes": 2754
+      "sha256": "197648992232c3820cd8790d4958ea279dc52555364f8776d35acbdd7cfeafe5",
+      "size_bytes": 3522
+    },
+    {
+      "path": "reports/P2_design/design_revision_v3/first_publication_receipt.json",
+      "sha256": "0bcb54cecab9d61e092c70540d6ae95c1dd5b62d35f413aeb7633d6b738eca30",
+      "size_bytes": 70009
     },
     {
       "path": "reports/P2_design/design_revision_v3/human_decision_packet.md",
@@ -971,7 +981,7 @@
       "size_bytes": 17972
     }
   ],
-  "artifact_count": 193,
+  "artifact_count": 195,
   "self_exclusion": "Manifest excludes itself; enclosing Git object binds its bytes. Publication command receipts use checkpoint scope to avoid impossible self-commit hash.",
   "scientific_artifacts_created": 0
 }
