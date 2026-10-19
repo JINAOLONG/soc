@@ -1,0 +1,216 @@
+{
+  "document_kind": "CONDITIONAL_CRITERION_OPTIONS",
+  "document_version": "v3",
+  "status": "DRAFT_UNAPPROVED_NONEXECUTABLE",
+  "approval": "UNAPPROVED",
+  "approved": false,
+  "frozen": false,
+  "executable": false,
+  "execution_authorized": false,
+  "read_by_pipeline": false,
+  "starting_commit": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+  "base_source": {
+    "path": "docs/P2_design/v2/P2_criterion_spec_v2.json",
+    "version": "v2 DRAFT_UNAPPROVED",
+    "sha256": "98a578944e7910db933f5b3b02aee4bb03de8005853024b38cc3b02630b04e38",
+    "source_commit": "cae4a396c02b5fa038a771b65dce9aaad449d3a9"
+  },
+  "selected_route": null,
+  "selected_threshold_bundle": null,
+  "operational_criterion": null,
+  "bundles": [
+    {
+      "id": "FINE",
+      "tau": "1/100",
+      "frequency": "1/100",
+      "support_seed_count": 8,
+      "absence_seed_count_max": 2
+    },
+    {
+      "id": "COARSE",
+      "tau": "1/20",
+      "frequency": "1/20",
+      "support_seed_count": 8,
+      "absence_seed_count_max": 2
+    }
+  ],
+  "coverage_thresholds": {
+    "support_min_each_seed_condition": "4/5",
+    "negative_required_each_seed_condition": "1",
+    "approval": "UNAPPROVED"
+  },
+  "bootstrap": {
+    "method": "unchanged10000 paired-seed percentile95%, type7(.025,.975), fixed analysis_seed20261018",
+    "key_schema": "P2_typed_identity_schema_v2.json#/$defs/ANALYSIS_INDEX_KEY",
+    "index": "SHA256 SEMANTIC_CANON_V2(key); q first64 big-endian; limit=18446744073709551610; if q>=limit increment counter else index=q%10; each replicate10 indices, same vector across all methods/conditions",
+    "indices_generated_this_task": false,
+    "aggregate": "Within each condition resample paired seed p and take seed mean. Mandatory descriptive macro: within each seed equal-weight mean of12 selected loaded conditions, then mean over seeds; reuse same bootstrap seed-index vector for every condition/method/macro. Macro never compensates for any condition failure.",
+    "interpretation": "Pointwise descriptive intervals conditional on selected calibration configs and VALID_FULL coverage; not independent confirmatory evidence or simultaneous-coverage claim."
+  },
+  "route_options": {
+    "A_KEEP_ORIGINAL": {
+      "approval": "UNAPPROVED",
+      "classification": "SOURCE_SUPPORTED_AND_PROPOSED_POLICY_ACCEPTANCE",
+      "original_E": "E0: all unique valid original eligible primary MAIN-B2 states, including one-ready/over-cap/expired estimates",
+      "analysis_domain": "E0",
+      "F": "F0: original valid FULL subset, 2..4 ready, <=2 pending H targets, predictable releases, complete approved graphs/enumeration",
+      "excluded": "All E0 retained; E0-F0 tagged partial, never zero gain",
+      "opportunity_rate": "hits/F0 when F0>0 else null",
+      "support_coverage": "F0/E0 >= 4/5 for every seed/loaded-condition",
+      "negative_coverage": "F0/E0 == 1 for every seed/loaded-condition",
+      "reachability": "ADAS negative impossible: E0-F0>=1; F0=0 fails, F0>0 implies coverage<1",
+      "interpretation": "If complete valid evidence is below support but cannot satisfy negative, INCONCLUSIVE; this is evidence insufficiency, not mechanism refutation. No progression under INCONCLUSIVE.",
+      "contract_effect": "No domain/threshold change. Explicit human acceptance of operational uninformative-negative possibility required; original hypothesis still unproved.",
+      "decision_table": [
+        {
+          "priority": 0,
+          "when": "No evaluation executed",
+          "result": "NOT_EVALUATED"
+        },
+        {
+          "priority": 1,
+          "when": "Evaluation attempted; any approval/identity/stream/M2/missing/invalid/precondition fails OR zero required domain denominator",
+          "result": "INCONCLUSIVE",
+          "evidence_state": "INVALID/INCOMPLETE separately retained; no valid negative"
+        },
+        {
+          "priority": 2,
+          "when": "All prerequisites; support_coverage above holds in120 cells; each12 conditions CI_low>=f and >=8 seeds p>=f",
+          "result": "SUPPORTED"
+        },
+        {
+          "priority": 3,
+          "when": "All prerequisites; negative_coverage above holds in120 cells; each12 conditions CI_high<f and <=2 seeds p>=f",
+          "result": "NOT_SUPPORTED"
+        },
+        {
+          "priority": 4,
+          "when": "All other cases including insufficient valid coverage or CI boundaries",
+          "result": "INCONCLUSIVE"
+        }
+      ],
+      "threshold_bundle": "UNSELECTED; inherited FINE/COARSE, no new values",
+      "missing_policy": "No missing/invalid state excluded to manufacture A0/F; no zero imputation; all stream events preserved."
+    },
+    "B1_EXPAND_SINGLE_READY": {
+      "approval": "UNAPPROVED",
+      "classification": "PROPOSED_REQUIRES_APPROVAL",
+      "original_E": "Same E0; every original state retained",
+      "analysis_domain": "E0",
+      "F": "F1: original FULL predicate except action-ready count is1..4; every1-ready compatible assignment enumerated; all other caps/release/DAG/integrity restrictions unchanged",
+      "excluded": "E0-F1 retains over-cap/expired/uncovered states; no zero imputation",
+      "opportunity_rate": "hits/F1 when F1>0 else null",
+      "support_coverage": "F1/E0 >= 4/5 for every seed/loaded-condition",
+      "negative_coverage": "F1/E0 == 1 for every seed/loaded-condition",
+      "reachability": "Removes the specific1-ready obstruction, NOT a proof global negative reachable. Other partial states can still force coverage<1.",
+      "interpretation": "Same bounded fixed-suffix surrogate but expanded action-count support; no global absence inference.",
+      "contract_effect": "Explicit departure from original user_request §44 2–4 oracle range and SP25; requires human research-scope decision. No active change in this task.",
+      "precise_projection": "With K=1 use same fixed B2 order, exact rational baseline, entire compatible resource Cartesian product, same target/suffix/calendar/L cap/ties/gain. Maximum4 actions/6^4 and36 projected nodes unchanged.",
+      "decision_table": [
+        {
+          "priority": 0,
+          "when": "No evaluation executed",
+          "result": "NOT_EVALUATED"
+        },
+        {
+          "priority": 1,
+          "when": "Evaluation attempted; any approval/identity/stream/M2/missing/invalid/precondition fails OR zero required domain denominator",
+          "result": "INCONCLUSIVE",
+          "evidence_state": "INVALID/INCOMPLETE separately retained; no valid negative"
+        },
+        {
+          "priority": 2,
+          "when": "All prerequisites; support_coverage above holds in120 cells; each12 conditions CI_low>=f and >=8 seeds p>=f",
+          "result": "SUPPORTED"
+        },
+        {
+          "priority": 3,
+          "when": "All prerequisites; negative_coverage above holds in120 cells; each12 conditions CI_high<f and <=2 seeds p>=f",
+          "result": "NOT_SUPPORTED"
+        },
+        {
+          "priority": 4,
+          "when": "All other cases including insufficient valid coverage or CI boundaries",
+          "result": "INCONCLUSIVE"
+        }
+      ],
+      "threshold_bundle": "UNSELECTED; inherited FINE/COARSE, no new values",
+      "missing_policy": "No missing/invalid state excluded to manufacture A0/F; no zero imputation; all stream events preserved."
+    },
+    "B2_CONDITIONAL_DOMAIN": {
+      "approval": "UNAPPROVED",
+      "classification": "PROPOSED_REQUIRES_APPROVAL",
+      "original_E": "E0 remains the complete original audit population",
+      "analysis_domain": "A0={s in E0:2<=ready<=4,1<=pending_H<=2,all running estimates unexpired,all arrived approved DAGs/public calendars structurally complete}; predicate fixed before g or projection results",
+      "F": "FA: states in A0 with fully verified complete original projection; implementation/missing failure inside A0 is INVALID/INCOMPLETE and blocks, never reclassify as excluded",
+      "excluded": "E0-A0 retained with pre-gain reasons and state refs; report per-seed/condition E0,A0,FA,excluded,FA/E0,A0/E0,FA/A0; all actual events retained",
+      "opportunity_rate": "hits/FA conditional on A0, when E0>0,A0>0,FA>0 else null",
+      "support_coverage": "FA/A0 >= 4/5 (explicit changed denominator proposal; with complete valid projections FA=A0 so gate redundant)",
+      "negative_coverage": "FA/A0 == 1 (conditional completeness; NOT full E0 coverage)",
+      "reachability": "A0=0 =>INCONCLUSIVE. FA=A0>0 removes original1-ready obstruction only by explicit conditioning. Does not establish A0 prevalence or any actual outcome.",
+      "interpretation": "Absence/presence of stable opportunity conditional on predeclared original-FULL-capable states only; FA/E0 always reported; cannot infer absence on E0 or original broad mechanism. Operational permanent stop needs explicit human policy approval.",
+      "contract_effect": "Changes estimand/coverage denominator meaning; retains numeric threshold literals but changes their meaning. No population-prevalence cutoff is invented. User may reject/defer this narrow target.",
+      "decision_table": [
+        {
+          "priority": 0,
+          "when": "No evaluation executed",
+          "result": "NOT_EVALUATED"
+        },
+        {
+          "priority": 1,
+          "when": "Evaluation attempted; any approval/identity/stream/M2/missing/invalid/precondition fails OR zero required domain denominator",
+          "result": "INCONCLUSIVE",
+          "evidence_state": "INVALID/INCOMPLETE separately retained; no valid negative"
+        },
+        {
+          "priority": 2,
+          "when": "All prerequisites; support_coverage above holds in120 cells; each12 conditions CI_low>=f and >=8 seeds p>=f",
+          "result": "SUPPORTED"
+        },
+        {
+          "priority": 3,
+          "when": "All prerequisites; negative_coverage above holds in120 cells; each12 conditions CI_high<f and <=2 seeds p>=f",
+          "result": "NOT_SUPPORTED"
+        },
+        {
+          "priority": 4,
+          "when": "All other cases including insufficient valid coverage or CI boundaries",
+          "result": "INCONCLUSIVE"
+        }
+      ],
+      "threshold_bundle": "UNSELECTED; inherited FINE/COARSE, no new values",
+      "missing_policy": "No missing/invalid state excluded to manufacture A0/F; no zero imputation; all stream events preserved."
+    }
+  },
+  "preconditions": [
+    "definition/criterion explicitly approved before data",
+    "all2520 primary/replay/validation/artifact sets complete valid",
+    "all18 conditions selected by fixed B2 qualification before diagnostic inspection",
+    "all expected primary B2 snapshot streams complete and independently checked",
+    "each of12 selected medium/near conditions has10 paired seeds",
+    "each seed/condition E>0 and F>0",
+    "zero INVALID/INCOMPLETE diagnostic record",
+    "Exact F01 route and unchanged-numeric bundle approved before data; no implicit default",
+    "Mandatory M2 roster/report/contrast/analysis validity from P2_M2_artifact_contract_v3.json; each required ref and semantic check passes"
+  ],
+  "parameters_ref": {
+    "file": "P2_scientific_parameter_registry_v3.json",
+    "ids": [
+      "SP28",
+      "SP29",
+      "SP30",
+      "SP31",
+      "SP32",
+      "SP36",
+      "SP39"
+    ]
+  },
+  "scope": "No evaluation now =>NOT_EVALUATED. All active choices null and no approvals. Missing/invalid and valid coverage insufficiency separated; neither provides negative science.",
+  "status_classifications": [
+    "SOURCE_SUPPORTED",
+    "PROPOSED_REQUIRES_APPROVAL",
+    "UNRESOLVED_BLOCKING",
+    "IMPLEMENTATION_VALIDATION_PENDING",
+    "SCIENTIFIC_EXECUTION_PENDING"
+  ]
+}

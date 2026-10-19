@@ -1,0 +1,32 @@
+from pathlib import Path
+import subprocess,json,hashlib,datetime
+R=Path('/workspace/soc');O=R/'reports/P2_design/design_revision_v3';BASE='cae4a396c02b5fa038a771b65dce9aaad449d3a9';OUT=Path('/tmp/soc-r3-first-publication.json')
+x=dict(scope='First versioned V3 document publication; enclosing final receipt commit resolved later',commands=[])
+def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+def h():return subprocess.check_output(['git','rev-parse','HEAD'],cwd=R,text=True).strip()
+def save():OUT.write_text(json.dumps(x,ensure_ascii=False,indent=2)+'\n')
+def run(argv,purpose,writes=False,allowed=(0,)):
+ before=h();t=datetime.datetime.now(datetime.timezone.utc).isoformat();p=subprocess.run(argv,cwd=R,text=True,capture_output=True)
+ x['commands'].append(dict(id='PUB-'+str(len(x['commands'])+1).zfill(3),argv=argv,cwd=str(R),head_before=before,head_after=h(),started_at_utc=t,ended_at_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),exit_code=p.returncode,stdout=p.stdout,stderr=p.stderr,purpose=purpose,input_files=[dict(path='reports/P2_design/design_revision_v3/artifact_manifest.json',sha256=sha(O/'artifact_manifest.json'))],files_written=writes,scientific_execution=False));save();assert p.returncode in allowed,(argv,p.returncode);return p.stdout
+def integrity():
+ b=json.loads((O/'protected_baseline.json').read_text());m=json.loads((O/'artifact_manifest.json').read_text())
+ for q in b['files']+m['files']:assert sha(R/q['path'])==q['sha256'] and (R/q['path']).stat().st_size==q['size_bytes'],q['path']
+ actual={str(p.relative_to(R)) for root in [R/'docs/P2_design/v3',O] for p in root.rglob('*') if p.is_file() and p.name!='artifact_manifest.json'};assert actual=={q['path'] for q in m['files']}
+ return dict(protected_files_unchanged=len(b['files']),artifact_files=len(actual)+1,artifact_manifest_sha256=sha(O/'artifact_manifest.json'))
+assert run(['git','rev-parse','HEAD'],'Verify exact start') .strip()==BASE
+assert run(['git','branch','--show-current'],'Verify work branch').strip()=='work'
+assert run(['git','remote','get-url','origin'],'Verify target repository').strip()=='https://github.com/JINAOLONG/soc.git'
+assert run(['git','ls-remote','origin','refs/heads/work'],'Reject changed remote').split()[0]==BASE
+status=run(['git','status','--porcelain=v1','--untracked-files=all'],'Check no user modification').splitlines();assert all(q.startswith(('?? docs/P2_design/v3/','?? reports/P2_design/design_revision_v3/')) for q in status)
+x['prepublication_integrity']=integrity();save()
+run(['git','add','--','docs/P2_design/v3/','reports/P2_design/design_revision_v3/'],'Stage only authorized new version directories',True)
+staged=run(['git','diff','--cached','--name-status'],'Verify staged files all additions').splitlines();assert all(q.startswith(('A\tdocs/P2_design/v3/','A\treports/P2_design/design_revision_v3/')) for q in staged)
+run(['git','diff','--cached','--stat'],'Record staged scope')
+run(['git','-c','core.whitespace=cr-at-eol','diff','--cached','--check'],'Check staged whitespace while accepting verbatim attachment CRLF')
+assert run(['git','ls-remote','origin','refs/heads/work'],'Recheck no remote advance before commit').split()[0]==BASE
+run(['git','commit','-m','docs: propose P2 V3 contracts and unresolved design options'],'Commit only document revision and static review',True)
+first=run(['git','rev-parse','HEAD'],'Record actual report commit').strip()
+run(['git','push','origin','HEAD:refs/heads/work'],'Normal non-force publication',True)
+remote=run(['git','ls-remote','origin','refs/heads/work'],'Verify actual pushed work SHA').split()[0];assert remote==first
+assert not run(['git','status','--porcelain=v1','--untracked-files=all'],'Verify clean first publication')
+x.update(report_commit=first,remote_work_sha=remote,push_status='VERIFIED',worktree='CLEAN',integrity_after_push=integrity(),document_revision_status='DOCUMENT_REVISION_COMPLETE_PENDING_HUMAN_DECISION',all_approvals='UNAPPROVED',scientific_workloads_generated=0,scientific_workloads_run=0);save();print(json.dumps({k:v for k,v in x.items() if k!='commands'},ensure_ascii=False))

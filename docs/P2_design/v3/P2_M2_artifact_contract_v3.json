@@ -1,0 +1,145 @@
+{
+  "document_kind": "M2_PAIRED_ANALYSIS_ARTIFACT_CONTRACT",
+  "document_version": "v3",
+  "status": "DRAFT_UNAPPROVED_NONEXECUTABLE",
+  "approval": "UNAPPROVED",
+  "approved": false,
+  "frozen": false,
+  "executable": false,
+  "execution_authorized": false,
+  "read_by_pipeline": false,
+  "starting_commit": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+  "source_requirements": [
+    {
+      "path": "docs/P2_design/P2_complete_design_proposal_v1.md",
+      "sha256": "e378e85071d6c97fb6cd5801d9449eef176a90baddcd786181c6685eaa29feac",
+      "lines": [
+        275,
+        279
+      ]
+    },
+    {
+      "path": "docs/P2_design/v2/P2_complete_design_proposal_v2.md",
+      "sha256": "7f929b85554193ef1256deb3f7cc184e47c362f91e93950896a80450c9eb5fe8",
+      "lines": [
+        156,
+        157
+      ]
+    },
+    {
+      "path": "docs/statistical_protocol.md",
+      "sha256": "f9c0eeb6e76f68330ba3e5d8d90e58d175c3947a1948bb41b26ad50dbc041e8a",
+      "lines": [
+        3,
+        47
+      ]
+    }
+  ],
+  "roster": {
+    "domain": "All18 selected MAIN conditions x10 registered CALIBRATION seed metadata entries x4 comparisons; 720 pairs. Original2520 trials retained; no control or replay as independent pair.",
+    "methods": [
+      "B1",
+      "B3",
+      "B4",
+      "B5"
+    ],
+    "reference": "B2",
+    "workload": "Exact same resolved MAIN artifact within each selected condition/seed; same seed label alone insufficient",
+    "key_schema": "P2_typed_identity_schema_v3.json#/$defs/M2_PAIR_KEY_V3",
+    "selection": "Selection report fixes A/B before observer or M2 effects; paired roster created from fixed plan+selection, never observed advantages"
+  },
+  "contrasts": [
+    {
+      "id": "H_DMR_DIFF",
+      "formula": "DMR_method,H - DMR_B2,H",
+      "unit": "proportion points; not percent rescale",
+      "source": "independently matched original group metrics; each group50 services"
+    },
+    {
+      "id": "L_P95_DIFF",
+      "formula": "P95_method,L - P95_B2,L",
+      "unit": "ms",
+      "source": "original type7 group responses; no ratio substitution"
+    },
+    {
+      "id": "H_WAIT_DIFF",
+      "formula": "mean_service_assigned_busy_wait_method,H - mean_service_assigned_busy_wait_B2,H",
+      "unit": "ms per H service",
+      "source": "sum node assigned_busy_wait /50; report node-ms overlap limitation"
+    },
+    {
+      "id": "L_WAIT_DIFF",
+      "formula": "mean_service_assigned_busy_wait_method,L - mean_service_assigned_busy_wait_B2,L",
+      "unit": "ms per L service",
+      "source": "same L group denominator50"
+    }
+  ],
+  "auxiliary": "Retain CPU/GPU/NPU assigned busy decomposition, H critical-path blocking, policy idle/compute/transfer, compatibility count distributions and per-start public alternative EFT differences as v1 D07 requires; M1R opportunity/eligible/F/E referenced for B2 only, never old M1 restored or a baseline causal contrast.",
+  "required_artifacts": [
+    "FIXED_SELECTION_REPORT",
+    "EXPECTED_M2_PAIR_ROSTER",
+    "M2_PAIR_ROWS",
+    "M2_CONTRAST_TABLE",
+    "TRACE_WAIT_DECOMPOSITION",
+    "COMPATIBILITY_AND_SUBSTITUTION_REPORT",
+    "B2_OBSERVER_SUMMARY",
+    "PAIRED_SEED_CONDITION_AND_EQUAL_WEIGHT_MACRO_SUMMARY",
+    "RESAMPLING_PROTOCOL",
+    "RESAMPLING_INDICES_OR_REPRODUCIBLE_DIGEST",
+    "M2_REPORT_INVENTORY",
+    "INDEPENDENT_M2_ANALYSIS_VALIDATION"
+  ],
+  "pair_validation": "Exact multiset equality with expected720 keys, all18 conditions/10 seeds/four methods; missing0 duplicate0 mismatch0 unexpected0 invalid0. Both completion refs valid and same workload identity, seed/condition/config; independent metrics MATCH. No pair deletion/zero imputation.",
+  "report_validation": "Report COMPLETE_PENDING_INDEPENDENT_VALIDATION means member presence/integrity only; independent later M2_ANALYSIS_VALIDATION_V3 must MATCH exact roster and semantic contrasts/aggregations/protocol, with all discrepancy counts0. Stage M2 validity cannot be VALID from report existence or its self status. Report inventory explicitly excludes independent validation/final report/self to prevent hash cycles.",
+  "states": {
+    "raw_run": "Inherited execution_completion",
+    "single_metrics": "Inherited per-run metric_derivation MATCH",
+    "roster": "NOT_CHECKED/COMPLETE/INCOMPLETE/INVALID",
+    "contrasts": "NOT_RUN/COMPLETE/INCOMPLETE/INVALID",
+    "reports": "NOT_RUN/COMPLETE/INCOMPLETE/INVALID",
+    "analysis_validity": "NOT_CHECKED/VALID/INVALID/INCOMPLETE"
+  },
+  "failure_table": [
+    {
+      "case": "missing pair or report",
+      "status": "INCOMPLETE",
+      "progression": "BLOCKED"
+    },
+    {
+      "case": "duplicate/unexpected/wrong workload or protocol, invalid metric, hash mismatch",
+      "status": "INVALID",
+      "progression": "BLOCKED"
+    },
+    {
+      "case": "all raw metrics but M2 analysis skipped",
+      "status": "NOT_RUN or INCOMPLETE",
+      "progression": "BLOCKED"
+    },
+    {
+      "case": "all roster/report/semantic checks valid",
+      "status": "VALID",
+      "progression": "Still requires other stage prerequisites and separate authorization"
+    }
+  ],
+  "statistical_protocol": {
+    "method": "unchanged10000 paired-seed percentile95%, type7(.025,.975), fixed analysis_seed20261018",
+    "key_schema": "P2_typed_identity_schema_v2.json#/$defs/ANALYSIS_INDEX_KEY",
+    "index": "SHA256 SEMANTIC_CANON_V2(key); q first64 big-endian; limit=18446744073709551610; if q>=limit increment counter else index=q%10; each replicate10 indices, same vector across all methods/conditions",
+    "indices_generated_this_task": false,
+    "aggregate": "Within each condition resample paired seed p and take seed mean. Mandatory descriptive macro: within each seed equal-weight mean of12 selected loaded conditions, then mean over seeds; reuse same bootstrap seed-index vector for every condition/method/macro. Macro never compensates for any condition failure.",
+    "interpretation": "Pointwise descriptive intervals conditional on selected calibration configs and VALID_FULL coverage; not independent confirmatory evidence or simultaneous-coverage claim."
+  },
+  "numeric_encoding": "Contrast body finite public/validated binary64 values decoded to exact RATIONAL for difference; raw source numbers never rewritten. Scientific bootstrap definitions unchanged; implementation/version and common-index behavior still future validation, no CI here.",
+  "schema_ref": "P2_typed_identity_schema_v3.json#/$defs/M2_ANALYSIS_REPORT_V3",
+  "classification": "PROPOSED_REQUIRES_APPROVAL",
+  "implementation_status": "IMPLEMENTATION_VALIDATION_PENDING",
+  "scientific_status": "SCIENTIFIC_EXECUTION_PENDING",
+  "publication_dag": [
+    "member bodies and source refs",
+    "report inventory excluding itself,final report and independent validation",
+    "analysis report COMPLETE_PENDING_INDEPENDENT_VALIDATION",
+    "independent validation referencing finalized report",
+    "stage binding both report and validation"
+  ],
+  "validation_schema_ref": "P2_typed_identity_schema_v3.json#/$defs/M2_ANALYSIS_VALIDATION_V3"
+}

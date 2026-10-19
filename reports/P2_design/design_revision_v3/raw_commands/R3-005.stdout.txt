@@ -1,0 +1,12 @@
+?? reports/P2_design/design_revision_v3/actual_commands_and_exit_codes.json
+?? reports/P2_design/design_revision_v3/authorization_request.txt
+?? reports/P2_design/design_revision_v3/command_recorder.py.txt
+?? reports/P2_design/design_revision_v3/protected_baseline.json
+?? reports/P2_design/design_revision_v3/raw_commands/R3-001.stderr.txt
+?? reports/P2_design/design_revision_v3/raw_commands/R3-001.stdout.txt
+?? reports/P2_design/design_revision_v3/raw_commands/R3-002.stderr.txt
+?? reports/P2_design/design_revision_v3/raw_commands/R3-002.stdout.txt
+?? reports/P2_design/design_revision_v3/raw_commands/R3-003.stderr.txt
+?? reports/P2_design/design_revision_v3/raw_commands/R3-003.stdout.txt
+?? reports/P2_design/design_revision_v3/raw_commands/R3-004.stderr.txt
+?? reports/P2_design/design_revision_v3/raw_commands/R3-004.stdout.txt

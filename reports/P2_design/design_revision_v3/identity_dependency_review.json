@@ -1,0 +1,921 @@
+{
+  "scope": "Type references mechanically reconstructed; chronological identity preconditions from exact proposed contracts,not runtime proof",
+  "typed_definitions": 81,
+  "typed_edges": [
+    {
+      "before": "ARTIFACT_REF",
+      "after": "DIAGNOSTIC_ERROR_RECORD"
+    },
+    {
+      "before": "ARTIFACT_REF",
+      "after": "DIAGNOSTIC_RECORD"
+    },
+    {
+      "before": "ARTIFACT_REF",
+      "after": "EXECUTION_PROVENANCE_PREIMAGE_V3"
+    },
+    {
+      "before": "ARTIFACT_REF",
+      "after": "FEASIBILITY_CERTIFICATE"
+    },
+    {
+      "before": "ARTIFACT_REF",
+      "after": "GENERATION_RECEIPT_PREIMAGE"
+    },
+    {
+      "before": "ARTIFACT_REF",
+      "after": "GENERATION_RECEIPT_PREIMAGE_V3"
+    },
+    {
+      "before": "ARTIFACT_REF",
+      "after": "M2_ANALYSIS_REPORT_V3"
+    },
+    {
+      "before": "ARTIFACT_REF",
+      "after": "M2_ANALYSIS_VALIDATION_V3"
+    },
+    {
+      "before": "ARTIFACT_REF",
+      "after": "M2_CONTRAST_METRICS_V3"
+    },
+    {
+      "before": "ARTIFACT_REF",
+      "after": "M2_PAIR_ROW_V3"
+    },
+    {
+      "before": "ARTIFACT_REF",
+      "after": "M2_ROSTER_V3"
+    },
+    {
+      "before": "ARTIFACT_REF",
+      "after": "METRIC_DERIVATION"
+    },
+    {
+      "before": "ARTIFACT_REF",
+      "after": "PROCESS_RESULT"
+    },
+    {
+      "before": "ARTIFACT_REF",
+      "after": "PROCESS_RESULT_V3"
+    },
+    {
+      "before": "ARTIFACT_REF",
+      "after": "REPLAY_RESULT"
+    },
+    {
+      "before": "ARTIFACT_REF",
+      "after": "SCIENTIFIC_INPUT_ENVELOPE"
+    },
+    {
+      "before": "ARTIFACT_REF",
+      "after": "SCIENTIFIC_RUN_RECORD"
+    },
+    {
+      "before": "ARTIFACT_REF",
+      "after": "SCIENTIFIC_RUN_RECORD_V3"
+    },
+    {
+      "before": "ARTIFACT_REF",
+      "after": "SNAPSHOT_EVENT"
+    },
+    {
+      "before": "ARTIFACT_REF",
+      "after": "STAGE_RECORD"
+    },
+    {
+      "before": "ARTIFACT_REF",
+      "after": "STAGE_RECORD_V3"
+    },
+    {
+      "before": "ARTIFACT_REF",
+      "after": "SUCCESS_PROCESS"
+    },
+    {
+      "before": "ARTIFACT_REF",
+      "after": "VALIDATION_RESULT"
+    },
+    {
+      "before": "ASCII",
+      "after": "KEY"
+    },
+    {
+      "before": "ASCII",
+      "after": "PROCESS_RESULT"
+    },
+    {
+      "before": "ASCII",
+      "after": "PROCESS_RESULT_V3"
+    },
+    {
+      "before": "ASCII",
+      "after": "SEMANTIC_ARGV_PREIMAGE"
+    },
+    {
+      "before": "ASCII",
+      "after": "SUCCESS_PROCESS"
+    },
+    {
+      "before": "ASSIGNMENT",
+      "after": "DIAGNOSTIC_RECORD"
+    },
+    {
+      "before": "BINDING_COPY",
+      "after": "KEY_BINDING"
+    },
+    {
+      "before": "BINDING_LITERAL",
+      "after": "KEY_BINDING"
+    },
+    {
+      "before": "F64_BITS",
+      "after": "FEASIBILITY_CERTIFICATE"
+    },
+    {
+      "before": "F64_BITS",
+      "after": "GROUP_METRICS"
+    },
+    {
+      "before": "F64_BITS",
+      "after": "PUBLIC_NODE"
+    },
+    {
+      "before": "F64_BITS",
+      "after": "PUBLIC_SERVICE"
+    },
+    {
+      "before": "F64_BITS",
+      "after": "PUBLIC_SNAPSHOT"
+    },
+    {
+      "before": "F64_BITS",
+      "after": "WINDOWS"
+    },
+    {
+      "before": "GATE_STATE",
+      "after": "STAGE_RECORD"
+    },
+    {
+      "before": "GATE_STATE_V3",
+      "after": "STAGE_RECORD_V3"
+    },
+    {
+      "before": "GIT_FILE_OBSERVATION_V3",
+      "after": "EXECUTION_CONTEXT_PREIMAGE_V3"
+    },
+    {
+      "before": "ID",
+      "after": "ARTIFACT_REF"
+    },
+    {
+      "before": "ID",
+      "after": "ASSIGNMENT"
+    },
+    {
+      "before": "ID",
+      "after": "ATTEMPT_PREIMAGE"
+    },
+    {
+      "before": "ID",
+      "after": "COMPLETION_PREIMAGE"
+    },
+    {
+      "before": "ID",
+      "after": "COMPLETION_PREIMAGE_V3"
+    },
+    {
+      "before": "ID",
+      "after": "COORDINATION_DOMAIN_PREIMAGE_V3"
+    },
+    {
+      "before": "ID",
+      "after": "COORDINATION_RECORD_V3"
+    },
+    {
+      "before": "ID",
+      "after": "DENOMINATOR_SCOPE_PREIMAGE"
+    },
+    {
+      "before": "ID",
+      "after": "DIAGNOSTIC_ERROR_RECORD"
+    },
+    {
+      "before": "ID",
+      "after": "DIAGNOSTIC_RECORD"
+    },
+    {
+      "before": "ID",
+      "after": "ENVIRONMENT_PREIMAGE"
+    },
+    {
+      "before": "ID",
+      "after": "EXECUTION_AUTH_PREIMAGE"
+    },
+    {
+      "before": "ID",
+      "after": "EXECUTION_CONTEXT_PREIMAGE_V3"
+    },
+    {
+      "before": "ID",
+      "after": "EXECUTION_PLAN_PREIMAGE_V3"
+    },
+    {
+      "before": "ID",
+      "after": "EXECUTION_PROVENANCE_PREIMAGE_V3"
+    },
+    {
+      "before": "ID",
+      "after": "FEASIBILITY_CERTIFICATE"
+    },
+    {
+      "before": "ID",
+      "after": "GATE_STATE"
+    },
+    {
+      "before": "ID",
+      "after": "GATE_STATE_V3"
+    },
+    {
+      "before": "ID",
+      "after": "GENERATION_RECEIPT_PREIMAGE"
+    },
+    {
+      "before": "ID",
+      "after": "GENERATION_RECEIPT_PREIMAGE_V3"
+    },
+    {
+      "before": "ID",
+      "after": "GIT_FILE_OBSERVATION_V3"
+    },
+    {
+      "before": "ID",
+      "after": "GROUP_METRICS"
+    },
+    {
+      "before": "ID",
+      "after": "INPUT_DESCRIPTOR_PREIMAGE"
+    },
+    {
+      "before": "ID",
+      "after": "INPUT_RESOLUTION_PREIMAGE"
+    },
+    {
+      "before": "ID",
+      "after": "KEY"
+    },
+    {
+      "before": "ID",
+      "after": "LOCAL_L_FINISH"
+    },
+    {
+      "before": "ID",
+      "after": "M2_PAIR_KEY_V3"
+    },
+    {
+      "before": "ID",
+      "after": "M2_PAIR_ROW_V3"
+    },
+    {
+      "before": "ID",
+      "after": "M2_ROSTER_V3"
+    },
+    {
+      "before": "ID",
+      "after": "PROCESS_RESULT"
+    },
+    {
+      "before": "ID",
+      "after": "PROCESS_RESULT_V3"
+    },
+    {
+      "before": "ID",
+      "after": "PROJECTION_INTERVAL"
+    },
+    {
+      "before": "ID",
+      "after": "PUBLIC_NODE"
+    },
+    {
+      "before": "ID",
+      "after": "PUBLIC_SERVICE"
+    },
+    {
+      "before": "ID",
+      "after": "PUBLIC_SNAPSHOT"
+    },
+    {
+      "before": "ID",
+      "after": "REPLAY_PREIMAGE"
+    },
+    {
+      "before": "ID",
+      "after": "REPLAY_RESULT"
+    },
+    {
+      "before": "ID",
+      "after": "RUNTIME_PAYLOAD"
+    },
+    {
+      "before": "ID",
+      "after": "RUN_LOCK_PREIMAGE"
+    },
+    {
+      "before": "ID",
+      "after": "RUN_PREIMAGE"
+    },
+    {
+      "before": "ID",
+      "after": "RUN_PREIMAGE_V3"
+    },
+    {
+      "before": "ID",
+      "after": "SCIENTIFIC_INPUT_ENVELOPE"
+    },
+    {
+      "before": "ID",
+      "after": "SCIENTIFIC_RUN_RECORD"
+    },
+    {
+      "before": "ID",
+      "after": "SCIENTIFIC_RUN_RECORD_V3"
+    },
+    {
+      "before": "ID",
+      "after": "SEMANTIC_ARGV_PREIMAGE"
+    },
+    {
+      "before": "ID",
+      "after": "SNAPSHOT_EVENT"
+    },
+    {
+      "before": "ID",
+      "after": "SOURCE_BUNDLE_PREIMAGE"
+    },
+    {
+      "before": "ID",
+      "after": "STAGE_RECORD"
+    },
+    {
+      "before": "ID",
+      "after": "STAGE_RECORD_V3"
+    },
+    {
+      "before": "ID",
+      "after": "SUCCESS_PROCESS"
+    },
+    {
+      "before": "ID",
+      "after": "TARGET_FINISH"
+    },
+    {
+      "before": "ID",
+      "after": "WORKLOAD_PREIMAGE"
+    },
+    {
+      "before": "LOCAL_L_FINISH",
+      "after": "DIAGNOSTIC_RECORD"
+    },
+    {
+      "before": "M2_PAIR_KEY_V3",
+      "after": "M2_CONTRAST_METRICS_V3"
+    },
+    {
+      "before": "M2_PAIR_KEY_V3",
+      "after": "M2_PAIR_ROW_V3"
+    },
+    {
+      "before": "M2_PAIR_KEY_V3",
+      "after": "M2_ROSTER_V3"
+    },
+    {
+      "before": "METHOD",
+      "after": "RUN_PREIMAGE"
+    },
+    {
+      "before": "METHOD",
+      "after": "RUN_PREIMAGE_V3"
+    },
+    {
+      "before": "METHOD",
+      "after": "SCIENTIFIC_RUN_RECORD"
+    },
+    {
+      "before": "METHOD",
+      "after": "SCIENTIFIC_RUN_RECORD_V3"
+    },
+    {
+      "before": "METHOD",
+      "after": "SEMANTIC_ARGV_PREIMAGE"
+    },
+    {
+      "before": "METRIC_DERIVATION",
+      "after": "SCIENTIFIC_RUN_RECORD"
+    },
+    {
+      "before": "METRIC_DERIVATION",
+      "after": "SCIENTIFIC_RUN_RECORD_V3"
+    },
+    {
+      "before": "PROCESS_RESULT",
+      "after": "REPLAY_RESULT"
+    },
+    {
+      "before": "PROCESS_RESULT",
+      "after": "SCIENTIFIC_RUN_RECORD"
+    },
+    {
+      "before": "PROCESS_RESULT_V3",
+      "after": "SCIENTIFIC_RUN_RECORD_V3"
+    },
+    {
+      "before": "PROJECTION_INTERVAL",
+      "after": "DIAGNOSTIC_RECORD"
+    },
+    {
+      "before": "PUBLIC_NODE",
+      "after": "PUBLIC_SERVICE"
+    },
+    {
+      "before": "PUBLIC_SERVICE",
+      "after": "PUBLIC_SNAPSHOT"
+    },
+    {
+      "before": "RATIONAL",
+      "after": "DIAGNOSTIC_RECORD"
+    },
+    {
+      "before": "RATIONAL",
+      "after": "GROUP_METRICS"
+    },
+    {
+      "before": "RATIONAL",
+      "after": "LOCAL_L_FINISH"
+    },
+    {
+      "before": "RATIONAL",
+      "after": "M2_CONTRAST_METRICS_V3"
+    },
+    {
+      "before": "RATIONAL",
+      "after": "PROJECTION_INTERVAL"
+    },
+    {
+      "before": "RATIONAL",
+      "after": "TARGET_FINISH"
+    },
+    {
+      "before": "REPLAY_RESULT",
+      "after": "SCIENTIFIC_RUN_RECORD"
+    },
+    {
+      "before": "REPLAY_RESULT",
+      "after": "SCIENTIFIC_RUN_RECORD_V3"
+    },
+    {
+      "before": "RESOURCE",
+      "after": "ASSIGNMENT"
+    },
+    {
+      "before": "RESOURCE",
+      "after": "PROJECTION_INTERVAL"
+    },
+    {
+      "before": "RESOURCE",
+      "after": "PUBLIC_NODE"
+    },
+    {
+      "before": "RESOURCE",
+      "after": "PUBLIC_SNAPSHOT"
+    },
+    {
+      "before": "RESOURCE",
+      "after": "RUNTIME_PAYLOAD"
+    },
+    {
+      "before": "SEED_TEXT",
+      "after": "INPUT_DESCRIPTOR_PREIMAGE"
+    },
+    {
+      "before": "SEED_TEXT",
+      "after": "KEY"
+    },
+    {
+      "before": "SEED_TEXT",
+      "after": "M2_PAIR_KEY_V3"
+    },
+    {
+      "before": "SEED_TEXT",
+      "after": "SCIENTIFIC_INPUT_ENVELOPE"
+    },
+    {
+      "before": "SEED_TEXT",
+      "after": "SCIENTIFIC_RUN_RECORD"
+    },
+    {
+      "before": "SEED_TEXT",
+      "after": "SCIENTIFIC_RUN_RECORD_V3"
+    },
+    {
+      "before": "SHA256",
+      "after": "ARTIFACT_REF"
+    },
+    {
+      "before": "SHA256",
+      "after": "ATTEMPT_PREIMAGE"
+    },
+    {
+      "before": "SHA256",
+      "after": "BLUEPRINT_PREIMAGE"
+    },
+    {
+      "before": "SHA256",
+      "after": "BUDGET_SCOPE_PREIMAGE_V3"
+    },
+    {
+      "before": "SHA256",
+      "after": "COMPLETION_PREIMAGE"
+    },
+    {
+      "before": "SHA256",
+      "after": "COMPLETION_PREIMAGE_V3"
+    },
+    {
+      "before": "SHA256",
+      "after": "COORDINATION_DOMAIN_PREIMAGE_V3"
+    },
+    {
+      "before": "SHA256",
+      "after": "COORDINATION_RECORD_V3"
+    },
+    {
+      "before": "SHA256",
+      "after": "DENOMINATOR_SCOPE_PREIMAGE"
+    },
+    {
+      "before": "SHA256",
+      "after": "DIAGNOSTIC_RECORD"
+    },
+    {
+      "before": "SHA256",
+      "after": "ENVIRONMENT_PREIMAGE"
+    },
+    {
+      "before": "SHA256",
+      "after": "EXECUTION_AUTH_PREIMAGE"
+    },
+    {
+      "before": "SHA256",
+      "after": "EXECUTION_CONTEXT_PREIMAGE_V3"
+    },
+    {
+      "before": "SHA256",
+      "after": "EXECUTION_PLAN_PREIMAGE"
+    },
+    {
+      "before": "SHA256",
+      "after": "EXECUTION_PLAN_PREIMAGE_V3"
+    },
+    {
+      "before": "SHA256",
+      "after": "EXECUTION_PROVENANCE_PREIMAGE_V3"
+    },
+    {
+      "before": "SHA256",
+      "after": "FEASIBILITY_CERTIFICATE"
+    },
+    {
+      "before": "SHA256",
+      "after": "GENERATION_ATTEMPT_PREIMAGE"
+    },
+    {
+      "before": "SHA256",
+      "after": "GENERATION_AUTH_PREIMAGE"
+    },
+    {
+      "before": "SHA256",
+      "after": "GENERATION_RECEIPT_PREIMAGE"
+    },
+    {
+      "before": "SHA256",
+      "after": "GENERATION_RECEIPT_PREIMAGE_V3"
+    },
+    {
+      "before": "SHA256",
+      "after": "GIT_FILE_OBSERVATION_V3"
+    },
+    {
+      "before": "SHA256",
+      "after": "INPUT_DESCRIPTOR_PREIMAGE"
+    },
+    {
+      "before": "SHA256",
+      "after": "INPUT_LOCK_PREIMAGE"
+    },
+    {
+      "before": "SHA256",
+      "after": "INPUT_RESOLUTION_PREIMAGE"
+    },
+    {
+      "before": "SHA256",
+      "after": "M2_ANALYSIS_VALIDATION_V3"
+    },
+    {
+      "before": "SHA256",
+      "after": "M2_ROSTER_V3"
+    },
+    {
+      "before": "SHA256",
+      "after": "MATERIALIZED_INPUT_PREIMAGE"
+    },
+    {
+      "before": "SHA256",
+      "after": "METRIC_DERIVATION"
+    },
+    {
+      "before": "SHA256",
+      "after": "PROCESS_RESULT"
+    },
+    {
+      "before": "SHA256",
+      "after": "PROCESS_RESULT_V3"
+    },
+    {
+      "before": "SHA256",
+      "after": "REPLAY_PREIMAGE"
+    },
+    {
+      "before": "SHA256",
+      "after": "REPLAY_RESULT"
+    },
+    {
+      "before": "SHA256",
+      "after": "RUN_PREIMAGE"
+    },
+    {
+      "before": "SHA256",
+      "after": "RUN_PREIMAGE_V3"
+    },
+    {
+      "before": "SHA256",
+      "after": "SCIENTIFIC_INPUT_ENVELOPE"
+    },
+    {
+      "before": "SHA256",
+      "after": "SCIENTIFIC_RUN_RECORD"
+    },
+    {
+      "before": "SHA256",
+      "after": "SCIENTIFIC_RUN_RECORD_V3"
+    },
+    {
+      "before": "SHA256",
+      "after": "SEMANTIC_ARGV_PREIMAGE"
+    },
+    {
+      "before": "SHA256",
+      "after": "SNAPSHOT_EVENT"
+    },
+    {
+      "before": "SHA256",
+      "after": "SOURCE_BUNDLE_PREIMAGE"
+    },
+    {
+      "before": "SHA256",
+      "after": "STAGE_RECORD"
+    },
+    {
+      "before": "SHA256",
+      "after": "STAGE_RECORD_V3"
+    },
+    {
+      "before": "SHA256",
+      "after": "STATE_KEY_PREIMAGE"
+    },
+    {
+      "before": "SHA256",
+      "after": "SUCCESS_PROCESS"
+    },
+    {
+      "before": "SHA256",
+      "after": "VALIDATION_RESULT"
+    },
+    {
+      "before": "SHA256",
+      "after": "WORKLOAD_PREIMAGE"
+    },
+    {
+      "before": "SUCCESS_PROCESS",
+      "after": "GENERATION_RECEIPT_PREIMAGE"
+    },
+    {
+      "before": "SUCCESS_PROCESS",
+      "after": "GENERATION_RECEIPT_PREIMAGE_V3"
+    },
+    {
+      "before": "TARGET_FINISH",
+      "after": "DIAGNOSTIC_RECORD"
+    },
+    {
+      "before": "UINT",
+      "after": "ANALYSIS_INDEX_KEY"
+    },
+    {
+      "before": "UINT",
+      "after": "ARTIFACT_REF"
+    },
+    {
+      "before": "UINT",
+      "after": "COORDINATION_RECORD_V3"
+    },
+    {
+      "before": "UINT",
+      "after": "DIAGNOSTIC_ERROR_RECORD"
+    },
+    {
+      "before": "UINT",
+      "after": "DIAGNOSTIC_RECORD"
+    },
+    {
+      "before": "UINT",
+      "after": "GROUP_METRICS"
+    },
+    {
+      "before": "UINT",
+      "after": "M2_ANALYSIS_REPORT_V3"
+    },
+    {
+      "before": "UINT",
+      "after": "M2_ANALYSIS_VALIDATION_V3"
+    },
+    {
+      "before": "UINT",
+      "after": "PROCESS_RESULT"
+    },
+    {
+      "before": "UINT",
+      "after": "PROCESS_RESULT_V3"
+    },
+    {
+      "before": "UINT",
+      "after": "SNAPSHOT_EVENT"
+    },
+    {
+      "before": "UINT",
+      "after": "STAGE_RECORD"
+    },
+    {
+      "before": "UINT",
+      "after": "STAGE_RECORD_V3"
+    },
+    {
+      "before": "UINT",
+      "after": "SUCCESS_PROCESS"
+    },
+    {
+      "before": "UTC",
+      "after": "EXECUTION_AUTH_PREIMAGE"
+    },
+    {
+      "before": "UTC",
+      "after": "EXECUTION_PROVENANCE_PREIMAGE_V3"
+    },
+    {
+      "before": "UTC",
+      "after": "PROCESS_RESULT"
+    },
+    {
+      "before": "UTC",
+      "after": "PROCESS_RESULT_V3"
+    },
+    {
+      "before": "UTC",
+      "after": "SUCCESS_PROCESS"
+    },
+    {
+      "before": "VALIDATION_RESULT",
+      "after": "SCIENTIFIC_RUN_RECORD"
+    },
+    {
+      "before": "VALIDATION_RESULT",
+      "after": "SCIENTIFIC_RUN_RECORD_V3"
+    },
+    {
+      "before": "VARIANT",
+      "after": "INPUT_DESCRIPTOR_PREIMAGE"
+    },
+    {
+      "before": "VARIANT",
+      "after": "SCIENTIFIC_INPUT_ENVELOPE"
+    },
+    {
+      "before": "VARIANT",
+      "after": "SCIENTIFIC_RUN_RECORD"
+    },
+    {
+      "before": "VARIANT",
+      "after": "SCIENTIFIC_RUN_RECORD_V3"
+    }
+  ],
+  "topological_order": [
+    "BINDING_COPY",
+    "BINDING_LITERAL",
+    "KEY_BINDING",
+    "VARIANT",
+    "RESOURCE",
+    "METHOD",
+    "RATIONAL",
+    "SEED_TEXT",
+    "F64_BITS",
+    "WINDOWS",
+    "UTC",
+    "UINT",
+    "ANALYSIS_INDEX_KEY",
+    "SHA256",
+    "BLUEPRINT_PREIMAGE",
+    "GENERATION_ATTEMPT_PREIMAGE",
+    "BUDGET_SCOPE_PREIMAGE_V3",
+    "EXECUTION_PLAN_PREIMAGE",
+    "STATE_KEY_PREIMAGE",
+    "GENERATION_AUTH_PREIMAGE",
+    "MATERIALIZED_INPUT_PREIMAGE",
+    "INPUT_LOCK_PREIMAGE",
+    "ID",
+    "RUNTIME_PAYLOAD",
+    "RUN_PREIMAGE",
+    "INPUT_DESCRIPTOR_PREIMAGE",
+    "GATE_STATE",
+    "TARGET_FINISH",
+    "COMPLETION_PREIMAGE",
+    "COORDINATION_DOMAIN_PREIMAGE_V3",
+    "EXECUTION_PLAN_PREIMAGE_V3",
+    "RUN_PREIMAGE_V3",
+    "ASSIGNMENT",
+    "COORDINATION_RECORD_V3",
+    "PUBLIC_NODE",
+    "PUBLIC_SERVICE",
+    "PUBLIC_SNAPSHOT",
+    "ATTEMPT_PREIMAGE",
+    "LOCAL_L_FINISH",
+    "ARTIFACT_REF",
+    "METRIC_DERIVATION",
+    "FEASIBILITY_CERTIFICATE",
+    "M2_ANALYSIS_VALIDATION_V3",
+    "STAGE_RECORD",
+    "VALIDATION_RESULT",
+    "DIAGNOSTIC_ERROR_RECORD",
+    "SNAPSHOT_EVENT",
+    "M2_ANALYSIS_REPORT_V3",
+    "EXECUTION_PROVENANCE_PREIMAGE_V3",
+    "SCIENTIFIC_INPUT_ENVELOPE",
+    "INPUT_RESOLUTION_PREIMAGE",
+    "DENOMINATOR_SCOPE_PREIMAGE",
+    "PROJECTION_INTERVAL",
+    "DIAGNOSTIC_RECORD",
+    "M2_PAIR_KEY_V3",
+    "M2_ROSTER_V3",
+    "M2_PAIR_ROW_V3",
+    "M2_CONTRAST_METRICS_V3",
+    "REPLAY_PREIMAGE",
+    "GROUP_METRICS",
+    "SOURCE_BUNDLE_PREIMAGE",
+    "COMPLETION_PREIMAGE_V3",
+    "GATE_STATE_V3",
+    "STAGE_RECORD_V3",
+    "EXECUTION_AUTH_PREIMAGE",
+    "ENVIRONMENT_PREIMAGE",
+    "RUN_LOCK_PREIMAGE",
+    "WORKLOAD_PREIMAGE",
+    "GIT_FILE_OBSERVATION_V3",
+    "EXECUTION_CONTEXT_PREIMAGE_V3",
+    "ASCII",
+    "PROCESS_RESULT",
+    "REPLAY_RESULT",
+    "SCIENTIFIC_RUN_RECORD",
+    "KEY",
+    "PROCESS_RESULT_V3",
+    "SCIENTIFIC_RUN_RECORD_V3",
+    "SUCCESS_PROCESS",
+    "GENERATION_RECEIPT_PREIMAGE_V3",
+    "GENERATION_RECEIPT_PREIMAGE",
+    "SEMANTIC_ARGV_PREIMAGE"
+  ],
+  "new_identity_chronology": [
+    "frozen source/contract",
+    "root auth + blueprint/matrix budget",
+    "observed sealed source context",
+    "input descriptor/domain",
+    "generation attempt/preprovenance",
+    "generation process/postprovenance/receipt",
+    "resolution/workload",
+    "V3 run(context)/attempt/domain",
+    "primary+replay process/provenance",
+    "verified inventory",
+    "completion receipt",
+    "published pointer",
+    "M2 member bodies",
+    "M2 inventory excluding final report",
+    "M2 report/validation",
+    "stage record"
+  ],
+  "self_reference_policy": "No own ID/hash/future stage; context excludes run/attempt; completion excludes published pointer; M2 inventory excludes final report",
+  "runtime_status": "NOT_RUN"
+}

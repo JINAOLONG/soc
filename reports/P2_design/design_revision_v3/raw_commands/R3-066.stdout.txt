@@ -1,0 +1,1 @@
+{"scope": "Final document/reference/receipt/scope integrity,not existing stage audit or runtime test", "passed": 23, "failed": [], "status": "PASS_STATIC_ONLY", "design_approval": "UNAPPROVED", "scientific_workloads_run": 0}

@@ -1,0 +1,912 @@
+{
+  "schema_version": "soc-report-only-preapproval-audit-v3-1",
+  "audited_revision": "a3680acf45c5578fc090cf53cc186f28a8e9b88a",
+  "review_verdict": "DESIGN_REVIEW_REVISE_REQUIRED",
+  "review_kind": "Fresh adversarial coordinated assistant review; not third-party audit",
+  "scope": "Only NEW report files; no modifications to existing v1/v2/source/protocol/history",
+  "severity_counts": {
+    "CRITICAL": 1,
+    "MAJOR": 2,
+    "MEDIUM": 1,
+    "LOW": 1,
+    "INFO": 4
+  },
+  "findings": [
+    {
+      "id": "V3-F01",
+      "local_id": "M1R-F01",
+      "severity": "CRITICAL",
+      "title": "Mandatory single-ready ADAS snapshot makes global negative coverage=1 unreachable",
+      "requires_targeted_document_correction": true,
+      "approval": "UNAPPROVED",
+      "local_report": "m1r_findings.json",
+      "local_report_sha256": "0b7988403e83cb3907d882bf0b7b360d9f4ab9258036f369e1c1ca4d7dc65ebe",
+      "evidence": [
+        {
+          "source_id": "S10",
+          "path": "docs/P2_design/v2/P2_workload_templates_v2.json",
+          "lines": "378-500,505-727",
+          "sha256": "f282955ab09d0110f50447269b18d0389231bed9711532853d6cdbda92d9027c"
+        },
+        {
+          "source_id": "S11",
+          "path": "docs/P2_design/v2/P2_generation_spec_v2.json",
+          "lines": "79-90,98-108",
+          "sha256": "33e3ccf437510986ffa401eea1ef48e995a1ad08df38a834374d4a1c483a91f2"
+        },
+        {
+          "source_id": "S18",
+          "path": "docs/P1_implementation_spec.md",
+          "lines": "22-26",
+          "sha256": "92e9c4d0472f7893f54fc54d302d38bd224092285d78cc85ec7cdb67fef4e972"
+        },
+        {
+          "source_id": "S19",
+          "path": "src/soc/simulator/engine.py",
+          "lines": "47-77",
+          "sha256": "977d01f3603f516e68e922542322976b813c01aad8d2dd177a5c0ac314399551"
+        },
+        {
+          "source_id": "S3",
+          "path": "docs/P2_design/v2/P2_diagnostic_spec_v2.json",
+          "lines": "22-26,58-61,107-115",
+          "sha256": "9bec37d044f4c7742d931149c195c2c3ec1540d41dc3f0a899a2b29f8c7e3e90"
+        },
+        {
+          "source_id": "S4",
+          "path": "docs/P2_design/v2/P2_public_snapshot_spec_v2.json",
+          "lines": "53-63",
+          "sha256": "fa4ce177c2d4a49a5f8f5b30bfa44e2b0d529f1e735ddfa259ae1811edc2f1af"
+        },
+        {
+          "source_id": "S5",
+          "path": "docs/P2_design/v2/P2_criterion_spec_v2.json",
+          "lines": "76-82",
+          "sha256": "98a578944e7910db933f5b3b02aee4bb03de8005853024b38cc3b02630b04e38"
+        }
+      ],
+      "detail": {
+        "local_id": "M1R-F01",
+        "severity": "CRITICAL",
+        "classification": "BLOCKING_DESIGN_CONSISTENCY",
+        "decisions": [
+          "D07",
+          "D08"
+        ],
+        "parameters": [
+          "SP01",
+          "SP14",
+          "SP15",
+          "SP25",
+          "SP31",
+          "SP36",
+          "SP37"
+        ],
+        "title": "Mandatory single-ready ADAS snapshot makes global negative coverage=1 unreachable",
+        "evidence": [
+          {
+            "source_id": "S10",
+            "path": "docs/P2_design/v2/P2_workload_templates_v2.json",
+            "lines": "378-500,505-727",
+            "sha256": "f282955ab09d0110f50447269b18d0389231bed9711532853d6cdbda92d9027c"
+          },
+          {
+            "source_id": "S11",
+            "path": "docs/P2_design/v2/P2_generation_spec_v2.json",
+            "lines": "79-90,98-108",
+            "sha256": "33e3ccf437510986ffa401eea1ef48e995a1ad08df38a834374d4a1c483a91f2"
+          },
+          {
+            "source_id": "S18",
+            "path": "docs/P1_implementation_spec.md",
+            "lines": "22-26",
+            "sha256": "92e9c4d0472f7893f54fc54d302d38bd224092285d78cc85ec7cdb67fef4e972"
+          },
+          {
+            "source_id": "S19",
+            "path": "src/soc/simulator/engine.py",
+            "lines": "47-77",
+            "sha256": "977d01f3603f516e68e922542322976b813c01aad8d2dd177a5c0ac314399551"
+          },
+          {
+            "source_id": "S3",
+            "path": "docs/P2_design/v2/P2_diagnostic_spec_v2.json",
+            "lines": "22-26,58-61,107-115",
+            "sha256": "9bec37d044f4c7742d931149c195c2c3ec1540d41dc3f0a899a2b29f8c7e3e90"
+          },
+          {
+            "source_id": "S4",
+            "path": "docs/P2_design/v2/P2_public_snapshot_spec_v2.json",
+            "lines": "53-63",
+            "sha256": "fa4ce177c2d4a49a5f8f5b30bfa44e2b0d529f1e735ddfa259ae1811edc2f1af"
+          },
+          {
+            "source_id": "S5",
+            "path": "docs/P2_design/v2/P2_criterion_spec_v2.json",
+            "lines": "76-82",
+            "sha256": "98a578944e7910db933f5b3b02aee4bb03de8005853024b38cc3b02630b04e38"
+          }
+        ],
+        "proof": "First MAIN H/L arrival has two sole-root ADAS services; first start leaves exactly one ready root and pending H; next invocation snapshot mandatory; that distinct state is E but not F. Therefore E-F>=1 and F/E<1 whenever F>0, for every ADAS seed/config. All12 loaded negative rule requires each coverage1, so NOT_SUPPORTED unreachable. No actual seed/workload/outcome needed.",
+        "required_action": "Separate documentation-only revision of observation-domain/negative-evidence policy with exact implications and future approval; do not silently relax coverage or drop the state.",
+        "approval": "UNAPPROVED",
+        "science_executed": false
+      }
+    },
+    {
+      "id": "V3-F02",
+      "local_id": "ID-R01",
+      "severity": "MAJOR",
+      "title": "Lock identity and recovery prose do not define exclusion across authorization replacement or stale owners",
+      "requires_targeted_document_correction": true,
+      "approval": "UNAPPROVED",
+      "local_report": "identity_findings.json",
+      "local_report_sha256": "e88c2689c49c8d83ed790f5d103a84ecaf18e88cd1e6a9dd0c938189788b3789",
+      "evidence": [
+        {
+          "path": "docs/P2_design/v2/P2_typed_identity_schema_v2.json",
+          "sha256": "9b478cf7e96776f6cc69f29426715efed6eec2309270be1efb3dd77985ebfbc9",
+          "lines": [
+            419,
+            578
+          ]
+        },
+        {
+          "path": "docs/P2_design/v2/P2_typed_identity_schema_v2.json",
+          "sha256": "9b478cf7e96776f6cc69f29426715efed6eec2309270be1efb3dd77985ebfbc9",
+          "lines": [
+            933,
+            986
+          ]
+        },
+        {
+          "path": "docs/P2_design/v2/P2_runner_schema_review_v2.md",
+          "sha256": "fd1a59638bf1754af0a6423b57873a6691af8c3559a1c1d62ceeeffda2da5099",
+          "lines": [
+            46,
+            54
+          ]
+        },
+        {
+          "path": "docs/P2_design/v2/P2_runner_schema_review_v2.md",
+          "sha256": "fd1a59638bf1754af0a6423b57873a6691af8c3559a1c1d62ceeeffda2da5099",
+          "lines": [
+            69,
+            93
+          ]
+        }
+      ],
+      "detail": {
+        "id": "ID-R01",
+        "severity": "MAJOR",
+        "disposition": "REVISE_D09_D10_CONCURRENCY_CONTRACT_BEFORE_FULL_APPROVAL",
+        "status": "OPEN",
+        "approval": "UNAPPROVED",
+        "title": "Lock identity and recovery prose do not define exclusion across authorization replacement or stale owners",
+        "sources": [
+          {
+            "path": "docs/P2_design/v2/P2_typed_identity_schema_v2.json",
+            "sha256": "9b478cf7e96776f6cc69f29426715efed6eec2309270be1efb3dd77985ebfbc9",
+            "lines": [
+              419,
+              578
+            ]
+          },
+          {
+            "path": "docs/P2_design/v2/P2_typed_identity_schema_v2.json",
+            "sha256": "9b478cf7e96776f6cc69f29426715efed6eec2309270be1efb3dd77985ebfbc9",
+            "lines": [
+              933,
+              986
+            ]
+          },
+          {
+            "path": "docs/P2_design/v2/P2_runner_schema_review_v2.md",
+            "sha256": "fd1a59638bf1754af0a6423b57873a6691af8c3559a1c1d62ceeeffda2da5099",
+            "lines": [
+              46,
+              54
+            ]
+          },
+          {
+            "path": "docs/P2_design/v2/P2_runner_schema_review_v2.md",
+            "sha256": "fd1a59638bf1754af0a6423b57873a6691af8c3559a1c1d62ceeeffda2da5099",
+            "lines": [
+              69,
+              93
+            ]
+          }
+        ],
+        "source_supported_facts": [
+          "INPUT_LOCK_PREIMAGE includes generation_authorization_sha256; GENERATION_AUTH binds execution authorization. RUN_LOCK_PREIMAGE includes attempt_id; ATTEMPT binds execution_authorization_sha256 and ordinal1.",
+          "Runner requires conflicts to fail closed; stale input lock release/archive requires explicit authorization; state history and original refs immutable; no automatic retries.",
+          "Runner describes fsync, immutable receipt, CAS completion pointer, and explicitly authorized publish-only recovery."
+        ],
+        "derived_facts": [
+          "Different authorization hashes for the same descriptor or run distinguish these lock identities; confirmed using fake metadata only.",
+          "Typed lock identities are not explicitly declared to be the filesystem or coordination exclusion keys. Consequently differing hashes are not evidence that an implementation would execute twice."
+        ],
+        "missing_evidence": [
+          "Unique coordination domain keyed by semantic descriptor/run independent of reissued authorization, or a prohibition/revocation rule ensuring no two active authorizations for that domain.",
+          "Owner/lease record fields, expiration clock and lost-owner fencing, or an explicit no-takeover policy.",
+          "Compare-and-swap expected value/version and which writes/process starts require current ownership; interrupted publication reconciliation contract binding original receipt, inventory, pointer and recovery authorization."
+        ],
+        "adversarial_metadata_example": "identity_static_review_results.json#/checks ID-AUTH-LOCK-SEPARATION-OBSERVED; no production identities, seeds, locking or execution.",
+        "consequence": "Two implementations can choose different exclusion domains or lease takeover rules while satisfying the high-level words. Final duplicate checks cannot replace a pre-spawn at-most-once budget invariant. This is missing design semantics, not a demonstrated duplicate scientific run.",
+        "recommendation": "UNAPPROVED documentation clarification: choose either no takeover and one immutable active authorization per descriptor/run, or a fully specified owner/fencing/CAS protocol with authorization-independent exclusion. Preserve all failed attempts and zero automatic retries.",
+        "exact_human_question": "D09/D10采用哪一种明确的并发与失主处理契约：禁止自动接管并确保每个descriptor/run仅一份有效授权，还是规定可证明失主无法继续写入/启动的fencing与CAS协议？完整字段、授权替换和原子发布规则是否先补齐再批准？",
+        "runtime_status": "NOT_IMPLEMENTED_NOT_EXECUTED"
+      }
+    },
+    {
+      "id": "V3-F03",
+      "local_id": "ID-R02",
+      "severity": "MAJOR",
+      "title": "Actual executing Git identity and observed dirty status have no exact mandatory record binding",
+      "requires_targeted_document_correction": true,
+      "approval": "UNAPPROVED",
+      "local_report": "identity_findings.json",
+      "local_report_sha256": "e88c2689c49c8d83ed790f5d103a84ecaf18e88cd1e6a9dd0c938189788b3789",
+      "evidence": [
+        {
+          "path": "docs/user_request.txt",
+          "sha256": "4c3481f0c67553eaa6d2dd6f181cc8d3f792e40fdc9586547c1c2e91fb52b461",
+          "lines": [
+            2506,
+            2529
+          ]
+        },
+        {
+          "path": "AGENTS.md",
+          "sha256": "5435e5e690a64e0e7f432bae22b8f459f646e12233d99a7a4b1a70266d8c9a22",
+          "lines": [
+            45,
+            49
+          ]
+        },
+        {
+          "path": "docs/P2_design/v2/P2_runner_schema_review_v2.md",
+          "sha256": "fd1a59638bf1754af0a6423b57873a6691af8c3559a1c1d62ceeeffda2da5099",
+          "lines": [
+            30,
+            40
+          ]
+        },
+        {
+          "path": "docs/P2_design/v2/P2_typed_identity_schema_v2.json",
+          "sha256": "9b478cf7e96776f6cc69f29426715efed6eec2309270be1efb3dd77985ebfbc9",
+          "lines": [
+            988,
+            1117
+          ]
+        },
+        {
+          "path": "docs/P2_design/v2/P2_typed_identity_schema_v2.json",
+          "sha256": "9b478cf7e96776f6cc69f29426715efed6eec2309270be1efb3dd77985ebfbc9",
+          "lines": [
+            2480,
+            2605
+          ]
+        },
+        {
+          "path": "docs/P2_design/v2/P2_typed_identity_schema_v2.json",
+          "sha256": "9b478cf7e96776f6cc69f29426715efed6eec2309270be1efb3dd77985ebfbc9",
+          "lines": [
+            2888,
+            2942
+          ]
+        }
+      ],
+      "detail": {
+        "id": "ID-R02",
+        "severity": "MAJOR",
+        "disposition": "REVISE_D10_REQUIRED_PROVENANCE_BINDING_BEFORE_FULL_APPROVAL",
+        "status": "OPEN",
+        "approval": "UNAPPROVED",
+        "title": "Actual executing Git identity and observed dirty status have no exact mandatory record binding",
+        "sources": [
+          {
+            "path": "docs/user_request.txt",
+            "sha256": "4c3481f0c67553eaa6d2dd6f181cc8d3f792e40fdc9586547c1c2e91fb52b461",
+            "lines": [
+              2506,
+              2529
+            ]
+          },
+          {
+            "path": "AGENTS.md",
+            "sha256": "5435e5e690a64e0e7f432bae22b8f459f646e12233d99a7a4b1a70266d8c9a22",
+            "lines": [
+              45,
+              49
+            ]
+          },
+          {
+            "path": "docs/P2_design/v2/P2_runner_schema_review_v2.md",
+            "sha256": "fd1a59638bf1754af0a6423b57873a6691af8c3559a1c1d62ceeeffda2da5099",
+            "lines": [
+              30,
+              40
+            ]
+          },
+          {
+            "path": "docs/P2_design/v2/P2_typed_identity_schema_v2.json",
+            "sha256": "9b478cf7e96776f6cc69f29426715efed6eec2309270be1efb3dd77985ebfbc9",
+            "lines": [
+              988,
+              1117
+            ]
+          },
+          {
+            "path": "docs/P2_design/v2/P2_typed_identity_schema_v2.json",
+            "sha256": "9b478cf7e96776f6cc69f29426715efed6eec2309270be1efb3dd77985ebfbc9",
+            "lines": [
+              2480,
+              2605
+            ]
+          },
+          {
+            "path": "docs/P2_design/v2/P2_typed_identity_schema_v2.json",
+            "sha256": "9b478cf7e96776f6cc69f29426715efed6eec2309270be1efb3dd77985ebfbc9",
+            "lines": [
+              2888,
+              2942
+            ]
+          }
+        ],
+        "source_supported_facts": [
+          "Original run manifest contract requires Git commit and dirty status. Runner32 explicitly distinguishes actual execution HEAD from frozen source bundle commit.",
+          "SCIENTIFIC_RUN_RECORD and PROCESS_RESULT are closed objects with no actual execution Git HEAD or observed dirty field. SOURCE_BUNDLE_PREIMAGE has frozen source_commit and dirty_policy, not the observed execution checkout.",
+          "raw_artifacts is a generic ARTIFACT_REF array; no required execution-provenance kind or typed body is specified."
+        ],
+        "derived_facts": [
+          "A report-only metadata commit can change execution HEAD without changing frozen relevant source files. Frozen source_commit therefore does not identify the actual invoking checkout.",
+          "A rejection policy is a rule, not the recorded result of applying the dirty-state check."
+        ],
+        "missing_evidence": [
+          "Explicit required provenance record or fields for actual execution HEAD and observed dirty status/scope, with exact source comparison and binding to the run/attempt completion inventory.",
+          "Exact source-body schema or required raw-artifact kind allowing another implementation to verify this requirement without inventing a record layout."
+        ],
+        "consequence": "The prose imposes the requirement, so omission is not semantically permitted; nevertheless the claimed exact typed schema has no normative location/type or mandatory artifact binding to satisfy it. Implementability and audit completeness remain unresolved.",
+        "recommendation": "UNAPPROVED clarification: add a mandatory typed execution-provenance receipt/ref, or required fields on a designated run/attempt record; retain frozen source identity separately, observed actual checkout and raw byte manifest separately.",
+        "exact_human_question": "是否要求D10在批准前明确实际执行HEAD与实测dirty状态的必填类型、保存位置及COMPLETE绑定？采用专门provenance收据还是运行记录字段，并明确source_commit与actual_execution_HEAD的不同含义？",
+        "runtime_status": "NOT_IMPLEMENTED_NOT_EXECUTED"
+      }
+    },
+    {
+      "id": "V3-F04",
+      "local_id": "DECISION-M2-COMPLETENESS",
+      "severity": "MEDIUM",
+      "title": "Mandatory M2 paired-analysis completeness is not explicitly bound into machine criterion/stage contract",
+      "requires_targeted_document_correction": true,
+      "approval": "UNAPPROVED",
+      "local_report": "decision_findings.json",
+      "local_report_sha256": "ee573b6ed6768781ea144473c11fcd3c11e1396946b40905891c7c3ef3930b58",
+      "evidence": [
+        {
+          "path": "docs/P2_design/v2/P2_mapping_opportunity_decision_table_v2.md",
+          "locator": "lines21–23",
+          "sha256": "594863a579ac32fdd980454fe6e0f0d24d165729a60f1c6f6526c8688fd296f4",
+          "version": "v2 DRAFT_UNAPPROVED",
+          "audited_revision": "a3680acf45c5578fc090cf53cc186f28a8e9b88a"
+        },
+        {
+          "path": "docs/P2_design/v2/P2_criterion_spec_v2.json",
+          "locator": "#/preconditions, lines49–57",
+          "sha256": "98a578944e7910db933f5b3b02aee4bb03de8005853024b38cc3b02630b04e38",
+          "version": "v2 DRAFT_UNAPPROVED",
+          "audited_revision": "a3680acf45c5578fc090cf53cc186f28a8e9b88a"
+        },
+        {
+          "path": "docs/P2_design/v2/P2_stage_state_contract_v2.json",
+          "locator": "#/stage_execution_complete and progression_conjunction, lines193–206",
+          "sha256": "c64803a93c74ee9dba6a7bc61de2d2e550264f2c5d4a920e1248665fa7e86b93",
+          "version": "v2 DRAFT_UNAPPROVED",
+          "audited_revision": "a3680acf45c5578fc090cf53cc186f28a8e9b88a"
+        },
+        {
+          "path": "docs/P2_design/v2/P2_typed_identity_schema_v2.json",
+          "locator": "#/$defs/STAGE_RECORD; lines2674–2800",
+          "sha256": "9b478cf7e96776f6cc69f29426715efed6eec2309270be1efb3dd77985ebfbc9",
+          "version": "v2 DRAFT_UNAPPROVED",
+          "audited_revision": "a3680acf45c5578fc090cf53cc186f28a8e9b88a"
+        }
+      ],
+      "detail": {
+        "local_id": "DECISION-M2-COMPLETENESS",
+        "severity": "MEDIUM",
+        "status": "OPEN_DOCUMENT_BINDING_GAP",
+        "decisions": [
+          "D07",
+          "D08",
+          "D09",
+          "D10"
+        ],
+        "parameters": [
+          "SP27",
+          "SP31"
+        ],
+        "title": "Mandatory M2 paired-analysis completeness is not explicitly bound into machine criterion/stage contract",
+        "evidence": [
+          {
+            "path": "docs/P2_design/v2/P2_mapping_opportunity_decision_table_v2.md",
+            "locator": "lines21–23",
+            "sha256": "594863a579ac32fdd980454fe6e0f0d24d165729a60f1c6f6526c8688fd296f4",
+            "version": "v2 DRAFT_UNAPPROVED",
+            "audited_revision": "a3680acf45c5578fc090cf53cc186f28a8e9b88a"
+          },
+          {
+            "path": "docs/P2_design/v2/P2_criterion_spec_v2.json",
+            "locator": "#/preconditions, lines49–57",
+            "sha256": "98a578944e7910db933f5b3b02aee4bb03de8005853024b38cc3b02630b04e38",
+            "version": "v2 DRAFT_UNAPPROVED",
+            "audited_revision": "a3680acf45c5578fc090cf53cc186f28a8e9b88a"
+          },
+          {
+            "path": "docs/P2_design/v2/P2_stage_state_contract_v2.json",
+            "locator": "#/stage_execution_complete and progression_conjunction, lines193–206",
+            "sha256": "c64803a93c74ee9dba6a7bc61de2d2e550264f2c5d4a920e1248665fa7e86b93",
+            "version": "v2 DRAFT_UNAPPROVED",
+            "audited_revision": "a3680acf45c5578fc090cf53cc186f28a8e9b88a"
+          },
+          {
+            "path": "docs/P2_design/v2/P2_typed_identity_schema_v2.json",
+            "locator": "#/$defs/STAGE_RECORD; lines2674–2800",
+            "sha256": "9b478cf7e96776f6cc69f29426715efed6eec2309270be1efb3dd77985ebfbc9",
+            "version": "v2 DRAFT_UNAPPROVED",
+            "audited_revision": "a3680acf45c5578fc090cf53cc186f28a8e9b88a"
+          }
+        ],
+        "reasoning": "Markdown V explicitly requires M2 paired completeness. JSON preconditions enumerate complete trial/metric/replay sets and M1R records but do not enumerate produced M2 paired contrasts. STAGE_RECORD generic diagnostic_report_ref/prerequisite_evidence can carry this evidence, but no normative required M2 membership/semantic validation is specified. Complete raw metrics permit analysis; they do not prove the analysis and reports were produced.",
+        "static_countermodel": "All trial raw artifacts and per-run independently matched metrics exist; selection and M1R checked; paired M2 report generation skipped. Listed JSON prerequisites need not change, while markdown V=false. This is a contract-binding omission, not a demonstrated executable bypass.",
+        "required_revision": "In a separately authorized revision, explicitly bind exact M2 pairing roster/contrasts and report membership to criterion/stage preconditions and failure output. Do not add methods or change statistics.",
+        "human_question": "是否要求补齐 M2 配对输出及缺失闭锁规则后再批准 D07–D10 的相关条款？",
+        "approval": "UNAPPROVED"
+      }
+    },
+    {
+      "id": "V3-F05",
+      "local_id": "ID-R03",
+      "severity": "LOW",
+      "title": "Generation key contract says 15 fields; all three bindings and KEY contain exactly 14",
+      "requires_targeted_document_correction": true,
+      "approval": "UNAPPROVED",
+      "local_report": "identity_findings.json",
+      "local_report_sha256": "e88c2689c49c8d83ed790f5d103a84ecaf18e88cd1e6a9dd0c938189788b3789",
+      "evidence": [
+        {
+          "path": "docs/P2_design/v2/P2_generation_spec_v2.json",
+          "sha256": "33e3ccf437510986ffa401eea1ef48e995a1ad08df38a834374d4a1c483a91f2",
+          "lines": [
+            141,
+            327
+          ]
+        },
+        {
+          "path": "docs/P2_design/v2/P2_typed_identity_schema_v2.json",
+          "sha256": "9b478cf7e96776f6cc69f29426715efed6eec2309270be1efb3dd77985ebfbc9",
+          "lines": [
+            119,
+            216
+          ]
+        }
+      ],
+      "detail": {
+        "id": "ID-R03",
+        "severity": "LOW",
+        "disposition": "CORRECT_COUNT_TEXT_WITHOUT_CHANGING_KEY_FIELDS",
+        "status": "OPEN",
+        "approval": "UNAPPROVED",
+        "title": "Generation key contract says 15 fields; all three bindings and KEY contain exactly 14",
+        "sources": [
+          {
+            "path": "docs/P2_design/v2/P2_generation_spec_v2.json",
+            "sha256": "33e3ccf437510986ffa401eea1ef48e995a1ad08df38a834374d4a1c483a91f2",
+            "lines": [
+              141,
+              327
+            ]
+          },
+          {
+            "path": "docs/P2_design/v2/P2_typed_identity_schema_v2.json",
+            "sha256": "9b478cf7e96776f6cc69f29426715efed6eec2309270be1efb3dd77985ebfbc9",
+            "lines": [
+              119,
+              216
+            ]
+          }
+        ],
+        "source_supported_facts": [
+          "The KEY required/properties set has 14 names; each of three binding objects has exactly the same 14 names.",
+          "key_binding_contract explicitly says All15 KEY fields produced exactly."
+        ],
+        "derived_facts": [
+          "No missing fifteenth field is inferable or authorized. The closed typed set and all three bindings agree with one another."
+        ],
+        "missing_evidence": [
+          "Corrected narrative count linked to the unchanged exact field set."
+        ],
+        "consequence": "Documentation count is false and should be corrected; adding an invented fifteenth field would alter keyed identity and violate the closed schema.",
+        "recommendation": "UNAPPROVED report recommendation: correct only All15 to All14 in a separately authorized documentation revision; retain exact key field sets.",
+        "exact_human_question": "是否确认以现有14字段closed KEY为准，仅更正字段数量文字，不新增随机key字段？",
+        "runtime_status": "NOT_IMPLEMENTED_NOT_EXECUTED"
+      }
+    },
+    {
+      "id": "V3-F06",
+      "local_id": "M1R-L02",
+      "severity": "INFO",
+      "title": "FULL fixed-suffix negative can miss public suffix remapping improvement",
+      "requires_targeted_document_correction": false,
+      "approval": "UNAPPROVED",
+      "local_report": "m1r_findings.json",
+      "local_report_sha256": "0b7988403e83cb3907d882bf0b7b360d9f4ab9258036f369e1c1ca4d7dc65ebe",
+      "evidence": [
+        {
+          "source_id": "S3",
+          "path": "docs/P2_design/v2/P2_diagnostic_spec_v2.json",
+          "lines": "45-55,58,115",
+          "sha256": "9bec37d044f4c7742d931149c195c2c3ec1540d41dc3f0a899a2b29f8c7e3e90"
+        },
+        {
+          "source_id": "S10",
+          "path": "docs/P2_design/v2/P2_workload_templates_v2.json",
+          "lines": "17-138",
+          "sha256": "f282955ab09d0110f50447269b18d0389231bed9711532853d6cdbda92d9027c"
+        },
+        {
+          "source_id": "S12",
+          "path": "docs/P2_design/v2/P2_resource_profiles_v2.json",
+          "lines": "64-187",
+          "sha256": "9eea5cfd43ce50d796a00d7cac86f9a7ca8798da4a3ea0c2fd9e598d965f13ae"
+        },
+        {
+          "source_id": "S13",
+          "path": "docs/P2_design/v2/P2_communication_profiles_v2.json",
+          "lines": "18-95,639-702",
+          "sha256": "74f7dde644b11d0b459fb68e9f250d9799e34f09652609b63122e0de5bf6e3b8"
+        },
+        {
+          "source_id": "S22",
+          "path": "docs/P2_design/v2/P2_complete_design_proposal_v2.md",
+          "lines": "173-174",
+          "sha256": "7f929b85554193ef1256deb3f7cc184e47c362f91e93950896a80450c9eb5fe8"
+        }
+      ],
+      "detail": {
+        "local_id": "M1R-L02",
+        "severity": "INFO",
+        "classification": "NONBLOCKING_DISCLOSED_LIMITATION_WITH_NEW_COUNTEREXAMPLE",
+        "decisions": [
+          "D07",
+          "D08"
+        ],
+        "parameters": [
+          "SP26",
+          "SP34",
+          "SP35",
+          "SP39"
+        ],
+        "title": "FULL fixed-suffix negative can miss public suffix remapping improvement",
+        "evidence": [
+          {
+            "source_id": "S3",
+            "path": "docs/P2_design/v2/P2_diagnostic_spec_v2.json",
+            "lines": "45-55,58,115",
+            "sha256": "9bec37d044f4c7742d931149c195c2c3ec1540d41dc3f0a899a2b29f8c7e3e90"
+          },
+          {
+            "source_id": "S10",
+            "path": "docs/P2_design/v2/P2_workload_templates_v2.json",
+            "lines": "17-138",
+            "sha256": "f282955ab09d0110f50447269b18d0389231bed9711532853d6cdbda92d9027c"
+          },
+          {
+            "source_id": "S12",
+            "path": "docs/P2_design/v2/P2_resource_profiles_v2.json",
+            "lines": "64-187",
+            "sha256": "9eea5cfd43ce50d796a00d7cac86f9a7ca8798da4a3ea0c2fd9e598d965f13ae"
+          },
+          {
+            "source_id": "S13",
+            "path": "docs/P2_design/v2/P2_communication_profiles_v2.json",
+            "lines": "18-95,639-702",
+            "sha256": "74f7dde644b11d0b459fb68e9f250d9799e34f09652609b63122e0de5bf6e3b8"
+          },
+          {
+            "source_id": "S22",
+            "path": "docs/P2_design/v2/P2_complete_design_proposal_v2.md",
+            "lines": "173-174",
+            "sha256": "7f929b85554193ef1256deb3f7cc184e47c362f91e93950896a80450c9eb5fe8"
+          }
+        ],
+        "proof": "Case7 hand-authored COCKPIT public state: every current two-L CPU mapping yields fixedsuffix g0; moving only H_A compose fromGPU toNPU yields exact positive mean improvement111/256ms, gain>1/20. No production snapshot, B2 reachability or scientific frequency claimed.",
+        "required_action": "Human decision must explicitly accept proxy/false-negative limits or request a new unapproved observer proposal; no global mechanism-absence interpretation.",
+        "approval": "UNAPPROVED",
+        "science_executed": false,
+        "challenge": "Confirmed by coordinated challenge_review agent from public sources and hand arithmetic; same assistant environment, not third-party independence."
+      }
+    },
+    {
+      "id": "V3-F07",
+      "local_id": "M1R-L03",
+      "severity": "INFO",
+      "title": "FINE/COARSE, stability and coverage values lack uniquely supporting source evidence",
+      "requires_targeted_document_correction": false,
+      "approval": "UNAPPROVED",
+      "local_report": "m1r_findings.json",
+      "local_report_sha256": "0b7988403e83cb3907d882bf0b7b360d9f4ab9258036f369e1c1ca4d7dc65ebe",
+      "evidence": [
+        {
+          "source_id": "S5",
+          "path": "docs/P2_design/v2/P2_criterion_spec_v2.json",
+          "lines": "15-35,55-90",
+          "sha256": "98a578944e7910db933f5b3b02aee4bb03de8005853024b38cc3b02630b04e38"
+        },
+        {
+          "source_id": "S6",
+          "path": "docs/P2_design/v2/P2_mapping_opportunity_decision_table_v2.md",
+          "lines": "7-46",
+          "sha256": "594863a579ac32fdd980454fe6e0f0d24d165729a60f1c6f6526c8688fd296f4"
+        },
+        {
+          "source_id": "S9",
+          "path": "docs/P2_design/P2_mapping_opportunity_decision_table_v1.md",
+          "lines": "9-22,39-53",
+          "sha256": "4c981f2f2303e1b1535168dd320e3c11151ea86ad35a502513893370a5906ea2"
+        },
+        {
+          "source_id": "S14",
+          "path": "docs/statistical_protocol.md",
+          "lines": "3-16,34-47",
+          "sha256": "f9c0eeb6e76f68330ba3e5d8d90e58d175c3947a1948bb41b26ad50dbc041e8a"
+        }
+      ],
+      "detail": {
+        "local_id": "M1R-L03",
+        "severity": "INFO",
+        "classification": "HUMAN_SCIENTIFIC_CHOICE_NO_NUMERIC_SOURCE",
+        "decisions": [
+          "D08"
+        ],
+        "parameters": [
+          "SP28",
+          "SP29",
+          "SP30",
+          "SP31",
+          "SP36",
+          "SP39"
+        ],
+        "title": "FINE/COARSE, stability and coverage values lack uniquely supporting source evidence",
+        "evidence": [
+          {
+            "source_id": "S5",
+            "path": "docs/P2_design/v2/P2_criterion_spec_v2.json",
+            "lines": "15-35,55-90",
+            "sha256": "98a578944e7910db933f5b3b02aee4bb03de8005853024b38cc3b02630b04e38"
+          },
+          {
+            "source_id": "S6",
+            "path": "docs/P2_design/v2/P2_mapping_opportunity_decision_table_v2.md",
+            "lines": "7-46",
+            "sha256": "594863a579ac32fdd980454fe6e0f0d24d165729a60f1c6f6526c8688fd296f4"
+          },
+          {
+            "source_id": "S9",
+            "path": "docs/P2_design/P2_mapping_opportunity_decision_table_v1.md",
+            "lines": "9-22,39-53",
+            "sha256": "4c981f2f2303e1b1535168dd320e3c11151ea86ad35a502513893370a5906ea2"
+          },
+          {
+            "source_id": "S14",
+            "path": "docs/statistical_protocol.md",
+            "lines": "3-16,34-47",
+            "sha256": "f9c0eeb6e76f68330ba3e5d8d90e58d175c3947a1948bb41b26ad50dbc041e8a"
+          }
+        ],
+        "proof": "Original sources prescribe stable opportunity, paired-seed CI and stop rules but no tau/f/8/2/4/5 values. Qualitative positive/negative coverage asymmetry has a logical rationale; numerical sufficiency and operational power remain unverified. Existing design admits this; absence of empirical justification alone is not a hidden contradiction.",
+        "required_action": "Obtain exact prior human choice after structural revision; no outcome-driven threshold selection or new CI/seeds.",
+        "approval": "UNAPPROVED",
+        "science_executed": false
+      }
+    },
+    {
+      "id": "V3-F08",
+      "local_id": "DECISION-STATUS-SCOPE",
+      "severity": "INFO",
+      "title": "STATUS and design_status retain historical v1 counts; current v2 proposal has40 unapproved groups",
+      "requires_targeted_document_correction": false,
+      "approval": "UNAPPROVED",
+      "local_report": "decision_findings.json",
+      "local_report_sha256": "ee573b6ed6768781ea144473c11fcd3c11e1396946b40905891c7c3ef3930b58",
+      "evidence": [
+        {
+          "path": "STATUS.md",
+          "locator": "lines1–56; v1/32 group statements",
+          "sha256": "5f4c9fc321d22010400f260e8ed82a714b4a19453ae7b3102e04db93211f5222",
+          "version": "immutable source at audited revision",
+          "audited_revision": "a3680acf45c5578fc090cf53cc186f28a8e9b88a"
+        },
+        {
+          "path": "docs/P2_design/v2/P2_scientific_parameter_registry_v2.json",
+          "locator": "lines13–28 and /parameters",
+          "sha256": "15ee54e75f658d5f66edb00534003d3aed642f86736b2932ae61f0692e4559c2",
+          "version": "v2 DRAFT_UNAPPROVED",
+          "audited_revision": "a3680acf45c5578fc090cf53cc186f28a8e9b88a"
+        },
+        {
+          "path": "reports/P2_design/design_status.json",
+          "locator": "historical proposal_v1 status",
+          "sha256": "95f27100ef7e02a883115b1dea2a87e6a94b2a6ddc4920c5a73da955737edcc4",
+          "version": "immutable source at audited revision",
+          "audited_revision": "a3680acf45c5578fc090cf53cc186f28a8e9b88a"
+        }
+      ],
+      "detail": {
+        "local_id": "DECISION-STATUS-SCOPE",
+        "severity": "INFO",
+        "status": "RECONCILED_WITHOUT_MODIFICATION",
+        "decisions": [
+          "D01",
+          "D02",
+          "D03",
+          "D04",
+          "D05",
+          "D06",
+          "D07",
+          "D08",
+          "D09",
+          "D10"
+        ],
+        "parameters": [
+          "SP01-SP40"
+        ],
+        "title": "STATUS and design_status retain historical v1 counts; current v2 proposal has40 unapproved groups",
+        "evidence": [
+          {
+            "path": "STATUS.md",
+            "locator": "lines1–56; v1/32 group statements",
+            "sha256": "5f4c9fc321d22010400f260e8ed82a714b4a19453ae7b3102e04db93211f5222",
+            "version": "immutable source at audited revision",
+            "audited_revision": "a3680acf45c5578fc090cf53cc186f28a8e9b88a"
+          },
+          {
+            "path": "docs/P2_design/v2/P2_scientific_parameter_registry_v2.json",
+            "locator": "lines13–28 and /parameters",
+            "sha256": "15ee54e75f658d5f66edb00534003d3aed642f86736b2932ae61f0692e4559c2",
+            "version": "v2 DRAFT_UNAPPROVED",
+            "audited_revision": "a3680acf45c5578fc090cf53cc186f28a8e9b88a"
+          },
+          {
+            "path": "reports/P2_design/design_status.json",
+            "locator": "historical proposal_v1 status",
+            "sha256": "95f27100ef7e02a883115b1dea2a87e6a94b2a6ddc4920c5a73da955737edcc4",
+            "version": "immutable source at audited revision",
+            "audited_revision": "a3680acf45c5578fc090cf53cc186f28a8e9b88a"
+          }
+        ],
+        "reasoning": "STATUS explicitly names v1 and an old checkpoint; it is preserved under the current task. Its32 is accurate for that historical scope, stale as a current v2 count. V2 registry40 describes latest proposal, not approved contract. Neither v1 nor v2 proposal is an execution authorization.",
+        "required_revision": "No existing file edits in this task. Report current-scoped facts here; any later state-sync task must preserve historical distinctions and approval truth.",
+        "approval": "UNAPPROVED"
+      }
+    },
+    {
+      "id": "V3-F09",
+      "local_id": "DECISION-TIMING-PENDING",
+      "severity": "INFO",
+      "title": "Timing protocol remains unfrozen; required freeze precedes candidate timing and full P2 progression",
+      "requires_targeted_document_correction": false,
+      "approval": "UNAPPROVED",
+      "local_report": "decision_findings.json",
+      "local_report_sha256": "ee573b6ed6768781ea144473c11fcd3c11e1396946b40905891c7c3ef3930b58",
+      "evidence": [
+        {
+          "path": "docs/user_request.txt",
+          "locator": "§59, lines1833–1860; §80, lines2332–2344",
+          "sha256": "4c3481f0c67553eaa6d2dd6f181cc8d3f792e40fdc9586547c1c2e91fb52b461",
+          "version": "immutable source at audited revision",
+          "audited_revision": "a3680acf45c5578fc090cf53cc186f28a8e9b88a"
+        },
+        {
+          "path": "docs/metric_spec.md",
+          "locator": "lines48–52",
+          "sha256": "c4b912fc672979ddc763d882e546b7a92bf53090e5b5dddd5777e2e867df182a",
+          "version": "immutable source at audited revision",
+          "audited_revision": "a3680acf45c5578fc090cf53cc186f28a8e9b88a"
+        },
+        {
+          "path": "docs/research_contract.md",
+          "locator": "lines45–48",
+          "sha256": "8ccd2f6fce470013af89c653eb3ff84a0b66809c56d321993cd973ebc18031e4",
+          "version": "immutable source at audited revision",
+          "audited_revision": "a3680acf45c5578fc090cf53cc186f28a8e9b88a"
+        },
+        {
+          "path": "docs/P2_design/v2/P2_stage_state_contract_v2.json",
+          "locator": "#/timing and progression_conjunction",
+          "sha256": "c64803a93c74ee9dba6a7bc61de2d2e550264f2c5d4a920e1248665fa7e86b93",
+          "version": "v2 DRAFT_UNAPPROVED",
+          "audited_revision": "a3680acf45c5578fc090cf53cc186f28a8e9b88a"
+        }
+      ],
+      "detail": {
+        "local_id": "DECISION-TIMING-PENDING",
+        "severity": "INFO",
+        "status": "KNOWN_OPEN_PREREQUISITE",
+        "decisions": [
+          "D05",
+          "D09",
+          "D10"
+        ],
+        "parameters": [],
+        "title": "Timing protocol remains unfrozen; required freeze precedes candidate timing and full P2 progression",
+        "evidence": [
+          {
+            "path": "docs/user_request.txt",
+            "locator": "§59, lines1833–1860; §80, lines2332–2344",
+            "sha256": "4c3481f0c67553eaa6d2dd6f181cc8d3f792e40fdc9586547c1c2e91fb52b461",
+            "version": "immutable source at audited revision",
+            "audited_revision": "a3680acf45c5578fc090cf53cc186f28a8e9b88a"
+          },
+          {
+            "path": "docs/metric_spec.md",
+            "locator": "lines48–52",
+            "sha256": "c4b912fc672979ddc763d882e546b7a92bf53090e5b5dddd5777e2e867df182a",
+            "version": "immutable source at audited revision",
+            "audited_revision": "a3680acf45c5578fc090cf53cc186f28a8e9b88a"
+          },
+          {
+            "path": "docs/research_contract.md",
+            "locator": "lines45–48",
+            "sha256": "8ccd2f6fce470013af89c653eb3ff84a0b66809c56d321993cd973ebc18031e4",
+            "version": "immutable source at audited revision",
+            "audited_revision": "a3680acf45c5578fc090cf53cc186f28a8e9b88a"
+          },
+          {
+            "path": "docs/P2_design/v2/P2_stage_state_contract_v2.json",
+            "locator": "#/timing and progression_conjunction",
+            "sha256": "c64803a93c74ee9dba6a7bc61de2d2e550264f2c5d4a920e1248665fa7e86b93",
+            "version": "v2 DRAFT_UNAPPROVED",
+            "audited_revision": "a3680acf45c5578fc090cf53cc186f28a8e9b88a"
+          }
+        ],
+        "reasoning": "Original timing target2ms unchanged. Exactinputs,warmup,repetitions,timer,aggregation,P95definition,host environment must be registered before dependent candidate timing. No original requirement found forcing timing protocol freeze before baseline-only calibration or implementation. V2 explicitly blocks overall progression until frozen protocol verified, while no candidate exists/timingbudget0.",
+        "required_revision": "Separate future task must fully specify and approve/freeze timing protocol before dependent measurements/P2 completion. No warmup,repetition,timer defaults inferred here.",
+        "approval": "UNAPPROVED"
+      }
+    }
+  ],
+  "decision_counts": {
+    "original": 10,
+    "ready_for_individual_human_decision": 5,
+    "revision_or_dependent_revision": 5,
+    "approved": 0,
+    "unapproved": 10,
+    "parameter_groups": 40,
+    "approved_parameter_groups": 0
+  },
+  "matrix_summary": {
+    "actual_rows": 2520,
+    "row_field_comparisons": 50400,
+    "config_field_comparisons": 396,
+    "rows_passed": 2520,
+    "rows_failed": 0,
+    "checks_passed": 37,
+    "checks_failed": 0,
+    "input_identity_scope": "1080 unique SYMBOLIC planned input references; ZERO resolved content identities or materialized workloads",
+    "aggregate_result": "PASS_STATIC_MATRIX_ONLY"
+  },
+  "static_review_limits": [
+    "No source runtime imported or executed",
+    "No new or inspected scientific realization/outcome",
+    "No bootstrap or CI calculated",
+    "No P0/P1 audit/test rerun; historical records and byte identities verified",
+    "Passing static checks can establish the presence of an inconsistency; they do not pass the design"
+  ],
+  "scientific_workloads_generated": 0,
+  "scientific_workloads_run": 0,
+  "design_approved": false,
+  "design_frozen": false,
+  "next_safe_action": "Human review followed by separately authorized targeted documentation-only revision of V3-F01..F05; no implementation or P2 execution",
+  "stop": true
+}

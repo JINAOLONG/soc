@@ -1,0 +1,45 @@
+{
+  "document_kind": "INHERITED_IMMUTABLE_V2_DOCUMENTS",
+  "document_version": "v3",
+  "status": "DRAFT_UNAPPROVED_NONEXECUTABLE",
+  "approval": "UNAPPROVED",
+  "approved": false,
+  "frozen": false,
+  "executable": false,
+  "execution_authorized": false,
+  "read_by_pipeline": false,
+  "starting_commit": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+  "documents": [
+    {
+      "path": "docs/P2_design/v2/P2_workload_templates_v2.json",
+      "version": "v2 DRAFT_UNAPPROVED",
+      "sha256": "f282955ab09d0110f50447269b18d0389231bed9711532853d6cdbda92d9027c",
+      "source_commit": "cae4a396c02b5fa038a771b65dce9aaad449d3a9"
+    },
+    {
+      "path": "docs/P2_design/v2/P2_resource_profiles_v2.json",
+      "version": "v2 DRAFT_UNAPPROVED",
+      "sha256": "9eea5cfd43ce50d796a00d7cac86f9a7ca8798da4a3ea0c2fd9e598d965f13ae",
+      "source_commit": "cae4a396c02b5fa038a771b65dce9aaad449d3a9"
+    },
+    {
+      "path": "docs/P2_design/v2/P2_communication_profiles_v2.json",
+      "version": "v2 DRAFT_UNAPPROVED",
+      "sha256": "74f7dde644b11d0b459fb68e9f250d9799e34f09652609b63122e0de5bf6e3b8",
+      "source_commit": "cae4a396c02b5fa038a771b65dce9aaad449d3a9"
+    },
+    {
+      "path": "docs/P2_design/v2/P2_trial_matrix_draft_v2.json",
+      "version": "v2 DRAFT_UNAPPROVED",
+      "sha256": "b58fe4c2eead01fc9b92966d557ed0bb052e7387794fc0d9b58029ffdb90af0e",
+      "source_commit": "cae4a396c02b5fa038a771b65dce9aaad449d3a9"
+    },
+    {
+      "path": "docs/P2_design/v2/P2_canonical_golden_vectors_v2.json",
+      "version": "v2 DRAFT_UNAPPROVED",
+      "sha256": "c74cd5a06f0683e28857d07fee2791bbe6c3cf384bbe863f63bcaa6e176b3160",
+      "source_commit": "cae4a396c02b5fa038a771b65dce9aaad449d3a9"
+    }
+  ],
+  "matrix": "No copy/regeneration; all2520 row bytes remain untouched. Existing symbolic wlrefs/trial IDs are stable plan labels, not actual materialized inputs. Future source/plan hash includes chosen V3 contract separately; no automatic execution authorization."
+}

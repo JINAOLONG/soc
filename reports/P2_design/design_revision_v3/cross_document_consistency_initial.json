@@ -1,0 +1,353 @@
+{
+  "status": "PASS",
+  "source_commit": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+  "protected_files": 672,
+  "protected_mismatch": [],
+  "checks": [
+    {
+      "id": "PROTECTED672_UNCHANGED",
+      "pass_": true,
+      "detail": []
+    },
+    {
+      "id": "ALL_V3_JSON_STRICT_PARSE",
+      "pass_": true,
+      "detail": {
+        "count": 11
+      }
+    },
+    {
+      "id": "ALL_DOCS_NONEXECUTABLE_UNAPPROVED",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "JSON_SCHEMA202012_META_VALID",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "ALL61_LEGACY_TYPED_DEFS_EXACT",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "ALL21_LEGACY_PREIMAGES_EXACT",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "KEY14_EXACT_AND_ORDERED",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "THREE_BINDINGS_EXACT_FIELDS_AND_VALUES",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "ONLY_F05_COUNT_WORDING_CHANGE",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "ALL_GENERATOR_NUMERIC_AND_RANDOM_RULES_EXACT",
+      "pass_": true,
+      "detail": [
+        "schema_version",
+        "generator_version",
+        "key_fill_templates",
+        "key_exclusions",
+        "parent_key_rule",
+        "algorithm",
+        "service_identity",
+        "arrivals",
+        "deadlines",
+        "controls",
+        "windows",
+        "binding_context_types",
+        "scope_change",
+        "production_artifacts"
+      ]
+    },
+    {
+      "id": "NO_MATRIX_COPY_OR_REWRITE",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "FIVE_UNCHANGED_DEPENDENCY_HASHES",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "ALL18_V2_REFERENCE_BINDINGS_VALID",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "F01_THREE_DISTINCT_ROUTES_NO_DEFAULT",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "F01_CROSS_DOCUMENT_ROUTE_TABLES_IDENTICAL",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "F01_ALL_ROUTES_TRISTATE_ORDER",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "F01_SOURCE_ADAS_SINGLE_ROOT_BOTH_SIZES",
+      "pass_": true,
+      "detail": {
+        "ADAS-8-v1": [
+          "ADAS.n01"
+        ],
+        "ADAS-16-v1": [
+          "ADAS.n01.a"
+        ]
+      }
+    },
+    {
+      "id": "F01_SHARED_H_L_JITTER_NO_GROUP_DRAW",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "F01_FIRST_PAIR_BEFORE_NEXT_SLOT_BOUND",
+      "pass_": true,
+      "detail": "Hand symbolic P>0: first jitter<.1P,next compressed slot>=.25P; no draw generated"
+    },
+    {
+      "id": "F01_MANDATORY_POST_START_SNAPSHOT_NO_EVENT_DEDUP",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "F01_ORIGINAL_SINGLE_READY_ELIGIBLE_NOT_FULL",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "F01_ZERO_F_UNDEFINED_AND_POSITIVE_F_INEQUALITY",
+      "pass_": true,
+      "detail": "General proof in F01 report: E=F+k,k>=1,F>0 =>F/(F+k)<1; F=0 precondition false. Hand fractions are not workload statistics."
+    },
+    {
+      "id": "F01_FIXED_SUFFIX_COUNTEREXAMPLE_EXACT",
+      "pass_": true,
+      "detail": "Hand scalar identity only; no scheduler/projection invoked"
+    },
+    {
+      "id": "F01_B1_EXPLICIT_SCOPE_CHANGE_NO_COVERAGE_PROMISE",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "F01_B2_ORIGINAL_E_AND_EXCLUSIONS_RETAINED",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "ALL_SCIENTIFIC_CUTOFFS_AND_BOOTSTRAP_EXACT",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "ALL_LOAD_FEASIBILITY_GROUP_RULES_EXACT",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "TIMING_UNFROZEN_2MS_NO_DEFAULTS",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "F02_TWO_COMPLETE_POLICIES_NO_DEFAULT",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "F02_SHARED_DOMAIN_NO_TRANSIENT_AUTH_ATTEMPT",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "F02_CAS_EXACT_EXPECTED_EIGHT_FIELDS",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "F02_CONSUMED_UNKNOWN_SLOT_NO_RETRY",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "F02_FENCED_TRANSFER_PRESERVES_HISTORY",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "ALL_TYPED_REFERENCE_DEPENDENCIES_RESOLVE_AND_ACYCLIC",
+      "pass_": true,
+      "detail": {
+        "definitions": 79,
+        "edges": 198
+      }
+    },
+    {
+      "id": "F02_NORMAL_PHASE_GRAPH_ACYCLIC",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "F03_REQUIRED_CLOSED_CONTEXT_AND_SEALED_SOURCE",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "F03_CONTEXT_HAS_NO_FUTURE_OR_SELF_ID",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "F03_ACTUAL_CONTEXT_IN_RUN_AND_COMPLETE_PREIMAGES",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "F03_PROVENANCE_HASH_SCOPE_BINDING",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "F03_PRE_POST_ROLES_TYPED",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "ALL18_NEW_DEFS_CLOSED_REQUIRED_EXACT",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "NEGATIVE_SCHEMA_MISSING_HEAD_FIELD_DETECTED",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "NEGATIVE_UNHASHED_PROVENANCE_OMISSION_DETECTED",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "NEGATIVE_DOMAIN_ATTEMPT_KEY_DETECTED",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "F04_SAME_FOUR_METHODS_AND720_SYMBOLIC_PAIRS",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "F04_ALL_TWELVE_REQUIRED_REPORT_MEMBERS",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "F04_FOUR_CONTRASTS_EXPLICIT_UNITS",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "F04_FOUR_SEPARATE_M2_STATES",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "F04_REQUIRED_STAGE_ROSTER_REPORT_VALIDATION_REFS",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "F04_CRITERION_AND_PROGRESSION_BIND_M2",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "F04_SKIPPED_ANALYSIS_NOT_COMPLETE_COUNTERCASE",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "F04_STATISTICAL_CONTRACT_SAME",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "ALL40_IDS_DECISIONS_AND_LINEAGE_RETAINED",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "ALL40_GROUPS_STILL_UNAPPROVED",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "ALL10_ORIGINAL_QUESTIONS_AND_APPROVALS",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "ALL40_PROPOSAL_REFERENCES_RESOLVE",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "ALL_STRUCTURED_SOURCE_HASH_AND_LINE_REFS_VALID",
+      "pass_": true,
+      "detail": {
+        "hash_references": 111,
+        "bad_ranges": []
+      }
+    },
+    {
+      "id": "ALL_WORKTREE_CHANGES_ONLY_NEW_AUTHORIZED_DIRS",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "NO_UNLOCKS_OR_EXISTING_FILE_DIFF",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "CURRENT_STAGE_BLOCKED_NO_RUNTIME_CLAIM",
+      "pass_": true,
+      "detail": null
+    }
+  ],
+  "unselected_routes": [
+    "F01",
+    "F02"
+  ],
+  "all_approval_status": "UNAPPROVED",
+  "original_key_and_matrix_semantics": "UNCHANGED",
+  "new_contracts": "PROPOSED_REQUIRES_APPROVAL",
+  "remaining_blockers": [
+    "F01 route",
+    "F02 policy/deployment",
+    "F03/F04 exact contracts",
+    "all10D/40SP including threshold bundle",
+    "timing before dependent measurement/progression"
+  ],
+  "runtime_and_science": "NOT_RUN"
+}

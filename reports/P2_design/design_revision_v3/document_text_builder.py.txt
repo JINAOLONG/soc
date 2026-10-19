@@ -1,0 +1,331 @@
+from pathlib import Path
+import json,sys,copy,csv
+sys.path.insert(0,'/tmp');from soc_r3_common import *
+def write(where,name,text):(where/name).write_text(text.strip()+'\n')
+write(O,'F01_observation_domain_options.md',r'''
+# F01 — observation domain and negative evidence options
+
+Status: PROPOSED_REQUIRES_APPROVAL; route UNSELECTED; D07/D08 and SP25/SP31/SP36 UNRESOLVED_BLOCKING. This document is not an executable observer. Exact source hashes and line/pointer evidence are in evidence_index.json and source_evidence_manifest.json. Original user_request §44 (lines1431–1494) permits2–4-ready local oracle; expanding to1 is a research-scope proposal, not a correction.
+
+## Reproduced source contradiction
+
+V2 templates ADAS8 lines378–500 and ADAS16 lines505–727 each have exactly one root. Generation arrivals lines79–90/98–108 give slot0 H/L the same jitter (no group key); slot0 arrival is <.1P, next compressed slot >=.25P. No prior work exists at the first arrival. P1 event rules (P1_implementation_spec22–26; model_spec35–42; engine47–77, read only) expose both arrivals before feasible dispatch. Whichever positive-duration compatible root starts first, another dependency-ready root remains and an arrived H service still has not-started descendants. Valid B2 starts one feasible root; a NONE on fully idle feasible work would be a correctness failure, not a way to remove this proof premise.
+
+Exactly the next actual invocation is recorded by snapshot_spec53–63, including a NONE/wait outcome; no invented polling is needed. A start changes running/public node status, so state hash/equivalence changes even at identical virtual now. Diagnostic_spec22–26/107–115 makes this eligible but not FULL: E0 includes it, F0 does not. Thus finite valid ADAS stream E0−F0≥1. If F0=0, p undefined, precondition fails. If F0>0, F0/E0=1−(E0−F0)/E0<1. All12 loaded-condition/all10seed negative requires coverage1 everywhere;4 ADAS loaded conditions already prevent this. Invalid/missing streams close earlier. This proves current negative unreachable, not science failure, not support coverage4/5 unreachable, not actual frequency.
+
+## Common classification rules
+
+All raw events and original E0 states retained under all routes. Missing/corrupt expected state makes denominator unfinalizable (INCOMPLETE/INVALID), never a legitimate exclusion or zero gain. E0=0, analysis denominator0 or covered count0 gives undefined p and INCONCLUSIVE if attempted. No evaluation (current) is NOT_EVALUATED. Source selection remains B2-only A-before-B, no outcomes select route or thresholds.
+
+Common V requires all2520 primary/replay/trace/metric artifacts valid,18 conditions selected before analysis,120 paired loaded-condition/seed cells, independent observer verification, complete M2 paired/report validity, explicit approved route and threshold before data. Common bootstrap remains10000 paired seed replicates,20261018,type7,pointwise descriptive intervals conditional on selected calibration; unchanged rejection sampling and shared index vectors. No intervals/indices computed now.
+
+For a chosen route define p=hits/F, K=#seed(p≥f). Ordering:
+
+| Priority | Condition | Result |
+|---:|---|---|
+|0|No evaluation performed|NOT_EVALUATED|
+|1|Attempted but V false, required denominator zero, or support coverage condition false|INCONCLUSIVE; invalid/incomplete evidence retained separately|
+|2|V, support coverage in every cell, each12 condition CI_low≥f and K≥8|SUPPORTED within route scope|
+|3|V, negative coverage in every cell, each12 condition CI_high<f and K≤2|NOT_SUPPORTED within route scope|
+|4|All other cases, including boundary CI_high=f|INCONCLUSIVE|
+
+CI_low=f can support; CI_high=f cannot be negative. Support and negative cannot both hold for valid ordered CI/f>0. These conditions preserve the existing unapproved numeric proposals; no bundle selected. SUPPORTED still cannot authorize progression by itself. NOT_SUPPORTED and INCONCLUSIVE both block progression; only the former supplies the route's registered narrow negative claim.
+
+## Route A — original population and coverage
+
+E=E0; F=F0 original FULL. F0 requires2..4ready,≤2pending H, complete approved public graphs/calendar, predictable running release and full enumeration. All partials remain E0−F0. p=hits/F0, coverage=F0/E0. Support coverage≥4/5; negative coverage=1. No scientific definition or threshold is changed. ADAS therefore cannot support the negative branch; successful valid science can still be INCONCLUSIVE indefinitely. A route choice would explicitly accept that information limitation and blocking consequence, not assert mechanism absence. This is the least change but not a general solution to establishing negative evidence.
+
+## Route B1 — explicit expansion of diagnostic ability
+
+E=E0 unchanged. F=F1, exactly the original FULL predicate except1..4ready qualifies. With1ready, K contains that one task; enumerate its entire compatible resource set with the same public exact-rational calendars, H targets, fixed suffix, L node cap and ties. All other resource/target/calendar caps unchanged. Max4actions/6^4assignments/36projected nodes does not increase. Support F1/E0≥4/5, negative F1/E0=1, p=hits/F1.
+
+This removes only the demonstrated single-ready obstruction. >4ready,>2pending H or expired running estimates still cause partials and may make global negative unreachable. No guarantee of empirical prevalence or complete coverage is claimed. It expands original§44 and SP25, so requires explicit research-scope approval; it is not selected or activated here. Fixed suffix remains fixed; no candidate or suffix optimizer is proposed. Original thresholds survive as proposed literals, not as justified values for the changed observer.
+
+## Route B2 — explicit conditional target population
+
+Original E0 remains the complete audit population. Define A0 before any gain calculation as eligible E0 states satisfying2≤ready≤4,1≤pending H≤2, all busy elapsed<estimate, complete approved arrived graphs/public calendars. A0 membership may use only public structural predicates; it must not depend on favorable g, projection success or analysis outcome. F_A consists of independently verified complete original projections for A0.
+
+Preserve E0−A0 with reason codes/state refs. An error or missing record inside A0 does not change membership: it is INVALID/INCOMPLETE and blocks. Report E0,A0,F_A,excluded, A0/E0,F_A/E0,F_A/A0 separately for every seed/condition. A0=0 =>INCONCLUSIVE, not0hit.
+
+Proposed conditional p=hits/F_A; positive coverage F_A/A0≥4/5; negative F_A/A0=1. This EXPLICITLY changes denominator meaning; original F_A/E0 is still always reported and never renamed to look complete. Under V, all A0 projections must verify, so F_A=A0 and the4/5 gate is redundant; it offers no assurance of A0 prevalence. No new prevalence cutoff is invented. Conditional negative cannot refute opportunity in excluded E0 states or the original broad mechanism. The user must separately decide whether a permanent research stop on such narrow evidence is acceptable. Otherwise reject/defer B2. The original hypothesis is retained verbatim, with a weaker observer unable to establish its global absence.
+
+## Coverage, thresholds and tradeoffs
+
+FINE=(tau1/100,f1/100); COARSE=(tau1/20,f1/20);8/10support,≤2/10negative,4/5positive coverage,1negative coverage remain UNAPPROVED. Source supports stable opportunity as a research condition and paired analysis, not unique numeric sufficiency. Positive witness versus exclusion evidence has a qualitative asymmetry; none of these numbers has demonstrated power. State counts are trajectory-selected and not independent time samples. Conditional FULL p does not describe excluded states. More permissive domain is not evidence of a stronger inference, and choice cannot use future outcomes.
+
+| Route | Fairness/reproducibility | Cost | Statistical/research scope | Remaining risk |
+|---|---|---|---|---|
+|A|All original states/rules retained; exact existing reproducibility|No new projection type|Original narrow estimand retained|Negative impossible for ADAS; no guarantee support|
+|B1|Same stream and seed pairing; exact expanded predicates must be frozen|More states analyzed, same per-state upper bound|Expands permitted oracle scope|Other exclusions still prevent negatives; power unknown|
+|B2|E0 and exclusions retained; selection-before-g mandatory|No more projected states than original FULL|Conditional estimand; population claim weakened|A0 can be sparse, negative cannot refute excluded-space mechanism|
+
+Engineering advice (UNAPPROVED): A is the least scope change; B1 is a bounded extension requiring§44 approval; B2 is interpretable only with explicitly conditional claims and accepted stop policy. No universal recommendation can replace the user's choice of scientific question/evidence strength. None is a default.
+
+## Fixed suffix counterexample retained
+
+Read preserved audit M1R_adversarial_cases.md Case7 lines70–101. Hand COCKPIT state now20 has two pending H suffixes and two terminal CPU-only L action tasks. All16 current K mappings yield g=0 under the fixed suffix. Move only H_A.compose fromGPU toNPU: b=1+2lambda+213/32; alternative=1+2lambda+1593/256; lambda is exact rational binary64(.05). Delta=111/256ms and Delta/b>1/20. This is hand algebra, not actual B2 reachability/frequency/science. FULL is exact within registered K/fixed-suffix space only, not all public mappings. It survives A/B1/B2; none proves mechanism absence. Local L slack also cannot prove whole-service L-P95≤1.10.
+
+## Questions and future tests
+
+Choose exact route A/B1/B2 or request a complete alternate before approval. For B1 explicitly decide the§44 extension; for B2 explicitly accept/reject conditional estimand and operational stop. Select FINE/COARSE only after domain choice; direction agreement does not approve unknown future values. Future authorized implementation must test actual hook completeness, duplicate states, one-ready, no-ready-H/pending-H, caps, elapsed boundaries, missing/corrupt, zero and exact tau, exact ties and prefix/suffix distinction against original P1 behavior. All runtime/scientific tests NOT_RUN.
+''')
+
+write(O,'F02_lock_recovery_contract.md',r'''
+# F02 — two unapproved coordination and recovery contracts
+
+D04/D09/D10; SP10/SP20 as dependencies, no new SP numbering. Both alternatives PROPOSED_REQUIRES_APPROVAL; selected policy null. Existing v2 fail-closed/fsync/immutable evidence/replay/zero retry preserved. Different authorization IDs distinguish receipt identities, not exclusion domains; no runtime duplicate execution has been demonstrated.
+
+## Shared exclusion and identities
+
+Exact schemas: P2_typed_identity_schema_v3.json BUDGET_SCOPE_PREIMAGE_V3,COORDINATION_DOMAIN_PREIMAGE_V3,COORDINATION_RECORD_V3. Budget scope binds already-known blueprint, untouched matrix SHA, registered CALIBRATION metadata and immutable root execution authorization. Registry enforces ONE root authorization for the blueprint/matrix/partition scientific budget tuple; a new hash alone cannot create another budget. Replacement authorizations under B descend from that root and cannot change budget/counts. A new scientific plan needs separate explicit review and budget registration, never automatic recovery.
+
+Domain=(budget_scope_sha,purpose,semantic_target_id), where INPUT_GENERATION uses descriptorID, PRIMARY_EXECUTION uses exact symbolic trialID, REGISTERED_REPLAY uses that same trialID with different purpose. All known before materialization/spawn. No attempt,replaceable authorization,lease owner,content SHA or future run result participates in exclusion key. MAIN and controls have different descriptors but one scope; primary/replay have separate registered single-use slots. Replay still belongs to same scientific sample, not retry.
+
+All mutations go through one authoritative linearizable coordinator and trusted admission/publication authority; workers cannot bypass it. This is a deployment trust assumption requiring later implementation proof, not an existing service. Registry and data persist durably. State observations use server monotonic ticks and clock_id including server boot identity, never host wall-clock expiry. Lease deadline is an explicit positive future tick chosen by an approved deployment profile; no duration default here. Clock identity loss/reboot makes lease validity UNKNOWN and closes admission pending explicit recovery; it does not imply expiration/permission.
+
+Every immutable coordination body includes domain,policy,revision,parent record hash,active authorization,owner,epoch,clock/deadline,phase,spawn_reserved_ever,original attempt,inventory/receipt refs and optional explicit recovery authorization. No own hash in body. Parent hash null only at first record, revision increments1. CAS expected value is EXACT (domain,current_record_sha,revision,owner,epoch,active_authorization,phase,clock_id) plus current server time within lease; compare whole pointer/version, not just owner name. Mismatches preserve conflicts and reject. All staged/receipt writes are domain/owner/epoch authenticated. Invalid/failed/incomplete artifacts never accepted COMPLETE.
+
+## Common phase transitions and CAS prerequisites
+
+| Transition | Required expected state / extra predicates | Effect |
+|---|---|---|
+|ABSENT→PREPARED|Domain absent; approved root/plan/authorization; no prior slot record, unique effective policy|Atomic create owner,epoch0,revision0,spawn_reserved_ever=false|
+|PREPARED→SPAWN_RESERVED|Exact current pointer; valid owner/lease/auth; no spawn ever; source/input/provenance preguards valid|Durably consume ONE slot before authoritative process admission; flag permanently true|
+|SPAWN_RESERVED→RUNNING|Same current epoch/owner; trusted admission admits original attempt once; no uncertainty|Append actual start evidence; never second admission|
+|RUNNING→OUTPUT_READY|Same owner/epoch; actual child exit0 and complete immutable raw output refs|Append output inventory; preserve actual nonzero/unknown exit separately as failure|
+|OUTPUT_READY→VERIFIED|Same owner/epoch; independent validation/metrics and registered replay/provenance requirements all valid|Append verified inventory; no science classification inferred|
+|VERIFIED→PUBLISHED|Same owner/epoch; exact expected prior pointer; all raw bytes/inventory durably closed/fsynced; receipt hash known|CAS publish completion pointer binding immutable receipt and original verified-record hash|
+|Any nonterminal→HALTED/FAILED/INCOMPLETE|Actual lease/auth/source/process/error evidence; append-only CAS against current record|No automatic reset to PREPARED, no count refund|
+|PUBLISHED→reuse observation|Original full refs/identities exact and immutable|New read-only reuse receipt; original pointer not rewritten,0new engine calls|
+
+Completion receipt references the VERIFIED record, not its own PUBLISHED record or pointer; write bytes/fsync, immutable receipt/fsync, then CAS pointer. If CAS loses ownership, bytes remain quarantined and do not constitute COMPLETE. Hash cycles are avoided: domain→prepared→reserved→output→verified→completion receipt→published pointer; the pointer is outside its own receipt inventory.
+
+SPAWN_RESERVED is conservative: a crash before known admission consumes the allowance and becomes INCOMPLETE. Unknown started status never authorizes another spawn. This sacrifices liveness to protect the registered maximum budget. One primary+one replay remain maximum, automatic retry0. Verification/publish-only recovery is not a new engine run and requires explicit scope authorization; it cannot fill missing outputs by regeneration.
+
+## Alternative A — unique immutable authorization, no takeover
+
+Once domain PREPARED exists, authorization and owner are immutable for its lifetime, epoch remains0. Concurrent same-authority requests observe existing record but cannot acquire another owner/admit another process. Different active authorization is rejected. Lease is a health/admission bound; expiration/owner loss closes admission and records HALTED. No ownership transfer, automatic extension, active authorization replacement or deletion to recreate the domain. Renewal, if explicitly preauthorized by the unchanged profile, requires original owner exact CAS before expiry and cannot reset spawn history. After expiry no renewal/resume of scientific process.
+
+Archive/release is explicit terminal evidence, never making the original key ABSENT or replenishing budget. If owner is unavailable, source creation/execution remains blocked. Authorized verification/publish-only recovery uses a separate receipt; original attempt remains immutable and only existing complete bytes may be verified/published by the authority under explicit recovery permission. No stale owner may publish after HALTED; authority enforces that state. This is simpler safety with no takeover/liveness guarantee.
+
+## Alternative B — fenced transfer under fixed budget
+
+If server clock validity known and lease expires, explicit signed recovery/replacement authorization under SAME root/domain may CAS the exact prior pointer to new owner,epoch+1,revision+1. Current phase,original attempt,spawn_reserved_ever and byte inventories remain. No reset/refund. New authorization must cite old and new epoch/owner, allowed actions and original artifacts; policy change not allowed.
+
+Old epoch cannot admit processes, stage authoritative writes or publish. This must be checked at the trusted authority's actual linearization point, not just a worker's earlier client check. A worker with direct ungated spawn/write is outside the trust contract and invalid. Recovered owner may reserve/admit only if prior phase PREPARED and spawn_reserved_ever=false with independently known no earlier admission. If flag true, phase RUNNING, actual start uncertain or process may still be alive, takeover permits only inspection/verification/publish existing data, never new materialization/primary/replay. An original process already admitted must be contained/terminated or remain unaccepted until identity/immutability checks; no overlapping accepted writers or fabricated COMPLETE.
+
+If coordinator cannot establish exclusive control, epoch/clock persistence or one-use admission, fail closed. Fencing does not prove a dead worker cannot run CPU instructions; it rejects unauthorized admission and authoritative publication and does not restart after admitted/uncertain process. Lost partition authority cannot autonomously declare itself current. This route costs a durable linearizable service, fencing enforcement and more fault tests; these capabilities do not currently exist in this project.
+
+## Hand-authored adversarial sequences (no lock/runtime code)
+
+| Sequence | A | B | Invariant |
+|---|---|---|---|
+|Two auths seek same domain|Second rejected|Replacement only exact CAS/explicit recovery; otherwise reject|One owner/admission domain|
+|Crash after PREPARED, definitely before reservation|HALTED, no takeover|Explicit fenced transfer possible; prior false flag preserved|No silent retry|
+|Crash after reservation, before known spawn|INCOMPLETE; slot consumed|Transfer cannot spawn|Uncertainty does not refund|
+|Network pause; old owner wakes after expired/changed epoch|HALTED owner rejected|Old epoch rejected at authority|No stale authoritative write|
+|Two claimants race expected revision|At most one atomic create/CAS|At most one CAS; loser conflict retained|Linearizable uniqueness assumed/test pending|
+|Crash after immutable receipt, before pointer|Explicit publish-only recovery|Same plus current fencing|No new engine call|
+|Same ID with different bytes|Conflict/INVALID|Conflict/INVALID|Never latest-wins|
+|Server monotonic clock reboot unknown|Block|Block; no inferred timeout takeover|No cross-clock expiry inference|
+|Completed artifact missing original raw refs|Reject reuse|Reject reuse|No rebuilding similar data as old COMPLETE|
+|Replay absent after primary0|INCOMPLETE|INCOMPLETE; no extra primary|Replay not science sample/retry|
+
+Typed dependency graph is acyclic because root authorization and descriptors/trial labels exist before domains/owner receipts; provenance for completed processes comes after their starts; verified/completion/published reference only earlier bodies. A future separately authorized implementation must verify coordinator durability/linearizability, duplicate admission, lease renewal/expiry/clock reboot, two auths, partitioned old worker, stale writes, crash at every fsync/CAS boundary, immutable parent records, consumed-unknown spawn, no extra replay and complete-bundle reuse. All NOT_RUN. Static case tables do not prove runtime atomicity.
+
+Human choice: A_NO_TAKEOVER or B_FENCED for the exact contract/version/hash, or defer/request revision. Deployment lease profile, trusted executor/publication backend and its proof must be separately specified before implementation readiness. Neither branch approved/default. Automatic retry remains0 in both.
+
+Fenced transfer is allowed only from nonterminal PREPARED/SPAWN_RESERVED/RUNNING/OUTPUT_READY/VERIFIED. PUBLISHED/HALTED/FAILED/INCOMPLETE cannot transfer or return to an active phase; any read-only recovery diagnosis is separate append-only evidence,never a relabeled COMPLETE scientific attempt. Publish-only recovery is limited to still-valid VERIFIED with original full artifacts. Renewal is not a new admission and cannot reset history.
+''')
+
+write(O,'F03_execution_provenance_contract.md',r'''
+# F03 — mandatory observed execution provenance (unapproved)
+
+D04/D09/D10; required observation originates in AGENTS rule11 and user_request2506–2529; exact layout/identity strengthening below is PROPOSED_REQUIRES_APPROVAL. See typed V3 definitions EXECUTION_CONTEXT_PREIMAGE_V3, EXECUTION_PROVENANCE_PREIMAGE_V3, RUN_PREIMAGE_V3, PROCESS_RESULT_V3, GENERATION_RECEIPT_PREIMAGE_V3, COMPLETION_PREIMAGE_V3 and SCIENTIFIC_RUN_RECORD_V3. No scientific receipt instance created.
+
+## Collection and exact fields
+
+Actual repository URL fixed to JINAOLONG/soc HTTPS. Git object format explicitly sha1 in this proposed family; unknown format rejected pending explicit extension. Context includes actual HEAD40hex, tree40hex, SYMBOLIC branch plus nonnull branch name or DETACHED plus null, frozen source commit separately, source_bundle SHA, exact source-scope manifest SHA, all observed relevant path/rawSHA/gitblob-or-null, relevant dirty/untracked booleans, whole-repository dirty boolean, dirty-scope policy SHA, execution-contract SHA, execution-image manifest SHA and SEALED_READ_ONLY_SOURCE_AND_DEPENDENCIES mode. No field is inferred from policy or a plan. Actual invoking checkout can differ from frozen source commit through a metadata-only commit, but this gets distinct context and run identity; relevant bytes must match the frozen bundle exactly.
+
+Raw observation set is mandatory: actual argv/cwd/host/timestamps/exit/stdout/stderr for git rev-parse --show-toplevel, remote get-url origin, rev-parse HEAD, rev-parse HEAD^{tree}, symbolic-ref --quiet --short HEAD (detached exit1 explicitly supported only if HEAD/tree valid), status --porcelain=v1 --untracked-files=all and source-file/blob hash reads; refs bind exact raw bytes. No secrets or credential dumps. Repository mismatch, failed required observation, malformed OID, missing raw ref or contradictory booleans =>reject. Paths must be safe repo-relative, unique ASCII; relevant rows exactly equal approved source-scope roster in ASCII path order, never omit changed/untracked relevant files. Boolean dirty flags must be derived from captured observations, not manual declarations. Arbitrary output exclusions are prohibited: approved policy separately enumerates allowed CALIBRATION artifacts and metadata paths; relevant source/config/dependency entries cannot be excluded.
+
+For each real GENERATE_MAIN/DERIVE_CONTROL/ENGINE_PRIMARY/ENGINE_REPLAY/TRACE_VALIDATE/METRIC_RECOMPUTE/DIAGNOSTIC_RECOMPUTE/M2_ANALYSIS process: PRE_SPAWN collection after read-only source/dependency sealing and before trusted admission; POST_EXIT collection after actual child termination before acceptance/publication. Both include context digest/ref, subject (known generation/primary/replay/analysis attempt), role, host, collected UTC, raw observation refs and OBSERVED/FAILED status with reason. Pre/post context must match. Changed context or failed postcheck retains all outputs but cannot COMPLETE. Aborted/not-started process may have FAILED or missing post observation, never a fabricated successful receipt.
+
+Pre/post checks alone cannot exclude a source swap restored during execution. Therefore proposed execution image is an immutable content-addressed/read-only source+dependency snapshot, and trusted executor loads only its verified manifest. Workers must not load mutable checkout modules/plugins outside that image. This is an explicit engineering trust/validation requirement, not an existing platform guarantee. Inputs/output roots remain separately controlled; sealing source is not sealing or reading reserved scientific data.
+
+## Hash scope and lifecycle
+
+SEMANTIC_CANON_V2 remains the exact unchanged ASCII/integer/closed-object canonicalizer. All exact context fields enter context preimage digest; no observation timestamp or future run/attempt enters context. Every provenance body field, including phase/time/raw refs/context/subject, enters its own digest. Original body bytes have independent ARTIFACT_REF rawSHA/size/kind; raw object is the BODY only, envelope holds ID/digest/ref outside BODY to avoid self hashing. Raw and semantic hashes have separate validation duties even if bytes happen to be canonical.
+
+Order: approved source/contract → observed sealed execution context → context digest → RUN_PREIMAGE_V3 (context and contract hash required) → run/attempt → PRE_SPAWN provenance → process → POST_EXIT provenance → immutable provenance inventory → completion preimage. Generation has known generation attempt first; its receipt V3 additionally binds observed context/provenance inventory/domain, then resolution/workload. Workload semantic payload/draw KEY unchanged. Context excludes generation/run IDs, future receipts, outputs and own digest. New preimages cannot hash their own envelope or the final commit that will contain a later report.
+
+EXECUTION_PLAN_PREIMAGE_V3 explicitly binds selected observer route,coordination policy,threshold bundle,execution-contract,typed-schema,provenance-policy,M2-contract and coordination-contract hashes. All are known definition choices before root authorization/generation; no actual context or outcomes enter that plan. V2 plan is not an effective V3 plan. Bundle membership and exact document approval must be checked semantically; a string label does not supply missing values.
+
+Inventory explicitly includes generation/control birth provenance, primary/replay and every validator/metric process used for trial acceptance; stage inventories separately include diagnostic and M2 analysis provenance. Kind/subject/role/phase uniqueness required, not merely minItems. Cross-record context/source/host checks and raw Git evidence are mandatory semantic predicates; JSON type validation alone cannot prove truthful observation.
+
+## Complete/reuse and rejection
+
+No V3 run COMPLETE without valid mandatory provenance, matching RUN_PREIMAGE_V3 and all existing physical/metric/replay conditions. No old PROCESS_RESULT/SCIENTIFIC_RUN_RECORD can be relabeled V3. Different actual execution source/context produces different V3 run identity; exact reuse requires original full bytes, actual context and source/contract/plan/input identities, never recomputing a receipt to patch old evidence. A metadata-only HEAD still differs as observed provenance; equality of relevant source does not permit pretending it was the old actual HEAD.
+
+Proposed receipt kinds: EXECUTION_CONTEXT, EXECUTION_PROVENANCE_PRE_SPAWN, EXECUTION_PROVENANCE_POST_EXIT, PROVENANCE_INVENTORY. Ref kind,body namespace/version,raw/semantic hash and linked context all verified. Missing field/ref, wrong HEAD, dirty mismatch, wrong host/subject/role, different pre/post context, unsealed/incorrect image, failed observation, bad path or self-reference fail closed; raw failure retained. No current task HEAD is inserted as a future scientific value.
+
+Future tests NOT_RUN: valid clean contextual record; metadata-only versus relevant-source commit; actual dirty/untracked changes; omitted relevant file; lying boolean; wrong HEAD/tree/repo/branch; wrong context/ref/hash/phase; duplicate phase; missing postcheck; transient mutable import rejected by sealing; source changed during preparation; fake fixture lineage; cross-family reuse; context hash field omission and cycle; failed Git command/unknown process exit; every stage analysis process covered. Proposed mandatory collection requires separately authorized implementation and review, not simply schema approval.
+''')
+
+write(O,'F04_M2_artifact_contract.md',r'''
+# F04 — explicit M2 roster, contrast and completion binding
+
+D07/D08/D09/D10, SP27/SP31; PROPOSED_REQUIRES_APPROVAL. Original v1 D07 lines275–279, v2 D07 lines156–157 and statistical_protocol3–47 preserve B1/B3/B4/B5 individually versus B2 on same workload. Exact new membership/layout is an engineering proposal; no new method/statistic is approved. Machine design: docs/P2_design/v3/P2_M2_artifact_contract_v3.json; new closed M2 types and STAGE_RECORD_V3 in typed schema.
+
+## Roster and pairs
+
+After B2-only configuration selection fixed all18 conditions and before diagnostic/M2 effects inspected: expected selected18 × registered CALIBRATION10 × (B1,B3,B4,B5 versus B2)=720 pairs. This is a symbolic product/derived count, not720 executed observations or materialized IDs. Original2520 trials and both A/B raw sets remain. Controls/replays excluded as independent M2 samples. Original18-condition descriptive scope retained; diagnostic12loaded conditions are not silently substituted for M2's18. If selection fails any condition, roster unavailable/INCOMPLETE and progression BLOCKED; do not shrink it.
+
+Pair key=(condition_id,actual_seed_decimal_string,selected_config_id,method_id,reference B2,workload_id). Both records require identical materialized MAIN workload SHA/identity, not merely same seed label, plus correct selection/config/condition and valid original complete trace/metric/replay/provenance. Exactly one row per expected key. Missing/duplicate/unexpected/cross-seed/wrong-workload/wrong-method/mismatched refs or invalid metric closes analysis; no zero filling, averaging duplicate pairs or dropping failures.
+
+## Exact contrast and auxiliary membership
+
+- H_DMR_DIFF = method H-DMR minus B2 H-DMR, proportion points (0..1 input; signed difference), not a relative gain or100-times percent rescale.
+- L_P95_DIFF = method L P95 minus B2 L P95,ms. Existing within-run type7 quantile unchanged; no ratio substitution.
+- H_WAIT_DIFF and L_WAIT_DIFF = respective per-service mean assigned_busy_wait differences,ms/service; each MAIN group50. Sum node busy-wait measures then divide by50, not by node count or all100. Preserve overall100-service summary as auxiliary if emitted; no changed primary inference.
+- Preserve CPU/GPU/NPU components, H critical-path blocking and compute/transfer/policy idle decomposition, public compatible counts and alternative predicted EFT differences. v1 defines dep,data,post_wait,assigned_busy_wait and policy_idle; independent trace checks verify identities before metrics accepted. Node-ms can overlap across parallel branches and is not an end-to-end causal decomposition.
+- Compatibility report contains source-node records and counts by group/resource-compatible count1..6, denominator50×registered size for each MAIN group, not all seeds pooled. Public alternative EFT differences retain unitsms and NONE where no alternative; never use future truth for substitute cost.
+- B2-only M1R summary references the selected route's E0/A0/F/hits and complete snapshot/recompute evidence. Historical M1 not restored. It is attached for mechanism interpretation, not a contrast against another method's nonexistent observer or an independent causal test.
+
+Exact source metric values remain immutable binary64/rational artifacts; contrast bodies encode their exact rational decoded differences. No epsilon, clipping or new threshold. New layout/directional subtraction convention is explicitly proposed, sources retain original meaning/units.
+
+## Required artifact inventory
+
+FIXED_SELECTION_REPORT; EXPECTED_M2_PAIR_ROSTER; M2_PAIR_ROWS; M2_CONTRAST_TABLE; TRACE_WAIT_DECOMPOSITION; COMPATIBILITY_AND_SUBSTITUTION_REPORT; B2_OBSERVER_SUMMARY; PAIRED_SEED_CONDITION_AND_EQUAL_WEIGHT_MACRO_SUMMARY; RESAMPLING_PROTOCOL; RESAMPLING_INDICES_OR_REPRODUCIBLE_DIGEST; M2_REPORT_INVENTORY; INDEPENDENT_M2_ANALYSIS_VALIDATION.
+
+Each inventory entry: exact kind,repo-relative safe path,raw SHA,size,namespace/schema/spec identity and source refs. Every pair row binds both original completion refs,independent metric refs,wait decomposition refs,contrast and compatibility refs,B2 observer ref. Each aggregate binds exact pair roster/rows/protocol and relevant run/metric refs. A report cannot cite a self-containing inventory: produce member bodies first, inventory excluding itself and final report, then report references inventory; stage references report and independent validation. Semantic recomputation not only existence checks is required.
+
+To avoid a report↔validation hash cycle, report inventory ALSO excludes independent validation. M2_ANALYSIS_REPORT_V3 cannot contain its later validation ref; its completed status is COMPLETE_PENDING_INDEPENDENT_VALIDATION,never self-declared VALID. After report finalizes, M2_ANALYSIS_VALIDATION_V3 references that report/expected roster and records independent verification MATCH/MISMATCH/INCOMPLETE with exact discrepancy counts. Stage explicitly binds both refs and requires MATCH/all0; m2_report_status COMPLETE is only member completeness,while m2_analysis_validity VALID requires the later verifier. The overall stage evidence includes validation separately; omission remains blocking.
+
+Bootstrap remains seeds as paired independent units,10000 replicates,analysis seed20261018,type7 percentile95%,shared index vector for every method/condition. Per-condition M2 descriptors retained all18; H macro and M1R macro retain original12loaded equal-weight conditions, L per-condition reporting all18. No conditional/macro result can compensate for a missing pair or failed condition. Any additional aggregation not already registered remains unresolved and cannot be invented in implementation. No resampling indices or intervals generated now. Selected-calibration CI is descriptive/pointwise, not independent confirmation or pure causal mapping evidence.
+
+## Separate states and predicates
+
+| Layer | Evidence needed | Missing/invalid consequence |
+|---|---|---|
+|Raw execution complete|Original2520 per-trial conjunctions|Execution incomplete/failed; no analysis PASS|
+|Single-run metric MATCH|Independent trace and exact recomputation|Invalid run retained, no valid pair|
+|M2 roster COMPLETE|Expected720 exact key multiset,all inputs valid|INCOMPLETE or INVALID|
+|M2 contrasts COMPLETE|All720 typed contrast records and source matching|INCOMPLETE or INVALID|
+|M2 reports COMPLETE|Every required inventory member verified|INCOMPLETE or INVALID|
+|M2 analysis VALID|Independent semantic pair/contrast/aggregation/statistical protocol verification|INVALID/INCOMPLETE/NOT_CHECKED,never default VALID|
+
+V3 GATE_STATE adds m2_roster_status,m2_contrast_status,m2_report_status,m2_analysis_validity. STAGE_RECORD_V3 explicitly requires m2_roster_ref,m2_analysis_report_ref,m2_validation_ref (null only before completion/failure states); criterion V and progression require nonnull verified exact members and valid states. Raw execution COMPLETE does not imply M2 COMPLETE. All outputs present but validation NOT_CHECKED still blocks.
+
+Future tests NOT_RUN: all raw runs but no M2 reports; one missing pair; duplicate pair; wrong workload/same seed; unexpected method/control/replay; zero-filled absent group; hash corruption; wrong contrast direction/unit/group denominator; omitted wait identity; changed bootstrap vector/replicate/type7; report missing validation; counts correct but keys wrong; outcome-based selection. All should fail closed without computing or running anything in this task.
+''')
+
+write(O,'F05_key_count_correction.md',r'''
+# F05 — text-only count correction within generation/key semantics
+
+SOURCE_SUPPORTED correction, still UNAPPROVED as a versioned package. D04/D10, SP10. Source v2 generation key_binding_contract says All15; actual closed KEY and arrival_jitter/service_role_factor/duration_factor bindings all contain14 names:
+
+domain,schema_version,generator_version,actual_seed_decimal_string,scenario,condition_id,config_id,service_slot,service_group,template_node_id,resource_id,edge_id,field,counter.
+
+V3 changes All15 to All14 and records version/reference metadata. Typed legacy KEY,KEY_BINDING,three key_bindings/key_fill_templates,field order/types,const version2/domain/gen version,distributions,hash-to-U mapping,RN64 conversion,control inheritance and original21 preimage objects all retained exactly. No fifteenth field,random draw,new seed or identity input invented.
+
+Separate F03 additions explicitly create new V3 provenance/run/completion contracts, not a hidden KEY change. New process identity must not be confused with unchanged generator/random semantics. Old v2 file and historical mistaken count remain byte-identical. Static comparison independently computes14,checks all3 field-name sets and canonical object equality for every protected KEY/generation numeric component; diff exclusions are enumerated in change_log.json. Runtime sample equality is NOT_RUN because no realizations exist or may be generated.
+''')
+
+write(D,'P2_runner_schema_review_v3.md',r'''
+# D09/D10 V3 — proposed runner, provenance and recovery contract
+
+DRAFT_UNAPPROVED_NONEXECUTABLE. No implementation, no process execution authorization. Read immutable base runner ../v2/P2_runner_schema_review_v2.md and its exact hash in inherited_v2_documents.json/reference_bindings. This V3 overlay takes precedence ONLY as an unapproved proposal for the findings named here. All base physical/source/lineage/replay/count/zero-retry conditions remain.
+
+## Effective contract and choices
+
+F01 observer route=null; F02 coordination policy=null; threshold bundle=null. Any unknown/unselected/unapproved route fails pre-materialization guards; never default to inherited v2 negative rule or a lock based solely on attempt ID. Typed V3 effective_family maps new required context/run/process/generation/completion/stage records. All legacy definitions remain for reuse of unchanged components and historical comparison, not an alternative acceptance path. No current pipeline consumes this document.
+
+Detailed normative proposals:
+
+- ../../../../reports/P2_design/design_revision_v3/F01_observation_domain_options.md and P2_diagnostic_spec_v3.json define three unselected routes and all denominator/negative limits.
+- ../../../../reports/P2_design/design_revision_v3/F02_lock_recovery_contract.md defines shared budget/domain,CAS exact expected tuple,phases,A no-takeover and B fencing,consumed-spawn uncertainty and immutable recovery.
+- ../../../../reports/P2_design/design_revision_v3/F03_execution_provenance_contract.md defines mandatory observed context/raw evidence,sealed source and pre/post provenance/hash binding.
+- P2_M2_artifact_contract_v3.json and ../../../../reports/P2_design/design_revision_v3/F04_M2_artifact_contract.md define exact720 selected M2 pairs,required members,separate states and semantic checks.
+
+Future order: exact approvals/source/contract freeze→root auth/budget+symbolic plan→source context→input descriptor/shared domain→generation reservation and preprovenance→actual generation→postprovenance/receipt→independent input validation/resolution→workload→RUN_PREIMAGE_V3→attempt and primary domain→preprovenance/admission→actual primary/postprovenance→independent trace/metrics and exactly one registered replay→provenance/artifact inventory→verified completion receipt/pointer. Source context has no future run/workload/own hash; domains exclude transient auth/attempt. Validation/publish-only recovery never fabricates missing child/replay evidence. MAIN generation still precedes control derivation; engine sequence remains controls then MAIN B1..B5.
+
+Future stage order: all2520 trial artifacts valid→fixed B2-only qualification/selection all18→M1R route diagnostic and M2 exact pair analysis→independent analysis validity→criterion classification→separate stage fields and timing verification. M2 completeness is now explicit. Unselected routes,NOT_FROZEN,missing/invalid evidence or unknown conjunction all BLOCKED. Child0 or execution COMPLETE never provides progression permission.
+
+Original preimage/body canonicalization unchanged for reused V2 components. New V3 records have explicit namespaces/schema3/new names and no silent legacy acceptance; closure/required fields alone do not prove referential integrity or truthful observation. Future worker entrypoint remains NOT_IMPLEMENTED and must not be called. Frozen contract and approved exact route must bind the actual future execution plan,guard and receipt inventories. No fixture-to-science conversion,seed redraw,outcome-based selection or extra retry.
+
+All detailed future fault/runtime tests in F02/F03/F04 reports plus original P1 regression remain NOT_RUN. Approval of this design alone will not authorize their implementation or scientific execution. The2ms host timing goal is unchanged; seven timing parameters remain NOT_FROZEN and must be approved before candidate timing/full P2 progression, not inferred for preparatory engineering.
+''')
+
+write(D,'P2_complete_design_proposal_v3.md',r'''
+# SOC P2 V3 design revision — DRAFT / UNAPPROVED
+
+This package revises only V3-F01–F05 against source commit cae4a396c02b5fa038a771b65dce9aaad449d3a9. It is not approval/freezing, implementation authorization or P2 execution. Historical v1/v2/STATUS/preapproval audit remain unchanged. No sample/outcome/CI/timing exists from this task.
+
+## Source and precedence
+
+Original docs/user_request.txt and model/baseline/metric/statistical/research contracts remain authoritative constraints; their exact identities and locators are in reports/P2_design/design_revision_v3/source_evidence_manifest.json and evidence_index.json. V3 carries unselected alternatives when the source cannot uniquely determine a rule. No source conflict is resolved by silently choosing a preferred rule. Typed schema gives exact new fields; issue reports specify mandatory semantic predicates beyond type checks. All V3 texts/JSON are nonexecutables.
+
+Inherited unchanged proposed content is explicitly bound in inherited_v2_documents.json. D01 six templates/H-L/size expansion,D02 all96 cost/compatibility cells,D03 all74 edge sizes/9 links,D05 complete2520-row matrix,D06 controls/load bands/absolute RN64/A-before-B remain v2 proposals, not approved values. D04 retains generator schema2/domain_v2/key semantics deliberately despite document version3. D07/D08 domain and negative-evidence policies are alternatives, not active replacements. Any active-rule attempt with null choice is UNRESOLVED_BLOCKING.
+
+## D01–D03 — unchanged synthetic model
+
+Exact templates/resources/communication in immutable v2 dependencies; no hardware validation claim. Counts/IDs/16-node splitting/group inheritance unchanged; null remains incompatible; nonpreemptive CPU0..3/GPU0/NPU0 physical/event/privacy semantics unchanged. All choices UNAPPROVED. See original v2 proposal D01–D03,hash-bound in reference_bindings.
+
+## D04 — unchanged draws, clarified text and pending engineering lineage
+
+P2_generation_spec_v3.json corrects14-field wording only for KEY semantics. Same root schema2/generator_v2/domain_v2,3bindings,distributions,arrivals/deadlines/windows/control bit inheritance. New V3 execution/provenance wrappers are separately proposed for F02/F03; no values inserted as scientific instances. Generation remains blocked by unselected locks/observer,unapproved parameters and unimplemented validation. Detail F05 report separates text correction from F03 identity extensions.
+
+## D05 — same finite matrix and budget
+
+Reference untouched ../v2/P2_trial_matrix_draft_v2.json: SHA b58fe4c2eead01fc9b92966d557ed0bb052e7387794fc0d9b58029ffdb90af0e;36configs,10CALIBRATION,2520slots,1800MAIN/360H_ISOLATED/360LOW_COMPETITION,1080symbolic inputs,max5040futureenginecalls,0automaticretry. No matrix copy or regeneration. AllA/B retained. V3 source/contract bindings will live in future approved plan, not mutate stable symbolic matrix rows. MAIN materialization first is distinct from control execution first. Timing budget0 in matrix does not waive P2 timing prerequisite.
+
+## D06 — same qualification and feasibility
+
+P2_stage_state_contract_v3.json retains exact v2 load_classification,feasibility,group_counts. No bands,seedset,method subset,deadline or strictRN64 certificate change. Control witness remains control-specific; valid off-target remains ineligible,not relabeled. Selection firstAelseB over all10 seeds independent of M1R/M2/candidate effects. No empirical eligibility claim.
+
+## D07 — three explicit observation alternatives and M2
+
+P2_diagnostic_spec_v3.json route_options: A_KEEP_ORIGINAL,B1_EXPAND_SINGLE_READY,B2_CONDITIONAL_DOMAIN. E0/event/dedup always retained. A keeps original negative-inaccessible ADAS limitation. B1 explicitly proposes extending2–4 to1–4 and may retain other coverage obstructions. B2 explicitly conditions the estimand on structurally FULL-capable states; excluded states preserved,conditional negative cannot refute original broad mechanism. Exact definitions,three-state tables,scope changes,risks and questions in F01 report. selected_route=null. Original fixed-suffix and local-L interpretations remain narrow;111/256ms counterexample is hand explanation only. No new online candidate proposed.
+
+M2 required same-workload comparisons B1/B3/B4/B5vsB2,all18selected conditions×10seeds=720pairs; exact artifact/state binding in P2_M2_artifact_contract_v3.json. M1R onlyB2; neither observer nor M2 proves causal mapping effect or later candidate benefit.
+
+## D08 — no threshold choice or active criterion
+
+P2_criterion_spec_v3.json keeps FINE/COARSE,8/2,4/5/1 literals UNAPPROVED,bootstrap protocol unchanged. operational_criterion=null,selected route/bundle=null. Coverage variable meaning differs only in explicitly proposed B2 route. No evidence-based numeric default or new cutoff. Missing/invalid state cannot become legitimate exclusion; incomplete valid coverage is not zero opportunity. All12loaded conditions,paired10seeds,selected-calibration pointwise interpretation remain. M2 roster/report/semantic verification is explicitly required alongside observer evidence before classification/progression.
+
+## D09 — shared exclusion and two recovery contracts
+
+Choose A_NO_TAKEOVER or B_FENCED only after reviewing F02 exact domain,CAS,clock,authorization replacement,spawn reservation,old-owner,publish and crash tables. policy=null. Scientific budget does not depend on attempt/replaceable auth;unknown spawn never refunds count;immutable history retained. No automatic retry or hidden new engine permission. Deployment coordinator/lease profile and trusted execution/publication proof still pending.
+
+## D10 — mandatory execution context and analysis evidence
+
+Typed schema preserves all61 base definitions exactly and adds explicitly named V3 definitions. RUN_PREIMAGE_V3 binds actual context and execution contract; provenance records mandatory PRE_SPAWN/POST_EXIT raw/semantic evidence and source isolation. Generation/completion and V3 run/process/stage records bind it. M2 has closed roster/pair/contrast/report types and four separate stage dimensions. Original P1 fixture/sample identity and runtime source untouched; all future implementation/P1 regression/fault testing pending.
+
+## Status, timing and governance
+
+SOURCE_SUPPORTED: original research/physical/privacy/statistical constraints and14-field fact. PROPOSED_REQUIRES_APPROVAL: all inherited synthetic values and new exact engineering layouts/options. UNRESOLVED_BLOCKING: F01 route,F02 policy,all scientific approvals and threshold bundle,approved deployment specifics. IMPLEMENTATION_VALIDATION_PENDING: all new behavior/fault/P1 regression. SCIENTIFIC_EXECUTION_PENDING: load eligibility,opportunity,effects,cost/power. Static PASS is not a resolution of those latter states.
+
+Timing targetP95≤2ms preserved. Exactinputs,warmup,repetitions,timer,aggregation,P95definition,host remain NOT_FROZEN; required before candidate timing and overall P2 progression. No universal before-all-engineering rule invented. Eight original stage dimensions plus fourM2dimensions remain separate; current execution NOT_STARTED,analysis NOT_RUN,mapping NOT_EVALUATED,progression BLOCKED. Old STATUS32 is historical v1;current registry40unapproved,no status file edited. All10D/40SP remain UNAPPROVED; further implementation and generation/execution require separately explicit authorization. Finish documentation/static review and STOP.
+''')
+
+# One original decision catalog and one forty-group registry; no competing numbering.
+catalog=json.loads((R/'docs/P2_design/decisions.draft.json').read_text())['decisions']
+oldrows=list(csv.DictReader((R/'reports/P2_design/preapproval_audit_v3/D01_D10_decision_readiness.csv').open()))
+extra={'D04':'Read F02/F03/F05 exact engineering additions before approving inherited draws.','D07':'Choose A/B1/B2 exact route and accept/reject fixed-suffix limits and M2 binding.','D08':'After F01 choose exact bundle and coverage/conditional-stop interpretation; no default.','D09':'Choose A_NO_TAKEOVER/B_FENCED; approve exact admission/recovery/CAS/trust assumptions,or defer.','D10':'Approve/defer exact V3 context/provenance and M2 mandatory typed bindings; not implementation permission.'}
+check=['# D01–D10 V3 approval checklist\n','All entries UNAPPROVED. Approval requires exact version/hash,scope,exceptions,user answer and source receipt; no directions treated as approval. Source questions restored verbatim.\n']
+for row,c in zip(oldrows,catalog):
+ check+=['## '+c['id']+'\n','Original question: '+c['question']+'\n','Approval: UNAPPROVED.\n','Question: '+row['exact_human_question']+' '+extra.get(c['id'],'Inherited exact V2 content unchanged and still unapproved.')+'\n','Options: '+row['feasible_options']+'\n']
+check+=['## SP01–SP40\n','All40 entries in P2_scientific_parameter_registry_v3.json remain UNRESOLVED/UNAPPROVED. No deleted/merged/new ID. D01–D03/D05/D06 have no approval record. FINE/COARSE,coverage/stability/load bands remain unselected. User must review exact selected route and hashes,not label-only consent.\n']
+write(D,'P2_D01_D10_approval_checklist_v3.md','\n'.join(check))
+
+write(D,'README.md',r'''
+# P2 V3 documentation revision index
+
+DRAFT_UNAPPROVED_NONEXECUTABLE; source cae4a396c02b5fa038a771b65dce9aaad449d3a9. Read P2_complete_design_proposal_v3.md and reports/P2_design/design_revision_v3/human_decision_packet.md. No pipeline reads this package. All10decisions/40groups UNAPPROVED. F01/F02 choices null. JSON defines design fields/options,not runtime implementation.
+
+Reference resolution: P2_*_v3 names resolve in this directory. Explicit docs/ or reports/ paths are repo-root relative. Unqualified P2_*_v2 names INSIDE inherited_v2_contract or copied unchanged base paragraphs resolve against docs/P2_design/v2,not this directory; every v2 file is hash-bound in reference_bindings.json. New v3 fields take precedence only as proposed amendments; inherited negative branch/old untyped record must never be selected implicitly. Local #/$defs refs resolve within typed schema; stage state_fields carry the same typed-local semantics explicitly. Markdown section locators D01..D10 identify labeled headings even with translated titles. No external schema fetch permitted during static review.
+
+Trial matrix/templates/resources/links/golden vectors inherited by path/hash,not copied or regenerated. Legacy KEY and all61defs retained exact; new V3 defs extend mandatory provenance/run/stage family. F01/F02 alternatives remain distinct. New evidence manifests exclude themselves; enclosing Git object binds manifest bytes. Final enclosing HEAD resolved live,never fabricated into its own file.
+''')
+print('text_reports_written')

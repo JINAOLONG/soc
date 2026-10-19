@@ -1,0 +1,9 @@
+from pathlib import Path
+import sys,json,hashlib
+sys.path.insert(0,'/tmp');from soc_r3_common import *
+files=[]
+for root in [D,O]:
+ for p in sorted(root.rglob('*')):
+  if p.is_file() and p.name!='artifact_manifest.json':files.append(dict(path=str(p.relative_to(R)),sha256=sha(p),size_bytes=p.stat().st_size))
+dump(O/'artifact_manifest.json',dict(schema_version='soc-design-revision-v3-evidence-1',task_scope='DOCUMENTATION_REVISION_AND_STATIC_REVIEW',source_commit=BASE,document_revision_status='DOCUMENT_REVISION_COMPLETE_PENDING_HUMAN_DECISION',all_approvals='UNAPPROVED',files=files,artifact_count=len(files),self_exclusion='Manifest excludes itself; enclosing Git object binds its bytes. Publication command receipts use checkpoint scope to avoid impossible self-commit hash.',scientific_artifacts_created=0))
+print(json.dumps(dict(artifact_count=len(files),manifest_sha256=sha(O/'artifact_manifest.json'))))

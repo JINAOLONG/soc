@@ -1,0 +1,133 @@
+{
+  "scope": "Final document/reference/receipt/scope integrity,not existing stage audit or runtime test",
+  "passed": 23,
+  "failed": [],
+  "checks": [
+    {
+      "id": "TEN_REQUIRED_DESIGNS_AND14_REPORTS",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "ALL672_PREEXISTING_FILES_UNCHANGED",
+      "pass_": true,
+      "detail": []
+    },
+    {
+      "id": "ALL_NAMED_V2_V3_DOCUMENT_REFS_RESOLVE",
+      "pass_": true,
+      "detail": {
+        "reference_occurrences": 143,
+        "missing": []
+      }
+    },
+    {
+      "id": "ALL_SOURCE_SHA_AND_GIT_BLOBS_MATCH",
+      "pass_": true,
+      "detail": {
+        "source_count": 53,
+        "mismatch": []
+      }
+    },
+    {
+      "id": "M2_SOURCE_EXCERPTS_CONTENT_MATCH",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "FORTY_GROUPS_APPROVAL_UNCHANGED",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "FIVE_EXACT_HUMAN_QUESTIONS_AND_TEN_DECISIONS",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "PACKET_ALL40_GROUPS_UNAPPROVED",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "FIVE_RESOLUTION_ROWS_NO_FALSE_APPROVAL",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "UNPUBLISHED_ADVERSARIAL_HISTORY_RETAINED",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "ALL_CHOICES_NULL_NO_LEGACY_FALLBACK",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "M2_REPORT_AND_VALIDATION_ARE_SEPARATE",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "TERMINAL_ATTEMPT_NEVER_REACTIVATED",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "FINAL_STAGE_STILL_BLOCKED_AND_TIMING_UNFROZEN",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "FINAL_STATE_ALL_APPROVALS_PENDING",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "FINAL_STATE_ZERO_SCIENCE_AND_NO_UNLOCK",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "COMMAND_IDS_UNIQUE",
+      "pass_": true,
+      "detail": {
+        "recorded_commands": 65
+      }
+    },
+    {
+      "id": "ALL_RAW_COMMAND_OUTPUT_HASHES_MATCH",
+      "pass_": true,
+      "detail": []
+    },
+    {
+      "id": "RECORDED_CHECKS_NOT_SCIENTIFIC",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "STATIC66_PASS_IS_NOT_APPROVAL",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "CHANGE_LOG_EVERY_DESIGN_FILE_MAPPED",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "GIT_SCOPE_ONLY_TWO_NEW_DIRS",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "id": "MATRIX_BYTE_IDENTITY_UNCHANGED",
+      "pass_": true,
+      "detail": null
+    }
+  ],
+  "status": "PASS_STATIC_ONLY",
+  "design_approval": "UNAPPROVED",
+  "scientific_workloads_run": 0
+}

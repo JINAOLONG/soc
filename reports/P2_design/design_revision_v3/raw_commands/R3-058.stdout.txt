@@ -1,0 +1,1056 @@
+{
+  "schema_version": "soc-preapproval-v3-report-evidence-1",
+  "audited_source_commit": "a3680acf45c5578fc090cf53cc186f28a8e9b88a",
+  "review_verdict": "DESIGN_REVIEW_REVISE_REQUIRED",
+  "scope": "Only new report files; all preexisting462 files protected by protected_baseline.json",
+  "self_exclusion": "This manifest is excluded to avoid self-hash recursion; enclosing Git commit binds it. Final publication receipt external to commit resolves live final SHA.",
+  "artifact_count": 209,
+  "files": [
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/D01_D10_decision_readiness.csv",
+      "sha256": "5bf2494abf3c1c373b084fe236c6669cb1d731c76f3240afad419d27ae5595cc",
+      "size_bytes": 40784
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/M1R_adversarial_cases.md",
+      "sha256": "ed629e4929bd6d3b398f326d4856b62a3a86cb8a18b75db8b97fe72e88bc570b",
+      "size_bytes": 23398
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/SP01_SP40_traceability.csv",
+      "sha256": "d7d4e2dfceaaa375f91e47a9334757752ce78e0168ecd1a3fb91b2104069a2ae",
+      "size_bytes": 170411
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/actual_commands_and_exit_codes.json",
+      "sha256": "169abd6cce4b422f4603fb0f0f0ce7f2df6e8d1f6b3aa5ecdfe5a39add8c0f2f",
+      "size_bytes": 84453
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/authorization_request.txt",
+      "sha256": "d48ca84abf36ffcecd9e7ae13e5fb95a0c32016de0ecb3d05ad85781209a7394",
+      "size_bytes": 9934
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/challenge_commands.json",
+      "sha256": "1021d35400f09c34572f61346cb1cadd992a83297c4ae4e31997fa7ef17ab7e1",
+      "size_bytes": 12044
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/challenge_findings.json",
+      "sha256": "a4755a853a25fcb47abd41278f1031b126674d7797071c7bbae66bbac5ee93bb",
+      "size_bytes": 4851
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/challenge_notes.md",
+      "sha256": "77b26fdf2c64f8d6eb677d50982d2b8ae10943b5be8f76fda7c616f75ec11eed",
+      "size_bytes": 12638
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/challenge_source_reads.json",
+      "sha256": "3e6d8b7806220e79a65884435b700e19f051fc11f74b94f1495dfbaf0fb20512",
+      "size_bytes": 6965
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/command_recorder.py.txt",
+      "sha256": "dfd81579e657ccb3a3f451d3a6745896384b4387df08ec50aee777a8afef6fca",
+      "size_bytes": 1224
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/coverage_threshold_review.md",
+      "sha256": "558e1377dad11f48ac979c410562dacef24b10ba92f990c86f0dc82d3d558a0e",
+      "size_bytes": 14501
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/cross_document_findings.json",
+      "sha256": "8c37f2c8732280cf49e80edbbfc9aa10f769952dc6a1d56a967bc11d51d73a12",
+      "size_bytes": 41864
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/decision_commands.json",
+      "sha256": "7fbb6d077ddc84f746b2403feafba0c966dc4713ad96104426cf5a2210d4c0f5",
+      "size_bytes": 23780
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/decision_findings.json",
+      "sha256": "ee573b6ed6768781ea144473c11fcd3c11e1396946b40905891c7c3ef3930b58",
+      "size_bytes": 8410
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/decision_report_verifier.py.txt",
+      "sha256": "2210c544a893495cadd25f523418669fc8e62786270b027d67857477c0e65064",
+      "size_bytes": 2549
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/decision_source_reads.json",
+      "sha256": "07954d95f846eba7086dc145a81f003b409a7e4bb2065677562ed7988fa0aa96",
+      "size_bytes": 33412
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/environment_and_discovery_notes.md",
+      "sha256": "f6572e7b2b6c0fc304a6c9672e348fff418436506e52b4d24beb565e34f0fcac",
+      "size_bytes": 919
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/executive_decision.md",
+      "sha256": "daf155c1c8a97fa6366a357a879e5bce2900a16feb82032a8867fd5f0abed72c",
+      "size_bytes": 9499
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/final_commands.json",
+      "sha256": "8396fd72420cced2c533db3b5a12fdef0cc93292e398cbed1e4cf9a653913f18",
+      "size_bytes": 3735
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/first_publication_receipt.json",
+      "sha256": "ea1af38266fbaf3b79a2d7179514309112ee285a9bae90cd2f38453b514b4cb1",
+      "size_bytes": 71045
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/history_commands.json",
+      "sha256": "f4384c551c430ca04a3a999af50d3e9b306cdcd628561d93a04c7ca237b3ca7a",
+      "size_bytes": 2732
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/human_decision_packet.md",
+      "sha256": "315b546fca4d95a2514128673f750b2247a03a380821b19029815677c9f0406d",
+      "size_bytes": 44251
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/identity_commands.json",
+      "sha256": "c2f536f3c5a4bb19e2ff5f04dac1a98b56e120f083bf4ae1bfced1fddb5c9835",
+      "size_bytes": 3601
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/identity_findings.json",
+      "sha256": "e88c2689c49c8d83ed790f5d103a84ecaf18e88cd1e6a9dd0c938189788b3789",
+      "size_bytes": 9960
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/identity_recovery_review.md",
+      "sha256": "e8046e555117633b620dfdda09da56ca12380b5219e435fd152ac6274cb80dea",
+      "size_bytes": 20322
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/identity_source_reads.json",
+      "sha256": "44ed9f316a3d8f28aaba5415df00e2e7347201aeea1b6af781523ed3685fb1bf",
+      "size_bytes": 6994
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/identity_static_review.py.txt",
+      "sha256": "b2291780a8c43a1d477614aebd792949dad77c92f41c5f78f716dd5d2f875233",
+      "size_bytes": 12912
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/identity_static_review_results.json",
+      "sha256": "30097f36f0b131f00c389367cf0f778d515108ea79094491334063344c84209a",
+      "size_bytes": 27503
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/m1r_commands.json",
+      "sha256": "f112a6a771c7be9a686e036a579a7e20a78acefd1fbcaa9cbdd860c0422f4242",
+      "size_bytes": 7546
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/m1r_findings.json",
+      "sha256": "0b7988403e83cb3907d882bf0b7b360d9f4ab9258036f369e1c1ca4d7dc65ebe",
+      "size_bytes": 7479
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/m1r_source_reads.json",
+      "sha256": "e86661db2f04d8258241bd72df0fc1c0427711c8786db7fc197dfa7f64485616",
+      "size_bytes": 11149
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/m1r_static_checks.json",
+      "sha256": "0392f4cd48eafd225faf831cf67935520edfff2be6a1acfa2fd4ddd988ac68a8",
+      "size_bytes": 7614
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/m1r_static_checks.py.txt",
+      "sha256": "494db557419c03ef3ec6e7944220ebe37883153e084d35f2d52cf0564e5d510d",
+      "size_bytes": 5552
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/main_commands.json",
+      "sha256": "fbdef0f2e943ff654bc47a373a458eb65eaa6687abfad91ee0a7cc793f8a63ab",
+      "size_bytes": 23793
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/matrix_commands.json",
+      "sha256": "2e839a1043826e2ffdbeb54c8ea23f01b68841d2a4cc9b22df810b8b7995bb60",
+      "size_bytes": 4375
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/matrix_findings.json",
+      "sha256": "7ba2fe68a1d85812f475f766be20cf99506781cac480125a48128144082521a0",
+      "size_bytes": 899
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/matrix_method.md",
+      "sha256": "a6b4378a9ce6c2389f82769f8e91c2de45046b2ed73852b94b286891953f7fc7",
+      "size_bytes": 5959
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/matrix_source_reads.json",
+      "sha256": "c40b5e1dc6ee2f2e326aeb2d13287a64f71ccc53bb88fb33e195dca0bfd526a1",
+      "size_bytes": 5074
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/matrix_static_audit.py.txt",
+      "sha256": "0e5459dfe00036272052f7928cd0b56b151fabe81b1ebc9e249b5744b0a31ab0",
+      "size_bytes": 20867
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/protected_baseline.json",
+      "sha256": "cecac4dbf73314974147cff7812eb8f99284c0fab37219a27de2e5c3057cdfcc",
+      "size_bytes": 86867
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/challenge-001.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/challenge-001.stdout.txt",
+      "sha256": "78f0ec37501dfb0113ef6c5b728ef6371f4e94c1314a8820d976db48746fd6f4",
+      "size_bytes": 27750
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/challenge-002.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/challenge-002.stdout.txt",
+      "sha256": "75634f036448189ba1e97d53b6013dfc9c0f147002ac68830fadb235346c476c",
+      "size_bytes": 63368
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/challenge-003.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/challenge-003.stdout.txt",
+      "sha256": "8708098744819d2fd63256ab9c971dbfa8cc0377b1ff2938d9115b8b4ecdc37e",
+      "size_bytes": 21651
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/challenge-004.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/challenge-004.stdout.txt",
+      "sha256": "d346d364043060d1bb04b4d4a3c5cb2df2b1eecbb84b7b32f86eb083fc7794ca",
+      "size_bytes": 27087
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/challenge-005.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/challenge-005.stdout.txt",
+      "sha256": "98706752f315ad9a761a2d4f7cf3e12b0eac194d9ffd3d4d551fc45d0d6cf900",
+      "size_bytes": 32575
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/challenge-006.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/challenge-006.stdout.txt",
+      "sha256": "d6f3e4ae03fb6f1f12011befef5345c3cae20a31b8b1d84fa30764f51fda4e68",
+      "size_bytes": 12440
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/challenge-007.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/challenge-007.stdout.txt",
+      "sha256": "c6bddface50a17a7683768dccbec52278614ee8ced37cc4e861b1e5cb880c1e2",
+      "size_bytes": 9683
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/challenge-008.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/challenge-008.stdout.txt",
+      "sha256": "8523ae158a151d573a35bf6b160f4832804ebc40539390df11c35e112ee71929",
+      "size_bytes": 9731
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/challenge-009.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/challenge-009.stdout.txt",
+      "sha256": "41fa3c52895a0bb4d02d190efad38c381391aa0a3cefe35520bcd88811eb738e",
+      "size_bytes": 17482
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/decision-001.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/decision-001.stdout.txt",
+      "sha256": "e27adfeb911dca84e08eaa25e0cd0340870f1cd6581084f136c49e6dac385dba",
+      "size_bytes": 31118
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/decision-002.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/decision-002.stdout.txt",
+      "sha256": "807036dc7e39d690969736522104edc879b06bbd79538ceba012ed25a019d3bc",
+      "size_bytes": 19677
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/decision-003.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/decision-003.stdout.txt",
+      "sha256": "102d62b4482780476acf76e7fe97cf5fe3b05d8ca9a1bf15c5ae44c6154e61cc",
+      "size_bytes": 53548
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/decision-004.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/decision-004.stdout.txt",
+      "sha256": "fcf901e2624ebce94f15dcdc34b1d080ebc28a243ffb9fda43218eeda4e2b55a",
+      "size_bytes": 93585
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/decision-005.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/decision-005.stdout.txt",
+      "sha256": "a729a3b00d9d21ff61efe91c49bc975cd73a21b872c31cfe736ada3a5ee38dbb",
+      "size_bytes": 14475
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/decision-006.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/decision-006.stdout.txt",
+      "sha256": "12d64b933972830448893dbc3dd6e7a4ce08a858ea9dc9d04a483835d483db48",
+      "size_bytes": 16252
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/decision-007.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/decision-007.stdout.txt",
+      "sha256": "c069107e4d7027dc43ec6686d8a945a762846b380e83ba89f71d8638d63995e0",
+      "size_bytes": 11436
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/decision-008.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/decision-008.stdout.txt",
+      "sha256": "331ab1cdd8d96cbc1c33dd57ff933b0c9d4151e59ccc70800121d1acb128f0da",
+      "size_bytes": 7488
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/decision-009.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/decision-009.stdout.txt",
+      "sha256": "9c0f18595e6ff244ad6213aac69fabff758a099f7a086343fb66a5ac5fcdc293",
+      "size_bytes": 29275
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/decision-010.stderr.txt",
+      "sha256": "f541fd158249450d649491d0383738b42d8c212a4deb9c1c598541893bf7ab74",
+      "size_bytes": 572
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/decision-010.stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/decision-011.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/decision-011.stdout.txt",
+      "sha256": "0d287872d48d5f60ff27716ed6623f20ae070f669bb1ed727173d24fbb541912",
+      "size_bytes": 3166
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/decision-012.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/decision-012.stdout.txt",
+      "sha256": "7c54a0f17c11036e1cb7f34b82734792746c946b20f5cf021c1ced298cc04367",
+      "size_bytes": 19494
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/decision-013.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/decision-013.stdout.txt",
+      "sha256": "2c994d58ecedd947c7418eb3310a33dda16e5d166eeffd95ba709bc39127ca28",
+      "size_bytes": 1451962
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/decision-014.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/decision-014.stdout.txt",
+      "sha256": "ec2fb6fb20f34809fa1980af7a330bb69f17a4781ee4f290e731b3326f4c3672",
+      "size_bytes": 58
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/decision-015.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/decision-015.stdout.txt",
+      "sha256": "bd2c1f75610d24209f279be5ce3ce09e5c437c7a75aca6ab8355f51cdec5d60e",
+      "size_bytes": 3356
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/decision-016.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/decision-016.stdout.txt",
+      "sha256": "e7a63b6e37bbd888afb3ebb61c1c6e0daea6f9a220f3542bbde8f07e47b455ba",
+      "size_bytes": 39161
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/decision-017.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/decision-017.stdout.txt",
+      "sha256": "ddcfa13063842fe6cb7b8d47a98df9a82d1da8751bbc11e890db581c230ee48c",
+      "size_bytes": 32483
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/decision-018.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/decision-018.stdout.txt",
+      "sha256": "9393e671846fd8c4d6c292d17aace1c03da93d32c50cdd6a3653899da71001ac",
+      "size_bytes": 166
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/decision-019.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/decision-019.stdout.txt",
+      "sha256": "fe677ddff5a20df6baeaf80198f43c2014a2542bb6f97771779886b25f699301",
+      "size_bytes": 1044
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/decision-020.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/decision-020.stdout.txt",
+      "sha256": "9393e671846fd8c4d6c292d17aace1c03da93d32c50cdd6a3653899da71001ac",
+      "size_bytes": 166
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/decision-021.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/decision-021.stdout.txt",
+      "sha256": "9181c01ad25dc3f9d9052cc260e4c5b669c4ea9ae3730329202e3e025870f8c7",
+      "size_bytes": 200
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/decision-022.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/decision-022.stdout.txt",
+      "sha256": "9393e671846fd8c4d6c292d17aace1c03da93d32c50cdd6a3653899da71001ac",
+      "size_bytes": 166
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/decision-023.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/decision-023.stdout.txt",
+      "sha256": "719bf0e330fbe6bf25734d9540a9e7f2796f1ee7a0dcb6040c347008f4d8cfe0",
+      "size_bytes": 309
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/final-001.stderr.txt",
+      "sha256": "5f9808e099ab80939fe9bc00f060db33616dbd26c0e6a343ff3496a96cb8ab1e",
+      "size_bytes": 979
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/final-001.stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/final-002.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/final-002.stdout.txt",
+      "sha256": "719bf0e330fbe6bf25734d9540a9e7f2796f1ee7a0dcb6040c347008f4d8cfe0",
+      "size_bytes": 309
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/final-003.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/final-003.stdout.txt",
+      "sha256": "d77f296abc6d938428cff9d3bdf3e827551b7426b704f2f3f4901e5693fd79e2",
+      "size_bytes": 874
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/final-004.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/final-004.stdout.txt",
+      "sha256": "763dfd2afa3e557634e65e414c9b6228e73d1a900add5d7a5899ae454cc75433",
+      "size_bytes": 661
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/history-001.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/history-001.stdout.txt",
+      "sha256": "e378e85071d6c97fb6cd5801d9449eef176a90baddcd786181c6685eaa29feac",
+      "size_bytes": 28397
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/history-002.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/history-002.stdout.txt",
+      "sha256": "4c981f2f2303e1b1535168dd320e3c11151ea86ad35a502513893370a5906ea2",
+      "size_bytes": 4533
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/history-003.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/history-003.stdout.txt",
+      "sha256": "0344c3d1ec6e0f1729bb758503f03dedf1fb780b00c55cbd9c60261b91d398b7",
+      "size_bytes": 4275
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/identity-001.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/identity-001.stdout.txt",
+      "sha256": "89714dc60689bcc2e573f33df5107074c285968d4b2e507f969742fc24071131",
+      "size_bytes": 456
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/identity-002.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/identity-002.stdout.txt",
+      "sha256": "89714dc60689bcc2e573f33df5107074c285968d4b2e507f969742fc24071131",
+      "size_bytes": 456
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/identity-003.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/identity-003.stdout.txt",
+      "sha256": "3ebce0e5ed89e90a17e2bcd5c1aacad64f119621c5a3a8e0914f852dd05110d2",
+      "size_bytes": 129
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/m1r-001.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/m1r-001.stdout.txt",
+      "sha256": "69c3f16c95c281c09d7bed5a18cf565fd45bd2124f55cdb7c4a4c6545d17d43f",
+      "size_bytes": 100351
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/m1r-002.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/m1r-002.stdout.txt",
+      "sha256": "14c51d5791bea86df1e7bcb7c4e6d5274a23512917ee6b5ee3ffc55015b489b9",
+      "size_bytes": 57953
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/m1r-003.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/m1r-003.stdout.txt",
+      "sha256": "540d299f08c3ca3f2b52e67a93ff330866fe900ae1621a7a90076a22ba282912",
+      "size_bytes": 113890
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/m1r-004.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/m1r-004.stdout.txt",
+      "sha256": "a184bb8fd0b8c2a604e1926d170d4be39cb9201017195b7e2023e7e5b8ff249b",
+      "size_bytes": 172747
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/m1r-005.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/m1r-005.stdout.txt",
+      "sha256": "01e550931d4058984e2599571342264b123d2e3eb183be8f4ba696b5a7e6bc0c",
+      "size_bytes": 36202
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/m1r-006.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/m1r-006.stdout.txt",
+      "sha256": "762d1c92a3c1b07d5a17f41d405c1116e1654365222fafeef8b595a8730b4554",
+      "size_bytes": 368
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-001.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-001.stdout.txt",
+      "sha256": "cb68db68fcc70d67be575a6e90e6448d6df8b0924ca866e3f43dab3e3093f686",
+      "size_bytes": 15
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-002.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-002.stdout.txt",
+      "sha256": "4c7a03f2c9a663a0678eef8293f7609a609c92a6b3bccb2e556301f8b290c7f2",
+      "size_bytes": 5
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-003.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-003.stdout.txt",
+      "sha256": "b20cc0d69027ec618d7e6efeac438e9c13b5a2e5bcb73134539c7340676e304e",
+      "size_bytes": 41
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-004.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-004.stdout.txt",
+      "sha256": "94dce1ab17686191829c0bd9f51dd775032a3ce224c80cdcffbe2dbb617edf20",
+      "size_bytes": 37
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-005.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-005.stdout.txt",
+      "sha256": "1bd952cdd6f367aeda61091bf4bdd4856e9790f5c45146aea7a32c916ee870cb",
+      "size_bytes": 57
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-006.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-006.stdout.txt",
+      "sha256": "466822d6e66c8d001f8750f4e6a37bf601e5feefba2bbc7584ce5dfd05402145",
+      "size_bytes": 811
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-007.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-007.stdout.txt",
+      "sha256": "3773d26ba8d1dc1c68ecc70818b79604ce1d20f26c9203b2df7560c2b824c99c",
+      "size_bytes": 54243
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-008.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-008.stdout.txt",
+      "sha256": "8ccd2f6fce470013af89c653eb3ff84a0b66809c56d321993cd973ebc18031e4",
+      "size_bytes": 3119
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-009.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-009.stdout.txt",
+      "sha256": "f9c0eeb6e76f68330ba3e5d8d90e58d175c3947a1948bb41b26ad50dbc041e8a",
+      "size_bytes": 3081
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-010.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-010.stdout.txt",
+      "sha256": "3f74116fa6cb85e4f2db1c96d246ac830a282be28847a0af21184fde2e17197b",
+      "size_bytes": 4381
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-011.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-011.stdout.txt",
+      "sha256": "a098008f3abe47f4cfb830685009b19bf4d3555a8e370ad242a2fce1debea606",
+      "size_bytes": 1574
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-012.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-012.stdout.txt",
+      "sha256": "54a1cdb86d0235671a7d1ece31e489289c026bf083f33388580b6f3fdbb42e12",
+      "size_bytes": 2826
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-013.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-013.stdout.txt",
+      "sha256": "c4b912fc672979ddc763d882e546b7a92bf53090e5b5dddd5777e2e867df182a",
+      "size_bytes": 3242
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-014.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-014.stdout.txt",
+      "sha256": "7f929b85554193ef1256deb3f7cc184e47c362f91e93950896a80450c9eb5fe8",
+      "size_bytes": 17076
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-015.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-015.stdout.txt",
+      "sha256": "9bec37d044f4c7742d931149c195c2c3ec1540d41dc3f0a899a2b29f8c7e3e90",
+      "size_bytes": 8809
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-016.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-016.stdout.txt",
+      "sha256": "fa4ce177c2d4a49a5f8f5b30bfa44e2b0d529f1e735ddfa259ae1811edc2f1af",
+      "size_bytes": 4613
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-017.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-017.stdout.txt",
+      "sha256": "98a578944e7910db933f5b3b02aee4bb03de8005853024b38cc3b02630b04e38",
+      "size_bytes": 4139
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-018.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-018.stdout.txt",
+      "sha256": "c64803a93c74ee9dba6a7bc61de2d2e550264f2c5d4a920e1248665fa7e86b93",
+      "size_bytes": 10336
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-019.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-019.stdout.txt",
+      "sha256": "141888d9bd8dd0f1ab4a61c7af10c0a98cca14cdde8dbe6e7dc560092d513e6a",
+      "size_bytes": 5835
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-020.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-020.stdout.txt",
+      "sha256": "50b8756dfdd5bef56f1d7f792d9adf24765ca30402c96d08c428d52fdb1accc8",
+      "size_bytes": 6389
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-021.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-021.stdout.txt",
+      "sha256": "d80910103003991ca70e797d3861194fd649d94ab75011aa03011c01885a48f6",
+      "size_bytes": 3831
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-022.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-022.stdout.txt",
+      "sha256": "0e5459dfe00036272052f7928cd0b56b151fabe81b1ebc9e249b5744b0a31ab0",
+      "size_bytes": 20867
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-023.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-023.stdout.txt",
+      "sha256": "97bdcea63377b026b88cd4397a510101a0a35270f6ef3c3b34f37549ade1d5c2",
+      "size_bytes": 22824
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-024.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-024.stdout.txt",
+      "sha256": "558e1377dad11f48ac979c410562dacef24b10ba92f990c86f0dc82d3d558a0e",
+      "size_bytes": 14501
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-025.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-025.stdout.txt",
+      "sha256": "c3c5a6483453848e6da21f64ac099974ea251a50990d7163c77b828654592214",
+      "size_bytes": 7102
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-026.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-026.stdout.txt",
+      "sha256": "85be14da732b7ee6d5f4d6cabd1e34f0bf47c03dab83de2ccf293cfc3b2d97f4",
+      "size_bytes": 16083
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-027.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-027.stdout.txt",
+      "sha256": "8c37f2c8732280cf49e80edbbfc9aa10f769952dc6a1d56a967bc11d51d73a12",
+      "size_bytes": 41864
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-028.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-028.stdout.txt",
+      "sha256": "315b546fca4d95a2514128673f750b2247a03a380821b19029815677c9f0406d",
+      "size_bytes": 44251
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/matrix-001.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/matrix-001.stdout.txt",
+      "sha256": "8d3d4912af90f4856962651f2af72594b4b079c8d8a468a60ddebb68b7d5de95",
+      "size_bytes": 111970
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/matrix-002.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/matrix-002.stdout.txt",
+      "sha256": "0e079065f92bab83ba380344b2dda3977576140eab035f2486dddbb1037eee0d",
+      "size_bytes": 30913
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/matrix-003.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/matrix-003.stdout.txt",
+      "sha256": "e65d7d74067e5401ce9dbd506bab16f8e541599e0e76961038c41ecb2b316667",
+      "size_bytes": 260
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/matrix-004.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/raw_commands/matrix-004.stdout.txt",
+      "sha256": "34d45d3b810c6959f5c5670efb7850f3752becde6ee118e32c82b16d37a9955f",
+      "size_bytes": 260
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/report_assembly.py.txt",
+      "sha256": "db82f359737722ffe335f081c1de442215d97a54f2a1500cbca4c69c587fdd76",
+      "size_bytes": 17169
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/report_integrity_check.json",
+      "sha256": "02a06733068a8b889f90a32858f270518bfca47152180c8d66ab78e3b684e710",
+      "size_bytes": 3108
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/report_integrity_verifier.py.txt",
+      "sha256": "e99d6b84c7c06ed7b0676828b60b0ad976f4f1cbe1a05244ff264a6910c07199",
+      "size_bytes": 7445
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/report_package_tools.py.txt",
+      "sha256": "e0659902a5e87c9dec8c0bd004bb2aa44551bb3ed77f5f703c8f86c82893b656",
+      "size_bytes": 4090
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/repository_static_review.json",
+      "sha256": "d80910103003991ca70e797d3861194fd649d94ab75011aa03011c01885a48f6",
+      "size_bytes": 3831
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/repository_static_review.py.txt",
+      "sha256": "439f2368a7a0c4ff41ce7b3d448cdb76c04acd79ef8f7897398899549ff99576",
+      "size_bytes": 5166
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/reviewed_source_inventory.json",
+      "sha256": "1f2b746e79966aeb018e1d3955f747710dbc968fc83b32873c2fb267d32fea07",
+      "size_bytes": 13824
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/stage_state_timing_review.md",
+      "sha256": "85be14da732b7ee6d5f4d6cabd1e34f0bf47c03dab83de2ccf293cfc3b2d97f4",
+      "size_bytes": 16083
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/trial_matrix_row_audit.json",
+      "sha256": "75e7d10dd5339df08cb7dd473fb65e36ccf7d3bdcd9b494276c5e29e69382a7a",
+      "size_bytes": 1139431
+    }
+  ],
+  "scientific_artifacts_created": 0
+}

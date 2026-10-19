@@ -1,0 +1,16 @@
+from pathlib import Path
+import subprocess,json,hashlib,datetime
+R=Path('/workspace/soc');D=R/'docs/P2_design/v3';O=R/'reports/P2_design/design_revision_v3'
+BASE='cae4a396c02b5fa038a771b65dce9aaad449d3a9'
+def sha(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
+def head():return subprocess.check_output(['git','rev-parse','HEAD'],cwd=R,text=True).strip()
+def dump(p,x):Path(p).write_text(json.dumps(x,ensure_ascii=False,indent=2)+'\n')
+def run(argv,purpose,inputs=(),writes=False,expected=0):
+ p=O/'actual_commands_and_exit_codes.json';a=json.loads(p.read_text()) if p.exists() else dict(scope='Actual substantive checks, source reads and publication commands; tool discovery and authoring tool calls remain in conversation transcript',commands=[])
+ cid='R3-'+str(len(a['commands'])+1).zfill(3);t=datetime.datetime.now(datetime.timezone.utc).isoformat();before=head();sources=[dict(path=str(Path(q).relative_to(R)),sha256=sha(q)) for q in inputs]
+ result=subprocess.run(argv,cwd=R,text=True,capture_output=True);after=head();raw=O/'raw_commands';raw.mkdir(exist_ok=True)
+ refs={}
+ for k,v in [('stdout',result.stdout),('stderr',result.stderr)]:
+  q=raw/(cid+'.'+k+'.txt');q.write_text(v);refs[k]=dict(path=str(q.relative_to(R)),sha256=sha(q),size_bytes=q.stat().st_size)
+ a['commands'].append(dict(id=cid,argv=argv,cwd=str(R),started_at_utc=t,ended_at_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),head_before=before,head_after=after,exit_code=result.returncode,expected_exit_code=expected,purpose=purpose,input_files=sources,files_written=writes,scientific_execution=False,outputs=refs,result_summary='EXPECTED_EXIT' if result.returncode==expected else 'UNEXPECTED_EXIT'));dump(p,a)
+ return cid,result

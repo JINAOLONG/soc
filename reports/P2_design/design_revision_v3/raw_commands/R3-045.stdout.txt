@@ -1,0 +1,185 @@
+{
+  "audited_commit": "892ce2b71fd0c89f1b241c950b597eafab894e23",
+  "review_result": "DESIGN_REVIEW_REVISE_REQUIRED",
+  "findings": [
+    {
+      "id": "V2-F01",
+      "severity": "CRITICAL",
+      "classification": "BLOCKING",
+      "decisions": [
+        "D07",
+        "D08"
+      ],
+      "title": "当前ready-H局部目标的阴性结果不能覆盖原登记的后继H稀缺资源机制",
+      "evidence": [
+        "docs/P2_design/P2_complete_design_proposal_v1.md:239–263",
+        "docs/P2_design/P2_mapping_opportunity_decision_table_v1.md:34–49",
+        "docs/user_request.txt:§§32,43–44",
+        "docs/baseline_spec.md:16–20"
+      ],
+      "check": "CMD-073 / adversarial_checks.json: ADV-01；7个辅助证明检查；单ready-H先于所有L的固定B2顺序归纳。",
+      "rationale": "K中若只有一个H，它被固定B2次序首先安排；greedy EFT已最小化其局部finish。后续L的mapping不影响这个H前缀目标，所以g=0，与L是否阻塞尚未ready的H后继无关。v1又排除未ready后继并要求每个局部L finish不劣化。原§32解释例的H前驱2、后继4、L占NPU6或CPU6.5，正好落在这两个盲区：局部H目标均为2，而手算完整H完成10或6。该例只作解释，不是科学样本或运行。",
+      "consequence": "NOT_SUPPORTED只能说明该受限当前ready目标的机会不足，不能据此声称没有原研究机制。直接绑定停止主线有结构性假阴性风险；FINE/COARSE换阈值不能修复观测对象。当前并未计算任何项目结果。",
+      "disposition": "REVISE BEFORE APPROVAL",
+      "change": "保留M1为窄局部诊断；在同一已到达公共DAG/估计边界内，先提出有限、可复算、能观察已登记remaining-H-path阻塞的诊断定义，并用非科学§32解释例及反例验证覆盖。明确严格局部L约束与全局L-P95预算的不同作用。D08必须只对其实际覆盖的机制下结论；不得更改既有H/L/CI门槛，不在本审计中实现或批准新观察器。",
+      "closure": "修订D07/D08文本、参数登记及适用/不适用案例，人工重新裁决；未来另行实现验证。"
+    },
+    {
+      "id": "V2-F02",
+      "severity": "CRITICAL",
+      "classification": "BLOCKING",
+      "decisions": [
+        "D04",
+        "D05",
+        "D09",
+        "D10"
+      ],
+      "title": "首次物化的输入守卫、run锁和内容身份形成先决循环",
+      "evidence": [
+        "docs/P2_design/P2_generation_spec_v1.json:96–110",
+        "docs/P2_design/P2_runner_schema_review_v1.md:18–21,30–32,59–65,82–84",
+        "docs/P2_design/P2_complete_design_proposal_v1.md:158–159,165–167"
+      ],
+      "check": "CMD-073 / ADV-02：按v1先决关系建立设计依赖图，Kahn消除后仍有循环节点；不生成任何payload。",
+      "rationale": "实际workload identity需要canonical payload hash；run identity需要workload/input hash。runner先拒绝未解析wlref/null必填并申请run identity锁，再物化输入。首次生成时却还没有这些内容hash，因此按当前步骤无法取得run锁/通过守卫。复用已有完整输入不能解决首次物化路径。",
+      "consequence": "实现者必须自行改变阶段顺序、放松守卫或预先生成输入；这会引入未批准实现选择，甚至绕过生成授权。v1所谓无自引用hash并没有解决这个执行先决循环。当前入口仍未实现，未实际绕过。",
+      "disposition": "REVISE BEFORE APPROVAL",
+      "change": "明确两层身份/守卫：批准的不可变blueprint与生成授权在前，以blueprint/config/seed/variant取得临时输入锁；授权后物化并保存generation receipt；再解析wlref形成独立不可变input-resolution receipt、实际workload/run ID与运行锁，最后做pre-invocation守卫。蓝图hash不得包含未来resolved payload/run ID，已批蓝图不回填改hash。精确argv的身份部分不得反向包含自身run ID；此为待审修订建议而非已批准流程。",
+      "closure": "D04/D05/D09/D10共同给出无环身份图、首次/复用/中断三条顺序、明确字段与hash范围，另行人工批准。"
+    },
+    {
+      "id": "V2-F03",
+      "severity": "MAJOR",
+      "classification": "BLOCKING",
+      "decisions": [
+        "D04",
+        "D09",
+        "D10"
+      ],
+      "title": "key填值与identity preimage未达到跨实现逐字节唯一",
+      "evidence": [
+        "docs/P2_design/P2_generation_spec_v1.json:12–18,20–64,90–110",
+        "docs/P2_design/P2_runner_schema_review_v1.md:59–65,79–90,101–107"
+      ],
+      "check": "CMD-010/CMD-070完整key文本；CMD-073仅演示不同字段类型得到不同canonical bytes，不对calibration key求随机值。",
+      "rationale": "key有version字段，而文档同时有version=v1和generator_version=soc-p2-synthetic-v1-PROPOSED，未规定version具体绑定。arrival_jitter说other IDs empty但没有逐字段说明scenario/condition/config是否保留。identity preimage仍是概念字段列表，未给精确键名、类型和参数hash范围；H-only的G=max_service也未明确遍历父输入还是保留后的服务集。序列化算法固定不足以唯一决定被序列化对象。",
+      "consequence": "独立实现可以在不改变列出的分布/seed的情况下产生不同扰动、到达、控制窗口或run/workload ID，无法保证重放或精确复用。尚未证明任何现有实际hash错误，因为没有科学输入。",
+      "disposition": "REVISE BEFORE APPROVAL",
+      "change": "增加逐随机字段的完整typed-key填值表，逐一固定version绑定和空字段；固定control父身份及G的集合范围、整型/分数字段规范；列出workload/run preimage精确对象、raw/semantic/plan/argv hash范围及数组顺序。使用无真实科学seed的静态golden byte vectors检验规范，后续实现再验证；不生成新seed。",
+      "closure": "同一批准规格下两种独立编码实现必须输出相同golden bytes；审批明确涵盖会改变key的选择。"
+    },
+    {
+      "id": "V2-F04",
+      "severity": "MEDIUM",
+      "classification": "NOT_VERIFIED",
+      "decisions": [
+        "D07",
+        "D08",
+        "D10"
+      ],
+      "title": "M1记录身份不等于分母去重契约，snapshot与重放范围仍需定型",
+      "evidence": [
+        "docs/P2_design/P2_complete_design_proposal_v1.md:239–245,254–263",
+        "docs/P2_design/P2_runner_schema_review_v1.md:94–95,101–103"
+      ],
+      "check": "CMD-073 / ADV-03最终为NOT_VERIFIED；相同digest、不同decision_seq的两个通用ID计数2，而state-equivalence计数1。初版误列FAIL的记录完整保留，见review_method_notes.md。",
+      "rationale": "v1已明确要求纯重复无状态变化的view只计一次，这点不能忽略。但同时给出的三元record ID含decision_seq，不能直接当dedup key；没有完整public_view_digest字段/规范、去重作用域、是否排除重放收据或每次空派发采样的精确契约。",
+      "consequence": "不同观察hook或重放日志合并可能改变N和hit频率；这是待实现前需要写全的接口，不是已经观测到的计数bug。",
+      "disposition": "REVISE BEFORE APPROVAL",
+      "change": "分开record_id和state_key；规定B2主attempt的何种view计数、失败/空派发、连续重复/非连续相同状态、now/elapsed参与规则、replay不进入分母。给出相同状态重复计1与同刻真实start后状态改变计2的静态验收例。",
+      "closure": "D07/D08与schema共同固定state bytes、scope和expected denominator；未来独立复算测试。"
+    },
+    {
+      "id": "V2-F05",
+      "severity": "MAJOR",
+      "classification": "BLOCKING",
+      "decisions": [
+        "D08",
+        "D09",
+        "D10"
+      ],
+      "title": "执行完整性出口尚未精确绑定选择、诊断、冻结与P2门禁输出",
+      "evidence": [
+        "docs/P2_design/P2_mapping_opportunity_decision_table_v1.md:34–49",
+        "docs/P2_design/P2_runner_schema_review_v1.md:30–32,53–55,99,109–114",
+        "scripts/run_pipeline.py:26–39",
+        "src/soc/validation/governance.py:181–208",
+        "docs/user_request.txt:§80"
+      ],
+      "check": "设计逐阶段对照：生命周期到trace/metrics/replay/COMPLETE，但未给typed stage/gate字段、写入顺序、退出含义与现有P2 gate接口的完整映射；未运行P2。",
+      "rationale": "v1正确区分COMPLETE与SUPPORTED，也明确不自动进P3；但runner exit0仅表示计划完整，D08又要求选定18条件、完整M1/M2、批准判据等。两者之间缺少明确的选择/分析/判据/冻结出口及fail-closed机器字段。timing协议仍未冻结，是原P2输出的未关闭事项。",
+      "consequence": "不能把2520合法完成、进程exit0或COMPLETE当作P2 PASS。若未来实现只接完成标记，会有错误推进风险；当前不存在可执行新gate，因此本审计没有证明发生了false PASS。",
+      "disposition": "REVISE BEFORE APPROVAL",
+      "change": "提供字段级出口真值表：execution_completion、input_integrity、selection_status、diagnostic_validity、mapping_status、freeze/timing prerequisite与p2_progression_status分别记录。明确有效阴性可COMPLETE但不准推进，缺失一律闭锁；现有P2 gate消费接口与不同退出码语义需在实现任务前登记。timing留为未关闭前提，不能靠预算0宣称已完成原P2输出；不在本任务编写gate。",
+      "closure": "D08/D09/D10联合审查完整的stage出口规范，任何COMPLETE→PASS快捷路径均应有负例拒绝。"
+    },
+    {
+      "id": "V2-F06",
+      "severity": "MEDIUM",
+      "classification": "PROPOSAL_ONLY",
+      "decisions": [
+        "D06",
+        "D08"
+      ],
+      "title": "B2选型后的机会CI需限定为校准选中样本的条件性描述",
+      "evidence": [
+        "docs/P2_design/P2_complete_design_proposal_v1.md:184–185,218–229",
+        "docs/P2_design/P2_mapping_opportunity_decision_table_v1.md:14–17,34–40,57–58",
+        "docs/statistical_protocol.md:3–16,34–47"
+      ],
+      "check": "选择依赖同10seed的B2 pressure/miss，机会观察也来自同B2轨迹；这是设计依赖分析，不是观察到的偏差大小。META检查已验证A/B完整、顺序确定且无candidate/M1选型。",
+      "rationale": "A-before-B只按事前规定的B2资格，符合不按候选或机会效果挑配置的要求。它仍是同校准数据的选择；不得把对选定配置的pointwise bootstrap解释为未经选型的独立确认性coverage。miss/压力/机会可能相关，但没有数据可估计偏差。压力三段对有效p∈[0,1]互斥且穷尽；加入miss/控制/等待过滤后必须保留VALID_OFF_TARGET/INELIGIBLE，而非强贴某个load标签。",
+      "consequence": "若省略适用范围会夸大P2证据的独立性；若实现将任意满足另一档的候选重贴标签，则破坏已注册condition。当前矩阵/文字禁止relabel，未发现实际删seed或删候选。",
+      "disposition": "REVISE BEFORE APPROVAL",
+      "change": "补充明确的总分类谓词：先validity、control witness、declared target-load匹配，再A/B选择；NaN/越域/控制重叠/缺组的出口须定型，不能clamp。明确P2区间仅为选中校准配置的描述，全部A/B资格和原始统计保留，不声称调整选择后的确认性覆盖。不更换CI方法、不加seed、不按结果改阈值。",
+      "closure": "审定分类伪代码/边界表及报告措辞，保持已提出数值和原研究契约未变或另行显式审批修订。"
+    },
+    {
+      "id": "V2-F07",
+      "severity": "MEDIUM",
+      "classification": "NOT_VERIFIED",
+      "decisions": [
+        "D04",
+        "D06",
+        "D10"
+      ],
+      "title": "控制缺组状态与窗口/排空指标需统一typed语义",
+      "evidence": [
+        "docs/P2_design/P2_generation_spec_v1.json:78–94",
+        "docs/P2_design/P2_complete_design_proposal_v1.md:201–202,219–223",
+        "docs/P2_design/P2_runner_schema_review_v1.md:93,111",
+        "docs/metric_spec.md:3–10,41–46",
+        "src/soc/metrics/fixture.py:36–44"
+      ],
+      "check": "逐字对照NOT_APPLICABLE_CONTROL与CONTROL_NA两个标签；source指标makespan=max finish，与拟议observation end=max(W,last finish)是不同量。无运行时指标验证。",
+      "rationale": "v1允许H-only缺L且主输入必须含H/L，方向正确。JSON/proposal用NOT_APPLICABLE_CONTROL，runner文档用CONTROL_NA，尚无统一enum/null/validity字段；arrival-window、last completion和observation end也需要独立字段，不能靠一个run_end解释全部利用率。",
+      "consequence": "未来adapter可能拒绝合法控制或接受缺L主输入；若用max(W,last finish)覆盖既有makespan，可能悄然改变已批准指标。当前P1代码/证据仍正确且未改，未发生这种覆盖。",
+      "disposition": "REVISE BEFORE APPROVAL",
+      "change": "统一一个待批控制N/A枚举及其适用kind，main强制精确100/50/50计数、control分别50H或100H/L；给出absence/nonfinite/invalid矩阵。分别命名arrival_window_end、drain_completion、observation_end、busy_window_pressure与既有full-drain makespan/utilization，不改变原公式；定义G域与control overlap失败类型。",
+      "closure": "字段类型/enum/必填-null条件及独立指标验收例在D04/D06/D10一致，未来实现回归。"
+    },
+    {
+      "id": "V2-F08",
+      "severity": "INFO",
+      "classification": "NOT_VERIFIED",
+      "decisions": [
+        "D09",
+        "D10"
+      ],
+      "title": "S2来源隔离与P1兼容仍需未来行为证明，不能用声明替代",
+      "evidence": [
+        "docs/P2_design/P2_runner_schema_review_v1.md:68–75,116–128",
+        "src/soc/model/schema.py:175–189",
+        "src/soc/simulator/engine.py:100–102",
+        "src/soc/validation/trace.py:75–79",
+        "reports/P1_correctness.json"
+      ],
+      "check": "当前P0/P1 check-only及122项P1清单真实返回0，见CMD-064..066；只证明现行P1，不证明未来S2。",
+      "rationale": "S2选择方向合理，当前硬编码fixture origin确实存在；v1已承认adapter和行为验证未实现。这是预期未完成工作，单独不构成新增实现缺陷。",
+      "consequence": "仅origin/fixture_derivation=false或schema parse成功不足以证明科学出生；未来代码变化后不能继承当前P1 PASS。",
+      "disposition": "KEEP_PENDING_FOR_SEPARATELY_AUTHORIZED_IMPLEMENTATION",
+      "change": "先登记本审计required_changes中的P1兼容、错误来源拒绝、public-view隔离、故障/恢复/完整性测试，再另行授权实现。当前不写adapter、不改fixture、不解锁。",
+      "closure": "真实未来测试/独立validator/原始生成日志与完整hash血缘；无这些证据继续闭锁。"
+    }
+  ]
+}

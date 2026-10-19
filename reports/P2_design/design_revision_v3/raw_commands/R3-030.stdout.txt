@@ -1,0 +1,370 @@
+{
+  "document_kind": "RESOURCE_PROFILE_PROPOSAL",
+  "version": "v2",
+  "status": "DRAFT_UNAPPROVED_NONEXECUTABLE",
+  "classification": "PROPOSED",
+  "approved": false,
+  "frozen": false,
+  "executable": false,
+  "execution_authorized": false,
+  "read_by_pipeline": false,
+  "source_checkpoint": "160800d9b136e953c6415cd5229ded87eae72a0f",
+  "resources": [
+    "CPU0",
+    "CPU1",
+    "CPU2",
+    "CPU3",
+    "GPU0",
+    "NPU0"
+  ],
+  "unit": "ms",
+  "incompatible": "JSON null and excluded from compatible_resources; never infinity or zero duration",
+  "profiles": [
+    {
+      "role": "audio",
+      "mechanism": "CPU-only 音频整理",
+      "compatible_resources": [
+        "CPU0",
+        "CPU1",
+        "CPU2",
+        "CPU3"
+      ],
+      "estimated_base_ms": {
+        "CPU0": 2,
+        "CPU1": 2,
+        "CPU2": 2,
+        "CPU3": 2,
+        "GPU0": null,
+        "NPU0": null
+      },
+      "source": "PROPOSED_SYNTHETIC_NOT_MEASURED_NOT_PAPER_VALUES",
+      "approval": "UNAPPROVED"
+    },
+    {
+      "role": "speech",
+      "mechanism": "NPU-oriented 语音推断",
+      "compatible_resources": [
+        "CPU0",
+        "CPU1",
+        "CPU2",
+        "CPU3",
+        "NPU0"
+      ],
+      "estimated_base_ms": {
+        "CPU0": 12,
+        "CPU1": 12,
+        "CPU2": 12,
+        "CPU3": 12,
+        "GPU0": null,
+        "NPU0": 3
+      },
+      "source": "PROPOSED_SYNTHETIC_NOT_MEASURED_NOT_PAPER_VALUES",
+      "approval": "UNAPPROVED"
+    },
+    {
+      "role": "intent",
+      "mechanism": "CPU-only 意图解析",
+      "compatible_resources": [
+        "CPU0",
+        "CPU1",
+        "CPU2",
+        "CPU3"
+      ],
+      "estimated_base_ms": {
+        "CPU0": 1,
+        "CPU1": 1,
+        "CPU2": 1,
+        "CPU3": 1,
+        "GPU0": null,
+        "NPU0": null
+      },
+      "source": "PROPOSED_SYNTHETIC_NOT_MEASURED_NOT_PAPER_VALUES",
+      "approval": "UNAPPROVED"
+    },
+    {
+      "role": "display",
+      "mechanism": "GPU-oriented 显示处理",
+      "compatible_resources": [
+        "CPU0",
+        "CPU1",
+        "CPU2",
+        "CPU3",
+        "GPU0"
+      ],
+      "estimated_base_ms": {
+        "CPU0": 8,
+        "CPU1": 8,
+        "CPU2": 8,
+        "CPU3": 8,
+        "GPU0": 2,
+        "NPU0": null
+      },
+      "source": "PROPOSED_SYNTHETIC_NOT_MEASURED_NOT_PAPER_VALUES",
+      "approval": "UNAPPROVED"
+    },
+    {
+      "role": "navigation",
+      "mechanism": "CPU-only 导航输入",
+      "compatible_resources": [
+        "CPU0",
+        "CPU1",
+        "CPU2",
+        "CPU3"
+      ],
+      "estimated_base_ms": {
+        "CPU0": 3,
+        "CPU1": 3,
+        "CPU2": 3,
+        "CPU3": 3,
+        "GPU0": null,
+        "NPU0": null
+      },
+      "source": "PROPOSED_SYNTHETIC_NOT_MEASURED_NOT_PAPER_VALUES",
+      "approval": "UNAPPROVED"
+    },
+    {
+      "role": "route",
+      "mechanism": "CPU/GPU 路线变换",
+      "compatible_resources": [
+        "CPU0",
+        "CPU1",
+        "CPU2",
+        "CPU3",
+        "GPU0"
+      ],
+      "estimated_base_ms": {
+        "CPU0": 8,
+        "CPU1": 8,
+        "CPU2": 8,
+        "CPU3": 8,
+        "GPU0": 3,
+        "NPU0": null
+      },
+      "source": "PROPOSED_SYNTHETIC_NOT_MEASURED_NOT_PAPER_VALUES",
+      "approval": "UNAPPROVED"
+    },
+    {
+      "role": "compose",
+      "mechanism": "multi-compatible 合成变换",
+      "compatible_resources": [
+        "CPU0",
+        "CPU1",
+        "CPU2",
+        "CPU3",
+        "GPU0",
+        "NPU0"
+      ],
+      "estimated_base_ms": {
+        "CPU0": 6,
+        "CPU1": 6,
+        "CPU2": 6,
+        "CPU3": 6,
+        "GPU0": 2,
+        "NPU0": 3
+      },
+      "source": "PROPOSED_SYNTHETIC_NOT_MEASURED_NOT_PAPER_VALUES",
+      "approval": "UNAPPROVED"
+    },
+    {
+      "role": "interaction",
+      "mechanism": "CPU-only 交互输出",
+      "compatible_resources": [
+        "CPU0",
+        "CPU1",
+        "CPU2",
+        "CPU3"
+      ],
+      "estimated_base_ms": {
+        "CPU0": 1,
+        "CPU1": 1,
+        "CPU2": 1,
+        "CPU3": 1,
+        "GPU0": null,
+        "NPU0": null
+      },
+      "source": "PROPOSED_SYNTHETIC_NOT_MEASURED_NOT_PAPER_VALUES",
+      "approval": "UNAPPROVED"
+    },
+    {
+      "role": "preprocess",
+      "mechanism": "CPU/GPU 感知预处理",
+      "compatible_resources": [
+        "CPU0",
+        "CPU1",
+        "CPU2",
+        "CPU3",
+        "GPU0"
+      ],
+      "estimated_base_ms": {
+        "CPU0": 6,
+        "CPU1": 6,
+        "CPU2": 6,
+        "CPU3": 6,
+        "GPU0": 2,
+        "NPU0": null
+      },
+      "source": "PROPOSED_SYNTHETIC_NOT_MEASURED_NOT_PAPER_VALUES",
+      "approval": "UNAPPROVED"
+    },
+    {
+      "role": "detect",
+      "mechanism": "limited-alternative NPU-only 检测",
+      "compatible_resources": [
+        "NPU0"
+      ],
+      "estimated_base_ms": {
+        "CPU0": null,
+        "CPU1": null,
+        "CPU2": null,
+        "CPU3": null,
+        "GPU0": null,
+        "NPU0": 4
+      },
+      "source": "PROPOSED_SYNTHETIC_NOT_MEASURED_NOT_PAPER_VALUES",
+      "approval": "UNAPPROVED"
+    },
+    {
+      "role": "segment",
+      "mechanism": "multi-compatible 分割",
+      "compatible_resources": [
+        "CPU0",
+        "CPU1",
+        "CPU2",
+        "CPU3",
+        "GPU0",
+        "NPU0"
+      ],
+      "estimated_base_ms": {
+        "CPU0": 16,
+        "CPU1": 16,
+        "CPU2": 16,
+        "CPU3": 16,
+        "GPU0": 4,
+        "NPU0": 5
+      },
+      "source": "PROPOSED_SYNTHETIC_NOT_MEASURED_NOT_PAPER_VALUES",
+      "approval": "UNAPPROVED"
+    },
+    {
+      "role": "track",
+      "mechanism": "CPU-only 跟踪",
+      "compatible_resources": [
+        "CPU0",
+        "CPU1",
+        "CPU2",
+        "CPU3"
+      ],
+      "estimated_base_ms": {
+        "CPU0": 3,
+        "CPU1": 3,
+        "CPU2": 3,
+        "CPU3": 3,
+        "GPU0": null,
+        "NPU0": null
+      },
+      "source": "PROPOSED_SYNTHETIC_NOT_MEASURED_NOT_PAPER_VALUES",
+      "approval": "UNAPPROVED"
+    },
+    {
+      "role": "fusion",
+      "mechanism": "NPU/CPU 感知融合",
+      "compatible_resources": [
+        "CPU0",
+        "CPU1",
+        "CPU2",
+        "CPU3",
+        "NPU0"
+      ],
+      "estimated_base_ms": {
+        "CPU0": 6,
+        "CPU1": 6,
+        "CPU2": 6,
+        "CPU3": 6,
+        "GPU0": null,
+        "NPU0": 2
+      },
+      "source": "PROPOSED_SYNTHETIC_NOT_MEASURED_NOT_PAPER_VALUES",
+      "approval": "UNAPPROVED"
+    },
+    {
+      "role": "plan",
+      "mechanism": "CPU-only 规划",
+      "compatible_resources": [
+        "CPU0",
+        "CPU1",
+        "CPU2",
+        "CPU3"
+      ],
+      "estimated_base_ms": {
+        "CPU0": 2,
+        "CPU1": 2,
+        "CPU2": 2,
+        "CPU3": 2,
+        "GPU0": null,
+        "NPU0": null
+      },
+      "source": "PROPOSED_SYNTHETIC_NOT_MEASURED_NOT_PAPER_VALUES",
+      "approval": "UNAPPROVED"
+    },
+    {
+      "role": "render",
+      "mechanism": "limited-alternative GPU-only 可视化",
+      "compatible_resources": [
+        "GPU0"
+      ],
+      "estimated_base_ms": {
+        "CPU0": null,
+        "CPU1": null,
+        "CPU2": null,
+        "CPU3": null,
+        "GPU0": 2,
+        "NPU0": null
+      },
+      "source": "PROPOSED_SYNTHETIC_NOT_MEASURED_NOT_PAPER_VALUES",
+      "approval": "UNAPPROVED"
+    },
+    {
+      "role": "output",
+      "mechanism": "CPU-only ADAS 输出",
+      "compatible_resources": [
+        "CPU0",
+        "CPU1",
+        "CPU2",
+        "CPU3"
+      ],
+      "estimated_base_ms": {
+        "CPU0": 1,
+        "CPU1": 1,
+        "CPU2": 1,
+        "CPU3": 1,
+        "GPU0": null,
+        "NPU0": null
+      },
+      "source": "PROPOSED_SYNTHETIC_NOT_MEASURED_NOT_PAPER_VALUES",
+      "approval": "UNAPPROVED"
+    }
+  ],
+  "node_scale": {
+    "8": "1",
+    "16.a": "1/2",
+    "16.b": "1/2"
+  },
+  "estimate": "base_ms * node_scale * service_role_factor",
+  "realized": "estimate_ms * resource_duration_factor",
+  "positive_guarantee": "Exact preconversion base>=1, scale>=1/2, factors>=9/10: duration>=81/200 ms. Single binary64 conversion must remain finite and strictly positive.",
+  "source_refs": [
+    "docs/model_spec.md:10–14,48–58",
+    "docs/literature_reviews/ds3.md:12–23",
+    "docs/literature_reviews/starpu.md:19–24"
+  ],
+  "risk": "synthetic speedups and hard accelerator affinity can create mapping opportunities; not automotive measurements; no source speedup borrowed",
+  "document_version": "v2",
+  "approval": "UNAPPROVED",
+  "starting_commit": "79f9c245b23119ce25175d6dc6ff148e9e092461",
+  "preserved_semantic_content_version": "v1",
+  "parent_proposal": {
+    "path": "docs/P2_design/P2_resource_profiles_v1.json",
+    "sha256": "5e303a5b5f0c096fbc38ce1d762bc1cbf3d8e09472d2c460160bb8b88993b0a4"
+  },
+  "revision_note": "Document namespace only; original topology/profile/network values and template IDs retained unapproved."
+}

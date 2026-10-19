@@ -1,0 +1,45 @@
+{
+  "task": "DOCUMENTATION_REVISION_AND_STATIC_REVIEW",
+  "start_head": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+  "allowed_new_directories": [
+    "docs/P2_design/v3/",
+    "reports/P2_design/design_revision_v3/"
+  ],
+  "protected_existing_files": 672,
+  "forbidden": "Any preexisting file/source/test/config/gate/seed/status/history modification,scientific generation/execution/bootstrap/timing/unlock",
+  "setup": "Existing Python3.12.14 and jsonschema4.26 suffice; no install/start/draft/network setting change needed. Source task overrides general STATUS update rule.",
+  "planned_design_files": [
+    "P2_D01_D10_approval_checklist_v3.md",
+    "P2_M2_artifact_contract_v3.json",
+    "P2_complete_design_proposal_v3.md",
+    "P2_coordination_options_v3.json",
+    "P2_criterion_spec_v3.json",
+    "P2_diagnostic_spec_v3.json",
+    "P2_generation_spec_v3.json",
+    "P2_public_snapshot_spec_v3.json",
+    "P2_runner_schema_review_v3.md",
+    "P2_scientific_parameter_registry_v3.json",
+    "P2_stage_state_contract_v3.json",
+    "P2_typed_identity_schema_v3.json",
+    "README.md",
+    "inherited_v2_documents.json",
+    "reference_bindings.json"
+  ],
+  "planned_report_files": [
+    "executive_decision.md",
+    "V3_F01_F05_resolution_matrix.csv",
+    "F01_observation_domain_options.md",
+    "F02_lock_recovery_contract.md",
+    "F03_execution_provenance_contract.md",
+    "F04_M2_artifact_contract.md",
+    "F05_key_count_correction.md",
+    "cross_document_consistency.json",
+    "change_log.json",
+    "source_evidence_manifest.json",
+    "static_checks.json",
+    "actual_commands_and_exit_codes.json",
+    "human_decision_packet.md",
+    "final_state.json"
+  ],
+  "delegation": "No agents/subagents invoked in this task; fresh sequential static review in same Codex environment,not third-party audit"
+}

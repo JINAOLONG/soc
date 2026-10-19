@@ -1,0 +1,7 @@
+# P2 V3 documentation revision index
+
+DRAFT_UNAPPROVED_NONEXECUTABLE; source cae4a396c02b5fa038a771b65dce9aaad449d3a9. Read P2_complete_design_proposal_v3.md and reports/P2_design/design_revision_v3/human_decision_packet.md. No pipeline reads this package. All10decisions/40groups UNAPPROVED. F01/F02 choices null. JSON defines design fields/options,not runtime implementation.
+
+Reference resolution: P2_*_v3 names resolve in this directory. Explicit docs/ or reports/ paths are repo-root relative. Unqualified P2_*_v2 names INSIDE inherited_v2_contract or copied unchanged base paragraphs resolve against docs/P2_design/v2,not this directory; every v2 file is hash-bound in reference_bindings.json. New v3 fields take precedence only as proposed amendments; inherited negative branch/old untyped record must never be selected implicitly. Local #/$defs refs resolve within typed schema; stage state_fields carry the same typed-local semantics explicitly. Markdown section locators D01..D10 identify labeled headings even with translated titles. No external schema fetch permitted during static review.
+
+Trial matrix/templates/resources/links/golden vectors inherited by path/hash,not copied or regenerated. Legacy KEY and all61defs retained exact; new V3 defs extend mandatory provenance/run/stage family. F01/F02 alternatives remain distinct. New evidence manifests exclude themselves; enclosing Git object binds manifest bytes. Final enclosing HEAD resolved live,never fabricated into its own file.

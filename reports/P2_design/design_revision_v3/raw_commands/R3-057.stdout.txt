@@ -1,0 +1,1995 @@
+{
+  "scope": "Actual substantive subprocess commands recorded by review components, plus final package checks. Tool discovery, report-authoring helpers and incidental report reads are not an exhaustive shell transcript. Git publication receipts are separately referenced when present.",
+  "command_count": 80,
+  "actual_exit_code_counts": {
+    "0": 76,
+    "1": 3,
+    "2": 1
+  },
+  "commands": [
+    {
+      "id": "main-001",
+      "argv": [
+        "git",
+        "rev-parse",
+        "--show-toplevel"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_REVIEW",
+      "started_at_utc": "2026-10-18T13:43:04.080083+00:00",
+      "ended_at_utc": "2026-10-18T13:43:04.083839+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-001.stdout.txt",
+        "sha256": "cb68db68fcc70d67be575a6e90e6448d6df8b0924ca866e3f43dab3e3093f686",
+        "size_bytes": 15
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-001.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "main-002",
+      "argv": [
+        "git",
+        "branch",
+        "--show-current"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_REVIEW",
+      "started_at_utc": "2026-10-18T13:43:04.084376+00:00",
+      "ended_at_utc": "2026-10-18T13:43:04.087030+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-002.stdout.txt",
+        "sha256": "4c7a03f2c9a663a0678eef8293f7609a609c92a6b3bccb2e556301f8b290c7f2",
+        "size_bytes": 5
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-002.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "main-003",
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_REVIEW",
+      "started_at_utc": "2026-10-18T13:43:04.087356+00:00",
+      "ended_at_utc": "2026-10-18T13:43:04.089942+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-003.stdout.txt",
+        "sha256": "b20cc0d69027ec618d7e6efeac438e9c13b5a2e5bcb73134539c7340676e304e",
+        "size_bytes": 41
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-003.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "main-004",
+      "argv": [
+        "git",
+        "remote",
+        "get-url",
+        "origin"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_REVIEW",
+      "started_at_utc": "2026-10-18T13:43:04.090405+00:00",
+      "ended_at_utc": "2026-10-18T13:43:04.092928+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-004.stdout.txt",
+        "sha256": "94dce1ab17686191829c0bd9f51dd775032a3ce224c80cdcffbe2dbb617edf20",
+        "size_bytes": 37
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-004.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "main-005",
+      "argv": [
+        "git",
+        "ls-remote",
+        "origin",
+        "refs/heads/work"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_REVIEW",
+      "started_at_utc": "2026-10-18T13:43:04.093179+00:00",
+      "ended_at_utc": "2026-10-18T13:43:04.953319+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-005.stdout.txt",
+        "sha256": "1bd952cdd6f367aeda61091bf4bdd4856e9790f5c45146aea7a32c916ee870cb",
+        "size_bytes": 57
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-005.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "main-006",
+      "argv": [
+        "git",
+        "status",
+        "--porcelain=v1",
+        "--untracked-files=all"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_REVIEW",
+      "started_at_utc": "2026-10-18T13:43:04.953963+00:00",
+      "ended_at_utc": "2026-10-18T13:43:04.958366+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-006.stdout.txt",
+        "sha256": "466822d6e66c8d001f8750f4e6a37bf601e5feefba2bbc7584ce5dfd05402145",
+        "size_bytes": 811
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-006.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "m1r-001",
+      "argv": [
+        "python",
+        "-c",
+        "from pathlib import Path; import hashlib,json; fs=['AGENTS.md', 'STATUS.md', 'docs/user_request.txt', 'docs/research_contract.md', 'docs/statistical_protocol.md', 'docs/model_spec.md', 'docs/workload_spec.md', 'docs/baseline_spec.md', 'docs/metric_spec.md']; print('\\n'.join('FILE '+f+' SHA256 '+hashlib.sha256(Path(f).read_bytes()).hexdigest()+'\\n'+''.join(f'{i}: {s}\\n' for i,s in enumerate(Path(f).read_text().splitlines(),1)) for f in fs))"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_REVIEW",
+      "started_at_utc": "2026-10-18T13:43:38.614861+00:00",
+      "ended_at_utc": "2026-10-18T13:43:38.648355+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/m1r-001.stdout.txt",
+        "sha256": "69c3f16c95c281c09d7bed5a18cf565fd45bd2124f55cdb7c4a4c6545d17d43f",
+        "size_bytes": 100351
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/m1r-001.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "m1r-002",
+      "argv": [
+        "python",
+        "-c",
+        "from pathlib import Path; import hashlib; fs=['docs/P2_design/P2_complete_design_proposal_v1.md', 'docs/P2_design/P2_mapping_opportunity_decision_table_v1.md', 'docs/P2_design/v2/P2_diagnostic_spec_v2.json', 'docs/P2_design/v2/P2_public_snapshot_spec_v2.json', 'docs/P2_design/v2/P2_criterion_spec_v2.json', 'docs/P2_design/v2/P2_mapping_opportunity_decision_table_v2.md']; print('\\n'.join('FILE '+f+' SHA256 '+hashlib.sha256(Path(f).read_bytes()).hexdigest()+'\\n'+''.join(f'{i}: {s}\\n' for i,s in enumerate(Path(f).read_text().splitlines(),1)) for f in fs))"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_REVIEW",
+      "started_at_utc": "2026-10-18T13:43:44.930530+00:00",
+      "ended_at_utc": "2026-10-18T13:43:44.960827+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/m1r-002.stdout.txt",
+        "sha256": "14c51d5791bea86df1e7bcb7c4e6d5274a23512917ee6b5ee3ffc55015b489b9",
+        "size_bytes": 57953
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/m1r-002.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "m1r-003",
+      "argv": [
+        "python",
+        "-c",
+        "from pathlib import Path; import hashlib; fs=['docs/P2_design/v2/P2_complete_design_proposal_v2.md', 'docs/P2_design/v2/P2_scientific_parameter_registry_v2.json', 'reports/P2_design/design_revision_v2/diagnostic_semantics_review.md', 'reports/P2_design/independent_review_v2/feasibility_and_mechanism_analysis.md', 'reports/P2_design/independent_review_v2/findings.json', 'reports/P2_design/design_revision_v2/human_decision_packet.md']; print('\\n'.join('FILE '+f+' SHA256 '+hashlib.sha256(Path(f).read_bytes()).hexdigest()+'\\n'+''.join(f'{i}: {s}\\n' for i,s in enumerate(Path(f).read_text().splitlines(),1)) for f in fs))"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_REVIEW",
+      "started_at_utc": "2026-10-18T13:44:10.410681+00:00",
+      "ended_at_utc": "2026-10-18T13:44:10.459191+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/m1r-003.stdout.txt",
+        "sha256": "540d299f08c3ca3f2b52e67a93ff330866fe900ae1621a7a90076a22ba282912",
+        "size_bytes": 113890
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/m1r-003.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "matrix-001",
+      "argv": [
+        "python",
+        "-c",
+        "from pathlib import Path; fs=['STATUS.md','docs/user_request.txt','docs/research_contract.md','docs/workload_spec.md','docs/baseline_spec.md','configs/seed_partitions.json','docs/P2_design/P2_complete_design_proposal_v1.md','docs/P2_design/v2/P2_complete_design_proposal_v2.md']; [(print('SOURCE:',f),print(Path(f).read_text())) for f in fs]"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_REVIEW",
+      "started_at_utc": "2026-10-18T13:44:39.286842+00:00",
+      "ended_at_utc": "2026-10-18T13:44:39.317525+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/matrix-001.stdout.txt",
+        "sha256": "8d3d4912af90f4856962651f2af72594b4b079c8d8a468a60ddebb68b7d5de95",
+        "size_bytes": 111970
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/matrix-001.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "m1r-004",
+      "argv": [
+        "python",
+        "-c",
+        "from pathlib import Path; import hashlib; fs=['docs/P2_design/v2/P2_workload_templates_v2.json', 'docs/P2_design/v2/P2_resource_profiles_v2.json', 'docs/P2_design/v2/P2_generation_spec_v2.json', 'docs/P2_design/v2/P2_typed_identity_schema_v2.json', 'docs/P1_implementation_spec.md']; print('\\n'.join('FILE '+f+' SHA256 '+hashlib.sha256(Path(f).read_bytes()).hexdigest()+'\\n'+''.join(f'{i}: {s}\\n' for i,s in enumerate(Path(f).read_text().splitlines(),1)) for f in fs))"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_REVIEW",
+      "started_at_utc": "2026-10-18T13:44:40.310910+00:00",
+      "ended_at_utc": "2026-10-18T13:44:40.349613+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/m1r-004.stdout.txt",
+        "sha256": "a184bb8fd0b8c2a604e1926d170d4be39cb9201017195b7e2023e7e5b8ff249b",
+        "size_bytes": 172747
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/m1r-004.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "matrix-002",
+      "argv": [
+        "python",
+        "-c",
+        "from pathlib import Path\nimport json\nfor f in ['docs/research_contract.md','docs/workload_spec.md','docs/baseline_spec.md','configs/seed_partitions.json']:\n print('SOURCE:',f); print(Path(f).read_text())\np=Path('docs/P2_design/v2/P2_trial_matrix_draft_v2.json'); d=json.loads(p.read_text())\nprint('MATRIX_SIZE',p.stat().st_size)\nfor k,v in d.items():\n if isinstance(v,list) and len(v)>40: print(k,'LEN',len(v),'FIRST',v[:3],'LAST',v[-3:])\n else: print(k,json.dumps(v,ensure_ascii=False,indent=2))\n"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_REVIEW",
+      "started_at_utc": "2026-10-18T13:44:47.746184+00:00",
+      "ended_at_utc": "2026-10-18T13:44:47.793804+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/matrix-002.stdout.txt",
+        "sha256": "0e079065f92bab83ba380344b2dda3977576140eab035f2486dddbb1037eee0d",
+        "size_bytes": 30913
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/matrix-002.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "decision-001",
+      "argv": [
+        "bash",
+        "-c",
+        "cat AGENTS.md STATUS.md reports/P2_design/preapproval_audit_v3/authorization_request.txt; rg --files docs reports/P2_design | sort"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_REVIEW",
+      "started_at_utc": "2026-10-18T13:44:48.567330+00:00",
+      "ended_at_utc": "2026-10-18T13:44:48.577341+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/decision-001.stdout.txt",
+        "sha256": "e27adfeb911dca84e08eaa25e0cd0340870f1cd6581084f136c49e6dac385dba",
+        "size_bytes": 31118
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/decision-001.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "decision-002",
+      "argv": [
+        "bash",
+        "-c",
+        "wc -l docs/user_request.txt docs/research_contract.md docs/statistical_protocol.md docs/model_spec.md docs/workload_spec.md docs/baseline_spec.md docs/metric_spec.md docs/P2_design/P2_complete_design_proposal_v1.md docs/P2_design/P2_mapping_opportunity_decision_table_v1.md docs/P2_design/v2/* reports/P2_design/design_revision_v2/human_decision_packet.md; cat docs/research_contract.md docs/statistical_protocol.md docs/model_spec.md docs/workload_spec.md docs/baseline_spec.md docs/metric_spec.md"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_REVIEW",
+      "started_at_utc": "2026-10-18T13:44:55.585625+00:00",
+      "ended_at_utc": "2026-10-18T13:44:55.592917+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/decision-002.stdout.txt",
+        "sha256": "807036dc7e39d690969736522104edc879b06bbd79538ceba012ed25a019d3bc",
+        "size_bytes": 19677
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/decision-002.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "decision-003",
+      "argv": [
+        "bash",
+        "-c",
+        "cat docs/P2_design/P2_complete_design_proposal_v1.md docs/P2_design/P2_mapping_opportunity_decision_table_v1.md docs/P2_design/v2/P2_complete_design_proposal_v2.md docs/P2_design/v2/P2_mapping_opportunity_decision_table_v2.md"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_REVIEW",
+      "started_at_utc": "2026-10-18T13:45:00.736889+00:00",
+      "ended_at_utc": "2026-10-18T13:45:00.741463+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/decision-003.stdout.txt",
+        "sha256": "102d62b4482780476acf76e7fe97cf5fe3b05d8ca9a1bf15c5ae44c6154e61cc",
+        "size_bytes": 53548
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/decision-003.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "history-001",
+      "argv": [
+        "cat",
+        "docs/P2_design/P2_complete_design_proposal_v1.md"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_REVIEW",
+      "started_at_utc": "2026-10-18T13:45:03.943414+00:00",
+      "ended_at_utc": "2026-10-18T13:45:03.946521+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/history-001.stdout.txt",
+        "sha256": "e378e85071d6c97fb6cd5801d9449eef176a90baddcd786181c6685eaa29feac",
+        "size_bytes": 28397
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/history-001.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "history-002",
+      "argv": [
+        "cat",
+        "docs/P2_design/P2_mapping_opportunity_decision_table_v1.md"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_REVIEW",
+      "started_at_utc": "2026-10-18T13:45:03.947053+00:00",
+      "ended_at_utc": "2026-10-18T13:45:03.949696+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/history-002.stdout.txt",
+        "sha256": "4c981f2f2303e1b1535168dd320e3c11151ea86ad35a502513893370a5906ea2",
+        "size_bytes": 4533
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/history-002.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "history-003",
+      "argv": [
+        "cat",
+        "reports/P2_design/independent_review_v2/executive_decision.md"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_REVIEW",
+      "started_at_utc": "2026-10-18T13:45:03.950007+00:00",
+      "ended_at_utc": "2026-10-18T13:45:03.951903+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/history-003.stdout.txt",
+        "sha256": "0344c3d1ec6e0f1729bb758503f03dedf1fb780b00c55cbd9c60261b91d398b7",
+        "size_bytes": 4275
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/history-003.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "main-007",
+      "argv": [
+        "cat",
+        "docs/user_request.txt"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_REVIEW",
+      "started_at_utc": "2026-10-18T13:45:03.957935+00:00",
+      "ended_at_utc": "2026-10-18T13:45:03.961399+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-007.stdout.txt",
+        "sha256": "3773d26ba8d1dc1c68ecc70818b79604ce1d20f26c9203b2df7560c2b824c99c",
+        "size_bytes": 54243
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-007.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "main-008",
+      "argv": [
+        "cat",
+        "docs/research_contract.md"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_REVIEW",
+      "started_at_utc": "2026-10-18T13:45:03.962201+00:00",
+      "ended_at_utc": "2026-10-18T13:45:03.964516+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-008.stdout.txt",
+        "sha256": "8ccd2f6fce470013af89c653eb3ff84a0b66809c56d321993cd973ebc18031e4",
+        "size_bytes": 3119
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-008.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "main-009",
+      "argv": [
+        "cat",
+        "docs/statistical_protocol.md"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_REVIEW",
+      "started_at_utc": "2026-10-18T13:45:03.965035+00:00",
+      "ended_at_utc": "2026-10-18T13:45:03.967687+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-009.stdout.txt",
+        "sha256": "f9c0eeb6e76f68330ba3e5d8d90e58d175c3947a1948bb41b26ad50dbc041e8a",
+        "size_bytes": 3081
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-009.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "main-010",
+      "argv": [
+        "cat",
+        "docs/model_spec.md"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_REVIEW",
+      "started_at_utc": "2026-10-18T13:45:03.968170+00:00",
+      "ended_at_utc": "2026-10-18T13:45:03.969862+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-010.stdout.txt",
+        "sha256": "3f74116fa6cb85e4f2db1c96d246ac830a282be28847a0af21184fde2e17197b",
+        "size_bytes": 4381
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-010.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "main-011",
+      "argv": [
+        "cat",
+        "docs/workload_spec.md"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_REVIEW",
+      "started_at_utc": "2026-10-18T13:45:03.970614+00:00",
+      "ended_at_utc": "2026-10-18T13:45:03.972773+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-011.stdout.txt",
+        "sha256": "a098008f3abe47f4cfb830685009b19bf4d3555a8e370ad242a2fce1debea606",
+        "size_bytes": 1574
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-011.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "main-012",
+      "argv": [
+        "cat",
+        "docs/baseline_spec.md"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_REVIEW",
+      "started_at_utc": "2026-10-18T13:45:03.973164+00:00",
+      "ended_at_utc": "2026-10-18T13:45:03.974830+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-012.stdout.txt",
+        "sha256": "54a1cdb86d0235671a7d1ece31e489289c026bf083f33388580b6f3fdbb42e12",
+        "size_bytes": 2826
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-012.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "main-013",
+      "argv": [
+        "cat",
+        "docs/metric_spec.md"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_REVIEW",
+      "started_at_utc": "2026-10-18T13:45:03.975484+00:00",
+      "ended_at_utc": "2026-10-18T13:45:03.977080+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-013.stdout.txt",
+        "sha256": "c4b912fc672979ddc763d882e546b7a92bf53090e5b5dddd5777e2e867df182a",
+        "size_bytes": 3242
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-013.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "decision-004",
+      "argv": [
+        "bash",
+        "-c",
+        "cat docs/P2_design/decisions.draft.json docs/P2_design/v2/P2_stage_state_contract_v2.json docs/P2_design/v2/P2_criterion_spec_v2.json docs/P2_design/v2/P2_D01_D10_approval_checklist_v2.md; cat reports/P2_design/independent_review_v2/D01_D10_review_matrix.csv"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_REVIEW",
+      "started_at_utc": "2026-10-18T13:45:07.788843+00:00",
+      "ended_at_utc": "2026-10-18T13:45:07.795065+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/decision-004.stdout.txt",
+        "sha256": "fcf901e2624ebce94f15dcdc34b1d080ebc28a243ffb9fda43218eeda4e2b55a",
+        "size_bytes": 93585
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/decision-004.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "decision-005",
+      "argv": [
+        "cat",
+        "docs/P2_design/v2/P2_stage_state_contract_v2.json",
+        "docs/P2_design/v2/P2_criterion_spec_v2.json"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_REVIEW",
+      "started_at_utc": "2026-10-18T13:45:14.674217+00:00",
+      "ended_at_utc": "2026-10-18T13:45:14.676611+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/decision-005.stdout.txt",
+        "sha256": "a729a3b00d9d21ff61efe91c49bc975cd73a21b872c31cfe736ada3a5ee38dbb",
+        "size_bytes": 14475
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/decision-005.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "decision-006",
+      "argv": [
+        "bash",
+        "-c",
+        "rg -n \"^#|2 ms|2ms|计时|预热|冻结|计时输入|实现|P2\" docs/user_request.txt | tail -n 190; cat docs/P2_design/v2/P2_D01_D10_approval_checklist_v2.md; cat docs/P2_design/v2/P2_runner_schema_review_v2.md"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_REVIEW",
+      "started_at_utc": "2026-10-18T13:45:23.257444+00:00",
+      "ended_at_utc": "2026-10-18T13:45:23.267054+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/decision-006.stdout.txt",
+        "sha256": "12d64b933972830448893dbc3dd6e7a4ce08a858ea9dc9d04a483835d483db48",
+        "size_bytes": 16252
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/decision-006.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "decision-007",
+      "argv": [
+        "bash",
+        "-c",
+        "sed -n \"820,930p\" docs/user_request.txt; sed -n \"1100,1530p\" docs/user_request.txt; sed -n \"1815,1905p\" docs/user_request.txt; sed -n \"2325,2355p\" docs/user_request.txt; sed -n \"2720,2770p\" docs/user_request.txt"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_REVIEW",
+      "started_at_utc": "2026-10-18T13:45:29.127942+00:00",
+      "ended_at_utc": "2026-10-18T13:45:29.141242+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/decision-007.stdout.txt",
+        "sha256": "c069107e4d7027dc43ec6686d8a945a762846b380e83ba89f71d8638d63995e0",
+        "size_bytes": 11436
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/decision-007.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "decision-008",
+      "argv": [
+        "python",
+        "-c",
+        "import json; d=json.load(open(\"docs/P2_design/v2/P2_scientific_parameter_registry_v2.json\")); print(json.dumps({k:v for k,v in d.items() if k!=\"parameters\"},ensure_ascii=False,indent=2))"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_REVIEW",
+      "started_at_utc": "2026-10-18T13:45:37.593093+00:00",
+      "ended_at_utc": "2026-10-18T13:45:37.617309+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/decision-008.stdout.txt",
+        "sha256": "331ab1cdd8d96cbc1c33dd57ff933b0c9d4151e59ccc70800121d1acb128f0da",
+        "size_bytes": 7488
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/decision-008.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "decision-009",
+      "argv": [
+        "python",
+        "-c",
+        "import json; d=json.load(open(\"docs/P2_design/v2/P2_scientific_parameter_registry_v2.json\")); [print(json.dumps(x,ensure_ascii=False)) for x in d[\"parameters\"]]"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_REVIEW",
+      "started_at_utc": "2026-10-18T13:45:42.650361+00:00",
+      "ended_at_utc": "2026-10-18T13:45:42.675856+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/decision-009.stdout.txt",
+        "sha256": "9c0f18595e6ff244ad6213aac69fabff758a099f7a086343fb66a5ac5fcdc293",
+        "size_bytes": 29275
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/decision-009.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "decision-010",
+      "argv": [
+        "python",
+        "-c",
+        "import json; d=json.load(open(\"docs/P2_design/v2/P2_typed_identity_schema_v2.json\")); print(json.dumps(d[\"$defs\"][\"GATE_STATE\"],ensure_ascii=False,indent=2)); d=json.load(open(\"docs/P2_design/decisions.draft.json\")); [print(x[\"id\"],x[\"question\"],x[\"blockers\"]) for x in d[\"decisions\"]"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_REVIEW",
+      "started_at_utc": "2026-10-18T13:45:48.145176+00:00",
+      "ended_at_utc": "2026-10-18T13:45:48.161403+00:00",
+      "exit_code": 1,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/decision-010.stdout.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/decision-010.stderr.txt",
+        "sha256": "f541fd158249450d649491d0383738b42d8c212a4deb9c1c598541893bf7ab74",
+        "size_bytes": 572
+      }
+    },
+    {
+      "id": "main-014",
+      "argv": [
+        "cat",
+        "docs/P2_design/v2/P2_complete_design_proposal_v2.md"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_REVIEW",
+      "started_at_utc": "2026-10-18T13:45:50.474082+00:00",
+      "ended_at_utc": "2026-10-18T13:45:50.476302+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-014.stdout.txt",
+        "sha256": "7f929b85554193ef1256deb3f7cc184e47c362f91e93950896a80450c9eb5fe8",
+        "size_bytes": 17076
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-014.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "main-015",
+      "argv": [
+        "cat",
+        "docs/P2_design/v2/P2_diagnostic_spec_v2.json"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_REVIEW",
+      "started_at_utc": "2026-10-18T13:45:50.477101+00:00",
+      "ended_at_utc": "2026-10-18T13:45:50.479018+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-015.stdout.txt",
+        "sha256": "9bec37d044f4c7742d931149c195c2c3ec1540d41dc3f0a899a2b29f8c7e3e90",
+        "size_bytes": 8809
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-015.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "main-016",
+      "argv": [
+        "cat",
+        "docs/P2_design/v2/P2_public_snapshot_spec_v2.json"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_REVIEW",
+      "started_at_utc": "2026-10-18T13:45:50.479723+00:00",
+      "ended_at_utc": "2026-10-18T13:45:50.481778+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-016.stdout.txt",
+        "sha256": "fa4ce177c2d4a49a5f8f5b30bfa44e2b0d529f1e735ddfa259ae1811edc2f1af",
+        "size_bytes": 4613
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-016.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "decision-011",
+      "argv": [
+        "python",
+        "-c",
+        "import json; d=json.load(open(\"docs/P2_design/v2/P2_typed_identity_schema_v2.json\")); print(json.dumps(d[\"$defs\"][\"GATE_STATE\"],ensure_ascii=False,indent=2)); d=json.load(open(\"docs/P2_design/decisions.draft.json\")); [print(x[\"id\"],x[\"question\"],x[\"blockers\"]) for x in d[\"decisions\"]]"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_REVIEW",
+      "started_at_utc": "2026-10-18T13:45:57.450338+00:00",
+      "ended_at_utc": "2026-10-18T13:45:57.477939+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/decision-011.stdout.txt",
+        "sha256": "0d287872d48d5f60ff27716ed6623f20ae070f669bb1ed727173d24fbb541912",
+        "size_bytes": 3166
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/decision-011.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "decision-012",
+      "argv": [
+        "cat",
+        "reports/P2_design/design_revision_v2/human_decision_packet.md"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_REVIEW",
+      "started_at_utc": "2026-10-18T13:46:18.668215+00:00",
+      "ended_at_utc": "2026-10-18T13:46:18.670132+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/decision-012.stdout.txt",
+        "sha256": "7c54a0f17c11036e1cb7f34b82734792746c946b20f5cf021c1ced298cc04367",
+        "size_bytes": 19494
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/decision-012.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "decision-013",
+      "argv": [
+        "bash",
+        "-c",
+        "rg -n \"M2|comparison|contrast|reason|alternative|critical|blocking|substitution|P2_runtime|runtime_budget|timing|actual.*commit|dirty\" docs/P2_design/v2/P2_* docs/statistical_protocol.md docs/P2_design/calibration_options.md reports/P2_design/design_status.json"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_REVIEW",
+      "started_at_utc": "2026-10-18T13:46:30.663754+00:00",
+      "ended_at_utc": "2026-10-18T13:46:30.700639+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/decision-013.stdout.txt",
+        "sha256": "2c994d58ecedd947c7418eb3310a33dda16e5d166eeffd95ba709bc39127ca28",
+        "size_bytes": 1451962
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/decision-013.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "decision-014",
+      "argv": [
+        "python",
+        "-c",
+        "import json; d=json.load(open(\"docs/P2_design/v2/P2_typed_identity_schema_v2.json\")); print(json.dumps({k:v for k,v in d[\"$defs\"].items() if k in [\"STAGE_REPORT\",\"METRICS_REPORT\",\"STAGE_RECEIPT\"]},ensure_ascii=False,indent=2)); print([k for k in d[\"$defs\"] if any(x in k for x in [\"STAGE\",\"REPORT\",\"METRIC\"])])"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_REVIEW",
+      "started_at_utc": "2026-10-18T13:46:36.936879+00:00",
+      "ended_at_utc": "2026-10-18T13:46:36.961736+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/decision-014.stdout.txt",
+        "sha256": "ec2fb6fb20f34809fa1980af7a330bb69f17a4781ee4f290e731b3326f4c3672",
+        "size_bytes": 58
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/decision-014.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "decision-015",
+      "argv": [
+        "python",
+        "-c",
+        "import json; d=json.load(open(\"docs/P2_design/v2/P2_typed_identity_schema_v2.json\")); print(json.dumps(d[\"$defs\"][\"STAGE_RECORD\"],ensure_ascii=False,indent=2)); print(json.dumps(d[\"$defs\"][\"METRIC_DERIVATION\"],ensure_ascii=False,indent=2))"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_REVIEW",
+      "started_at_utc": "2026-10-18T13:46:41.991824+00:00",
+      "ended_at_utc": "2026-10-18T13:46:42.017792+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/decision-015.stdout.txt",
+        "sha256": "bd2c1f75610d24209f279be5ce3ce09e5c437c7a75aca6ab8355f51cdec5d60e",
+        "size_bytes": 3356
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/decision-015.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "challenge-001",
+      "argv": [
+        "rg",
+        "-n",
+        "NOT_SUPPORTED|coverage|F/E|M2|lock|dirty|commit|HEAD|concurr|stale|atomic|event|choose|ready",
+        "docs/P2_design/v2",
+        "docs/model_spec.md",
+        "docs/P1_implementation_spec.md",
+        "STATUS.md"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_REVIEW",
+      "started_at_utc": "2026-10-18T13:47:01.634272+00:00",
+      "ended_at_utc": "2026-10-18T13:47:01.642541+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/challenge-001.stdout.txt",
+        "sha256": "78f0ec37501dfb0113ef6c5b728ef6371f4e94c1314a8820d976db48746fd6f4",
+        "size_bytes": 27750
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/challenge-001.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "decision-016",
+      "argv": [
+        "bash",
+        "-c",
+        "sed -n \"235,339p\" docs/P2_design/P2_complete_design_proposal_v1.md; cat docs/P2_design/P2_mapping_opportunity_decision_table_v1.md; cat reports/P2_design/independent_review_v2/executive_decision.md reports/P2_design/independent_review_v2/critical_findings.md reports/P2_design/design_revision_v2/executive_decision.md"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_REVIEW",
+      "started_at_utc": "2026-10-18T13:47:02.578302+00:00",
+      "ended_at_utc": "2026-10-18T13:47:02.585560+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/decision-016.stdout.txt",
+        "sha256": "e7a63b6e37bbd888afb3ebb61c1c6e0daea6f9a220f3542bbde8f07e47b455ba",
+        "size_bytes": 39161
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/decision-016.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "main-017",
+      "argv": [
+        "cat",
+        "docs/P2_design/v2/P2_criterion_spec_v2.json"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_REVIEW",
+      "started_at_utc": "2026-10-18T13:47:03.906424+00:00",
+      "ended_at_utc": "2026-10-18T13:47:03.908860+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-017.stdout.txt",
+        "sha256": "98a578944e7910db933f5b3b02aee4bb03de8005853024b38cc3b02630b04e38",
+        "size_bytes": 4139
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-017.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "main-018",
+      "argv": [
+        "cat",
+        "docs/P2_design/v2/P2_stage_state_contract_v2.json"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_REVIEW",
+      "started_at_utc": "2026-10-18T13:47:03.909681+00:00",
+      "ended_at_utc": "2026-10-18T13:47:03.911851+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-018.stdout.txt",
+        "sha256": "c64803a93c74ee9dba6a7bc61de2d2e550264f2c5d4a920e1248665fa7e86b93",
+        "size_bytes": 10336
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-018.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "main-019",
+      "argv": [
+        "cat",
+        "reports/P2_design/design_revision_v2/cross_document_consistency.json"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_REVIEW",
+      "started_at_utc": "2026-10-18T13:47:03.912863+00:00",
+      "ended_at_utc": "2026-10-18T13:47:03.915042+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-019.stdout.txt",
+        "sha256": "141888d9bd8dd0f1ab4a61c7af10c0a98cca14cdde8dbe6e7dc560092d513e6a",
+        "size_bytes": 5835
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-019.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "main-020",
+      "argv": [
+        "cat",
+        "reports/P2_design/design_revision_v2/executive_decision.md"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_REVIEW",
+      "started_at_utc": "2026-10-18T13:47:03.915714+00:00",
+      "ended_at_utc": "2026-10-18T13:47:03.917704+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-020.stdout.txt",
+        "sha256": "50b8756dfdd5bef56f1d7f792d9adf24765ca30402c96d08c428d52fdb1accc8",
+        "size_bytes": 6389
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-020.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "matrix-003",
+      "argv": [
+        "python",
+        "reports/P2_design/preapproval_audit_v3/matrix_static_audit.py.txt"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_REVIEW",
+      "started_at_utc": "2026-10-18T13:47:08.711562+00:00",
+      "ended_at_utc": "2026-10-18T13:47:08.968364+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/matrix-003.stdout.txt",
+        "sha256": "e65d7d74067e5401ce9dbd506bab16f8e541599e0e76961038c41ecb2b316667",
+        "size_bytes": 260
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/matrix-003.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "challenge-002",
+      "argv": [
+        "python",
+        "-c",
+        "from pathlib import Path\nps=['STATUS.md','docs/model_spec.md','docs/P2_design/v2/P2_diagnostic_spec_v2.json','docs/P2_design/v2/P2_public_snapshot_spec_v2.json','docs/P2_design/v2/P2_criterion_spec_v2.json','docs/P2_design/v2/P2_runner_schema_review_v2.md','docs/P2_design/v2/P2_generation_spec_v2.json','docs/P2_design/v2/P2_stage_state_contract_v2.json']\nfor p in ps:\n print('FILE '+p)\n for i,l in enumerate(Path(p).read_text().splitlines(),1): print(str(i)+': '+l)"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_REVIEW",
+      "started_at_utc": "2026-10-18T13:47:10.196602+00:00",
+      "ended_at_utc": "2026-10-18T13:47:10.225775+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/challenge-002.stdout.txt",
+        "sha256": "75634f036448189ba1e97d53b6013dfc9c0f147002ac68830fadb235346c476c",
+        "size_bytes": 63368
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/challenge-002.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "challenge-003",
+      "argv": [
+        "python",
+        "-c",
+        "from pathlib import Path\nfor p in ['docs/P2_design/v2/P2_runner_schema_review_v2.md','docs/P2_design/v2/P2_criterion_spec_v2.json','docs/P2_design/v2/P2_generation_spec_v2.json']:\n print('FILE '+p)\n for i,l in enumerate(Path(p).read_text().splitlines(),1):\n  if p.endswith('generation_spec_v2.json') and not 75<=i<=140: continue\n  print(str(i)+': '+l)"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_REVIEW",
+      "started_at_utc": "2026-10-18T13:47:16.041170+00:00",
+      "ended_at_utc": "2026-10-18T13:47:16.076021+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/challenge-003.stdout.txt",
+        "sha256": "8708098744819d2fd63256ab9c971dbfa8cc0377b1ff2938d9115b8b4ecdc37e",
+        "size_bytes": 21651
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/challenge-003.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "challenge-004",
+      "argv": [
+        "python",
+        "-c",
+        "import json\nfrom pathlib import Path\np=Path('docs/P2_design/v2/P2_workload_templates_v2.json');d=json.loads(p.read_text()); print(d.keys()); print(json.dumps(d,indent=2)[:8500]);\np=Path('docs/P2_design/v2/P2_typed_identity_schema_v2.json');d=json.loads(p.read_text());print('DEFINITION_KEYS',list(d['$defs']));\nfor k,v in d['$defs'].items():\n if any(s in k for s in ['LOCK','PROCESS','RECORD','SOURCE_BUNDLE','STAGE','ENVIRONMENT']):print(k,json.dumps(v,indent=2))"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_REVIEW",
+      "started_at_utc": "2026-10-18T13:47:22.594945+00:00",
+      "ended_at_utc": "2026-10-18T13:47:22.628576+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/challenge-004.stdout.txt",
+        "sha256": "d346d364043060d1bb04b4d4a3c5cb2df2b1eecbb84b7b32f86eb083fc7794ca",
+        "size_bytes": 27087
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/challenge-004.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "decision-017",
+      "argv": [
+        "bash",
+        "-c",
+        "cat docs/P2_design/v2/P2_diagnostic_spec_v2.json docs/P2_design/v2/P2_public_snapshot_spec_v2.json; sed -n \"1,140p\" docs/P2_design/v2/P2_generation_spec_v2.json; sed -n \"1,52p\" docs/P2_design/human_decisions.md; cat docs/P2_design/mapping_criterion_options.md"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_REVIEW",
+      "started_at_utc": "2026-10-18T13:47:25.383361+00:00",
+      "ended_at_utc": "2026-10-18T13:47:25.392455+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/decision-017.stdout.txt",
+        "sha256": "ddcfa13063842fe6cb7b8d47a98df9a82d1da8751bbc11e890db581c230ee48c",
+        "size_bytes": 32483
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/decision-017.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "challenge-005",
+      "argv": [
+        "rg",
+        "-n",
+        "def choose|class B2|scheduler.choose|while True|process_started|execution_head|actual.*HEAD|dirty|lease|fenc|exclu|CAS|M2|paired",
+        "src",
+        "docs/P2_design",
+        "reports/P2_design/design_revision_v2/identity_dependency_graph.json",
+        "docs/baseline_spec.md",
+        "docs/user_request.txt"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_REVIEW",
+      "started_at_utc": "2026-10-18T13:47:31.838597+00:00",
+      "ended_at_utc": "2026-10-18T13:47:31.853663+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/challenge-005.stdout.txt",
+        "sha256": "98706752f315ad9a761a2d4f7cf3e12b0eac194d9ffd3d4d551fc45d0d6cf900",
+        "size_bytes": 32575
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/challenge-005.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "identity-001",
+      "argv": [
+        "python",
+        "reports/P2_design/preapproval_audit_v3/identity_static_review.py.txt"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "STATIC_DOCUMENT_AND_NONSCIENTIFIC_METADATA_INSPECTION",
+      "started_at_utc": "2026-10-18T13:47:48.990422+00:00",
+      "ended_at_utc": "2026-10-18T13:47:49.032933+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/identity-001.stdout.txt",
+        "sha256": "89714dc60689bcc2e573f33df5107074c285968d4b2e507f969742fc24071131",
+        "size_bytes": 456
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/identity-001.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "challenge-006",
+      "argv": [
+        "python",
+        "-c",
+        "import json\nfrom pathlib import Path\nfor f,a,b in [('src/soc/simulator/engine.py',1,190),('src/soc/scheduler/kernels.py',160,208),('docs/baseline_spec.md',1,35),('docs/P2_design/scientific_artifacts.schema.draft.json',40,83),('docs/user_request.txt',2498,2565)]:\n print('FILE '+f)\n for i,l in enumerate(Path(f).read_text().splitlines(),1):\n  if a<=i<=b:print(str(i)+': '+l)\nt=json.loads(Path('docs/P2_design/v2/P2_workload_templates_v2.json').read_text())\nfor v in t['templates']:\n if v['scene']=='ADAS': print('ADAS_TEMPLATE',v['template_id'],'roots',[n['id'] for n in v['nodes'] if not n['predecessors']],'positive_cost_scales',sorted(set(n['cost_scale'] for n in v['nodes'])),'nonroot_count',sum(bool(n['predecessors'])for n in v['nodes']))\n"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_REVIEW",
+      "started_at_utc": "2026-10-18T13:48:03.625969+00:00",
+      "ended_at_utc": "2026-10-18T13:48:03.653774+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/challenge-006.stdout.txt",
+        "sha256": "d6f3e4ae03fb6f1f12011befef5345c3cae20a31b8b1d84fa30764f51fda4e68",
+        "size_bytes": 12440
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/challenge-006.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "m1r-005",
+      "argv": [
+        "python",
+        "-c",
+        "from pathlib import Path; import hashlib; fs=['docs/P2_design/v2/P2_communication_profiles_v2.json', 'src/soc/simulator/engine.py', 'src/soc/model/observation.py']; print('\\n'.join('FILE '+f+' SHA256 '+hashlib.sha256(Path(f).read_bytes()).hexdigest()+'\\n'+''.join(f'{i}: {s}\\n' for i,s in enumerate(Path(f).read_text().splitlines(),1)) for f in fs))"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_REVIEW",
+      "started_at_utc": "2026-10-18T13:48:07.392236+00:00",
+      "ended_at_utc": "2026-10-18T13:48:07.423779+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/m1r-005.stdout.txt",
+        "sha256": "01e550931d4058984e2599571342264b123d2e3eb183be8f4ba696b5a7e6bc0c",
+        "size_bytes": 36202
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/m1r-005.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "matrix-004",
+      "argv": [
+        "python",
+        "reports/P2_design/preapproval_audit_v3/matrix_static_audit.py.txt"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_REVIEW",
+      "started_at_utc": "2026-10-18T13:48:23.004508+00:00",
+      "ended_at_utc": "2026-10-18T13:48:23.242204+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/matrix-004.stdout.txt",
+        "sha256": "34d45d3b810c6959f5c5670efb7850f3752becde6ee118e32c82b16d37a9955f",
+        "size_bytes": 260
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/matrix-004.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "challenge-007",
+      "argv": [
+        "python",
+        "-c",
+        "import json\nfrom pathlib import Path\nps=['docs/P2_design/v2/P2_workload_templates_v2.json','docs/P2_design/v2/P2_resource_profiles_v2.json','docs/P2_design/v2/P2_trial_matrix_draft_v2.json','docs/P2_design/v2/P2_typed_identity_schema_v2.json']\nfor s in ps:\n d=json.loads(Path(s).read_text()); print('FILE',s)\n if 'templates' in d:\n  for i,t in enumerate(d['templates']):\n   if t['scene']=='ADAS':print('JSON_POINTER','/templates/'+str(i),'size',t['size'],'root_nodes',[(j,n) for j,n in enumerate(t['nodes']) if not n['predecessors']])\n elif 'profiles' in d: print(json.dumps(d['profiles'],indent=2))\n elif 'trial_matrix' in s:\n  print('keys',list(d)); print('configurations',d.get('configurations'))\n else:\n  for k in ['RUN_PREIMAGE','SOURCE_BUNDLE_PREIMAGE','SCIENTIFIC_RUN_RECORD','PROCESS_RESULT','STAGE_RECORD','ARTIFACT_REF']:\n   v=d['$defs'][k];print(k,'required=',v['required'],'closed=',v.get('additionalProperties'))\n  print('conditional_semantic_rules',d.get('conditional_semantic_rules'))\n"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_REVIEW",
+      "started_at_utc": "2026-10-18T13:48:29.632588+00:00",
+      "ended_at_utc": "2026-10-18T13:48:29.693712+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/challenge-007.stdout.txt",
+        "sha256": "c6bddface50a17a7683768dccbec52278614ee8ced37cc4e861b1e5cb880c1e2",
+        "size_bytes": 9683
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/challenge-007.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "challenge-008",
+      "argv": [
+        "python",
+        "-c",
+        "import json\nfrom pathlib import Path\nm=json.loads(Path('docs/P2_design/v2/P2_trial_matrix_draft_v2.json').read_text());print('registered_main_conditions',m['registered_main_conditions']); print('ADAS_loaded_configs',[(c['config_id'],c)for c in m['configs']if c.get('scene')=='ADAS' or c.get('scenario')=='ADAS']);\ns=json.loads(Path('docs/P2_design/v2/P2_typed_identity_schema_v2.json').read_text());print('schema_tail_keys',list(s)[-8:]);\nfor k in list(s)[-8:]:\n if k not in ['$defs','preimage_registry']:print(k,s[k])\n"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_REVIEW",
+      "started_at_utc": "2026-10-18T13:48:42.371401+00:00",
+      "ended_at_utc": "2026-10-18T13:48:42.427023+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/challenge-008.stdout.txt",
+        "sha256": "8523ae158a151d573a35bf6b160f4832804ebc40539390df11c35e112ee71929",
+        "size_bytes": 9731
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/challenge-008.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "main-021",
+      "argv": [
+        ".venv/bin/python",
+        "reports/P2_design/preapproval_audit_v3/repository_static_review.py.txt"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_REVIEW",
+      "started_at_utc": "2026-10-18T13:48:47.131522+00:00",
+      "ended_at_utc": "2026-10-18T13:48:47.388895+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-021.stdout.txt",
+        "sha256": "d80910103003991ca70e797d3861194fd649d94ab75011aa03011c01885a48f6",
+        "size_bytes": 3831
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-021.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "main-022",
+      "argv": [
+        "cat",
+        "reports/P2_design/preapproval_audit_v3/matrix_static_audit.py.txt"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_REVIEW",
+      "started_at_utc": "2026-10-18T13:50:22.045850+00:00",
+      "ended_at_utc": "2026-10-18T13:50:22.048435+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-022.stdout.txt",
+        "sha256": "0e5459dfe00036272052f7928cd0b56b151fabe81b1ebc9e249b5744b0a31ab0",
+        "size_bytes": 20867
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-022.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "identity-002",
+      "argv": [
+        "python",
+        "reports/P2_design/preapproval_audit_v3/identity_static_review.py.txt"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "STATIC_DOCUMENT_INSPECTION_WITH_ALL_LISTED_JSON_SOURCES_PARSED",
+      "started_at_utc": "2026-10-18T13:51:20.042745+00:00",
+      "ended_at_utc": "2026-10-18T13:51:20.085125+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/identity-002.stdout.txt",
+        "sha256": "89714dc60689bcc2e573f33df5107074c285968d4b2e507f969742fc24071131",
+        "size_bytes": 456
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/identity-002.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "identity-003",
+      "argv": [
+        "python",
+        "-c",
+        "import json,hashlib,pathlib; r=pathlib.Path('.'); p=r/'reports/P2_design/preapproval_audit_v3'; f=json.loads((p/'identity_findings.json').read_text()); sources=json.loads((p/'identity_source_reads.json').read_text())['sources']; refs=[s for x in f['findings'] for s in x['sources']]; assert all(hashlib.sha256((r/s['path']).read_bytes()).hexdigest()==s['sha256'] for s in sources+refs); assert all(1<=s['lines'][0]<=s['lines'][1]<=len((r/s['path']).read_text().splitlines()) for s in refs); assert len(sources)==19; assert len(f['findings'])==3; assert all(x['approval']=='UNAPPROVED' for x in f['findings']); print(json.dumps({'source_files':len(sources),'finding_citations':len(refs),'hashes_and_line_bounds':'MATCH','findings':len(f['findings']),'runtime_tests_executed':False}))"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "VERIFY_IDENTITY_REPORT_REFERENCES_AND_SCOPE",
+      "started_at_utc": "2026-10-18T13:51:20.085436+00:00",
+      "ended_at_utc": "2026-10-18T13:51:20.121514+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/identity-003.stdout.txt",
+        "sha256": "3ebce0e5ed89e90a17e2bcd5c1aacad64f119621c5a3a8e0914f852dd05110d2",
+        "size_bytes": 129
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/identity-003.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "decision-018",
+      "argv": [
+        "python",
+        "/tmp/soc_v3_decision_reports.py"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "REPORT_ONLY_AUTHORING_AND_STATIC_REFERENCE_CHECK",
+      "started_at_utc": "2026-10-18T13:51:34.206690+00:00",
+      "ended_at_utc": "2026-10-18T13:51:34.407359+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/decision-018.stdout.txt",
+        "sha256": "9393e671846fd8c4d6c292d17aace1c03da93d32c50cdd6a3653899da71001ac",
+        "size_bytes": 166
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/decision-018.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "decision-019",
+      "argv": [
+        "python",
+        "-c",
+        "import json; p=\"docs/P2_design/v2/P2_generation_spec_v2.json\";d=json.load(open(p));print([(k,len(v),sorted(v)) for k,v in d[\"key_bindings\"].items()]); print([(k,len(v)) for k,v in d[\"key_fill_templates\"].items()]); t=json.load(open(\"docs/P2_design/v2/P2_typed_identity_schema_v2.json\"));print(len(t[\"$defs\"][\"KEY\"][\"properties\"]),sorted(t[\"$defs\"][\"KEY\"][\"properties\"]))"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_REVIEW",
+      "started_at_utc": "2026-10-18T13:51:47.705795+00:00",
+      "ended_at_utc": "2026-10-18T13:51:47.731981+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/decision-019.stdout.txt",
+        "sha256": "fe677ddff5a20df6baeaf80198f43c2014a2542bb6f97771779886b25f699301",
+        "size_bytes": 1044
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/decision-019.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "decision-020",
+      "argv": [
+        "python",
+        "/tmp/soc_v3_decision_reports.py"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "REPORT_ONLY_REFRESH_AFTER_CONFIRMED_KEY_FIELD_COUNT",
+      "started_at_utc": "2026-10-18T13:52:16.826865+00:00",
+      "ended_at_utc": "2026-10-18T13:52:17.031377+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/decision-020.stdout.txt",
+        "sha256": "9393e671846fd8c4d6c292d17aace1c03da93d32c50cdd6a3653899da71001ac",
+        "size_bytes": 166
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/decision-020.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "challenge-009",
+      "argv": [
+        "python",
+        "-c",
+        "import json\nfrom pathlib import Path\nd=json.loads(Path('docs/P2_design/v2/P2_communication_profiles_v2.json').read_text());print('KEYS',list(d));print(json.dumps(d,indent=2)[:12500]);print(Path('reports/P2_design/preapproval_audit_v3/M1R_adversarial_cases.md').read_text().split('## Case 7')[1].split('## Case 8')[0])"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_REVIEW",
+      "started_at_utc": "2026-10-18T13:52:40.803776+00:00",
+      "ended_at_utc": "2026-10-18T13:52:40.832395+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/challenge-009.stdout.txt",
+        "sha256": "41fa3c52895a0bb4d02d190efad38c381391aa0a3cefe35520bcd88811eb738e",
+        "size_bytes": 17482
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/challenge-009.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "main-023",
+      "argv": [
+        "cat",
+        "reports/P2_design/preapproval_audit_v3/M1R_adversarial_cases.md"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_REVIEW",
+      "started_at_utc": "2026-10-18T13:52:57.514736+00:00",
+      "ended_at_utc": "2026-10-18T13:52:57.519038+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-023.stdout.txt",
+        "sha256": "97bdcea63377b026b88cd4397a510101a0a35270f6ef3c3b34f37549ade1d5c2",
+        "size_bytes": 22824
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-023.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "main-024",
+      "argv": [
+        "cat",
+        "reports/P2_design/preapproval_audit_v3/coverage_threshold_review.md"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_REVIEW",
+      "started_at_utc": "2026-10-18T13:52:57.520733+00:00",
+      "ended_at_utc": "2026-10-18T13:52:57.525803+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-024.stdout.txt",
+        "sha256": "558e1377dad11f48ac979c410562dacef24b10ba92f990c86f0dc82d3d558a0e",
+        "size_bytes": 14501
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-024.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "main-025",
+      "argv": [
+        "cat",
+        "reports/P2_design/preapproval_audit_v3/m1r_findings.json"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_STATIC_REVIEW",
+      "started_at_utc": "2026-10-18T13:52:57.526812+00:00",
+      "ended_at_utc": "2026-10-18T13:52:57.529459+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-025.stdout.txt",
+        "sha256": "c3c5a6483453848e6da21f64ac099974ea251a50990d7163c77b828654592214",
+        "size_bytes": 7102
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-025.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "decision-021",
+      "argv": [
+        "python",
+        "/tmp/soc_v3_stage_report.py"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "REPORT_ONLY_STAGE_ENUM_AND_AUTHORITY_REVIEW",
+      "started_at_utc": "2026-10-18T13:53:34.432568+00:00",
+      "ended_at_utc": "2026-10-18T13:53:34.477538+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/decision-021.stdout.txt",
+        "sha256": "9181c01ad25dc3f9d9052cc260e4c5b669c4ea9ae3730329202e3e025870f8c7",
+        "size_bytes": 200
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/decision-021.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "m1r-006",
+      "argv": [
+        "python",
+        "reports/P2_design/preapproval_audit_v3/m1r_static_checks.py.txt"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "NONSCIENTIFIC_STATIC_SOURCE_AND_HAND_FORMULA_CHECK",
+      "started_at_utc": "2026-10-18T13:53:36.820247+00:00",
+      "ended_at_utc": "2026-10-18T13:53:36.868625+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/m1r-006.stdout.txt",
+        "sha256": "762d1c92a3c1b07d5a17f41d405c1116e1654365222fafeef8b595a8730b4554",
+        "size_bytes": 368
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/m1r-006.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "decision-022",
+      "argv": [
+        "python",
+        "/tmp/soc_v3_decision_reports.py"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "REPORT_ONLY_EXPLICIT_UNAPPROVED_FIELD_NORMALIZATION",
+      "started_at_utc": "2026-10-18T13:53:49.635079+00:00",
+      "ended_at_utc": "2026-10-18T13:53:49.858731+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/decision-022.stdout.txt",
+        "sha256": "9393e671846fd8c4d6c292d17aace1c03da93d32c50cdd6a3653899da71001ac",
+        "size_bytes": 166
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/decision-022.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "decision-023",
+      "argv": [
+        "python",
+        "/tmp/soc_v3_decision_verify.py"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_REPORT_SOURCE_REFERENCE_VERIFICATION",
+      "started_at_utc": "2026-10-18T13:54:07.298537+00:00",
+      "ended_at_utc": "2026-10-18T13:54:07.421639+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/decision-023.stdout.txt",
+        "sha256": "719bf0e330fbe6bf25734d9540a9e7f2796f1ee7a0dcb6040c347008f4d8cfe0",
+        "size_bytes": 309
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/decision-023.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "main-026",
+      "argv": [
+        "cat",
+        "reports/P2_design/preapproval_audit_v3/stage_state_timing_review.md"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_FINAL_REPORT_ADJUDICATION",
+      "started_at_utc": "2026-10-18T13:59:51.620995+00:00",
+      "ended_at_utc": "2026-10-18T13:59:51.624010+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-026.stdout.txt",
+        "sha256": "85be14da732b7ee6d5f4d6cabd1e34f0bf47c03dab83de2ccf293cfc3b2d97f4",
+        "size_bytes": 16083
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-026.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "main-027",
+      "argv": [
+        "cat",
+        "reports/P2_design/preapproval_audit_v3/cross_document_findings.json"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_FINAL_REPORT_ADJUDICATION",
+      "started_at_utc": "2026-10-18T13:59:51.625005+00:00",
+      "ended_at_utc": "2026-10-18T13:59:51.627339+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-027.stdout.txt",
+        "sha256": "8c37f2c8732280cf49e80edbbfc9aa10f769952dc6a1d56a967bc11d51d73a12",
+        "size_bytes": 41864
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-027.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "main-028",
+      "argv": [
+        "cat",
+        "reports/P2_design/preapproval_audit_v3/human_decision_packet.md"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "READ_ONLY_FINAL_REPORT_ADJUDICATION",
+      "started_at_utc": "2026-10-18T13:59:51.628137+00:00",
+      "ended_at_utc": "2026-10-18T13:59:51.630237+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-028.stdout.txt",
+        "sha256": "315b546fca4d95a2514128673f750b2247a03a380821b19029815677c9f0406d",
+        "size_bytes": 44251
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/main-028.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "final-001",
+      "argv": [
+        "python",
+        "reports/P2_design/preapproval_audit_v3/report_integrity_verifier.py.txt"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "REPORT_INTEGRITY_AND_DESIGN_FINDING_EXIT_CHECK",
+      "started_at_utc": "2026-10-18T14:01:12.276871+00:00",
+      "ended_at_utc": "2026-10-18T14:01:12.559780+00:00",
+      "exit_code": 1,
+      "expected_exit_code": 2,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/final-001.stdout.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/final-001.stderr.txt",
+        "sha256": "5f9808e099ab80939fe9bc00f060db33616dbd26c0e6a343ff3496a96cb8ab1e",
+        "size_bytes": 979
+      }
+    },
+    {
+      "id": "final-002",
+      "argv": [
+        "python",
+        "reports/P2_design/preapproval_audit_v3/decision_report_verifier.py.txt"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "REPORT_INTEGRITY_AND_SOURCE_REFERENCE_VERIFICATION",
+      "started_at_utc": "2026-10-18T14:01:52.689217+00:00",
+      "ended_at_utc": "2026-10-18T14:01:52.832536+00:00",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/final-002.stdout.txt",
+        "sha256": "719bf0e330fbe6bf25734d9540a9e7f2796f1ee7a0dcb6040c347008f4d8cfe0",
+        "size_bytes": 309
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/final-002.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "final-003",
+      "argv": [
+        "python",
+        "reports/P2_design/preapproval_audit_v3/report_integrity_verifier.py.txt"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "REPORT_INTEGRITY_AND_SOURCE_REFERENCE_VERIFICATION",
+      "started_at_utc": "2026-10-18T14:01:52.833031+00:00",
+      "ended_at_utc": "2026-10-18T14:01:53.157627+00:00",
+      "exit_code": 1,
+      "expected_exit_code": 2,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/final-003.stdout.txt",
+        "sha256": "d77f296abc6d938428cff9d3bdf3e827551b7426b704f2f3f4901e5693fd79e2",
+        "size_bytes": 874
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/final-003.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    },
+    {
+      "id": "final-004",
+      "argv": [
+        "python",
+        "reports/P2_design/preapproval_audit_v3/report_integrity_verifier.py.txt"
+      ],
+      "cwd": "/workspace/soc",
+      "kind": "REPORT_INTEGRITY_AND_DESIGN_FINDING_EXIT_CHECK",
+      "started_at_utc": "2026-10-18T14:02:00.438390+00:00",
+      "ended_at_utc": "2026-10-18T14:02:00.787311+00:00",
+      "exit_code": 2,
+      "expected_exit_code": 2,
+      "stdout_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/final-004.stdout.txt",
+        "sha256": "763dfd2afa3e557634e65e414c9b6228e73d1a900add5d7a5899ae454cc75433",
+        "size_bytes": 661
+      },
+      "stderr_ref": {
+        "path": "reports/P2_design/preapproval_audit_v3/raw_commands/final-004.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      }
+    }
+  ],
+  "source_ledgers": [
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/main_commands.json",
+      "sha256": "fbdef0f2e943ff654bc47a373a458eb65eaa6687abfad91ee0a7cc793f8a63ab"
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/history_commands.json",
+      "sha256": "f4384c551c430ca04a3a999af50d3e9b306cdcd628561d93a04c7ca237b3ca7a"
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/matrix_commands.json",
+      "sha256": "2e839a1043826e2ffdbeb54c8ea23f01b68841d2a4cc9b22df810b8b7995bb60"
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/identity_commands.json",
+      "sha256": "c2f536f3c5a4bb19e2ff5f04dac1a98b56e120f083bf4ae1bfced1fddb5c9835"
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/m1r_commands.json",
+      "sha256": "f112a6a771c7be9a686e036a579a7e20a78acefd1fbcaa9cbdd860c0422f4242"
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/decision_commands.json",
+      "sha256": "7fbb6d077ddc84f746b2403feafba0c966dc4713ad96104426cf5a2210d4c0f5"
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/challenge_commands.json",
+      "sha256": "1021d35400f09c34572f61346cb1cadd992a83297c4ae4e31997fa7ef17ab7e1"
+    },
+    {
+      "path": "reports/P2_design/preapproval_audit_v3/final_commands.json",
+      "sha256": "8396fd72420cced2c533db3b5a12fdef0cc93292e398cbed1e4cf9a653913f18"
+    }
+  ],
+  "nonzero_commands": [
+    {
+      "id": "decision-010",
+      "exit_code": 1,
+      "expected_exit_code": 0
+    },
+    {
+      "id": "final-001",
+      "exit_code": 1,
+      "expected_exit_code": 2
+    },
+    {
+      "id": "final-003",
+      "exit_code": 1,
+      "expected_exit_code": 2
+    },
+    {
+      "id": "final-004",
+      "exit_code": 2,
+      "expected_exit_code": 2
+    }
+  ],
+  "additional_discovery_events": [
+    {
+      "action": "Initial broad rg search over /tmp",
+      "exit_code": 2,
+      "reason": "Permission denied for /tmp/codex-daemon-1000; no bypass; repository remained readable",
+      "raw_output_scope": "Tool transcript only; noted in environment_and_discovery_notes.md"
+    },
+    {
+      "action": "Incidental cat of identity_recovery_review.md before asynchronous report creation finished",
+      "exit_code": 1,
+      "reason": "New report did not yet exist; later read succeeded; not audited source failure",
+      "raw_output_scope": "Tool transcript only"
+    }
+  ],
+  "reviewer_corrections": [
+    {
+      "id": "decision-010",
+      "reason": "Missing bracket in read-only inline Python; corrected decision-011 exit0; original stderr retained"
+    },
+    {
+      "action": "Final citation review",
+      "reason": "Corrected new decision_findings STATUS locator from lines1–66 to actual1–56, then rebuilt aggregate. No existing source changed; preliminary scan identified the bounds mismatch without nonzero process exit."
+    },
+    {
+      "id": "final-001",
+      "exit_code": 1,
+      "reason": "SP27 new-report _json field contained plain text; converted it to JSON with verbatim v2 and historical v1 source excerpts. No original specification changed. final-002 report reference verification exit0."
+    },
+    {
+      "id": "final-003",
+      "exit_code": 1,
+      "reason": "final-002 appended the final command ledger after aggregate generation, producing a stale aggregate-ledger hash. Regenerated aggregate before recheck; final-004 all21 integrity checks PASS, expected design-review exit2. Original failure stdout preserved."
+    }
+  ],
+  "publication_receipt": "first_publication_receipt.json",
+  "scientific_commands_executed": 0
+}

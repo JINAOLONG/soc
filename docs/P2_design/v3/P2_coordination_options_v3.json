@@ -1,0 +1,225 @@
+{
+  "document_kind": "UNSELECTED_COORDINATION_ROUTE_CONTRACT",
+  "document_version": "v3",
+  "status": "DRAFT_UNAPPROVED_NONEXECUTABLE",
+  "approval": "UNAPPROVED",
+  "approved": false,
+  "frozen": false,
+  "executable": false,
+  "execution_authorized": false,
+  "read_by_pipeline": false,
+  "starting_commit": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+  "selected_route": null,
+  "domain_schema": "P2_typed_identity_schema_v3.json#/$defs/COORDINATION_DOMAIN_PREIMAGE_V3",
+  "record_schema": "P2_typed_identity_schema_v3.json#/$defs/COORDINATION_RECORD_V3",
+  "shared_domain_fields": [
+    "budget_scope_sha256",
+    "purpose",
+    "semantic_target_id"
+  ],
+  "excluded_from_domain": [
+    "attempt_id",
+    "replaceable_authorization",
+    "owner",
+    "epoch",
+    "future_content_or_results"
+  ],
+  "cas_expected": [
+    "domain",
+    "current_record_sha256",
+    "revision",
+    "owner_id",
+    "epoch",
+    "active_authorization_sha256",
+    "phase",
+    "lease_clock_id"
+  ],
+  "cas_common_preconditions": [
+    "Known authoritative clock; now < lease deadline unless explicitly permitted fenced transfer",
+    "Expected pointer/version exactly current",
+    "Authorization lineage under unique immutable budget root valid",
+    "Domain and original attempt unchanged",
+    "Immutable child-byte and predecessor-record integrity",
+    "Phase-specific guards below"
+  ],
+  "phase_edges": [
+    {
+      "from_": "ABSENT",
+      "to": "PREPARED"
+    },
+    {
+      "from_": "PREPARED",
+      "to": "SPAWN_RESERVED"
+    },
+    {
+      "from_": "SPAWN_RESERVED",
+      "to": "RUNNING"
+    },
+    {
+      "from_": "RUNNING",
+      "to": "OUTPUT_READY"
+    },
+    {
+      "from_": "OUTPUT_READY",
+      "to": "VERIFIED"
+    },
+    {
+      "from_": "VERIFIED",
+      "to": "PUBLISHED"
+    }
+  ],
+  "terminal_edges": [
+    {
+      "from_": "PREPARED",
+      "to": "HALTED"
+    },
+    {
+      "from_": "PREPARED",
+      "to": "FAILED"
+    },
+    {
+      "from_": "PREPARED",
+      "to": "INCOMPLETE"
+    },
+    {
+      "from_": "SPAWN_RESERVED",
+      "to": "HALTED"
+    },
+    {
+      "from_": "SPAWN_RESERVED",
+      "to": "FAILED"
+    },
+    {
+      "from_": "SPAWN_RESERVED",
+      "to": "INCOMPLETE"
+    },
+    {
+      "from_": "RUNNING",
+      "to": "HALTED"
+    },
+    {
+      "from_": "RUNNING",
+      "to": "FAILED"
+    },
+    {
+      "from_": "RUNNING",
+      "to": "INCOMPLETE"
+    },
+    {
+      "from_": "OUTPUT_READY",
+      "to": "HALTED"
+    },
+    {
+      "from_": "OUTPUT_READY",
+      "to": "FAILED"
+    },
+    {
+      "from_": "OUTPUT_READY",
+      "to": "INCOMPLETE"
+    },
+    {
+      "from_": "VERIFIED",
+      "to": "HALTED"
+    },
+    {
+      "from_": "VERIFIED",
+      "to": "FAILED"
+    },
+    {
+      "from_": "VERIFIED",
+      "to": "INCOMPLETE"
+    }
+  ],
+  "publication_order": [
+    "fsync immutable data/inventory",
+    "immutable completion receipt references prior VERIFIED record, excludes own receipt/pointer",
+    "CAS current pointer to PUBLISHED record binding receipt"
+  ],
+  "clock": {
+    "unit": "authority monotonic ticks, positive deadline > current tick",
+    "identity": "persistent coordinator clock/boot identity, never wall clock",
+    "profile": "Explicit approved deployment lease duration/profile; no default value, server clock restart UNKNOWN closes admission"
+  },
+  "invariants": [
+    "one scientific root budget per blueprint/matrix/partition",
+    "one reservation/admission per domain lifetime, no refund when unknown",
+    "old epoch cannot admit or publish",
+    "no terminal receipt overwrite",
+    "replay has separate one-use registered slot, same sample",
+    "automatic retries0 and max5040 unchanged"
+  ],
+  "routes": {
+    "A_NO_TAKEOVER": {
+      "approval": "UNAPPROVED",
+      "owner": "immutable owner/auth epoch0, no transfer/replacement",
+      "expired": "HALTED, no scientific resumption",
+      "recovery": "Explicit verify/publish-only existing bytes; no key deletion or count refund"
+    },
+    "B_FENCED": {
+      "approval": "UNAPPROVED",
+      "owner": "Explicit root-descendant recovery authorization; exact current CAS increments epoch/revision, preserves attempt/history",
+      "expired": "Transfer only under known authority clock and explicit permission",
+      "admission": "Only if phase PREPARED and reservation_ever=false and no earlier admission; once true/unknown, no new process",
+      "recovery": "Verification/publish only after reservation; authority linearizes epoch admission and all authoritative writes; never client-check-only"
+    }
+  },
+  "semantic_contract": "../../../reports/P2_design/design_revision_v3/F02_lock_recovery_contract.md",
+  "runtime_status": "IMPLEMENTATION_VALIDATION_PENDING",
+  "cas_phase_preconditions": {
+    "CREATE": [
+      "ABSENT pointer via atomic create",
+      "unique domain/root budget",
+      "valid owner/auth/clock",
+      "revision0 epoch0 reservation false"
+    ],
+    "RESERVE": [
+      "current PREPARED",
+      "reservation false forever so far",
+      "preprovenance/source/input all valid",
+      "durable reservation before admission"
+    ],
+    "ADMIT": [
+      "current SPAWN_RESERVED",
+      "original attempt only",
+      "one trusted authority admission, current epoch and clock at linearization"
+    ],
+    "OUTPUT": [
+      "current RUNNING",
+      "actual exit0 and complete immutable raw refs"
+    ],
+    "VERIFY": [
+      "current OUTPUT_READY",
+      "all physical/metric/provenance/replay required evidence valid"
+    ],
+    "PUBLISH": [
+      "current VERIFIED",
+      "immutable receipt bound to verified inventory/prior record",
+      "all data/receipt/dirs fsynced",
+      "current epoch/owner/auth remains valid"
+    ],
+    "FENCED_TRANSFER": [
+      "policy B_FENCED only",
+      "server clock known and old lease expired",
+      "explicit replacement/recovery under same immutable root",
+      "exact old pointer/version/phase/owner/epoch",
+      "new epoch=old+1,revision=old+1",
+      "old attempt/phase/reservation history never reset",
+      "new owner allowed actions restricted by old reservation flag",
+      "Prior phase must be PREPARED/SPAWN_RESERVED/RUNNING/OUTPUT_READY/VERIFIED; terminal PUBLISHED/HALTED/FAILED/INCOMPLETE never transferred or reactivated"
+    ],
+    "RENEW": [
+      "original current owner/auth/policy, before expiry",
+      "explicit unchanged-profile renewal permission",
+      "same epoch,revision+1,new future deadline,no history reset"
+    ],
+    "HALT": [
+      "actual failure/lease/auth/source evidence",
+      "append-only transition,never key recreation"
+    ],
+    "REUSE": [
+      "PUBLISHED and original full bytes/identity exact",
+      "read-only new reuse receipt,0new engine calls"
+    ]
+  },
+  "terminal_transfer_policy": "NO terminal transfer or reactivation; explicit read-only verification/reuse/recovery evidence cannot relabel terminal scientific attempt COMPLETE. Publish-only recovery only from still-valid VERIFIED with all original refs."
+}

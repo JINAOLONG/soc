@@ -1,0 +1,2650 @@
+{
+  "scope": "Actual substantive checks, source reads and publication commands; tool discovery and authoring tool calls remain in conversation transcript",
+  "commands": [
+    {
+      "id": "R3-001",
+      "argv": [
+        "git",
+        "rev-parse",
+        "--show-toplevel"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T13:54:23.095456+00:00",
+      "ended_at_utc": "2026-10-19T13:54:23.101806+00:00",
+      "head_before": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "head_after": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Repository identity, safe-start and ancestry check; report directory now exists",
+      "input_files": [],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-001.stdout.txt",
+          "sha256": "cb68db68fcc70d67be575a6e90e6448d6df8b0924ca866e3f43dab3e3093f686",
+          "size_bytes": 15
+        },
+        "stderr": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-001.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      },
+      "result_summary": "EXPECTED_EXIT"
+    },
+    {
+      "id": "R3-002",
+      "argv": [
+        "git",
+        "remote",
+        "-v"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T13:54:23.102083+00:00",
+      "ended_at_utc": "2026-10-19T13:54:23.108287+00:00",
+      "head_before": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "head_after": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Repository identity, safe-start and ancestry check; report directory now exists",
+      "input_files": [],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-002.stdout.txt",
+          "sha256": "cfad3f4760a420c201c5f836e7b4afb2af5bdfa560c7f8977d18cfe0374ffd3d",
+          "size_bytes": 103
+        },
+        "stderr": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-002.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      },
+      "result_summary": "EXPECTED_EXIT"
+    },
+    {
+      "id": "R3-003",
+      "argv": [
+        "git",
+        "branch",
+        "--show-current"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T13:54:23.108561+00:00",
+      "ended_at_utc": "2026-10-19T13:54:23.115017+00:00",
+      "head_before": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "head_after": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Repository identity, safe-start and ancestry check; report directory now exists",
+      "input_files": [],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-003.stdout.txt",
+          "sha256": "4c7a03f2c9a663a0678eef8293f7609a609c92a6b3bccb2e556301f8b290c7f2",
+          "size_bytes": 5
+        },
+        "stderr": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-003.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      },
+      "result_summary": "EXPECTED_EXIT"
+    },
+    {
+      "id": "R3-004",
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T13:54:23.115390+00:00",
+      "ended_at_utc": "2026-10-19T13:54:23.121397+00:00",
+      "head_before": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "head_after": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Repository identity, safe-start and ancestry check; report directory now exists",
+      "input_files": [],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-004.stdout.txt",
+          "sha256": "320f31be1d3793fa8ca6b940b7d42102867d27d52177d3947aa5607dcf52e4e7",
+          "size_bytes": 41
+        },
+        "stderr": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-004.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      },
+      "result_summary": "EXPECTED_EXIT"
+    },
+    {
+      "id": "R3-005",
+      "argv": [
+        "git",
+        "status",
+        "--porcelain=v1",
+        "--untracked-files=all"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T13:54:23.121987+00:00",
+      "ended_at_utc": "2026-10-19T13:54:23.131041+00:00",
+      "head_before": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "head_after": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Repository identity, safe-start and ancestry check; report directory now exists",
+      "input_files": [],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-005.stdout.txt",
+          "sha256": "7de3dabec97a1fb2844b14b826e6bfc89a216fe61a27041f2e97e034e32a7d50",
+          "size_bytes": 838
+        },
+        "stderr": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-005.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      },
+      "result_summary": "EXPECTED_EXIT"
+    },
+    {
+      "id": "R3-006",
+      "argv": [
+        "git",
+        "ls-remote",
+        "origin",
+        "refs/heads/work"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T13:54:23.131488+00:00",
+      "ended_at_utc": "2026-10-19T13:54:23.845985+00:00",
+      "head_before": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "head_after": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Repository identity, safe-start and ancestry check; report directory now exists",
+      "input_files": [],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-006.stdout.txt",
+          "sha256": "c73986d2dda834fdfc2d0bd455225727e04dc97abdac704d5ca5d54b787a97ae",
+          "size_bytes": 57
+        },
+        "stderr": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-006.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      },
+      "result_summary": "EXPECTED_EXIT"
+    },
+    {
+      "id": "R3-007",
+      "argv": [
+        "git",
+        "merge-base",
+        "--is-ancestor",
+        "a3680acf45c5578fc090cf53cc186f28a8e9b88a",
+        "HEAD"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T13:54:23.846720+00:00",
+      "ended_at_utc": "2026-10-19T13:54:23.853519+00:00",
+      "head_before": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "head_after": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Repository identity, safe-start and ancestry check; report directory now exists",
+      "input_files": [],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-007.stdout.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        },
+        "stderr": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-007.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      },
+      "result_summary": "EXPECTED_EXIT"
+    },
+    {
+      "id": "R3-008",
+      "argv": [
+        "git",
+        "merge-base",
+        "--is-ancestor",
+        "aff5d739390985eff16e09cfb2a1807afdfc1e3d",
+        "HEAD"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T13:54:23.854166+00:00",
+      "ended_at_utc": "2026-10-19T13:54:23.860812+00:00",
+      "head_before": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "head_after": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Repository identity, safe-start and ancestry check; report directory now exists",
+      "input_files": [],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-008.stdout.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        },
+        "stderr": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-008.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      },
+      "result_summary": "EXPECTED_EXIT"
+    },
+    {
+      "id": "R3-009",
+      "argv": [
+        "git",
+        "merge-base",
+        "--is-ancestor",
+        "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+        "HEAD"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T13:54:23.861236+00:00",
+      "ended_at_utc": "2026-10-19T13:54:23.866950+00:00",
+      "head_before": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "head_after": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Repository identity, safe-start and ancestry check; report directory now exists",
+      "input_files": [],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-009.stdout.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        },
+        "stderr": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-009.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      },
+      "result_summary": "EXPECTED_EXIT"
+    },
+    {
+      "id": "R3-010",
+      "argv": [
+        "cat",
+        "AGENTS.md"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T13:54:32.063213+00:00",
+      "ended_at_utc": "2026-10-19T13:54:32.070880+00:00",
+      "head_before": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "head_after": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Read original research constraints and governance",
+      "input_files": [
+        {
+          "path": "AGENTS.md",
+          "sha256": "5435e5e690a64e0e7f432bae22b8f459f646e12233d99a7a4b1a70266d8c9a22"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-010.stdout.txt",
+          "sha256": "5435e5e690a64e0e7f432bae22b8f459f646e12233d99a7a4b1a70266d8c9a22",
+          "size_bytes": 4586
+        },
+        "stderr": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-010.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      },
+      "result_summary": "EXPECTED_EXIT"
+    },
+    {
+      "id": "R3-011",
+      "argv": [
+        "cat",
+        "STATUS.md"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T13:54:32.071944+00:00",
+      "ended_at_utc": "2026-10-19T13:54:32.078863+00:00",
+      "head_before": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "head_after": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Read original research constraints and governance",
+      "input_files": [
+        {
+          "path": "STATUS.md",
+          "sha256": "5f4c9fc321d22010400f260e8ed82a714b4a19453ae7b3102e04db93211f5222"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-011.stdout.txt",
+          "sha256": "5f4c9fc321d22010400f260e8ed82a714b4a19453ae7b3102e04db93211f5222",
+          "size_bytes": 2207
+        },
+        "stderr": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-011.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      },
+      "result_summary": "EXPECTED_EXIT"
+    },
+    {
+      "id": "R3-012",
+      "argv": [
+        "cat",
+        "docs/user_request.txt"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T13:54:32.079852+00:00",
+      "ended_at_utc": "2026-10-19T13:54:32.089187+00:00",
+      "head_before": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "head_after": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Read original research constraints and governance",
+      "input_files": [
+        {
+          "path": "docs/user_request.txt",
+          "sha256": "4c3481f0c67553eaa6d2dd6f181cc8d3f792e40fdc9586547c1c2e91fb52b461"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-012.stdout.txt",
+          "sha256": "3773d26ba8d1dc1c68ecc70818b79604ce1d20f26c9203b2df7560c2b824c99c",
+          "size_bytes": 54243
+        },
+        "stderr": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-012.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      },
+      "result_summary": "EXPECTED_EXIT"
+    },
+    {
+      "id": "R3-013",
+      "argv": [
+        "cat",
+        "docs/statistical_protocol.md"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T13:54:32.089869+00:00",
+      "ended_at_utc": "2026-10-19T13:54:32.097128+00:00",
+      "head_before": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "head_after": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Read original research constraints and governance",
+      "input_files": [
+        {
+          "path": "docs/statistical_protocol.md",
+          "sha256": "f9c0eeb6e76f68330ba3e5d8d90e58d175c3947a1948bb41b26ad50dbc041e8a"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-013.stdout.txt",
+          "sha256": "f9c0eeb6e76f68330ba3e5d8d90e58d175c3947a1948bb41b26ad50dbc041e8a",
+          "size_bytes": 3081
+        },
+        "stderr": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-013.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      },
+      "result_summary": "EXPECTED_EXIT"
+    },
+    {
+      "id": "R3-014",
+      "argv": [
+        "cat",
+        "docs/research_contract.md"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T13:54:32.098048+00:00",
+      "ended_at_utc": "2026-10-19T13:54:32.104437+00:00",
+      "head_before": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "head_after": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Read original research constraints and governance",
+      "input_files": [
+        {
+          "path": "docs/research_contract.md",
+          "sha256": "8ccd2f6fce470013af89c653eb3ff84a0b66809c56d321993cd973ebc18031e4"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-014.stdout.txt",
+          "sha256": "8ccd2f6fce470013af89c653eb3ff84a0b66809c56d321993cd973ebc18031e4",
+          "size_bytes": 3119
+        },
+        "stderr": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-014.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      },
+      "result_summary": "EXPECTED_EXIT"
+    },
+    {
+      "id": "R3-015",
+      "argv": [
+        "cat",
+        "docs/model_spec.md"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T13:54:32.105194+00:00",
+      "ended_at_utc": "2026-10-19T13:54:32.110606+00:00",
+      "head_before": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "head_after": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Read original research constraints and governance",
+      "input_files": [
+        {
+          "path": "docs/model_spec.md",
+          "sha256": "3f74116fa6cb85e4f2db1c96d246ac830a282be28847a0af21184fde2e17197b"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-015.stdout.txt",
+          "sha256": "3f74116fa6cb85e4f2db1c96d246ac830a282be28847a0af21184fde2e17197b",
+          "size_bytes": 4381
+        },
+        "stderr": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-015.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      },
+      "result_summary": "EXPECTED_EXIT"
+    },
+    {
+      "id": "R3-016",
+      "argv": [
+        "cat",
+        "docs/baseline_spec.md"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T13:54:32.111358+00:00",
+      "ended_at_utc": "2026-10-19T13:54:32.117016+00:00",
+      "head_before": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "head_after": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Read original research constraints and governance",
+      "input_files": [
+        {
+          "path": "docs/baseline_spec.md",
+          "sha256": "54a1cdb86d0235671a7d1ece31e489289c026bf083f33388580b6f3fdbb42e12"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-016.stdout.txt",
+          "sha256": "54a1cdb86d0235671a7d1ece31e489289c026bf083f33388580b6f3fdbb42e12",
+          "size_bytes": 2826
+        },
+        "stderr": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-016.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      },
+      "result_summary": "EXPECTED_EXIT"
+    },
+    {
+      "id": "R3-017",
+      "argv": [
+        "cat",
+        "docs/metric_spec.md"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T13:54:32.118080+00:00",
+      "ended_at_utc": "2026-10-19T13:54:32.124219+00:00",
+      "head_before": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "head_after": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Read original research constraints and governance",
+      "input_files": [
+        {
+          "path": "docs/metric_spec.md",
+          "sha256": "c4b912fc672979ddc763d882e546b7a92bf53090e5b5dddd5777e2e867df182a"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-017.stdout.txt",
+          "sha256": "c4b912fc672979ddc763d882e546b7a92bf53090e5b5dddd5777e2e867df182a",
+          "size_bytes": 3242
+        },
+        "stderr": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-017.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      },
+      "result_summary": "EXPECTED_EXIT"
+    },
+    {
+      "id": "R3-018",
+      "argv": [
+        "cat",
+        "docs/workload_spec.md"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T13:54:32.125022+00:00",
+      "ended_at_utc": "2026-10-19T13:54:32.130698+00:00",
+      "head_before": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "head_after": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Read original research constraints and governance",
+      "input_files": [
+        {
+          "path": "docs/workload_spec.md",
+          "sha256": "a098008f3abe47f4cfb830685009b19bf4d3555a8e370ad242a2fce1debea606"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-018.stdout.txt",
+          "sha256": "a098008f3abe47f4cfb830685009b19bf4d3555a8e370ad242a2fce1debea606",
+          "size_bytes": 1574
+        },
+        "stderr": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-018.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      },
+      "result_summary": "EXPECTED_EXIT"
+    },
+    {
+      "id": "R3-019",
+      "argv": [
+        "cat",
+        "docs/method_spec.md"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T13:54:32.131809+00:00",
+      "ended_at_utc": "2026-10-19T13:54:32.137609+00:00",
+      "head_before": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "head_after": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Read original research constraints and governance",
+      "input_files": [
+        {
+          "path": "docs/method_spec.md",
+          "sha256": "c29862a891a866d38dfee2e958c58646973f8c77a37f11f8ab17d9f319f15925"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-019.stdout.txt",
+          "sha256": "c29862a891a866d38dfee2e958c58646973f8c77a37f11f8ab17d9f319f15925",
+          "size_bytes": 677
+        },
+        "stderr": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-019.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      },
+      "result_summary": "EXPECTED_EXIT"
+    },
+    {
+      "id": "R3-020",
+      "argv": [
+        "cat",
+        "docs/P2_design/v2/P2_D01_D10_approval_checklist_v2.md"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T13:54:52.175562+00:00",
+      "ended_at_utc": "2026-10-19T13:54:52.183058+00:00",
+      "head_before": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "head_after": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Read actual source/design/audit bytes; semantic focus according to evidence locators",
+      "input_files": [
+        {
+          "path": "docs/P2_design/v2/P2_D01_D10_approval_checklist_v2.md",
+          "sha256": "2bde515669146fe5432118c223c62d41fe37eb848ee525df08b42dc83bbd7c3b"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-020.stdout.txt",
+          "sha256": "2bde515669146fe5432118c223c62d41fe37eb848ee525df08b42dc83bbd7c3b",
+          "size_bytes": 3857
+        },
+        "stderr": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-020.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      },
+      "result_summary": "EXPECTED_EXIT"
+    },
+    {
+      "id": "R3-021",
+      "argv": [
+        "cat",
+        "docs/P2_design/v2/P2_D01_D10_traceability_v2.csv"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T13:54:52.185370+00:00",
+      "ended_at_utc": "2026-10-19T13:54:52.191654+00:00",
+      "head_before": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "head_after": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Read actual source/design/audit bytes; semantic focus according to evidence locators",
+      "input_files": [
+        {
+          "path": "docs/P2_design/v2/P2_D01_D10_traceability_v2.csv",
+          "sha256": "578b0a1b6b3b990b9ae153b485ce0e2d92d3e068b92cd4a5bbc3f67723195c4d"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-021.stdout.txt",
+          "sha256": "578b0a1b6b3b990b9ae153b485ce0e2d92d3e068b92cd4a5bbc3f67723195c4d",
+          "size_bytes": 15283
+        },
+        "stderr": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-021.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      },
+      "result_summary": "EXPECTED_EXIT"
+    },
+    {
+      "id": "R3-022",
+      "argv": [
+        "cat",
+        "docs/P2_design/v2/P2_canonical_golden_vectors_v2.json"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T13:54:52.193139+00:00",
+      "ended_at_utc": "2026-10-19T13:54:52.199494+00:00",
+      "head_before": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "head_after": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Read actual source/design/audit bytes; semantic focus according to evidence locators",
+      "input_files": [
+        {
+          "path": "docs/P2_design/v2/P2_canonical_golden_vectors_v2.json",
+          "sha256": "c74cd5a06f0683e28857d07fee2791bbe6c3cf384bbe863f63bcaa6e176b3160"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-022.stdout.txt",
+          "sha256": "c74cd5a06f0683e28857d07fee2791bbe6c3cf384bbe863f63bcaa6e176b3160",
+          "size_bytes": 13243
+        },
+        "stderr": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-022.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      },
+      "result_summary": "EXPECTED_EXIT"
+    },
+    {
+      "id": "R3-023",
+      "argv": [
+        "cat",
+        "docs/P2_design/v2/P2_communication_profiles_v2.json"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T13:54:52.200981+00:00",
+      "ended_at_utc": "2026-10-19T13:54:52.207242+00:00",
+      "head_before": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "head_after": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Read actual source/design/audit bytes; semantic focus according to evidence locators",
+      "input_files": [
+        {
+          "path": "docs/P2_design/v2/P2_communication_profiles_v2.json",
+          "sha256": "74f7dde644b11d0b459fb68e9f250d9799e34f09652609b63122e0de5bf6e3b8"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-023.stdout.txt",
+          "sha256": "74f7dde644b11d0b459fb68e9f250d9799e34f09652609b63122e0de5bf6e3b8",
+          "size_bytes": 22387
+        },
+        "stderr": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-023.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      },
+      "result_summary": "EXPECTED_EXIT"
+    },
+    {
+      "id": "R3-024",
+      "argv": [
+        "cat",
+        "docs/P2_design/v2/P2_complete_design_proposal_v2.md"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T13:54:52.208918+00:00",
+      "ended_at_utc": "2026-10-19T13:54:52.215532+00:00",
+      "head_before": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "head_after": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Read actual source/design/audit bytes; semantic focus according to evidence locators",
+      "input_files": [
+        {
+          "path": "docs/P2_design/v2/P2_complete_design_proposal_v2.md",
+          "sha256": "7f929b85554193ef1256deb3f7cc184e47c362f91e93950896a80450c9eb5fe8"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-024.stdout.txt",
+          "sha256": "7f929b85554193ef1256deb3f7cc184e47c362f91e93950896a80450c9eb5fe8",
+          "size_bytes": 17076
+        },
+        "stderr": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-024.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      },
+      "result_summary": "EXPECTED_EXIT"
+    },
+    {
+      "id": "R3-025",
+      "argv": [
+        "cat",
+        "docs/P2_design/v2/P2_criterion_spec_v2.json"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T13:54:52.216798+00:00",
+      "ended_at_utc": "2026-10-19T13:54:52.224068+00:00",
+      "head_before": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "head_after": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Read actual source/design/audit bytes; semantic focus according to evidence locators",
+      "input_files": [
+        {
+          "path": "docs/P2_design/v2/P2_criterion_spec_v2.json",
+          "sha256": "98a578944e7910db933f5b3b02aee4bb03de8005853024b38cc3b02630b04e38"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-025.stdout.txt",
+          "sha256": "98a578944e7910db933f5b3b02aee4bb03de8005853024b38cc3b02630b04e38",
+          "size_bytes": 4139
+        },
+        "stderr": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-025.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      },
+      "result_summary": "EXPECTED_EXIT"
+    },
+    {
+      "id": "R3-026",
+      "argv": [
+        "cat",
+        "docs/P2_design/v2/P2_diagnostic_spec_v2.json"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T13:54:52.225384+00:00",
+      "ended_at_utc": "2026-10-19T13:54:52.231572+00:00",
+      "head_before": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "head_after": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Read actual source/design/audit bytes; semantic focus according to evidence locators",
+      "input_files": [
+        {
+          "path": "docs/P2_design/v2/P2_diagnostic_spec_v2.json",
+          "sha256": "9bec37d044f4c7742d931149c195c2c3ec1540d41dc3f0a899a2b29f8c7e3e90"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-026.stdout.txt",
+          "sha256": "9bec37d044f4c7742d931149c195c2c3ec1540d41dc3f0a899a2b29f8c7e3e90",
+          "size_bytes": 8809
+        },
+        "stderr": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-026.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      },
+      "result_summary": "EXPECTED_EXIT"
+    },
+    {
+      "id": "R3-027",
+      "argv": [
+        "cat",
+        "docs/P2_design/v2/P2_generation_spec_v2.json"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T13:54:52.233049+00:00",
+      "ended_at_utc": "2026-10-19T13:54:52.239746+00:00",
+      "head_before": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "head_after": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Read actual source/design/audit bytes; semantic focus according to evidence locators",
+      "input_files": [
+        {
+          "path": "docs/P2_design/v2/P2_generation_spec_v2.json",
+          "sha256": "33e3ccf437510986ffa401eea1ef48e995a1ad08df38a834374d4a1c483a91f2"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-027.stdout.txt",
+          "sha256": "33e3ccf437510986ffa401eea1ef48e995a1ad08df38a834374d4a1c483a91f2",
+          "size_bytes": 13039
+        },
+        "stderr": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-027.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      },
+      "result_summary": "EXPECTED_EXIT"
+    },
+    {
+      "id": "R3-028",
+      "argv": [
+        "cat",
+        "docs/P2_design/v2/P2_mapping_opportunity_decision_table_v2.md"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T13:54:52.241197+00:00",
+      "ended_at_utc": "2026-10-19T13:54:52.246848+00:00",
+      "head_before": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "head_after": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Read actual source/design/audit bytes; semantic focus according to evidence locators",
+      "input_files": [
+        {
+          "path": "docs/P2_design/v2/P2_mapping_opportunity_decision_table_v2.md",
+          "sha256": "594863a579ac32fdd980454fe6e0f0d24d165729a60f1c6f6526c8688fd296f4"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-028.stdout.txt",
+          "sha256": "594863a579ac32fdd980454fe6e0f0d24d165729a60f1c6f6526c8688fd296f4",
+          "size_bytes": 3542
+        },
+        "stderr": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-028.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      },
+      "result_summary": "EXPECTED_EXIT"
+    },
+    {
+      "id": "R3-029",
+      "argv": [
+        "cat",
+        "docs/P2_design/v2/P2_public_snapshot_spec_v2.json"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T13:54:52.248467+00:00",
+      "ended_at_utc": "2026-10-19T13:54:52.254873+00:00",
+      "head_before": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "head_after": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Read actual source/design/audit bytes; semantic focus according to evidence locators",
+      "input_files": [
+        {
+          "path": "docs/P2_design/v2/P2_public_snapshot_spec_v2.json",
+          "sha256": "fa4ce177c2d4a49a5f8f5b30bfa44e2b0d529f1e735ddfa259ae1811edc2f1af"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-029.stdout.txt",
+          "sha256": "fa4ce177c2d4a49a5f8f5b30bfa44e2b0d529f1e735ddfa259ae1811edc2f1af",
+          "size_bytes": 4613
+        },
+        "stderr": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-029.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      },
+      "result_summary": "EXPECTED_EXIT"
+    },
+    {
+      "id": "R3-030",
+      "argv": [
+        "cat",
+        "docs/P2_design/v2/P2_resource_profiles_v2.json"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T13:54:52.256481+00:00",
+      "ended_at_utc": "2026-10-19T13:54:52.263137+00:00",
+      "head_before": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "head_after": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Read actual source/design/audit bytes; semantic focus according to evidence locators",
+      "input_files": [
+        {
+          "path": "docs/P2_design/v2/P2_resource_profiles_v2.json",
+          "sha256": "9eea5cfd43ce50d796a00d7cac86f9a7ca8798da4a3ea0c2fd9e598d965f13ae"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-030.stdout.txt",
+          "sha256": "9eea5cfd43ce50d796a00d7cac86f9a7ca8798da4a3ea0c2fd9e598d965f13ae",
+          "size_bytes": 8858
+        },
+        "stderr": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-030.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      },
+      "result_summary": "EXPECTED_EXIT"
+    },
+    {
+      "id": "R3-031",
+      "argv": [
+        "cat",
+        "docs/P2_design/v2/P2_runner_schema_review_v2.md"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T13:54:52.264558+00:00",
+      "ended_at_utc": "2026-10-19T13:54:52.270292+00:00",
+      "head_before": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "head_after": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Read actual source/design/audit bytes; semantic focus according to evidence locators",
+      "input_files": [
+        {
+          "path": "docs/P2_design/v2/P2_runner_schema_review_v2.md",
+          "sha256": "fd1a59638bf1754af0a6423b57873a6691af8c3559a1c1d62ceeeffda2da5099"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-031.stdout.txt",
+          "sha256": "fd1a59638bf1754af0a6423b57873a6691af8c3559a1c1d62ceeeffda2da5099",
+          "size_bytes": 10655
+        },
+        "stderr": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-031.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      },
+      "result_summary": "EXPECTED_EXIT"
+    },
+    {
+      "id": "R3-032",
+      "argv": [
+        "cat",
+        "docs/P2_design/v2/P2_scientific_parameter_registry_v2.json"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T13:54:52.271730+00:00",
+      "ended_at_utc": "2026-10-19T13:54:52.277694+00:00",
+      "head_before": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "head_after": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Read actual source/design/audit bytes; semantic focus according to evidence locators",
+      "input_files": [
+        {
+          "path": "docs/P2_design/v2/P2_scientific_parameter_registry_v2.json",
+          "sha256": "15ee54e75f658d5f66edb00534003d3aed642f86736b2932ae61f0692e4559c2"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-032.stdout.txt",
+          "sha256": "15ee54e75f658d5f66edb00534003d3aed642f86736b2932ae61f0692e4559c2",
+          "size_bytes": 43099
+        },
+        "stderr": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-032.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      },
+      "result_summary": "EXPECTED_EXIT"
+    },
+    {
+      "id": "R3-033",
+      "argv": [
+        "cat",
+        "docs/P2_design/v2/P2_stage_state_contract_v2.json"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T13:54:52.279466+00:00",
+      "ended_at_utc": "2026-10-19T13:54:52.285672+00:00",
+      "head_before": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "head_after": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Read actual source/design/audit bytes; semantic focus according to evidence locators",
+      "input_files": [
+        {
+          "path": "docs/P2_design/v2/P2_stage_state_contract_v2.json",
+          "sha256": "c64803a93c74ee9dba6a7bc61de2d2e550264f2c5d4a920e1248665fa7e86b93"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-033.stdout.txt",
+          "sha256": "c64803a93c74ee9dba6a7bc61de2d2e550264f2c5d4a920e1248665fa7e86b93",
+          "size_bytes": 10336
+        },
+        "stderr": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-033.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      },
+      "result_summary": "EXPECTED_EXIT"
+    },
+    {
+      "id": "R3-034",
+      "argv": [
+        "cat",
+        "docs/P2_design/v2/P2_trial_matrix_draft_v2.json"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T13:54:52.287218+00:00",
+      "ended_at_utc": "2026-10-19T13:54:52.320581+00:00",
+      "head_before": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "head_after": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Read actual source/design/audit bytes; semantic focus according to evidence locators",
+      "input_files": [
+        {
+          "path": "docs/P2_design/v2/P2_trial_matrix_draft_v2.json",
+          "sha256": "b58fe4c2eead01fc9b92966d557ed0bb052e7387794fc0d9b58029ffdb90af0e"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-034.stdout.txt",
+          "sha256": "b58fe4c2eead01fc9b92966d557ed0bb052e7387794fc0d9b58029ffdb90af0e",
+          "size_bytes": 1327918
+        },
+        "stderr": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-034.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      },
+      "result_summary": "EXPECTED_EXIT"
+    },
+    {
+      "id": "R3-035",
+      "argv": [
+        "cat",
+        "docs/P2_design/v2/P2_typed_identity_schema_v2.json"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T13:54:52.342835+00:00",
+      "ended_at_utc": "2026-10-19T13:54:52.353386+00:00",
+      "head_before": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "head_after": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Read actual source/design/audit bytes; semantic focus according to evidence locators",
+      "input_files": [
+        {
+          "path": "docs/P2_design/v2/P2_typed_identity_schema_v2.json",
+          "sha256": "9b478cf7e96776f6cc69f29426715efed6eec2309270be1efb3dd77985ebfbc9"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-035.stdout.txt",
+          "sha256": "9b478cf7e96776f6cc69f29426715efed6eec2309270be1efb3dd77985ebfbc9",
+          "size_bytes": 85745
+        },
+        "stderr": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-035.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      },
+      "result_summary": "EXPECTED_EXIT"
+    },
+    {
+      "id": "R3-036",
+      "argv": [
+        "cat",
+        "docs/P2_design/v2/P2_workload_templates_v2.json"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T13:54:52.355776+00:00",
+      "ended_at_utc": "2026-10-19T13:54:52.362607+00:00",
+      "head_before": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "head_after": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Read actual source/design/audit bytes; semantic focus according to evidence locators",
+      "input_files": [
+        {
+          "path": "docs/P2_design/v2/P2_workload_templates_v2.json",
+          "sha256": "f282955ab09d0110f50447269b18d0389231bed9711532853d6cdbda92d9027c"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-036.stdout.txt",
+          "sha256": "f282955ab09d0110f50447269b18d0389231bed9711532853d6cdbda92d9027c",
+          "size_bytes": 28557
+        },
+        "stderr": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-036.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      },
+      "result_summary": "EXPECTED_EXIT"
+    },
+    {
+      "id": "R3-037",
+      "argv": [
+        "cat",
+        "docs/P2_design/v2/README.md"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T13:54:52.364463+00:00",
+      "ended_at_utc": "2026-10-19T13:54:52.369936+00:00",
+      "head_before": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "head_after": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Read actual source/design/audit bytes; semantic focus according to evidence locators",
+      "input_files": [
+        {
+          "path": "docs/P2_design/v2/README.md",
+          "sha256": "bf21a587e3a4e0b11349f16fa11d20af75e64c30f38713383132bc1e40133ed0"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-037.stdout.txt",
+          "sha256": "bf21a587e3a4e0b11349f16fa11d20af75e64c30f38713383132bc1e40133ed0",
+          "size_bytes": 1416
+        },
+        "stderr": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-037.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      },
+      "result_summary": "EXPECTED_EXIT"
+    },
+    {
+      "id": "R3-038",
+      "argv": [
+        "cat",
+        "docs/P2_design/P2_complete_design_proposal_v1.md"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T13:54:52.371654+00:00",
+      "ended_at_utc": "2026-10-19T13:54:52.377797+00:00",
+      "head_before": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "head_after": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Read actual source/design/audit bytes; semantic focus according to evidence locators",
+      "input_files": [
+        {
+          "path": "docs/P2_design/P2_complete_design_proposal_v1.md",
+          "sha256": "e378e85071d6c97fb6cd5801d9449eef176a90baddcd786181c6685eaa29feac"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-038.stdout.txt",
+          "sha256": "e378e85071d6c97fb6cd5801d9449eef176a90baddcd786181c6685eaa29feac",
+          "size_bytes": 28397
+        },
+        "stderr": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-038.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      },
+      "result_summary": "EXPECTED_EXIT"
+    },
+    {
+      "id": "R3-039",
+      "argv": [
+        "cat",
+        "docs/P2_design/P2_mapping_opportunity_decision_table_v1.md"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T13:54:52.379767+00:00",
+      "ended_at_utc": "2026-10-19T13:54:52.385019+00:00",
+      "head_before": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "head_after": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Read actual source/design/audit bytes; semantic focus according to evidence locators",
+      "input_files": [
+        {
+          "path": "docs/P2_design/P2_mapping_opportunity_decision_table_v1.md",
+          "sha256": "4c981f2f2303e1b1535168dd320e3c11151ea86ad35a502513893370a5906ea2"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-039.stdout.txt",
+          "sha256": "4c981f2f2303e1b1535168dd320e3c11151ea86ad35a502513893370a5906ea2",
+          "size_bytes": 4533
+        },
+        "stderr": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-039.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      },
+      "result_summary": "EXPECTED_EXIT"
+    },
+    {
+      "id": "R3-040",
+      "argv": [
+        "cat",
+        "docs/P2_design/decisions.draft.json"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T13:54:52.386598+00:00",
+      "ended_at_utc": "2026-10-19T13:54:52.392856+00:00",
+      "head_before": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "head_after": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Read actual source/design/audit bytes; semantic focus according to evidence locators",
+      "input_files": [
+        {
+          "path": "docs/P2_design/decisions.draft.json",
+          "sha256": "047c4e1d0643795d96a42dc1c3089e3c94667c56c3a6d2a1d3ff364ea04c4cbf"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-040.stdout.txt",
+          "sha256": "047c4e1d0643795d96a42dc1c3089e3c94667c56c3a6d2a1d3ff364ea04c4cbf",
+          "size_bytes": 50364
+        },
+        "stderr": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-040.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      },
+      "result_summary": "EXPECTED_EXIT"
+    },
+    {
+      "id": "R3-041",
+      "argv": [
+        "cat",
+        "docs/P2_design/P2_D01_D10_approval_checklist_v1.md"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T13:54:52.395065+00:00",
+      "ended_at_utc": "2026-10-19T13:54:52.400665+00:00",
+      "head_before": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "head_after": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Read actual source/design/audit bytes; semantic focus according to evidence locators",
+      "input_files": [
+        {
+          "path": "docs/P2_design/P2_D01_D10_approval_checklist_v1.md",
+          "sha256": "707d080cac2ac9f3d4bd7b014b8f7aeb2050e25063c787a18918b24f188cf46a"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-041.stdout.txt",
+          "sha256": "707d080cac2ac9f3d4bd7b014b8f7aeb2050e25063c787a18918b24f188cf46a",
+          "size_bytes": 3057
+        },
+        "stderr": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-041.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      },
+      "result_summary": "EXPECTED_EXIT"
+    },
+    {
+      "id": "R3-042",
+      "argv": [
+        "cat",
+        "reports/P2_preflight.json"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T13:54:52.402545+00:00",
+      "ended_at_utc": "2026-10-19T13:54:52.408879+00:00",
+      "head_before": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "head_after": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Read actual source/design/audit bytes; semantic focus according to evidence locators",
+      "input_files": [
+        {
+          "path": "reports/P2_preflight.json",
+          "sha256": "74c906cb6fbf7a1be41bd3a3c54c77c0bfd5637a6e91f5b0551478c264b82c2a"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-042.stdout.txt",
+          "sha256": "74c906cb6fbf7a1be41bd3a3c54c77c0bfd5637a6e91f5b0551478c264b82c2a",
+          "size_bytes": 45374
+        },
+        "stderr": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-042.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      },
+      "result_summary": "EXPECTED_EXIT"
+    },
+    {
+      "id": "R3-043",
+      "argv": [
+        "cat",
+        "reports/P2_final_audit.md"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T13:54:52.411170+00:00",
+      "ended_at_utc": "2026-10-19T13:54:52.416746+00:00",
+      "head_before": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "head_after": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Read actual source/design/audit bytes; semantic focus according to evidence locators",
+      "input_files": [
+        {
+          "path": "reports/P2_final_audit.md",
+          "sha256": "04782d2c75dfca564bc27e9fa9f99d4ee6a23c9819848e3996bbe6abfa2703a1"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-043.stdout.txt",
+          "sha256": "04782d2c75dfca564bc27e9fa9f99d4ee6a23c9819848e3996bbe6abfa2703a1",
+          "size_bytes": 1919
+        },
+        "stderr": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-043.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      },
+      "result_summary": "EXPECTED_EXIT"
+    },
+    {
+      "id": "R3-044",
+      "argv": [
+        "cat",
+        "reports/P2_design/independent_review_v2/executive_decision.md"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T13:54:52.418455+00:00",
+      "ended_at_utc": "2026-10-19T13:54:52.424056+00:00",
+      "head_before": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "head_after": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Read actual source/design/audit bytes; semantic focus according to evidence locators",
+      "input_files": [
+        {
+          "path": "reports/P2_design/independent_review_v2/executive_decision.md",
+          "sha256": "0344c3d1ec6e0f1729bb758503f03dedf1fb780b00c55cbd9c60261b91d398b7"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-044.stdout.txt",
+          "sha256": "0344c3d1ec6e0f1729bb758503f03dedf1fb780b00c55cbd9c60261b91d398b7",
+          "size_bytes": 4275
+        },
+        "stderr": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-044.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      },
+      "result_summary": "EXPECTED_EXIT"
+    },
+    {
+      "id": "R3-045",
+      "argv": [
+        "cat",
+        "reports/P2_design/independent_review_v2/findings.json"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T13:54:52.426032+00:00",
+      "ended_at_utc": "2026-10-19T13:54:52.432609+00:00",
+      "head_before": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "head_after": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Read actual source/design/audit bytes; semantic focus according to evidence locators",
+      "input_files": [
+        {
+          "path": "reports/P2_design/independent_review_v2/findings.json",
+          "sha256": "a56925d56f431714fbdd334bee5303a3fb58234caf26c12fa98375ce0219933b"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-045.stdout.txt",
+          "sha256": "a56925d56f431714fbdd334bee5303a3fb58234caf26c12fa98375ce0219933b",
+          "size_bytes": 15080
+        },
+        "stderr": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-045.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      },
+      "result_summary": "EXPECTED_EXIT"
+    },
+    {
+      "id": "R3-046",
+      "argv": [
+        "cat",
+        "reports/P2_design/design_revision_v2/executive_decision.md"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T13:54:52.434617+00:00",
+      "ended_at_utc": "2026-10-19T13:54:52.444757+00:00",
+      "head_before": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "head_after": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Read actual source/design/audit bytes; semantic focus according to evidence locators",
+      "input_files": [
+        {
+          "path": "reports/P2_design/design_revision_v2/executive_decision.md",
+          "sha256": "50b8756dfdd5bef56f1d7f792d9adf24765ca30402c96d08c428d52fdb1accc8"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-046.stdout.txt",
+          "sha256": "50b8756dfdd5bef56f1d7f792d9adf24765ca30402c96d08c428d52fdb1accc8",
+          "size_bytes": 6389
+        },
+        "stderr": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-046.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      },
+      "result_summary": "EXPECTED_EXIT"
+    },
+    {
+      "id": "R3-047",
+      "argv": [
+        "cat",
+        "reports/P2_design/preapproval_audit_v3/executive_decision.md"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T13:54:52.446882+00:00",
+      "ended_at_utc": "2026-10-19T13:54:52.453001+00:00",
+      "head_before": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "head_after": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Read actual source/design/audit bytes; semantic focus according to evidence locators",
+      "input_files": [
+        {
+          "path": "reports/P2_design/preapproval_audit_v3/executive_decision.md",
+          "sha256": "daf155c1c8a97fa6366a357a879e5bce2900a16feb82032a8867fd5f0abed72c"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-047.stdout.txt",
+          "sha256": "daf155c1c8a97fa6366a357a879e5bce2900a16feb82032a8867fd5f0abed72c",
+          "size_bytes": 9499
+        },
+        "stderr": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-047.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      },
+      "result_summary": "EXPECTED_EXIT"
+    },
+    {
+      "id": "R3-048",
+      "argv": [
+        "cat",
+        "reports/P2_design/preapproval_audit_v3/human_decision_packet.md"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T13:54:52.455011+00:00",
+      "ended_at_utc": "2026-10-19T13:54:52.461437+00:00",
+      "head_before": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "head_after": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Read actual source/design/audit bytes; semantic focus according to evidence locators",
+      "input_files": [
+        {
+          "path": "reports/P2_design/preapproval_audit_v3/human_decision_packet.md",
+          "sha256": "315b546fca4d95a2514128673f750b2247a03a380821b19029815677c9f0406d"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-048.stdout.txt",
+          "sha256": "315b546fca4d95a2514128673f750b2247a03a380821b19029815677c9f0406d",
+          "size_bytes": 44251
+        },
+        "stderr": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-048.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      },
+      "result_summary": "EXPECTED_EXIT"
+    },
+    {
+      "id": "R3-049",
+      "argv": [
+        "cat",
+        "reports/P2_design/preapproval_audit_v3/cross_document_findings.json"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T13:54:52.463425+00:00",
+      "ended_at_utc": "2026-10-19T13:54:52.469816+00:00",
+      "head_before": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "head_after": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Read actual source/design/audit bytes; semantic focus according to evidence locators",
+      "input_files": [
+        {
+          "path": "reports/P2_design/preapproval_audit_v3/cross_document_findings.json",
+          "sha256": "8c37f2c8732280cf49e80edbbfc9aa10f769952dc6a1d56a967bc11d51d73a12"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-049.stdout.txt",
+          "sha256": "8c37f2c8732280cf49e80edbbfc9aa10f769952dc6a1d56a967bc11d51d73a12",
+          "size_bytes": 41864
+        },
+        "stderr": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-049.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      },
+      "result_summary": "EXPECTED_EXIT"
+    },
+    {
+      "id": "R3-050",
+      "argv": [
+        "cat",
+        "reports/P2_design/preapproval_audit_v3/D01_D10_decision_readiness.csv"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T13:54:52.472468+00:00",
+      "ended_at_utc": "2026-10-19T13:54:52.478045+00:00",
+      "head_before": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "head_after": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Read actual source/design/audit bytes; semantic focus according to evidence locators",
+      "input_files": [
+        {
+          "path": "reports/P2_design/preapproval_audit_v3/D01_D10_decision_readiness.csv",
+          "sha256": "5bf2494abf3c1c373b084fe236c6669cb1d731c76f3240afad419d27ae5595cc"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-050.stdout.txt",
+          "sha256": "be5996db735722145a14bd7799538af3d89e133bdc8ece1019e556e659874fc9",
+          "size_bytes": 40773
+        },
+        "stderr": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-050.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      },
+      "result_summary": "EXPECTED_EXIT"
+    },
+    {
+      "id": "R3-051",
+      "argv": [
+        "cat",
+        "reports/P2_design/preapproval_audit_v3/SP01_SP40_traceability.csv"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T13:54:52.481416+00:00",
+      "ended_at_utc": "2026-10-19T13:54:52.489179+00:00",
+      "head_before": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "head_after": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Read actual source/design/audit bytes; semantic focus according to evidence locators",
+      "input_files": [
+        {
+          "path": "reports/P2_design/preapproval_audit_v3/SP01_SP40_traceability.csv",
+          "sha256": "d7d4e2dfceaaa375f91e47a9334757752ce78e0168ecd1a3fb91b2104069a2ae"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-051.stdout.txt",
+          "sha256": "d7d4e2dfceaaa375f91e47a9334757752ce78e0168ecd1a3fb91b2104069a2ae",
+          "size_bytes": 170411
+        },
+        "stderr": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-051.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      },
+      "result_summary": "EXPECTED_EXIT"
+    },
+    {
+      "id": "R3-052",
+      "argv": [
+        "cat",
+        "reports/P2_design/preapproval_audit_v3/M1R_adversarial_cases.md"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T13:54:52.491887+00:00",
+      "ended_at_utc": "2026-10-19T13:54:52.497606+00:00",
+      "head_before": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "head_after": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Read actual source/design/audit bytes; semantic focus according to evidence locators",
+      "input_files": [
+        {
+          "path": "reports/P2_design/preapproval_audit_v3/M1R_adversarial_cases.md",
+          "sha256": "ed629e4929bd6d3b398f326d4856b62a3a86cb8a18b75db8b97fe72e88bc570b"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-052.stdout.txt",
+          "sha256": "ed629e4929bd6d3b398f326d4856b62a3a86cb8a18b75db8b97fe72e88bc570b",
+          "size_bytes": 23398
+        },
+        "stderr": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-052.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      },
+      "result_summary": "EXPECTED_EXIT"
+    },
+    {
+      "id": "R3-053",
+      "argv": [
+        "cat",
+        "reports/P2_design/preapproval_audit_v3/coverage_threshold_review.md"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T13:54:52.499664+00:00",
+      "ended_at_utc": "2026-10-19T13:54:52.505775+00:00",
+      "head_before": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "head_after": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Read actual source/design/audit bytes; semantic focus according to evidence locators",
+      "input_files": [
+        {
+          "path": "reports/P2_design/preapproval_audit_v3/coverage_threshold_review.md",
+          "sha256": "558e1377dad11f48ac979c410562dacef24b10ba92f990c86f0dc82d3d558a0e"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-053.stdout.txt",
+          "sha256": "558e1377dad11f48ac979c410562dacef24b10ba92f990c86f0dc82d3d558a0e",
+          "size_bytes": 14501
+        },
+        "stderr": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-053.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      },
+      "result_summary": "EXPECTED_EXIT"
+    },
+    {
+      "id": "R3-054",
+      "argv": [
+        "cat",
+        "reports/P2_design/preapproval_audit_v3/trial_matrix_row_audit.json"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T13:54:52.507904+00:00",
+      "ended_at_utc": "2026-10-19T13:54:52.529213+00:00",
+      "head_before": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "head_after": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Read actual source/design/audit bytes; semantic focus according to evidence locators",
+      "input_files": [
+        {
+          "path": "reports/P2_design/preapproval_audit_v3/trial_matrix_row_audit.json",
+          "sha256": "75e7d10dd5339df08cb7dd473fb65e36ccf7d3bdcd9b494276c5e29e69382a7a"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-054.stdout.txt",
+          "sha256": "75e7d10dd5339df08cb7dd473fb65e36ccf7d3bdcd9b494276c5e29e69382a7a",
+          "size_bytes": 1139431
+        },
+        "stderr": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-054.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      },
+      "result_summary": "EXPECTED_EXIT"
+    },
+    {
+      "id": "R3-055",
+      "argv": [
+        "cat",
+        "reports/P2_design/preapproval_audit_v3/identity_recovery_review.md"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T13:54:52.538575+00:00",
+      "ended_at_utc": "2026-10-19T13:54:52.545229+00:00",
+      "head_before": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "head_after": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Read actual source/design/audit bytes; semantic focus according to evidence locators",
+      "input_files": [
+        {
+          "path": "reports/P2_design/preapproval_audit_v3/identity_recovery_review.md",
+          "sha256": "e8046e555117633b620dfdda09da56ca12380b5219e435fd152ac6274cb80dea"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-055.stdout.txt",
+          "sha256": "e8046e555117633b620dfdda09da56ca12380b5219e435fd152ac6274cb80dea",
+          "size_bytes": 20322
+        },
+        "stderr": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-055.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      },
+      "result_summary": "EXPECTED_EXIT"
+    },
+    {
+      "id": "R3-056",
+      "argv": [
+        "cat",
+        "reports/P2_design/preapproval_audit_v3/stage_state_timing_review.md"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T13:54:52.547455+00:00",
+      "ended_at_utc": "2026-10-19T13:54:52.553783+00:00",
+      "head_before": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "head_after": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Read actual source/design/audit bytes; semantic focus according to evidence locators",
+      "input_files": [
+        {
+          "path": "reports/P2_design/preapproval_audit_v3/stage_state_timing_review.md",
+          "sha256": "85be14da732b7ee6d5f4d6cabd1e34f0bf47c03dab83de2ccf293cfc3b2d97f4"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-056.stdout.txt",
+          "sha256": "85be14da732b7ee6d5f4d6cabd1e34f0bf47c03dab83de2ccf293cfc3b2d97f4",
+          "size_bytes": 16083
+        },
+        "stderr": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-056.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      },
+      "result_summary": "EXPECTED_EXIT"
+    },
+    {
+      "id": "R3-057",
+      "argv": [
+        "cat",
+        "reports/P2_design/preapproval_audit_v3/actual_commands_and_exit_codes.json"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T13:54:52.556386+00:00",
+      "ended_at_utc": "2026-10-19T13:54:52.562998+00:00",
+      "head_before": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "head_after": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Read actual source/design/audit bytes; semantic focus according to evidence locators",
+      "input_files": [
+        {
+          "path": "reports/P2_design/preapproval_audit_v3/actual_commands_and_exit_codes.json",
+          "sha256": "169abd6cce4b422f4603fb0f0f0ce7f2df6e8d1f6b3aa5ecdfe5a39add8c0f2f"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-057.stdout.txt",
+          "sha256": "169abd6cce4b422f4603fb0f0f0ce7f2df6e8d1f6b3aa5ecdfe5a39add8c0f2f",
+          "size_bytes": 84453
+        },
+        "stderr": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-057.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      },
+      "result_summary": "EXPECTED_EXIT"
+    },
+    {
+      "id": "R3-058",
+      "argv": [
+        "cat",
+        "reports/P2_design/preapproval_audit_v3/review_evidence_manifest.json"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T13:54:52.565880+00:00",
+      "ended_at_utc": "2026-10-19T13:54:52.571882+00:00",
+      "head_before": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "head_after": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Read actual source/design/audit bytes; semantic focus according to evidence locators",
+      "input_files": [
+        {
+          "path": "reports/P2_design/preapproval_audit_v3/review_evidence_manifest.json",
+          "sha256": "cfd57338c4ee7b0ac97707c7cb15259e6ba4a291d9d72873f25245b3d7447186"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-058.stdout.txt",
+          "sha256": "cfd57338c4ee7b0ac97707c7cb15259e6ba4a291d9d72873f25245b3d7447186",
+          "size_bytes": 44422
+        },
+        "stderr": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-058.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      },
+      "result_summary": "EXPECTED_EXIT"
+    },
+    {
+      "id": "R3-059",
+      "argv": [
+        "cat",
+        "reports/P2_design/preapproval_audit_v3/first_publication_receipt.json"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T13:54:52.574894+00:00",
+      "ended_at_utc": "2026-10-19T13:54:52.581410+00:00",
+      "head_before": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "head_after": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Read actual source/design/audit bytes; semantic focus according to evidence locators",
+      "input_files": [
+        {
+          "path": "reports/P2_design/preapproval_audit_v3/first_publication_receipt.json",
+          "sha256": "ea1af38266fbaf3b79a2d7179514309112ee285a9bae90cd2f38453b514b4cb1"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-059.stdout.txt",
+          "sha256": "ea1af38266fbaf3b79a2d7179514309112ee285a9bae90cd2f38453b514b4cb1",
+          "size_bytes": 71045
+        },
+        "stderr": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-059.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      },
+      "result_summary": "EXPECTED_EXIT"
+    },
+    {
+      "id": "R3-060",
+      "argv": [
+        "cat",
+        "docs/P1_implementation_spec.md"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T13:59:59.068443+00:00",
+      "ended_at_utc": "2026-10-19T13:59:59.074573+00:00",
+      "head_before": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "head_after": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Read static event-order or historical runner source; no project import",
+      "input_files": [
+        {
+          "path": "docs/P1_implementation_spec.md",
+          "sha256": "92e9c4d0472f7893f54fc54d302d38bd224092285d78cc85ec7cdb67fef4e972"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-060.stdout.txt",
+          "sha256": "92e9c4d0472f7893f54fc54d302d38bd224092285d78cc85ec7cdb67fef4e972",
+          "size_bytes": 7473
+        },
+        "stderr": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-060.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      },
+      "result_summary": "EXPECTED_EXIT"
+    },
+    {
+      "id": "R3-061",
+      "argv": [
+        "cat",
+        "src/soc/simulator/engine.py"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T13:59:59.078060+00:00",
+      "ended_at_utc": "2026-10-19T13:59:59.083730+00:00",
+      "head_before": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "head_after": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Read static event-order or historical runner source; no project import",
+      "input_files": [
+        {
+          "path": "src/soc/simulator/engine.py",
+          "sha256": "977d01f3603f516e68e922542322976b813c01aad8d2dd177a5c0ac314399551"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-061.stdout.txt",
+          "sha256": "977d01f3603f516e68e922542322976b813c01aad8d2dd177a5c0ac314399551",
+          "size_bytes": 5398
+        },
+        "stderr": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-061.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      },
+      "result_summary": "EXPECTED_EXIT"
+    },
+    {
+      "id": "R3-062",
+      "argv": [
+        "cat",
+        "docs/P2_design/P2_runner_schema_review_v1.md"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T13:59:59.086009+00:00",
+      "ended_at_utc": "2026-10-19T13:59:59.092561+00:00",
+      "head_before": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "head_after": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Read static event-order or historical runner source; no project import",
+      "input_files": [
+        {
+          "path": "docs/P2_design/P2_runner_schema_review_v1.md",
+          "sha256": "21c4ccb2fbb608131ff28903fc90a60feb70111c9888d444e43165dbf3241f04"
+        }
+      ],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-062.stdout.txt",
+          "sha256": "21c4ccb2fbb608131ff28903fc90a60feb70111c9888d444e43165dbf3241f04",
+          "size_bytes": 12029
+        },
+        "stderr": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-062.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      },
+      "result_summary": "EXPECTED_EXIT"
+    },
+    {
+      "id": "R3-063",
+      "argv": [
+        "python",
+        "-c",
+        "import sys,importlib.metadata; print(sys.version); print(\"jsonschema=\"+importlib.metadata.version(\"jsonschema\"))"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T13:59:59.095025+00:00",
+      "ended_at_utc": "2026-10-19T13:59:59.187422+00:00",
+      "head_before": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "head_after": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Verify existing static JSON-schema review dependencies",
+      "input_files": [],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-063.stdout.txt",
+          "sha256": "819092d5e45ae09e00124e2bd7059eab65136de37f4d219c8de7fafd21447fe5",
+          "size_bytes": 72
+        },
+        "stderr": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-063.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      },
+      "result_summary": "EXPECTED_EXIT"
+    },
+    {
+      "id": "R3-064",
+      "argv": [
+        "python",
+        "reports/P2_design/design_revision_v3/static_review_initial.py.txt"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T14:09:39.936803+00:00",
+      "ended_at_utc": "2026-10-19T14:09:40.499749+00:00",
+      "head_before": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "head_after": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Static documentation and adversarial metadata review",
+      "input_files": [
+        {
+          "path": "docs/P2_design/v3/inherited_v2_documents.json",
+          "sha256": "2b3f0224b5a458322642d3cc335bbf304fa07e9e6a94753460971a6966d76545"
+        },
+        {
+          "path": "docs/P2_design/v3/P2_diagnostic_spec_v3.json",
+          "sha256": "3fe77e0300cd86122aeebe8230cd1221b881498b54fe73f18a8db139830280dd"
+        },
+        {
+          "path": "docs/P2_design/v3/P2_typed_identity_schema_v3.json",
+          "sha256": "2d2c45e23643c08cc4a408f31fe7cdc652ed7a6d926e27e1916b324e710e5c00"
+        },
+        {
+          "path": "docs/P2_design/v3/P2_coordination_options_v3.json",
+          "sha256": "e2009bd8bebef846a043132d43eb705a1ccea0a6ed50dcbc6756244ea7862be6"
+        },
+        {
+          "path": "docs/P2_design/v3/P2_criterion_spec_v3.json",
+          "sha256": "ba41ec2a576158c701ca96db9f5100d4e7e6a30346708b5490ad56076984b165"
+        },
+        {
+          "path": "docs/P2_design/v3/P2_public_snapshot_spec_v3.json",
+          "sha256": "4799c0663827b94d56c4dcd0da02a55c0f91dfdf967efe02ace40af40b6e85fd"
+        },
+        {
+          "path": "docs/P2_design/v3/reference_bindings.json",
+          "sha256": "c58ab069c1204530317cc4dc2088996e8f86e2058654cdf2a4b8e76e526892c2"
+        },
+        {
+          "path": "docs/P2_design/v3/P2_stage_state_contract_v3.json",
+          "sha256": "032ec0f46018a4004a7d19b55850adf4ae4e2d116ff24d66e029452ebf4f33d7"
+        },
+        {
+          "path": "docs/P2_design/v3/P2_M2_artifact_contract_v3.json",
+          "sha256": "a874339bb3d5844377c9d46d18741f8512dfdfb8480ce92f1b374a8ce582cbf8"
+        },
+        {
+          "path": "docs/P2_design/v3/P2_generation_spec_v3.json",
+          "sha256": "dd8d9917d32b28376d35e376206bbce2776bf7c42ba50bb7b62de18b37ef26bb"
+        },
+        {
+          "path": "docs/P2_design/v3/P2_scientific_parameter_registry_v3.json",
+          "sha256": "9181c26d149bf640b9e43a6090f92f8b27808382414fd86842370631aec38c77"
+        }
+      ],
+      "files_written": true,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-064.stdout.txt",
+          "sha256": "b97b3d190f7fa55d15edbbe203cb470d2ed9d82584f4728ae60bce2097519a5b",
+          "size_bytes": 541
+        },
+        "stderr": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-064.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      },
+      "result_summary": "EXPECTED_EXIT"
+    },
+    {
+      "id": "R3-065",
+      "argv": [
+        "python",
+        "reports/P2_design/design_revision_v3/static_review.py.txt"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T14:12:20.467041+00:00",
+      "ended_at_utc": "2026-10-19T14:12:21.132532+00:00",
+      "head_before": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "head_after": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Final static/adversarial source,closed-schema,semantic dependency and domain checks",
+      "input_files": [
+        {
+          "path": "docs/P2_design/v3/inherited_v2_documents.json",
+          "sha256": "2b3f0224b5a458322642d3cc335bbf304fa07e9e6a94753460971a6966d76545"
+        },
+        {
+          "path": "docs/P2_design/v3/P2_diagnostic_spec_v3.json",
+          "sha256": "3fe77e0300cd86122aeebe8230cd1221b881498b54fe73f18a8db139830280dd"
+        },
+        {
+          "path": "docs/P2_design/v3/P2_typed_identity_schema_v3.json",
+          "sha256": "e8d6bc9b270f0f3ca07626012ef224d9b2fdd30ada4afba8a7f0f57dea916fcd"
+        },
+        {
+          "path": "docs/P2_design/v3/P2_coordination_options_v3.json",
+          "sha256": "c3e86ce3e9823f1fb8214df4801d35a2394ba22c8c850ab86d6c9f274d97d297"
+        },
+        {
+          "path": "docs/P2_design/v3/P2_criterion_spec_v3.json",
+          "sha256": "ba41ec2a576158c701ca96db9f5100d4e7e6a30346708b5490ad56076984b165"
+        },
+        {
+          "path": "docs/P2_design/v3/P2_public_snapshot_spec_v3.json",
+          "sha256": "4799c0663827b94d56c4dcd0da02a55c0f91dfdf967efe02ace40af40b6e85fd"
+        },
+        {
+          "path": "docs/P2_design/v3/reference_bindings.json",
+          "sha256": "c58ab069c1204530317cc4dc2088996e8f86e2058654cdf2a4b8e76e526892c2"
+        },
+        {
+          "path": "docs/P2_design/v3/P2_stage_state_contract_v3.json",
+          "sha256": "032ec0f46018a4004a7d19b55850adf4ae4e2d116ff24d66e029452ebf4f33d7"
+        },
+        {
+          "path": "docs/P2_design/v3/P2_M2_artifact_contract_v3.json",
+          "sha256": "452d2a3ad363dca0c3fc423252207424652e2b1d75162f838d51d7ba7a380aa0"
+        },
+        {
+          "path": "docs/P2_design/v3/P2_generation_spec_v3.json",
+          "sha256": "dd8d9917d32b28376d35e376206bbce2776bf7c42ba50bb7b62de18b37ef26bb"
+        },
+        {
+          "path": "docs/P2_design/v3/P2_scientific_parameter_registry_v3.json",
+          "sha256": "9181c26d149bf640b9e43a6090f92f8b27808382414fd86842370631aec38c77"
+        }
+      ],
+      "files_written": true,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-065.stdout.txt",
+          "sha256": "80d3ebbb2f2b4bf004f733bb38498e22d17fc9715ea49c87f8f3e69bcef29398",
+          "size_bytes": 541
+        },
+        "stderr": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-065.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      },
+      "result_summary": "EXPECTED_EXIT"
+    },
+    {
+      "id": "R3-066",
+      "argv": [
+        "python",
+        "reports/P2_design/design_revision_v3/delivery_review.py.txt"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T14:16:13.059858+00:00",
+      "ended_at_utc": "2026-10-19T14:16:13.292862+00:00",
+      "head_before": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "head_after": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Final required deliverables,reference/source content,Git blob,approval/scope and raw receipt checks",
+      "input_files": [
+        {
+          "path": "docs/P2_design/v3/inherited_v2_documents.json",
+          "sha256": "2b3f0224b5a458322642d3cc335bbf304fa07e9e6a94753460971a6966d76545"
+        },
+        {
+          "path": "docs/P2_design/v3/P2_diagnostic_spec_v3.json",
+          "sha256": "3fe77e0300cd86122aeebe8230cd1221b881498b54fe73f18a8db139830280dd"
+        },
+        {
+          "path": "docs/P2_design/v3/P2_typed_identity_schema_v3.json",
+          "sha256": "e8d6bc9b270f0f3ca07626012ef224d9b2fdd30ada4afba8a7f0f57dea916fcd"
+        },
+        {
+          "path": "docs/P2_design/v3/P2_coordination_options_v3.json",
+          "sha256": "c3e86ce3e9823f1fb8214df4801d35a2394ba22c8c850ab86d6c9f274d97d297"
+        },
+        {
+          "path": "docs/P2_design/v3/README.md",
+          "sha256": "2c2e347a83a32df2da038e98e2373065e061b6383a1e14cb875586f7f109b94f"
+        },
+        {
+          "path": "docs/P2_design/v3/P2_criterion_spec_v3.json",
+          "sha256": "ba41ec2a576158c701ca96db9f5100d4e7e6a30346708b5490ad56076984b165"
+        },
+        {
+          "path": "docs/P2_design/v3/P2_public_snapshot_spec_v3.json",
+          "sha256": "4799c0663827b94d56c4dcd0da02a55c0f91dfdf967efe02ace40af40b6e85fd"
+        },
+        {
+          "path": "docs/P2_design/v3/P2_runner_schema_review_v3.md",
+          "sha256": "c33694969c5a558adc8a21b89eba65502ef07c1489539f7621069327a4a6283d"
+        },
+        {
+          "path": "docs/P2_design/v3/reference_bindings.json",
+          "sha256": "c58ab069c1204530317cc4dc2088996e8f86e2058654cdf2a4b8e76e526892c2"
+        },
+        {
+          "path": "docs/P2_design/v3/P2_D01_D10_approval_checklist_v3.md",
+          "sha256": "07142922d00850ad66c7f00e7536601bd4a8db6c252ebbe0d0cb84f16b83c86c"
+        },
+        {
+          "path": "docs/P2_design/v3/P2_stage_state_contract_v3.json",
+          "sha256": "032ec0f46018a4004a7d19b55850adf4ae4e2d116ff24d66e029452ebf4f33d7"
+        },
+        {
+          "path": "docs/P2_design/v3/P2_M2_artifact_contract_v3.json",
+          "sha256": "bbf1ee0aed55aa0d34f56f0fae5268f6f5280c1a2f691011ee1a354f7a64bc2f"
+        },
+        {
+          "path": "docs/P2_design/v3/P2_generation_spec_v3.json",
+          "sha256": "dd8d9917d32b28376d35e376206bbce2776bf7c42ba50bb7b62de18b37ef26bb"
+        },
+        {
+          "path": "docs/P2_design/v3/P2_complete_design_proposal_v3.md",
+          "sha256": "85636a14d594ad442b7805acbe9d0c9b530898dd99f1a29099da6f30a80416a3"
+        },
+        {
+          "path": "docs/P2_design/v3/P2_scientific_parameter_registry_v3.json",
+          "sha256": "9181c26d149bf640b9e43a6090f92f8b27808382414fd86842370631aec38c77"
+        },
+        {
+          "path": "reports/P2_design/design_revision_v3/source_evidence_manifest.json",
+          "sha256": "e0a3bd55a0b13c90b5daa977dd9e94a80f21cafb9390436bd81c799675a1c3d8"
+        }
+      ],
+      "files_written": true,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-066.stdout.txt",
+          "sha256": "3bd5df5755fda8bcc8b02b2dbf9c2217cc3b066d7d398dc55e55c204f03b93e8",
+          "size_bytes": 225
+        },
+        "stderr": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-066.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      },
+      "result_summary": "EXPECTED_EXIT"
+    },
+    {
+      "id": "R3-067",
+      "argv": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T14:16:58.302153+00:00",
+      "ended_at_utc": "2026-10-19T14:16:58.310806+00:00",
+      "head_before": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "head_after": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Pre-staging scope/whitespace check; authorized new files are not in unstaged tracked diff",
+      "input_files": [],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-067.stdout.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        },
+        "stderr": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-067.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      },
+      "result_summary": "EXPECTED_EXIT"
+    },
+    {
+      "id": "R3-068",
+      "argv": [
+        "git",
+        "status",
+        "--short"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T14:16:58.313652+00:00",
+      "ended_at_utc": "2026-10-19T14:16:58.322399+00:00",
+      "head_before": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "head_after": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Pre-staging scope/whitespace check; authorized new files are not in unstaged tracked diff",
+      "input_files": [],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-068.stdout.txt",
+          "sha256": "59462e823abb1be5c012868b5b3d1d47e9c65c835dc192e1705e6d90f93eb184",
+          "size_bytes": 63
+        },
+        "stderr": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-068.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      },
+      "result_summary": "EXPECTED_EXIT"
+    },
+    {
+      "id": "R3-069",
+      "argv": [
+        "git",
+        "diff",
+        "--stat"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T14:16:58.325493+00:00",
+      "ended_at_utc": "2026-10-19T14:16:58.332437+00:00",
+      "head_before": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "head_after": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Pre-staging scope/whitespace check; authorized new files are not in unstaged tracked diff",
+      "input_files": [],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-069.stdout.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        },
+        "stderr": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-069.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      },
+      "result_summary": "EXPECTED_EXIT"
+    },
+    {
+      "id": "R3-070",
+      "argv": [
+        "git",
+        "diff",
+        "--name-status"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T14:16:58.335572+00:00",
+      "ended_at_utc": "2026-10-19T14:16:58.342625+00:00",
+      "head_before": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "head_after": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Pre-staging scope/whitespace check; authorized new files are not in unstaged tracked diff",
+      "input_files": [],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-070.stdout.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        },
+        "stderr": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-070.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      },
+      "result_summary": "EXPECTED_EXIT"
+    },
+    {
+      "id": "R3-071",
+      "argv": [
+        "git",
+        "ls-files",
+        "--others",
+        "--exclude-standard"
+      ],
+      "cwd": "/workspace/soc",
+      "started_at_utc": "2026-10-19T14:16:58.345495+00:00",
+      "ended_at_utc": "2026-10-19T14:16:58.352328+00:00",
+      "head_before": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "head_after": "cae4a396c02b5fa038a771b65dce9aaad449d3a9",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "purpose": "Pre-staging scope/whitespace check; authorized new files are not in unstaged tracked diff",
+      "input_files": [],
+      "files_written": false,
+      "scientific_execution": false,
+      "outputs": {
+        "stdout": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-071.stdout.txt",
+          "sha256": "14417e3dbf595eb0173786e46ce4a2dde9ce1db97421daf6cb63e0352d6cb7db",
+          "size_bytes": 12585
+        },
+        "stderr": {
+          "path": "reports/P2_design/design_revision_v3/raw_commands/R3-071.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      },
+      "result_summary": "EXPECTED_EXIT"
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+from pathlib import Path
+import json,csv,re,hashlib,subprocess
+R=Path('/workspace/soc');D=R/'docs/P2_design/v3';O=R/'reports/P2_design/design_revision_v3';V=R/'docs/P2_design/v2'
+def j(p):return json.loads(p.read_text())
+def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+c=[]
+def ck(n,ok,detail=None):c.append(dict(id=n,pass_=bool(ok),detail=detail))
+design=['P2_complete_design_proposal_v3.md','P2_D01_D10_approval_checklist_v3.md','P2_scientific_parameter_registry_v3.json','P2_generation_spec_v3.json','P2_typed_identity_schema_v3.json','P2_public_snapshot_spec_v3.json','P2_diagnostic_spec_v3.json','P2_criterion_spec_v3.json','P2_stage_state_contract_v3.json','P2_runner_schema_review_v3.md']
+reports=['executive_decision.md','V3_F01_F05_resolution_matrix.csv','F01_observation_domain_options.md','F02_lock_recovery_contract.md','F03_execution_provenance_contract.md','F04_M2_artifact_contract.md','F05_key_count_correction.md','cross_document_consistency.json','change_log.json','source_evidence_manifest.json','static_checks.json','actual_commands_and_exit_codes.json','human_decision_packet.md','final_state.json']
+ck('TEN_REQUIRED_DESIGNS_AND14_REPORTS',all((D/x).is_file() for x in design) and all((O/x).is_file() for x in reports))
+b=j(O/'protected_baseline.json');bad=[x['path'] for x in b['files'] if sha(R/x['path'])!=x['sha256']];ck('ALL672_PREEXISTING_FILES_UNCHANGED',len(b['files'])==672 and not bad,bad)
+ref_count=0;missing=[];pointers=0
+for p in list(D.glob('*.json'))+list(D.glob('*.md'))+list(O.glob('F0*.md')):
+ for m in re.finditer(r'\b(P2_[A-Za-z0-9_]+_v([23])\.(?:json|md))',p.read_text()):
+  ref_count+=1;q=(D if m[2]=='3' else V)/m[1]
+  if not q.is_file():missing.append([str(p),m[1]])
+ck('ALL_NAMED_V2_V3_DOCUMENT_REFS_RESOLVE',not missing,dict(reference_occurrences=ref_count,missing=missing))
+sources=j(O/'source_evidence_manifest.json')['sources'];blobbad=[]
+for x in sources:
+ a=subprocess.run(['git','rev-parse',b['start_head']+':'+x['path']],cwd=R,text=True,capture_output=True)
+ if a.returncode or a.stdout.strip()!=x['git_blob_id'] or sha(R/x['path'])!=x['sha256']:blobbad.append(x['path'])
+ck('ALL_SOURCE_SHA_AND_GIT_BLOBS_MATCH',not blobbad,dict(source_count=len(sources),mismatch=blobbad))
+m2=j(D/'P2_M2_artifact_contract_v3.json')
+excerpts=[]
+for x in m2['source_requirements'][:2]:
+ lines=(R/x['path']).read_text().splitlines();a,z=x['lines'];excerpts.append('\n'.join(lines[a-1:z]))
+ck('M2_SOURCE_EXCERPTS_CONTENT_MATCH','M2用同workload' in excerpts[0] and 'M2仍为相同输入' in excerpts[1])
+reg=j(D/'P2_scientific_parameter_registry_v3.json');ck('FORTY_GROUPS_APPROVAL_UNCHANGED',len(reg['parameters'])==40 and all(x['approval']=='UNAPPROVED' for x in reg['parameters']))
+packet=(O/'human_decision_packet.md').read_text();ck('FIVE_EXACT_HUMAN_QUESTIONS_AND_TEN_DECISIONS',all('## F0'+str(i) in packet for i in range(1,6)) and all('D'+str(i).zfill(2)+' — UNAPPROVED' in packet for i in range(1,11)))
+ck('PACKET_ALL40_GROUPS_UNAPPROVED',all('|SP'+str(i).zfill(2)+'|' in packet for i in range(1,41)) and packet.count('|UNAPPROVED|')==40)
+rows=list(csv.DictReader((O/'V3_F01_F05_resolution_matrix.csv').open()));ck('FIVE_RESOLUTION_ROWS_NO_FALSE_APPROVAL',len(rows)==5 and [x['id'] for x in rows]==['V3-F0'+str(i) for i in range(1,6)] and all(x['remaining'] for x in rows))
+ck('UNPUBLISHED_ADVERSARIAL_HISTORY_RETAINED',(O/'static_checks_initial.json').is_file() and len(list((O/'draft_snapshots').glob('*.json')))==3 and 'report' in (O/'in_task_adversarial_review.md').read_text())
+stage=j(D/'P2_stage_state_contract_v3.json');crit=j(D/'P2_criterion_spec_v3.json');lock=j(D/'P2_coordination_options_v3.json');typ=j(D/'P2_typed_identity_schema_v3.json')
+ck('ALL_CHOICES_NULL_NO_LEGACY_FALLBACK',crit['selected_route'] is None and crit['selected_threshold_bundle'] is None and crit['operational_criterion'] is None and lock['selected_route'] is None and typ['effective_family']['selected_observer_route'] is None and typ['effective_family']['selected_coordination_route'] is None)
+ck('M2_REPORT_AND_VALIDATION_ARE_SEPARATE',m2['publication_dag'][2]=='analysis report COMPLETE_PENDING_INDEPENDENT_VALIDATION' and 'independent_analysis_validation_ref' not in typ['$defs']['M2_ANALYSIS_REPORT_V3']['required'] and 'analysis_report_ref' in typ['$defs']['M2_ANALYSIS_VALIDATION_V3']['required'])
+ck('TERMINAL_ATTEMPT_NEVER_REACTIVATED','NO terminal transfer' in lock['terminal_transfer_policy'])
+ck('FINAL_STAGE_STILL_BLOCKED_AND_TIMING_UNFROZEN',stage['current_design_values']['p2_progression_status']=='BLOCKED' and stage['timing']['current']=='NOT_FROZEN' and stage['timing']['decision_P95_target_ms']==2)
+state=j(O/'final_state.json');ck('FINAL_STATE_ALL_APPROVALS_PENDING',state['D01_D10_APPROVAL_STATUS']=='ALL10_UNAPPROVED' and state['SP01_SP40_APPROVAL_STATUS']=='ALL40_UNAPPROVED' and state['DOCUMENT_REVISION_STATUS']=='DOCUMENT_REVISION_COMPLETE_PENDING_HUMAN_DECISION')
+ck('FINAL_STATE_ZERO_SCIENCE_AND_NO_UNLOCK',state['SCIENTIFIC_WORKLOADS_GENERATED']==state['SCIENTIFIC_WORKLOADS_RUN']==0 and all(state[x] is False for x in ['IMPLEMENTATION_CHANGED','P2_ENTRYPOINT_EXECUTED','NEW_SEEDS_GENERATED','NON_CALIBRATION_PARTITIONS_ACCESSED','VALIDATION_UNLOCKED','FORMAL_UNLOCKED','CI_METHOD_CHANGED','SCIENTIFIC_THRESHOLDS_CHANGED','SEED_PARTITIONS_CHANGED']))
+log=j(O/'actual_commands_and_exit_codes.json');ids=[x['id'] for x in log['commands']];ck('COMMAND_IDS_UNIQUE',len(ids)==len(set(ids)),dict(recorded_commands=len(ids)))
+bad=[]
+for x in log['commands']:
+ for q in x['outputs'].values():
+  if sha(R/q['path'])!=q['sha256'] or (R/q['path']).stat().st_size!=q['size_bytes']:bad.append(q['path'])
+ck('ALL_RAW_COMMAND_OUTPUT_HASHES_MATCH',not bad,bad)
+ck('RECORDED_CHECKS_NOT_SCIENTIFIC',all(x['scientific_execution'] is False for x in log['commands']))
+ck('STATIC66_PASS_IS_NOT_APPROVAL',j(O/'static_checks.json')['passed']==66 and j(O/'static_checks.json')['failed']==[] and j(O/'static_checks.json')['design_approval']=='UNAPPROVED')
+changes=j(O/'change_log.json');ck('CHANGE_LOG_EVERY_DESIGN_FILE_MAPPED',{x['new_path'] for x in changes['files']}=={str(x.relative_to(R)) for x in D.iterdir() if x.is_file()} and all(x.get('decisions') and x.get('source_version') and x.get('exact_changes') and x.get('static_acceptance') for x in changes['files']))
+st=subprocess.check_output(['git','status','--porcelain=v1','--untracked-files=all'],cwd=R,text=True).splitlines();ck('GIT_SCOPE_ONLY_TWO_NEW_DIRS',all(x[3:].startswith(('docs/P2_design/v3/','reports/P2_design/design_revision_v3/')) for x in st))
+ck('MATRIX_BYTE_IDENTITY_UNCHANGED',sha(V/'P2_trial_matrix_draft_v2.json')=='b58fe4c2eead01fc9b92966d557ed0bb052e7387794fc0d9b58029ffdb90af0e' and not list(D.glob('*trial_matrix*')))
+failed=[x for x in c if not x['pass_']];result=dict(scope='Final document/reference/receipt/scope integrity,not existing stage audit or runtime test',passed=len(c)-len(failed),failed=failed,checks=c,status='PASS_STATIC_ONLY' if not failed else 'FAIL',design_approval='UNAPPROVED',scientific_workloads_run=0)
+(O/'delivery_checks.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n');print(json.dumps({k:v for k,v in result.items() if k!='checks'},ensure_ascii=False));raise SystemExit(1 if failed else 0)

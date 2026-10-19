@@ -1,0 +1,156 @@
+"""Static documentation/source metadata review. No soc imports, scientific instances,
+locking, worker, generator, scheduling, resampling or diagnostic implementation.
+Schema-shape mutations and hand scalar algebra only. Exit0 does not approve design.
+"""
+from pathlib import Path
+import json,csv,hashlib,subprocess,copy,re,sys
+from fractions import Fraction
+from jsonschema import Draft202012Validator
+R=Path('/workspace/soc');D=R/'docs/P2_design/v3';O=R/'reports/P2_design/design_revision_v3';V=R/'docs/P2_design/v2'
+checks=[]
+def ck(n,ok,detail=None):checks.append(dict(id=n,pass_=bool(ok),detail=detail))
+def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+def strict(p):
+ def pairs(a):
+  d={}
+  for k,v in a:
+   if k in d:raise ValueError('duplicate '+k)
+   d[k]=v
+  return d
+ return json.loads(p.read_text(),object_pairs_hook=pairs,parse_constant=lambda x:(_ for _ in ()).throw(ValueError(x)))
+def out(name,x):(O/name).write_text(json.dumps(x,ensure_ascii=False,indent=2)+'\n')
+old=lambda n:strict(V/n)
+new=lambda n:strict(D/n)
+b=strict(O/'protected_baseline.json');mismatch=[x['path'] for x in b['files'] if not (R/x['path']).is_file() or sha(R/x['path'])!=x['sha256']]
+ck('PROTECTED672_UNCHANGED',len(b['files'])==672 and not mismatch,mismatch)
+files=list(D.glob('*.json'));docs={p.name:strict(p) for p in files};ck('ALL_V3_JSON_STRICT_PARSE',len(docs)>=10,dict(count=len(docs)))
+ck('ALL_DOCS_NONEXECUTABLE_UNAPPROVED',all(x.get('approval')=='UNAPPROVED' and x.get('approved') is False and x.get('frozen') is False and x.get('executable') is False and x.get('execution_authorized') is False and x.get('read_by_pipeline') is False for x in docs.values()))
+ty=docs['P2_typed_identity_schema_v3.json'];td=ty['$defs'];base=old('P2_typed_identity_schema_v2.json');bd=base['$defs']
+Draft202012Validator.check_schema(ty);ck('JSON_SCHEMA202012_META_VALID',True)
+ck('ALL61_LEGACY_TYPED_DEFS_EXACT',len(bd)==61 and all(td[k]==v for k,v in bd.items()))
+ck('ALL21_LEGACY_PREIMAGES_EXACT',len(base['preimage_registry'])==21 and ty['preimage_registry']==base['preimage_registry'])
+key=list(bd['KEY']['properties']);g=docs['P2_generation_spec_v3.json'];bg=old('P2_generation_spec_v2.json')
+ck('KEY14_EXACT_AND_ORDERED',len(key)==14 and td['KEY']==bd['KEY'] and list(g['key_bindings'])==list(bg['key_bindings']) and g['key_fill_templates']==bg['key_fill_templates'])
+ck('THREE_BINDINGS_EXACT_FIELDS_AND_VALUES',len(g['key_bindings'])==3 and all(set(v)==set(key) for v in g['key_bindings'].values()) and g['key_bindings']==bg['key_bindings'])
+ck('ONLY_F05_COUNT_WORDING_CHANGE',g['key_binding_contract']==bg['key_binding_contract'].replace('All15','All14') and 'All15' not in g['key_binding_contract'])
+protected=['schema_version','generator_version','key_fill_templates','key_exclusions','parent_key_rule','algorithm','service_identity','arrivals','deadlines','controls','windows','binding_context_types','scope_change','production_artifacts']
+ck('ALL_GENERATOR_NUMERIC_AND_RANDOM_RULES_EXACT',all(g[k]==bg[k] for k in protected),protected)
+ck('NO_MATRIX_COPY_OR_REWRITE',not list(D.glob('*trial_matrix*')) and sha(V/'P2_trial_matrix_draft_v2.json')=='b58fe4c2eead01fc9b92966d557ed0bb052e7387794fc0d9b58029ffdb90af0e')
+deps=docs['inherited_v2_documents.json']['documents'];ck('FIVE_UNCHANGED_DEPENDENCY_HASHES',len(deps)==5 and all(sha(R/x['path'])==x['sha256'] for x in deps))
+ck('ALL18_V2_REFERENCE_BINDINGS_VALID',len(docs['reference_bindings.json']['bindings'])==18 and all(sha(R/x['path'])==x['sha256'] for x in docs['reference_bindings.json']['bindings']))
+
+diag=docs['P2_diagnostic_spec_v3.json'];criterion=docs['P2_criterion_spec_v3.json'];routes=diag['route_options']
+ck('F01_THREE_DISTINCT_ROUTES_NO_DEFAULT',list(routes)==['A_KEEP_ORIGINAL','B1_EXPAND_SINGLE_READY','B2_CONDITIONAL_DOMAIN'] and diag['selected_route'] is None and diag['operational_diagnostic'] is None and criterion['selected_route'] is None and criterion['selected_threshold_bundle'] is None and criterion['operational_criterion'] is None)
+ck('F01_CROSS_DOCUMENT_ROUTE_TABLES_IDENTICAL',routes==criterion['route_options'])
+ck('F01_ALL_ROUTES_TRISTATE_ORDER',all([z['result'] for z in x['decision_table']]==['NOT_EVALUATED','INCONCLUSIVE','SUPPORTED','NOT_SUPPORTED','INCONCLUSIVE'] for x in routes.values()))
+templates=old('P2_workload_templates_v2.json')['templates'];adas=[x for x in templates if x['scene']=='ADAS'];roots={x['template_id']:[n['id'] for n in x['nodes'] if not n['predecessors']] for x in adas}
+ck('F01_SOURCE_ADAS_SINGLE_ROOT_BOTH_SIZES',len(adas)==2 and {x['size'] for x in adas}=={8,16} and all(len(x)==1 for x in roots.values()),roots)
+jitter=bg['key_bindings']['arrival_jitter'];ck('F01_SHARED_H_L_JITTER_NO_GROUP_DRAW',jitter['service_group']=={'kind':'LITERAL','value':''} and jitter['template_node_id']=={'kind':'LITERAL','value':''})
+ck('F01_FIRST_PAIR_BEFORE_NEXT_SLOT_BOUND',Fraction(1,10)<Fraction(1,4),'Hand symbolic P>0: first jitter<.1P,next compressed slot>=.25P; no draw generated')
+ck('F01_MANDATORY_POST_START_SNAPSHOT_NO_EVENT_DEDUP', 'each actual engine scheduler invocation' in old('P2_public_snapshot_spec_v2.json')['exact_event_rule'] and 'same-time start/completion/arrival' in old('P2_public_snapshot_spec_v2.json')['counting'])
+ck('F01_ORIGINAL_SINGLE_READY_ELIGIBLE_NOT_FULL', 'At least one dependency-ready' in diag['inherited_v2_contract']['scope']['eligible'] and 'exactly1' in diag['inherited_v2_contract']['scope']['action_nodes'] and '2<=K<=4' in diag['inherited_v2_contract']['coverage']['FULL'])
+ck('F01_ZERO_F_UNDEFINED_AND_POSITIVE_F_INEQUALITY',Fraction(1,2)<1 and Fraction(7,8)<1 and 'null' in routes['A_KEEP_ORIGINAL']['opportunity_rate'],'General proof in F01 report: E=F+k,k>=1,F>0 =>F/(F+k)<1; F=0 precondition false. Hand fractions are not workload statistics.')
+lambda_=Fraction.from_float(.05);gain=Fraction(111,256);b0=1+2*lambda_+Fraction(213,32);alt=1+2*lambda_+Fraction(1593,256)
+ck('F01_FIXED_SUFFIX_COUNTEREXAMPLE_EXACT',b0-alt==gain and gain/b0>Fraction(1,20),'Hand scalar identity only; no scheduler/projection invoked')
+ck('F01_B1_EXPLICIT_SCOPE_CHANGE_NO_COVERAGE_PROMISE','§44' in routes['B1_EXPAND_SINGLE_READY']['contract_effect'] and 'NOT a proof' in routes['B1_EXPAND_SINGLE_READY']['reachability'])
+ck('F01_B2_ORIGINAL_E_AND_EXCLUSIONS_RETAINED','E0-A0' in routes['B2_CONDITIONAL_DOMAIN']['excluded'] and 'before g' in routes['B2_CONDITIONAL_DOMAIN']['analysis_domain'] and 'INVALID/INCOMPLETE' in routes['B2_CONDITIONAL_DOMAIN']['F'] and 'redundant' in routes['B2_CONDITIONAL_DOMAIN']['support_coverage'])
+bc=old('P2_criterion_spec_v2.json');ck('ALL_SCIENTIFIC_CUTOFFS_AND_BOOTSTRAP_EXACT',criterion['bundles']==bc['bundles'] and criterion['coverage_thresholds']==bc['coverage_thresholds'] and criterion['bootstrap']==bc['bootstrap'])
+stage=docs['P2_stage_state_contract_v3.json'];bs=old('P2_stage_state_contract_v2.json')
+ck('ALL_LOAD_FEASIBILITY_GROUP_RULES_EXACT',all(stage[k]==bs[k] for k in ['load_classification','feasibility','group_counts','control_na_token']))
+ck('TIMING_UNFROZEN_2MS_NO_DEFAULTS',stage['timing']['current']=='NOT_FROZEN' and stage['timing']['decision_P95_target_ms']==2 and stage['timing']['measurement_status']=='NOT_MEASURED' and len(stage['timing']['required_fields'])==7)
+
+lock=docs['P2_coordination_options_v3.json'];ck('F02_TWO_COMPLETE_POLICIES_NO_DEFAULT',set(lock['routes'])=={'A_NO_TAKEOVER','B_FENCED'} and lock['selected_route'] is None and len(lock['cas_phase_preconditions'])==10)
+domain=td['COORDINATION_DOMAIN_PREIMAGE_V3'];ck('F02_SHARED_DOMAIN_NO_TRANSIENT_AUTH_ATTEMPT',domain['required']==['namespace','schema_version','budget_scope_sha256','purpose','semantic_target_id'] and not any(x in domain['properties'] for x in ['attempt_id','authorization_sha256','run_id','workload_id','epoch']))
+ck('F02_CAS_EXACT_EXPECTED_EIGHT_FIELDS',len(lock['cas_expected'])==8 and {'epoch','revision','current_record_sha256','active_authorization_sha256','lease_clock_id'}<=set(lock['cas_expected']))
+ck('F02_CONSUMED_UNKNOWN_SLOT_NO_RETRY','once true/unknown, no new process' in lock['routes']['B_FENCED']['admission'] and any('automatic retries0' in x for x in lock['invariants']))
+ck('F02_FENCED_TRANSFER_PRESERVES_HISTORY','old attempt/phase/reservation history never reset' in lock['cas_phase_preconditions']['FENCED_TRANSFER'])
+
+# Type dependency acyclicity is mechanically reconstructed; process chronology separate.
+edges=[]
+def refs(x):
+ if isinstance(x,dict):
+  if '$ref' in x:yield x['$ref']
+  for v in x.values():yield from refs(v)
+ elif isinstance(x,list):
+  for v in x:yield from refs(v)
+for n,x in td.items():
+ for z in refs(x):
+  assert z.startswith('#/$defs/') and z[8:] in td,(n,z)
+  edges.append((z[8:],n))
+def acyclic(nodes,es):
+ adj={n:[] for n in nodes};degree={n:0 for n in nodes}
+ for a,b in set(es):adj[a].append(b);degree[b]+=1
+ q=[n for n in nodes if degree[n]==0];order=[]
+ while q:
+  a=q.pop();order.append(a)
+  for b in adj[a]:
+   degree[b]-=1
+   if degree[b]==0:q.append(b)
+ return len(order)==len(nodes),order
+ok,order=acyclic(td,edges);ck('ALL_TYPED_REFERENCE_DEPENDENCIES_RESOLVE_AND_ACYCLIC',ok,dict(definitions=len(td),edges=len(set(edges))))
+phaseedges=[(x['from_'],x['to']) for x in lock['phase_edges']+lock['terminal_edges']];nodes=set(x for e in phaseedges for x in e);ok,_=acyclic(nodes,phaseedges);ck('F02_NORMAL_PHASE_GRAPH_ACYCLIC',ok)
+
+ctx=td['EXECUTION_CONTEXT_PREIMAGE_V3'];required={'actual_head_oid','actual_tree_oid','branch_kind','branch_name','repository_url','observed_relevant_dirty','observed_relevant_untracked','observed_repository_dirty','observed_relevant_files','frozen_source_commit','source_bundle_sha256','execution_contract_sha256','execution_image_manifest_sha256','source_isolation_mode'}
+ck('F03_REQUIRED_CLOSED_CONTEXT_AND_SEALED_SOURCE',ctx['additionalProperties'] is False and required<=set(ctx['required']) and set(ctx['required'])==set(ctx['properties']))
+ck('F03_CONTEXT_HAS_NO_FUTURE_OR_SELF_ID',not any(k in ctx['properties'] for k in ['run_id','attempt_id','own_id','own_hash','result_sha256','provenance_inventory_sha256']))
+ck('F03_ACTUAL_CONTEXT_IN_RUN_AND_COMPLETE_PREIMAGES',all('execution_context_sha256' in td[n]['required'] for n in ['RUN_PREIMAGE_V3','GENERATION_RECEIPT_PREIMAGE_V3','COMPLETION_PREIMAGE_V3','SCIENTIFIC_RUN_RECORD_V3','PROCESS_RESULT_V3']))
+ck('F03_PROVENANCE_HASH_SCOPE_BINDING','provenance_inventory_sha256' in td['COMPLETION_PREIMAGE_V3']['required'] and 'provenance_inventory_sha256' in td['GENERATION_RECEIPT_PREIMAGE_V3']['required'] and 'execution_provenance_refs' in td['SCIENTIFIC_RUN_RECORD_V3']['required'])
+ck('F03_PRE_POST_ROLES_TYPED',td['EXECUTION_PROVENANCE_PREIMAGE_V3']['properties']['phase']['enum']==['PRE_SPAWN','POST_EXIT'] and len(td['EXECUTION_PROVENANCE_PREIMAGE_V3']['properties']['process_role']['enum'])==8)
+ck('ALL20_NEW_DEFS_CLOSED_REQUIRED_EXACT',len(td)-len(bd)==20 and all(x['additionalProperties'] is False and set(x['required'])==set(x['properties']) for n,x in td.items() if n not in bd))
+# Hand schema mutations: no fake scientific receipt bodies or identities generated.
+mut=copy.deepcopy(ctx);del mut['properties']['actual_head_oid'];ck('NEGATIVE_SCHEMA_MISSING_HEAD_FIELD_DETECTED',set(mut['required'])!=set(mut['properties']))
+mut=copy.deepcopy(td['COMPLETION_PREIMAGE_V3']);mut['required'].remove('provenance_inventory_sha256');ck('NEGATIVE_UNHASHED_PROVENANCE_OMISSION_DETECTED',set(mut['required'])!=set(mut['properties']))
+mut=copy.deepcopy(domain);mut['properties']['attempt_id']={'type':'string'};mut['required'].append('attempt_id');ck('NEGATIVE_DOMAIN_ATTEMPT_KEY_DETECTED','attempt_id' in mut['properties'] and 'attempt_id' not in domain['properties'])
+
+m2=docs['P2_M2_artifact_contract_v3.json'];ck('F04_SAME_FOUR_METHODS_AND720_SYMBOLIC_PAIRS',m2['roster']['methods']==['B1','B3','B4','B5'] and m2['roster']['reference']=='B2' and td['M2_ROSTER_V3']['properties']['expected_pairs']['const']==18*10*4==720)
+ck('F04_ALL_TWELVE_REQUIRED_REPORT_MEMBERS',len(m2['required_artifacts'])==12 and len(set(m2['required_artifacts']))==12)
+ck('F04_FOUR_CONTRASTS_EXPLICIT_UNITS',len(m2['contrasts'])==4 and all(x['formula'] and x['unit'] and x['source'] for x in m2['contrasts']))
+ck('F04_FOUR_SEPARATE_M2_STATES',all(n in td['GATE_STATE_V3']['required'] for n in ['m2_roster_status','m2_contrast_status','m2_report_status','m2_analysis_validity']) and stage['state_fields']==td['GATE_STATE_V3']['properties'])
+ck('F04_REQUIRED_STAGE_ROSTER_REPORT_VALIDATION_REFS',all(n in td['STAGE_RECORD_V3']['required'] for n in ['m2_roster_ref','m2_analysis_report_ref','m2_validation_ref']))
+ck('F04_CRITERION_AND_PROGRESSION_BIND_M2',any('Mandatory M2' in z for z in criterion['preconditions']) and any('M2 roster COMPLETE' in z for z in stage['progression_conjunction']))
+ck('F04_SKIPPED_ANALYSIS_NOT_COMPLETE_COUNTERCASE',any(x['case']=='all raw metrics but M2 analysis skipped' and x['progression']=='BLOCKED' for x in m2['failure_table']))
+ck('F04_STATISTICAL_CONTRACT_SAME',m2['statistical_protocol']==bc['bootstrap'])
+
+reg=docs['P2_scientific_parameter_registry_v3.json'];br=old('P2_scientific_parameter_registry_v2.json')
+ck('ALL40_IDS_DECISIONS_AND_LINEAGE_RETAINED',[x['id'] for x in reg['parameters']]==[x['id'] for x in br['parameters']] and all(x['decision_id']==y['decision_id'] and x['lineage']==y['lineage'] for x,y in zip(reg['parameters'],br['parameters'])))
+ck('ALL40_GROUPS_STILL_UNAPPROVED',all(x['approval']==x['v3_approval']=='UNAPPROVED' and x['status']=='UNRESOLVED' for x in reg['parameters']) and reg['current_group_count']==40)
+checklist=(D/'P2_D01_D10_approval_checklist_v3.md').read_text();cat=strict(R/'docs/P2_design/decisions.draft.json')['decisions'];ck('ALL10_ORIGINAL_QUESTIONS_AND_APPROVALS',all(x['question'] in checklist and '## '+x['id'] in checklist for x in cat) and checklist.count('Approval: UNAPPROVED.')==10)
+pointer_count=0
+for x in reg['parameters']:
+ f,frag=x['proposal_ref'].split('#',1);p=D/f;assert p.is_file(),x
+ if p.suffix=='.json':
+  z=strict(p)
+  for seg in frag.strip('/').split('/'):
+   seg=seg.replace('~1','/').replace('~0','~');z=z[int(seg)] if isinstance(z,list) else z[seg]
+ else:assert 'D07' in frag
+ pointer_count+=1
+ck('ALL40_PROPOSAL_REFERENCES_RESOLVE',pointer_count==40)
+
+hashrefs=[];badranges=[]
+def walkrefs(x,origin):
+ if isinstance(x,dict):
+  if isinstance(x.get('path'),str) and isinstance(x.get('sha256'),str) and (R/x['path']).is_file():
+   p=R/x['path'];assert sha(p)==x['sha256'],(origin,x['path']);hashrefs.append(x['path']);lines=x.get('lines')
+   if isinstance(lines,list) and all(isinstance(i,int) for i in lines):
+    if not (1<=min(lines)<=max(lines)<=len(p.read_text().splitlines())):badranges.append((origin,x['path'],lines))
+  for v in x.values():walkrefs(v,origin)
+ elif isinstance(x,list):
+  for v in x:walkrefs(v,origin)
+for p in [O/'source_evidence_manifest.json',O/'evidence_index.json']+files:walkrefs(strict(p),p.name)
+ck('ALL_STRUCTURED_SOURCE_HASH_AND_LINE_REFS_VALID',not badranges,dict(hash_references=len(hashrefs),bad_ranges=badranges))
+status=subprocess.check_output(['git','status','--porcelain=v1','--untracked-files=all'],cwd=R,text=True).splitlines();prefixes=('docs/P2_design/v3/','reports/P2_design/design_revision_v3/')
+ck('ALL_WORKTREE_CHANGES_ONLY_NEW_AUTHORIZED_DIRS',all(x[3:].startswith(prefixes) for x in status))
+ck('NO_UNLOCKS_OR_EXISTING_FILE_DIFF',not (R/'checkpoints/VALIDATION_UNLOCKED').exists() and not (R/'checkpoints/FORMAL_UNLOCKED').exists() and not subprocess.check_output(['git','diff','--name-only'],cwd=R,text=True))
+ck('CURRENT_STAGE_BLOCKED_NO_RUNTIME_CLAIM',stage['current_design_values']['execution_completion']=='NOT_STARTED' and stage['current_design_values']['mapping_classification']=='NOT_EVALUATED' and stage['current_design_values']['p2_progression_status']=='BLOCKED')
+
+ck('F04_REPORT_VALIDATION_NO_REVERSE_HASH_REF','independent_analysis_validation_ref' not in td['M2_ANALYSIS_REPORT_V3']['properties'] and 'analysis_report_ref' in td['M2_ANALYSIS_VALIDATION_V3']['required'])
+ck('F04_REPORT_CANNOT_SELF_DECLARE_VALID','VALID' not in td['M2_ANALYSIS_REPORT_V3']['properties']['status']['enum'] and 'COMPLETE_PENDING_INDEPENDENT_VALIDATION' in td['M2_ANALYSIS_REPORT_V3']['properties']['status']['enum'])
+ck('F04_EXPLICIT_ACYCLIC_PUBLICATION_ORDER',m2['publication_dag']==['member bodies and source refs','report inventory excluding itself,final report and independent validation','analysis report COMPLETE_PENDING_INDEPENDENT_VALIDATION','independent validation referencing finalized report','stage binding both report and validation'])
+ck('F02_TERMINAL_TRANSFER_EXPLICITLY_PROHIBITED','terminal PUBLISHED/HALTED/FAILED/INCOMPLETE never transferred' in lock['cas_phase_preconditions']['FENCED_TRANSFER'][-1])
+ck('F03_PLAN_BINDS_EXACT_SELECTED_ROUTES_AND_POLICY_HASHES',{'selected_observer_route','selected_coordination_route','selected_threshold_bundle','execution_contract_sha256','typed_schema_sha256','provenance_policy_sha256','m2_artifact_contract_sha256','coordination_contract_sha256'}<=set(td['EXECUTION_PLAN_PREIMAGE_V3']['required']) and ty['effective_family']['active_execution_plan_preimage']=='#/$defs/EXECUTION_PLAN_PREIMAGE_V3')
+# Abstract report dependency counterexample: reciprocal edge is cyclic; corrected direction is not.
+ck('NEGATIVE_REPORT_VALIDATION_CYCLE_DETECTED',not acyclic(['report','validation'],[('report','validation'),('validation','report')])[0] and acyclic(['members','inventory','report','validation','stage'],[('members','inventory'),('inventory','report'),('report','validation'),('report','stage'),('validation','stage')])[0])
+out('identity_dependency_review.json' ,dict(scope='Type references mechanically reconstructed; chronological identity preconditions from exact proposed contracts,not runtime proof',typed_definitions=len(td),typed_edges=[dict(before=a,after=b) for a,b in sorted(set(edges))],topological_order=order,new_identity_chronology=['frozen source/contract','root auth + blueprint/matrix budget','observed sealed source context','input descriptor/domain','generation attempt/preprovenance','generation process/postprovenance/receipt','resolution/workload','V3 run(context)/attempt/domain','primary+replay process/provenance','verified inventory','completion receipt','published pointer','M2 member bodies','M2 inventory excluding final report','M2 report/validation','stage record'],self_reference_policy='No own ID/hash/future stage; context excludes run/attempt; completion excludes published pointer; M2 inventory excludes final report',runtime_status='NOT_RUN'))
+failed=[x for x in checks if not x['pass_']];result=dict(scope='STATIC_DOCUMENTATION_ONLY; no project code import/scientific instance/lock/worker/diagnostic/bootstrap execution',passed=len(checks)-len(failed),failed=failed,checks=checks,static_check_status='PASS' if not failed else 'FAIL',design_approval='UNAPPROVED',remaining_human_choices=['F01 route','F02 policy/deployment','F03/F04 exact contracts','all10D/40SP including threshold bundle','timing before dependent measurement/progression'],runtime_validation='NOT_RUN',scientific_execution='NOT_RUN',scientific_workloads_generated=0,scientific_workloads_run=0)
+out('static_checks.json',result);out('cross_document_consistency.json',dict(status=result['static_check_status'],source_commit=b['start_head'],protected_files=672,protected_mismatch=mismatch,checks=checks,unselected_routes=['F01','F02'],all_approval_status='UNAPPROVED',original_key_and_matrix_semantics='UNCHANGED',new_contracts='PROPOSED_REQUIRES_APPROVAL',remaining_blockers=result['remaining_human_choices'],runtime_and_science='NOT_RUN'))
+print(json.dumps({k:v for k,v in result.items() if k!='checks'},ensure_ascii=False));sys.exit(1 if failed else 0)
