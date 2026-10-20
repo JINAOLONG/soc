@@ -1,0 +1,862 @@
+{
+  "snapshot_at_utc": "2026-10-20T15:12:56.667312+00:00",
+  "scope": "First fixed config, complete 10-seed results, not a full calibration conclusion",
+  "config_id": "COCKPIT-light-8-A",
+  "primary_trials": 70,
+  "replays": 70,
+  "verified_raw_references": [
+    {
+      "path": "results/calibration/local_001/inputs/COCKPIT-light-8-A/s00/H_ISOLATED.json.gz",
+      "sha256": "f88be197dd310126205e36a37b26cb0b0baeb504949e1d0769ddcabe349e150f",
+      "size_bytes": 36591
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0001/primary.trace.json.gz",
+      "sha256": "d32d1d572a7479dd5ba9adb8ffd68057610c033e2d95057b71e41282de527f41",
+      "size_bytes": 60306
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0001/replay.trace.json.gz",
+      "sha256": "d32d1d572a7479dd5ba9adb8ffd68057610c033e2d95057b71e41282de527f41",
+      "size_bytes": 60306
+    },
+    {
+      "path": "results/calibration/local_001/inputs/COCKPIT-light-8-A/s00/LOW_COMPETITION.json.gz",
+      "sha256": "5def5c268814526e01363cb890c0fb97fe7434cfdae7fde8a7c0bf9c59e463f3",
+      "size_bytes": 72284
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0002/primary.trace.json.gz",
+      "sha256": "0f1ac2328dcce9c55168cff654a5c750856f9377882d76d8d3e2c50b4d7179a9",
+      "size_bytes": 117965
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0002/replay.trace.json.gz",
+      "sha256": "0f1ac2328dcce9c55168cff654a5c750856f9377882d76d8d3e2c50b4d7179a9",
+      "size_bytes": 117965
+    },
+    {
+      "path": "results/calibration/local_001/inputs/COCKPIT-light-8-A/s00/MAIN.json.gz",
+      "sha256": "3a62541398f390949dd37e54e4f667dd8c1bb3bcda1decd2e01175daf014d8ca",
+      "size_bytes": 72622
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0003/primary.trace.json.gz",
+      "sha256": "680838010ebd41e4b1ee693eca9c0c5995d471b9ab3b8d748b98927d35bb6069",
+      "size_bytes": 122102
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0003/replay.trace.json.gz",
+      "sha256": "680838010ebd41e4b1ee693eca9c0c5995d471b9ab3b8d748b98927d35bb6069",
+      "size_bytes": 122102
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0004/primary.trace.json.gz",
+      "sha256": "f8feb65e1edcb6071b42a3c68ff550112f2a88ab3402bfce5c2b1895469b9f2d",
+      "size_bytes": 122102
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0004/replay.trace.json.gz",
+      "sha256": "f8feb65e1edcb6071b42a3c68ff550112f2a88ab3402bfce5c2b1895469b9f2d",
+      "size_bytes": 122102
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0005/primary.trace.json.gz",
+      "sha256": "9f5d80b32a2c8940cfa57584f0938ed164c37528ec63a53a84640cc96249a991",
+      "size_bytes": 123264
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0005/replay.trace.json.gz",
+      "sha256": "9f5d80b32a2c8940cfa57584f0938ed164c37528ec63a53a84640cc96249a991",
+      "size_bytes": 123264
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0006/primary.trace.json.gz",
+      "sha256": "eff4713d190dcfe0ec977ac454d82af3272c5cef7fd32a1d709d5b98d20aa748",
+      "size_bytes": 129649
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0006/replay.trace.json.gz",
+      "sha256": "eff4713d190dcfe0ec977ac454d82af3272c5cef7fd32a1d709d5b98d20aa748",
+      "size_bytes": 129649
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0007/primary.trace.json.gz",
+      "sha256": "df6e6d10b389505a54df9b46d41c50e958eae8fea969fdbf46c47455e77ab0e5",
+      "size_bytes": 128162
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0007/replay.trace.json.gz",
+      "sha256": "df6e6d10b389505a54df9b46d41c50e958eae8fea969fdbf46c47455e77ab0e5",
+      "size_bytes": 128162
+    },
+    {
+      "path": "results/calibration/local_001/inputs/COCKPIT-light-8-A/s01/H_ISOLATED.json.gz",
+      "sha256": "5fbb1bdf8f31486a9348b5419477e989f745dc9e1ae3fdc24ac54a5707d32ee9",
+      "size_bytes": 36528
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0008/primary.trace.json.gz",
+      "sha256": "0119342a50a31c6525a0ab006d8092f70a010e06ac3760188d038e900418b217",
+      "size_bytes": 59905
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0008/replay.trace.json.gz",
+      "sha256": "0119342a50a31c6525a0ab006d8092f70a010e06ac3760188d038e900418b217",
+      "size_bytes": 59905
+    },
+    {
+      "path": "results/calibration/local_001/inputs/COCKPIT-light-8-A/s01/LOW_COMPETITION.json.gz",
+      "sha256": "51bf612d664d248f19ea87bda5f7e8857b1f7a42f32e4c1671745a0ee5eca664",
+      "size_bytes": 72135
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0009/primary.trace.json.gz",
+      "sha256": "90734d8c84391b89e573dde58d38cef9036c07f34400f45f8c64665e6a8dc52a",
+      "size_bytes": 117056
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0009/replay.trace.json.gz",
+      "sha256": "90734d8c84391b89e573dde58d38cef9036c07f34400f45f8c64665e6a8dc52a",
+      "size_bytes": 117056
+    },
+    {
+      "path": "results/calibration/local_001/inputs/COCKPIT-light-8-A/s01/MAIN.json.gz",
+      "sha256": "f6e6d658212085ca8970c8f7819b65b68beba3781a429e920752574b54e557b2",
+      "size_bytes": 72625
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0010/primary.trace.json.gz",
+      "sha256": "37a17e278752aba2bda5e170d62750be04d6bd6aede9f81f7b2fd0e9770de264",
+      "size_bytes": 122406
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0010/replay.trace.json.gz",
+      "sha256": "37a17e278752aba2bda5e170d62750be04d6bd6aede9f81f7b2fd0e9770de264",
+      "size_bytes": 122406
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0011/primary.trace.json.gz",
+      "sha256": "3763e6788771bebb7b36eceec51b2bcdc5a8c12f93a874e0d3cfe91c7bd989b5",
+      "size_bytes": 122406
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0011/replay.trace.json.gz",
+      "sha256": "3763e6788771bebb7b36eceec51b2bcdc5a8c12f93a874e0d3cfe91c7bd989b5",
+      "size_bytes": 122406
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0012/primary.trace.json.gz",
+      "sha256": "5daec90a5bb2618522c104979ad8578c075c5d1c31c52111000ad518c0baa2b4",
+      "size_bytes": 123448
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0012/replay.trace.json.gz",
+      "sha256": "5daec90a5bb2618522c104979ad8578c075c5d1c31c52111000ad518c0baa2b4",
+      "size_bytes": 123448
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0013/primary.trace.json.gz",
+      "sha256": "cda89fdc8cdea6d4263d9ea5728254baf5ede7e22e5779a1d1d6ea2ba36c015d",
+      "size_bytes": 129619
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0013/replay.trace.json.gz",
+      "sha256": "cda89fdc8cdea6d4263d9ea5728254baf5ede7e22e5779a1d1d6ea2ba36c015d",
+      "size_bytes": 129619
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0014/primary.trace.json.gz",
+      "sha256": "1bf12288d9e438e6586dd422701c3b88680ac4c348e4ca6b6d0b38138f949bd0",
+      "size_bytes": 128629
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0014/replay.trace.json.gz",
+      "sha256": "1bf12288d9e438e6586dd422701c3b88680ac4c348e4ca6b6d0b38138f949bd0",
+      "size_bytes": 128629
+    },
+    {
+      "path": "results/calibration/local_001/inputs/COCKPIT-light-8-A/s02/H_ISOLATED.json.gz",
+      "sha256": "0ece62c2e298060e3abc11239308b7259a44eebc8bb8c12c6f6b5527149e4ae9",
+      "size_bytes": 36619
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0015/primary.trace.json.gz",
+      "sha256": "2a90a3b41a037089ebea099d5ee0ea4543e55bec94caafad252e19deb13b19ee",
+      "size_bytes": 59853
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0015/replay.trace.json.gz",
+      "sha256": "2a90a3b41a037089ebea099d5ee0ea4543e55bec94caafad252e19deb13b19ee",
+      "size_bytes": 59853
+    },
+    {
+      "path": "results/calibration/local_001/inputs/COCKPIT-light-8-A/s02/LOW_COMPETITION.json.gz",
+      "sha256": "6f416cb2005f222fb3c76797db397ba11f69cda6b51d61b02880e72f87739181",
+      "size_bytes": 72158
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0016/primary.trace.json.gz",
+      "sha256": "fd0a056678bf53c8bfd4c978e0a3ca35b9f69df39311bd009764e1bc2f7260de",
+      "size_bytes": 117075
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0016/replay.trace.json.gz",
+      "sha256": "fd0a056678bf53c8bfd4c978e0a3ca35b9f69df39311bd009764e1bc2f7260de",
+      "size_bytes": 117075
+    },
+    {
+      "path": "results/calibration/local_001/inputs/COCKPIT-light-8-A/s02/MAIN.json.gz",
+      "sha256": "56a0f438ac58682909eb4eee405ad000808eb01c04954e4f6c694e8e07ad1ac6",
+      "size_bytes": 72605
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0017/primary.trace.json.gz",
+      "sha256": "f11f5fa4901ce4740a9486d61a841f1f309cf1ca20a1c5b448e146d4a0ebd91b",
+      "size_bytes": 121980
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0017/replay.trace.json.gz",
+      "sha256": "f11f5fa4901ce4740a9486d61a841f1f309cf1ca20a1c5b448e146d4a0ebd91b",
+      "size_bytes": 121980
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0018/primary.trace.json.gz",
+      "sha256": "b2ef55f75059088f3452423e8f12ff8f4fabcb2c612f90e36d6f25aafee3cbde",
+      "size_bytes": 121980
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0018/replay.trace.json.gz",
+      "sha256": "b2ef55f75059088f3452423e8f12ff8f4fabcb2c612f90e36d6f25aafee3cbde",
+      "size_bytes": 121980
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0019/primary.trace.json.gz",
+      "sha256": "9ac25b833bc596df2e8735ba8f202ba98784492a67490059bf9dcf1a9a6614a7",
+      "size_bytes": 123205
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0019/replay.trace.json.gz",
+      "sha256": "9ac25b833bc596df2e8735ba8f202ba98784492a67490059bf9dcf1a9a6614a7",
+      "size_bytes": 123205
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0020/primary.trace.json.gz",
+      "sha256": "e4c10bf42325fe42fbc51b161f1295cef7899549a526a550c8ca428dd378156e",
+      "size_bytes": 129509
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0020/replay.trace.json.gz",
+      "sha256": "e4c10bf42325fe42fbc51b161f1295cef7899549a526a550c8ca428dd378156e",
+      "size_bytes": 129509
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0021/primary.trace.json.gz",
+      "sha256": "d1b09f42c1d9a7b67c32121a4b45d655fa6db12f0a51d387533c2f1cb632d120",
+      "size_bytes": 128081
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0021/replay.trace.json.gz",
+      "sha256": "d1b09f42c1d9a7b67c32121a4b45d655fa6db12f0a51d387533c2f1cb632d120",
+      "size_bytes": 128081
+    },
+    {
+      "path": "results/calibration/local_001/inputs/COCKPIT-light-8-A/s03/H_ISOLATED.json.gz",
+      "sha256": "7e3f579d3d44ac8930f6bf842197a12fe8e988cd0c6cbc0a957837ed257b431f",
+      "size_bytes": 36564
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0022/primary.trace.json.gz",
+      "sha256": "1b2b2038c0eef27ad93cba60caaa12bab73113a782b1484db402191f2f839b9b",
+      "size_bytes": 59858
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0022/replay.trace.json.gz",
+      "sha256": "1b2b2038c0eef27ad93cba60caaa12bab73113a782b1484db402191f2f839b9b",
+      "size_bytes": 59858
+    },
+    {
+      "path": "results/calibration/local_001/inputs/COCKPIT-light-8-A/s03/LOW_COMPETITION.json.gz",
+      "sha256": "f64c43f1f6834a9c6d1b8231059e9c17692d7f4e3b502baed7c899bf171a2168",
+      "size_bytes": 72091
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0023/primary.trace.json.gz",
+      "sha256": "c71d854dd7e599d27e24f31f046018523896cfa9dd9b136aafb35d09e9f83562",
+      "size_bytes": 117270
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0023/replay.trace.json.gz",
+      "sha256": "c71d854dd7e599d27e24f31f046018523896cfa9dd9b136aafb35d09e9f83562",
+      "size_bytes": 117270
+    },
+    {
+      "path": "results/calibration/local_001/inputs/COCKPIT-light-8-A/s03/MAIN.json.gz",
+      "sha256": "fa4ee368930393eafc0eeec86d4e007858ae37bd19b11a7e5f628763ea7ac119",
+      "size_bytes": 72558
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0024/primary.trace.json.gz",
+      "sha256": "87eb6e81e0afd339a9a1357a3439638e2db7e7d3c5797692b870bdc119fff5c1",
+      "size_bytes": 122253
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0024/replay.trace.json.gz",
+      "sha256": "87eb6e81e0afd339a9a1357a3439638e2db7e7d3c5797692b870bdc119fff5c1",
+      "size_bytes": 122253
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0025/primary.trace.json.gz",
+      "sha256": "9bf43f867cadbaf7690d88014d2db93a905047024eeea70ebd57790e3a18e6a5",
+      "size_bytes": 122254
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0025/replay.trace.json.gz",
+      "sha256": "9bf43f867cadbaf7690d88014d2db93a905047024eeea70ebd57790e3a18e6a5",
+      "size_bytes": 122254
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0026/primary.trace.json.gz",
+      "sha256": "cb5af06583125046893706204633f0e2680d250aaa18cd78311db69c2908c702",
+      "size_bytes": 123428
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0026/replay.trace.json.gz",
+      "sha256": "cb5af06583125046893706204633f0e2680d250aaa18cd78311db69c2908c702",
+      "size_bytes": 123428
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0027/primary.trace.json.gz",
+      "sha256": "dbff3d146ab04d3290f3a0402be7d53bef6193e7d08c362c8a053c20f1357087",
+      "size_bytes": 129781
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0027/replay.trace.json.gz",
+      "sha256": "dbff3d146ab04d3290f3a0402be7d53bef6193e7d08c362c8a053c20f1357087",
+      "size_bytes": 129781
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0028/primary.trace.json.gz",
+      "sha256": "9067f2046dd932baf9ed989e3b41c50927dfe6c8eec7d38a34d89fbd0daa0b4e",
+      "size_bytes": 128286
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0028/replay.trace.json.gz",
+      "sha256": "9067f2046dd932baf9ed989e3b41c50927dfe6c8eec7d38a34d89fbd0daa0b4e",
+      "size_bytes": 128286
+    },
+    {
+      "path": "results/calibration/local_001/inputs/COCKPIT-light-8-A/s04/H_ISOLATED.json.gz",
+      "sha256": "e7c7dc93438bdd0662fbab6f05020e9e23e65487bd5e2a3f45fbed07b9c9e0ac",
+      "size_bytes": 36647
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0029/primary.trace.json.gz",
+      "sha256": "3e933737502850223c5d7f880029e479448cf8d76841ad5a4bb80b1ed65dde5f",
+      "size_bytes": 60228
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0029/replay.trace.json.gz",
+      "sha256": "3e933737502850223c5d7f880029e479448cf8d76841ad5a4bb80b1ed65dde5f",
+      "size_bytes": 60228
+    },
+    {
+      "path": "results/calibration/local_001/inputs/COCKPIT-light-8-A/s04/LOW_COMPETITION.json.gz",
+      "sha256": "6c8b24df79e2c8199cd8a6ced07cf38c78687726a149666eee2be34a0442ee2f",
+      "size_bytes": 72351
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0030/primary.trace.json.gz",
+      "sha256": "f8104bcbf656629bfddbe8b3681db8a5b09d140ff43596539bbaa63f574b7e09",
+      "size_bytes": 117705
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0030/replay.trace.json.gz",
+      "sha256": "f8104bcbf656629bfddbe8b3681db8a5b09d140ff43596539bbaa63f574b7e09",
+      "size_bytes": 117705
+    },
+    {
+      "path": "results/calibration/local_001/inputs/COCKPIT-light-8-A/s04/MAIN.json.gz",
+      "sha256": "8dbf94355d8190b28b86873ee784f1514a97957e94995eed3936d7598263e4aa",
+      "size_bytes": 72701
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0031/primary.trace.json.gz",
+      "sha256": "8ed19fa8cd1686fb2e19641e6cfd58e859a0d5cbc1aaa76c477867216ca18591",
+      "size_bytes": 122334
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0031/replay.trace.json.gz",
+      "sha256": "8ed19fa8cd1686fb2e19641e6cfd58e859a0d5cbc1aaa76c477867216ca18591",
+      "size_bytes": 122334
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0032/primary.trace.json.gz",
+      "sha256": "f964d0ad7caabe1e50471689874f7e2545f76eb86c778fff658431506c87bb02",
+      "size_bytes": 122334
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0032/replay.trace.json.gz",
+      "sha256": "f964d0ad7caabe1e50471689874f7e2545f76eb86c778fff658431506c87bb02",
+      "size_bytes": 122334
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0033/primary.trace.json.gz",
+      "sha256": "79306fe8769796a8b8d22b72ca23160e96f3841f9439e29c99986d050578ecf3",
+      "size_bytes": 123239
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0033/replay.trace.json.gz",
+      "sha256": "79306fe8769796a8b8d22b72ca23160e96f3841f9439e29c99986d050578ecf3",
+      "size_bytes": 123239
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0034/primary.trace.json.gz",
+      "sha256": "00c1de586449a47934c04508b704b9025bbe3b22a1e6ec39db58903d05e1721f",
+      "size_bytes": 129600
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0034/replay.trace.json.gz",
+      "sha256": "00c1de586449a47934c04508b704b9025bbe3b22a1e6ec39db58903d05e1721f",
+      "size_bytes": 129600
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0035/primary.trace.json.gz",
+      "sha256": "a8a534393dcb7cd86509bef0b59ceb98f7c2e1e13ed048050e982685cf17d3f6",
+      "size_bytes": 128611
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0035/replay.trace.json.gz",
+      "sha256": "a8a534393dcb7cd86509bef0b59ceb98f7c2e1e13ed048050e982685cf17d3f6",
+      "size_bytes": 128611
+    },
+    {
+      "path": "results/calibration/local_001/inputs/COCKPIT-light-8-A/s05/H_ISOLATED.json.gz",
+      "sha256": "49795bcd55fb584de90742f72ef156a466aed00b24387f82fa05f726783b7259",
+      "size_bytes": 36678
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0036/primary.trace.json.gz",
+      "sha256": "67faeacd1cb2d8548e0a64fc2df2d110fcbbb98a78c3651f156b477e22dca11d",
+      "size_bytes": 60207
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0036/replay.trace.json.gz",
+      "sha256": "67faeacd1cb2d8548e0a64fc2df2d110fcbbb98a78c3651f156b477e22dca11d",
+      "size_bytes": 60207
+    },
+    {
+      "path": "results/calibration/local_001/inputs/COCKPIT-light-8-A/s05/LOW_COMPETITION.json.gz",
+      "sha256": "c2aa9238e36f637f66f07ff6e2ebabea9d6823e006397addee433260f63146cd",
+      "size_bytes": 72270
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0037/primary.trace.json.gz",
+      "sha256": "4780fdb8c97670e2825ce139ed9583ca61d4b12c3629e8f864d2733ecf98da8b",
+      "size_bytes": 117581
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0037/replay.trace.json.gz",
+      "sha256": "4780fdb8c97670e2825ce139ed9583ca61d4b12c3629e8f864d2733ecf98da8b",
+      "size_bytes": 117581
+    },
+    {
+      "path": "results/calibration/local_001/inputs/COCKPIT-light-8-A/s05/MAIN.json.gz",
+      "sha256": "70bab9ccdc78fffac83af335bb28bb1520980ccdb14a2cf96b17f07ff6c9000e",
+      "size_bytes": 72607
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0038/primary.trace.json.gz",
+      "sha256": "e581669997ac2491f4dc588f84306de91b6e80f191e4692fd8fbc6b09cd71509",
+      "size_bytes": 122297
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0038/replay.trace.json.gz",
+      "sha256": "e581669997ac2491f4dc588f84306de91b6e80f191e4692fd8fbc6b09cd71509",
+      "size_bytes": 122297
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0039/primary.trace.json.gz",
+      "sha256": "20d60fd0fe5cdafd6cc9a4fef812a57d6ce61ca1a0823a7f53415f413c12f7ad",
+      "size_bytes": 122297
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0039/replay.trace.json.gz",
+      "sha256": "20d60fd0fe5cdafd6cc9a4fef812a57d6ce61ca1a0823a7f53415f413c12f7ad",
+      "size_bytes": 122297
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0040/primary.trace.json.gz",
+      "sha256": "94e404434c6aa7b58a8bc9b0e0e19d5c118601a249ebf1faf48d451952aa3a1c",
+      "size_bytes": 123154
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0040/replay.trace.json.gz",
+      "sha256": "94e404434c6aa7b58a8bc9b0e0e19d5c118601a249ebf1faf48d451952aa3a1c",
+      "size_bytes": 123154
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0041/primary.trace.json.gz",
+      "sha256": "7982ac4c2513194890b6386219e9a8d2346e111c5100af27b79b64f387853b63",
+      "size_bytes": 129399
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0041/replay.trace.json.gz",
+      "sha256": "7982ac4c2513194890b6386219e9a8d2346e111c5100af27b79b64f387853b63",
+      "size_bytes": 129399
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0042/primary.trace.json.gz",
+      "sha256": "9e68c998e02463de44992b01a46b322dd1daa65256d5c372cb4b3cbd913c13c4",
+      "size_bytes": 128403
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0042/replay.trace.json.gz",
+      "sha256": "9e68c998e02463de44992b01a46b322dd1daa65256d5c372cb4b3cbd913c13c4",
+      "size_bytes": 128403
+    },
+    {
+      "path": "results/calibration/local_001/inputs/COCKPIT-light-8-A/s06/H_ISOLATED.json.gz",
+      "sha256": "6594c4032c97f1177c2f547368cf288e85a02f77b890db1307494a1c3c78dde7",
+      "size_bytes": 36577
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0043/primary.trace.json.gz",
+      "sha256": "641ff88707b973e03dec1aec26006f2debdf598d2cafcf00a27a8ce21ec7772f",
+      "size_bytes": 59870
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0043/replay.trace.json.gz",
+      "sha256": "641ff88707b973e03dec1aec26006f2debdf598d2cafcf00a27a8ce21ec7772f",
+      "size_bytes": 59870
+    },
+    {
+      "path": "results/calibration/local_001/inputs/COCKPIT-light-8-A/s06/LOW_COMPETITION.json.gz",
+      "sha256": "24e3393814c7ea9549a0ec406792ee88be3b8ac7ffc2d1134b89775b59bc4137",
+      "size_bytes": 72205
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0044/primary.trace.json.gz",
+      "sha256": "fed3d285b86d66376f8e0a6d42775b42a387d152d8b188a6716ee8651332d1c3",
+      "size_bytes": 117324
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0044/replay.trace.json.gz",
+      "sha256": "fed3d285b86d66376f8e0a6d42775b42a387d152d8b188a6716ee8651332d1c3",
+      "size_bytes": 117324
+    },
+    {
+      "path": "results/calibration/local_001/inputs/COCKPIT-light-8-A/s06/MAIN.json.gz",
+      "sha256": "caeab658d13db88a93acbee673b100e7e62c8f042c4e09900892e21907e9f700",
+      "size_bytes": 72670
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0045/primary.trace.json.gz",
+      "sha256": "bf63dc65f1046dbdde13f3792bec09919da56cef8c823bc0fd2568f23f101752",
+      "size_bytes": 122108
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0045/replay.trace.json.gz",
+      "sha256": "bf63dc65f1046dbdde13f3792bec09919da56cef8c823bc0fd2568f23f101752",
+      "size_bytes": 122108
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0046/primary.trace.json.gz",
+      "sha256": "d3506dee44adb61bdbcd439c438b8049c19955a21547291fb3d70fac8c38033c",
+      "size_bytes": 122107
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0046/replay.trace.json.gz",
+      "sha256": "d3506dee44adb61bdbcd439c438b8049c19955a21547291fb3d70fac8c38033c",
+      "size_bytes": 122107
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0047/primary.trace.json.gz",
+      "sha256": "975856ba870c80ca793446874ef4c1da0667c511fd2850338d968b689ce4b76d",
+      "size_bytes": 122925
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0047/replay.trace.json.gz",
+      "sha256": "975856ba870c80ca793446874ef4c1da0667c511fd2850338d968b689ce4b76d",
+      "size_bytes": 122925
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0048/primary.trace.json.gz",
+      "sha256": "6b20416878d668937869c15b59b9c4fb9a01588783d66b79ccbda61de4c818eb",
+      "size_bytes": 129222
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0048/replay.trace.json.gz",
+      "sha256": "6b20416878d668937869c15b59b9c4fb9a01588783d66b79ccbda61de4c818eb",
+      "size_bytes": 129222
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0049/primary.trace.json.gz",
+      "sha256": "7be4375dd3518987ac259366c7b4701f853e5d5390d29c250dd5bfe31eddd4fb",
+      "size_bytes": 128194
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0049/replay.trace.json.gz",
+      "sha256": "7be4375dd3518987ac259366c7b4701f853e5d5390d29c250dd5bfe31eddd4fb",
+      "size_bytes": 128194
+    },
+    {
+      "path": "results/calibration/local_001/inputs/COCKPIT-light-8-A/s07/H_ISOLATED.json.gz",
+      "sha256": "f1c7219b1d8ebd775de0f518b18dd19aea6fce47cf82f714c22dc455d1de519a",
+      "size_bytes": 36585
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0050/primary.trace.json.gz",
+      "sha256": "e38a97ef4904e4452ecc8c7c8dc3716cb9965ac5ed1ab6bcd54049c26a0a67d1",
+      "size_bytes": 59931
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0050/replay.trace.json.gz",
+      "sha256": "e38a97ef4904e4452ecc8c7c8dc3716cb9965ac5ed1ab6bcd54049c26a0a67d1",
+      "size_bytes": 59931
+    },
+    {
+      "path": "results/calibration/local_001/inputs/COCKPIT-light-8-A/s07/LOW_COMPETITION.json.gz",
+      "sha256": "7ac44929d93405a0cc6d47180d9ee93bbcc2ae2e26201fe3b10b5836b054b841",
+      "size_bytes": 72107
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0051/primary.trace.json.gz",
+      "sha256": "8d19974716742c934369955ba206ca6a0dceebacb755a318dd869a8e71f16de7",
+      "size_bytes": 117235
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0051/replay.trace.json.gz",
+      "sha256": "8d19974716742c934369955ba206ca6a0dceebacb755a318dd869a8e71f16de7",
+      "size_bytes": 117235
+    },
+    {
+      "path": "results/calibration/local_001/inputs/COCKPIT-light-8-A/s07/MAIN.json.gz",
+      "sha256": "25ce340a07f1226e42f1b90596258ba312f9f0f49e40749eb25ef0f674ddb2ec",
+      "size_bytes": 72585
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0052/primary.trace.json.gz",
+      "sha256": "52b6adc54e7ce5d1eeab570a34cf2b723a7cf6ca5123e1bdc3546bb4bb56a4df",
+      "size_bytes": 122248
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0052/replay.trace.json.gz",
+      "sha256": "52b6adc54e7ce5d1eeab570a34cf2b723a7cf6ca5123e1bdc3546bb4bb56a4df",
+      "size_bytes": 122248
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0053/primary.trace.json.gz",
+      "sha256": "24eab9f528b7854a0bed1739d182fefaaba624c282d53c6c93596f192650832f",
+      "size_bytes": 122248
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0053/replay.trace.json.gz",
+      "sha256": "24eab9f528b7854a0bed1739d182fefaaba624c282d53c6c93596f192650832f",
+      "size_bytes": 122248
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0054/primary.trace.json.gz",
+      "sha256": "a77c72a3433f078447112cb45274d751360759a94a9054fe090a546266517d9c",
+      "size_bytes": 123153
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0054/replay.trace.json.gz",
+      "sha256": "a77c72a3433f078447112cb45274d751360759a94a9054fe090a546266517d9c",
+      "size_bytes": 123153
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0055/primary.trace.json.gz",
+      "sha256": "409cb99aa6a95c96a23ac5fdcf27f50dceb937efe8f79cfac118f9e044fc9bf9",
+      "size_bytes": 129460
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0055/replay.trace.json.gz",
+      "sha256": "409cb99aa6a95c96a23ac5fdcf27f50dceb937efe8f79cfac118f9e044fc9bf9",
+      "size_bytes": 129460
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0056/primary.trace.json.gz",
+      "sha256": "1776d9d87e4959efe003e0569e44afe2a951625c7dd67fa96578b535095de6ec",
+      "size_bytes": 128432
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0056/replay.trace.json.gz",
+      "sha256": "1776d9d87e4959efe003e0569e44afe2a951625c7dd67fa96578b535095de6ec",
+      "size_bytes": 128432
+    },
+    {
+      "path": "results/calibration/local_001/inputs/COCKPIT-light-8-A/s08/H_ISOLATED.json.gz",
+      "sha256": "38d6d9ebe4fdf3608d0a1728b34985a80bff7c0731bae4b79c0bba9bb8597071",
+      "size_bytes": 36680
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0057/primary.trace.json.gz",
+      "sha256": "9056b7f5978c73091b86db6b23baba4579866c81eb7ece12d12e831386945dd1",
+      "size_bytes": 60226
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0057/replay.trace.json.gz",
+      "sha256": "9056b7f5978c73091b86db6b23baba4579866c81eb7ece12d12e831386945dd1",
+      "size_bytes": 60226
+    },
+    {
+      "path": "results/calibration/local_001/inputs/COCKPIT-light-8-A/s08/LOW_COMPETITION.json.gz",
+      "sha256": "39d9e2ffc1de19562d99da95790b81c797d9516e4edce73eca8a0e0341d04073",
+      "size_bytes": 72308
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0058/primary.trace.json.gz",
+      "sha256": "c9c10027b40363f6135e782dd03d1ab5e18e4b621fa0c6f179df0a82c3c12847",
+      "size_bytes": 117520
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0058/replay.trace.json.gz",
+      "sha256": "c9c10027b40363f6135e782dd03d1ab5e18e4b621fa0c6f179df0a82c3c12847",
+      "size_bytes": 117520
+    },
+    {
+      "path": "results/calibration/local_001/inputs/COCKPIT-light-8-A/s08/MAIN.json.gz",
+      "sha256": "ea34a6c899c5e87a396ee0072e71ca740ce4f8b6787368196571c085d58a1ef8",
+      "size_bytes": 72658
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0059/primary.trace.json.gz",
+      "sha256": "43860b2f59f81a0b5d4ee9d1f7cb33647505862dd5c450823b220e9c34737735",
+      "size_bytes": 122500
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0059/replay.trace.json.gz",
+      "sha256": "43860b2f59f81a0b5d4ee9d1f7cb33647505862dd5c450823b220e9c34737735",
+      "size_bytes": 122500
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0060/primary.trace.json.gz",
+      "sha256": "0e5c87fe8716d5ec02a9e0e2dec96b8b2cb396233f07ac4f9536706f895aae48",
+      "size_bytes": 122500
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0060/replay.trace.json.gz",
+      "sha256": "0e5c87fe8716d5ec02a9e0e2dec96b8b2cb396233f07ac4f9536706f895aae48",
+      "size_bytes": 122500
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0061/primary.trace.json.gz",
+      "sha256": "6c9df6ebfa441009eb34418dca4925f4aff007f9c4adaf41d2fd1bfdb5308538",
+      "size_bytes": 123275
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0061/replay.trace.json.gz",
+      "sha256": "6c9df6ebfa441009eb34418dca4925f4aff007f9c4adaf41d2fd1bfdb5308538",
+      "size_bytes": 123275
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0062/primary.trace.json.gz",
+      "sha256": "7bb340f4b28f663d3978078919cdb99704e59d02c8469107d70705b9307ecc8b",
+      "size_bytes": 129668
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0062/replay.trace.json.gz",
+      "sha256": "7bb340f4b28f663d3978078919cdb99704e59d02c8469107d70705b9307ecc8b",
+      "size_bytes": 129668
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0063/primary.trace.json.gz",
+      "sha256": "536bca0c664c4ad4cfc3d9c5142aa6bd6c397c64281def46cc49bd6342b44199",
+      "size_bytes": 128673
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0063/replay.trace.json.gz",
+      "sha256": "536bca0c664c4ad4cfc3d9c5142aa6bd6c397c64281def46cc49bd6342b44199",
+      "size_bytes": 128673
+    },
+    {
+      "path": "results/calibration/local_001/inputs/COCKPIT-light-8-A/s09/H_ISOLATED.json.gz",
+      "sha256": "f34a28f474c5ed72ec0306790f308f48e19cb1501944363e451b679193d1e484",
+      "size_bytes": 36598
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0064/primary.trace.json.gz",
+      "sha256": "7980827d69be0f9d3626fd67f679316e946313b5a7854cea110f827d9254121b",
+      "size_bytes": 60378
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0064/replay.trace.json.gz",
+      "sha256": "7980827d69be0f9d3626fd67f679316e946313b5a7854cea110f827d9254121b",
+      "size_bytes": 60378
+    },
+    {
+      "path": "results/calibration/local_001/inputs/COCKPIT-light-8-A/s09/LOW_COMPETITION.json.gz",
+      "sha256": "919ddbdf281ea906d50983a33ab6c468ed9368d7029d55698f1913e1a1470529",
+      "size_bytes": 72159
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0065/primary.trace.json.gz",
+      "sha256": "c956036e6d6d0febb8741910b892934df83b45640d7aa67727fd122bb92e1f11",
+      "size_bytes": 117696
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0065/replay.trace.json.gz",
+      "sha256": "c956036e6d6d0febb8741910b892934df83b45640d7aa67727fd122bb92e1f11",
+      "size_bytes": 117696
+    },
+    {
+      "path": "results/calibration/local_001/inputs/COCKPIT-light-8-A/s09/MAIN.json.gz",
+      "sha256": "3de6ac40c20b4e27a8cf76527c80ac5a0235f2f7bcbe17556b4dfc9c53ad5c00",
+      "size_bytes": 72483
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0066/primary.trace.json.gz",
+      "sha256": "29fa66da7de3a4dfbca701c7b400c5d2e432bee0a4d2d451ee97bf350f8d41d6",
+      "size_bytes": 122332
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0066/replay.trace.json.gz",
+      "sha256": "29fa66da7de3a4dfbca701c7b400c5d2e432bee0a4d2d451ee97bf350f8d41d6",
+      "size_bytes": 122332
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0067/primary.trace.json.gz",
+      "sha256": "7849d4791fe5270a3d07befe594fdd7595f9882fbfe7c91a1bab0154a677c6ac",
+      "size_bytes": 122332
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0067/replay.trace.json.gz",
+      "sha256": "7849d4791fe5270a3d07befe594fdd7595f9882fbfe7c91a1bab0154a677c6ac",
+      "size_bytes": 122332
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0068/primary.trace.json.gz",
+      "sha256": "cedc25d6ce2e26cd9b5af26f990f46cb536ad3df3e2689f70e6d1a33545ad16c",
+      "size_bytes": 123220
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0068/replay.trace.json.gz",
+      "sha256": "cedc25d6ce2e26cd9b5af26f990f46cb536ad3df3e2689f70e6d1a33545ad16c",
+      "size_bytes": 123220
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0069/primary.trace.json.gz",
+      "sha256": "6b4a3700e74a209ea49c67bbc119aedd30263647f04ab8093120df69a23521f9",
+      "size_bytes": 129525
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0069/replay.trace.json.gz",
+      "sha256": "6b4a3700e74a209ea49c67bbc119aedd30263647f04ab8093120df69a23521f9",
+      "size_bytes": 129525
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0070/primary.trace.json.gz",
+      "sha256": "15866064f081e9b8f6cd507b907f847938048f3ba5f9fac7bd2774b2791541a1",
+      "size_bytes": 128395
+    },
+    {
+      "path": "results/calibration/local_001/trials/proposal-v2-t0070/replay.trace.json.gz",
+      "sha256": "15866064f081e9b8f6cd507b907f847938048f3ba5f9fac7bd2774b2791541a1",
+      "size_bytes": 128395
+    }
+  ],
+  "archive_sha256": "17dfa31aae0a4a2d853b4793169e72dc20dcf1f09e05756a7da9d2be3e1d4ab6",
+  "archive_size_bytes": 24907094,
+  "full_campaign_status": "RUNNING"
+}

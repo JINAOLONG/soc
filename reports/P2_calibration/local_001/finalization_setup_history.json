@@ -1,0 +1,5 @@
+{
+  "initial_compile_exit": 1,
+  "error": "SyntaxError: report CSV writer list bracket mismatch; scientific run unaffected",
+  "corrected_compile_exit": 0
+}

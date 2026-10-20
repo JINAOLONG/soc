@@ -1,0 +1,11 @@
+{
+  "elapsed_seconds": 431.42134670799715,
+  "expected_trials": 2520,
+  "generated_inputs": 51,
+  "last_completed_trial": "proposal-v2-t0117",
+  "primary_calls": 117,
+  "replay_calls": 117,
+  "status": "RUNNING",
+  "updated_at_utc": "2026-10-20T15:15:22.716032+00:00",
+  "valid_trials": 117
+}

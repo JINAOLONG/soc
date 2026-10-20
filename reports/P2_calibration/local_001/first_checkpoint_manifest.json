@@ -1,0 +1,60 @@
+{
+  "scope": "Actual completed first config and live progress snapshot; no full-campaign completion claim",
+  "files": [
+    {
+      "path": "reports/P2_calibration/local_001/first_config_summary.csv",
+      "sha256": "d4fe91be4fd8bfde427733754bea7242d37cd3fa1a5fbce7ab78ab43acb7e9e7",
+      "size_bytes": 451
+    },
+    {
+      "path": "reports/P2_calibration/local_001/first_config_results.json",
+      "sha256": "c9c1451bd9e7183ac669a57696a2782b15ee0c549d61253d18da0d60494e92a4",
+      "size_bytes": 159916
+    },
+    {
+      "path": "reports/P2_calibration/local_001/first_config_snapshot.json",
+      "sha256": "cd0e3ff9157fa567ecdbeba9f51ec47d6b02e17bd40bdfcafffa5ad36ffe9605",
+      "size_bytes": 37385
+    },
+    {
+      "path": "reports/P2_calibration/local_001/first_config_integrity.json",
+      "sha256": "b16fc219286722899cf1d7e4222e5a502002bcefbf3c48fd0340d7510c3ed9ca",
+      "size_bytes": 197
+    },
+    {
+      "path": "reports/P2_calibration/local_001/first_config_README.md",
+      "sha256": "72bc70c43c80cb7fdbeefb85fd7815e4a4b107d329afc5664150934817ead11c",
+      "size_bytes": 1872
+    },
+    {
+      "path": "reports/P2_calibration/local_001/first_config_raw.tar.gz",
+      "sha256": "17dfa31aae0a4a2d853b4793169e72dc20dcf1f09e05756a7da9d2be3e1d4ab6",
+      "size_bytes": 24907094
+    },
+    {
+      "path": "reports/P2_calibration/local_001/live_progress_snapshot.json",
+      "sha256": "26fc6c567e4e7f5eb60db4535723e50639e18bb42ab32a41955e57b738d469dc",
+      "size_bytes": 293
+    },
+    {
+      "path": "reports/P2_calibration/local_001/context.json",
+      "sha256": "4d008b8e8ca1a34e880e7f81c798e49123cd9029f354c2e9d43547df073664fb",
+      "size_bytes": 1166
+    },
+    {
+      "path": "reports/P2_calibration/local_001/preflight.json",
+      "sha256": "f96cc37b14e4d0e18c6bdf88cb706d55068a7fb84fe91d6371305ba726338e55",
+      "size_bytes": 2067
+    },
+    {
+      "path": "reports/P2_calibration/local_001/finalize_snapshot.py",
+      "sha256": "3a15a97b42d8658f248847162c56e8d578a023eb9867fefc33c20059940ebe1e",
+      "size_bytes": 11769
+    },
+    {
+      "path": "reports/P2_calibration/local_001/finalization_setup_history.json",
+      "sha256": "9919e3be5d04c71031fdea5e2aa0a1e9cb1781bc34da2907cbc909494bdeaa53",
+      "size_bytes": 157
+    }
+  ]
+}
