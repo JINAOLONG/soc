@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+from functools import lru_cache
 from math import isfinite
 
 from soc.model.observation import Observation, PublicNode, dependency_ready
@@ -92,18 +93,27 @@ def mean_transfer(view: Observation, parent: PublicNode, child: PublicNode, size
     return sum(x.latency for x in pairs)/len(pairs) + size/(sum(x.bandwidth for x in pairs)/len(pairs))
 
 
+@lru_cache(maxsize=512)
+def _service_tables(service, resources, links):
+    # Only immutable arrived public data enter this cache. Cache values are
+    # immutable too, so callers cannot alter later scheduling through a table.
+    view = Observation(0.0, (service,), (), (), resources, links)
+    nodes = {n.id: n for n in service.nodes}
+    children = {n: tuple(sorted(child.id for child in service.nodes
+                                if any(p == n for p, _ in child.predecessors))) for n in nodes}
+    means = {(p, n.id): mean_transfer(view, nodes[p], n, size)
+             for n in service.nodes for p, size in n.predecessors}
+    rank, oct_table, oct_rank = source_tables({n.id: dict(n.estimates) for n in service.nodes}, children, means)
+    return tuple(rank.items()), tuple((n, tuple(row.items())) for n, row in oct_table.items()), tuple(oct_rank.items())
+
+
 def online_tables(view: Observation) -> tuple[dict, dict, dict]:
     """Refresh each decision from complete *arrived*, public DAGs and estimates."""
     all_rank, all_oct, all_oct_rank = {}, {}, {}
     for service in view.services:
-        nodes = {n.id: n for n in service.nodes}
-        children = {n: tuple(sorted(child.id for child in service.nodes
-                                    if any(p == n for p, _ in child.predecessors))) for n in nodes}
-        means = {(p, n.id): mean_transfer(view, nodes[p], n, size)
-                 for n in service.nodes for p, size in n.predecessors}
-        rank, oct_table, oct_rank = source_tables({n.id: dict(n.estimates) for n in service.nodes}, children, means)
+        rank, oct_table, oct_rank = _service_tables(service, view.resources, view.links)
         all_rank.update(rank)
-        all_oct.update(oct_table)
+        all_oct.update((n, dict(row)) for n, row in oct_table)
         all_oct_rank.update(oct_rank)
     return all_rank, all_oct, all_oct_rank
 
@@ -148,10 +158,10 @@ def predictions(view: Observation, service_id: str, node_id: str, oct_row: dict 
     return tuple(sorted(proposals, key=lambda p: (p.score, p.resource)))
 
 
-def ordered_ready(view: Observation, method: str) -> tuple[tuple[str, str], ...]:
+def ordered_ready(view: Observation, method: str, *, _tables=None) -> tuple[tuple[str, str], ...]:
     if method not in {"B1", "B2", "B3", "B4", "B5"}:
         raise ValueError("unknown baseline")
-    rank, _, oct_rank = online_tables(view) if method in {"B3", "B4", "B5"} else ({}, {}, {})
+    rank, _, oct_rank = (_tables if _tables is not None else online_tables(view)) if method in {"B3", "B4", "B5"} else ({}, {}, {})
     services = {s.id: s for s in view.services}
     def key(pair):
         s, n = pair
@@ -170,8 +180,17 @@ def ordered_ready(view: Observation, method: str) -> tuple[tuple[str, str], ...]
 
 def choose(view: Observation, method: str) -> Proposal | None:
     """D5: best mapping may wait; continue scanning others; reserve nothing."""
-    _, oct_table, _ = online_tables(view) if method in {"B4", "B5"} else ({}, {}, {})
-    for service, node in ordered_ready(view, method):
+    if method not in {"B1", "B2", "B3", "B4", "B5"}: raise ValueError('unknown baseline')
+    ready_services={s for s,n in dependency_ready(view)}
+    if not ready_services: return None
+    # Rank/OCT recurrences are entirely within one arrived service graph.
+    # Only services with a ready candidate need their unchanged source tables;
+    # predictions still receive the whole public running/completed view.
+    rank_view=Observation(view.now,tuple(s for s in view.services if s.id in ready_services),
+                          (),(),view.resources,view.links)
+    tables=online_tables(rank_view) if method in {'B3','B4','B5'} else ({},{},{})
+    _, oct_table, _ = tables
+    for service, node in ordered_ready(view, method, _tables=tables):
         proposals = predictions(view, service, node, oct_table[node] if method in {"B4", "B5"} else None)
         if proposals[0].feasible_now:
             return proposals[0]

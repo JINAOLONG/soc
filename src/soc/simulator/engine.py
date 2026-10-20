@@ -6,7 +6,7 @@ import heapq
 from typing import Callable
 
 from soc.model.schema import Workload, ModelError, communication, number
-from soc.model.observation import Observation, Running, Completed, observe, dependency_ready
+from soc.model.observation import Observation, Running, Completed, observe, dependency_ready, _public_service
 from soc.scheduler.kernels import Proposal, choose
 from soc.metrics.fixture import summarize
 
@@ -16,7 +16,8 @@ class DeadlockError(RuntimeError):
 
 
 def simulate(workload: Workload, method: str,
-             policy: Callable[[Observation], Proposal | None] | None = None) -> dict:
+             policy: Callable[[Observation], Proposal | None] | None = None,
+             *, compact_decisions: bool = False) -> dict:
     """Execute only the supplied input; never derive a seed or materialize a job.
 
     Optional policies are for synthetic negative tests. Normal B1–B5 accept only
@@ -33,6 +34,7 @@ def simulate(workload: Workload, method: str,
     completed: dict[tuple[str, str], Completed] = {}
     events, executions, decisions = [], [], []
     now = 0.0
+    public_projection = tuple(_public_service(s) for s in sorted(workload.services,key=lambda s:s.id))
     controller = policy if policy is not None else lambda view: choose(view, method)
     while queue or running or len(completed) < len(nodes):
         # Full batches are drained before the first observation at this time.
@@ -47,10 +49,13 @@ def simulate(workload: Workload, method: str,
         while True:
             view = observe(workload, now,
                            tuple(Running(s, n, r["resource"], r["start"], now-r["start"])
-                                 for (s, n), r in running.items()), tuple(completed.values()))
+                                 for (s, n), r in running.items()), tuple(completed.values()),
+                           _projection=public_projection)
             proposal = controller(view)
-            decisions.append(dict(time=now, observation=asdict(view),
-                                  proposal=asdict(proposal) if proposal is not None else None))
+            decision = dict(time=now, proposal=asdict(proposal) if proposal is not None else None)
+            if not compact_decisions:
+                decision['observation'] = asdict(view)
+            decisions.append(decision)
             if proposal is None:
                 break
             key = proposal.service, proposal.node

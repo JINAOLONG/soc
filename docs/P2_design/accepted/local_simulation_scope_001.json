@@ -1,0 +1,34 @@
+{
+  "recorded_at_utc": "2026-10-20T15:03:15.955413+00:00",
+  "user_instruction": "我不需要工程部署，只需要仿真结果就可以",
+  "prior_scientific_authorization": "进入下一步实验",
+  "local_simulation_authorized": true,
+  "mode": "LOCAL_RESEARCH_SIMULATION",
+  "partition": "CALIBRATION",
+  "interpretation": "Use this cloud host as a single-owner simulation machine. Production deployment is outside the requested scope; retain scientifically necessary provenance, fixed inputs, independent trace checks, one replay and saved results.",
+  "supersedes_for_this_mode": [
+    "Production authority/worker backend prerequisite",
+    "Lease/profile approval prerequisite",
+    "Power-loss persistence certification prerequisite",
+    "V3 production provenance/publication/recovery wrapper compliance prerequisite"
+  ],
+  "unchanged": [
+    "Accepted D01-D08 synthetic model and finite 2520-slot matrix",
+    "All ten registered CALIBRATION seeds; no new seed",
+    "B1 observation route and COARSE criterion",
+    "B1-B5 baseline semantics and D1-D5 online decisions",
+    "Independent input and physical validation; exact replay",
+    "No retries, owner takeover, reserved-call restart or sample removal",
+    "Scientific thresholds, statistics and partition isolation",
+    "No DEVELOPMENT, VALIDATION or FORMAL execution"
+  ],
+  "evidence_mode": "Actual Git/source/config/input hashes, one immutable reservation before each actual local call, compressed physical/decision traces, independent numeric birth/physical checks, exact replay, per-run results, final file inventory; not a V3 production-contract PASS.",
+  "persistence_claim": "Save local files and publish allowed compressed evidence to GitHub. No claim that the cloud filesystem survives environment loss.",
+  "automatic_next_stage_authorized": false,
+  "no_claims": [
+    "Hardware performance measurements",
+    "Candidate algorithm benefit",
+    "Independent validation or formal results",
+    "V3 production deployment readiness"
+  ]
+}

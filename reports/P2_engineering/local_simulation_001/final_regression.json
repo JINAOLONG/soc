@@ -1,0 +1,7 @@
+{
+  "scope": "Engineering hand fixtures only",
+  "fixture_baseline_pairs": 45,
+  "large_hand_profile_full_trace_match": true,
+  "mismatches": 0,
+  "profile_fixture_seconds": 0.17837339200195856
+}

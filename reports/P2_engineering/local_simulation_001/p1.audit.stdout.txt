@@ -1,0 +1,27 @@
+{
+  "stage": "P1",
+  "status": "PASS",
+  "errors": [],
+  "scientific_workloads_run": 0,
+  "P2_started": false,
+  "source_sha256": "dc9e7c35bb6033fc558b10409ba3bcf3b6927b7b752e2554b972234000b21f07",
+  "governance_and_p1_tests": 117,
+  "p1_tests": 100,
+  "tests_failed": 0,
+  "tests_blocked": 0,
+  "positive_traces": 45,
+  "negative_traces": 20,
+  "deterministic_replay_pass": true,
+  "independent_metric_recomputation_pass": true,
+  "tested_git_head": "40b080c422a6d94e48d492284909fba9c6be5ec1",
+  "tested_worktree": " M checkpoints/P1_artifact_manifest.json\n M reports/P1_artifacts/index.json\n M reports/P1_test_run.json\n M src/soc/model/observation.py\n M src/soc/p2/adapter.py\n M src/soc/scheduler/kernels.py\n M src/soc/simulator/engine.py\n?? docs/P2_design/accepted/local_simulation.md\n?? docs/P2_design/accepted/local_simulation_scope_001.json\n?? reports/P1_test_runs/run_010.json\n?? reports/P1_test_runs/run_011.json\n?? reports/P2_engineering/local_simulation_001/\n?? scripts/run_local_calibration.py\n?? src/soc/p2/local_input_validation.py\n?? src/soc/p2/local_run.py\n?? tests/test_local_simulation.py\n",
+  "seed_sha256": "e5ded56e2fbe1ba2ed992a3026f3c5780d90afb50aaab4d1d8b75b8c014f4f31",
+  "specification_status": "FROZEN",
+  "baseline_status": {
+    "B1": "PASS",
+    "B2": "PASS",
+    "B3": "PASS",
+    "B4": "PASS",
+    "B5": "PASS"
+  }
+}

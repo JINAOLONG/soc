@@ -1,0 +1,26 @@
+[
+  {
+    "argv": [
+      "/workspace/soc/.venv/bin/python",
+      "-B",
+      "scripts/run_pipeline.py",
+      "--stage",
+      "p0"
+    ],
+    "started_at_utc": "2026-10-20T15:07:15.866528+00:00",
+    "exit_code": 0,
+    "report": "p0.audit.stdout.txt"
+  },
+  {
+    "argv": [
+      "/workspace/soc/.venv/bin/python",
+      "-B",
+      "scripts/run_pipeline.py",
+      "--stage",
+      "p1"
+    ],
+    "started_at_utc": "2026-10-20T15:07:15.931782+00:00",
+    "exit_code": 0,
+    "report": "p1.audit.stdout.txt"
+  }
+]

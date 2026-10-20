@@ -1,0 +1,26 @@
+         3394768 function calls (3024580 primitive calls) in 1.412 seconds
+
+   Ordered by: cumulative time
+   List reduced from 97 to 18 due to restriction <18>
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.008    0.008    1.517    1.517 /workspace/soc/src/soc/simulator/engine.py:18(simulate)
+      240    0.001    0.000    0.979    0.004 /workspace/soc/src/soc/simulator/engine.py:36(<lambda>)
+      240    0.002    0.000    0.978    0.004 /workspace/soc/src/soc/scheduler/kernels.py:171(choose)
+      480    0.058    0.000    0.960    0.002 /workspace/soc/src/soc/scheduler/kernels.py:95(online_tables)
+     3120    0.131    0.000    0.552    0.000 /workspace/soc/src/soc/scheduler/kernels.py:37(source_tables)
+      240    0.001    0.000    0.481    0.002 /workspace/soc/src/soc/scheduler/kernels.py:151(ordered_ready)
+      336    0.000    0.000    0.380    0.001 /opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/dataclasses.py:1308(asdict)
+219204/336    0.197    0.000    0.380    0.001 /opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/dataclasses.py:1332(_asdict_inner)
+    69044    0.058    0.000    0.369    0.000 {built-in method builtins.sorted}
+169272/17952    0.046    0.000    0.369    0.000 /opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/dataclasses.py:1373(<genexpr>)
+   237234    0.105    0.000    0.261    0.000 {built-in method builtins.any}
+    56160    0.078    0.000    0.196    0.000 /workspace/soc/src/soc/scheduler/kernels.py:100(<genexpr>)
+      240    0.039    0.000    0.140    0.001 /workspace/soc/src/soc/model/observation.py:50(observe)
+    31200    0.078    0.000    0.128    0.000 /workspace/soc/src/soc/scheduler/kernels.py:84(mean_transfer)
+    50547    0.052    0.000    0.121    0.000 {built-in method builtins.max}
+    29568    0.043    0.000    0.068    0.000 /opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/dataclasses.py:1278(fields)
+     1800    0.005    0.000    0.063    0.000 /workspace/soc/src/soc/model/observation.py:54(<genexpr>)
+    56160    0.022    0.000    0.056    0.000 /workspace/soc/src/soc/scheduler/kernels.py:65(<genexpr>)
+
+

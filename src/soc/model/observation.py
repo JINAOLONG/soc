@@ -1,7 +1,8 @@
 """Public DTOs constructed by projection, not wrappers around offline state."""
 from dataclasses import dataclass
+from functools import lru_cache
 
-from soc.model.schema import Workload, ModelError, Resource, Link, number
+from soc.model.schema import Workload, ModelError, Resource, Link, Service, number
 
 
 @dataclass(frozen=True, slots=True)
@@ -47,15 +48,23 @@ class Observation:
     links: tuple[Link, ...]
 
 
+@lru_cache(maxsize=512)
+def _public_service(s: Service) -> PublicService:
+    """Cache immutable public projection only; realized costs are never exported."""
+    return PublicService(s.id, s.arrival, s.deadline, s.group,
+                         tuple(PublicNode(n.id, tuple(sorted((d.resource, d.estimate) for d in n.durations)),
+                                          tuple(sorted((e.node, e.size) for e in n.predecessors)))
+                               for n in sorted(s.nodes, key=lambda n: n.id)))
+
+
 def observe(workload: Workload, now: float, running: tuple[Running, ...] = (),
-            completed: tuple[Completed, ...] = ()) -> Observation:
+            completed: tuple[Completed, ...] = (), *, _projection=None) -> Observation:
     """Project only supplied observable facts; no queued completion input exists."""
     number(now, "observation time")
-    services = tuple(PublicService(s.id, s.arrival, s.deadline, s.group,
-                                 tuple(PublicNode(n.id, tuple(sorted((d.resource, d.estimate) for d in n.durations)),
-                                                  tuple(sorted((e.node, e.size) for e in n.predecessors)))
-                                       for n in sorted(s.nodes, key=lambda n: n.id)))
-                     for s in sorted(workload.services, key=lambda s: s.id) if s.arrival <= now)
+    projection = _projection if _projection is not None else tuple(_public_service(s)
+                     for s in sorted(workload.services, key=lambda s: s.id))
+    services = tuple(s for s in projection if s.arrival <= now)
+    arrivals = {s.id: s.arrival for s in services}
     visible = {(s.id, n.id): n for s in services for n in s.nodes}
     used = set()
     busy = set()
@@ -76,7 +85,7 @@ def observe(workload: Workload, now: float, running: tuple[Running, ...] = (),
             number(row.finish, "observed completion")
             if row.finish > now:
                 raise ModelError("future completion cannot be observed")
-        arrival = next(s.arrival for s in services if s.id == row.service)
+        arrival = arrivals[row.service]
         if (row.start if isinstance(row, Running) else row.finish) < arrival:
             raise ModelError("observation predates arrival")
     key = lambda r: (r.service, r.node, r.resource)

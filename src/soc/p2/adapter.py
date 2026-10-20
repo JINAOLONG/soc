@@ -95,7 +95,7 @@ def validate_physical_payload(workload: Workload, trace: dict) -> dict:
     return {'status':'FAIL' if errors else 'PASS','errors':errors,'metrics':metrics}
 
 
-def verify_decision_views(workload: Workload, trace: dict):
+def verify_decision_views(workload: Workload, trace: dict, *, compact=False):
     """Rebuild each public call view from prior actual starts/completions.
 
     Equal-time decisions are ordered by starts already made, not by guessing
@@ -116,10 +116,15 @@ def verify_decision_views(workload: Workload, trace: dict):
                 completed.append(Completed(r['service'],r['node'],r['resource'],r['finish']))
             else:
                 running.append(Running(r['service'],r['node'],r['resource'],r['start'],now-r['start']))
-        rebuilt=asdict(observe(workload,now,tuple(running),tuple(completed)))
+        rebuilt_view=observe(workload,now,tuple(running),tuple(completed))
         # JSON lists and dataclass tuples have identical exported representation.
-        if json.dumps(rebuilt,sort_keys=True)!=json.dumps(decision['observation'],sort_keys=True):
+        if not compact and json.dumps(asdict(rebuilt_view),sort_keys=True)!=json.dumps(decision['observation'],sort_keys=True):
             raise EvidenceError('decision public view/future truth mismatch')
+        if compact:
+            from soc.scheduler.kernels import choose
+            expected = choose(rebuilt_view, trace['method'])
+            if decision['proposal'] != (asdict(expected) if expected is not None else None):
+                raise EvidenceError('compact decision disagrees with reconstructed public view')
         proposal=decision['proposal']
         if proposal is not None:
             matches=[i for i,r in enumerate(executions) if i not in started and r['service']==proposal['service']

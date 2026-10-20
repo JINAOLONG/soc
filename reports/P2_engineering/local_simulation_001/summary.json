@@ -1,0 +1,12 @@
+{
+  "scope": "Local simulation implementation and hand-authored correctness only; before first scientific input",
+  "tests": 117,
+  "failures": 0,
+  "skipped": 0,
+  "p0_audit_exit_code": 0,
+  "p1_audit_exit_code": 0,
+  "source_sha256": "dc9e7c35bb6033fc558b10409ba3bcf3b6927b7b752e2554b972234000b21f07",
+  "exact_trace_regression_mismatches": 0,
+  "scientific_workloads_generated": 0,
+  "scientific_workloads_run": 0
+}

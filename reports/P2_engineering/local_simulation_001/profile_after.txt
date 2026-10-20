@@ -1,0 +1,26 @@
+         1375240 function calls (939532 primitive calls) in 0.588 seconds
+
+   Ordered by: cumulative time
+   List reduced from 102 to 18 due to restriction <18>
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.005    0.005    0.611    0.611 /workspace/soc/src/soc/simulator/engine.py:18(simulate)
+      336    0.000    0.000    0.402    0.001 /opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/dataclasses.py:1308(asdict)
+219204/336    0.206    0.000    0.402    0.001 /opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/dataclasses.py:1332(_asdict_inner)
+169272/17952    0.046    0.000    0.391    0.000 /opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/dataclasses.py:1373(<genexpr>)
+      240    0.001    0.000    0.118    0.000 /workspace/soc/src/soc/simulator/engine.py:37(<lambda>)
+      240    0.001    0.000    0.118    0.000 /workspace/soc/src/soc/scheduler/kernels.py:181(choose)
+      480    0.014    0.000    0.103    0.000 /workspace/soc/src/soc/scheduler/kernels.py:110(online_tables)
+      240    0.025    0.000    0.075    0.000 /workspace/soc/src/soc/model/observation.py:60(observe)
+    29568    0.045    0.000    0.072    0.000 /opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/dataclasses.py:1278(fields)
+      240    0.001    0.000    0.063    0.000 /workspace/soc/src/soc/scheduler/kernels.py:161(ordered_ready)
+     9360    0.011    0.000    0.052    0.000 {method 'update' of 'dict' objects}
+117000/51480    0.028    0.000    0.044    0.000 {built-in method builtins.hash}
+    28080    0.041    0.000    0.041    0.000 /workspace/soc/src/soc/scheduler/kernels.py:116(<genexpr>)
+    85704    0.027    0.000    0.041    0.000 /opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/dataclasses.py:1296(_is_dataclass_instance)
+     1800    0.001    0.000    0.026    0.000 /workspace/soc/src/soc/model/observation.py:64(<genexpr>)
+   161490    0.023    0.000    0.023    0.000 {built-in method builtins.isinstance}
+   141504    0.021    0.000    0.021    0.000 {built-in method builtins.hasattr}
+   134964    0.018    0.000    0.018    0.000 /opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/dataclasses.py:1293(<genexpr>)
+
+

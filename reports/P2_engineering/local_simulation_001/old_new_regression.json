@@ -1,0 +1,230 @@
+{
+  "mismatches": 0,
+  "pairs": [
+    {
+      "fixture": "empty",
+      "method": "B1",
+      "exact_full_trace_match": true
+    },
+    {
+      "fixture": "empty",
+      "method": "B2",
+      "exact_full_trace_match": true
+    },
+    {
+      "fixture": "empty",
+      "method": "B3",
+      "exact_full_trace_match": true
+    },
+    {
+      "fixture": "empty",
+      "method": "B4",
+      "exact_full_trace_match": true
+    },
+    {
+      "fixture": "empty",
+      "method": "B5",
+      "exact_full_trace_match": true
+    },
+    {
+      "fixture": "hand_dag",
+      "method": "B1",
+      "exact_full_trace_match": true
+    },
+    {
+      "fixture": "hand_dag",
+      "method": "B2",
+      "exact_full_trace_match": true
+    },
+    {
+      "fixture": "hand_dag",
+      "method": "B3",
+      "exact_full_trace_match": true
+    },
+    {
+      "fixture": "hand_dag",
+      "method": "B4",
+      "exact_full_trace_match": true
+    },
+    {
+      "fixture": "hand_dag",
+      "method": "B5",
+      "exact_full_trace_match": true
+    },
+    {
+      "fixture": "minimal",
+      "method": "B1",
+      "exact_full_trace_match": true
+    },
+    {
+      "fixture": "minimal",
+      "method": "B2",
+      "exact_full_trace_match": true
+    },
+    {
+      "fixture": "minimal",
+      "method": "B3",
+      "exact_full_trace_match": true
+    },
+    {
+      "fixture": "minimal",
+      "method": "B4",
+      "exact_full_trace_match": true
+    },
+    {
+      "fixture": "minimal",
+      "method": "B5",
+      "exact_full_trace_match": true
+    },
+    {
+      "fixture": "oeft_choice",
+      "method": "B1",
+      "exact_full_trace_match": true
+    },
+    {
+      "fixture": "oeft_choice",
+      "method": "B2",
+      "exact_full_trace_match": true
+    },
+    {
+      "fixture": "oeft_choice",
+      "method": "B3",
+      "exact_full_trace_match": true
+    },
+    {
+      "fixture": "oeft_choice",
+      "method": "B4",
+      "exact_full_trace_match": true
+    },
+    {
+      "fixture": "oeft_choice",
+      "method": "B5",
+      "exact_full_trace_match": true
+    },
+    {
+      "fixture": "overrun",
+      "method": "B1",
+      "exact_full_trace_match": true
+    },
+    {
+      "fixture": "overrun",
+      "method": "B2",
+      "exact_full_trace_match": true
+    },
+    {
+      "fixture": "overrun",
+      "method": "B3",
+      "exact_full_trace_match": true
+    },
+    {
+      "fixture": "overrun",
+      "method": "B4",
+      "exact_full_trace_match": true
+    },
+    {
+      "fixture": "overrun",
+      "method": "B5",
+      "exact_full_trace_match": true
+    },
+    {
+      "fixture": "priority",
+      "method": "B1",
+      "exact_full_trace_match": true
+    },
+    {
+      "fixture": "priority",
+      "method": "B2",
+      "exact_full_trace_match": true
+    },
+    {
+      "fixture": "priority",
+      "method": "B3",
+      "exact_full_trace_match": true
+    },
+    {
+      "fixture": "priority",
+      "method": "B4",
+      "exact_full_trace_match": true
+    },
+    {
+      "fixture": "priority",
+      "method": "B5",
+      "exact_full_trace_match": true
+    },
+    {
+      "fixture": "remapping",
+      "method": "B1",
+      "exact_full_trace_match": true
+    },
+    {
+      "fixture": "remapping",
+      "method": "B2",
+      "exact_full_trace_match": true
+    },
+    {
+      "fixture": "remapping",
+      "method": "B3",
+      "exact_full_trace_match": true
+    },
+    {
+      "fixture": "remapping",
+      "method": "B4",
+      "exact_full_trace_match": true
+    },
+    {
+      "fixture": "remapping",
+      "method": "B5",
+      "exact_full_trace_match": true
+    },
+    {
+      "fixture": "simultaneous",
+      "method": "B1",
+      "exact_full_trace_match": true
+    },
+    {
+      "fixture": "simultaneous",
+      "method": "B2",
+      "exact_full_trace_match": true
+    },
+    {
+      "fixture": "simultaneous",
+      "method": "B3",
+      "exact_full_trace_match": true
+    },
+    {
+      "fixture": "simultaneous",
+      "method": "B4",
+      "exact_full_trace_match": true
+    },
+    {
+      "fixture": "simultaneous",
+      "method": "B5",
+      "exact_full_trace_match": true
+    },
+    {
+      "fixture": "wait_scan",
+      "method": "B1",
+      "exact_full_trace_match": true
+    },
+    {
+      "fixture": "wait_scan",
+      "method": "B2",
+      "exact_full_trace_match": true
+    },
+    {
+      "fixture": "wait_scan",
+      "method": "B3",
+      "exact_full_trace_match": true
+    },
+    {
+      "fixture": "wait_scan",
+      "method": "B4",
+      "exact_full_trace_match": true
+    },
+    {
+      "fixture": "wait_scan",
+      "method": "B5",
+      "exact_full_trace_match": true
+    }
+  ]
+}
