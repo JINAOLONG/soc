@@ -1,0 +1,24 @@
+{
+  "recorded_at_utc": "2026-10-20T14:54:25.791182+00:00",
+  "record_kind": "CONVERSATION_AUTHORIZATION_SCOPE_NOTE",
+  "user_instruction": "进入下一步实验",
+  "interpretation": "Authorize the next registered CALIBRATION stage under the accepted B1/COARSE/A_NO_TAKEOVER design, subject to existing prerequisites.",
+  "repository": "https://github.com/JINAOLONG/soc.git",
+  "observed_checkpoint": "5166111a4cc295c007848402ec7918d0348e803c",
+  "prior_decision_record": "docs/P2_design/accepted/decisions.json",
+  "prior_decision_record_sha256": "dbb0121dce826b5954a5a31354c627b9fa7d080ee249af11e6575b436f29eeaf",
+  "implementation_and_correctness_authorized": true,
+  "scientific_execution_authorized": true,
+  "authorized_partition": "CALIBRATION",
+  "authorization_is_not_runtime_root_or_recovery_grant": true,
+  "deployment_profile_parameters_approved": false,
+  "does_not_authorize": [
+    "Changing thresholds, statistics, seeds or registered roster",
+    "Bypassing failed deployment/provenance prerequisites",
+    "DEVELOPMENT or INDEPENDENT_VALIDATION or FORMAL_EVALUATION execution",
+    "Owner takeover or restart of reserved/started/unknown calls"
+  ],
+  "supersession_scope": "Updates the earlier conversation-level science authorization only; preserves the earlier record as historical evidence and does not freeze deployment values.",
+  "actual_scientific_inputs_generated": 0,
+  "actual_scientific_workloads_run": 0
+}

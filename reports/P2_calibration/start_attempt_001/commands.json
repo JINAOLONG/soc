@@ -1,0 +1,182 @@
+[
+  {
+    "name": "git_root",
+    "argv": [
+      "git",
+      "rev-parse",
+      "--show-toplevel"
+    ],
+    "cwd": "/workspace/soc",
+    "host": "06f509bab2a0",
+    "started_at_utc": "2026-10-20T14:54:24.484913+00:00",
+    "ended_at_utc": "2026-10-20T14:54:24.487119+00:00",
+    "exit_code": 0,
+    "stdout_file": "git_root.stdout.txt",
+    "stderr_file": "git_root.stderr.txt"
+  },
+  {
+    "name": "git_origin",
+    "argv": [
+      "git",
+      "remote",
+      "get-url",
+      "origin"
+    ],
+    "cwd": "/workspace/soc",
+    "host": "06f509bab2a0",
+    "started_at_utc": "2026-10-20T14:54:24.487130+00:00",
+    "ended_at_utc": "2026-10-20T14:54:24.490058+00:00",
+    "exit_code": 0,
+    "stdout_file": "git_origin.stdout.txt",
+    "stderr_file": "git_origin.stderr.txt"
+  },
+  {
+    "name": "git_branch",
+    "argv": [
+      "git",
+      "branch",
+      "--show-current"
+    ],
+    "cwd": "/workspace/soc",
+    "host": "06f509bab2a0",
+    "started_at_utc": "2026-10-20T14:54:24.490067+00:00",
+    "ended_at_utc": "2026-10-20T14:54:24.491924+00:00",
+    "exit_code": 0,
+    "stdout_file": "git_branch.stdout.txt",
+    "stderr_file": "git_branch.stderr.txt"
+  },
+  {
+    "name": "git_head",
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD",
+      "HEAD^"
+    ],
+    "cwd": "/workspace/soc",
+    "host": "06f509bab2a0",
+    "started_at_utc": "2026-10-20T14:54:24.491933+00:00",
+    "ended_at_utc": "2026-10-20T14:54:24.493951+00:00",
+    "exit_code": 0,
+    "stdout_file": "git_head.stdout.txt",
+    "stderr_file": "git_head.stderr.txt"
+  },
+  {
+    "name": "git_remote",
+    "argv": [
+      "git",
+      "ls-remote",
+      "origin",
+      "refs/heads/work"
+    ],
+    "cwd": "/workspace/soc",
+    "host": "06f509bab2a0",
+    "started_at_utc": "2026-10-20T14:54:24.493959+00:00",
+    "ended_at_utc": "2026-10-20T14:54:25.345234+00:00",
+    "exit_code": 0,
+    "stdout_file": "git_remote.stdout.txt",
+    "stderr_file": "git_remote.stderr.txt"
+  },
+  {
+    "name": "git_worktree",
+    "argv": [
+      "git",
+      "status",
+      "--porcelain=v1",
+      "--untracked-files=all"
+    ],
+    "cwd": "/workspace/soc",
+    "host": "06f509bab2a0",
+    "started_at_utc": "2026-10-20T14:54:25.345312+00:00",
+    "ended_at_utc": "2026-10-20T14:54:25.378190+00:00",
+    "exit_code": 0,
+    "stdout_file": "git_worktree.stdout.txt",
+    "stderr_file": "git_worktree.stderr.txt"
+  },
+  {
+    "name": "storage_mount",
+    "argv": [
+      "findmnt",
+      "-T",
+      "/workspace/soc",
+      "-o",
+      "TARGET,SOURCE,FSTYPE"
+    ],
+    "cwd": "/workspace/soc",
+    "host": "06f509bab2a0",
+    "started_at_utc": "2026-10-20T14:54:25.378208+00:00",
+    "ended_at_utc": "2026-10-20T14:54:25.382750+00:00",
+    "exit_code": 0,
+    "stdout_file": "storage_mount.stdout.txt",
+    "stderr_file": "storage_mount.stderr.txt"
+  },
+  {
+    "name": "storage_capacity",
+    "argv": [
+      "df",
+      "-B1",
+      "/workspace/soc"
+    ],
+    "cwd": "/workspace/soc",
+    "host": "06f509bab2a0",
+    "started_at_utc": "2026-10-20T14:54:25.382764+00:00",
+    "ended_at_utc": "2026-10-20T14:54:25.385048+00:00",
+    "exit_code": 0,
+    "stdout_file": "storage_capacity.stdout.txt",
+    "stderr_file": "storage_capacity.stderr.txt"
+  },
+  {
+    "name": "p0_check",
+    "argv": [
+      "/workspace/soc/.venv/bin/python",
+      "-B",
+      "scripts/run_pipeline.py",
+      "--stage",
+      "p0",
+      "--check-only"
+    ],
+    "cwd": "/workspace/soc",
+    "host": "06f509bab2a0",
+    "started_at_utc": "2026-10-20T14:54:25.385373+00:00",
+    "ended_at_utc": "2026-10-20T14:54:25.463076+00:00",
+    "exit_code": 0,
+    "stdout_file": "p0_check.stdout.txt",
+    "stderr_file": "p0_check.stderr.txt"
+  },
+  {
+    "name": "p1_check",
+    "argv": [
+      "/workspace/soc/.venv/bin/python",
+      "-B",
+      "scripts/run_pipeline.py",
+      "--stage",
+      "p1",
+      "--check-only"
+    ],
+    "cwd": "/workspace/soc",
+    "host": "06f509bab2a0",
+    "started_at_utc": "2026-10-20T14:54:25.463107+00:00",
+    "ended_at_utc": "2026-10-20T14:54:25.721981+00:00",
+    "exit_code": 0,
+    "stdout_file": "p1_check.stdout.txt",
+    "stderr_file": "p1_check.stderr.txt"
+  },
+  {
+    "name": "calibration_preflight",
+    "argv": [
+      "/workspace/soc/.venv/bin/python",
+      "-B",
+      "scripts/run_pipeline.py",
+      "--stage",
+      "calibration",
+      "--check-only"
+    ],
+    "cwd": "/workspace/soc",
+    "host": "06f509bab2a0",
+    "started_at_utc": "2026-10-20T14:54:25.722014+00:00",
+    "ended_at_utc": "2026-10-20T14:54:25.787577+00:00",
+    "exit_code": 2,
+    "stdout_file": "calibration_preflight.stdout.txt",
+    "stderr_file": "calibration_preflight.stderr.txt"
+  }
+]

@@ -1,0 +1,90 @@
+{
+  "docs/P2_design/v2/P2_communication_profiles_v2.json": {
+    "expected": "74f7dde644b11d0b459fb68e9f250d9799e34f09652609b63122e0de5bf6e3b8",
+    "actual": "74f7dde644b11d0b459fb68e9f250d9799e34f09652609b63122e0de5bf6e3b8"
+  },
+  "docs/P2_design/v2/P2_resource_profiles_v2.json": {
+    "expected": "9eea5cfd43ce50d796a00d7cac86f9a7ca8798da4a3ea0c2fd9e598d965f13ae",
+    "actual": "9eea5cfd43ce50d796a00d7cac86f9a7ca8798da4a3ea0c2fd9e598d965f13ae"
+  },
+  "docs/P2_design/v2/P2_trial_matrix_draft_v2.json": {
+    "expected": "b58fe4c2eead01fc9b92966d557ed0bb052e7387794fc0d9b58029ffdb90af0e",
+    "actual": "b58fe4c2eead01fc9b92966d557ed0bb052e7387794fc0d9b58029ffdb90af0e"
+  },
+  "docs/P2_design/v2/P2_workload_templates_v2.json": {
+    "expected": "f282955ab09d0110f50447269b18d0389231bed9711532853d6cdbda92d9027c",
+    "actual": "f282955ab09d0110f50447269b18d0389231bed9711532853d6cdbda92d9027c"
+  },
+  "docs/P2_design/v3/P2_D01_D10_approval_checklist_v3.md": {
+    "expected": "07142922d00850ad66c7f00e7536601bd4a8db6c252ebbe0d0cb84f16b83c86c",
+    "actual": "07142922d00850ad66c7f00e7536601bd4a8db6c252ebbe0d0cb84f16b83c86c"
+  },
+  "docs/P2_design/v3/P2_M2_artifact_contract_v3.json": {
+    "expected": "bbf1ee0aed55aa0d34f56f0fae5268f6f5280c1a2f691011ee1a354f7a64bc2f",
+    "actual": "bbf1ee0aed55aa0d34f56f0fae5268f6f5280c1a2f691011ee1a354f7a64bc2f"
+  },
+  "docs/P2_design/v3/P2_complete_design_proposal_v3.md": {
+    "expected": "85636a14d594ad442b7805acbe9d0c9b530898dd99f1a29099da6f30a80416a3",
+    "actual": "85636a14d594ad442b7805acbe9d0c9b530898dd99f1a29099da6f30a80416a3"
+  },
+  "docs/P2_design/v3/P2_coordination_options_v3.json": {
+    "expected": "c3e86ce3e9823f1fb8214df4801d35a2394ba22c8c850ab86d6c9f274d97d297",
+    "actual": "c3e86ce3e9823f1fb8214df4801d35a2394ba22c8c850ab86d6c9f274d97d297"
+  },
+  "docs/P2_design/v3/P2_criterion_spec_v3.json": {
+    "expected": "ba41ec2a576158c701ca96db9f5100d4e7e6a30346708b5490ad56076984b165",
+    "actual": "ba41ec2a576158c701ca96db9f5100d4e7e6a30346708b5490ad56076984b165"
+  },
+  "docs/P2_design/v3/P2_diagnostic_spec_v3.json": {
+    "expected": "3fe77e0300cd86122aeebe8230cd1221b881498b54fe73f18a8db139830280dd",
+    "actual": "3fe77e0300cd86122aeebe8230cd1221b881498b54fe73f18a8db139830280dd"
+  },
+  "docs/P2_design/v3/P2_generation_spec_v3.json": {
+    "expected": "dd8d9917d32b28376d35e376206bbce2776bf7c42ba50bb7b62de18b37ef26bb",
+    "actual": "dd8d9917d32b28376d35e376206bbce2776bf7c42ba50bb7b62de18b37ef26bb"
+  },
+  "docs/P2_design/v3/P2_public_snapshot_spec_v3.json": {
+    "expected": "4799c0663827b94d56c4dcd0da02a55c0f91dfdf967efe02ace40af40b6e85fd",
+    "actual": "4799c0663827b94d56c4dcd0da02a55c0f91dfdf967efe02ace40af40b6e85fd"
+  },
+  "docs/P2_design/v3/P2_runner_schema_review_v3.md": {
+    "expected": "c33694969c5a558adc8a21b89eba65502ef07c1489539f7621069327a4a6283d",
+    "actual": "c33694969c5a558adc8a21b89eba65502ef07c1489539f7621069327a4a6283d"
+  },
+  "docs/P2_design/v3/P2_scientific_parameter_registry_v3.json": {
+    "expected": "9181c26d149bf640b9e43a6090f92f8b27808382414fd86842370631aec38c77",
+    "actual": "9181c26d149bf640b9e43a6090f92f8b27808382414fd86842370631aec38c77"
+  },
+  "docs/P2_design/v3/P2_stage_state_contract_v3.json": {
+    "expected": "032ec0f46018a4004a7d19b55850adf4ae4e2d116ff24d66e029452ebf4f33d7",
+    "actual": "032ec0f46018a4004a7d19b55850adf4ae4e2d116ff24d66e029452ebf4f33d7"
+  },
+  "docs/P2_design/v3/P2_typed_identity_schema_v3.json": {
+    "expected": "e8d6bc9b270f0f3ca07626012ef224d9b2fdd30ada4afba8a7f0f57dea916fcd",
+    "actual": "e8d6bc9b270f0f3ca07626012ef224d9b2fdd30ada4afba8a7f0f57dea916fcd"
+  },
+  "docs/P2_design/v3/README.md": {
+    "expected": "2c2e347a83a32df2da038e98e2373065e061b6383a1e14cb875586f7f109b94f",
+    "actual": "2c2e347a83a32df2da038e98e2373065e061b6383a1e14cb875586f7f109b94f"
+  },
+  "docs/P2_design/v3/inherited_v2_documents.json": {
+    "expected": "2b3f0224b5a458322642d3cc335bbf304fa07e9e6a94753460971a6966d76545",
+    "actual": "2b3f0224b5a458322642d3cc335bbf304fa07e9e6a94753460971a6966d76545"
+  },
+  "docs/P2_design/v3/reference_bindings.json": {
+    "expected": "c58ab069c1204530317cc4dc2088996e8f86e2058654cdf2a4b8e76e526892c2",
+    "actual": "c58ab069c1204530317cc4dc2088996e8f86e2058654cdf2a4b8e76e526892c2"
+  },
+  "reports/P2_design/design_revision_v3/F02_lock_recovery_contract.md": {
+    "expected": "e99c261c4a79a50d5e2dfd1dc2aa88704a53e6ae64091fcc46257796ee0d740b",
+    "actual": "e99c261c4a79a50d5e2dfd1dc2aa88704a53e6ae64091fcc46257796ee0d740b"
+  },
+  "reports/P2_design/design_revision_v3/F03_execution_provenance_contract.md": {
+    "expected": "a05e237baac12a4f97e0bfab73f8c8bf5d445eb5f7a4e76193c9dcd66d740848",
+    "actual": "a05e237baac12a4f97e0bfab73f8c8bf5d445eb5f7a4e76193c9dcd66d740848"
+  },
+  "reports/P2_design/design_revision_v3/F04_M2_artifact_contract.md": {
+    "expected": "d0d4d1939e9ce814e54b068d16fbb413ef2bb55447f1aa315dd19dd421d2ab20",
+    "actual": "d0d4d1939e9ce814e54b068d16fbb413ef2bb55447f1aa315dd19dd421d2ab20"
+  }
+}

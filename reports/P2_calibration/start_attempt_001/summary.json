@@ -1,0 +1,58 @@
+{
+  "observed_at_utc": "2026-10-20T14:54:25.791373+00:00",
+  "checked_git_head": "5166111a4cc295c007848402ec7918d0348e803c",
+  "checked_remote_work": "5166111a4cc295c007848402ec7918d0348e803c",
+  "initial_worktree": "CLEAN (live observation before creating this report; subsequent raw status contains only this report)",
+  "p0_status": "PASS",
+  "p0_exit_code": 0,
+  "p1_status": "PASS",
+  "p1_exit_code": 0,
+  "p1_test_scope": "Existing 110-test evidence audited; no full test rerun because source unchanged",
+  "scientific_authorization_received": true,
+  "authorization_note": "docs/P2_design/accepted/calibration_authorization_001.json",
+  "calibration_preflight_exit_code": 2,
+  "p2_status": "BLOCKED",
+  "raw_preflight_reasons": [
+    "SCIENTIFIC_EXECUTION_NOT_AUTHORIZED",
+    "PERSISTENT_STORAGE_NOT_VERIFIED",
+    "DEPLOYMENT_PROFILE_NOT_FROZEN",
+    "SEALED_WORKER_NOT_VALIDATED",
+    "PRODUCTION_ADMISSION_NOT_DEPLOYED"
+  ],
+  "raw_report_authorization_caveat": "The existing runner hardcodes SCIENTIFIC_EXECUTION_NOT_AUTHORIZED and false. This is a stale software gate relative to the new user instruction, not evidence that the user withheld permission. Raw output retained unchanged; no guard was weakened.",
+  "remaining_actual_blockers": [
+    {
+      "id": "PRODUCTION_ORCHESTRATOR_NOT_IMPLEMENTED",
+      "evidence": "src/soc/p2/runner.py:run_calibration returns preflight only; scripts/run_pipeline.py calibration always exits 2",
+      "required": "Implement and independently verify the fixed roster, concrete admission, worker, input birth checks, trace validation, publication and complete result closure before science."
+    },
+    {
+      "id": "DEPLOYMENT_PROFILE_NOT_FROZEN",
+      "evidence": "docs/P2_design/v3/P2_coordination_options_v3.json clock.profile; no default lease permitted",
+      "required": "An explicitly approved concrete storage/authority/clock identity, principals, positive lease duration and renewal policy; authorization alone supplies none of these values."
+    },
+    {
+      "id": "PERSISTENT_STORAGE_NOT_VERIFIED",
+      "evidence": "storage_mount.stdout.txt observes overlay, not a verified persistent volume; GitHub has source and engineering reports, not a deployed live durable authority",
+      "required": "Verify authoritative state and immutable evidence persistence for the chosen deployment; do not infer host power-loss/recreation durability from SQLite fsync or a Git push."
+    },
+    {
+      "id": "PRODUCTION_WORKER_AND_AUTHORITY_NOT_VALIDATED",
+      "evidence": "Prior Docker check used hand fixture_worker only; authority checks used engineering fixtures",
+      "required": "Concrete non-bypass admission/publication and sealed scientific worker integration, with required deployment/failure evidence."
+    }
+  ],
+  "accepted_definition_hashes_match": true,
+  "source_modified": false,
+  "scientific_workloads_generated": 0,
+  "scientific_workloads_run": 0,
+  "registered_bootstrap_indices_generated": false,
+  "new_seeds_generated": false,
+  "non_calibration_outcomes_accessed": false,
+  "validation_unlocked": false,
+  "formal_unlocked": false,
+  "scientific_result": "NOT_EVALUATED",
+  "stop_reason": "AGENTS.md rule 10: unmet stage prerequisite/provenance uncertainty blocks scientific progression",
+  "next_safe_action": "Complete concrete production integration and freeze/verify the minimal deployment profile, then re-run preflight under this CALIBRATION authorization. No further broad design review or B1 proof is needed.",
+  "stop": true
+}

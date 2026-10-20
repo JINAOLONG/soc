@@ -110,3 +110,20 @@ Use `.venv/bin/python -B scripts/run_p2_correctness.py` for the engineering
 suite. Each invocation retains a new report directory, real child exits/logs,
 hand fixture traces/replays, a SQLite fixture/history and SHA256 manifest.
 P0/P1 official audit commands remain separate; no engineering PASS implies P2 PASS.
+
+## Later CALIBRATION authorization and actual start check
+
+The subsequent instruction “进入下一步实验” authorizes the next registered
+CALIBRATION experiment, subject to the accepted scope and existing prerequisites.
+`calibration_authorization_001.json` records that conversation authorization;
+it is not a new runtime root/recovery grant or an approval of deployment values.
+The earlier `decisions.json` and engineering reports retain their historically
+correct authorization state at their creation time.
+
+`reports/P2_calibration/start_attempt_001/summary.json` records the actual next
+entry check: P0/P1 audit exit0, CALIBRATION entry exit2, zero scientific inputs
+and runs. The current runner's raw output still hardcodes a false authorization
+flag; it is retained unchanged with an explicit caveat rather than represented
+as a current lack of user permission. Production orchestration, concrete worker
+and authority integration, deployment parameters and persistence evidence remain
+missing. Authorization alone does not supply or validate those prerequisites.
