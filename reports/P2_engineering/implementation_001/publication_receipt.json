@@ -1,0 +1,54 @@
+{
+  "timestamp_utc": "2026-10-20T14:41:08.288009+00:00",
+  "repository": "https://github.com/JINAOLONG/soc.git",
+  "branch": "work",
+  "published_implementation_commit": "dc87865e4217198e8646603ce57f1c94462ff246",
+  "push": {
+    "argv": [
+      "git",
+      "push",
+      "origin",
+      "HEAD:work"
+    ],
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": "To https://github.com/JINAOLONG/soc.git\n   608ac22..dc87865  HEAD -> work\n"
+  },
+  "remote_readback": {
+    "exit_code": 0,
+    "stdout": "dc87865e4217198e8646603ce57f1c94462ff246\trefs/heads/work\n",
+    "stderr": ""
+  },
+  "remote_matches_implementation": true,
+  "engineering_manifest_sha256": "6a905026a3a528a6cef6aabd610e0044dc346533b3215b6872ba36911c217a34",
+  "receipt_scope": "Records actual implementation commit publication; enclosing receipt commit is resolved live",
+  "scientific_workloads_run": 0,
+  "post_publication_read_only_audits": [
+    {
+      "argv": [
+        "/workspace/soc/.venv/bin/python",
+        "-B",
+        "scripts/run_pipeline.py",
+        "--stage",
+        "p0",
+        "--check-only"
+      ],
+      "exit_code": 0,
+      "stdout": "{\n  \"stage\": \"P0\",\n  \"status\": \"PASS\",\n  \"errors\": [],\n  \"partition_counts\": {\n    \"CALIBRATION\": 10,\n    \"DEVELOPMENT\": 20,\n    \"INDEPENDENT_VALIDATION\": 10,\n    \"FORMAL_EVALUATION\": 30\n  },\n  \"seed_sha256\": \"e5ded56e2fbe1ba2ed992a3026f3c5780d90afb50aaab4d1d8b75b8c014f4f31\",\n  \"source_sha256\": \"38d9de1b7fc238a5e80a08164de1e11d84998304c9a24182e7500aa23ea27121\",\n  \"scientific_partitions_executed\": [],\n  \"legacy_results_used_as_new_evidence\": false\n}\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/workspace/soc/.venv/bin/python",
+        "-B",
+        "scripts/run_pipeline.py",
+        "--stage",
+        "p1",
+        "--check-only"
+      ],
+      "exit_code": 0,
+      "stdout": "{\n  \"stage\": \"P1\",\n  \"status\": \"PASS\",\n  \"errors\": [],\n  \"scientific_workloads_run\": 0,\n  \"P2_started\": false,\n  \"source_sha256\": \"38d9de1b7fc238a5e80a08164de1e11d84998304c9a24182e7500aa23ea27121\",\n  \"governance_and_p1_tests\": 110,\n  \"p1_tests\": 93,\n  \"tests_failed\": 0,\n  \"tests_blocked\": 0,\n  \"positive_traces\": 45,\n  \"negative_traces\": 20,\n  \"deterministic_replay_pass\": true,\n  \"independent_metric_recomputation_pass\": true,\n  \"tested_git_head\": \"608ac220cb5694a65da51c4c474a7f2d5eba7689\",\n  \"tested_worktree\": \" M STATUS.md\\n M checkpoints/P1_artifact_manifest.json\\n M reports/P1_artifacts/index.json\\n M reports/P1_correctness.json\\n M reports/P1_test_run.json\\n M scripts/run_pipeline.py\\n?? .dockerignore\\n?? deploy/\\n?? docs/P2_design/accepted/\\n?? reports/P1_test_runs/run_008.json\\n?? reports/P1_test_runs/run_009.json\\n?? reports/P2_engineering/\\n?? scripts/run_p2_correctness.py\\n?? scripts/verify_p2_container.py\\n?? src/soc/p2/\\n?? tests/test_p2_coordination.py\\n?? tests/test_p2_correctness.py\\n?? tests/test_p2_identity.py\\n?? tests/test_p2_recovery.py\\n\",\n  \"seed_sha256\": \"e5ded56e2fbe1ba2ed992a3026f3c5780d90afb50aaab4d1d8b75b8c014f4f31\",\n  \"specification_status\": \"FROZEN\",\n  \"baseline_status\": {\n    \"B1\": \"PASS\",\n    \"B2\": \"PASS\",\n    \"B3\": \"PASS\",\n    \"B4\": \"PASS\",\n    \"B5\": \"PASS\"\n  }\n}\n",
+      "stderr": ""
+    }
+  ]
+}
