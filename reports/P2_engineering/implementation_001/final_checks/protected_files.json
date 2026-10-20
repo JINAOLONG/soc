@@ -1,0 +1,105 @@
+{
+  "all_unchanged": true,
+  "files": {
+    "configs/seed_partitions.json": {
+      "before": "e5ded56e2fbe1ba2ed992a3026f3c5780d90afb50aaab4d1d8b75b8c014f4f31",
+      "after": "e5ded56e2fbe1ba2ed992a3026f3c5780d90afb50aaab4d1d8b75b8c014f4f31"
+    },
+    "configs/research_protocol.json": {
+      "before": "e019b6830b6bf08f39b13a456d6123fca0d634478dae475b989c07617a45cdfc",
+      "after": "e019b6830b6bf08f39b13a456d6123fca0d634478dae475b989c07617a45cdfc"
+    },
+    "docs/user_request.txt": {
+      "before": "4c3481f0c67553eaa6d2dd6f181cc8d3f792e40fdc9586547c1c2e91fb52b461",
+      "after": "4c3481f0c67553eaa6d2dd6f181cc8d3f792e40fdc9586547c1c2e91fb52b461"
+    },
+    "docs/model_spec.md": {
+      "before": "3f74116fa6cb85e4f2db1c96d246ac830a282be28847a0af21184fde2e17197b",
+      "after": "3f74116fa6cb85e4f2db1c96d246ac830a282be28847a0af21184fde2e17197b"
+    },
+    "docs/baseline_spec.md": {
+      "before": "54a1cdb86d0235671a7d1ece31e489289c026bf083f33388580b6f3fdbb42e12",
+      "after": "54a1cdb86d0235671a7d1ece31e489289c026bf083f33388580b6f3fdbb42e12"
+    },
+    "docs/metric_spec.md": {
+      "before": "c4b912fc672979ddc763d882e546b7a92bf53090e5b5dddd5777e2e867df182a",
+      "after": "c4b912fc672979ddc763d882e546b7a92bf53090e5b5dddd5777e2e867df182a"
+    },
+    "docs/statistical_protocol.md": {
+      "before": "f9c0eeb6e76f68330ba3e5d8d90e58d175c3947a1948bb41b26ad50dbc041e8a",
+      "after": "f9c0eeb6e76f68330ba3e5d8d90e58d175c3947a1948bb41b26ad50dbc041e8a"
+    },
+    "src/soc/simulator/engine.py": {
+      "before": "977d01f3603f516e68e922542322976b813c01aad8d2dd177a5c0ac314399551",
+      "after": "977d01f3603f516e68e922542322976b813c01aad8d2dd177a5c0ac314399551"
+    },
+    "src/soc/scheduler/kernels.py": {
+      "before": "122264d53f840f2f680150ec1fa0af62710114f4cf51be422f77b07268bb86cb",
+      "after": "122264d53f840f2f680150ec1fa0af62710114f4cf51be422f77b07268bb86cb"
+    },
+    "src/soc/validation/governance.py": {
+      "before": "6241f913c8c384e0d1bc9cf9632c1880fd6de4d5406facca114f0c59825c065b",
+      "after": "6241f913c8c384e0d1bc9cf9632c1880fd6de4d5406facca114f0c59825c065b"
+    },
+    "docs/P2_design/v3/inherited_v2_documents.json": {
+      "before": "2b3f0224b5a458322642d3cc335bbf304fa07e9e6a94753460971a6966d76545",
+      "after": "2b3f0224b5a458322642d3cc335bbf304fa07e9e6a94753460971a6966d76545"
+    },
+    "docs/P2_design/v3/P2_diagnostic_spec_v3.json": {
+      "before": "3fe77e0300cd86122aeebe8230cd1221b881498b54fe73f18a8db139830280dd",
+      "after": "3fe77e0300cd86122aeebe8230cd1221b881498b54fe73f18a8db139830280dd"
+    },
+    "docs/P2_design/v3/P2_typed_identity_schema_v3.json": {
+      "before": "e8d6bc9b270f0f3ca07626012ef224d9b2fdd30ada4afba8a7f0f57dea916fcd",
+      "after": "e8d6bc9b270f0f3ca07626012ef224d9b2fdd30ada4afba8a7f0f57dea916fcd"
+    },
+    "docs/P2_design/v3/P2_coordination_options_v3.json": {
+      "before": "c3e86ce3e9823f1fb8214df4801d35a2394ba22c8c850ab86d6c9f274d97d297",
+      "after": "c3e86ce3e9823f1fb8214df4801d35a2394ba22c8c850ab86d6c9f274d97d297"
+    },
+    "docs/P2_design/v3/README.md": {
+      "before": "2c2e347a83a32df2da038e98e2373065e061b6383a1e14cb875586f7f109b94f",
+      "after": "2c2e347a83a32df2da038e98e2373065e061b6383a1e14cb875586f7f109b94f"
+    },
+    "docs/P2_design/v3/P2_criterion_spec_v3.json": {
+      "before": "ba41ec2a576158c701ca96db9f5100d4e7e6a30346708b5490ad56076984b165",
+      "after": "ba41ec2a576158c701ca96db9f5100d4e7e6a30346708b5490ad56076984b165"
+    },
+    "docs/P2_design/v3/P2_public_snapshot_spec_v3.json": {
+      "before": "4799c0663827b94d56c4dcd0da02a55c0f91dfdf967efe02ace40af40b6e85fd",
+      "after": "4799c0663827b94d56c4dcd0da02a55c0f91dfdf967efe02ace40af40b6e85fd"
+    },
+    "docs/P2_design/v3/P2_runner_schema_review_v3.md": {
+      "before": "c33694969c5a558adc8a21b89eba65502ef07c1489539f7621069327a4a6283d",
+      "after": "c33694969c5a558adc8a21b89eba65502ef07c1489539f7621069327a4a6283d"
+    },
+    "docs/P2_design/v3/reference_bindings.json": {
+      "before": "c58ab069c1204530317cc4dc2088996e8f86e2058654cdf2a4b8e76e526892c2",
+      "after": "c58ab069c1204530317cc4dc2088996e8f86e2058654cdf2a4b8e76e526892c2"
+    },
+    "docs/P2_design/v3/P2_D01_D10_approval_checklist_v3.md": {
+      "before": "07142922d00850ad66c7f00e7536601bd4a8db6c252ebbe0d0cb84f16b83c86c",
+      "after": "07142922d00850ad66c7f00e7536601bd4a8db6c252ebbe0d0cb84f16b83c86c"
+    },
+    "docs/P2_design/v3/P2_stage_state_contract_v3.json": {
+      "before": "032ec0f46018a4004a7d19b55850adf4ae4e2d116ff24d66e029452ebf4f33d7",
+      "after": "032ec0f46018a4004a7d19b55850adf4ae4e2d116ff24d66e029452ebf4f33d7"
+    },
+    "docs/P2_design/v3/P2_M2_artifact_contract_v3.json": {
+      "before": "bbf1ee0aed55aa0d34f56f0fae5268f6f5280c1a2f691011ee1a354f7a64bc2f",
+      "after": "bbf1ee0aed55aa0d34f56f0fae5268f6f5280c1a2f691011ee1a354f7a64bc2f"
+    },
+    "docs/P2_design/v3/P2_generation_spec_v3.json": {
+      "before": "dd8d9917d32b28376d35e376206bbce2776bf7c42ba50bb7b62de18b37ef26bb",
+      "after": "dd8d9917d32b28376d35e376206bbce2776bf7c42ba50bb7b62de18b37ef26bb"
+    },
+    "docs/P2_design/v3/P2_complete_design_proposal_v3.md": {
+      "before": "85636a14d594ad442b7805acbe9d0c9b530898dd99f1a29099da6f30a80416a3",
+      "after": "85636a14d594ad442b7805acbe9d0c9b530898dd99f1a29099da6f30a80416a3"
+    },
+    "docs/P2_design/v3/P2_scientific_parameter_registry_v3.json": {
+      "before": "9181c26d149bf640b9e43a6090f92f8b27808382414fd86842370631aec38c77",
+      "after": "9181c26d149bf640b9e43a6090f92f8b27808382414fd86842370631aec38c77"
+    }
+  }
+}

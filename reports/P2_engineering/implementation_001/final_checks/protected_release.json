@@ -1,0 +1,30 @@
+{
+  "all_unchanged": true,
+  "files": {
+    "configs/seed_partitions.json": true,
+    "configs/research_protocol.json": true,
+    "docs/user_request.txt": true,
+    "docs/model_spec.md": true,
+    "docs/baseline_spec.md": true,
+    "docs/metric_spec.md": true,
+    "docs/statistical_protocol.md": true,
+    "src/soc/simulator/engine.py": true,
+    "src/soc/scheduler/kernels.py": true,
+    "src/soc/validation/governance.py": true,
+    "docs/P2_design/v3/inherited_v2_documents.json": true,
+    "docs/P2_design/v3/P2_diagnostic_spec_v3.json": true,
+    "docs/P2_design/v3/P2_typed_identity_schema_v3.json": true,
+    "docs/P2_design/v3/P2_coordination_options_v3.json": true,
+    "docs/P2_design/v3/README.md": true,
+    "docs/P2_design/v3/P2_criterion_spec_v3.json": true,
+    "docs/P2_design/v3/P2_public_snapshot_spec_v3.json": true,
+    "docs/P2_design/v3/P2_runner_schema_review_v3.md": true,
+    "docs/P2_design/v3/reference_bindings.json": true,
+    "docs/P2_design/v3/P2_D01_D10_approval_checklist_v3.md": true,
+    "docs/P2_design/v3/P2_stage_state_contract_v3.json": true,
+    "docs/P2_design/v3/P2_M2_artifact_contract_v3.json": true,
+    "docs/P2_design/v3/P2_generation_spec_v3.json": true,
+    "docs/P2_design/v3/P2_complete_design_proposal_v3.md": true,
+    "docs/P2_design/v3/P2_scientific_parameter_registry_v3.json": true
+  }
+}

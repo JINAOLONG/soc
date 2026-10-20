@@ -1,0 +1,15 @@
+{
+  "stage": "P2",
+  "status": "BLOCKED",
+  "reasons": [
+    "SCIENTIFIC_EXECUTION_NOT_AUTHORIZED",
+    "PERSISTENT_STORAGE_NOT_VERIFIED",
+    "DEPLOYMENT_PROFILE_NOT_FROZEN",
+    "SEALED_WORKER_NOT_VALIDATED",
+    "PRODUCTION_ADMISSION_NOT_DEPLOYED"
+  ],
+  "implementation_authorized": true,
+  "scientific_execution_authorized": false,
+  "scientific_workloads_generated": 0,
+  "scientific_workloads_run": 0
+}

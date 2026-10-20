@@ -1,0 +1,27 @@
+{
+  "stage": "P1",
+  "status": "PASS",
+  "errors": [],
+  "scientific_workloads_run": 0,
+  "P2_started": false,
+  "source_sha256": "b0445a7c13eef7bc892abc7154e23f5e1956f8ebe7656b6fda6e8cab69605225",
+  "governance_and_p1_tests": 108,
+  "p1_tests": 91,
+  "tests_failed": 0,
+  "tests_blocked": 0,
+  "positive_traces": 45,
+  "negative_traces": 20,
+  "deterministic_replay_pass": true,
+  "independent_metric_recomputation_pass": true,
+  "tested_git_head": "608ac220cb5694a65da51c4c474a7f2d5eba7689",
+  "tested_worktree": " M STATUS.md\n M reports/P1_test_run.json\n M scripts/run_pipeline.py\n?? .dockerignore\n?? deploy/\n?? docs/P2_design/accepted/\n?? reports/P1_test_runs/run_008.json\n?? reports/P2_engineering/\n?? scripts/run_p2_correctness.py\n?? scripts/verify_p2_container.py\n?? src/soc/p2/\n?? tests/test_p2_coordination.py\n?? tests/test_p2_correctness.py\n?? tests/test_p2_identity.py\n?? tests/test_p2_recovery.py\n",
+  "seed_sha256": "e5ded56e2fbe1ba2ed992a3026f3c5780d90afb50aaab4d1d8b75b8c014f4f31",
+  "specification_status": "FROZEN",
+  "baseline_status": {
+    "B1": "PASS",
+    "B2": "PASS",
+    "B3": "PASS",
+    "B4": "PASS",
+    "B5": "PASS"
+  }
+}

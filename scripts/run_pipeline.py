@@ -23,6 +23,11 @@ def main() -> int:
             (root / "reports/P1_correctness.json").write_text(json.dumps(result, indent=2) + "\n")
         print(json.dumps(result, indent=2))
         return 0 if result["status"] == "PASS" else 2
+    if args.stage == "calibration":
+        from soc.p2.runner import run_calibration
+        result = run_calibration(root)
+        print(json.dumps(result, indent=2))
+        return 2  # explicit deployment/science prerequisites remain unmet
     if args.stage != "p0":
         if args.stage in {"validation", "formal"}:
             partition = "INDEPENDENT_VALIDATION" if args.stage == "validation" else "FORMAL_EVALUATION"

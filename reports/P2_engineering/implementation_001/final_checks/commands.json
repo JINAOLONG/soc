@@ -1,0 +1,57 @@
+{
+  "timestamp_utc": "2026-10-20T14:33:32.086995+00:00",
+  "commands": [
+    {
+      "name": "p0",
+      "argv": [
+        "/workspace/soc/.venv/bin/python",
+        "-B",
+        "scripts/run_pipeline.py",
+        "--stage",
+        "p0",
+        "--check-only"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "matched": true
+    },
+    {
+      "name": "p1",
+      "argv": [
+        "/workspace/soc/.venv/bin/python",
+        "-B",
+        "scripts/run_pipeline.py",
+        "--stage",
+        "p1"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "matched": true
+    },
+    {
+      "name": "science_guard",
+      "argv": [
+        "/workspace/soc/.venv/bin/python",
+        "-B",
+        "scripts/run_pipeline.py",
+        "--stage",
+        "calibration",
+        "--check-only"
+      ],
+      "exit_code": 2,
+      "expected_exit_code": 2,
+      "matched": true
+    },
+    {
+      "name": "diff_check",
+      "argv": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "matched": true
+    }
+  ]
+}

@@ -8,7 +8,7 @@
 原文已完成全文及页码审查，原有四篇原稿也重新核验了计数资格；17 项治理测试通过。
 P1 已实现事件引擎、只读视图、B1–B5 和独立 Trace Validator；当前正确性证据见
 [P1 报告](reports/P1_correctness_report.md) 与 [STATUS.md](STATUS.md)。科学工作负载运行数为 0，
-P2/P3、独立验证、正式评估均未启动。原 [P0 文献关闭报告](reports/P0_literature_gap_closure.md)
+P2 科学运行、P3、独立验证、正式评估均未启动。原 [P0 文献关闭报告](reports/P0_literature_gap_closure.md)
 和 [P0 最终报告](reports/final_report.md) 保留为历史交付，不充当 P1 结果。
 
 仓库即项目根目录；保留原有 Apache-2.0 LICENSE。不创建第二层 Git 仓库或 worktree。
@@ -42,10 +42,31 @@ CI 运行治理和手工合成正确性单测，不需要论文 PDF，不执行�
 `src/soc/` 按 model、simulator、scheduler、workload、metrics、validation、analysis
 分包；P1 实现位于 model/schema.py、model/observation.py、simulator/engine.py、
 scheduler/kernels.py、metrics/fixture.py、validation/trace.py 和 validation/p1.py。
-workload 科学生成器、候选方法和科学统计分析尚未实现。
+P2 生成数值与分析原语已有工程实现；正式科学生成/执行流水线尚未部署，候选方法尚未定义。
 `configs/` 保存协议和 seed；`scripts/` 保存环境安装、分区生成、审计、文献连通性诊断和
 哈希检查入口；`tests/` 为治理和手工合成正确性测试；`docs/`、`reports/`、`checkpoints/` 保存研究协议
 与证据；`results/` 的各科学分区目前没有实验数据。
+
+## 当前云端 P2 工程验证
+
+已记录用户接受的 D01–D10 限定条款、SP01–SP40、A2/B3，见
+[批准记录](docs/P2_design/accepted/README.md)。`src/soc/p2/` 新增确定性数值、
+S2 校验边界、B1 诊断、资格/分析原语、SQLite A 协调、A2/B3 与证据保存组件。
+原 simulator、scheduler、种子和科学统计协议未改动。
+
+当前完整正确性流程 **110 项测试通过、0 失败、0 跳过**；原45正例/20负例和精确重放通过。
+另完成只读、非root、无网络/无Docker socket 的容器手工fixture检查，并核对镜像内源码哈希。
+失败历史、真实子进程退出码/日志、fixture轨迹和清单位于
+[本轮工程报告](reports/P2_engineering/implementation_001/README.md)。这些不是科学样本或性能结果。
+
+```bash
+.venv/bin/python -B scripts/run_p2_correctness.py
+.venv/bin/python -B scripts/verify_p2_container.py
+```
+
+第二条需要Docker；每次生成独立工程验证目录。生产CALIBRATION编排和权威部署尚未接通，
+持久化、lease、权限及独立科学授权未就绪，正式入口保持退出2并报告阻断原因。
+工程测试通过不表示P2 PASS，不解锁后续分区。
 
 ## 阶段命令与锁
 
@@ -70,7 +91,7 @@ workload 科学生成器、候选方法和科学统计分析尚未实现。
 
 P1 门禁重新检查 P0、用户批准的 D1–D5、代码/测试/输入/Trace 哈希、逐项测试身份、
 45 份完整轨迹的独立校验和精确重放，以及 20 个非法轨迹的实际拒绝结果。
-P2 及以后尚未实现；科学批量运行、聚合和绘图尚未实现。
+P2 工程组件已有正确性证据；完整生产科学编排及后续阶段尚未部署，科学批量运行和绘图未执行。
 
 独立验证必须先有 Development Gate PASS、已提交的 freeze manifest 和绑定其哈希的
 `checkpoints/VALIDATION_UNLOCKED`；正式实验需要相应的 validation gate、freeze 和

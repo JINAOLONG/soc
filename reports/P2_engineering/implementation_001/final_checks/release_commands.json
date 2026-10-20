@@ -1,0 +1,46 @@
+{
+  "timestamp_utc": "2026-10-20T14:38:34.066957+00:00",
+  "commands": [
+    {
+      "name": "p0_release",
+      "argv": [
+        "/workspace/soc/.venv/bin/python",
+        "-B",
+        "scripts/run_pipeline.py",
+        "--stage",
+        "p0",
+        "--check-only"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "matched": true
+    },
+    {
+      "name": "p1_release",
+      "argv": [
+        "/workspace/soc/.venv/bin/python",
+        "-B",
+        "scripts/run_pipeline.py",
+        "--stage",
+        "p1"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "matched": true
+    },
+    {
+      "name": "science_guard_release",
+      "argv": [
+        "/workspace/soc/.venv/bin/python",
+        "-B",
+        "scripts/run_pipeline.py",
+        "--stage",
+        "calibration",
+        "--check-only"
+      ],
+      "exit_code": 2,
+      "expected_exit_code": 2,
+      "matched": true
+    }
+  ]
+}
