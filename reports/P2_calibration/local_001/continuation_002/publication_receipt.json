@@ -1,0 +1,27 @@
+{
+  "observed_at_utc": "2026-10-21T13:09:39.383236+00:00",
+  "result_commit": "ac7005cf406978d9ac2f0b82b7d833cecee95f5d",
+  "execution_start_commit": "cb9fab5a53e081eea7f9742da365022903f38261",
+  "executed_orchestration_commit": "0d0c1f73f4449f69c6955be0ebfed74098a22623",
+  "original_scientific_commit": "b248effe1ff925bc43f3eef280dcaaffbe19a557",
+  "result_push_exit_code": 0,
+  "remote_readback": {
+    "argv": [
+      "git",
+      "ls-remote",
+      "origin",
+      "refs/heads/work"
+    ],
+    "exit_code": 0,
+    "stdout": "ac7005cf406978d9ac2f0b82b7d833cecee95f5d\trefs/heads/work\n",
+    "stderr": ""
+  },
+  "artifact_manifest_sha256": "7c5f8da9395640daaf070a1e07f9924e75bdd8c9dc5c7b1c484c3d14b274febd",
+  "manifest_file_hash_recheck": "PASS",
+  "publication_status": "VERIFIED_REMOTE_EQUALS_RESULT_COMMIT",
+  "scientific_checkpoint": 420,
+  "expected_trial_roster": 2520,
+  "whole_campaign_complete": false,
+  "no_active_background_simulation": true,
+  "receipt_enclosing_commit": "RESOLVE_LIVE_WITH_GIT; receipt published in a subsequent normal commit"
+}
