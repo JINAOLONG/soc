@@ -1,0 +1,16 @@
+{
+  "argv": [
+    "/workspace/soc/.venv/bin/python",
+    "-B",
+    "scripts/resume_local_calibration.py",
+    "--end-trial",
+    "420",
+    "--seconds",
+    "600"
+  ],
+  "cwd": "/workspace/soc",
+  "started_at_utc": "2026-10-21T12:59:21.561099+00:00",
+  "ended_at_utc": "2026-10-21T13:05:52.531362+00:00",
+  "exit_code": 0,
+  "elapsed_seconds": 390.970360117004
+}

@@ -1,0 +1,110 @@
+{
+  "scope": "Completed foreground milestone420; not full P2 PASS; later publication receipt separate",
+  "files": [
+    {
+      "path": "reports/P2_calibration/local_001/continuation_002/COCKPIT-medium-8-B.delta.tar.gz",
+      "sha256": "7d65d33bbe8f55ba11a6a05e4da604a4d4cb220c25472c145db48e84f9620f61",
+      "size_bytes": 25289516
+    },
+    {
+      "path": "reports/P2_calibration/local_001/continuation_002/README.md",
+      "sha256": "998089e7bc81d104e5c50257c040e538eaa0a0a7ca725758a48edf6e776845cf",
+      "size_bytes": 6120
+    },
+    {
+      "path": "reports/P2_calibration/local_001/continuation_002/all_completed_results.json",
+      "sha256": "0bb4b5da5c2623002da8a9b808699842510466e9b41d457a91eddcf9b411205c",
+      "size_bytes": 1000366
+    },
+    {
+      "path": "reports/P2_calibration/local_001/continuation_002/baseline_summary.csv",
+      "sha256": "3f009cd831274654b92fb1ab8376361aa53519ad30b31ad029dc00d21dec68f4",
+      "size_bytes": 3439
+    },
+    {
+      "path": "reports/P2_calibration/local_001/continuation_002/baseline_summary.json",
+      "sha256": "7372f5c037feadc99e6875d1bba9ce78ecde18f703c47ff3ce24a9399b0d7644",
+      "size_bytes": 5251
+    },
+    {
+      "path": "reports/P2_calibration/local_001/continuation_002/close_segment.py",
+      "sha256": "19fced6ac0df675824995386607465b9d6eeff929ab486191f40e806bd8487db",
+      "size_bytes": 11464
+    },
+    {
+      "path": "reports/P2_calibration/local_001/continuation_002/closure_command.json",
+      "sha256": "9ae4a7a2e9d0cd24897b94db71011774446e45f51c80c15e92a33c5ff46e7fbf",
+      "size_bytes": 352
+    },
+    {
+      "path": "reports/P2_calibration/local_001/continuation_002/closure_stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "reports/P2_calibration/local_001/continuation_002/closure_stdout.log",
+      "sha256": "a0c23a1b072b15e37e5f8df995dc54396cbe850394120c8d0623b05bdadba3d6",
+      "size_bytes": 89
+    },
+    {
+      "path": "reports/P2_calibration/local_001/continuation_002/closure_summary.json",
+      "sha256": "14417487265666b86deb80e39628c850d1700a7609bb4f59d9b44fda55003eba",
+      "size_bytes": 1520
+    },
+    {
+      "path": "reports/P2_calibration/local_001/continuation_002/command.json",
+      "sha256": "522b86d3c21b31d1284a013d3f09beb2262afbb83450b28ca194f729f84b79ff",
+      "size_bytes": 363
+    },
+    {
+      "path": "reports/P2_calibration/local_001/continuation_002/cumulative_raw_manifest.json",
+      "sha256": "b1ca13ae0f496e85e279f31190d7fed9619e3cd864048e3a75b545719cfb16cb",
+      "size_bytes": 934378
+    },
+    {
+      "path": "reports/P2_calibration/local_001/continuation_002/delta_archive_index.json",
+      "sha256": "d5485a106174289700650c10ad08f9c670a4fe0c9a7ed16aca8e6ae6c7cbe5d5",
+      "size_bytes": 520
+    },
+    {
+      "path": "reports/P2_calibration/local_001/continuation_002/medium_B_descriptive_checks.json",
+      "sha256": "1461cd5dee2fb814bf7b7af1da94d22080db65c30810a738700241c4da094925",
+      "size_bytes": 764
+    },
+    {
+      "path": "reports/P2_calibration/local_001/continuation_002/new_input_checks.json",
+      "sha256": "d69bb28736218d6dd3ef7a3d67e7fcfbc2bd610e22156fd5ee00291d84bc2b67",
+      "size_bytes": 1200
+    },
+    {
+      "path": "reports/P2_calibration/local_001/continuation_002/new_trial_checks.json",
+      "sha256": "4c48da54e410a94a1625b87b7882c5e214807a58e9d804b67972f69b8965ccae",
+      "size_bytes": 12813
+    },
+    {
+      "path": "reports/P2_calibration/local_001/continuation_002/process_exit_observation.json",
+      "sha256": "37923fe476db1ab7fade12b72eeb446650b5d74a23c844a073ca0d02f302f942",
+      "size_bytes": 376
+    },
+    {
+      "path": "reports/P2_calibration/local_001/continuation_002/report_check_history.json",
+      "sha256": "890e53cec1f0ff368b41c33835f77f5ac2e71127e8b7d6c82d20a87efdb01e55",
+      "size_bytes": 788
+    },
+    {
+      "path": "reports/P2_calibration/local_001/continuation_002/segment_metadata.delta.tar.gz",
+      "sha256": "9c5e4031cf751a304f765837f8a1e315107513311f25622eb9c9736ab416143e",
+      "size_bytes": 22269
+    },
+    {
+      "path": "reports/P2_calibration/local_001/continuation_002/stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "reports/P2_calibration/local_001/continuation_002/stdout.log",
+      "sha256": "2cf514e562249907a67a0dc6285723b135fc41c3a1e234410dc84567ded52cbe",
+      "size_bytes": 12090
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "closed_at_utc": "2026-10-21T13:06:15.118095+00:00",
+  "status": "COMPLETED_PREDECLARED_FOREGROUND_MILESTONE",
+  "last_completed_trial": "proposal-v2-t0420",
+  "valid_primary_results": 420,
+  "valid_registered_replays": 420,
+  "new_primary_calls": 70,
+  "new_replays": 70,
+  "recovery_recomputations": 0,
+  "new_independent_samples_due_to_recovery": 0,
+  "primary_invocations": {
+    "minimum": 420,
+    "maximum": 421
+  },
+  "engine_invocations": {
+    "minimum": 840,
+    "maximum": 841
+  },
+  "engine_call_ceiling": 5041,
+  "unique_result_roster_size": 2520,
+  "remaining_unique_trials": 2100,
+  "total_generated_inputs": 180,
+  "new_inputs": 30,
+  "complete_configs": 6,
+  "core_identity": {
+    "status": "PASS",
+    "files": 49,
+    "original_source_sha256": "dc9e7c35bb6033fc558b10409ba3bcf3b6927b7b752e2554b972234000b21f07"
+  },
+  "resumed_source_sha256": "350eaf8e1435d6f97c2f4ba60f776b44915726b79b4ad3e3beadc4b75fe4f14d",
+  "original_unknown_call_status": "UNKNOWN_RETAINED; trial247 result supplied by RECOVERY_001",
+  "foreground_process_exit_codes": [
+    0
+  ],
+  "whole_campaign_status": "PAUSED_INCOMPLETE",
+  "p2_status": "BLOCKED",
+  "mapping_classification": "NOT_EVALUATED",
+  "global_qualification": "NOT_EVALUATED_INCOMPLETE_ROSTER",
+  "no_background_execution_requested": true,
+  "new_seeds_generated": false,
+  "non_calibration_outcomes_accessed": false,
+  "validation_unlocked": false,
+  "formal_unlocked": false,
+  "raw_files": 4339,
+  "new_raw_files": 724,
+  "old_files_preserved": 3615
+}

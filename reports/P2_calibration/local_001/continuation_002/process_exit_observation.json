@@ -1,0 +1,12 @@
+{
+  "observed_at_utc": "2026-10-21T13:07:00.194412+00:00",
+  "scan": "/proc numeric PID cmdline exact argv token match",
+  "matched_entrypoints": [
+    "/tmp/soc_finalize_local.py",
+    "scripts/resume_local_calibration.py",
+    "scripts/run_local_calibration.py"
+  ],
+  "active_scientific_processes": [],
+  "actual_foreground_exit_code": 0,
+  "actual_closure_exit_code": 0
+}

@@ -1,0 +1,20 @@
+{
+  "scope": "Descriptive registered-predicate checks only; not global selection or mapping classification",
+  "config_id": "COCKPIT-medium-8-B",
+  "registered_seed_count": 10,
+  "pressure_seed_mean_exact": "1944487518751310387/2814749767106560000",
+  "pressure_seed_mean": 0.6908207406124626,
+  "H_dmr_seed_mean_exact": "1/500",
+  "L_dmr_seed_mean_exact": "433/500",
+  "pressure_in_medium_band": true,
+  "H_dmr_in_registered_band": false,
+  "positive_assigned_busy_wait_seeds": 10,
+  "control_witness_counts": {
+    "H_ISOLATED": 10,
+    "LOW_COMPETITION": 10
+  },
+  "prior_A_H_dmr_seed_mean_exact": "0",
+  "both_registered_A_B_below_H_lower_bound": true,
+  "global_qualification": "NOT_EVALUATED_INCOMPLETE_ROSTER",
+  "mapping_classification": "NOT_EVALUATED"
+}

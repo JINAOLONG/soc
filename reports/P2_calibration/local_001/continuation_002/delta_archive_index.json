@@ -1,0 +1,16 @@
+[
+  {
+    "path": "reports/P2_calibration/local_001/continuation_002/COCKPIT-medium-8-B.delta.tar.gz",
+    "sha256": "7d65d33bbe8f55ba11a6a05e4da604a4d4cb220c25472c145db48e84f9620f61",
+    "size_bytes": 25289516,
+    "raw_files": 720,
+    "roundtrip": "PASS"
+  },
+  {
+    "path": "reports/P2_calibration/local_001/continuation_002/segment_metadata.delta.tar.gz",
+    "sha256": "9c5e4031cf751a304f765837f8a1e315107513311f25622eb9c9736ab416143e",
+    "size_bytes": 22269,
+    "raw_files": 4,
+    "roundtrip": "PASS"
+  }
+]

@@ -1,0 +1,23 @@
+{
+  "scope": "Report consistency only; no scientific calls",
+  "attempts": [
+    {
+      "interpreter": "system python",
+      "exit_code": 1,
+      "failure": "ModuleNotFoundError: No module named soc; project environment was not selected",
+      "science_calls": 0
+    },
+    {
+      "interpreter": "/workspace/soc/.venv/bin/python",
+      "exit_code": 0,
+      "result": "PASS; source hash, saved counts, report dimensions and actual process exits consistent",
+      "science_calls": 0
+    }
+  ],
+  "formatting": {
+    "initial_git_cached_diff_check_exit_code": 2,
+    "reason": "csv.writer default CRLF was flagged as trailing whitespace",
+    "correction": "Normalized only derived CSV line endings to LF; all parsed cells unchanged",
+    "scientific_artifacts_changed": false
+  }
+}
