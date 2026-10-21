@@ -1,0 +1,11 @@
+{
+  "path": "reports/P2_calibration/local_001/interruption_001/campaign_metadata.tar.gz",
+  "sha256": "f1c757470af060be4e445dac98a816988b8152043a552b0d83baa1c12925a0b3",
+  "raw_members": [
+    "results/calibration/local_001/context.json",
+    "results/calibration/local_001/owner.lock",
+    "results/calibration/local_001/preflight.json",
+    "results/calibration/local_001/progress.json"
+  ],
+  "roundtrip": "PASS"
+}

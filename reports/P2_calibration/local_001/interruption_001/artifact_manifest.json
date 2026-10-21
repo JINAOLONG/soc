@@ -1,0 +1,215 @@
+{
+  "scope": "Interrupted-campaign preservation and read-only revalidation; no scientific execution",
+  "files": [
+    {
+      "path": "reports/P2_calibration/local_001/interruption_001/COCKPIT-light-16-A.tar.gz",
+      "size_bytes": 46858705,
+      "sha256": "9654dbdba900e810beff9121920f38c14a1f1f1ff2bf70005a60bf453f8f20a9"
+    },
+    {
+      "path": "reports/P2_calibration/local_001/interruption_001/COCKPIT-light-16-B.tar.gz",
+      "size_bytes": 24233629,
+      "sha256": "6796157789cedf13b3b8688430920a4820b252fedfae0507760b2e1635c9acbf"
+    },
+    {
+      "path": "reports/P2_calibration/local_001/interruption_001/COCKPIT-light-8-A.tar.gz",
+      "size_bytes": 24896414,
+      "sha256": "e5a1e1849ee47a16b3165db0370936eadfa13cde24b4d8379e36c419a060050a"
+    },
+    {
+      "path": "reports/P2_calibration/local_001/interruption_001/COCKPIT-light-8-B.tar.gz",
+      "size_bytes": 24948029,
+      "sha256": "4911edeafb188d07668187a652a0cd35e50621ade9489e0b8ed751bb84345506"
+    },
+    {
+      "path": "reports/P2_calibration/local_001/interruption_001/README.md",
+      "size_bytes": 4927,
+      "sha256": "e21ed1c1bf4f62b15d49371bf60e1aeafccb9192a26fe65575642d633a437733"
+    },
+    {
+      "path": "reports/P2_calibration/local_001/interruption_001/archive_coverage.json",
+      "size_bytes": 114,
+      "sha256": "7bba7ce4fa574c9f4f78804422766cbacd165d2213fa972bdc955513646819a1"
+    },
+    {
+      "path": "reports/P2_calibration/local_001/interruption_001/archive_index.json",
+      "size_bytes": 1199,
+      "sha256": "cf1dab3d89667f3101b08dfb6123be7358f39de434640d6f7b301a6bb9dba87e"
+    },
+    {
+      "path": "reports/P2_calibration/local_001/interruption_001/audit.stderr.txt",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/P2_calibration/local_001/interruption_001/audit.stdout.txt",
+      "size_bytes": 2371,
+      "sha256": "23b35e5e858de6bf7dc5f5f813b57e1b0d8ba5104eb2994087eee49bad17c218"
+    },
+    {
+      "path": "reports/P2_calibration/local_001/interruption_001/audit_command.json",
+      "size_bytes": 359,
+      "sha256": "4411d7fd739440dc606a9a6356da62ece2b66185b771cd3fe71d4b5d4ece883d"
+    },
+    {
+      "path": "reports/P2_calibration/local_001/interruption_001/audit_existing.py",
+      "size_bytes": 12803,
+      "sha256": "51b0f01891fcddd8c343fbecb4d82ab94bc42e92de219291d057e499b64ccc58"
+    },
+    {
+      "path": "reports/P2_calibration/local_001/interruption_001/branch.stderr.txt",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/P2_calibration/local_001/interruption_001/branch.stdout.txt",
+      "size_bytes": 5,
+      "sha256": "4c7a03f2c9a663a0678eef8293f7609a609c92a6b3bccb2e556301f8b290c7f2"
+    },
+    {
+      "path": "reports/P2_calibration/local_001/interruption_001/campaign_metadata.tar.gz",
+      "size_bytes": 1970,
+      "sha256": "f1c757470af060be4e445dac98a816988b8152043a552b0d83baa1c12925a0b3"
+    },
+    {
+      "path": "reports/P2_calibration/local_001/interruption_001/commands.json",
+      "size_bytes": 1764,
+      "sha256": "6d08c099c71e29804cbc1a502b25e67c6fb0cb84a7ff8c5ff0919d2da55f6de5"
+    },
+    {
+      "path": "reports/P2_calibration/local_001/interruption_001/complete_config_checks.json",
+      "size_bytes": 708,
+      "sha256": "f4aa8fe67769eea70a7e84876faacb0112859d921e41f82439142f2e1761fcdb"
+    },
+    {
+      "path": "reports/P2_calibration/local_001/interruption_001/head.stderr.txt",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/P2_calibration/local_001/interruption_001/head.stdout.txt",
+      "size_bytes": 41,
+      "sha256": "1dda319b7ca2c4e937ee760de3d5c6567b3b86d451c527d0cb5bd793f49953e9"
+    },
+    {
+      "path": "reports/P2_calibration/local_001/interruption_001/independent_input_checks.json",
+      "size_bytes": 4292,
+      "sha256": "9fa9cb9768dfac2538851f14bcd0d28b7702308713d6a7ce9b3ad8c921b8a123"
+    },
+    {
+      "path": "reports/P2_calibration/local_001/interruption_001/independent_trial_checks.json",
+      "size_bytes": 47973,
+      "sha256": "ae1aea4ae0d40b35e087e3a5fdb0a8e5f96bd5881ae749bb487d271a91ada3b7"
+    },
+    {
+      "path": "reports/P2_calibration/local_001/interruption_001/metadata_archive.json",
+      "size_bytes": 418,
+      "sha256": "edcf5dfee020580170f9c8280c0aa6f6f68525e46777a8bb882993a5adaac453"
+    },
+    {
+      "path": "reports/P2_calibration/local_001/interruption_001/origin.stderr.txt",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/P2_calibration/local_001/interruption_001/origin.stdout.txt",
+      "size_bytes": 37,
+      "sha256": "94dce1ab17686191829c0bd9f51dd775032a3ce224c80cdcffbe2dbb617edf20"
+    },
+    {
+      "path": "reports/P2_calibration/local_001/interruption_001/original_context.json",
+      "size_bytes": 1166,
+      "sha256": "4d008b8e8ca1a34e880e7f81c798e49123cd9029f354c2e9d43547df073664fb"
+    },
+    {
+      "path": "reports/P2_calibration/local_001/interruption_001/original_preflight.json",
+      "size_bytes": 2067,
+      "sha256": "f96cc37b14e4d0e18c6bdf88cb706d55068a7fb84fe91d6371305ba726338e55"
+    },
+    {
+      "path": "reports/P2_calibration/local_001/interruption_001/original_process.stderr.txt",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/P2_calibration/local_001/interruption_001/original_process.stdout.txt",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/P2_calibration/local_001/interruption_001/original_progress.json",
+      "size_bytes": 257,
+      "sha256": "ca36d1ad3dff2e634ed8888c7477cf2f717de175f5ab13495e67111229dc08b5"
+    },
+    {
+      "path": "reports/P2_calibration/local_001/interruption_001/original_stderr.txt",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/P2_calibration/local_001/interruption_001/original_stdout.txt",
+      "size_bytes": 3952,
+      "sha256": "fa9d98da2c982bcf922a17b701aa6da6a673a02b9945188e1108eed415605033"
+    },
+    {
+      "path": "reports/P2_calibration/local_001/interruption_001/p0.stderr.txt",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/P2_calibration/local_001/interruption_001/p0.stdout.txt",
+      "size_bytes": 453,
+      "sha256": "46f32ae9fd5832694d2e206ba98eb665100d3eed80b531520dab2e1c5ba53c5d"
+    },
+    {
+      "path": "reports/P2_calibration/local_001/interruption_001/p1.stderr.txt",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/P2_calibration/local_001/interruption_001/p1.stdout.txt",
+      "size_bytes": 1364,
+      "sha256": "7fe25d924805983860c5910a048e7c1dcbd0ab9ed41efba5446f9ea43e2c2f4f"
+    },
+    {
+      "path": "reports/P2_calibration/local_001/interruption_001/partial_baseline_summary.csv",
+      "size_bytes": 2586,
+      "sha256": "292c5d6fa0cee99d07553fdbbb6a44e897a1bbbf428c0c5e11940c3197fd42eb"
+    },
+    {
+      "path": "reports/P2_calibration/local_001/interruption_001/preserved_raw_manifest.json",
+      "size_bytes": 547309,
+      "sha256": "928088a0206bbee58ad8433f7c656587ecae7826a77d1bdda0abf12a19186048"
+    },
+    {
+      "path": "reports/P2_calibration/local_001/interruption_001/remote.stderr.txt",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/P2_calibration/local_001/interruption_001/remote.stdout.txt",
+      "size_bytes": 57,
+      "sha256": "eda13dc0c72d9b7af7e03b895b8416a68bc6ea9e9671c5d985cfe60b7c3ad84c"
+    },
+    {
+      "path": "reports/P2_calibration/local_001/interruption_001/status.stderr.txt",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/P2_calibration/local_001/interruption_001/status.stdout.txt",
+      "size_bytes": 182,
+      "sha256": "f3b6430149a3d1acd589d50eced118d5a0a17deeb9f19d95bf009c80bfa611ec"
+    },
+    {
+      "path": "reports/P2_calibration/local_001/interruption_001/summary.json",
+      "size_bytes": 2260,
+      "sha256": "fa3c05fae43b305abd06aa873638df6a7275c5344c1844c46fbbc2c61bdb99f0"
+    },
+    {
+      "path": "reports/P2_calibration/local_001/interruption_001/unknown_calls.json",
+      "size_bytes": 338,
+      "sha256": "bd40571fe0ed0b9f25e8be50348a9b2507a06a9f4fb9347843e8379d79aab45e"
+    }
+  ]
+}

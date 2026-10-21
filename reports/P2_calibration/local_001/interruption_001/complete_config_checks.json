@@ -1,0 +1,29 @@
+{
+  "scope": "Only existing complete configurations; no global selection or mapping conclusion",
+  "configs": [
+    {
+      "config_id": "COCKPIT-light-16-A",
+      "eligibility": true,
+      "seed_count": 10,
+      "pressure_mean": 0.17486847860764124,
+      "H_DMR_mean": 0.0,
+      "L_DMR_mean": 0.0
+    },
+    {
+      "config_id": "COCKPIT-light-8-A",
+      "eligibility": true,
+      "seed_count": 10,
+      "pressure_mean": 0.16267418950827012,
+      "H_DMR_mean": 0.0,
+      "L_DMR_mean": 0.0
+    },
+    {
+      "config_id": "COCKPIT-light-8-B",
+      "eligibility": true,
+      "seed_count": 10,
+      "pressure_mean": 0.2048504955443707,
+      "H_DMR_mean": 0.0,
+      "L_DMR_mean": 0.0
+    }
+  ]
+}

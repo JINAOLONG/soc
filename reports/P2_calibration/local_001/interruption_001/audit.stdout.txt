@@ -1,0 +1,61 @@
+Verified retained trial 50
+Verified retained trial 100
+Verified retained trial 150
+Verified retained trial 200
+{
+  "checked_at_utc": "2026-10-21T00:45:48.488950+00:00",
+  "checked_git_head": "1ab453f2dbbe9d30dcc6022f1f34f0ab08bd4567",
+  "scientific_source_sha256": "dc9e7c35bb6033fc558b10409ba3bcf3b6927b7b752e2554b972234000b21f07",
+  "original_scientific_commit": "b248effe1ff925bc43f3eef280dcaaffbe19a557",
+  "process_status": "NOT_RUNNING",
+  "original_cli_exit_code": "UNKNOWN_NOT_RECORDED",
+  "termination_cause": "UNKNOWN",
+  "expected_primary_trials": 2520,
+  "validated_complete_primary_trials": 246,
+  "validated_complete_registered_replays": 246,
+  "primary_slots_reserved": 247,
+  "replay_slots_reserved": 246,
+  "actual_primary_invocation_count": {
+    "minimum": 246,
+    "maximum": 247
+  },
+  "actual_replay_invocation_count": {
+    "minimum": 246,
+    "maximum": 246
+  },
+  "generated_input_count": 108,
+  "independently_validated_input_count": 108,
+  "complete_configs": 3,
+  "partial_configs": 1,
+  "unreserved_primary_slots": 2273,
+  "unknown_reserved_calls": [
+    {
+      "trial_id": "proposal-v2-t0247",
+      "config_id": "COCKPIT-light-16-B",
+      "seed": 4276916424184236,
+      "variant": "LOW_COMPETITION",
+      "method": "B2",
+      "files": [
+        "manifest.json",
+        "primary.reserved.json"
+      ],
+      "classification": "RESERVED_EXECUTION_STATE_UNKNOWN",
+      "reexecution_allowed": false
+    }
+  ],
+  "execution_completion": "INCOMPLETE",
+  "artifact_integrity": "VALID_FOR_RETAINED_COMPLETE_TRIALS_ONLY",
+  "selection_status": "NOT_EVALUATED_INCOMPLETE_ROSTER",
+  "mapping_classification": "NOT_EVALUATED",
+  "p2_status": "BLOCKED",
+  "recovery_policy_source": "docs/P2_design/accepted/local_simulation_scope_001.json unchanged: No retries, owner takeover, reserved-call restart or sample removal",
+  "additional_scientific_primary_calls": 0,
+  "additional_registered_replays": 0,
+  "new_scientific_inputs_generated": 0,
+  "new_seeds_generated": false,
+  "non_calibration_outcomes_accessed": false,
+  "validation_unlocked": false,
+  "formal_unlocked": false,
+  "next_safe_action": "Preserve this incomplete campaign. Obtain an explicit local-simulation recovery exception before any recomputation of trial247 or restart of this fixed plan; do not count recovery recomputation as a new independent sample.",
+  "stop": true
+}

@@ -1,0 +1,12 @@
+{
+  "argv": [
+    "/workspace/soc/.venv/bin/python",
+    "-B",
+    "reports/P2_calibration/local_001/interruption_001/audit_existing.py"
+  ],
+  "cwd": "/workspace/soc",
+  "started_at_utc": null,
+  "ended_at_utc": "2026-10-21T00:46:41.172819+00:00",
+  "exit_code": 0,
+  "scope": "Revalidate already saved inputs/results only; zero simulator/generator calls"
+}

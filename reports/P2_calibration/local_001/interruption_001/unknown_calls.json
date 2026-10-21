@@ -1,0 +1,15 @@
+[
+  {
+    "trial_id": "proposal-v2-t0247",
+    "config_id": "COCKPIT-light-16-B",
+    "seed": 4276916424184236,
+    "variant": "LOW_COMPETITION",
+    "method": "B2",
+    "files": [
+      "manifest.json",
+      "primary.reserved.json"
+    ],
+    "classification": "RESERVED_EXECUTION_STATE_UNKNOWN",
+    "reexecution_allowed": false
+  }
+]

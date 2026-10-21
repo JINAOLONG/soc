@@ -1,0 +1,90 @@
+[
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "exit_code": 0,
+    "stdout_file": "head.stdout.txt",
+    "stderr_file": "head.stderr.txt"
+  },
+  {
+    "argv": [
+      "git",
+      "branch",
+      "--show-current"
+    ],
+    "exit_code": 0,
+    "stdout_file": "branch.stdout.txt",
+    "stderr_file": "branch.stderr.txt"
+  },
+  {
+    "argv": [
+      "git",
+      "remote",
+      "get-url",
+      "origin"
+    ],
+    "exit_code": 0,
+    "stdout_file": "origin.stdout.txt",
+    "stderr_file": "origin.stderr.txt"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-remote",
+      "origin",
+      "refs/heads/work"
+    ],
+    "exit_code": 0,
+    "stdout_file": "remote.stdout.txt",
+    "stderr_file": "remote.stderr.txt"
+  },
+  {
+    "argv": [
+      "git",
+      "status",
+      "--porcelain"
+    ],
+    "exit_code": 0,
+    "stdout_file": "status.stdout.txt",
+    "stderr_file": "status.stderr.txt"
+  },
+  {
+    "argv": [
+      "pgrep",
+      "-af",
+      "^(/workspace/soc/\\.venv/bin/python|\\.venv/bin/python|python[0-9.]*) (-u )?-B (scripts/run_local_calibration.py|/tmp/soc_finalize_local.py)$"
+    ],
+    "exit_code": 1,
+    "stdout_file": "original_process.stdout.txt",
+    "stderr_file": "original_process.stderr.txt"
+  },
+  {
+    "argv": [
+      "/workspace/soc/.venv/bin/python",
+      "-B",
+      "scripts/run_pipeline.py",
+      "--stage",
+      "p0",
+      "--check-only"
+    ],
+    "exit_code": 0,
+    "stdout_file": "p0.stdout.txt",
+    "stderr_file": "p0.stderr.txt"
+  },
+  {
+    "argv": [
+      "/workspace/soc/.venv/bin/python",
+      "-B",
+      "scripts/run_pipeline.py",
+      "--stage",
+      "p1",
+      "--check-only"
+    ],
+    "exit_code": 0,
+    "stdout_file": "p1.stdout.txt",
+    "stderr_file": "p1.stderr.txt"
+  }
+]

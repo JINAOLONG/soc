@@ -1,0 +1,1970 @@
+[
+  {
+    "trial_id": "proposal-v2-t0001",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0002",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0003",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0004",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0005",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0006",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0007",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0008",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0009",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0010",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0011",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0012",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0013",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0014",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0015",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0016",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0017",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0018",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0019",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0020",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0021",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0022",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0023",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0024",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0025",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0026",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0027",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0028",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0029",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0030",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0031",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0032",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0033",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0034",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0035",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0036",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0037",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0038",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0039",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0040",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0041",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0042",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0043",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0044",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0045",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0046",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0047",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0048",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0049",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0050",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0051",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0052",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0053",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0054",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0055",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0056",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0057",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0058",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0059",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0060",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0061",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0062",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0063",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0064",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0065",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0066",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0067",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0068",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0069",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0070",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0071",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0072",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0073",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0074",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0075",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0076",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0077",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0078",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0079",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0080",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0081",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0082",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0083",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0084",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0085",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0086",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0087",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0088",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0089",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0090",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0091",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0092",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0093",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0094",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0095",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0096",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0097",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0098",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0099",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0100",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0101",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0102",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0103",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0104",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0105",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0106",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0107",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0108",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0109",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0110",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0111",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0112",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0113",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0114",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0115",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0116",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0117",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0118",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0119",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0120",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0121",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0122",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0123",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0124",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0125",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0126",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0127",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0128",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0129",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0130",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0131",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0132",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0133",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0134",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0135",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0136",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0137",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0138",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0139",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0140",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0141",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0142",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0143",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0144",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0145",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0146",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0147",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0148",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0149",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0150",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0151",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0152",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0153",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0154",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0155",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0156",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0157",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0158",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0159",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0160",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0161",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0162",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0163",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0164",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0165",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0166",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0167",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0168",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0169",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0170",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0171",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0172",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0173",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0174",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0175",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0176",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0177",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0178",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0179",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0180",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0181",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0182",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0183",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0184",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0185",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0186",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0187",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0188",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0189",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0190",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0191",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0192",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0193",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0194",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0195",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0196",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0197",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0198",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0199",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0200",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0201",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0202",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0203",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0204",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0205",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0206",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0207",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0208",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0209",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0210",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0211",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0212",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0213",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0214",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0215",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0216",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0217",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0218",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0219",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0220",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0221",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0222",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0223",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0224",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0225",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0226",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0227",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0228",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0229",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0230",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0231",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0232",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0233",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0234",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0235",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0236",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0237",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0238",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0239",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0240",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0241",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0242",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0243",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0244",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0245",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  },
+  {
+    "trial_id": "proposal-v2-t0246",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "metric_recompute": "PASS",
+    "exact_replay": "PASS",
+    "raw_sha256": "MATCH"
+  }
+]
