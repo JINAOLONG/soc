@@ -1,0 +1,43 @@
+{
+  "recorded_at_utc": "2026-10-21T12:22:31.939175+00:00",
+  "user_instruction": "继续下一步的实验",
+  "reply_context": "Direct reply to the assistant asking whether to approve the one-time pure-simulation recovery exception and continue the original roster; the assistant stated the total engine-call ceiling would become5041 while unique trial slots remain2520.",
+  "approved": true,
+  "mode": "LOCAL_RESEARCH_SIMULATION",
+  "campaign": "results/calibration/local_001",
+  "allowed_recovery_trial": "proposal-v2-t0247",
+  "extra_primary_call_limit": 1,
+  "original_primary_call_ceiling": 2520,
+  "primary_call_ceiling_including_unknown": 2521,
+  "total_engine_call_ceiling": 5041,
+  "registered_replay_ceiling": 2520,
+  "expected_unique_trial_results": 2520,
+  "acceptance_scope": [
+    "Retain the old unknown primary reservation and all original results",
+    "One recovery recomputation from exactly the saved input for trial247; not an extra independent sample",
+    "Continue only the original remaining unreserved slots in original order",
+    "Generate only still-unmaterialized registered inputs, never redraw or regenerate saved inputs",
+    "Foreground bounded segments exit only at complete validated trial boundaries and record actual process exits",
+    "Explicit local execution-budget deviation; no claim of original zero-retry compliance"
+  ],
+  "unchanged": [
+    "Original simulator/scheduler/model/configuration bytes and equations",
+    "Ten registered CALIBRATION seeds, fixed2520 result roster, controls, thresholds and statistical methods",
+    "All prior valid/unfavorable results",
+    "No further unknown-call retry exception",
+    "No DEVELOPMENT, VALIDATION, FORMAL or candidate implementation"
+  ],
+  "original_scientific_commit": "b248effe1ff925bc43f3eef280dcaaffbe19a557",
+  "original_frozen_source_sha256": "dc9e7c35bb6033fc558b10409ba3bcf3b6927b7b752e2554b972234000b21f07",
+  "prior_interruption_report": "reports/P2_calibration/local_001/interruption_001/summary.json",
+  "prior_raw_manifest_sha256": "928088a0206bbee58ad8433f7c656587ecae7826a77d1bdda0abf12a19186048",
+  "new_orchestration_files": [
+    "src/soc/p2/local_resume.py",
+    "scripts/resume_local_calibration.py"
+  ],
+  "this_segment_target_trial": 280,
+  "this_segment_admission_window_seconds": 600,
+  "scientific_execution_authorized_partition": "CALIBRATION",
+  "automatic_next_stage_authorized": false,
+  "supersession_scope": "Only the stated local interrupted-call/budget exception and normal checkpoint continuation. Production F02 policy and other zero-retry slots are unchanged."
+}

@@ -1,0 +1,14 @@
+{
+  "scope": "Recovery orchestration correctness; no registered input or engine generation yet",
+  "unit_tests_total": 125,
+  "recovery_unit_tests": 8,
+  "failed": 0,
+  "skipped": 0,
+  "p0_exit_code": 0,
+  "p1_exit_code": 0,
+  "original_scientific_files_byte_matched": 49,
+  "original_scientific_source_sha256": "dc9e7c35bb6033fc558b10409ba3bcf3b6927b7b752e2554b972234000b21f07",
+  "current_orchestration_and_scientific_source_sha256": "350eaf8e1435d6f97c2f4ba60f776b44915726b79b4ad3e3beadc4b75fe4f14d",
+  "new_scientific_primary_calls": 0,
+  "new_scientific_replay_calls": 0
+}

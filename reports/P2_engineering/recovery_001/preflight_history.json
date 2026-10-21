@@ -1,0 +1,14 @@
+{
+  "initial_check": {
+    "exit_code": 1,
+    "cause": "New orchestration incorrectly used LF-terminated payload canonicalization instead of the established no-LF source-inventory canonicalization; no existing scientific file changed and no science call executed"
+  },
+  "corrected_check": {
+    "exit_code": 0,
+    "proof": {
+      "status": "PASS",
+      "files": 49,
+      "original_source_sha256": "dc9e7c35bb6033fc558b10409ba3bcf3b6927b7b752e2554b972234000b21f07"
+    }
+  }
+}

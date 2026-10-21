@@ -1,0 +1,27 @@
+{
+  "stage": "P1",
+  "status": "PASS",
+  "errors": [],
+  "scientific_workloads_run": 0,
+  "P2_started": false,
+  "source_sha256": "350eaf8e1435d6f97c2f4ba60f776b44915726b79b4ad3e3beadc4b75fe4f14d",
+  "governance_and_p1_tests": 125,
+  "p1_tests": 108,
+  "tests_failed": 0,
+  "tests_blocked": 0,
+  "positive_traces": 45,
+  "negative_traces": 20,
+  "deterministic_replay_pass": true,
+  "independent_metric_recomputation_pass": true,
+  "tested_git_head": "ef7f87fe2d376e24209b673e27f0983ca6973024",
+  "tested_worktree": " M reports/P1_test_run.json\n?? docs/P2_design/accepted/local_recovery.md\n?? docs/P2_design/accepted/local_recovery_001.json\n?? reports/P1_test_runs/run_012.json\n?? reports/P2_engineering/recovery_001/\n?? results/calibration/local_001/\n?? scripts/resume_local_calibration.py\n?? src/soc/p2/local_resume.py\n?? tests/test_local_recovery.py\n",
+  "seed_sha256": "e5ded56e2fbe1ba2ed992a3026f3c5780d90afb50aaab4d1d8b75b8c014f4f31",
+  "specification_status": "FROZEN",
+  "baseline_status": {
+    "B1": "PASS",
+    "B2": "PASS",
+    "B3": "PASS",
+    "B4": "PASS",
+    "B5": "PASS"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "stage": "P0",
+  "status": "PASS",
+  "errors": [],
+  "partition_counts": {
+    "CALIBRATION": 10,
+    "DEVELOPMENT": 20,
+    "INDEPENDENT_VALIDATION": 10,
+    "FORMAL_EVALUATION": 30
+  },
+  "seed_sha256": "e5ded56e2fbe1ba2ed992a3026f3c5780d90afb50aaab4d1d8b75b8c014f4f31",
+  "source_sha256": "350eaf8e1435d6f97c2f4ba60f776b44915726b79b4ad3e3beadc4b75fe4f14d",
+  "scientific_partitions_executed": [],
+  "legacy_results_used_as_new_evidence": false
+}

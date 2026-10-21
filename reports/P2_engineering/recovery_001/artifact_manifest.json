@@ -1,0 +1,90 @@
+{
+  "scope": "Hand-authored recovery correctness and source identity",
+  "files": [
+    {
+      "path": "reports/P2_engineering/recovery_001/README.md",
+      "sha256": "6319f3b8b34edd6feb4ffafb4a2a1679b04dd216b90be48f1239e3a8aab96118",
+      "size_bytes": 1341
+    },
+    {
+      "path": "reports/P2_engineering/recovery_001/audit_commands.json",
+      "sha256": "699d282fdf70578f9fdadca747358c6f4725f07b33c43953d0ffdf9b6fdb5678",
+      "size_bytes": 445
+    },
+    {
+      "path": "reports/P2_engineering/recovery_001/baseline/STATUS.md",
+      "sha256": "8b534f9a0a470aa6299df7c28f5e183071dd14f708fab6e67c802161ec8ba386",
+      "size_bytes": 4025
+    },
+    {
+      "path": "reports/P2_engineering/recovery_001/baseline/checkpoints/P1_artifact_manifest.json",
+      "sha256": "1ce2682aeac75d65adb9998145cd05c71debe47277f57f8eb6c7d6fd30c1677b",
+      "size_bytes": 18144
+    },
+    {
+      "path": "reports/P2_engineering/recovery_001/baseline/reports/P0_protocol_audit.json",
+      "sha256": "46f32ae9fd5832694d2e206ba98eb665100d3eed80b531520dab2e1c5ba53c5d",
+      "size_bytes": 453
+    },
+    {
+      "path": "reports/P2_engineering/recovery_001/baseline/reports/P1_artifacts/index.json",
+      "sha256": "e71c2b655f0d5e3b055084e05a8c5d7106fd1c719fec2c38037492a37460e4b7",
+      "size_bytes": 78050
+    },
+    {
+      "path": "reports/P2_engineering/recovery_001/baseline/reports/P1_correctness.json",
+      "sha256": "7fe25d924805983860c5910a048e7c1dcbd0ab9ed41efba5446f9ea43e2c2f4f",
+      "size_bytes": 1364
+    },
+    {
+      "path": "reports/P2_engineering/recovery_001/baseline/reports/P1_test_run.json",
+      "sha256": "89fd5839a94d7d61a2b8dd6eef57710624c8fb15aed456a0361f125263a2856a",
+      "size_bytes": 167571
+    },
+    {
+      "path": "reports/P2_engineering/recovery_001/core_identity.json",
+      "sha256": "77257dea5def06a10c0ccd053ab8f67d99c4106d7f2f08f88a370ab0a97c091a",
+      "size_bytes": 134
+    },
+    {
+      "path": "reports/P2_engineering/recovery_001/p0.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "reports/P2_engineering/recovery_001/p0.stdout.txt",
+      "sha256": "0228cea7edd9b3f7ae7d69bd47fa69bf971f8ba6890b8ee50598a4891f937248",
+      "size_bytes": 453
+    },
+    {
+      "path": "reports/P2_engineering/recovery_001/p1.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "reports/P2_engineering/recovery_001/p1.stdout.txt",
+      "sha256": "798d838da67a245421ad4aa461a22e3e0ad21ae8df1c6c61790346d968576c85",
+      "size_bytes": 1104
+    },
+    {
+      "path": "reports/P2_engineering/recovery_001/p1_correctness.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "reports/P2_engineering/recovery_001/p1_correctness.stdout.txt",
+      "sha256": "8c7e63b86ba999a52644d83e24bcd15deccd25604298dc0b24c535e98356a79e",
+      "size_bytes": 101
+    },
+    {
+      "path": "reports/P2_engineering/recovery_001/preflight_history.json",
+      "sha256": "32274e93a9f732c4fa25363b1a11b14644996547696ebac1a28de0407d4e1831",
+      "size_bytes": 482
+    },
+    {
+      "path": "reports/P2_engineering/recovery_001/summary.json",
+      "sha256": "8a2c03cbd1a6636994fd6d8d1b4f1f6bcd1d6aedc5d34cec5c1529627af5d7a3",
+      "size_bytes": 578
+    }
+  ]
+}
