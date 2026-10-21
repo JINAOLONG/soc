@@ -1,0 +1,23 @@
+[
+  {
+    "path": "reports/P2_calibration/local_001/continuation_001/COCKPIT-light-16-B.delta.tar.gz",
+    "sha256": "66fd6d8b05a01ebb74f0b8f77471391d6f4e8e6851267b7a5381293416b094c9",
+    "size_bytes": 22754708,
+    "raw_files": 343,
+    "roundtrip": "PASS"
+  },
+  {
+    "path": "reports/P2_calibration/local_001/continuation_001/COCKPIT-medium-8-A.delta.tar.gz",
+    "sha256": "6d36a898ec8999fac05bcdc720c21a50a82523c7b9799ff8f4fbb5b2efda97db",
+    "size_bytes": 25319718,
+    "raw_files": 720,
+    "roundtrip": "PASS"
+  },
+  {
+    "path": "reports/P2_calibration/local_001/continuation_001/segment_metadata.delta.tar.gz",
+    "sha256": "ea5c908a4564ca8f31f075e841dec1bcfad39aa044238d617ac77c95ecc1ecac",
+    "size_bytes": 33307,
+    "raw_files": 9,
+    "roundtrip": "PASS"
+  }
+]

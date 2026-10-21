@@ -1,0 +1,19 @@
+{
+  "argv": [
+    "/workspace/soc/.venv/bin/python",
+    "-B",
+    "scripts/resume_local_calibration.py",
+    "--end-trial",
+    "280",
+    "--seconds",
+    "600"
+  ],
+  "cwd": "/workspace/soc",
+  "started_at_utc": "2026-10-21T12:28:41.641951+00:00",
+  "ended_at_utc": "2026-10-21T12:36:39.976243+00:00",
+  "exit_code": 0,
+  "elapsed_seconds": 478.3343998659984,
+  "stdout": "stdout.txt",
+  "stderr": "stderr.txt",
+  "scope": "Foreground segment; no background continuation"
+}

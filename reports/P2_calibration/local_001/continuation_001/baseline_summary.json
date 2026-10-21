@@ -1,0 +1,202 @@
+[
+  {
+    "config_id": "COCKPIT-light-16-A",
+    "method": "B1",
+    "H_DMR": 0.0,
+    "L_DMR": 0.0,
+    "H_P95_ms": 16.27909242551086,
+    "L_P95_ms": 23.413093612513272
+  },
+  {
+    "config_id": "COCKPIT-light-16-A",
+    "method": "B2",
+    "H_DMR": 0.0,
+    "L_DMR": 0.0,
+    "H_P95_ms": 16.269009700752026,
+    "L_P95_ms": 23.46305697253559
+  },
+  {
+    "config_id": "COCKPIT-light-16-A",
+    "method": "B3",
+    "H_DMR": 0.0,
+    "L_DMR": 0.0,
+    "H_P95_ms": 22.84272805342389,
+    "L_P95_ms": 22.698966550864398
+  },
+  {
+    "config_id": "COCKPIT-light-16-A",
+    "method": "B4",
+    "H_DMR": 0.0,
+    "L_DMR": 0.0,
+    "H_P95_ms": 22.357668035518248,
+    "L_P95_ms": 22.53104981100885
+  },
+  {
+    "config_id": "COCKPIT-light-16-A",
+    "method": "B5",
+    "H_DMR": 0.0,
+    "L_DMR": 0.0,
+    "H_P95_ms": 16.29097579750896,
+    "L_P95_ms": 23.84137920105419
+  },
+  {
+    "config_id": "COCKPIT-light-16-B",
+    "method": "B1",
+    "H_DMR": 0.0,
+    "L_DMR": 0.0,
+    "H_P95_ms": 16.53791892239088,
+    "L_P95_ms": 24.999803656860305
+  },
+  {
+    "config_id": "COCKPIT-light-16-B",
+    "method": "B2",
+    "H_DMR": 0.0,
+    "L_DMR": 0.0,
+    "H_P95_ms": 16.532338933282254,
+    "L_P95_ms": 24.986325199268116
+  },
+  {
+    "config_id": "COCKPIT-light-16-B",
+    "method": "B3",
+    "H_DMR": 0.0,
+    "L_DMR": 0.0,
+    "H_P95_ms": 24.179571323214823,
+    "L_P95_ms": 24.11450514887651
+  },
+  {
+    "config_id": "COCKPIT-light-16-B",
+    "method": "B4",
+    "H_DMR": 0.0,
+    "L_DMR": 0.0,
+    "H_P95_ms": 23.850025439730324,
+    "L_P95_ms": 23.799135772821952
+  },
+  {
+    "config_id": "COCKPIT-light-16-B",
+    "method": "B5",
+    "H_DMR": 0.0,
+    "L_DMR": 0.0,
+    "H_P95_ms": 16.538544950549834,
+    "L_P95_ms": 24.988982714873462
+  },
+  {
+    "config_id": "COCKPIT-light-8-A",
+    "method": "B1",
+    "H_DMR": 0.0,
+    "L_DMR": 0.0,
+    "H_P95_ms": 20.43319171026331,
+    "L_P95_ms": 22.24765293505914
+  },
+  {
+    "config_id": "COCKPIT-light-8-A",
+    "method": "B2",
+    "H_DMR": 0.0,
+    "L_DMR": 0.0,
+    "H_P95_ms": 20.43319171026331,
+    "L_P95_ms": 22.24765293505914
+  },
+  {
+    "config_id": "COCKPIT-light-8-A",
+    "method": "B3",
+    "H_DMR": 0.0,
+    "L_DMR": 0.0,
+    "H_P95_ms": 20.52867335732244,
+    "L_P95_ms": 20.60973094794987
+  },
+  {
+    "config_id": "COCKPIT-light-8-A",
+    "method": "B4",
+    "H_DMR": 0.0,
+    "L_DMR": 0.0,
+    "H_P95_ms": 20.229489966251585,
+    "L_P95_ms": 20.416236967207002
+  },
+  {
+    "config_id": "COCKPIT-light-8-A",
+    "method": "B5",
+    "H_DMR": 0.0,
+    "L_DMR": 0.0,
+    "H_P95_ms": 20.43319171026331,
+    "L_P95_ms": 22.24765293505914
+  },
+  {
+    "config_id": "COCKPIT-light-8-B",
+    "method": "B1",
+    "H_DMR": 0.0,
+    "L_DMR": 0.0,
+    "H_P95_ms": 20.391334107618064,
+    "L_P95_ms": 23.019703296426695
+  },
+  {
+    "config_id": "COCKPIT-light-8-B",
+    "method": "B2",
+    "H_DMR": 0.0,
+    "L_DMR": 0.0,
+    "H_P95_ms": 20.391334107618064,
+    "L_P95_ms": 23.019703296426695
+  },
+  {
+    "config_id": "COCKPIT-light-8-B",
+    "method": "B3",
+    "H_DMR": 0.0,
+    "L_DMR": 0.0,
+    "H_P95_ms": 21.32720426094704,
+    "L_P95_ms": 21.099360574172742
+  },
+  {
+    "config_id": "COCKPIT-light-8-B",
+    "method": "B4",
+    "H_DMR": 0.0,
+    "L_DMR": 0.0,
+    "H_P95_ms": 20.441988909004706,
+    "L_P95_ms": 20.39981477941802
+  },
+  {
+    "config_id": "COCKPIT-light-8-B",
+    "method": "B5",
+    "H_DMR": 0.0,
+    "L_DMR": 0.0,
+    "H_P95_ms": 20.419170185545404,
+    "L_P95_ms": 23.041700725354463
+  },
+  {
+    "config_id": "COCKPIT-medium-8-A",
+    "method": "B1",
+    "H_DMR": 0.06,
+    "L_DMR": 0.5860000000000001,
+    "H_P95_ms": 30.560763964129194,
+    "L_P95_ms": 54.21757696004838
+  },
+  {
+    "config_id": "COCKPIT-medium-8-A",
+    "method": "B2",
+    "H_DMR": 0.0,
+    "L_DMR": 0.73,
+    "H_P95_ms": 23.51402122285831,
+    "L_P95_ms": 54.29554331653711
+  },
+  {
+    "config_id": "COCKPIT-medium-8-A",
+    "method": "B3",
+    "H_DMR": 0.756,
+    "L_DMR": 0.202,
+    "H_P95_ms": 54.80470899647946,
+    "L_P95_ms": 56.59224637006247
+  },
+  {
+    "config_id": "COCKPIT-medium-8-A",
+    "method": "B4",
+    "H_DMR": 0.744,
+    "L_DMR": 0.2,
+    "H_P95_ms": 55.32850270702271,
+    "L_P95_ms": 55.96785920484805
+  },
+  {
+    "config_id": "COCKPIT-medium-8-A",
+    "method": "B5",
+    "H_DMR": 0.068,
+    "L_DMR": 0.352,
+    "H_P95_ms": 31.117648895568532,
+    "L_P95_ms": 61.10061047902782
+  }
+]

@@ -1,0 +1,21 @@
+{
+  "recorded_at_utc": "2026-10-21T12:33:40.105373+00:00",
+  "scope": "Bounded foreground continuation; no outcome-based configuration choice",
+  "milestones": [
+    {
+      "end_trial": 280,
+      "config_id": "COCKPIT-light-16-B",
+      "purpose": "Finish original interrupted configuration"
+    },
+    {
+      "end_trial": 350,
+      "config_id": "COCKPIT-medium-8-A",
+      "purpose": "Execute the immediately following registered configuration"
+    }
+  ],
+  "admission_window_seconds_per_segment": 600,
+  "extra_recovery_primary_limit": 1,
+  "automatic_background_execution": false,
+  "final_state": "Normal process exit at a complete trial boundary; remaining roster retained pending later continuation",
+  "all_thresholds_and_seed_partitions_unchanged": true
+}

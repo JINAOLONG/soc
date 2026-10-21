@@ -1,0 +1,13 @@
+{
+  "argv": [
+    "/workspace/soc/.venv/bin/python",
+    "-B",
+    "reports/P2_calibration/local_001/continuation_001/close_segment.py"
+  ],
+  "cwd": "/workspace/soc",
+  "started_at_utc": "2026-10-21T12:43:47.312712+00:00",
+  "ended_at_utc": "2026-10-21T12:44:08.588985+00:00",
+  "exit_code": 0,
+  "elapsed_seconds": 21.276278806006303,
+  "scope": "Existing-result verification and lossless archival only"
+}

@@ -1,0 +1,13 @@
+{
+  "config_id": "COCKPIT-medium-8-A",
+  "seed_count": 10,
+  "B2_pressure_mean": 0.5715578435430639,
+  "B2_H_DMR_mean": 0.0,
+  "B2_L_DMR_mean": 0.73,
+  "registered_medium_H_DMR_min": "1/100",
+  "below_registered_H_DMR_min": true,
+  "classification": "DESCRIPTIVE_SINGLE_PREDICATE_ONLY_NOT_GLOBAL_SELECTION",
+  "source": "docs/P2_design/v3/P2_stage_state_contract_v3.json#load_classification; accepted D06/SP21 overlay",
+  "next_registered_config": "COCKPIT-medium-8-B",
+  "selection_status": "NOT_EVALUATED_INCOMPLETE_ROSTER"
+}

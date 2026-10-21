@@ -1,0 +1,68 @@
+{"segment": "segment_001", "completed_trial": "proposal-v2-t0247", "valid_total": 247, "new_primary_calls": 1, "new_replays": 1, "elapsed_seconds": 11.38}
+{"segment": "segment_001", "completed_trial": "proposal-v2-t0248", "valid_total": 248, "new_primary_calls": 2, "new_replays": 2, "elapsed_seconds": 24.64}
+{"segment": "segment_001", "completed_trial": "proposal-v2-t0249", "valid_total": 249, "new_primary_calls": 3, "new_replays": 3, "elapsed_seconds": 38.06}
+{"segment": "segment_001", "completed_trial": "proposal-v2-t0250", "valid_total": 250, "new_primary_calls": 4, "new_replays": 4, "elapsed_seconds": 53.93}
+{"segment": "segment_001", "completed_trial": "proposal-v2-t0251", "valid_total": 251, "new_primary_calls": 5, "new_replays": 5, "elapsed_seconds": 70.2}
+{"segment": "segment_001", "completed_trial": "proposal-v2-t0252", "valid_total": 252, "new_primary_calls": 6, "new_replays": 6, "elapsed_seconds": 84.42}
+{"segment": "segment_001", "completed_trial": "proposal-v2-t0253", "valid_total": 253, "new_primary_calls": 7, "new_replays": 7, "elapsed_seconds": 88.24}
+{"segment": "segment_001", "completed_trial": "proposal-v2-t0254", "valid_total": 254, "new_primary_calls": 8, "new_replays": 8, "elapsed_seconds": 102.02}
+{"segment": "segment_001", "completed_trial": "proposal-v2-t0255", "valid_total": 255, "new_primary_calls": 9, "new_replays": 9, "elapsed_seconds": 116.41}
+{"segment": "segment_001", "completed_trial": "proposal-v2-t0256", "valid_total": 256, "new_primary_calls": 10, "new_replays": 10, "elapsed_seconds": 129.55}
+{"segment": "segment_001", "completed_trial": "proposal-v2-t0257", "valid_total": 257, "new_primary_calls": 11, "new_replays": 11, "elapsed_seconds": 144.65}
+{"segment": "segment_001", "completed_trial": "proposal-v2-t0258", "valid_total": 258, "new_primary_calls": 12, "new_replays": 12, "elapsed_seconds": 159.2}
+{"segment": "segment_001", "completed_trial": "proposal-v2-t0259", "valid_total": 259, "new_primary_calls": 13, "new_replays": 13, "elapsed_seconds": 173.67}
+{"segment": "segment_001", "completed_trial": "proposal-v2-t0260", "valid_total": 260, "new_primary_calls": 14, "new_replays": 14, "elapsed_seconds": 177.43}
+{"segment": "segment_001", "completed_trial": "proposal-v2-t0261", "valid_total": 261, "new_primary_calls": 15, "new_replays": 15, "elapsed_seconds": 189.29}
+{"segment": "segment_001", "completed_trial": "proposal-v2-t0262", "valid_total": 262, "new_primary_calls": 16, "new_replays": 16, "elapsed_seconds": 208.8}
+{"segment": "segment_001", "completed_trial": "proposal-v2-t0263", "valid_total": 263, "new_primary_calls": 17, "new_replays": 17, "elapsed_seconds": 229.86}
+{"segment": "segment_001", "completed_trial": "proposal-v2-t0264", "valid_total": 264, "new_primary_calls": 18, "new_replays": 18, "elapsed_seconds": 247.79}
+{"segment": "segment_001", "completed_trial": "proposal-v2-t0265", "valid_total": 265, "new_primary_calls": 19, "new_replays": 19, "elapsed_seconds": 266.55}
+{"segment": "segment_001", "completed_trial": "proposal-v2-t0266", "valid_total": 266, "new_primary_calls": 20, "new_replays": 20, "elapsed_seconds": 281.98}
+{"segment": "segment_001", "completed_trial": "proposal-v2-t0267", "valid_total": 267, "new_primary_calls": 21, "new_replays": 21, "elapsed_seconds": 285.93}
+{"segment": "segment_001", "completed_trial": "proposal-v2-t0268", "valid_total": 268, "new_primary_calls": 22, "new_replays": 22, "elapsed_seconds": 299.96}
+{"segment": "segment_001", "completed_trial": "proposal-v2-t0269", "valid_total": 269, "new_primary_calls": 23, "new_replays": 23, "elapsed_seconds": 313.57}
+{"segment": "segment_001", "completed_trial": "proposal-v2-t0270", "valid_total": 270, "new_primary_calls": 24, "new_replays": 24, "elapsed_seconds": 327.13}
+{"segment": "segment_001", "completed_trial": "proposal-v2-t0271", "valid_total": 271, "new_primary_calls": 25, "new_replays": 25, "elapsed_seconds": 343.21}
+{"segment": "segment_001", "completed_trial": "proposal-v2-t0272", "valid_total": 272, "new_primary_calls": 26, "new_replays": 26, "elapsed_seconds": 361.0}
+{"segment": "segment_001", "completed_trial": "proposal-v2-t0273", "valid_total": 273, "new_primary_calls": 27, "new_replays": 27, "elapsed_seconds": 377.45}
+{"segment": "segment_001", "completed_trial": "proposal-v2-t0274", "valid_total": 274, "new_primary_calls": 28, "new_replays": 28, "elapsed_seconds": 381.87}
+{"segment": "segment_001", "completed_trial": "proposal-v2-t0275", "valid_total": 275, "new_primary_calls": 29, "new_replays": 29, "elapsed_seconds": 394.07}
+{"segment": "segment_001", "completed_trial": "proposal-v2-t0276", "valid_total": 276, "new_primary_calls": 30, "new_replays": 30, "elapsed_seconds": 407.37}
+{"segment": "segment_001", "completed_trial": "proposal-v2-t0277", "valid_total": 277, "new_primary_calls": 31, "new_replays": 31, "elapsed_seconds": 420.37}
+{"segment": "segment_001", "completed_trial": "proposal-v2-t0278", "valid_total": 278, "new_primary_calls": 32, "new_replays": 32, "elapsed_seconds": 435.72}
+{"segment": "segment_001", "completed_trial": "proposal-v2-t0279", "valid_total": 279, "new_primary_calls": 33, "new_replays": 33, "elapsed_seconds": 451.58}
+{"segment": "segment_001", "completed_trial": "proposal-v2-t0280", "valid_total": 280, "new_primary_calls": 34, "new_replays": 34, "elapsed_seconds": 465.19}
+{
+  "status": "PAUSED_AT_COMPLETE_TRIAL_BOUNDARY",
+  "whole_campaign_complete": false,
+  "valid_trials": 280,
+  "registered_replays_complete": 280,
+  "expected_trials": 2520,
+  "new_primary_calls": 34,
+  "new_replay_calls": 34,
+  "one_time_recovery_total": 1,
+  "actual_primary_invocations": {
+    "minimum": 280,
+    "maximum": 281
+  },
+  "total_engine_invocations": {
+    "minimum": 560,
+    "maximum": 561
+  },
+  "reservation_counts": {
+    "original_primary_reservations": 280,
+    "recovery_primary_reservations": 1,
+    "replay_reservations": 280
+  },
+  "generated_inputs": 120,
+  "remaining_unique_trials": 2240,
+  "elapsed_seconds": 465.20945118000964,
+  "target_config_boundary_reached": true,
+  "updated_at_utc": "2026-10-21T12:36:39.842645+00:00",
+  "source_sha256": "350eaf8e1435d6f97c2f4ba60f776b44915726b79b4ad3e3beadc4b75fe4f14d",
+  "original_frozen_source_sha256": "dc9e7c35bb6033fc558b10409ba3bcf3b6927b7b752e2554b972234000b21f07",
+  "p2_status": "BLOCKED",
+  "mapping_classification": "NOT_EVALUATED",
+  "validation_unlocked": false,
+  "formal_unlocked": false
+}

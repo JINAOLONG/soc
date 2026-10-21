@@ -1,0 +1,834 @@
+[
+  {
+    "trial_id": "proposal-v2-t0247",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": true
+  },
+  {
+    "trial_id": "proposal-v2-t0248",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0249",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0250",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0251",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0252",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0253",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0254",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0255",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0256",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0257",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0258",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0259",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0260",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0261",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0262",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0263",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0264",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0265",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0266",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0267",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0268",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0269",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0270",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0271",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0272",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0273",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0274",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0275",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0276",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0277",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0278",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0279",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0280",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0281",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0282",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0283",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0284",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0285",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0286",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0287",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0288",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0289",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0290",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0291",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0292",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0293",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0294",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0295",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0296",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0297",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0298",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0299",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0300",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0301",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0302",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0303",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0304",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0305",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0306",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0307",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0308",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0309",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0310",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0311",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0312",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0313",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0314",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0315",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0316",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0317",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0318",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0319",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0320",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0321",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0322",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0323",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0324",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0325",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0326",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0327",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0328",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0329",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0330",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0331",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0332",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0333",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0334",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0335",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0336",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0337",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0338",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0339",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0340",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0341",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0342",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0343",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0344",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0345",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0346",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0347",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0348",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0349",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  },
+  {
+    "trial_id": "proposal-v2-t0350",
+    "primary_physical": "PASS",
+    "replay_physical": "PASS",
+    "exact_replay": "PASS",
+    "metrics": "MATCH",
+    "recovery": false
+  }
+]
