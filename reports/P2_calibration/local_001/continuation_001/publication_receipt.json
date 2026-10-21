@@ -1,0 +1,26 @@
+{
+  "observed_at_utc": "2026-10-21T12:52:36.384834+00:00",
+  "result_commit": "ecc2773378cd76357d87d0ad3830fe68b99f6d23",
+  "executed_orchestration_commit": "0d0c1f73f4449f69c6955be0ebfed74098a22623",
+  "original_scientific_commit": "b248effe1ff925bc43f3eef280dcaaffbe19a557",
+  "result_push_exit_code": 0,
+  "result_push_scope": "Actual preceding normal git push origin HEAD:work completed successfully; remote readback below independently verifies publication",
+  "remote_readback": {
+    "argv": [
+      "git",
+      "ls-remote",
+      "origin",
+      "refs/heads/work"
+    ],
+    "exit_code": 0,
+    "stdout": "ecc2773378cd76357d87d0ad3830fe68b99f6d23\trefs/heads/work\n",
+    "stderr": ""
+  },
+  "artifact_manifest_sha256": "78e30f23686781cb7ad30e73f0b365d62bd37dcfb88ccb5520e156e14d454494",
+  "publication_status": "VERIFIED_REMOTE_EQUALS_RESULT_COMMIT",
+  "scientific_checkpoint": 350,
+  "expected_trial_roster": 2520,
+  "whole_campaign_complete": false,
+  "no_active_background_simulation": true,
+  "receipt_enclosing_commit": "RESOLVE_LIVE_WITH_GIT; receipt published in a subsequent normal commit"
+}
